@@ -5,8 +5,8 @@ export type ResolvedTheme = 'light' | 'dark'
 export const THEME_CYCLE: ThemeMode[] = ['light', 'dark', 'system']
 
 function getStored(): ThemeMode {
-  try { return (localStorage.getItem('vapsa-theme') as ThemeMode) || 'dark' }
-  catch { return 'dark' }
+  try { return (localStorage.getItem('vapsa-theme') as ThemeMode) || 'system' }
+  catch { return 'system' }
 }
 
 function getSystemDark(): boolean {
@@ -36,6 +36,9 @@ export function setTheme(t: ThemeMode) {
 export function initSystemListener() {
   try {
     const mq = window.matchMedia('(prefers-color-scheme: dark)')
+    // Crucial fix: sync the current state immediately on mount
+    systemDark.set(mq.matches)
+    
     const handler = (e: MediaQueryListEvent) => systemDark.set(e.matches)
     mq.addEventListener('change', handler)
     return () => mq.removeEventListener('change', handler)

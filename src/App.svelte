@@ -12,23 +12,43 @@
 
   let heroEl:  HTMLDivElement | null = $state(null)
   let promoEl: HTMLDivElement | null = $state(null)
+  let brandStripEl:   HTMLElement | null = $state(null)
+  let benefitsEl:     HTMLElement | null = $state(null)
+  let serviceBannerEl: HTMLElement | null = $state(null)
+  let footerEl:        HTMLElement | null = $state(null)
 
   let brandFilter: BrandFilter = $state('Todas')
   let typeFilter:  VehicleType = $state('Todos')
   let mobileMenuOpen = $state(false)
+  let brandStripVisible   = $state(false)
+  let benefitsVisible     = $state(false)
+  let serviceBannerVisible = $state(false)
+  let footerVisible        = $state(false)
 
   onMount(() => {
     const cleanup = initSystemListener()
-    return cleanup
+
+    const io = (el: Element | null, cb: () => void, threshold = 0.14) => {
+      if (!el) return { disconnect() {} }
+      const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) { cb(); obs.disconnect() } }, { threshold })
+      obs.observe(el)
+      return obs
+    }
+
+    const brandIO   = io(brandStripEl,   () => brandStripVisible   = true)
+    const benefitIO = io(benefitsEl,     () => benefitsVisible     = true, 0.10)
+    const serviceIO = io(serviceBannerEl,() => serviceBannerVisible = true, 0.12)
+    const footerIO  = io(footerEl,       () => footerVisible        = true, 0.05)
+
+    return () => { cleanup(); brandIO.disconnect(); benefitIO.disconnect(); serviceIO.disconnect(); footerIO.disconnect() }
   })
 
-  const BRANDS_STRIP = [
-    { name: 'Jeep',        href: '#', logo: 'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F11828b62efcb84234673f32671bb041347d1808b.svg%3Fv=1?generation=1777350234486069&alt=media' },
-    { name: 'Fiat',        href: '#', logo: 'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2Fb60daf40e8df838d4b8b5068609584621fe2e8e7.svg%3Fv=1?generation=1777350234458223&alt=media' },
-    { name: 'Dodge',       href: '#', logo: 'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F9b5fe7b48812d11073f5aae5e8c95473bf89680f.svg%3Fv=1?generation=1777350234457792&alt=media' },
-    { name: 'Peugeot',     href: '#', logo: 'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F66d0da430295ddebb88e02567eae03c7073ad003.svg%3Fv=1?generation=1777350234506470&alt=media' },
-    { name: 'Peugeot Pro', href: '#', logo: 'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F1d3a40b9a3f261283ca757b06246cd3d7e3ebe2d.svg%3Fv=1?generation=1777350234485236&alt=media' },
-    { name: 'Ram',         href: '#', logo: 'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F0431177bb0013c7c3ed8b1fff99c0502dcd0f04c.svg%3Fv=1?generation=1777350234486854&alt=media' },
+  const BRANDS_STRIP: { name: string; filter: BrandFilter; logo: string }[] = [
+    { name: 'Jeep',        filter: 'Jeep',    logo: 'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F11828b62efcb84234673f32671bb041347d1808b.svg%3Fv=1?generation=1777350234486069&alt=media' },
+    { name: 'Fiat',        filter: 'Fiat',    logo: 'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2Fb60daf40e8df838d4b8b5068609584621fe2e8e7.svg%3Fv=1?generation=1777350234458223&alt=media' },
+    { name: 'Dodge',       filter: 'Dodge',   logo: 'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F9b5fe7b48812d11073f5aae5e8c95473bf89680f.svg%3Fv=1?generation=1777350234457792&alt=media' },
+    { name: 'Peugeot',     filter: 'Peugeot', logo: 'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F1aa0b8e902c45f89e937310760192244925939e5.svg?generation=1777350234239082&alt=media' },
+    { name: 'Ram',         filter: 'Ram',     logo: 'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F0431177bb0013c7c3ed8b1fff99c0502dcd0f04c.svg%3Fv=1?generation=1777350234486854&alt=media' },
   ]
 
 
@@ -137,17 +157,20 @@
     </div>
 
     <!-- BRAND STRIP -->
-    <section class="py-8 md:py-10 px-4 md:px-8"
+    <section bind:this={brandStripEl} class="py-8 md:py-10 px-4 md:px-8"
       style="background:{bsBase.bg};border-top:1px solid {bsBase.border};border-bottom:1px solid {bsBase.border};backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);">
       <div class="max-w-7xl mx-auto">
-        <p class="text-center text-xs uppercase tracking-widest mb-5" style="color:{T.muted}">
+        <p class="text-center text-xs uppercase tracking-widest mb-5"
+          style="color:{T.muted};{brandStripVisible ? 'animation:section-title-in 0.50s cubic-bezier(0.22,1,0.36,1) both' : 'opacity:0'}">
           Elige una marca — o usa la barra lateral
         </p>
-        <div class="flex gap-3 md:flex-wrap md:justify-center overflow-x-auto scrollbar-none pb-1">
-          {#each BRANDS_STRIP as brand (brand.name)}
-            <a href={brand.href}
-              class="group flex-shrink-0 flex flex-col items-center gap-2 px-5 py-3 md:px-6 md:py-4 rounded-2xl transition-all duration-250"
-              style="background:{bsBase.cardBg};border:1px solid {bsBase.cardBorder};backdrop-filter:blur(30px);-webkit-backdrop-filter:blur(30px);box-shadow:{$isDark ? 'inset 0 1px 0 rgba(255,255,255,0.08)' : 'inset 0 1px 0 rgba(255,255,255,0.90)'};"
+        <div class="flex gap-3 md:flex-wrap md:justify-center overflow-x-auto scrollbar-none pb-2 pt-2 px-1"
+          style="mask-image: linear-gradient(to right, black 85%, transparent 100%); -webkit-mask-image: linear-gradient(to right, black 85%, transparent 100%);">
+          {#each BRANDS_STRIP as brand, i (brand.name)}
+            <button
+              onclick={() => handleBrandSelect(brand.filter)}
+              class="group flex-shrink-0 flex flex-col items-center gap-2 px-6 py-4 md:px-8 md:py-6 rounded-2xl transition-all duration-250 cursor-pointer"
+              style="background:{brandFilter === brand.filter ? ($isDark ? 'rgba(51,78,139,0.35)' : 'rgba(51,78,139,0.12)') : bsBase.cardBg};border:1px solid {brandFilter === brand.filter ? 'rgba(51,78,139,0.60)' : bsBase.cardBorder};backdrop-filter:blur(30px);-webkit-backdrop-filter:blur(30px);box-shadow:{$isDark ? 'inset 0 1px 0 rgba(255,255,255,0.08)' : 'inset 0 1px 0 rgba(255,255,255,0.90)'};{brandStripVisible ? `animation:brand-card-in 0.55s cubic-bezier(0.22,1,0.36,1) ${i * 85}ms both` : 'opacity:0;transform:translateY(20px) scale(0.94)'};will-change:transform,opacity;"
               onmouseenter={(e) => {
                 const el = e.currentTarget as HTMLElement
                 el.style.background = $isDark ? 'rgba(255,255,255,0.10)' : 'rgba(255,255,255,0.92)'
@@ -155,12 +178,14 @@
               }}
               onmouseleave={(e) => {
                 const el = e.currentTarget as HTMLElement
-                el.style.background = bsBase.cardBg
+                el.style.background = brandFilter === brand.filter
+                  ? ($isDark ? 'rgba(51,78,139,0.35)' : 'rgba(51,78,139,0.12)')
+                  : bsBase.cardBg
                 el.style.transform = 'translateY(0)'
               }}>
-              <img src={brand.logo} alt={brand.name} class="w-16 md:w-24 h-10 md:h-14 object-contain"
+              <img src={brand.logo} alt={brand.name} class="w-20 md:w-32 h-14 md:h-20 object-contain"
                 style="filter:{T.logoF};opacity:{$isDark ? 0.68 : 0.62}" />
-            </a>
+            </button>
           {/each}
         </div>
       </div>
@@ -172,14 +197,16 @@
     </div>
 
     <!-- SERVICE BANNER -->
-    <section class="py-8 md:py-12 px-4 md:px-8" style="background:{serviceBg}">
+    <section bind:this={serviceBannerEl} class="py-8 md:py-12 px-4 md:px-8" style="background:{serviceBg}">
       <div class="max-w-7xl mx-auto">
         <div class="relative overflow-hidden rounded-2xl md:rounded-3xl flex flex-col md:flex-row" style={glassCard}>
-          <div class="md:w-1/2 relative overflow-hidden" style="min-height:220px;">
+          <div class="md:w-1/2 relative overflow-hidden"
+            style="min-height:220px;{serviceBannerVisible ? 'animation:slide-in-left 0.70s cubic-bezier(0.22,1,0.36,1) 0.05s both' : 'opacity:0;transform:translateX(-40px)'}">
             <img src={SERVICE_IMG} alt="Servicio de Mantenimiento" class="w-full h-full object-cover absolute inset-0" />
             <div class="absolute inset-0" style="background:{serviceGrad}"></div>
           </div>
-          <div class="md:w-1/2 p-6 md:p-12 flex flex-col justify-center">
+          <div class="md:w-1/2 p-6 md:p-12 flex flex-col justify-center"
+            style="{serviceBannerVisible ? 'animation:slide-in-right 0.70s cubic-bezier(0.22,1,0.36,1) 0.18s both' : 'opacity:0;transform:translateX(40px)'}">
             <span class="text-xs uppercase tracking-widest mb-2" style="color:{T.muted}">Servicio</span>
             <h3 class="mb-3" style="font-size:clamp(1.5rem,4vw,2rem);font-weight:800;line-height:1.2;color:{T.primary};">
               Servicio de<br />
@@ -189,7 +216,7 @@
               Agenda tu cita de servicio en línea y asegura el mejor cuidado para tu vehículo.
             </p>
             <a href="#"
-              class="inline-flex items-center gap-2 px-5 py-3 rounded-full text-white text-sm font-medium w-fit transition-all duration-300 hover:scale-105 active:scale-95"
+              class="inline-flex items-center gap-2 px-5 py-3 rounded-full text-white text-sm font-medium w-fit transition-all duration-300 hover:scale-105 active:scale-95 btn-shine"
               style={primaryBtn}>Programa tu cita</a>
           </div>
           <div class="absolute top-0 right-0 w-64 h-64 pointer-events-none"
@@ -199,24 +226,29 @@
     </section>
 
     <!-- BENEFITS -->
-    <section class="py-12 md:py-16 px-4 md:px-8 relative overflow-hidden"
+    <section bind:this={benefitsEl} class="py-12 md:py-16 px-4 md:px-8 relative overflow-hidden"
       style="background:{benefitsBg};border-top:1px solid {T.divider};">
       <div class="absolute inset-0 pointer-events-none"
         style="background:radial-gradient(ellipse at 50% 50%,{$isDark ? 'rgba(51,78,139,0.18)' : 'rgba(51,78,139,0.07)'} 0%,transparent 70%)"></div>
       <div class="max-w-7xl mx-auto relative z-10">
-        <div class="mb-8 md:mb-0 md:hidden">
+        <div class="mb-8 md:mb-0 md:hidden"
+          style="{benefitsVisible ? 'animation:section-title-in 0.55s cubic-bezier(0.22,1,0.36,1) both' : 'opacity:0'}">
           <p class="text-xs uppercase tracking-widest mb-2" style="color:{T.muted}">Por qué elegirnos</p>
           <h3 style="font-size:1.6rem;font-weight:800;line-height:1.2;color:{T.primary};">Descubre todos los beneficios para ti</h3>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-6 items-center">
-          <div class="hidden md:block">
+          <div class="hidden md:block"
+            style="{benefitsVisible ? 'animation:section-title-in 0.55s cubic-bezier(0.22,1,0.36,1) both' : 'opacity:0'}">
             <p class="text-xs uppercase tracking-widest mb-2" style="color:{T.muted}">Por qué elegirnos</p>
             <h3 style="font-size:1.8rem;font-weight:800;line-height:1.2;color:{T.primary};">Descubre todos los beneficios para ti</h3>
           </div>
-          {#each benefits as b (b.title)}
-            <div class="p-5 md:p-6 rounded-2xl transition-all duration-300 cursor-default" style={glassCard}>
+          {#each benefits as b, i (b.title)}
+            <div class="p-5 md:p-6 rounded-2xl transition-all duration-300 cursor-default"
+              style="{glassCard};{benefitsVisible ? `animation:benefit-card-in 0.60s cubic-bezier(0.22,1,0.36,1) ${80 + i * 120}ms both` : 'opacity:0;transform:translateY(32px) scale(0.93)'};will-change:transform,opacity;">
               <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-3 text-lg"
-                style="background:{b.color}22;border:1px solid {b.color}44;">{b.emoji}</div>
+                style="background:{b.color}22;border:1px solid {b.color}44;{benefitsVisible ? `animation:emoji-float 3.6s ease-in-out ${i * 1.1}s infinite` : ''}">
+                {b.emoji}
+              </div>
               <p class="font-semibold mb-1.5 text-sm" style="color:{T.primary}">{b.title}</p>
               <p class="text-xs leading-relaxed" style="color:{T.secondary}">{b.desc}</p>
             </div>
@@ -226,10 +258,11 @@
     </section>
 
     <!-- FOOTER -->
-    <footer class="py-10 md:py-12 px-4 md:px-8" style="background:{footerBg};border-top:1px solid {T.divider};">
+    <footer bind:this={footerEl} class="py-10 md:py-12 px-4 md:px-8" style="background:{footerBg};border-top:1px solid {T.divider};">
       <div class="max-w-7xl mx-auto">
         <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 mb-8 md:mb-10">
-          <div class="col-span-2 md:col-span-1">
+          <div class="col-span-2 md:col-span-1"
+            style="{footerVisible ? 'animation:hero-fade-up 0.55s cubic-bezier(0.22,1,0.36,1) 0ms both' : 'opacity:0;transform:translateY(20px)'}">
             <img src="https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2Fd523ee5a3e49270550e54e77aac5fd153b37f9cb.svg?generation=1777350234230312&alt=media"
               alt="VAPSA" class="h-9 w-auto mb-4" style="filter:{T.logoF}" />
             <p class="text-xs leading-relaxed mb-3" style="color:{T.muted}">
@@ -239,8 +272,8 @@
               Blvd. Carlos J. Barrios S/N,<br />Centro, 79610 Rioverde, S.L.P.
             </p>
           </div>
-          {#each footLinks as col (col.title)}
-            <div>
+          {#each footLinks as col, i (col.title)}
+            <div style="{footerVisible ? `animation:hero-fade-up 0.55s cubic-bezier(0.22,1,0.36,1) ${(i + 1) * 90}ms both` : 'opacity:0;transform:translateY(20px)'}">
               <p class="text-xs uppercase tracking-widest mb-3 font-semibold" style="color:{T.secondary}">{col.title}</p>
               <ul class="space-y-2">
                 {#each col.links as link (link.label)}
@@ -254,7 +287,8 @@
         </div>
 
         <!-- Rating strip -->
-        <div class="flex flex-col sm:flex-row items-center justify-between gap-3 py-4 px-5 mb-6" style={ratingCard}>
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-3 py-4 px-5 mb-6"
+          style="{ratingCard};{footerVisible ? 'animation:hero-fade-up 0.50s cubic-bezier(0.22,1,0.36,1) 360ms both' : 'opacity:0;transform:translateY(20px)'}">
           <div class="flex items-center gap-3">
             <div class="flex">
               {#each [1,2,3,4] as s (s)}<span class="text-yellow-400 text-xs">★</span>{/each}
@@ -269,7 +303,7 @@
         </div>
 
         <div class="flex flex-col sm:flex-row items-center justify-between gap-3 pt-5"
-          style="border-top:1px solid {T.divider};">
+          style="border-top:1px solid {T.divider};{footerVisible ? 'animation:hero-fade-up 0.50s cubic-bezier(0.22,1,0.36,1) 440ms both' : 'opacity:0'}">
           <p class="text-xs" style="color:{$isDark ? 'rgba(255,255,255,0.22)' : 'rgba(20,30,80,0.28)'}">
             © {new Date().getFullYear()} VAPSA Rioverde. Todos los derechos reservados.
           </p>

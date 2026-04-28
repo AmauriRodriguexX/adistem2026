@@ -75,3 +75,78 @@ src: url('https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign
 .scrollbar-none::-webkit-scrollbar {
   display: none;
 }
+
+/* ── Premium mobile animations ──────────────────────────────────────────── */
+@keyframes hero-fade-up {
+  from { opacity: 0; transform: translateY(26px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes hero-shimmer-text {
+  0%, 100% { filter: brightness(1); }
+  50%       { filter: brightness(1.45) drop-shadow(0 0 16px rgba(110,180,255,0.65)); }
+}
+
+@keyframes brand-card-in {
+  from { opacity: 0; transform: translateY(20px) scale(0.94); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes benefit-card-in {
+  from { opacity: 0; transform: translateY(32px) scale(0.93); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes emoji-float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  38%       { transform: translateY(-7px) rotate(-7deg); }
+  68%       { transform: translateY(-3px) rotate(5deg); }
+}
+
+@keyframes section-title-in {
+  from { opacity: 0; transform: translateX(-18px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* ── Additional premium animations ──────────────────────────────────────── */
+@keyframes nav-drop-in {
+  from { opacity: 0; transform: translateY(-110%); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slide-in-left {
+  from { opacity: 0; transform: translateX(-40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slide-in-right {
+  from { opacity: 0; transform: translateX(40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes shine-sweep {
+  0%, 100% { transform: translateX(-150%); }
+  28%       { transform: translateX(280%); }
+}
+
+@keyframes badge-glow {
+  0%, 100% { box-shadow: 0 4px 14px rgba(51,78,139,0.50), inset 0 1px 0 rgba(255,255,255,0.30); }
+  50%       { box-shadow: 0 4px 26px rgba(51,78,139,0.90), 0 0 28px rgba(100,150,255,0.42), inset 0 1px 0 rgba(255,255,255,0.55); }
+}
+
+/* Shining CTA button — add class + position:relative + overflow:hidden */
+.btn-shine {
+  position: relative;
+  overflow: hidden;
+}
+.btn-shine::after {
+  content: '';
+  position: absolute;
+  top: -10%;
+  left: 0;
+  width: 42%;
+  height: 120%;
+  background: linear-gradient(105deg, transparent 0%, rgba(255,255,255,0.28) 50%, transparent 100%);
+  animation: shine-sweep 5s ease-in-out 1.5s infinite;
+  pointer-events: none;
+}

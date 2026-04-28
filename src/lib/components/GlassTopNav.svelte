@@ -37,18 +37,32 @@
   const logoFilter = $derived($isDark ? 'brightness(0) invert(1)' : 'brightness(0)')
   const divColor   = $derived($isDark ? 'rgba(255,255,255,0.10)' : 'rgba(30,60,120,0.12)')
 
-  const navBg = $derived($isDark
-    ? (scrolled ? 'rgba(5,7,18,0.94)' : 'rgba(5,7,18,0.84)')
-    : 'rgba(255,255,255,0.97)'
+  // ── Nav glass styles ──────────────────────────────────────────────────────
+  // Scrolled → true glassmorphism (low opacity + blur/saturate)
+  // At top   → more opaque for readability
+  const navBg = $derived(
+    scrolled
+      ? ($isDark ? 'rgba(5,7,18,0.22)' : 'rgba(255,255,255,0.25)')
+      : ($isDark ? 'rgba(5,7,18,0.84)' : 'rgba(255,255,255,0.60)')
   )
-  const navBd = $derived($isDark
-    ? 'url(#lg-frosted-light) blur(52px) saturate(200%)'
-    : 'url(#lg-frosted-light) blur(32px) saturate(140%)'
+  const navBd = $derived(
+    scrolled
+      ? 'blur(20px) saturate(180%)'
+      : ($isDark ? 'blur(52px) saturate(200%)' : 'blur(40px) saturate(180%)')
   )
-  const navBorderB = $derived($isDark ? '1px solid rgba(255,255,255,0.09)' : '1px solid rgba(100,130,220,0.14)')
-  const navShadow  = $derived($isDark
-    ? '0 0 0 0.5px rgba(255,255,255,0.12),0 8px 32px rgba(0,0,0,0.55)'
-    : '0 0 0 0.5px rgba(255,255,255,1),0 2px 16px rgba(20,40,120,0.07)'
+  const navBorderB = $derived(
+    scrolled
+      ? '1px solid rgba(0,0,0,0.06)'
+      : ($isDark ? '1px solid rgba(255,255,255,0.09)' : '1px solid rgba(0,0,0,0.12)')
+  )
+  const navShadow  = $derived(
+    scrolled
+      ? ($isDark
+          ? '0 4px 24px rgba(0,0,0,0.35)'
+          : '0 4px 24px rgba(20,40,120,0.06)')
+      : ($isDark
+          ? '0 0 0 0.5px rgba(255,255,255,0.12),0 8px 32px rgba(0,0,0,0.55)'
+          : '0 0 0 0.5px rgba(255,255,255,1),0 2px 16px rgba(0,0,0,0.08)')
   )
   const specularBg = $derived($isDark
     ? 'linear-gradient(90deg,transparent,rgba(255,255,255,0.18),transparent)'
@@ -62,24 +76,24 @@
   function chipStyle(isActive: boolean) {
     return isActive
       ? ($isDark
-          ? 'background:rgba(51,78,139,0.55);border:1px solid rgba(51,78,139,0.80);color:rgba(255,255,255,0.95);box-shadow:0 2px 12px rgba(51,78,139,0.45),inset 0 1px 0 rgba(255,255,255,0.22);'
-          : 'background:rgba(51,78,139,0.12);border:1px solid rgba(51,78,139,0.32);color:#2a3f8b;box-shadow:0 2px 12px rgba(51,78,139,0.14),inset 0 1px 0 rgba(255,255,255,0.85);')
+          ? 'background:rgba(51,78,139,0.55);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(51,78,139,0.80);color:rgba(255,255,255,0.95);box-shadow:0 2px 12px rgba(51,78,139,0.45),inset 0 1px 0 rgba(255,255,255,0.22);'
+          : 'background:rgba(51,78,139,0.45);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(51,78,139,0.60);color:white;box-shadow:0 2px 12px rgba(51,78,139,0.24),inset 0 1px 0 rgba(255,255,255,0.55);')
       : ($isDark
-          ? 'background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.10);color:rgba(255,255,255,0.50);box-shadow:inset 0 1px 0 rgba(255,255,255,0.10);'
-          : 'background:rgba(255,255,255,0.72);border:1px solid rgba(100,130,220,0.20);color:rgba(20,30,80,0.50);box-shadow:inset 0 1px 0 rgba(255,255,255,0.90);')
+          ? 'background:rgba(255,255,255,0.06);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.10);color:rgba(255,255,255,0.50);box-shadow:inset 0 1px 0 rgba(255,255,255,0.10);'
+          : 'background:rgba(255,255,255,0.30);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(100,130,220,0.20);color:rgba(20,30,80,0.65);box-shadow:inset 0 1px 0 rgba(255,255,255,0.90);')
   }
 </script>
 
 <nav
-  class="fixed top-0 left-0 md:left-20 right-0 z-40 flex items-center h-16 px-4 md:px-6 gap-3 transition-all duration-300"
-  style="background:{navBg};backdrop-filter:{navBd};-webkit-backdrop-filter:{navBd};border-bottom:{navBorderB};box-shadow:{navShadow};"
+  class="fixed top-0 left-0 md:left-20 right-0 z-40 flex items-center h-16 px-4 md:px-6 gap-3 transition-all duration-500"
+  style="background:{navBg};backdrop-filter:{navBd};-webkit-backdrop-filter:{navBd};border-bottom:{navBorderB};box-shadow:{navShadow};animation:nav-drop-in 0.55s cubic-bezier(0.22,1,0.36,1) 0.05s both;"
 >
   <!-- Specular top line -->
   <div class="absolute top-0 left-0 right-0 h-px pointer-events-none" style="background:{specularBg}"></div>
 
   <!-- Mobile hamburger -->
   <button
-    class="flex md:hidden items-center justify-center w-9 h-9 rounded-xl flex-shrink-0 transition-all"
+    class="flex md:hidden items-center justify-center w-9 h-9 rounded-full flex-shrink-0 transition-all"
     style={menuBtnStyle}
     onclick={onMenuToggle}
   >
@@ -118,7 +132,7 @@
       onclick={cycleTheme}
       title="Cambiar tema: {$themeMode}"
       class="flex items-center justify-center transition-all duration-200 hover:scale-105"
-      style="width:36px;height:36px;border-radius:10px;color:{$isDark ? 'rgba(255,255,255,0.70)' : 'rgba(30,50,120,0.75)'};cursor:pointer;outline:none;"
+      style="width:36px;height:36px;border-radius:50%;color:{$isDark ? 'rgba(255,255,255,0.70)' : 'rgba(30,50,120,0.75)'};cursor:pointer;outline:none;"
     >
       <span style="position:relative;z-index:7;display:flex;">
         {#if $themeMode === 'light'}
@@ -133,8 +147,8 @@
 
     <button
       onclick={onCotizarClick}
-      class="hidden md:flex items-center gap-2 px-4 py-2 rounded-full text-white text-xs font-medium transition-all duration-300 hover:scale-105 active:scale-95"
-      style="background:linear-gradient(135deg,#334E8B,#2E6CCF);border:1px solid rgba(255,255,255,0.30);box-shadow:0 4px 20px rgba(51,78,139,0.50),inset 0 1px 0 rgba(255,255,255,0.35);"
+      class="hidden md:flex items-center gap-2 px-4 h-9 rounded-full text-white text-xs font-medium transition-all duration-300 hover:scale-105 active:scale-95 btn-shine"
+      style="background:linear-gradient(135deg,rgba(51,78,139,0.65),rgba(46,108,207,0.65));backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,0.30);box-shadow:0 4px 20px rgba(51,78,139,0.35),inset 0 1px 0 rgba(255,255,255,0.35);"
     >
       <Calculator size={13} />
       <span>Cotizar</span>

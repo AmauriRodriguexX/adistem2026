@@ -3,6 +3,7 @@
   import { ChevronRight, ChevronLeft, Tag, LayoutGrid, List } from 'lucide-svelte'
   import { isDark } from '$lib/stores/theme'
   import { untrack } from 'svelte'
+  import { onMount } from 'svelte'
   import LiquidGlass from './LiquidGlass.svelte'
 
   interface Props {
@@ -43,6 +44,17 @@
   let viewMode     = $state<'grid'|'matrix'>('grid')
   let carouselIdx  = $state(0)
   let scrollRef    = $state<HTMLDivElement | null>(null)
+  let sectionEl    = $state<HTMLElement | null>(null)
+  let cardsVisible = $state(false)
+
+  onMount(() => {
+    if (!sectionEl) return
+    const obs = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) { cardsVisible = true; obs.disconnect() }
+    }, { threshold: 0.08 })
+    obs.observe(sectionEl)
+    return () => obs.disconnect()
+  })
 
   /** Returns the set of VehicleTypes that exist for a given brand. */
   function getAvailableTypes(brand: BrandFilter): VehicleType[] {
@@ -168,7 +180,7 @@
   const cellBorder   = $derived($isDark ? 'rgba(255,255,255,0.08)' : 'rgba(100,140,220,0.16)')
 </script>
 
-<section id="promociones" class="py-10 md:py-16 px-4 md:px-8" style="background:{sectionBg}">
+<section id="promociones" bind:this={sectionEl} class="py-10 md:py-16 px-4 md:px-8" style="background:{sectionBg}">
   <div class="max-w-7xl mx-auto">
 
     <!-- Header -->
@@ -177,6 +189,16 @@
         <p class="text-xs uppercase tracking-widest mb-1.5" style="color:{textMuted}">Ofertas exclusivas</p>
         <h2 style="font-size:clamp(1.6rem,5vw,2.2rem);font-weight:800;color:{textPrimary};">
           Nuestras <span style="background:linear-gradient(135deg,#334E8B,#6B8ED4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Promociones</span>
+          {#if activeBrand !== 'Todas'}
+            {@const bColor = 
+              activeBrand === 'Dodge' ? ($isDark ? '#ff5252' : '#d50000') : 
+              activeBrand === 'Jeep' ? ($isDark ? '#6cc4a1' : '#487f70') : 
+              activeBrand === 'Ram' ? ($isDark ? '#ff6b6b' : '#880d00') : 
+              activeBrand === 'Peugeot' ? ($isDark ? '#60a5fa' : '#0074E8') : 
+              activeBrand === 'Fiat' ? ($isDark ? 'white' : '#1a2040') : 
+              'inherit'}
+            <span style="color: {bColor};"> {activeBrand.toUpperCase()}</span>
+          {/if}
         </h2>
       </div>
       <div class="flex items-center gap-3">
@@ -194,9 +216,10 @@
       </div>
     </div>
 
-    <!-- Filter panel -->
-    <div class="mb-6 md:mb-8 rounded-2xl p-3 md:p-4" style={filterPanelStyle}>
-      <div class="flex items-center gap-2 overflow-x-auto scrollbar-none py-0.5">
+    <!-- Filter panel (Mobile) -->
+    <div class="mb-6 rounded-2xl p-3 md:hidden" style={filterPanelStyle}>
+      <div class="flex items-center gap-2 overflow-x-auto scrollbar-none py-0.5"
+        style="mask-image: linear-gradient(to right, black 85%, transparent 100%); -webkit-mask-image: linear-gradient(to right, black 85%, transparent 100%);">
         <span style={rowLabelStyle} class="flex-shrink-0 w-10">Marca</span>
         {#each BRANDS as brand (brand)}
           <button onclick={() => activeBrand = brand}
@@ -205,7 +228,8 @@
         {/each}
       </div>
       <div style="{divStyle}margin:8px 0;" ></div>
-      <div class="flex items-center gap-2 overflow-x-auto scrollbar-none py-0.5">
+      <div class="flex items-center gap-2 overflow-x-auto scrollbar-none py-0.5"
+        style="mask-image: linear-gradient(to right, black 85%, transparent 100%); -webkit-mask-image: linear-gradient(to right, black 85%, transparent 100%);">
         <span style={rowLabelStyle} class="flex-shrink-0 w-10">Tipo</span>
         {#each availableTypes as type (type)}
           <button
@@ -215,7 +239,7 @@
         {/each}
       </div>
       {#if isFiltered}
-        <div class="flex items-center justify-between pt-0.5">
+        <div class="flex items-center justify-between pt-2">
           <p class="text-xs" style="color:{$isDark ? 'rgba(255,255,255,0.40)' : 'rgba(20,30,80,0.42)'}">
             {activeBrand !== 'Todas' ? activeBrand + ' ' : ''}{activeType !== 'Todos' ? '· ' + activeType + ' ' : ''}— {vehicles.length} resultado{vehicles.length !== 1 ? 's' : ''}
           </p>
@@ -224,6 +248,19 @@
         </div>
       {/if}
     </div>
+
+    <!-- Active Filter Status (Desktop) -->
+    {#if isFiltered}
+      <div class="hidden md:flex items-center justify-between mb-6 px-2">
+        <p class="text-sm font-medium" style="color:{textPrimary}">
+          Mostrando resultados para: 
+          <span style="color:{$isDark ? '#60a5fa' : '#3b82f6'}">{activeBrand !== 'Todas' ? activeBrand : ''} {activeType !== 'Todos' ? activeType : ''}</span> 
+          <span style="color:{textMuted}; font-weight:normal; margin-left:8px;">({vehicles.length} vehículo{vehicles.length !== 1 ? 's' : ''})</span>
+        </p>
+        <button onclick={() => { activeBrand='Todas'; activeType='Todos' }}
+          class="text-sm underline font-medium transition-colors hover:text-blue-500" style="color:{$isDark ? 'rgba(255,255,255,0.5)' : 'rgba(20,30,80,0.5)'}">Limpiar filtros</button>
+      </div>
+    {/if}
 
     <!-- Matrix view -->
     {#if viewMode === 'matrix'}
@@ -293,7 +330,9 @@
           {#if vehicles.length <= 2}
             <div class="flex flex-col gap-4">
               {#each vehicles as v, i (v.id)}
-                <div style="height:340px;">{@render VehicleCard({vehicle: v, featured: i === 0})}</div>
+                <div style="height:340px;{cardsVisible ? `animation:benefit-card-in 0.55s cubic-bezier(0.22,1,0.36,1) ${i * 60}ms both` : 'opacity:0;transform:translateY(24px) scale(0.96)'};will-change:transform,opacity;">
+                  {@render VehicleCard({vehicle: v, featured: i === 0})}
+                </div>
               {/each}
             </div>
           {:else}
@@ -302,8 +341,9 @@
                 class="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-2 -mx-4 px-4 no-scrollbar scrollbar-none"
                 style="scroll-padding-left:16px;scrollbar-width:none;-ms-overflow-style:none;-webkit-overflow-scrolling:touch;">
                 {#each vehicles as v, i (v.id)}
-                  <div data-card class="snap-start flex-shrink-0" style="width:min(82vw,300px);height:360px;">
-                    {@render VehicleCard({vehicle: v, featured: i === 0})}
+                  <div data-card class="snap-start flex-shrink-0"
+                    style="width:min(82vw,300px);height:360px;{cardsVisible ? `animation:benefit-card-in 0.55s cubic-bezier(0.22,1,0.36,1) ${i * 60}ms both` : 'opacity:0;transform:translateY(24px) scale(0.96)'};will-change:transform,opacity;">
+                    {@render VehicleCard({vehicle: v})}
                   </div>
                 {/each}
               </div>
@@ -338,20 +378,15 @@
           {/if}
         </div>
 
-        <!-- Desktop bento -->
-        {#if featured}
-          <div class="hidden md:grid gap-4" style="grid-template-columns:repeat(4,1fr);grid-auto-rows:320px;">
-            <div style="grid-column:span 2;grid-row:span 2;">
-              {@render VehicleCard({vehicle: featured, featured: true})}
+        <!-- Desktop Grid (Symmetrical) -->
+        <div class="hidden md:grid gap-5" style="grid-template-columns:repeat(4,1fr); align-items: stretch;">
+          {#each vehicles as v, i (v.id)}
+            <div class="h-full"
+              style="{cardsVisible ? `animation:benefit-card-in 0.55s cubic-bezier(0.22,1,0.36,1) ${i * 60}ms both` : 'opacity:0;transform:translateY(24px) scale(0.96)'};will-change:transform,opacity;">
+              {@render VehicleCard({vehicle: v})}
             </div>
-            {#each rest.slice(0, 2) as v (v.id)}
-              <div>{@render VehicleCard({vehicle: v})}</div>
-            {/each}
-            {#each rest.slice(2, 8) as v (v.id)}
-              <div>{@render VehicleCard({vehicle: v})}</div>
-            {/each}
-          </div>
-        {/if}
+          {/each}
+        </div>
       {/if}
     {/if}
 
@@ -359,17 +394,17 @@
 </section>
 
 <!-- VehicleCard as inline component -->
-{#snippet VehicleCard({ vehicle, featured = false }: { vehicle: typeof ALL_VEHICLES[0], featured?: boolean })}
+{#snippet VehicleCard({ vehicle }: { vehicle: typeof ALL_VEHICLES[0] })}
   {@const isDarkVal = $isDark}
   {@const typeBadge = `background:${isDarkVal ? 'rgba(0,0,0,0.55)' : 'rgba(255,255,255,0.88)'};border:${isDarkVal ? '1px solid rgba(255,255,255,0.18)' : '1px solid rgba(100,140,220,0.30)'};color:${isDarkVal ? 'rgba(255,255,255,0.80)' : 'rgba(20,30,80,0.72)'};backdrop-filter:blur(14px);box-shadow:${isDarkVal ? 'inset 0 1px 0 rgba(255,255,255,0.14),0 2px 8px rgba(0,0,0,0.30)' : 'inset 0 1px 0 rgba(255,255,255,0.95),0 2px 8px rgba(20,40,120,0.08)'};padding:3px 8px;font-weight:500;letter-spacing:0.02em;`}
-  <div class="h-full group" style="position:relative;">
+  <div class="group h-full" style="position:relative;">
     <LiquidGlass
       variant="card"
-      class="relative overflow-hidden cursor-pointer h-full transition-all duration-300"
+      class="relative overflow-hidden cursor-pointer transition-all duration-300 flex flex-col h-full"
       style="transform:translateY(0);box-shadow:{isDarkVal ? '0 0 0 1px rgba(255,255,255,0.10),0 8px 32px rgba(0,0,0,0.50)' : '0 0 0 1px rgba(255,255,255,0.72),0 8px 32px rgba(20,40,120,0.12)'};"
     >
       <!-- Image area -->
-      <div class="relative overflow-hidden" style="height:{featured ? '65%' : '56%'}">
+      <div class="relative overflow-hidden w-full flex-shrink-0" style="aspect-ratio:3/2;">
         <img src={vehicle.img} alt="{vehicle.brand} {vehicle.model} {vehicle.year}"
           class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
         <!-- gradient overlay -->
@@ -381,32 +416,32 @@
         <!-- promo badge -->
         {#if vehicle.badge}
           <div class="absolute top-3 left-3 px-2.5 py-1 rounded-lg text-xs font-semibold text-white"
-            style="background:linear-gradient(135deg,rgba(51,78,139,0.95),rgba(80,110,180,0.90));border:1px solid rgba(255,255,255,0.28);backdrop-filter:blur(12px);box-shadow:0 4px 14px rgba(51,78,139,0.50),inset 0 1px 0 rgba(255,255,255,0.30);letter-spacing:0.03em;">
+            style="background:linear-gradient(135deg,rgba(51,78,139,0.95),rgba(80,110,180,0.90));border:1px solid rgba(255,255,255,0.28);backdrop-filter:blur(12px);letter-spacing:0.03em;animation:badge-glow 2.8s ease-in-out infinite;">
             {vehicle.badge}
           </div>
         {/if}
         <!-- model info overlay -->
         <div class="absolute bottom-0 left-0 right-0 px-4 pb-4 pt-6" style="background:linear-gradient(to top,rgba(5,8,20,0.85) 0%,transparent 100%)">
           <p class="text-white/60 text-xs uppercase tracking-widest mb-0.5 font-medium">{vehicle.brand}</p>
-          <h3 class="text-white font-bold leading-tight" style="font-size:{featured ? '1.5rem' : '1.1rem'};text-shadow:0 2px 8px rgba(0,0,0,0.40);">
+          <h3 class="text-white font-bold leading-tight" style="font-size:1.1rem;text-shadow:0 2px 8px rgba(0,0,0,0.40);">
             {vehicle.model} <span class="font-light opacity-70">{vehicle.year}</span>
           </h3>
         </div>
       </div>
 
       <!-- Card body -->
-      <div class="flex flex-col" style="padding:{featured ? '16px 20px 20px' : '12px 16px 16px'};border-top:{isDarkVal ? '1px solid rgba(255,255,255,0.07)' : '1px solid rgba(100,140,220,0.14)'};flex:1;">
-        <!-- Text content: grows to fill available space -->
-        <div class="flex-1 overflow-hidden">
+      <div class="flex flex-col flex-1" style="padding:16px;border-top:{isDarkVal ? '1px solid rgba(255,255,255,0.07)' : '1px solid rgba(100,140,220,0.14)'};">
+        <!-- Text content -->
+        <div class="flex-1">
           <p class="text-xs mb-1 font-semibold tracking-wider uppercase" style="color:{isDarkVal ? 'rgba(100,150,255,0.75)' : '#334E8B'};opacity:0.85;">{vehicle.version}</p>
-          <p class="leading-snug" style="font-size:0.71rem;color:{isDarkVal ? 'rgba(255,255,255,0.68)' : 'rgba(20,30,80,0.68)'};display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">
+          <p class="leading-snug" style="font-size:0.71rem;color:{isDarkVal ? 'rgba(255,255,255,0.68)' : 'rgba(20,30,80,0.68)'};display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:30px;">
             <Tag size={10} style="display:inline;margin-right:4px;color:{isDarkVal ? '#60a5fa' : '#3b82f6'};vertical-align:-1px;" />
             {vehicle.deal}
           </p>
         </div>
-        <!-- CTA always pinned to bottom -->
+        <!-- CTA pinned to bottom via flex-1 on text -->
         <a href="#"
-          class="mt-4 w-full inline-flex items-center justify-center gap-1.5 rounded-xl font-semibold transition-all duration-250 group/btn"
+          class="mt-4 w-full inline-flex items-center justify-center gap-1.5 rounded-full font-semibold transition-all duration-250 group/btn"
           style="font-size:0.74rem;padding:8px 14px;background:{isDarkVal ? 'linear-gradient(135deg,rgba(51,78,139,0.55),rgba(80,110,180,0.40))' : 'linear-gradient(135deg,rgba(51,78,139,0.12),rgba(80,110,180,0.08))'};border:{isDarkVal ? '1px solid rgba(100,150,255,0.35)' : '1px solid rgba(51,78,139,0.28)'};color:{isDarkVal ? 'rgba(140,180,255,1)' : '#334E8B'};box-shadow:{isDarkVal ? '0 2px 12px rgba(51,78,139,0.30),inset 0 1px 0 rgba(255,255,255,0.12)' : '0 2px 12px rgba(51,78,139,0.12),inset 0 1px 0 rgba(255,255,255,0.80)'};backdrop-filter:blur(8px);flex-shrink:0;">
           Ver detalles
           <ChevronRight size={12} class="transition-transform duration-250 group-hover/btn:translate-x-0.5" />
