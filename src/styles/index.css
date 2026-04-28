@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import 'tailwindcss';
+/* @import 'tw-animate-css'; — removed, not installed */
+@import './default_theme.css';
+@import './globals.css';
+@import './fonts.css';
+
+/* Global glassmorphism overrides */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Dark scrollbar for premium feel */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(5, 8, 20, 1);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(51, 78, 139, 0.5);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(51, 78, 139, 0.8);
+}
+
+/* Glass select dark option override */
+select option {
+  background: #0c1428;
+  color: white;
+}
+
+/* Remove default focus outlines on glass inputs */
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: rgba(51, 78, 139, 0.6) !important;
+  box-shadow: 0 0 0 2px rgba(51, 78, 139, 0.2) !important;
+}
