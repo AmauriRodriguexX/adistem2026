@@ -68,14 +68,8 @@
   <div class="absolute inset-y-0 left-0 w-px pointer-events-none"
     style="background:{$isDark ? 'rgba(255,255,255,0.12)' : 'rgba(255,255,255,1)'}"></div>
 
-  <!-- VAPSA logo -->
-  <div class="flex items-center justify-center w-full px-2 mb-5 mt-1">
-    <a href="https://www.vapsarioverde.com.mx/" title="VAPSA Rioverde">
-      <img src="https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2Fd523ee5a3e49270550e54e77aac5fd153b37f9cb.svg?generation=1777350234230312&alt=media"
-        alt="VAPSA" class="w-10 h-8 object-contain" style="filter:{logoFilter}" />
-    </a>
-  </div>
-  <div class="w-10 mb-4" style="height:1px;background:{dividerGrad}"></div>
+  <!-- top spacer -->
+  <div class="mt-3 mb-1"></div>
 
   <!-- Brand buttons -->
   <nav class="flex flex-col items-center gap-2 flex-1 w-full">
@@ -142,7 +136,7 @@
   <div class="flex flex-col h-full w-full">
     <!-- Header -->
     <div class="flex items-center justify-between px-5 py-4" style={hdrBorder}>
-      <a href="https://www.vapsarioverde.com.mx/">
+      <a href="#">
         <img src="https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2Fd523ee5a3e49270550e54e77aac5fd153b37f9cb.svg?generation=1777350234230312&alt=media"
           alt="VAPSA" class="h-9 w-auto" style="filter:{logoFilter}" />
       </a>

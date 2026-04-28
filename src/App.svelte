@@ -23,13 +23,14 @@
   })
 
   const BRANDS_STRIP = [
-    { name: 'Jeep',        href: 'https://www.vapsarioverde.com.mx/jeep/',                 logo: 'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F11828b62efcb84234673f32671bb041347d1808b.svg%3Fv=1?generation=1777350234486069&alt=media' },
-    { name: 'Fiat',        href: 'https://www.vapsarioverde.com.mx/fiat/',                 logo: 'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2Fb60daf40e8df838d4b8b5068609584621fe2e8e7.svg%3Fv=1?generation=1777350234458223&alt=media' },
-    { name: 'Dodge',       href: 'https://www.vapsarioverde.com.mx/dodge/',                logo: 'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F9b5fe7b48812d11073f5aae5e8c95473bf89680f.svg%3Fv=1?generation=1777350234457792&alt=media' },
-    { name: 'Peugeot',     href: 'https://www.vapsarioverde.com.mx/peugeot/',              logo: 'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F66d0da430295ddebb88e02567eae03c7073ad003.svg%3Fv=1?generation=1777350234506470&alt=media' },
-    { name: 'Peugeot Pro', href: 'https://www.vapsarioverde.com.mx/peugeot-professional/', logo: 'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F1d3a40b9a3f261283ca757b06246cd3d7e3ebe2d.svg%3Fv=1?generation=1777350234485236&alt=media' },
-    { name: 'Ram',         href: 'https://www.vapsarioverde.com.mx/ram/',                  logo: 'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F0431177bb0013c7c3ed8b1fff99c0502dcd0f04c.svg%3Fv=1?generation=1777350234486854&alt=media' },
+    { name: 'Jeep',        href: '#', logo: 'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F11828b62efcb84234673f32671bb041347d1808b.svg%3Fv=1?generation=1777350234486069&alt=media' },
+    { name: 'Fiat',        href: '#', logo: 'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2Fb60daf40e8df838d4b8b5068609584621fe2e8e7.svg%3Fv=1?generation=1777350234458223&alt=media' },
+    { name: 'Dodge',       href: '#', logo: 'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F9b5fe7b48812d11073f5aae5e8c95473bf89680f.svg%3Fv=1?generation=1777350234457792&alt=media' },
+    { name: 'Peugeot',     href: '#', logo: 'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F66d0da430295ddebb88e02567eae03c7073ad003.svg%3Fv=1?generation=1777350234506470&alt=media' },
+    { name: 'Peugeot Pro', href: '#', logo: 'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F1d3a40b9a3f261283ca757b06246cd3d7e3ebe2d.svg%3Fv=1?generation=1777350234485236&alt=media' },
+    { name: 'Ram',         href: '#', logo: 'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F0431177bb0013c7c3ed8b1fff99c0502dcd0f04c.svg%3Fv=1?generation=1777350234486854&alt=media' },
   ]
+
 
   const SERVICE_IMG = 'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2Fbd8508bc699e5f308774822640426d6c72892e95.jpg?generation=1777350235000404&alt=media'
 
@@ -83,20 +84,20 @@
   )
   const footLinks = [
     { title: 'Marcas', links: [
-      { label:'Jeep',    href:'https://www.vapsarioverde.com.mx/jeep/' },
-      { label:'Fiat',    href:'https://www.vapsarioverde.com.mx/fiat/' },
-      { label:'Dodge',   href:'https://www.vapsarioverde.com.mx/dodge/' },
-      { label:'Ram',     href:'https://www.vapsarioverde.com.mx/ram/' },
-      { label:'Peugeot', href:'https://www.vapsarioverde.com.mx/peugeot/' },
+      { label:'Jeep',    href:'#' },
+      { label:'Fiat',    href:'#' },
+      { label:'Dodge',   href:'#' },
+      { label:'Ram',     href:'#' },
+      { label:'Peugeot', href:'#' },
     ]},
     { title: 'Servicios', links: [
-      { label:'Cotización',       href:'https://www.vapsarioverde.com.mx/cotizacion/' },
-      { label:'Cita de Servicio', href:'https://www.vapsarioverde.com.mx/cita-de-servicio/' },
-      { label:'Test Drive',       href:'https://www.vapsarioverde.com.mx/prueba-de-manejo/' },
-      { label:'Contáctanos',      href:'https://www.vapsarioverde.com.mx/contactanos/' },
+      { label:'Cotización',       href:'#' },
+      { label:'Cita de Servicio', href:'#' },
+      { label:'Test Drive',       href:'#' },
+      { label:'Contáctanos',      href:'#' },
     ]},
     { title: 'Empresa', links: [
-      { label:'Aviso de Privacidad', href:'https://www.vapsarioverde.com.mx/' },
+      { label:'Aviso de Privacidad', href:'#' },
       { label:'Ubicación',           href:'https://maps.google.com/' },
     ]},
   ]
@@ -187,9 +188,9 @@
             <p class="mb-5 leading-relaxed text-sm" style="color:{T.secondary}">
               Agenda tu cita de servicio en línea y asegura el mejor cuidado para tu vehículo.
             </p>
-            <a href="https://www.vapsarioverde.com.mx/cita-de-servicio/"
+            <a href="#"
               class="inline-flex items-center gap-2 px-5 py-3 rounded-full text-white text-sm font-medium w-fit transition-all duration-300 hover:scale-105 active:scale-95"
-              style={primaryBtn}>🔧 Programa tu cita</a>
+              style={primaryBtn}>Programa tu cita</a>
           </div>
           <div class="absolute top-0 right-0 w-64 h-64 pointer-events-none"
             style="background:radial-gradient(circle,rgba(51,78,139,0.22) 0%,transparent 70%)"></div>

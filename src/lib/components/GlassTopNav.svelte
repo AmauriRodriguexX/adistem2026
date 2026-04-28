@@ -87,7 +87,7 @@
   </button>
 
   <!-- Logo -->
-  <a href="https://www.vapsarioverde.com.mx/" class="flex-shrink-0 md:mr-2">
+  <a href="#" class="flex-shrink-0 md:mr-2">
     <img src="https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2Fd523ee5a3e49270550e54e77aac5fd153b37f9cb.svg?generation=1777350234230312&alt=media"
       alt="VAPSA" class="h-7 w-auto object-contain" style="filter:{logoFilter}" />
   </a>

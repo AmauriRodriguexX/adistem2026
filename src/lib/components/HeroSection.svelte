@@ -112,7 +112,7 @@
         {/each}
       </div>
       <div class="flex gap-3">
-        <a href="https://www.vapsarioverde.com.mx/prueba-de-manejo/"
+        <a href="#"
           class="flex-1 flex items-center justify-center gap-2 py-3.5 rounded-2xl text-white text-sm font-semibold active:scale-95 transition-all"
           style={primaryBtn}>Test Drive <ChevronRight size={14} /></a>
         <button onclick={() => formExpanded = !formExpanded}
@@ -167,7 +167,7 @@
           <div class="space-y-2 pt-1">
             <label class="flex items-center gap-2 cursor-pointer">
               <input type="checkbox" bind:checked={privacidad} class="w-4 h-4 rounded accent-blue-500" />
-              <span class="text-xs" style="color:{checkColor}">Acepto el <a href="https://www.vapsarioverde.com.mx/" class="text-blue-400 underline">Aviso de Privacidad</a> *</span>
+              <span class="text-xs" style="color:{checkColor}">Acepto el <a href="#" class="text-blue-400 underline">Aviso de Privacidad</a> *</span>
             </label>
           </div>
           <button type="button" class="w-full py-3 rounded-xl text-white font-semibold text-sm transition-all duration-300 active:scale-[0.98] mt-1" style={primaryBtn}>
@@ -204,10 +204,10 @@
         {/each}
       </div>
       <div class="flex gap-3">
-        <a href="https://www.vapsarioverde.com.mx/prueba-de-manejo/"
+        <a href="#"
           class="flex items-center gap-2 px-6 py-3 rounded-full text-white text-sm font-medium transition-all duration-300 hover:scale-105"
           style={primaryBtn}>Agenda tu Test Drive <ChevronRight size={15} /></a>
-        <a href="https://www.vapsarioverde.com.mx/"
+        <a href="#"
           class="flex items-center gap-2 px-6 py-3 rounded-full text-white/82 text-sm font-medium hover:text-white transition-all duration-300"
           style={glassBtn}>Ver Modelos</a>
       </div>
@@ -296,7 +296,7 @@
         <div class="space-y-2 pt-1">
           <label class="flex items-start gap-2 cursor-pointer">
             <input type="checkbox" bind:checked={privacidad} class="mt-0.5 w-4 h-4 rounded accent-blue-500" />
-            <span class="text-xs leading-relaxed" style="color:{checkColor}">He leído y acepto el <a href="https://www.vapsarioverde.com.mx/" class="text-blue-500 underline">Aviso de Privacidad *</a></span>
+            <span class="text-xs leading-relaxed" style="color:{checkColor}">He leído y acepto el <a href="#" class="text-blue-500 underline">Aviso de Privacidad *</a></span>
           </label>
           <label class="flex items-start gap-2 cursor-pointer">
             <input type="checkbox" bind:checked={ofertas} class="mt-0.5 w-4 h-4 rounded accent-blue-500" />
@@ -306,7 +306,7 @@
         <button type="button"
           class="w-full py-3 rounded-xl text-white font-medium text-sm transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] mt-2"
           style={primaryBtn}>
-          {activeTab === 'cotizacion' ? '🚗 Cotiza Ahora' : '📅 Agendar Cita'}
+          {activeTab === 'cotizacion' ? 'Cotiza Ahora' : 'Agendar Cita'}
         </button>
       </div>
     </div>

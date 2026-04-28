@@ -5,8 +5,8 @@ export type ResolvedTheme = 'light' | 'dark'
 export const THEME_CYCLE: ThemeMode[] = ['light', 'dark', 'system']
 
 function getStored(): ThemeMode {
-  try { return (localStorage.getItem('vapsa-theme') as ThemeMode) || 'light' }
-  catch { return 'light' }
+  try { return (localStorage.getItem('vapsa-theme') as ThemeMode) || 'dark' }
+  catch { return 'dark' }
 }
 
 function getSystemDark(): boolean {

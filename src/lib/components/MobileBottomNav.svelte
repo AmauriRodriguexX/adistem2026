@@ -3,11 +3,11 @@
   import { isDark } from '$lib/stores/theme'
 
   const LINKS = [
-    { icon: Calculator,    label: 'Cotizar',    href: 'https://www.vapsarioverde.com.mx/cotizacion/',       isWA: false },
-    { icon: Wrench,        label: 'Servicio',   href: 'https://www.vapsarioverde.com.mx/cita-de-servicio/', isWA: false },
-    { icon: Gauge,         label: 'Test Drive', href: 'https://www.vapsarioverde.com.mx/prueba-de-manejo/', isWA: false },
-    { icon: Phone,         label: 'Contacto',   href: 'https://www.vapsarioverde.com.mx/contactanos/',      isWA: false },
-    { icon: MessageCircle, label: 'WhatsApp',   href: '#',                                                   isWA: true  },
+    { icon: Calculator,    label: 'Cotizar',    href: '#', isWA: false },
+    { icon: Wrench,        label: 'Servicio',   href: '#', isWA: false },
+    { icon: Gauge,         label: 'Test Drive', href: '#', isWA: false },
+    { icon: Phone,         label: 'Contacto',   href: '#', isWA: false },
+    { icon: MessageCircle, label: 'WhatsApp',   href: '#', isWA: true  },
   ] as const
 
   const WA_CONTACTS = [
