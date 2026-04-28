@@ -4,13 +4,14 @@ import tailwindcss from '@tailwindcss/vite'
 import path from 'path'
 
 export default defineConfig({
-  plugins: [
-    svelte(),
-    tailwindcss(),
-  ],
-  resolve: {
-    alias: {
-      '$lib': path.resolve('./src/lib'),
+    base: '/adistem2026/',
+    plugins: [
+          svelte(),
+          tailwindcss(),
+        ],
+    resolve: {
+          alias: {
+                  '$lib': path.resolve('./src/lib'),
+          },
     },
-  },
 })
