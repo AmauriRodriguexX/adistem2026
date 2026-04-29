@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { VehicleType, BrandFilter } from '$lib/types'
-  import { ChevronRight, ChevronLeft, Tag, LayoutGrid, List } from 'lucide-svelte'
+  import { ChevronRight, ChevronLeft, Tag, LayoutGrid, List, Search, ChevronDown } from 'lucide-svelte'
   import { isDark } from '$lib/stores/theme'
   import { untrack } from 'svelte'
   import { onMount } from 'svelte'
@@ -39,13 +39,22 @@
   const TYPES:  VehicleType[] = ['Todos', 'Sedán', 'SUV', 'Deportivos', 'Pick-ups']
   const TYPE_ICONS: Record<VehicleType, string> = { 'Todos':'🚗','Sedán':'🚙','SUV':'🛻','Deportivos':'🏎️','Pick-ups':'🚚' }
 
-  let activeBrand  = $state<BrandFilter>(initialBrand)
-  let activeType   = $state<VehicleType>(initialType)
-  let viewMode     = $state<'grid'|'matrix'>('grid')
-  let carouselIdx  = $state(0)
-  let scrollRef    = $state<HTMLDivElement | null>(null)
-  let sectionEl    = $state<HTMLElement | null>(null)
-  let cardsVisible = $state(false)
+  const SPECIAL_PROMOS = [
+    { id:901, brand:'Jeep',    hugeText:'$200K',  hugeSub:'EN BONO FLEXIBLE',       title:'LÍNEA JEEP 2025',   desc:'Aplica bono a enganche o precio. Aventura sin límites.',            img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2Fdbbe0b1e89813d5569554d4d88221a1b92e0d6f2.jpg?generation=1777350234515482&alt=media',    models:['Wrangler Willys','Compass Limited','Commander Overland'], accent:'#1d4e2f' },
+    { id:902, brand:'Fiat',    hugeText:'7.99%',  hugeSub:'TASA ANUAL',              title:'FIAT PULSE 2026',   desc:'La tasa más baja del mercado en el SUV favorito de la familia.',    img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F12af6dc13f44f29033d673c803a50f637af22da0.jpg?generation=1777350234700225&alt=media',  models:['Pulse Drive T200','Fastback Limited','Argo Drive'],        accent:'#b91c1c' },
+    { id:903, brand:'Dodge',   hugeText:'14.5%',  hugeSub:'TASA PREFERENCIAL',      title:'DODGE DURANGO R/T', desc:'Potencia y lujo familiar con la mejor tasa de financiamiento.',    img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F1d6f3f42a55407817e0572a9323b9aa10c891633.jpg?generation=1777350234722595&alt=media',  models:['Durango R/T Plus','Journey GT','Attitude SXT'],            accent:'#7c2d12' },
+    { id:904, brand:'Peugeot', hugeText:'3 AÑOS', hugeSub:'MANTENIMIENTO INCLUIDO', title:'PEUGEOT CARE',      desc:'Disfruta 3 años de mantenimientos cubiertos en tu nueva Peugeot.', img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F7ac848efe89adde5660e4d2956b4983e1775ce00.jpg?generation=1777350234794617&alt=media',    models:['Nueva 2008 GT Pack','Nueva 5008 GT','Nueva 3008 Allure'],  accent:'#0074E8' },
+    { id:905, brand:'Ram',     hugeText:'0%',     hugeSub:'COMISIÓN POR APERTURA',  title:'LÍNEA RAM 2024',    desc:'Potencia extrema con beneficios exclusivos de financiamiento.',    img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F366059fdfc8601cb267c2dfe66bce5eff26e9802.jpg?generation=1777350234982606&alt=media',   models:['RAM 1500 Laramie','RAM 2500 HD','RAM 700 Rebel'],           accent:'#4361ee' },
+  ]
+
+  let activeBrand    = $state<BrandFilter>(initialBrand)
+  let activeType     = $state<VehicleType>(initialType)
+  let selectedModels = $state<Record<number, string>>({})
+  let viewMode       = $state<'grid'|'matrix'>('grid')
+  let carouselIdx    = $state(0)
+  let scrollRef      = $state<HTMLDivElement | null>(null)
+  let sectionEl      = $state<HTMLElement | null>(null)
+  let cardsVisible   = $state(false)
 
   onMount(() => {
     if (!sectionEl) return
@@ -378,12 +387,24 @@
           {/if}
         </div>
 
-        <!-- Desktop Grid (Symmetrical) -->
-        <div class="hidden md:grid gap-5" style="grid-template-columns:repeat(4,1fr); align-items: stretch;">
+        <!-- Desktop Bento Grid -->
+        <!-- Layout from reference: [big veh col-span-2] [normal veh col-span-1] / [promo col-span-1] [normal veh] [normal veh] -->
+        <div class="hidden md:grid grid-cols-3 gap-5" style="grid-auto-flow:dense;">
           {#each vehicles as v, i (v.id)}
-            <div class="h-full"
-              style="{cardsVisible ? `animation:benefit-card-in 0.55s cubic-bezier(0.22,1,0.36,1) ${i * 60}ms both` : 'opacity:0;transform:translateY(24px) scale(0.96)'};will-change:transform,opacity;">
-              {@render VehicleCard({vehicle: v})}
+            {@const isFirst = i === 0}
+            {@const isSecond = i === 1}
+            <!-- After index 1 inject the brand promo card -->
+            {#if isSecond}
+              {@const promo = SPECIAL_PROMOS.find(p => activeBrand === 'Todas' ? p.brand === 'Ram' : p.brand === activeBrand)}
+              {#if promo}
+                <div class="col-span-1 row-span-1" style="min-height:420px;{cardsVisible ? 'animation:benefit-card-in 0.55s cubic-bezier(0.22,1,0.36,1) 60ms both' : 'opacity:0;transform:translateY(24px) scale(0.96)'};will-change:transform,opacity;">
+                  {@render SpecialPromoCard({ promo })}
+                </div>
+              {/if}
+            {/if}
+            <div class="{isFirst ? 'col-span-2' : 'col-span-1'} row-span-1"
+              style="min-height:420px;{cardsVisible ? `animation:benefit-card-in 0.55s cubic-bezier(0.22,1,0.36,1) ${i * 60}ms both` : 'opacity:0;transform:translateY(24px) scale(0.96)'};will-change:transform,opacity;">
+              {@render VehicleCard({vehicle: v, isWide: isFirst})}
             </div>
           {/each}
         </div>
@@ -394,7 +415,7 @@
 </section>
 
 <!-- VehicleCard as inline component -->
-{#snippet VehicleCard({ vehicle }: { vehicle: typeof ALL_VEHICLES[0] })}
+{#snippet VehicleCard({ vehicle, isWide = false }: { vehicle: typeof ALL_VEHICLES[0], isWide?: boolean })}
   {@const isDarkVal = $isDark}
   {@const typeBadge = `background:${isDarkVal ? 'rgba(0,0,0,0.55)' : 'rgba(255,255,255,0.88)'};border:${isDarkVal ? '1px solid rgba(255,255,255,0.18)' : '1px solid rgba(100,140,220,0.30)'};color:${isDarkVal ? 'rgba(255,255,255,0.80)' : 'rgba(20,30,80,0.72)'};backdrop-filter:blur(14px);box-shadow:${isDarkVal ? 'inset 0 1px 0 rgba(255,255,255,0.14),0 2px 8px rgba(0,0,0,0.30)' : 'inset 0 1px 0 rgba(255,255,255,0.95),0 2px 8px rgba(20,40,120,0.08)'};padding:3px 8px;font-weight:500;letter-spacing:0.02em;`}
   <div class="group h-full" style="position:relative;">
@@ -403,51 +424,82 @@
       class="relative overflow-hidden cursor-pointer transition-all duration-300 flex flex-col h-full"
       style="transform:translateY(0);box-shadow:{isDarkVal ? '0 0 0 1px rgba(255,255,255,0.10),0 8px 32px rgba(0,0,0,0.50)' : '0 0 0 1px rgba(255,255,255,0.72),0 8px 32px rgba(20,40,120,0.12)'};"
     >
-      <!-- Image area -->
-      <div class="relative overflow-hidden w-full flex-shrink-0" style="aspect-ratio:3/2;">
-        <img src={vehicle.img} alt="{vehicle.brand} {vehicle.model} {vehicle.year}"
-          class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-        <!-- gradient overlay -->
-        <div class="absolute inset-0" style="background:linear-gradient(to bottom,rgba(0,0,0,0.02) 0%,rgba(5,8,20,0.75) 70%,rgba(5,8,20,0.95) 100%)"></div>
-        <!-- type badge -->
-        <div class="absolute top-3 right-3 rounded-full text-xs" style={typeBadge}>
-          {vehicle.type}
-        </div>
-        <!-- promo badge -->
-        {#if vehicle.badge}
-          <div class="absolute top-3 left-3 px-2.5 py-1 rounded-lg text-xs font-semibold text-white"
-            style="background:linear-gradient(135deg,rgba(51,78,139,0.95),rgba(80,110,180,0.90));border:1px solid rgba(255,255,255,0.28);backdrop-filter:blur(12px);letter-spacing:0.03em;animation:badge-glow 2.8s ease-in-out infinite;">
-            {vehicle.badge}
+      <!-- Explicit full-height flex container (LiquidGlass inner div has no height by default) -->
+      <div style="display:flex;flex-direction:column;height:100%;">
+        <!-- Image area -->
+        <div class="relative overflow-hidden w-full flex-shrink-0" style="{isWide ? 'height:260px' : 'aspect-ratio:3/2'};">
+          <img src={vehicle.img} alt="{vehicle.brand} {vehicle.model} {vehicle.year}"
+            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+          <div class="absolute inset-0" style="background:linear-gradient(to bottom,rgba(0,0,0,0.02) 0%,rgba(5,8,20,0.75) 70%,rgba(5,8,20,0.95) 100%)"></div>
+          <div class="absolute top-3 right-3 rounded-full text-xs" style={typeBadge}>{vehicle.type}</div>
+          {#if vehicle.badge}
+            <div class="absolute top-3 left-3 px-2.5 py-1 rounded-lg text-xs font-semibold text-white"
+              style="background:linear-gradient(135deg,rgba(51,78,139,0.95),rgba(80,110,180,0.90));border:1px solid rgba(255,255,255,0.28);backdrop-filter:blur(12px);letter-spacing:0.03em;animation:badge-glow 2.8s ease-in-out infinite;">
+              {vehicle.badge}
+            </div>
+          {/if}
+          <div class="absolute bottom-0 left-0 right-0 px-4 pb-4 pt-6" style="background:linear-gradient(to top,rgba(5,8,20,0.85) 0%,transparent 100%)">
+            <p class="text-white/60 text-xs uppercase tracking-widest mb-0.5 font-medium">{vehicle.brand}</p>
+            <h3 class="text-white font-bold leading-tight" style="font-size:1.1rem;text-shadow:0 2px 8px rgba(0,0,0,0.40);">
+              {vehicle.model} <span class="font-light opacity-70">{vehicle.year}</span>
+            </h3>
           </div>
-        {/if}
-        <!-- model info overlay -->
-        <div class="absolute bottom-0 left-0 right-0 px-4 pb-4 pt-6" style="background:linear-gradient(to top,rgba(5,8,20,0.85) 0%,transparent 100%)">
-          <p class="text-white/60 text-xs uppercase tracking-widest mb-0.5 font-medium">{vehicle.brand}</p>
-          <h3 class="text-white font-bold leading-tight" style="font-size:1.1rem;text-shadow:0 2px 8px rgba(0,0,0,0.40);">
-            {vehicle.model} <span class="font-light opacity-70">{vehicle.year}</span>
-          </h3>
         </div>
-      </div>
 
-      <!-- Card body -->
-      <div class="flex flex-col flex-1" style="padding:16px;border-top:{isDarkVal ? '1px solid rgba(255,255,255,0.07)' : '1px solid rgba(100,140,220,0.14)'};">
-        <!-- Text content -->
-        <div class="flex-1">
-          <p class="text-xs mb-1 font-semibold tracking-wider uppercase" style="color:{isDarkVal ? 'rgba(100,150,255,0.75)' : '#334E8B'};opacity:0.85;">{vehicle.version}</p>
-          <p class="leading-snug" style="font-size:0.71rem;color:{isDarkVal ? 'rgba(255,255,255,0.68)' : 'rgba(20,30,80,0.68)'};display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:30px;">
-            <Tag size={10} style="display:inline;margin-right:4px;color:{isDarkVal ? '#60a5fa' : '#3b82f6'};vertical-align:-1px;" />
-            {vehicle.deal}
-          </p>
+        <!-- Card body: flex-1 fills remaining space -->
+        <div style="display:flex;flex-direction:column;flex:1;padding:16px;border-top:{isDarkVal ? '1px solid rgba(255,255,255,0.07)' : '1px solid rgba(100,140,220,0.14)'};">
+          <!-- Text: flex-1 pushes button down -->
+          <div style="flex:1;">
+            <p class="text-xs mb-1 font-semibold tracking-wider uppercase" style="color:{isDarkVal ? 'rgba(100,150,255,0.75)' : '#334E8B'};opacity:0.85;">{vehicle.version}</p>
+            <p class="leading-snug" style="font-size:0.71rem;color:{isDarkVal ? 'rgba(255,255,255,0.68)' : 'rgba(20,30,80,0.68)'};display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:30px;">
+              <Tag size={10} style="display:inline;margin-right:4px;color:{isDarkVal ? '#60a5fa' : '#3b82f6'};vertical-align:-1px;" />
+              {vehicle.deal}
+            </p>
+          </div>
+          <!-- CTA: margin-top:8px from text, always at card bottom -->
+          <a href="#"
+            class="{isWide ? 'w-fit px-8 self-start' : 'w-full'} inline-flex items-center justify-center gap-1.5 rounded-full font-semibold transition-all duration-250 group/btn"
+            style="margin-top:8px;font-size:0.74rem;padding:8px 14px;background:{isDarkVal ? 'linear-gradient(135deg,rgba(51,78,139,0.55),rgba(80,110,180,0.40))' : 'linear-gradient(135deg,rgba(51,78,139,0.12),rgba(80,110,180,0.08))'};border:{isDarkVal ? '1px solid rgba(100,150,255,0.35)' : '1px solid rgba(51,78,139,0.28)'};color:{isDarkVal ? 'rgba(140,180,255,1)' : '#334E8B'};box-shadow:{isDarkVal ? '0 2px 12px rgba(51,78,139,0.30),inset 0 1px 0 rgba(255,255,255,0.12)' : '0 2px 12px rgba(51,78,139,0.12),inset 0 1px 0 rgba(255,255,255,0.80)'};backdrop-filter:blur(8px);flex-shrink:0;">
+            Ver detalles
+            <ChevronRight size={12} class="transition-transform duration-250 group-hover/btn:translate-x-0.5" />
+          </a>
         </div>
-        <!-- CTA pinned to bottom via flex-1 on text -->
-        <a href="#"
-          class="mt-4 w-full inline-flex items-center justify-center gap-1.5 rounded-full font-semibold transition-all duration-250 group/btn"
-          style="font-size:0.74rem;padding:8px 14px;background:{isDarkVal ? 'linear-gradient(135deg,rgba(51,78,139,0.55),rgba(80,110,180,0.40))' : 'linear-gradient(135deg,rgba(51,78,139,0.12),rgba(80,110,180,0.08))'};border:{isDarkVal ? '1px solid rgba(100,150,255,0.35)' : '1px solid rgba(51,78,139,0.28)'};color:{isDarkVal ? 'rgba(140,180,255,1)' : '#334E8B'};box-shadow:{isDarkVal ? '0 2px 12px rgba(51,78,139,0.30),inset 0 1px 0 rgba(255,255,255,0.12)' : '0 2px 12px rgba(51,78,139,0.12),inset 0 1px 0 rgba(255,255,255,0.80)'};backdrop-filter:blur(8px);flex-shrink:0;">
-          Ver detalles
-          <ChevronRight size={12} class="transition-transform duration-250 group-hover/btn:translate-x-0.5" />
-        </a>
       </div>
     </LiquidGlass>
+  </div>
+{/snippet}
+
+<!-- SpecialPromoCard snippet -->
+{#snippet SpecialPromoCard({ promo }: { promo: typeof SPECIAL_PROMOS[0] })}
+  <div class="relative w-full h-full rounded-[22px] overflow-hidden group shadow-2xl flex flex-col" style="background:{promo.accent};min-height:420px;">
+    <!-- Bg image + overlay -->
+    <div class="absolute inset-0 z-0">
+      <img src={promo.img} alt={promo.title} class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+      <div class="absolute inset-0" style="background:linear-gradient(to bottom,{promo.accent}70 0%,{promo.accent} 65%);"></div>
+    </div>
+    <div class="relative z-10 flex flex-col h-full p-6">
+      <!-- Huge stat -->
+      <div class="flex-1 flex flex-col justify-center items-start">
+        <p class="text-white/70 text-[10px] font-bold tracking-[0.2em] uppercase mb-1">{promo.brand}</p>
+        <h3 class="text-white font-extrabold tracking-tighter leading-none" style="font-size:clamp(3rem,6vw,5rem);text-shadow:0 4px 20px rgba(0,0,0,0.4);">{promo.hugeText}</h3>
+        <p class="text-white/90 font-bold tracking-widest uppercase mt-1" style="font-size:0.7rem;">{promo.hugeSub}</p>
+        <h4 class="text-white font-bold mt-3 text-base tracking-wide">{promo.title}</h4>
+        <p class="text-white/80 text-xs mt-1 leading-relaxed max-w-[220px]">{promo.desc}</p>
+      </div>
+      <!-- Select + Button -->
+      <div class="mt-4">
+        <div class="relative mb-3">
+          <select bind:value={selectedModels[promo.id]} class="w-full h-11 px-4 pr-10 rounded-xl text-sm font-semibold text-white appearance-none cursor-pointer border border-white/20 hover:border-white/40 focus:outline-none transition-colors" style="background:rgba(255,255,255,0.15);backdrop-filter:blur(10px);">
+            <option value="" class="text-black">Seleccionar modelo</option>
+            {#each promo.models as model}<option value={model} class="text-black">{model}</option>{/each}
+          </select>
+          <ChevronDown size={15} class="absolute right-3 top-1/2 -translate-y-1/2 text-white/70 pointer-events-none" />
+        </div>
+        <button class="w-full h-11 bg-white rounded-xl font-bold text-sm tracking-wide uppercase flex items-center justify-center gap-2 hover:bg-gray-100 transition-colors cursor-pointer shadow-lg" style="color:{promo.accent};">
+          Consultar Modelos <Search size={14} />
+        </button>
+      </div>
+    </div>
   </div>
 {/snippet}
 

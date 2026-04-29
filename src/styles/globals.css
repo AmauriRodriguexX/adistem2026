@@ -150,3 +150,106 @@ src: url('https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign
   animation: shine-sweep 5s ease-in-out 1.5s infinite;
   pointer-events: none;
 }
+
+/* ── Animated Glowing Gradient Border Component ─────────────────────────── */
+@property --glow-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: true;
+}
+
+:root {
+  --color-brand-1: #3b82f6; /* Strong blue */
+  --color-brand-2: #8b5cf6; /* Strong purple */
+  --color-brand-3: #2dd4bf; /* Strong teal */
+  /* Valores RGB para aplicar opacidad */
+  --color-surface-dark-rgb: 10, 15, 28; /* #0a0f1c */
+}
+
+.btn-glow-border {
+  --glow-angle: 0deg;
+  
+  /* Colores del borde giratorio por defecto (sutiles) */
+  --c-1: rgba(59, 130, 246, 0.4);
+  --c-2: rgba(139, 92, 246, 0.4);
+  --c-3: rgba(45, 212, 191, 0.4);
+  
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  background: transparent;
+  border: none;
+  color: white;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  z-index: 1;
+  text-decoration: none;
+  cursor: pointer;
+  outline: none;
+  
+  /* Animamos el ángulo en el contenedor principal para que todos los hijos lo hereden */
+  animation: spin-gradient-angle 2.5s linear infinite;
+}
+
+/* ::before genera el CUERPO y el BORDE ANIMADO. */
+.btn-glow-border::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: 
+    linear-gradient(rgba(var(--color-surface-dark-rgb), 0.88), rgba(var(--color-surface-dark-rgb), 0.88)) padding-box,
+    conic-gradient(
+      from var(--glow-angle),
+      var(--c-1), var(--c-2), var(--c-3), var(--c-2), var(--c-1)
+    ) border-box;
+  border: 2px solid transparent;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* ::after genera exclusivamente el GLOW EXTERIOR. */
+.btn-glow-border::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: conic-gradient(
+    from var(--glow-angle),
+    var(--c-1), var(--c-2), var(--c-3), var(--c-2), var(--c-1)
+  );
+  filter: blur(14px);
+  z-index: -2;
+  opacity: 0; /* Oculto sin hover */
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+/* INTERACCIÓN: Colores fuertes y glow exterior */
+.btn-glow-border:hover {
+  transform: scale(1.02);
+  /* Se encienden los colores vibrantes al 100% */
+  --c-1: var(--color-brand-1);
+  --c-2: var(--color-brand-2);
+  --c-3: var(--color-brand-3);
+}
+
+.btn-glow-border:hover::after {
+  opacity: 0.85; /* Brillo del glow exterior en hover */
+}
+
+/* Animación fluida de rotación */
+@keyframes spin-gradient-angle {
+  0% { --glow-angle: 0deg; }
+  100% { --glow-angle: 360deg; }
+}
+
+/* Accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+  .btn-glow-border,
+  .btn-glow-border::before,
+  .btn-glow-border::after {
+    animation-play-state: paused;
+  }
+}

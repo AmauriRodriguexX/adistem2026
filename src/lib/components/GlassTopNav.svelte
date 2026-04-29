@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onMount } from 'svelte'
-  import { Calculator, Sun, Moon, Monitor, Menu } from 'lucide-svelte'
-  import { isDark, themeMode, setTheme, THEME_CYCLE } from '$lib/stores/theme'
+  import { Calculator, Gauge, Wrench, Phone, Menu, ChevronDown } from 'lucide-svelte'
+  import { isDark } from '$lib/stores/theme'
   import LiquidGlass from './LiquidGlass.svelte'
   import type { VehicleType } from '$lib/types'
 
@@ -29,10 +29,7 @@
     return () => window.removeEventListener('scroll', onScroll)
   })
 
-  function cycleTheme() {
-    const idx = THEME_CYCLE.indexOf($themeMode)
-    setTheme(THEME_CYCLE[(idx + 1) % THEME_CYCLE.length])
-  }
+
 
   const logoFilter = $derived($isDark ? 'brightness(0) invert(1)' : 'brightness(0)')
   const divColor   = $derived($isDark ? 'rgba(255,255,255,0.10)' : 'rgba(30,60,120,0.12)')
@@ -109,46 +106,62 @@
   <!-- Divider desktop -->
   <div class="hidden md:block h-6 w-px flex-shrink-0" style="background:{divColor}"></div>
 
-  <!-- Type chips desktop -->
-  <div class="hidden md:flex items-center gap-1.5 flex-1 overflow-x-auto scrollbar-none">
-    {#each VEHICLE_TYPES as type (type)}
-      <button
-        onclick={() => onTypeSelect?.(type)}
-        class="flex-shrink-0 px-3.5 py-1.5 rounded-full text-xs font-medium transition-all duration-200 hover:scale-[1.04] active:scale-[0.97]"
-        style={chipStyle(activeType === type)}
-      >{type}</button>
-    {/each}
+  <!-- Navigation Links -->
+  <div class="hidden md:flex items-center gap-6 flex-1 px-4">
+    <div class="relative group h-full flex items-center">
+      <button class="flex items-center gap-1.5 text-sm font-medium transition-all" style="color:{$isDark ? 'rgba(255,255,255,0.85)' : '#1a2040'}">
+        Modelos <ChevronDown size={14} class="opacity-70 transition-transform group-hover:rotate-180" />
+      </button>
+      <!-- Dropdown -->
+      <div class="absolute top-12 left-0 w-48 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 rounded-xl"
+        style="background:{$isDark ? 'rgba(15,22,45,0.95)' : 'rgba(255,255,255,0.95)'};backdrop-filter:blur(20px);border:1px solid {$isDark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.05)'};box-shadow:0 10px 30px rgba(0,0,0,0.1);">
+        <div class="flex flex-col py-2">
+          {#each VEHICLE_TYPES as type}
+            <button onclick={() => onTypeSelect?.(type)} class="px-5 py-2.5 text-sm font-medium transition-colors hover:bg-black/5 dark:hover:bg-white/10 text-left w-full"
+              style="color:{activeType === type ? ($isDark ? '#60a5fa' : '#3b82f6') : ($isDark ? 'rgba(255,255,255,0.85)' : '#1a2040')}">
+              {type}
+            </button>
+          {/each}
+        </div>
+      </div>
+    </div>
+    <a href="/seminuevos" class="text-sm font-medium transition-all hover:opacity-80" style="color:{$isDark ? 'rgba(255,255,255,0.85)' : '#1a2040'}">
+      Seminuevos
+    </a>
   </div>
 
   <div class="flex-1 md:hidden"></div>
   <div class="hidden md:block h-6 w-px flex-shrink-0" style="background:{divColor}"></div>
 
-  <!-- Right: theme toggle + CTA -->
+  <!-- Right: quick links + CTA -->
   <div class="flex items-center gap-2 flex-shrink-0">
-    <LiquidGlass
-      tag="button"
-      variant="pill"
-      noRefract
-      onclick={cycleTheme}
-      title="Cambiar tema: {$themeMode}"
-      class="flex items-center justify-center transition-all duration-200 hover:scale-105"
-      style="width:36px;height:36px;border-radius:50%;color:{$isDark ? 'rgba(255,255,255,0.70)' : 'rgba(30,50,120,0.75)'};cursor:pointer;outline:none;"
-    >
-      <span style="position:relative;z-index:7;display:flex;">
-        {#if $themeMode === 'light'}
-          <Sun size={14} />
-        {:else if $themeMode === 'dark'}
-          <Moon size={14} />
-        {:else}
-          <Monitor size={14} />
-        {/if}
-      </span>
-    </LiquidGlass>
+    {#each [
+      {icon: Gauge, label: 'Test Drive', href: '#'},
+      {icon: Wrench, label: 'Servicio', href: '#'},
+      {icon: Phone, label: 'Contacto', href: '#'}
+    ] as link}
+      <LiquidGlass
+        tag="a"
+        href={link.href}
+        variant="pill"
+        noRefract
+        title={link.label}
+        class="hidden md:flex items-center justify-center transition-all duration-200 hover:scale-105 group relative cursor-pointer"
+        style="width:36px;height:36px;border-radius:50%;color:{$isDark ? 'rgba(255,255,255,0.70)' : 'rgba(30,50,120,0.75)'};text-decoration:none;"
+      >
+        <span style="position:relative;z-index:7;display:flex;">
+          <link.icon size={14} />
+        </span>
+        <span class="absolute top-[46px] left-1/2 -translate-x-1/2 px-2.5 py-1.5 rounded-lg text-white text-xs whitespace-nowrap pointer-events-none transition-all duration-200 z-50 opacity-0 -translate-y-2 group-hover:opacity-100 group-hover:translate-y-0"
+          style="background:rgba(51,78,139,0.90);border:1px solid rgba(255,255,255,0.22);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 4px 18px rgba(51,78,139,0.40);">
+          {link.label}
+        </span>
+      </LiquidGlass>
+    {/each}
 
     <button
       onclick={onCotizarClick}
-      class="hidden md:flex items-center gap-2 px-4 h-9 rounded-full text-white text-xs font-medium transition-all duration-300 hover:scale-105 active:scale-95 btn-shine"
-      style="background:linear-gradient(135deg,rgba(51,78,139,0.65),rgba(46,108,207,0.65));backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,0.30);box-shadow:0 4px 20px rgba(51,78,139,0.35),inset 0 1px 0 rgba(255,255,255,0.35);"
+      class="hidden md:flex items-center gap-2 px-5 h-9 text-xs font-bold btn-glow-border tracking-wide"
     >
       <Calculator size={13} />
       <span>Cotizar</span>

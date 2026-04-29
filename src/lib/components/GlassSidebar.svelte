@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { MessageCircle, X, ChevronRight, Layers, Calculator, Wrench, Gauge, Phone } from 'lucide-svelte'
-  import { isDark } from '$lib/stores/theme'
+  import { X, ChevronRight, Layers, Sun, Moon, Monitor } from 'lucide-svelte'
+  import { isDark, themeMode, setTheme, THEME_CYCLE } from '$lib/stores/theme'
   import LiquidGlass from './LiquidGlass.svelte'
   import type { BrandFilter } from '$lib/types'
 
@@ -27,6 +27,11 @@
   ]
 
   let hoveredBrand = $state<string | null>(null)
+
+  function cycleTheme() {
+    const idx = THEME_CYCLE.indexOf($themeMode)
+    setTheme(THEME_CYCLE[(idx + 1) % THEME_CYCLE.length])
+  }
 
   const logoFilter  = $derived($isDark ? 'brightness(0) invert(1)' : 'brightness(0)')
   const dividerGrad = $derived($isDark
@@ -105,47 +110,32 @@
 
   <div class="w-10 my-4 flex-shrink-0" style="height:1px;background:{dividerGrad}"></div>
 
-  <!-- Quick Links -->
-  <div class="flex flex-col items-center gap-4 w-full">
-    {#each [
-      {icon: Gauge, label: 'Test Drive', href: '#'},
-      {icon: Calculator, label: 'Cotizar', href: '#'},
-      {icon: Wrench, label: 'Servicio', href: '#'},
-      {icon: Phone, label: 'Contacto', href: '#'}
-    ] as link}
-      <div class="relative w-full flex justify-center group">
-        <a href={link.href} class="p-1.5 transition-all duration-200 hover:scale-110 flex items-center justify-center rounded-full hover:bg-black/5 dark:hover:bg-white/10" style="color:{$isDark ? 'rgba(255,255,255,0.65)' : 'rgba(20,30,80,0.65)'}">
-          <link.icon size={18} />
-        </a>
-        <span class="absolute left-[86px] top-1/2 -translate-y-1/2 px-2.5 py-1.5 rounded-lg text-white text-xs whitespace-nowrap pointer-events-none transition-all duration-200 z-50 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0"
-          style="background:rgba(51,78,139,0.90);border:1px solid rgba(255,255,255,0.22);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 4px 18px rgba(51,78,139,0.40);">
-          {link.label}
-        </span>
-      </div>
-    {/each}
-  </div>
-
-  <div class="w-10 my-4 flex-shrink-0" style="height:1px;background:{dividerGrad}"></div>
-
-  <!-- WhatsApp -->
+  <!-- Theme Toggle -->
   <div class="relative w-full flex justify-center group mb-3">
     <LiquidGlass
-      tag="a"
+      tag="button"
       variant="pill"
       noRefract
-      href="https://wa.me/524871108899?text=Hola,%20me%20interesa%20informaci%C3%B3n%20sobre%20sus%20veh%C3%ADculos"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="flex items-center justify-center transition-all duration-250 hover:scale-110"
-      style="width:44px;height:44px;border-radius:12px;background:rgba(37,211,102,0.14);border:1px solid rgba(37,211,102,0.32);box-shadow:0 4px 18px rgba(37,211,102,0.20),inset 0 1px 0 rgba(255,255,255,0.40);"
+      onclick={cycleTheme}
+      title="Cambiar tema: {$themeMode}"
+      class="flex items-center justify-center transition-all duration-200 hover:scale-105"
+      style="width:36px;height:36px;border-radius:50%;color:{$isDark ? 'rgba(255,255,255,0.70)' : 'rgba(30,50,120,0.75)'};cursor:pointer;outline:none;"
     >
-      <MessageCircle size={18} style="color:#25D366;position:relative;z-index:7;" />
+      <span style="position:relative;z-index:7;display:flex;">
+        {#if $themeMode === 'light'}
+          <Sun size={14} />
+        {:else if $themeMode === 'dark'}
+          <Moon size={14} />
+        {:else}
+          <Monitor size={14} />
+        {/if}
+      </span>
     </LiquidGlass>
     <span class="absolute left-[86px] top-1/2 -translate-y-1/2 px-2.5 py-1.5 rounded-lg text-white text-xs whitespace-nowrap pointer-events-none transition-all duration-200 z-50 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0"
-      style="background:rgba(37,211,102,0.90);border:1px solid rgba(255,255,255,0.22);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 4px 18px rgba(37,211,102,0.40);">
-      WhatsApp
+      style="background:rgba(51,78,139,0.90);border:1px solid rgba(255,255,255,0.22);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 4px 18px rgba(51,78,139,0.40);">
+      Tema: {$themeMode}
     </span>
-  </div>>
+  </div>
 </aside>
 
 <!-- ── Mobile backdrop ── -->
@@ -217,23 +207,5 @@
         </button>
       {/each}
     </nav>
-
-    <!-- WhatsApp row -->
-    <div class="px-3 py-4 mt-2" style="border-top:{$isDark ? '1px solid rgba(255,255,255,0.07)' : '1px solid rgba(100,130,220,0.12)'}">
-      <a href="https://wa.me/524871108899?text=Hola,%20me%20interesa%20informaci%C3%B3n%20sobre%20sus%20veh%C3%ADculos"
-        target="_blank" rel="noopener noreferrer"
-        class="flex items-center gap-3 px-4 py-3.5 rounded-2xl transition-all active:scale-[0.98]"
-        style="background:rgba(37,211,102,0.10);border:1px solid rgba(37,211,102,0.24);">
-        <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
-          style="background:rgba(37,211,102,0.18);">
-          <MessageCircle size={20} style="color:#25D366" />
-        </div>
-        <div class="flex-1">
-          <p class="text-sm font-semibold" style="color:{$isDark ? 'white' : '#1a2040'}">WhatsApp</p>
-          <p class="text-xs" style="color:{$isDark ? 'rgba(255,255,255,0.38)' : 'rgba(20,30,80,0.40)'}">(487) 110-8899</p>
-        </div>
-        <ChevronRight size={14} style="color:#25D366" />
-      </a>
-    </div>
   </div>
 </aside>

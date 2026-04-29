@@ -9,9 +9,15 @@ export default defineConfig({
           svelte(),
           tailwindcss(),
         ],
+    server: {
+        hmr: {
+            overlay: false,
+        },
+    },
     resolve: {
           alias: {
                   '$lib': path.resolve('./src/lib'),
           },
     },
 })
+

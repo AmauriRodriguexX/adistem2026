@@ -5,6 +5,7 @@
 @import './globals.css';
 @import './fonts.css';
 
+
 /* Global glassmorphism overrides */
 *, *::before, *::after {
   box-sizing: border-box;

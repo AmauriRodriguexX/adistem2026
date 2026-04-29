@@ -216,8 +216,8 @@
               Agenda tu cita de servicio en línea y asegura el mejor cuidado para tu vehículo.
             </p>
             <a href="#"
-              class="inline-flex items-center gap-2 px-5 py-3 rounded-full text-white text-sm font-medium w-fit transition-all duration-300 hover:scale-105 active:scale-95 btn-shine"
-              style={primaryBtn}>Programa tu cita</a>
+              class="inline-flex items-center gap-2 px-6 py-3 text-sm font-bold w-fit btn-glow-border tracking-wide"
+              >Programa tu cita</a>
           </div>
           <div class="absolute top-0 right-0 w-64 h-64 pointer-events-none"
             style="background:radial-gradient(circle,rgba(51,78,139,0.22) 0%,transparent 70%)"></div>
