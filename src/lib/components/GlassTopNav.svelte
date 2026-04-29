@@ -109,7 +109,7 @@
   <!-- Navigation Links -->
   <div class="hidden md:flex items-center gap-6 flex-1 px-4">
     <div class="relative group h-full flex items-center">
-      <button class="flex items-center gap-1.5 text-sm font-medium transition-all" style="color:{$isDark ? 'rgba(255,255,255,0.85)' : '#1a2040'}">
+      <button class="flex items-center gap-1.5 text-sm font-medium transition-all cursor-pointer" style="color:{$isDark ? 'rgba(255,255,255,0.85)' : '#1a2040'}">
         Modelos <ChevronDown size={14} class="opacity-70 transition-transform group-hover:rotate-180" />
       </button>
       <!-- Dropdown -->
@@ -117,7 +117,7 @@
         style="background:{$isDark ? 'rgba(15,22,45,0.95)' : 'rgba(255,255,255,0.95)'};backdrop-filter:blur(20px);border:1px solid {$isDark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.05)'};box-shadow:0 10px 30px rgba(0,0,0,0.1);">
         <div class="flex flex-col py-2">
           {#each VEHICLE_TYPES as type}
-            <button onclick={() => onTypeSelect?.(type)} class="px-5 py-2.5 text-sm font-medium transition-colors hover:bg-black/5 dark:hover:bg-white/10 text-left w-full"
+            <button onclick={() => onTypeSelect?.(type)} class="px-5 py-2.5 text-sm font-medium transition-colors hover:bg-black/5 dark:hover:bg-white/10 text-left w-full cursor-pointer"
               style="color:{activeType === type ? ($isDark ? '#60a5fa' : '#3b82f6') : ($isDark ? 'rgba(255,255,255,0.85)' : '#1a2040')}">
               {type}
             </button>
