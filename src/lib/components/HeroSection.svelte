@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { ChevronRight, Star, Shield, Zap, Wrench, ChevronDown, CreditCard, Mail, Phone, Banknote, ArrowRight } from 'lucide-svelte'
+  import { ChevronRight, Star, Shield, Zap, Wrench, ChevronDown, CreditCard, Mail, Phone, Banknote, ArrowRight, MapPin } from 'lucide-svelte'
   import { isDark } from '$lib/stores/theme'
 
   interface Props { id?: string }
@@ -195,7 +195,17 @@
     <!-- Form mobile -->
     <div id="form-mobile" class="w-full" style="animation:hero-fade-up 0.65s cubic-bezier(0.22,1,0.36,1) 0.65s both;">
       <div class="mx-4 mb-6 rounded-2xl overflow-hidden" style={glassForm}>
-        <div class="flex gap-2 px-4 pt-4 pb-6" style={formBorder}>
+        <div class="flex justify-between items-start px-4 pt-4 pb-2">
+          <div>
+            <p class="text-[10px] uppercase tracking-widest mb-1 font-semibold" style="color:{$isDark ? 'rgba(255,255,255,0.45)' : 'rgba(20,30,80,0.45)'}">Formulario de contacto</p>
+            <h2 style="font-size:1.15rem;font-weight:800;color:{hColor}">Obtén tu mejor oferta</h2>
+          </div>
+          <a href="https://www.google.com/maps/search/?api=1&query=BLVD+SAN+LUIS+1158,+San+Luis+Potosí,+San+Luis+Potosí" target="_blank" rel="noopener noreferrer" class="flex flex-col items-center justify-center p-2 rounded-xl transition-all hover:scale-105" style="background:{$isDark ? 'rgba(255,255,255,0.06)' : 'rgba(20,30,80,0.05)'};color:var(--color-brand-1)">
+            <MapPin size={18} />
+            <span class="text-[9px] font-bold mt-1 uppercase tracking-wider">Cómo llegar</span>
+          </a>
+        </div>
+        <div class="flex gap-2 px-4 pb-4" style={formBorder}>
           {#each [{key:'cotizacion',label:'Cotización'},{key:'cita',label:'Cita de Servicio'}] as tab (tab.key)}
             <button onclick={() => activeTab = tab.key as TabKey}
               class="flex-1 py-2 px-2 rounded-lg text-xs font-medium transition-all duration-200 cursor-pointer"
@@ -283,9 +293,15 @@
 
     <!-- Right: Glass form -->
     <div class="w-[420px] flex-shrink-0 rounded-2xl overflow-hidden" style={glassForm}>
-      <div class="px-6 pt-6 pb-4" style={formBorder}>
-        <p class="text-xs uppercase tracking-widest mb-1" style="color:{$isDark ? 'rgba(255,255,255,0.45)' : 'rgba(20,30,80,0.45)'}">Formulario de ingreso</p>
-        <h2 style="font-size:1.25rem;font-weight:700;color:{hColor}">Obtén tu mejor oferta</h2>
+      <div class="px-6 pt-6 pb-4 flex justify-between items-start" style={formBorder}>
+        <div>
+          <p class="text-xs uppercase tracking-widest mb-1" style="color:{$isDark ? 'rgba(255,255,255,0.45)' : 'rgba(20,30,80,0.45)'}">Formulario de ingreso</p>
+          <h2 style="font-size:1.25rem;font-weight:700;color:{hColor}">Obtén tu mejor oferta</h2>
+        </div>
+        <a href="https://www.google.com/maps/search/?api=1&query=BLVD+SAN+LUIS+1158,+San+Luis+Potosí,+San+Luis+Potosí" target="_blank" rel="noopener noreferrer" class="flex flex-col items-center justify-center p-2 rounded-xl transition-all hover:scale-105" style="background:{$isDark ? 'rgba(255,255,255,0.06)' : 'rgba(20,30,80,0.05)'};color:var(--color-brand-1)">
+          <MapPin size={18} />
+          <span class="text-[9px] font-bold mt-1 uppercase tracking-wider">Cómo llegar</span>
+        </a>
       </div>
       <div class="flex gap-2 px-6 pt-5 pb-8">
         {#each [{key:'cotizacion',label:'Cotización'},{key:'cita',label:'Cita de Servicio'}] as tab (tab.key)}

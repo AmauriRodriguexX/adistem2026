@@ -159,9 +159,9 @@ src: url('https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign
 }
 
 :root {
-  --color-brand-1: #3b82f6; /* Strong blue */
-  --color-brand-2: #8b5cf6; /* Strong purple */
-  --color-brand-3: #2dd4bf; /* Strong teal */
+  --color-brand-1: #f59e0b; /* Amber 500 */
+  --color-brand-2: #fcd34d; /* Amber 300 / Gold */
+  --color-brand-3: #ea580c; /* Orange 600 */
   /* Valores RGB para aplicar opacidad */
   --color-surface-dark-rgb: 10, 15, 28; /* #0a0f1c */
 }
@@ -169,10 +169,10 @@ src: url('https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign
 .btn-glow-border {
   --glow-angle: 0deg;
   
-  /* Colores del borde giratorio por defecto (sutiles) */
-  --c-1: rgba(59, 130, 246, 0.4);
-  --c-2: rgba(139, 92, 246, 0.4);
-  --c-3: rgba(45, 212, 191, 0.4);
+  /* Colores del borde giratorio por defecto (sutiles) - Tema Ámbar/Oro */
+  --c-1: rgba(245, 158, 11, 0.45);
+  --c-2: rgba(252, 211, 77, 0.45);
+  --c-3: rgba(234, 88, 12, 0.45);
   
   position: relative;
   display: inline-flex;

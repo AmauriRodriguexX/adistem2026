@@ -149,7 +149,7 @@
   <!-- Layer 5: border diamond-cut -->
   <div style="position:absolute;inset:0;border-radius:inherit;border:1px solid {borderColor};pointer-events:none;z-index:5;"></div>
   <!-- Layer 6: content -->
-  <div style="position:relative;z-index:6;">
+  <div style="position:relative;z-index:6;{variant === 'card' ? 'height:100%;display:flex;flex-direction:column;' : ''}">
     {@render children?.()}
   </div>
 </svelte:element>

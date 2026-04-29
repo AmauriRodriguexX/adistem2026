@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte'
-  import { Calculator, Gauge, Wrench, Phone, Menu, ChevronDown } from 'lucide-svelte'
+  import { Calculator, Gauge, Wrench, Phone, Menu, ChevronDown, MapPin } from 'lucide-svelte'
   import { isDark } from '$lib/stores/theme'
   import LiquidGlass from './LiquidGlass.svelte'
   import type { VehicleType } from '$lib/types'
@@ -135,6 +135,27 @@
 
   <!-- Right: quick links + CTA -->
   <div class="flex items-center gap-2 flex-shrink-0">
+    <!-- MapPin (Visible en Mobile y Desktop) -->
+    <LiquidGlass
+      tag="a"
+      href="https://www.google.com/maps/search/?api=1&query=BLVD+SAN+LUIS+1158,+San+Luis+Potosí,+San+Luis+Potosí"
+      target="_blank"
+      rel="noopener noreferrer"
+      variant="pill"
+      noRefract
+      title="Cómo llegar"
+      class="flex items-center justify-center transition-all duration-200 hover:scale-105 group relative cursor-pointer"
+      style="width:36px;height:36px;border-radius:50%;color:var(--color-brand-1);text-decoration:none;"
+    >
+      <span style="position:relative;z-index:7;display:flex;">
+        <MapPin size={16} />
+      </span>
+      <span class="absolute top-[46px] right-0 md:left-1/2 md:-translate-x-1/2 px-2.5 py-1.5 rounded-lg text-white text-xs whitespace-nowrap pointer-events-none transition-all duration-200 z-50 opacity-0 -translate-y-2 group-hover:opacity-100 group-hover:translate-y-0"
+        style="background:rgba(51,78,139,0.90);border:1px solid rgba(255,255,255,0.22);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 4px 18px rgba(51,78,139,0.40);">
+        Cómo llegar
+      </span>
+    </LiquidGlass>
+
     {#each [
       {icon: Gauge, label: 'Test Drive', href: '#'},
       {icon: Wrench, label: 'Servicio', href: '#'},

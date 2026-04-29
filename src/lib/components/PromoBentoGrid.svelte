@@ -393,7 +393,11 @@
           {#each vehicles as v, i (v.id)}
             {@const isFirst = i === 0}
             {@const isSecond = i === 1}
-            <!-- After index 1 inject the brand promo card -->
+            <div class="{isFirst ? 'col-span-2' : 'col-span-1'} row-span-1"
+              style="min-height:420px;{cardsVisible ? `animation:benefit-card-in 0.55s cubic-bezier(0.22,1,0.36,1) ${i * 60}ms both` : 'opacity:0;transform:translateY(24px) scale(0.96)'};will-change:transform,opacity;">
+              {@render VehicleCard({vehicle: v, isWide: isFirst})}
+            </div>
+            <!-- After index 1 (second normal vehicle) inject the brand promo card so it falls to row 2 -->
             {#if isSecond}
               {@const promo = SPECIAL_PROMOS.find(p => activeBrand === 'Todas' ? p.brand === 'Ram' : p.brand === activeBrand)}
               {#if promo}
@@ -402,10 +406,6 @@
                 </div>
               {/if}
             {/if}
-            <div class="{isFirst ? 'col-span-2' : 'col-span-1'} row-span-1"
-              style="min-height:420px;{cardsVisible ? `animation:benefit-card-in 0.55s cubic-bezier(0.22,1,0.36,1) ${i * 60}ms both` : 'opacity:0;transform:translateY(24px) scale(0.96)'};will-change:transform,opacity;">
-              {@render VehicleCard({vehicle: v, isWide: isFirst})}
-            </div>
           {/each}
         </div>
       {/if}
@@ -456,10 +456,10 @@
               {vehicle.deal}
             </p>
           </div>
-          <!-- CTA: margin-top:8px from text, always at card bottom -->
+          <!-- CTA: margin-top:auto pins it to the bottom -->
           <a href="#"
             class="{isWide ? 'w-fit px-8 self-start' : 'w-full'} inline-flex items-center justify-center gap-1.5 rounded-full font-semibold transition-all duration-250 group/btn"
-            style="margin-top:8px;font-size:0.74rem;padding:8px 14px;background:{isDarkVal ? 'linear-gradient(135deg,rgba(51,78,139,0.55),rgba(80,110,180,0.40))' : 'linear-gradient(135deg,rgba(51,78,139,0.12),rgba(80,110,180,0.08))'};border:{isDarkVal ? '1px solid rgba(100,150,255,0.35)' : '1px solid rgba(51,78,139,0.28)'};color:{isDarkVal ? 'rgba(140,180,255,1)' : '#334E8B'};box-shadow:{isDarkVal ? '0 2px 12px rgba(51,78,139,0.30),inset 0 1px 0 rgba(255,255,255,0.12)' : '0 2px 12px rgba(51,78,139,0.12),inset 0 1px 0 rgba(255,255,255,0.80)'};backdrop-filter:blur(8px);flex-shrink:0;">
+            style="margin-top:auto;font-size:0.74rem;padding:8px 14px;background:{isDarkVal ? 'linear-gradient(135deg,rgba(51,78,139,0.55),rgba(80,110,180,0.40))' : 'linear-gradient(135deg,rgba(51,78,139,0.12),rgba(80,110,180,0.08))'};border:{isDarkVal ? '1px solid rgba(100,150,255,0.35)' : '1px solid rgba(51,78,139,0.28)'};color:{isDarkVal ? 'rgba(140,180,255,1)' : '#334E8B'};box-shadow:{isDarkVal ? '0 2px 12px rgba(51,78,139,0.30),inset 0 1px 0 rgba(255,255,255,0.12)' : '0 2px 12px rgba(51,78,139,0.12),inset 0 1px 0 rgba(255,255,255,0.80)'};backdrop-filter:blur(8px);flex-shrink:0;">
             Ver detalles
             <ChevronRight size={12} class="transition-transform duration-250 group-hover/btn:translate-x-0.5" />
           </a>
@@ -477,7 +477,7 @@
       <img src={promo.img} alt={promo.title} class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
       <div class="absolute inset-0" style="background:linear-gradient(to bottom,{promo.accent}70 0%,{promo.accent} 65%);"></div>
     </div>
-    <div class="relative z-10 flex flex-col h-full p-6">
+    <div class="relative z-10 flex flex-col h-full px-6 pt-6 pb-4">
       <!-- Huge stat -->
       <div class="flex-1 flex flex-col justify-center items-start">
         <p class="text-white/70 text-[10px] font-bold tracking-[0.2em] uppercase mb-1">{promo.brand}</p>
@@ -487,7 +487,7 @@
         <p class="text-white/80 text-xs mt-1 leading-relaxed max-w-[220px]">{promo.desc}</p>
       </div>
       <!-- Select + Button -->
-      <div class="mt-4">
+      <div class="mt-auto pt-4">
         <div class="relative mb-3">
           <select bind:value={selectedModels[promo.id]} class="w-full h-11 px-4 pr-10 rounded-xl text-sm font-semibold text-white appearance-none cursor-pointer border border-white/20 hover:border-white/40 focus:outline-none transition-colors" style="background:rgba(255,255,255,0.15);backdrop-filter:blur(10px);">
             <option value="" class="text-black">Seleccionar modelo</option>

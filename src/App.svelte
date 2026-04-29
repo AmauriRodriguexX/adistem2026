@@ -269,7 +269,7 @@
               Concesionaria autorizada de Jeep, FIAT, Dodge, Ram y Peugeot en Rioverde, SLP.
             </p>
             <p class="text-xs" style="color:{$isDark ? 'rgba(255,255,255,0.26)' : 'rgba(20,30,80,0.30)'}">
-              Blvd. Carlos J. Barrios S/N,<br />Centro, 79610 Rioverde, S.L.P.
+              BLVD SAN LUIS 1158,<br />San Luis Potosí, San Luis Potosí
             </p>
           </div>
           {#each footLinks as col, i (col.title)}
@@ -296,9 +296,9 @@
             </div>
             <span class="text-xs" style="color:{T.secondary}">4.2 estrellas · 53 reseñas en Google</span>
           </div>
-          <a href="https://maps.google.com/" target="_blank" rel="noopener noreferrer"
+          <a href="https://www.google.com/maps/search/?api=1&query=BLVD+SAN+LUIS+1158,+San+Luis+Potosí,+San+Luis+Potosí" target="_blank" rel="noopener noreferrer"
             class="flex items-center gap-1.5 text-xs transition-all hover:scale-[1.02]" style="color:{T.secondary}">
-            📍 Vapsa Rioverde ›
+            📍 Ver Ubicación en Mapa ›
           </a>
         </div>
 
