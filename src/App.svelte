@@ -15,6 +15,7 @@
   let brandStripEl:   HTMLElement | null = $state(null)
   let benefitsEl:     HTMLElement | null = $state(null)
   let serviceBannerEl: HTMLElement | null = $state(null)
+  let mapEl:           HTMLElement | null = $state(null)
   let footerEl:        HTMLElement | null = $state(null)
 
   let brandFilter: BrandFilter = $state('Todas')
@@ -62,6 +63,7 @@
 
   function scrollToHero()  { heroEl?.scrollIntoView({ behavior: 'smooth' }) }
   function scrollToPromo() { setTimeout(() => promoEl?.scrollIntoView({ behavior: 'smooth' }), 30) }
+  function scrollToMap()   { mapEl?.scrollIntoView({ behavior: 'smooth' }) }
 
   function handleBrandSelect(brand: BrandFilter) { brandFilter = brand; scrollToPromo() }
   function handleTypeSelect(type: VehicleType)   { typeFilter  = type;  scrollToPromo() }
@@ -143,6 +145,7 @@
     onTypeSelect={handleTypeSelect}
     activeType={typeFilter}
     onMenuToggle={() => mobileMenuOpen = true}
+    onMapClick={scrollToMap}
   />
 
   <!-- Mobile bottom nav -->
@@ -153,7 +156,7 @@
 
     <!-- HERO -->
     <div bind:this={heroEl}>
-      <HeroSection id="hero" />
+      <HeroSection id="hero" onMapClick={scrollToMap} />
     </div>
 
     <!-- BRAND STRIP -->
@@ -253,6 +256,91 @@
               <p class="text-xs leading-relaxed" style="color:{T.secondary}">{b.desc}</p>
             </div>
           {/each}
+        </div>
+      </div>
+    </section>
+
+    <!-- LOCATION MAP -->
+    <section bind:this={mapEl} class="py-8 md:py-12 px-4 md:px-8 relative overflow-hidden"
+      style="background:{benefitsBg};border-top:1px solid {T.divider};">
+      <div class="max-w-7xl mx-auto relative z-10">
+        <div class="mb-6 md:mb-8 text-center"
+          style="{footerVisible ? 'animation:section-title-in 0.55s cubic-bezier(0.22,1,0.36,1) both' : 'opacity:0'}">
+          <p class="text-xs uppercase tracking-widest mb-2" style="color:{T.muted}">Visítanos</p>
+          <h3 style="font-size:clamp(1.5rem,3vw,2rem);font-weight:800;line-height:1.2;color:{T.primary};">Nuestra Ubicación</h3>
+        </div>
+        <div class="relative w-full rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl transition-all duration-500" 
+          style="{glassCard}; padding: 6px; {footerVisible ? 'animation:hero-fade-up 0.65s cubic-bezier(0.22,1,0.36,1) 0.2s both' : 'opacity:0;transform:translateY(30px)'}">
+          <div class="relative w-full h-[400px] md:h-[500px] rounded-[14px] md:rounded-[22px] overflow-hidden">
+
+            <!-- Mapa con filtro calibrado al design system:
+                 hue-rotate(195deg) desplaza: calles (amarillo→azul #334E8B),
+                 agua (azul→dorado #f59e0b), parques (verde→magenta/púrpura),
+                 edificios (gris→azul-gris) -->
+            <iframe
+              src="https://maps.google.com/maps?q=BLVD%20SAN%20LUIS%201158,%20San%20Luis%20Potos%C3%AD,%20San%20Luis%20Potos%C3%AD&t=&z=16&ie=UTF8&iwloc=&output=embed"
+              class="w-full h-full border-0 block"
+              style="filter:{$isDark
+                ? 'brightness(0.50) contrast(1.20) saturate(5.0) hue-rotate(195deg) sepia(0.18)'
+                : 'brightness(1.04) contrast(1.10) saturate(4.2) hue-rotate(195deg) sepia(0.14) grayscale(0.05)'};"
+              allowfullscreen={false}
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Ubicación VAPSA">
+            </iframe>
+
+            <!-- Capa de color del design system (overlay) -->
+            <div class="absolute inset-0 pointer-events-none"
+              style="background:{$isDark
+                ? 'linear-gradient(135deg,rgba(51,78,139,0.32) 0%,rgba(5,8,20,0.10) 45%,rgba(76,142,240,0.22) 100%)'
+                : 'linear-gradient(135deg,rgba(51,78,139,0.12) 0%,transparent 45%,rgba(107,142,212,0.10) 100%)'};
+              mix-blend-mode:{$isDark ? 'screen' : 'multiply'};
+              border-radius:inherit;">
+            </div>
+
+            <!-- Viñeta de borde con glow de marca -->
+            <div class="absolute inset-0 pointer-events-none" style="
+              box-shadow:inset 0 0 70px {$isDark ? 'rgba(5,8,20,0.70)' : 'rgba(51,78,139,0.14)'},
+                         inset 0 0 20px {$isDark ? 'rgba(51,78,139,0.25)' : 'rgba(107,142,212,0.12)'};
+              border-radius:inherit;">
+            </div>
+
+            <!-- Pin animado de la ubicación (decorativo) -->
+            <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-full pointer-events-none" style="z-index:2;">
+              <div class="relative flex flex-col items-center">
+                <div class="w-5 h-5 rounded-full border-2 border-white shadow-lg"
+                  style="background:linear-gradient(135deg,#334E8B,#2E6CCF);box-shadow:0 0 0 4px rgba(51,78,139,0.35),0 4px 16px rgba(51,78,139,0.60);animation:badge-glow 2.2s ease-in-out infinite;">
+                </div>
+                <div class="w-0.5 h-4 mt-0.5" style="background:linear-gradient(to bottom,rgba(51,78,139,0.80),transparent);"></div>
+              </div>
+            </div>
+
+            <!-- Floating Address & 'Llévame' Badge -->
+            <div class="absolute bottom-4 left-4 right-4 md:left-auto md:right-8 md:bottom-8 md:w-80 rounded-2xl p-5 shadow-2xl flex flex-col gap-4"
+              style="background:{$isDark ? 'rgba(5,8,22,0.88)' : 'rgba(248,251,255,0.94)'};
+                border:1px solid {$isDark ? 'rgba(51,78,139,0.40)' : 'rgba(51,78,139,0.18)'};
+                backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%);
+                box-shadow:{$isDark ? '0 8px 32px rgba(0,0,0,0.60),inset 0 1px 0 rgba(255,255,255,0.08)' : '0 8px 32px rgba(51,78,139,0.14),inset 0 1px 0 rgba(255,255,255,0.95)'};
+                z-index:3;">
+              <div class="flex items-start gap-3">
+                <div class="w-8 h-8 rounded-xl flex-shrink-0 flex items-center justify-center mt-0.5"
+                  style="background:linear-gradient(135deg,rgba(51,78,139,0.30),rgba(46,108,207,0.20));border:1px solid rgba(51,78,139,0.35);">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4C8EF0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                </div>
+                <div>
+                  <p class="text-sm font-bold mb-0.5" style="color:{T.primary}">VAPSA San Luis Potosí</p>
+                  <p class="text-xs leading-relaxed" style="color:{T.secondary}">
+                    BLVD SAN LUIS 1158,<br/>San Luis Potosí, S.L.P.
+                  </p>
+                </div>
+              </div>
+              <a href="https://www.google.com/maps/search/?api=1&query=BLVD+SAN+LUIS+1158,+San+Luis+Potosí,+San+Luis+Potosí" target="_blank" rel="noopener noreferrer"
+                class="w-full py-3 text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 btn-glow-border">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                Llévame ahí
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </section>

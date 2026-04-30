@@ -14,17 +14,20 @@
   ]
 
   const popupBg = $derived($isDark 
-    ? 'background:#212121;border:1px solid rgba(255,255,255,0.08);' 
-    : 'background:#303030;border:1px solid rgba(0,0,0,0.1);'
+    ? 'background:rgba(15,22,45,0.75);border:1px solid rgba(255,255,255,0.1);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);box-shadow:0 16px 40px rgba(0,0,0,0.5);' 
+    : 'background:rgba(255,255,255,0.80);border:1px solid rgba(100,130,220,0.2);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);box-shadow:0 16px 40px rgba(30,60,120,0.15);'
   )
   const btnBg = $derived($isDark
-    ? 'background:#333333;border:1px solid rgba(255,255,255,0.06);'
-    : 'background:#404040;border:1px solid rgba(255,255,255,0.08);'
+    ? 'background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.05);'
+    : 'background:rgba(20,40,120,0.04);border:1px solid rgba(20,40,120,0.08);'
   )
   const btnHoverBg = $derived($isDark
-    ? 'background:#444444;'
-    : 'background:#4d4d4d;'
+    ? 'background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.15);'
+    : 'background:rgba(20,40,120,0.08);border:1px solid rgba(20,40,120,0.16);'
   )
+  const textPrimary = $derived($isDark ? 'text-white' : 'text-[#1a2040]')
+  const textMuted = $derived($isDark ? 'text-white/60' : 'text-[#1a2040]/60')
+  const iconColor = $derived($isDark ? 'text-white/40 group-hover:text-white/80' : 'text-[#1a2040]/40 group-hover:text-[#1a2040]/80')
 </script>
 
 <div class="fixed bottom-6 right-6 z-50 flex flex-col items-end">
@@ -40,8 +43,8 @@
           <MessageCircle size={26} class="text-white" fill="currentColor" />
         </div>
         <div>
-          <h4 class="text-white font-bold text-[15px] leading-tight tracking-tight">Contáctanos por WhatsApp</h4>
-          <p class="text-white/50 text-[10px] font-bold tracking-wider mt-1 uppercase">Respuesta Inmediata</p>
+          <h4 class="{textPrimary} font-bold text-[15px] leading-tight tracking-tight">Contáctanos por WhatsApp</h4>
+          <p class="{textMuted} text-[10px] font-bold tracking-wider mt-1 uppercase">Respuesta Inmediata</p>
         </div>
       </div>
 
@@ -54,11 +57,11 @@
             rel="noopener noreferrer"
             class="group flex items-center justify-between px-5 py-3.5 rounded-2xl transition-all duration-200"
             style={btnBg}
-            onmouseenter={(e) => e.currentTarget.style.cssText = btnHoverBg + 'border:1px solid rgba(255,255,255,0.12);'}
+            onmouseenter={(e) => e.currentTarget.style.cssText = btnHoverBg}
             onmouseleave={(e) => e.currentTarget.style.cssText = btnBg}
           >
-            <span class="text-white text-[15px] font-semibold">{opt.label}</span>
-            <ArrowRight size={16} class="text-white/40 group-hover:text-white/80 transition-colors" />
+            <span class="{textPrimary} text-[15px] font-semibold">{opt.label}</span>
+            <ArrowRight size={16} class="{iconColor} transition-colors" />
           </a>
         {/each}
       </div>

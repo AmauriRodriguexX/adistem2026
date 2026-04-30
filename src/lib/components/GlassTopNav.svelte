@@ -10,6 +10,7 @@
     onTypeSelect?:   (type: VehicleType) => void
     activeType?:     VehicleType
     onMenuToggle?:   () => void
+    onMapClick?:     () => void
   }
 
   let {
@@ -17,6 +18,7 @@
     onTypeSelect,
     activeType = 'Todos',
     onMenuToggle,
+    onMapClick,
   }: Props = $props()
 
   const VEHICLE_TYPES: VehicleType[] = ['Todos', 'Sedán', 'SUV', 'Deportivos', 'Pick-ups']
@@ -137,10 +139,8 @@
   <div class="flex items-center gap-2 flex-shrink-0">
     <!-- MapPin (Visible en Mobile y Desktop) -->
     <LiquidGlass
-      tag="a"
-      href="https://www.google.com/maps/search/?api=1&query=BLVD+SAN+LUIS+1158,+San+Luis+Potosí,+San+Luis+Potosí"
-      target="_blank"
-      rel="noopener noreferrer"
+      tag="button"
+      onclick={(e: Event) => { e.preventDefault(); onMapClick?.() }}
       variant="pill"
       noRefract
       title="Cómo llegar"

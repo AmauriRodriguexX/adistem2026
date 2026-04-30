@@ -2,8 +2,11 @@
   import { ChevronRight, Star, Shield, Zap, Wrench, ChevronDown, CreditCard, Mail, Phone, Banknote, ArrowRight, MapPin } from 'lucide-svelte'
   import { isDark } from '$lib/stores/theme'
 
-  interface Props { id?: string }
-  let { id }: Props = $props()
+  interface Props { 
+    id?: string
+    onMapClick?: () => void
+  }
+  let { id, onMapClick }: Props = $props()
 
   const HERO_BG = 'https://images.unsplash.com/photo-1655457353393-04bb8d53b996?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjBTVVYlMjBhdXRvbW90aXZlJTIwc2hvd3Jvb20lMjBuaWdodCUyMGRhcmt8ZW58MXx8fHwxNzc3MzUxNDUzfDA&ixlib=rb-4.1.0&q=80&w=1080'
 
@@ -200,10 +203,10 @@
             <p class="text-[10px] uppercase tracking-widest mb-1 font-semibold" style="color:{$isDark ? 'rgba(255,255,255,0.45)' : 'rgba(20,30,80,0.45)'}">Formulario de contacto</p>
             <h2 style="font-size:1.15rem;font-weight:800;color:{hColor}">Obtén tu mejor oferta</h2>
           </div>
-          <a href="https://www.google.com/maps/search/?api=1&query=BLVD+SAN+LUIS+1158,+San+Luis+Potosí,+San+Luis+Potosí" target="_blank" rel="noopener noreferrer" class="flex flex-col items-center justify-center p-2 rounded-xl transition-all hover:scale-105" style="background:{$isDark ? 'rgba(255,255,255,0.06)' : 'rgba(20,30,80,0.05)'};color:var(--color-brand-1)">
+          <button onclick={(e) => { e.preventDefault(); onMapClick?.() }} class="flex flex-col items-center justify-center p-2 rounded-xl transition-all hover:scale-105 cursor-pointer" style="background:{$isDark ? 'rgba(255,255,255,0.06)' : 'rgba(20,30,80,0.05)'};color:var(--color-brand-1)">
             <MapPin size={18} />
             <span class="text-[9px] font-bold mt-1 uppercase tracking-wider">Cómo llegar</span>
-          </a>
+          </button>
         </div>
         <div class="flex gap-2 px-4 pb-4" style={formBorder}>
           {#each [{key:'cotizacion',label:'Cotización'},{key:'cita',label:'Cita de Servicio'}] as tab (tab.key)}
@@ -298,10 +301,10 @@
           <p class="text-xs uppercase tracking-widest mb-1" style="color:{$isDark ? 'rgba(255,255,255,0.45)' : 'rgba(20,30,80,0.45)'}">Formulario de ingreso</p>
           <h2 style="font-size:1.25rem;font-weight:700;color:{hColor}">Obtén tu mejor oferta</h2>
         </div>
-        <a href="https://www.google.com/maps/search/?api=1&query=BLVD+SAN+LUIS+1158,+San+Luis+Potosí,+San+Luis+Potosí" target="_blank" rel="noopener noreferrer" class="flex flex-col items-center justify-center p-2 rounded-xl transition-all hover:scale-105" style="background:{$isDark ? 'rgba(255,255,255,0.06)' : 'rgba(20,30,80,0.05)'};color:var(--color-brand-1)">
+        <button onclick={(e) => { e.preventDefault(); onMapClick?.() }} class="flex flex-col items-center justify-center p-2 rounded-xl transition-all hover:scale-105 cursor-pointer" style="background:{$isDark ? 'rgba(255,255,255,0.06)' : 'rgba(20,30,80,0.05)'};color:var(--color-brand-1)">
           <MapPin size={18} />
           <span class="text-[9px] font-bold mt-1 uppercase tracking-wider">Cómo llegar</span>
-        </a>
+        </button>
       </div>
       <div class="flex gap-2 px-6 pt-5 pb-8">
         {#each [{key:'cotizacion',label:'Cotización'},{key:'cita',label:'Cita de Servicio'}] as tab (tab.key)}
