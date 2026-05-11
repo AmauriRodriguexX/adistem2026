@@ -26,6 +26,47 @@
   let serviceBannerVisible = $state(false)
   let footerVisible        = $state(false)
 
+  const BRAND_CONFIGS: Record<BrandFilter, { video: string; accent: string; title: string; subtitle: string }> = {
+    'Todas': {
+      video: 'FzFoLRs7ZIs',
+      accent: '#334E8B',
+      title: 'Tu próximo vehículo ideal te espera.',
+      subtitle: 'Jeep, FIAT, Dodge, Ram y Peugeot. Financiamiento desde 7.99% y bonos de hasta $200,000.'
+    },
+    'Jeep': {
+      video: '787u51S-pD0',
+      accent: '#4B5320', // Olive Green
+      title: 'Aventura sin límites. Línea Jeep 2026.',
+      subtitle: 'Descubre la libertad de ir a cualquier lugar con la tecnología y confort de Jeep.'
+    },
+    'Ram': {
+      video: 'q8E3E6kR_hY',
+      accent: '#D32F2F', // RAM Red
+      title: 'Poder y lujo sin compromiso. RAM 2026.',
+      subtitle: 'La Pick-up más premiada, diseñada para los trabajos más exigentes.'
+    },
+    'Fiat': {
+      video: 'CqL-XjM-v5Y',
+      accent: '#9A2128', // FIAT Red
+      title: 'Estilo italiano para tu día a día. FIAT 2026.',
+      subtitle: 'Diseño, eficiencia y diversión en cada kilómetro.'
+    },
+    'Dodge': {
+      video: 'p5U3W6XkXoI',
+      accent: '#E53935', // Dodge Red
+      title: 'Dominio absoluto. Línea Dodge 2026.',
+      subtitle: 'Desempeño legendario y músculo americano en su máxima expresión.'
+    },
+    'Peugeot': {
+      video: '2kY99v9l6I4',
+      accent: '#002E6B', // Peugeot Blue
+      title: 'Allure y excelencia. Peugeot 2026.',
+      subtitle: 'La combinación perfecta de innovación, tecnología y diseño francés.'
+    }
+  }
+
+  const currentBrandConfig = $derived(BRAND_CONFIGS[brandFilter])
+
   onMount(() => {
     const cleanup = initSystemListener()
 
@@ -65,7 +106,13 @@
   function scrollToPromo() { setTimeout(() => promoEl?.scrollIntoView({ behavior: 'smooth' }), 30) }
   function scrollToMap()   { mapEl?.scrollIntoView({ behavior: 'smooth' }) }
 
-  function handleBrandSelect(brand: BrandFilter) { brandFilter = brand; scrollToPromo() }
+  function handleBrandSelect(brand: BrandFilter) { 
+    brandFilter = brand
+    // When a brand is selected, we want to show the specific landing
+    scrollToHero()
+    // Small delay to let the UI update before filtering models if needed
+    setTimeout(() => { if (brand !== 'Todas') scrollToPromo() }, 800)
+  }
   function handleTypeSelect(type: VehicleType)   { typeFilter  = type;  scrollToPromo() }
 
   const pageBg = $derived($isDark
@@ -137,6 +184,7 @@
     onBrandSelect={handleBrandSelect}
     mobileOpen={mobileMenuOpen}
     onMobileClose={() => mobileMenuOpen = false}
+    onMapClick={scrollToMap}
   />
 
   <!-- Fixed top nav -->
@@ -156,7 +204,12 @@
 
     <!-- HERO -->
     <div bind:this={heroEl}>
-      <HeroSection id="hero" onMapClick={scrollToMap} />
+      <HeroSection 
+        id="hero" 
+        onMapClick={scrollToMap} 
+        brand={brandFilter}
+        config={currentBrandConfig}
+      />
     </div>
 
     <!-- BRAND STRIP -->

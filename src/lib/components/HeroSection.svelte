@@ -35,11 +35,11 @@
     : 'background:rgba(255,255,255,0.40);backdrop-filter:blur(52px) saturate(200%);-webkit-backdrop-filter:blur(52px) saturate(200%);border:1px solid rgba(255,255,255,0.85);box-shadow:0 32px 80px rgba(10,30,80,0.20),inset 0 1px 0 rgba(255,255,255,0.98);'
   )
   const glassInput = $derived($isDark
-    ? 'background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.13);backdrop-filter:blur(12px);color:white;box-shadow:inset 0 1px 0 rgba(255,255,255,0.06);'
+    ? 'background:rgba(255,255,255,0.20);border:1px solid rgba(255,255,255,0.13);backdrop-filter:blur(12px);color:white;box-shadow:inset 0 1px 0 rgba(255,255,255,0.06);'
     : 'background:rgba(240,245,255,0.85);border:1px solid rgba(100,130,220,0.22);backdrop-filter:blur(12px);color:#1a2040;box-shadow:inset 0 1px 0 rgba(255,255,255,0.95);'
   )
   const glassSelect = $derived($isDark
-    ? 'background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.13);backdrop-filter:blur(12px);color:white;box-shadow:inset 0 1px 0 rgba(255,255,255,0.06);'
+    ? 'background:rgba(255,255,255,0.20);border:1px solid rgba(255,255,255,0.13);backdrop-filter:blur(12px);color:white;box-shadow:inset 0 1px 0 rgba(255,255,255,0.06);'
     : 'background:rgba(240,245,255,0.85);border:1px solid rgba(100,130,220,0.22);backdrop-filter:blur(12px);color:#1a2040;box-shadow:inset 0 1px 0 rgba(255,255,255,0.95);'
   )
   const labelColor = $derived($isDark ? 'rgba(255,255,255,0.50)' : 'rgba(20,30,80,0.55)')
@@ -288,9 +288,6 @@
         <a href="#"
           class="flex items-center gap-2 px-6 py-3 text-sm font-bold btn-glow-border tracking-wide"
           >Agenda tu Test Drive <ChevronRight size={15} /></a>
-        <a href="#"
-          class="flex items-center gap-2 px-6 py-3 rounded-full text-white/82 text-sm font-medium hover:text-white transition-all duration-300 cursor-pointer"
-          style={glassBtn}>Ver Modelos</a>
       </div>
     </div>
 
@@ -301,10 +298,6 @@
           <p class="text-xs uppercase tracking-widest mb-1" style="color:{$isDark ? 'rgba(255,255,255,0.45)' : 'rgba(20,30,80,0.45)'}">Formulario de ingreso</p>
           <h2 style="font-size:1.25rem;font-weight:700;color:{hColor}">Obtén tu mejor oferta</h2>
         </div>
-        <button onclick={(e) => { e.preventDefault(); onMapClick?.() }} class="flex flex-col items-center justify-center p-2 rounded-xl transition-all hover:scale-105 cursor-pointer" style="background:{$isDark ? 'rgba(255,255,255,0.06)' : 'rgba(20,30,80,0.05)'};color:var(--color-brand-1)">
-          <MapPin size={18} />
-          <span class="text-[9px] font-bold mt-1 uppercase tracking-wider">Cómo llegar</span>
-        </button>
       </div>
       <div class="flex gap-2 px-6 pt-5 pb-8">
         {#each [{key:'cotizacion',label:'Cotización'},{key:'cita',label:'Cita de Servicio'}] as tab (tab.key)}

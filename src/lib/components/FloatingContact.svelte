@@ -39,8 +39,13 @@
     >
       <!-- Header -->
       <div class="flex items-center gap-4 mb-6">
-        <div class="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg" style="background:#25D366;">
-          <MessageCircle size={26} class="text-white" fill="currentColor" />
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg overflow-hidden">
+          <img 
+            src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" 
+            alt="WhatsApp" 
+            class="w-full h-full object-contain p-2" 
+            style="background: #25D366;"
+          />
         </div>
         <div>
           <h4 class="{textPrimary} font-bold text-[15px] leading-tight tracking-tight">Contáctanos por WhatsApp</h4>
@@ -71,14 +76,23 @@
   <!-- Floating Button -->
   <button
     onclick={() => isOpen = !isOpen}
-    class="flex items-center justify-center w-14 h-14 rounded-full text-white shadow-xl transition-all duration-300 hover:scale-110 focus:outline-none cursor-pointer"
-    style="background: {isOpen ? '#ef4444' : '#25D366'};"
+    class="flex items-center justify-center w-14 h-14 transition-all duration-300 hover:scale-110 focus:outline-none cursor-pointer"
+    style="background: transparent;"
     aria-label="WhatsApp Contact"
   >
     {#if isOpen}
-      <X size={26} />
+      <div class="w-12 h-12 rounded-full flex items-center justify-center text-white shadow-xl bg-[#ef4444]">
+        <X size={26} />
+      </div>
     {:else}
-      <MessageCircle size={30} fill="currentColor" />
+      <div class="w-full h-full flex items-center justify-center drop-shadow-xl">
+        <img 
+          src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" 
+          alt="WhatsApp" 
+          class="w-13 h-13 object-contain"
+          style="background: linear-gradient(135deg, #25D366 0%, #128C7E 100%); padding: 10px; border-radius: 28%;"
+        />
+      </div>
     {/if}
   </button>
 </div>

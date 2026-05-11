@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { X, ChevronRight, Layers, Sun, Moon, Monitor } from 'lucide-svelte'
+  import { X, ChevronRight, Layers, Sun, Moon, Monitor, Gauge, Wrench, Phone, MapPin } from 'lucide-svelte'
   import { isDark, themeMode, setTheme, THEME_CYCLE } from '$lib/stores/theme'
   import LiquidGlass from './LiquidGlass.svelte'
   import type { BrandFilter } from '$lib/types'
@@ -9,6 +9,7 @@
     onBrandSelect?: (brand: BrandFilter) => void
     mobileOpen?:   boolean
     onMobileClose?: () => void
+    onMapClick?:     () => void
   }
 
   let {
@@ -16,6 +17,7 @@
     onBrandSelect,
     mobileOpen    = false,
     onMobileClose,
+    onMapClick,
   }: Props = $props()
 
   const brands: { name: BrandFilter; logo: string }[] = [
@@ -207,5 +209,22 @@
         </button>
       {/each}
     </nav>
+    
+    <div class="px-5 py-4 mt-auto" style="border-top:1px solid {$isDark ? 'rgba(255,255,255,0.08)' : 'rgba(100,130,220,0.12)'}">
+      <nav class="flex flex-col gap-1">
+        <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold transition-all" style="color:{$isDark ? 'rgba(255,255,255,0.85)' : '#1a2040'}">
+          <Gauge size={18} class="opacity-70" /> Test Drive
+        </a>
+        <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold transition-all" style="color:{$isDark ? 'rgba(255,255,255,0.85)' : '#1a2040'}">
+          <Wrench size={18} class="opacity-70" /> Servicio
+        </a>
+        <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold transition-all" style="color:{$isDark ? 'rgba(255,255,255,0.85)' : '#1a2040'}" onclick={(e) => { e.preventDefault(); onMobileClose?.(); onMapClick?.() }}>
+          <MapPin size={18} class="opacity-70" /> Ubicación
+        </a>
+        <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold transition-all" style="color:{$isDark ? 'rgba(255,255,255,0.85)' : '#1a2040'}">
+          <Phone size={18} class="opacity-70" /> Contacto
+        </a>
+      </nav>
+    </div>
   </div>
 </aside>
