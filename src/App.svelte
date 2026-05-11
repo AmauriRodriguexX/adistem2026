@@ -6,6 +6,8 @@
   import GlassTopNav        from '$lib/components/GlassTopNav.svelte'
   import HeroSection        from '$lib/components/HeroSection.svelte'
   import PromoBentoGrid     from '$lib/components/PromoBentoGrid.svelte'
+  import BrandBenefitsSection from '$lib/components/BrandBenefitsSection.svelte'
+  import SeminuevosView     from '$lib/components/SeminuevosView.svelte'
   import FloatingContact    from '$lib/components/FloatingContact.svelte'
   import MobileBottomNav    from '$lib/components/MobileBottomNav.svelte'
   import type { BrandFilter, VehicleType } from '$lib/types'
@@ -20,13 +22,14 @@
 
   let brandFilter: BrandFilter = $state('Todas')
   let typeFilter:  VehicleType = $state('Todos')
+  let currentView: 'Portal' | 'Seminuevos' = $state('Portal')
   let mobileMenuOpen = $state(false)
   let brandStripVisible   = $state(false)
   let benefitsVisible     = $state(false)
   let serviceBannerVisible = $state(false)
   let footerVisible        = $state(false)
 
-  const BRAND_CONFIGS: Record<BrandFilter, { video: string; accent: string; title: string; subtitle: string }> = {
+  const BRAND_CONFIGS: Record<BrandFilter, { video: string; image?: string; accent: string; title: string; subtitle: string; hideForm?: boolean }> = {
     'Todas': {
       video: 'FzFoLRs7ZIs',
       accent: '#334E8B',
@@ -34,34 +37,44 @@
       subtitle: 'Jeep, FIAT, Dodge, Ram y Peugeot. Financiamiento desde 7.99% y bonos de hasta $200,000.'
     },
     'Jeep': {
-      video: '787u51S-pD0',
+      video: 'm0A2E2v0wF8', 
+      image: '/adistem2026/jeep-banner.png',
       accent: '#4B5320', // Olive Green
       title: 'Aventura sin límites. Línea Jeep 2026.',
-      subtitle: 'Descubre la libertad de ir a cualquier lugar con la tecnología y confort de Jeep.'
+      subtitle: 'Descubre la libertad de ir a cualquier lugar con la tecnología y confort de Jeep.',
+      hideForm: true
     },
     'Ram': {
       video: 'q8E3E6kR_hY',
+      image: '/adistem2026/ram-banner.jpg',
       accent: '#D32F2F', // RAM Red
       title: 'Poder y lujo sin compromiso. RAM 2026.',
-      subtitle: 'La Pick-up más premiada, diseñada para los trabajos más exigentes.'
+      subtitle: 'La Pick-up más premiada, diseñada para los trabajos más exigentes.',
+      hideForm: true
     },
     'Fiat': {
       video: 'CqL-XjM-v5Y',
+      image: '/adistem2026/fiat-banner.jpg',
       accent: '#9A2128', // FIAT Red
       title: 'Estilo italiano para tu día a día. FIAT 2026.',
-      subtitle: 'Diseño, eficiencia y diversión en cada kilómetro.'
+      subtitle: 'Diseño, eficiencia y diversión en cada kilómetro.',
+      hideForm: true
     },
     'Dodge': {
       video: 'p5U3W6XkXoI',
+      image: '/adistem2026/dodge-banner.jpg',
       accent: '#E53935', // Dodge Red
       title: 'Dominio absoluto. Línea Dodge 2026.',
-      subtitle: 'Desempeño legendario y músculo americano en su máxima expresión.'
+      subtitle: 'Desempeño legendario y músculo americano en su máxima expresión.',
+      hideForm: true
     },
     'Peugeot': {
       video: '2kY99v9l6I4',
+      image: '/adistem2026/peugeot-banner.jpg',
       accent: '#002E6B', // Peugeot Blue
       title: 'Allure y excelencia. Peugeot 2026.',
-      subtitle: 'La combinación perfecta de innovación, tecnología y diseño francés.'
+      subtitle: 'La combinación perfecta de innovación, tecnología y diseño francés.',
+      hideForm: true
     }
   }
 
@@ -106,12 +119,53 @@
   function scrollToPromo() { setTimeout(() => promoEl?.scrollIntoView({ behavior: 'smooth' }), 30) }
   function scrollToMap()   { mapEl?.scrollIntoView({ behavior: 'smooth' }) }
 
+  function syncBrandFromUrl() {
+    const path = window.location.pathname
+    const base = '/adistem2026/'
+    
+    if (path.toLowerCase().startsWith(base + 'seminuevos')) {
+      currentView = 'Seminuevos'
+      window.scrollTo(0, 0)
+      return
+    }
+
+    currentView = 'Portal'
+    if (path.startsWith(base)) {
+      const brandPath = path.replace(base, '').replace(/\//g, '')
+      const brands: BrandFilter[] = ['Jeep', 'Fiat', 'Dodge', 'Ram', 'Peugeot']
+      const found = brands.find(b => b.toLowerCase() === brandPath.toLowerCase())
+      if (found) {
+        brandFilter = found
+        return
+      }
+    }
+    brandFilter = 'Todas'
+  }
+
+  $effect(() => {
+    syncBrandFromUrl()
+    window.addEventListener('popstate', syncBrandFromUrl)
+    return () => window.removeEventListener('popstate', syncBrandFromUrl)
+  })
+
   function handleBrandSelect(brand: BrandFilter) { 
+    if (brandFilter === brand && currentView === 'Portal') return
     brandFilter = brand
-    // When a brand is selected, we want to show the specific landing
+    currentView = 'Portal'
+    
+    // Update URL without reload
+    const base = '/adistem2026/'
+    const newPath = brand === 'Todas' ? base : `${base}${brand.toLowerCase()}/`
+    history.pushState({ brand }, '', newPath)
+
+    // Always scroll to top to show the brand landing
     scrollToHero()
-    // Small delay to let the UI update before filtering models if needed
-    setTimeout(() => { if (brand !== 'Todas') scrollToPromo() }, 800)
+  }
+
+  function handleSeminuevosClick() {
+    currentView = 'Seminuevos'
+    history.pushState({ view: 'Seminuevos' }, '', '/adistem2026/seminuevos/')
+    window.scrollTo(0, 0)
   }
   function handleTypeSelect(type: VehicleType)   { typeFilter  = type;  scrollToPromo() }
 
@@ -146,7 +200,6 @@
     ? 'background:rgba(255,255,255,0.07);backdrop-filter:blur(60px) saturate(220%);-webkit-backdrop-filter:blur(60px) saturate(220%);border:1px solid rgba(255,255,255,0.10);box-shadow:0 8px 40px rgba(0,0,0,0.55),inset 0 1px 0 rgba(255,255,255,0.14),inset 0 -1px 0 rgba(0,0,0,0.20);'
     : 'background:rgba(255,255,255,0.68);backdrop-filter:blur(60px) saturate(220%);-webkit-backdrop-filter:blur(60px) saturate(220%);border:1px solid rgba(100,140,220,0.20);box-shadow:0 8px 40px rgba(30,60,120,0.10),inset 0 1px 0 rgba(255,255,255,0.95),inset 0 -1px 0 rgba(100,130,220,0.08);'
   )
-  const primaryBtn  = 'background:linear-gradient(135deg,#334E8B,#2E6CCF);border:1px solid rgba(255,255,255,0.30);box-shadow:0 6px 24px rgba(51,78,139,0.55),inset 0 1px 0 rgba(255,255,255,0.35);'
   const ratingCard  = $derived($isDark
     ? 'background:rgba(255,255,255,0.07);backdrop-filter:blur(40px);border:1px solid rgba(255,255,255,0.10);border-radius:14px;'
     : 'background:rgba(255,255,255,0.68);backdrop-filter:blur(40px);border:1px solid rgba(100,140,220,0.18);border-radius:14px;'
@@ -189,11 +242,13 @@
 
   <!-- Fixed top nav -->
   <GlassTopNav
-    onCotizarClick={scrollToHero}
-    onTypeSelect={handleTypeSelect}
     activeType={typeFilter}
-    onMenuToggle={() => mobileMenuOpen = true}
+    onTypeSelect={handleTypeSelect}
+    onCotizarClick={scrollToPromo}
+    onMenuToggle={() => mobileMenuOpen = !mobileMenuOpen}
     onMapClick={scrollToMap}
+    onHomeClick={() => handleBrandSelect('Todas')}
+    onSeminuevosClick={handleSeminuevosClick}
   />
 
   <!-- Mobile bottom nav -->
@@ -202,8 +257,9 @@
   <!-- Main content -->
   <div class="ml-0 md:ml-20 pb-32 md:pb-0">
 
-    <!-- HERO -->
-    <div bind:this={heroEl}>
+    {#if currentView === 'Portal'}
+      <!-- HERO -->
+      <div bind:this={heroEl}>
       <HeroSection 
         id="hero" 
         onMapClick={scrollToMap} 
@@ -251,6 +307,14 @@
     <div bind:this={promoEl}>
       <PromoBentoGrid initialBrand={brandFilter} initialType={typeFilter} />
     </div>
+
+    <!-- BRAND BENEFITS -->
+    {#if brandFilter !== 'Todas'}
+      <BrandBenefitsSection 
+        brand={brandFilter} 
+        accent={currentBrandConfig.accent} 
+      />
+    {/if}
 
     <!-- SERVICE BANNER -->
     <section bind:this={serviceBannerEl} class="py-8 md:py-12 px-4 md:px-8" style="background:{serviceBg}">
@@ -397,6 +461,9 @@
         </div>
       </div>
     </section>
+    {:else}
+      <SeminuevosView />
+    {/if}
 
     <!-- FOOTER -->
     <footer bind:this={footerEl} class="py-10 md:py-12 px-4 md:px-8" style="background:{footerBg};border-top:1px solid {T.divider};">

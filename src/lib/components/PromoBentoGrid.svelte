@@ -197,16 +197,17 @@
       <div>
         <p class="text-xs uppercase tracking-widest mb-1.5" style="color:{textMuted}">Ofertas exclusivas</p>
         <h2 style="font-size:clamp(1.6rem,5vw,2.2rem);font-weight:800;color:{textPrimary};">
-          Nuestras <span style="background:linear-gradient(135deg,#334E8B,#6B8ED4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Promociones</span>
-          {#if activeBrand !== 'Todas'}
+          {#if activeBrand === 'Todas'}
+            Nuestras <span style="background:linear-gradient(135deg,#334E8B,#6B8ED4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Promociones</span>
+          {:else}
             {@const bColor = 
-              activeBrand === 'Dodge' ? ($isDark ? '#ff5252' : '#d50000') : 
-              activeBrand === 'Jeep' ? ($isDark ? '#6cc4a1' : '#487f70') : 
-              activeBrand === 'Ram' ? ($isDark ? '#ff6b6b' : '#880d00') : 
-              activeBrand === 'Peugeot' ? ($isDark ? '#60a5fa' : '#0074E8') : 
-              activeBrand === 'Fiat' ? ($isDark ? 'white' : '#1a2040') : 
+              activeBrand === 'Dodge'   ? ($isDark ? '#ff5252' : '#d50000') : 
+              activeBrand === 'Jeep'    ? ($isDark ? '#a4ad7c' : '#4B5320') : 
+              activeBrand === 'Ram'     ? ($isDark ? '#ff6b6b' : '#D32F2F') : 
+              activeBrand === 'Peugeot' ? ($isDark ? '#60a5fa' : '#002E6B') : 
+              activeBrand === 'Fiat'    ? ($isDark ? '#ff8a80' : '#9A2128') : 
               'inherit'}
-            <span style="color: {bColor};"> {activeBrand.toUpperCase()}</span>
+            Línea <span style="color: {bColor};">{activeBrand.toUpperCase()}</span> <span class="font-light opacity-50">2026</span>
           {/if}
         </h2>
       </div>

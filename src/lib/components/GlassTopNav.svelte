@@ -1,16 +1,18 @@
 <script lang="ts">
   import { onMount } from 'svelte'
-  import { Calculator, Gauge, Wrench, Phone, Menu, ChevronDown, MapPin } from 'lucide-svelte'
+  import { Calculator, Gauge, Wrench, Phone, Menu, ChevronDown, MapPin, LayoutGrid, Car, Mountain, Zap, Truck } from 'lucide-svelte'
   import { isDark } from '$lib/stores/theme'
   import LiquidGlass from './LiquidGlass.svelte'
   import type { VehicleType } from '$lib/types'
 
   interface Props {
-    onCotizarClick?: () => void
-    onTypeSelect?:   (type: VehicleType) => void
-    activeType?:     VehicleType
-    onMenuToggle?:   () => void
-    onMapClick?:     () => void
+    onCotizarClick?:    () => void
+    onTypeSelect?:      (type: VehicleType) => void
+    activeType?:        VehicleType
+    onMenuToggle?:      () => void
+    onMapClick?:        () => void
+    onHomeClick?:       () => void
+    onSeminuevosClick?: () => void
   }
 
   let {
@@ -19,9 +21,17 @@
     activeType = 'Todos',
     onMenuToggle,
     onMapClick,
+    onHomeClick,
+    onSeminuevosClick,
   }: Props = $props()
 
-  const VEHICLE_TYPES: VehicleType[] = ['Todos', 'Sedán', 'SUV', 'Deportivos', 'Pick-ups']
+  const VEHICLE_TYPES = [
+    { name: 'Todos',      icon: 'grid_view',          desc: 'Toda nuestra gama disponible' },
+    { name: 'Sedán',      icon: 'directions_car',     desc: 'Elegancia y confort urbano' },
+    { name: 'SUV',        icon: 'airport_shuttle',    desc: 'Versatilidad para tu familia' },
+    { name: 'Deportivos', icon: 'sports_motorsports', desc: 'Adrenalina y diseño puro' },
+    { name: 'Pick-ups',   icon: 'local_shipping',     desc: 'Fuerza bruta para el trabajo' },
+  ] as const
 
   let scrolled = $state(false)
 
@@ -90,23 +100,42 @@
   <div class="hidden md:block h-6 w-px flex-shrink-0" style="background:{divColor}"></div>
 
   <div class="hidden md:flex items-center gap-6 flex-1 px-4">
+    <button 
+      onclick={(e) => { e.preventDefault(); onHomeClick?.() }} 
+      class="flex items-center gap-1.5 text-sm font-medium transition-all hover:opacity-80 cursor-pointer" 
+      style="color:{$isDark ? 'rgba(255,255,255,0.85)' : '#1a2040'}">
+      Inicio
+    </button>
     <div class="relative group h-full flex items-center">
       <button class="flex items-center gap-1.5 text-sm font-medium transition-all cursor-pointer" style="color:{$isDark ? 'rgba(255,255,255,0.85)' : '#1a2040'}">
         Modelos <ChevronDown size={14} class="opacity-70 transition-transform group-hover:rotate-180" />
       </button>
-      <div class="absolute top-12 left-0 w-48 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 rounded-xl"
-        style="background:{$isDark ? 'rgba(15,22,45,0.95)' : 'rgba(255,255,255,0.95)'};backdrop-filter:blur(20px);border:1px solid {$isDark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.05)'};box-shadow:0 10px 30px rgba(0,0,0,0.1);">
-        <div class="flex flex-col py-2">
-          {#each VEHICLE_TYPES as type}
-            <button onclick={() => onTypeSelect?.(type)} class="px-5 py-2.5 text-sm font-medium transition-colors hover:bg-black/5 dark:hover:bg-white/10 text-left w-full cursor-pointer"
-              style="color:{activeType === type ? ($isDark ? '#60a5fa' : '#3b82f6') : ($isDark ? 'rgba(255,255,255,0.85)' : '#1a2040')}">
-              {type}
+      <div class="absolute top-12 left-0 w-72 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 rounded-2xl overflow-hidden p-2"
+        style="background:{$isDark ? 'rgba(10,15,35,0.92)' : 'rgba(255,255,255,0.95)'};backdrop-filter:blur(24px);border:1px solid {$isDark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.08)'};box-shadow:0 20px 40px rgba(0,0,0,0.2);">
+        <div class="flex flex-col gap-1">
+          {#each VEHICLE_TYPES as item}
+            <button 
+              onclick={() => onTypeSelect?.(item.name as VehicleType)} 
+              class="group/item flex items-center gap-4 px-4 py-3 rounded-xl transition-all hover:bg-white/5 dark:hover:bg-white/5 cursor-pointer text-left w-full"
+            >
+              <div class="flex items-center justify-center w-10 h-10 rounded-lg transition-all"
+                style="background:{activeType === item.name ? 'rgba(59,130,246,0.15)' : ($isDark ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.03)')};color:{activeType === item.name ? '#3b82f6' : ($isDark ? 'rgba(255,255,255,0.6)' : 'rgba(20,30,80,0.6)')}">
+                <span class="material-symbols-outlined" style="font-size:24px;">{item.icon}</span>
+              </div>
+              <div class="flex flex-col">
+                <span class="text-sm font-bold tracking-tight" style="color:{activeType === item.name ? ($isDark ? '#60a5fa' : '#3b82f6') : ($isDark ? 'rgba(255,255,255,0.9)' : '#1a2040')}">
+                  {item.name}
+                </span>
+                <span class="text-[10px] opacity-50 font-medium" style="color:{$isDark ? 'white' : '#1a2040'}">
+                  {item.desc}
+                </span>
+              </div>
             </button>
           {/each}
         </div>
       </div>
     </div>
-    <a href="/seminuevos" class="text-sm font-medium transition-all hover:opacity-80" style="color:{$isDark ? 'rgba(255,255,255,0.85)' : '#1a2040'}">
+    <a href="/adistem2026/seminuevos/" onclick={(e) => { e.preventDefault(); onSeminuevosClick?.() }} class="text-sm font-medium transition-all hover:opacity-80" style="color:{$isDark ? 'rgba(255,255,255,0.85)' : '#1a2040'}">
       Seminuevos
     </a>
   </div>
