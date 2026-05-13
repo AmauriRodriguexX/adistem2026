@@ -1791,3 +1791,28 @@ https://svelte.dev/e/css_unused_selector
 https://svelte.dev/e/css_unused_selector
 9:03:46 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1632:4 Unused CSS selector "to"
 https://svelte.dev/e/css_unused_selector
+[2m9:09:28 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/JeepPremiumLanding.svelte, /src/styles/index.css[22m
+9:09:28 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1549:4 Unused CSS selector ".versions-layout"
+https://svelte.dev/e/css_unused_selector
+9:09:28 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1550:4 Unused CSS selector ".features-columns"
+https://svelte.dev/e/css_unused_selector
+9:09:28 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1562:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+9:09:28 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1567:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+9:09:28 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1575:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+9:09:28 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1580:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+9:09:28 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1608:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+9:09:28 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1613:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+9:09:28 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1621:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+9:09:28 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1626:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+9:09:28 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1634:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+9:09:28 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1639:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector

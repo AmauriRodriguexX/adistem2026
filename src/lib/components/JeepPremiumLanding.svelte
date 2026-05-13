@@ -289,15 +289,22 @@
   <section class="pin-stage">
     <div class="pin-visual">
       <div class="pin-media-stack">
-        <button
-          type="button"
+        <div
+          role="button"
+          tabindex="0"
           class="pin-media"
           aria-label={`Reproducir video de ${model.name}`}
           onmouseenter={() => pinVideoActive = true}
           onmouseleave={() => pinVideoActive = false}
           onfocus={() => pinVideoActive = true}
           onblur={() => pinVideoActive = false}
-          onclick={() => pinVideoActive = !pinVideoActive}
+          onclick={() => pinVideoActive = true}
+          onkeydown={(event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+              event.preventDefault()
+              pinVideoActive = true
+            }
+          }}
         >
           <img class:video-active={pinVideoActive} class="truck-main" src={model.spotlightImage} alt={model.name} />
           {#if pinVideoSrc}
@@ -313,7 +320,7 @@
             <GoogleIcon name="play_arrow" size={22} />
             Ver video
           </span>
-        </button>
+        </div>
 
         <div class="pin-readout">
           <span>Momentum visual</span>
