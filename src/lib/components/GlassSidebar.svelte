@@ -192,7 +192,7 @@
     <div class="px-5 py-4 mt-auto" style="border-top:1px solid {$isDark ? 'rgba(255,255,255,0.08)' : 'rgba(100,130,220,0.12)'}">
       <nav class="flex flex-col gap-1">
         <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold transition-all" style="color:{$isDark ? 'rgba(255,255,255,0.85)' : '#1a2040'}">
-          <GoogleIcon name="speed" size={20} class="opacity-70" /> Test Drive
+          <GoogleIcon name="speed" size={20} class="opacity-70" /> Prueba de manejo
         </a>
         <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold transition-all" style="color:{$isDark ? 'rgba(255,255,255,0.85)' : '#1a2040'}">
           <GoogleIcon name="build" size={20} class="opacity-70" /> Servicio

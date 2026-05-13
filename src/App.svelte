@@ -20,7 +20,7 @@
 
   let heroEl:  HTMLDivElement | null = $state(null)
   let promoEl: HTMLDivElement | null = $state(null)
-  let formEl:  HTMLElement | null = $state(null)
+  let formEl:  any = $state(null)
   let brandStripEl:   HTMLElement | null = $state(null)
   let benefitsEl:     HTMLElement | null = $state(null)
   let serviceBannerEl: HTMLElement | null = $state(null)
@@ -90,22 +90,38 @@
   const currentBrandConfig = $derived(BRAND_CONFIGS[brandFilter])
   const brandAccent = $derived(currentBrandConfig.accent)
 
-  onMount(() => {
-    const cleanup = initSystemListener()
+  onMount(() => initSystemListener())
 
-    const io = (el: Element | null, cb: () => void, threshold = 0.14) => {
-      if (!el) return { disconnect() {} }
-      const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) { cb(); obs.disconnect() } }, { threshold })
-      obs.observe(el)
-      return obs
-    }
+  $effect(() => {
+    if (!brandStripEl) return
+    brandStripVisible = false
+    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) { brandStripVisible = true; obs.disconnect() } }, { threshold: 0.14 })
+    obs.observe(brandStripEl)
+    return () => obs.disconnect()
+  })
 
-    const brandIO   = io(brandStripEl,   () => brandStripVisible   = true)
-    const benefitIO = io(benefitsEl,     () => benefitsVisible     = true, 0.10)
-    const serviceIO = io(serviceBannerEl,() => serviceBannerVisible = true, 0.12)
-    const footerIO  = io(footerEl,       () => footerVisible        = true, 0.05)
+  $effect(() => {
+    if (!benefitsEl) return
+    benefitsVisible = false
+    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) { benefitsVisible = true; obs.disconnect() } }, { threshold: 0.10 })
+    obs.observe(benefitsEl)
+    return () => obs.disconnect()
+  })
 
-    return () => { cleanup(); brandIO.disconnect(); benefitIO.disconnect(); serviceIO.disconnect(); footerIO.disconnect() }
+  $effect(() => {
+    if (!serviceBannerEl) return
+    serviceBannerVisible = false
+    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) { serviceBannerVisible = true; obs.disconnect() } }, { threshold: 0.12 })
+    obs.observe(serviceBannerEl)
+    return () => obs.disconnect()
+  })
+
+  $effect(() => {
+    if (!footerEl) return
+    footerVisible = false
+    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) { footerVisible = true; obs.disconnect() } }, { threshold: 0.05 })
+    obs.observe(footerEl)
+    return () => obs.disconnect()
   })
 
   const BRANDS_STRIP: { name: string; filter: BrandFilter; logo: string }[] = [
@@ -260,7 +276,7 @@
     { title: 'Servicios', links: [
       { label:'Cotización',       href:'#' },
       { label:'Cita de Servicio', href:'#' },
-      { label:'Test Drive',       href:'#' },
+      { label:'Prueba de manejo', href:'#' },
       { label:'Contáctanos',      href:'#' },
     ]},
     { title: 'Empresa', links: [

@@ -8,7 +8,7 @@
   let { onCotizarClick }: Props = $props()
 
   const LINKS = [
-    { icon: 'speed',      label: 'Test Drive', href: '#', isWA: false, action: 'cotizar' },
+    { icon: 'speed',      label: 'Prueba de manejo', href: '#', isWA: false, action: 'cotizar' },
     { icon: 'calculate',  label: 'Cotizar',    href: '#', isWA: false, action: 'cotizar' },
     { icon: 'build',      label: 'Servicio',   href: '#', isWA: false, action: 'cotizar' },
     { icon: 'call',       label: 'Contacto',   href: '#', isWA: false, action: 'cotizar' },

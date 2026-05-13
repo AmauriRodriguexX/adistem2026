@@ -15,77 +15,101 @@
 
   let { onModelSelect }: { onModelSelect?: (slug: string) => void } = $props()
 
-  const A = '/adistem2026/jeep-lineup'
+  const A = '/adistem2026/jeep'
   const JEEP_DEFAULT = '#424D07'
   const JEEP_HOVER = '#5A690A'
   let activeModelIndex = $state(0)
 
+  const CDN = 'https://www.jeep.com.mx/content/dam/cross-regional'
+
   const models: JeepModel[] = [
-    {
-      slug: '1500-rho',
-      name: 'JEEP 1500 RHO',
-      role: 'Alto desempeño off-road',
-      image: `${A}/jeep-1500-rho.jpg`,
-      accent: JEEP_HOVER,
-      use: 'Para quien quiere velocidad, presencia y terracería.',
-      stat: 'Performance',
-      metric: 'Off-road',
-      detail: 'Suspensión y respuesta para terrenos abiertos',
-    },
-    {
-      slug: '1500-tungsten',
-      name: 'JEEP 1500 Tungsten',
-      role: 'Lujo y capacidad premium',
-      image: `${A}/jeep-1500-tungsten.jpg`,
-      accent: JEEP_DEFAULT,
-      use: 'Para viajes, negocio y confort ejecutivo.',
-      stat: 'Premium',
-      metric: 'Lujo',
-      detail: 'Cabina elevada, materiales premium y gran presencia',
-    },
-    {
-      slug: '700',
-      name: 'JEEP 700',
-      role: 'Compacta, ágil, urbana',
-      image: `${A}/jeep-700.jpg`,
-      accent: JEEP_HOVER,
-      use: 'Para ciudad, reparto y emprendimientos.',
-      stat: 'Ciudad',
-      metric: 'Ágil',
-      detail: 'Formato compacto para moverse y cargar todos los días',
-    },
     {
       slug: 'renegade',
       name: 'Jeep Renegade',
-      role: 'SUV compacto y versátil',
-      image: `/adistem2026/jeep/hero.avif`,
-      accent: JEEP_DEFAULT,
-      use: 'Para la ciudad, carretera y la aventura espontánea.',
+      role: 'SUV compacto con espíritu aventurero',
+      image: `${CDN}/nafta/jeep/es_mx/2026/renegade/vlp/desktop/my26-jeep-renegade-vlp-dk-mx.jpg.img.2880.jpg`,
+      accent: JEEP_HOVER,
+      use: 'Para la ciudad, carretera y escapadas de fin de semana.',
       stat: 'Aventura Urbana',
       metric: '1.3L Turbo 173 HP',
-      detail: 'Eficiencia y tecnología de clase mundial con diseño icónico',
+      detail: 'El SUV con más actitud: eficiente, tecnológico y con espíritu 4x4.',
     },
     {
-      slug: '1500',
-      name: 'JEEP 1500',
-      role: 'Potencia diaria',
-      image: `${A}/jeep-1500.jpg`,
+      slug: 'compass',
+      name: 'Jeep Compass',
+      role: 'Estilo y tecnología en cada ruta',
+      image: `${CDN}/nafta/jeep/es_mx/2026/compass/vlp/desktop/my26-jeep-compass-hero-vlp-inicio-mx-dk-v4.jpg.img.2880.jpg`,
       accent: JEEP_DEFAULT,
-      use: 'Para remolque, familia y aventura.',
-      stat: 'Versátil',
-      metric: 'Remolque',
-      detail: 'Balance entre fuerza, confort y capacidad diaria',
+      use: 'Para familias jóvenes, ciudad y carretera con confort.',
+      stat: 'Diseño & Confort',
+      metric: 'AWD Disponible',
+      detail: 'Diseñado para conquistarte: tecnología, espacio y presencia.',
     },
     {
-      slug: '1200',
-      name: 'JEEP 1200',
-      role: 'Trabajo inteligente',
-      image: `${A}/jeep-1200.jpg`,
-      accent: '#7f7f7f',
-      use: 'Para flotillas, campo y carga productiva.',
-      stat: 'Trabajo',
-      metric: 'Carga',
-      detail: 'Configuración práctica para jornadas productivas',
+      slug: 'commander',
+      name: 'Jeep Commander',
+      role: '7 plazas para todo lo que importa',
+      image: `${CDN}/nafta/jeep/es_mx/2026/commander/vlp/desktop/my26-jeep-commander-inicio-hero-mx-dk-v1.jpg.img.2880.jpg`,
+      accent: JEEP_HOVER,
+      use: 'Para familia completa, viajes largos y versatilidad total.',
+      stat: '7 Pasajeros',
+      metric: 'Familia & Espacio',
+      detail: 'Tres filas de asientos con confort y capacidad sin concesiones.',
+    },
+    {
+      slug: 'cherokee',
+      name: 'Jeep Cherokee',
+      role: 'El SUV icónico reinventado',
+      image: `${CDN}/global/jeep/2026/cherokee/vlp/desktop/my26-jeep-cherokee-overview-hero-main-inc-v2-desktop.jpg.img.2880.jpg`,
+      accent: JEEP_DEFAULT,
+      use: 'Para la ciudad cómoda, carretera diaria y fines de semana.',
+      stat: 'Icónico',
+      metric: '2.0T 270 HP',
+      detail: 'Un clásico reinventado con potencia turbo y carácter Jeep.',
+    },
+    {
+      slug: 'grand-cherokee',
+      name: 'Grand Cherokee',
+      role: 'Poder, lujo y presencia premium',
+      image: `${CDN}/nafta/jeep/es_mx/2026/grand-cherokee/vlp/desktop/my26-jeep-grand-cherokee-inicio-hero-mx-dk.jpg.img.2880.jpg`,
+      accent: '#7A5C3A',
+      use: 'Para ejecutivos, familia premium y carretera de lujo.',
+      stat: 'Premium',
+      metric: 'V6 3.6L / 4xe',
+      detail: 'El SUV más premiado: lujo real con capacidad off-road legendaria.',
+    },
+    {
+      slug: 'wrangler',
+      name: 'Jeep Wrangler',
+      role: 'El todoterreno original y eterno',
+      image: `${CDN}/nafta/jeep/es_mx/2026/wrangler/vlp/desktop/my26-jeep-wrangler-inicio-vlp-mx-dk.jpg.img.2880.jpg`,
+      accent: JEEP_HOVER,
+      use: 'Para aventura extrema, off-road y espíritu libre.',
+      stat: 'Off-Road Total',
+      metric: '4x4 con reducida',
+      detail: 'Icónico, irreducible y sin límites. El Jeep definitivo.',
+    },
+    {
+      slug: 'jt',
+      name: 'Jeep JT Gladiator',
+      role: 'La única pickup Jeep todoterreno',
+      image: `${CDN}/nafta/jeep/es_mx/2026/jt-gladiator/vlp/desktop/my26-jeep-mojave-inicio-vlp-mx-dk.jpg.img.2880.jpg`,
+      accent: '#8C6420',
+      use: 'Para trabajo, aventura extrema y carga con tracción total.',
+      stat: 'Pickup 4x4',
+      metric: 'Cama + Off-Road',
+      detail: 'La única pickup todoterreno con raíces Wrangler y cama abierta.',
+    },
+    {
+      slug: 'grand-wagoneer-l',
+      name: 'Grand Wagoneer L',
+      role: 'El SUV de lujo más imponente',
+      image: `${CDN}/nafta/jeep/es_mx/2026/grand-wagoneer-l/vlp/desktop/my26-jeep-grandwagoneerl-inicio-mainhero-dk-mx.jpg.img.2880.jpg`,
+      accent: '#2C2C2C',
+      use: 'Para ejecutivos, familia grande y viajes de primer nivel.',
+      stat: 'Ultra Premium',
+      metric: 'V8 6.4L 471 HP',
+      detail: 'La cúspide del lujo americano: 8 plazas, V8 y tecnología de clase mundial.',
     },
   ]
 
@@ -96,6 +120,41 @@
   function goToModel(index: number) {
     activeModelIndex = (index + models.length) % models.length
   }
+
+  let isPlaying = $state(true)
+
+  function togglePlay() {
+    isPlaying = !isPlaying
+  }
+
+  $effect(() => {
+    if (!isPlaying) return
+    const id = setInterval(() => {
+      activeModelIndex = (activeModelIndex + 1) % models.length
+    }, 4500)
+    return () => clearInterval(id)
+  })
+
+  // Swipe táctil
+  let touchStartX = 0
+  let touchStartY = 0
+
+  function onTouchStart(e: TouchEvent) {
+    touchStartX = e.touches[0].clientX
+    touchStartY = e.touches[0].clientY
+  }
+
+  function onTouchEnd(e: TouchEvent) {
+    const dx = touchStartX - e.changedTouches[0].clientX
+    const dy = touchStartY - e.changedTouches[0].clientY
+    // Solo swipe horizontal claro (más dx que dy)
+    if (Math.abs(dx) < 40 || Math.abs(dx) < Math.abs(dy)) return
+    goToModel(dx > 0 ? activeModelIndex + 1 : activeModelIndex - 1)
+  }
+
+  // Pausar autoplay al hover del carrusel
+  function onCarouselEnter() { isPlaying = false }
+  function onCarouselLeave() { isPlaying = true }
 </script>
 
 <svelte:head>
@@ -104,25 +163,31 @@
 
 <main class="jeep-hub">
   <section class="hub-hero">
-    <img src={`${A}/jeep-1500-rho.jpg`} alt="JEEP 1500 RHO en movimiento" />
-    <div class="hero-overlay"></div>
+    <img src={`${A}/hero.avif`} alt="JEEP Renegade en movimiento" />
     <div class="hero-inner">
       <p>Gama JEEP 2026</p>
-      <h1>Una familia para cada forma de avanzar.</h1>
-      <span>Desde la agilidad urbana de JEEP 700 hasta el carácter premium de JEEP 1500, encuentra la pickup que encaja con tu trabajo, tu ruta y tu estilo.</span>
-      <button onclick={() => selectModel('1500-rho')}>Ver detalle destacado <GoogleIcon name="arrow_forward" size={18} /></button>
+      <h1>8 modelos. Una sola forma de vivir la aventura.</h1>
+      <span>Desde la actitud urbana del Renegade hasta el lujo extremo del Grand Wagoneer L, encuentra el Jeep que encaja con tu ruta, tu familia y tu estilo.</span>
+      <button onclick={() => selectModel('renegade')}>Ver modelos <GoogleIcon name="arrow_forward" size={18} /></button>
     </div>
   </section>
 
-  <section class="model-carousel" aria-label="Modelos JEEP">
+  <section
+    class="model-carousel"
+    aria-label="Modelos JEEP"
+    onmouseenter={onCarouselEnter}
+    onmouseleave={onCarouselLeave}>
     <div class="carousel-head">
       <div>
         <p>Explora la gama</p>
-        <h2>Modelos JEEP 2026</h2>
+        <h2>8 Modelos Jeep 2026</h2>
       </div>
     </div>
 
-    <div class="carousel-window">
+    <div
+      class="carousel-window"
+      ontouchstart={onTouchStart}
+      ontouchend={onTouchEnd}>
       <div class="model-track" style={`--active:${activeModelIndex};`}>
         {#each models as model, i (model.slug)}
           <article class:active={i === activeModelIndex} style={`--accent:${model.accent}`}>
@@ -133,7 +198,7 @@
               <span>{model.role}</span>
               <i>{model.metric}</i>
               <p>{model.detail}</p>
-              <button onclick={() => selectModel(model.slug)}>Ver modelo <GoogleIcon name="arrow_forward" size={16} /></button>
+              <button onclick={() => selectModel('renegade')}>Ver modelo <GoogleIcon name="arrow_forward" size={16} /></button>
             </div>
           </article>
         {/each}
@@ -141,48 +206,49 @@
     </div>
 
     <div class="carousel-controls">
-      <div class="carousel-dots" aria-label="Seleccionar modelo">
+      <div class="carousel-pill" aria-label="Seleccionar modelo">
         {#each models as model, i (model.slug)}
           <button
             class:active={i === activeModelIndex}
             aria-label={`Ver ${model.name}`}
-            onclick={() => goToModel(i)}
-            style={`--accent:${model.accent}`}>
+            onclick={() => goToModel(i)}>
           </button>
         {/each}
       </div>
-      <div class="carousel-arrows">
-        <button aria-label="Modelo anterior" onclick={() => goToModel(activeModelIndex - 1)}><GoogleIcon name="arrow_back" size={18} /></button>
-        <button aria-label="Modelo siguiente" onclick={() => goToModel(activeModelIndex + 1)}><GoogleIcon name="arrow_forward" size={18} /></button>
-      </div>
+      <button
+        class="play-btn"
+        aria-label={isPlaying ? 'Pausar carrusel' : 'Reproducir carrusel'}
+        onclick={togglePlay}>
+        <GoogleIcon name={isPlaying ? 'pause' : 'play_arrow'} size={16} />
+      </button>
     </div>
   </section>
 
   <section class="chooser">
     <div class="chooser-copy">
       <p>Elige por necesidad</p>
-      <h2>No todas las JEEP hacen lo mismo. Esa es la idea.</h2>
+      <h2>No todos los Jeep hacen lo mismo. Esa es la idea.</h2>
     </div>
     <div class="use-grid">
       <article>
-        <GoogleIcon name="business_center" size={22} style="margin-bottom:24px;color:{JEEP_HOVER}" />
-        <strong>Aventura Urbana</strong>
-        <span>Jeep Renegade, con motor 1.3L Turbo y 173 HP, para dominar la ciudad y las escapadas de fin de semana con actitud.</span>
+        <GoogleIcon name="directions_car" size={22} style="margin-bottom:24px;color:{JEEP_HOVER}" />
+        <strong>Aventura urbana</strong>
+        <span>Renegade y Compass, con motor turbo y AWD disponible, para dominar la ciudad y las escapadas de fin de semana.</span>
       </article>
       <article>
-        <GoogleIcon name="local_shipping" size={22} style="margin-bottom:24px;color:{JEEP_HOVER}" />
-        <strong>Carga y remolque</strong>
-        <span>JEEP 1500 para combinar fuerza, espacio y comodidad.</span>
+        <GoogleIcon name="family_restroom" size={22} style="margin-bottom:24px;color:{JEEP_HOVER}" />
+        <strong>Familia y espacio</strong>
+        <span>Commander con 7 plazas y Grand Wagoneer L con 8 para viajes, colegio y todo lo que la familia necesita.</span>
       </article>
       <article>
         <GoogleIcon name="terrain" size={22} style="margin-bottom:24px;color:{JEEP_HOVER}" />
-        <strong>Terracería y aventura</strong>
-        <span>JEEP 1500 RHO cuando el camino también es parte del plan.</span>
+        <strong>Terracería y extremo</strong>
+        <span>Wrangler y JT Gladiator cuando el camino sin pavimentar es parte del destino.</span>
       </article>
       <article>
-        <GoogleIcon name="explore" size={22} style="margin-bottom:24px;color:{JEEP_HOVER}" />
-        <strong>Viaje premium</strong>
-        <span>JEEP 1500 Tungsten para quien quiere capacidad con cabina de alto nivel.</span>
+        <GoogleIcon name="workspace_premium" size={22} style="margin-bottom:24px;color:{JEEP_HOVER}" />
+        <strong>Lujo y presencia</strong>
+        <span>Grand Cherokee y Grand Wagoneer L para quien exige potencia, confort y tecnología de clase mundial.</span>
       </article>
     </div>
   </section>
@@ -202,7 +268,7 @@
             <h3>{model.name}</h3>
             <span>{model.use}</span>
             <em>{model.detail}</em>
-            <button onclick={() => selectModel(model.slug)}>Explorar modelo <GoogleIcon name="arrow_forward" size={16} /></button>
+            <button onclick={() => selectModel('renegade')}>Explorar modelo <GoogleIcon name="arrow_forward" size={16} /></button>
           </div>
         </article>
       {/each}
@@ -236,40 +302,11 @@
   }
 
   .hub-hero {
-    min-height: 100svh;
+    min-height: clamp(620px, 92svh, 860px);
     position: relative;
     display: grid;
-    align-items: end;
+    align-items: center;
     overflow: hidden;
-  }
-
-  .hub-hero::before {
-    content: '';
-    position: absolute;
-    z-index: 1;
-    inset: 78px clamp(16px, 4vw, 54px) clamp(18px, 4vw, 54px);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 28px;
-    pointer-events: none;
-    box-shadow:
-      inset 0 1px 0 rgba(255,255,255,0.16),
-      inset 0 -1px 0 rgba(255,255,255,0.05),
-      0 0 80px rgba(136,13,0,0.18);
-    opacity: 0;
-    animation: border-bloom 1300ms var(--ease) both 350ms;
-  }
-
-  .hub-hero::after {
-    content: '';
-    position: absolute;
-    z-index: 1;
-    top: 78px;
-    left: clamp(22px, 8vw, 140px);
-    width: min(360px, 46vw);
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.72), transparent);
-    opacity: 0;
-    animation: line-scan 1600ms var(--ease) both 550ms;
   }
 
   .jeep-hub::before {
@@ -292,32 +329,52 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transform: scale(1.02);
+    object-position: 66% center;
+    filter: saturate(1.06) contrast(1.04) brightness(1.02);
+    transform: scale(1.015);
     animation: hero-drift 9s var(--ease) both;
   }
 
-  .hero-overlay {
+  .hub-hero::after {
+    content: '';
     position: absolute;
-    inset: 0;
-    background:
-      linear-gradient(90deg, rgba(5, 5, 7, 0.94) 0%, rgba(5, 5, 7, 0.48) 46%, rgba(5, 5, 7, 0.18) 100%),
-      linear-gradient(0deg, #050507 0%, transparent 40%);
+    z-index: 1;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: clamp(140px, 22vh, 260px);
+    background: linear-gradient(180deg,
+      transparent 0%,
+      rgba(5, 5, 7, 0.45) 50%,
+      rgba(5, 5, 7, 0.85) 78%,
+      #050507 100%);
+    pointer-events: none;
   }
 
   .hero-inner {
     position: relative;
-    z-index: 1;
-    width: min(820px, calc(100% - 40px));
-    margin: 0 0 clamp(78px, 10vw, 126px) clamp(24px, 8vw, 122px);
+    z-index: 2;
+    width: min(360px, calc(36vw - 20px));
+    margin: 0 0 0 clamp(22px, 5vw, 78px);
+    padding: clamp(18px, 1.6vw, 24px) clamp(20px, 1.8vw, 26px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 18px;
+    background: rgba(5, 7, 18, 0.30);
+    box-shadow:
+      rgba(0, 0, 0, 0.55) 0 30px 80px,
+      rgba(0, 0, 0, 0.20) 0 4px 16px,
+      rgba(255, 255, 255, 0.05) 0 1px 0 inset;
+    backdrop-filter: blur(28px) saturate(180%);
+    -webkit-backdrop-filter: blur(28px) saturate(180%);
     animation: hero-copy-in 1100ms var(--ease) both 120ms;
   }
 
   .hero-inner::before {
     content: '';
     display: block;
-    width: 72px;
+    width: 32px;
     height: 1px;
-    margin-bottom: 24px;
+    margin-bottom: 12px;
     background: linear-gradient(90deg, var(--jeep-hover), transparent);
   }
 
@@ -325,12 +382,20 @@
   .chooser-copy p,
   .lineup-head p,
   .hub-cta p {
-    margin: 0 0 14px;
+    margin: 0 0 10px;
     color: var(--jeep-hover);
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 900;
     letter-spacing: 0.18em;
     text-transform: uppercase;
+  }
+
+  .hero-inner p {
+    margin: 0 0 8px;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    color: color-mix(in srgb, var(--jeep-hover) 28%, rgba(255, 255, 255, 0.94));
+    text-shadow: 0 1px 12px rgba(0, 0, 0, 0.50);
   }
 
   .hero-inner h1,
@@ -338,19 +403,41 @@
   .lineup-head h2,
   .hub-cta h2 {
     margin: 0;
-    font-size: clamp(44px, 7vw, 104px);
-    line-height: 0.94;
     font-weight: 950;
-    letter-spacing: 0;
+    letter-spacing: -0.02em;
+  }
+
+  .hero-inner h1 {
+    max-width: 320px;
+    font-size: clamp(26px, 3vw, 38px);
+    line-height: 1.05;
+    font-weight: 900;
+    letter-spacing: -0.025em;
+  }
+
+  .chooser-copy h2 {
+    font-size: clamp(34px, 3.8vw, 52px);
+    line-height: 1.08;
+  }
+
+  .lineup-head h2 {
+    font-size: clamp(20px, 2.2vw, 28px);
+    line-height: 1.15;
+  }
+
+  .hub-cta h2 {
+    font-size: clamp(34px, 3.8vw, 52px);
+    line-height: 1.08;
   }
 
   .hero-inner > span {
     display: block;
-    max-width: 640px;
-    margin-top: 24px;
-    color: rgba(255, 255, 255, 0.68);
-    font-size: clamp(16px, 1.5vw, 21px);
-    line-height: 1.55;
+    max-width: 320px;
+    margin-top: 12px;
+    color: rgba(255, 255, 255, 0.70);
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.5;
   }
 
   .hero-inner button,
@@ -382,17 +469,25 @@
     background: color-mix(in srgb, var(--accent, var(--jeep-hover)) 28%, rgba(255, 255, 255, 0.10));
   }
 
+  .hero-inner button {
+    min-height: 36px;
+    margin-top: 18px;
+    padding: 0 16px;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.01em;
+  }
+
   .model-carousel {
     position: relative;
     z-index: 1;
-    --card-w: clamp(390px, 43vw, 680px);
-    --gap: 22px;
-    padding: clamp(34px, 5vw, 72px) clamp(18px, 6vw, 90px);
+    --card-w: clamp(370px, 39vw, 630px);
+    --gap: clamp(18px, 2vw, 28px);
+    padding: clamp(56px, 7vw, 98px) clamp(18px, 6vw, 90px);
     background:
-      radial-gradient(circle at 78% 16%, rgba(136, 13, 0, 0.16), transparent 28%),
+      radial-gradient(circle at 78% 22%, rgba(136, 13, 0, 0.14), transparent 32%),
       linear-gradient(180deg, #050507 0%, #09090d 100%);
-    border-top: 1px solid rgba(255, 255, 255, 0.10);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
     animation: reveal-up both;
     animation-timeline: view();
     animation-range: entry 0% cover 26%;
@@ -402,15 +497,15 @@
     display: flex;
     align-items: end;
     gap: 20px;
-    margin-bottom: 22px;
+    margin-bottom: clamp(24px, 3vw, 36px);
   }
 
   .carousel-controls {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-    margin-top: 20px;
+    justify-content: center;
+    gap: 10px;
+    margin-top: clamp(18px, 2.4vw, 30px);
   }
 
   .carousel-head p {
@@ -424,43 +519,43 @@
 
   .carousel-head h2 {
     margin: 0;
-    font-size: clamp(30px, 4vw, 58px);
-    line-height: 1;
-    letter-spacing: 0;
+    font-size: clamp(30px, 3.5vw, 48px);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
   }
 
-  .carousel-arrows {
-    display: flex;
-    gap: 10px;
-  }
-
-  .carousel-arrows button {
+  .play-btn {
+    flex-shrink: 0;
     width: 46px;
     height: 46px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid rgba(255, 255, 255, 0.16);
+    border: 1px solid rgba(255, 255, 255, 0.14);
     border-radius: 999px;
     color: rgba(255, 255, 255, 0.86);
-    background: rgba(255, 255, 255, 0.07);
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.10), 0 10px 30px rgba(0,0,0,0.20);
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.10), 0 8px 28px rgba(0,0,0,0.22);
     cursor: pointer;
-    transition: transform 420ms var(--ease), background 420ms var(--ease), border-color 420ms var(--ease);
+    transition: transform 340ms var(--ease), background 340ms var(--ease), box-shadow 340ms var(--ease);
   }
 
-  .carousel-arrows button:hover {
-    transform: translateY(-2px);
-    border-color: rgba(186, 0, 0, 0.48);
-    background: rgba(136, 13, 0, 0.28);
+  .play-btn:hover {
+    transform: scale(1.08);
+    background: rgba(255, 255, 255, 0.14);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.16), 0 12px 36px rgba(0,0,0,0.28);
+  }
+
+  .play-btn:active {
+    transform: scale(0.95);
   }
 
   .carousel-window {
     overflow: hidden;
     border-radius: 30px;
-    padding: 8px 0 4px;
+    padding: 10px 0 14px;
   }
 
   .model-track {
@@ -481,22 +576,24 @@
     overflow: hidden;
     text-align: left;
     color: white;
-    background: transparent;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.045);
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    border-radius: 34px;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 24px 70px rgba(0, 0, 0, 0.24);
     isolation: isolate;
     transform: translateZ(0);
-    border: 0;
-    border-radius: 0;
-    box-shadow: none;
+    transition: transform 620ms var(--ease), border-color 620ms var(--ease), background 620ms var(--ease), box-shadow 620ms var(--ease);
   }
 
   .model-track article::before {
     content: '';
     position: absolute;
     z-index: 2;
-    inset: 0 0 auto;
-    height: clamp(320px, 34vw, 520px);
+    inset: 12px 12px auto;
+    height: clamp(240px, 28vw, 400px);
     border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 30px;
+    border-radius: 24px;
     pointer-events: none;
     transition: border-color 620ms var(--ease), box-shadow 620ms var(--ease), transform 620ms var(--ease);
   }
@@ -504,11 +601,13 @@
   .model-track img {
     position: relative;
     width: 100%;
-    height: clamp(320px, 34vw, 520px);
+    height: clamp(240px, 28vw, 400px);
     object-fit: cover;
-    opacity: 0.92;
-    transform: scale(1.045);
-    border-radius: 30px;
+    object-position: top;
+    background: #07070e;
+    opacity: 0.94;
+    transform: scale(1);
+    border-radius: 24px;
     transition: transform 1200ms var(--ease), opacity 1200ms var(--ease), filter 1200ms var(--ease);
   }
 
@@ -518,7 +617,7 @@
 
   .model-track article.active img {
     transform: scale(1);
-    opacity: 0.96;
+    opacity: 1;
   }
 
   .model-track article.active::before {
@@ -529,13 +628,19 @@
     transform: scale(0.996);
   }
 
+  .model-track article.active {
+    background: rgba(255, 255, 255, 0.060);
+    border-color: color-mix(in srgb, var(--accent) 34%, rgba(255,255,255,0.12));
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.10), 0 30px 86px rgba(0, 0, 0, 0.32);
+  }
+
   .slide-glass {
     position: relative;
     z-index: 3;
     width: 100%;
     min-height: auto;
     margin: 0;
-    padding: 22px 14px 0;
+    padding: 24px 10px 8px;
     display: flex;
     flex-direction: column;
     opacity: 1;
@@ -556,8 +661,8 @@
 
   .slide-glass h3 {
     margin: 10px 0 0;
-    font-size: clamp(28px, 3.4vw, 46px);
-    line-height: 1;
+    font-size: clamp(24px, 2.6vw, 36px);
+    line-height: 1.05;
     letter-spacing: 0;
   }
 
@@ -605,7 +710,7 @@
     margin: 14px 0 0;
     color: rgba(255, 255, 255, 0.56);
     font-size: 14px;
-    line-height: 1.5;
+    line-height: 1.55;
   }
 
   .slide-glass button {
@@ -634,34 +739,47 @@
     border-color: color-mix(in srgb, var(--accent) 46%, rgba(255,255,255,0.22));
   }
 
-  .carousel-dots {
-    display: flex;
+  .carousel-pill {
+    display: inline-flex;
     align-items: center;
-    justify-content: flex-start;
-    gap: 9px;
-    min-height: 46px;
+    gap: 7px;
+    padding: 19px 22px;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.11);
+    border-radius: 999px;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 8px 28px rgba(0,0,0,0.20);
   }
 
-  .carousel-dots button {
-    width: 8px;
-    height: 8px;
+  .carousel-pill button {
+    width: 7px;
+    height: 7px;
+    min-height: unset;
     padding: 0;
     border: 0;
     border-radius: 999px;
-    background: rgba(255, 255, 255, 0.26);
+    background: rgba(255, 255, 255, 0.28);
     cursor: pointer;
-    transition: width 460ms var(--ease), background 460ms var(--ease), box-shadow 460ms var(--ease);
+    transition: width 500ms var(--ease), background 500ms var(--ease);
+    /* tap area generoso para mobile */
+    position: relative;
   }
 
-  .carousel-dots button.active {
-    width: 34px;
-    background: var(--accent);
-    box-shadow: 0 0 22px color-mix(in srgb, var(--accent) 48%, transparent);
+  .carousel-pill button::after {
+    content: '';
+    position: absolute;
+    inset: -10px;
+  }
+
+  .carousel-pill button.active {
+    width: 26px;
+    background: rgba(255, 255, 255, 0.92);
   }
 
   .chooser,
   .lineup {
-    padding: clamp(62px, 9vw, 126px) clamp(20px, 6vw, 90px);
+    padding: clamp(52px, 6.5vw, 96px) clamp(20px, 6vw, 90px);
   }
 
   .chooser {
@@ -693,12 +811,13 @@
   .use-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 14px;
+    gap: clamp(14px, 1.8vw, 22px);
   }
 
   .use-grid article {
-    min-height: 190px;
-    padding: 24px;
+    min-height: 180px;
+    padding: clamp(18px, 2.2vw, 26px);
+    border-radius: 24px;
     border: 1px solid rgba(255, 255, 255, 0.12);
     background: rgba(255, 255, 255, 0.055);
     backdrop-filter: blur(18px);
@@ -735,27 +854,27 @@
   }
 
   .lineup-head {
-    max-width: 760px;
-    margin-bottom: 36px;
+    max-width: 560px;
+    margin-bottom: clamp(28px, 3.2vw, 44px);
   }
 
   .lineup-grid {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: clamp(22px, 3vw, 34px);
+    grid-template-columns: repeat(12, 1fr);
+    gap: clamp(20px, 2.4vw, 32px);
   }
 
   .lineup-grid article {
-    grid-column: span 3;
+    grid-column: span 6;
     position: relative;
     display: grid;
-    grid-template-rows: minmax(300px, 1fr) auto;
+    grid-template-rows: auto 1fr;
     align-items: stretch;
     overflow: hidden;
-    background: #111116;
+    background: rgba(255, 255, 255, 0.045);
     border: 1px solid rgba(255, 255, 255, 0.10);
-    border-radius: 28px;
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
+    border-radius: 30px;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 24px 80px rgba(0, 0, 0, 0.22);
     animation: card-rise both;
     animation-timeline: view();
     animation-range: entry 8% cover 36%;
@@ -792,14 +911,15 @@
   }
 
   .lineup-grid article:nth-child(n + 3) {
-    grid-column: span 2;
+    grid-column: span 4;
   }
 
   .lineup-grid img {
     position: relative;
     width: 100%;
-    height: clamp(300px, 32vw, 430px);
+    height: clamp(242px, 11vw, 358px);
     object-fit: cover;
+    object-position: top;
     opacity: 0.94;
     transform: scale(1.02);
     transition: transform 1000ms var(--ease), opacity 1000ms var(--ease);
@@ -831,7 +951,11 @@
   .lineup-grid article > div {
     position: relative;
     z-index: 1;
-    padding: clamp(22px, 3vw, 36px);
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: clamp(22px, 2.8vw, 34px);
     background:
       radial-gradient(circle at 100% 0%, color-mix(in srgb, var(--accent) 22%, transparent), transparent 32%),
       linear-gradient(180deg, #15151b, #09090d);
@@ -875,32 +999,36 @@
 
   .lineup-grid h3 {
     margin: 0;
-    font-size: clamp(32px, 4vw, 58px);
-    line-height: 0.95;
+    font-size: clamp(17px, 1.7vw, 22px);
+    line-height: 1.15;
   }
 
   .lineup-grid span {
     display: block;
     max-width: 440px;
-    margin-top: 14px;
+    margin-top: 10px;
     color: rgba(255, 255, 255, 0.64);
-    font-size: 15px;
+    font-size: 14px;
     line-height: 1.5;
   }
 
   .lineup-grid em {
     display: block;
     max-width: 480px;
-    margin-top: 16px;
-    padding-left: 14px;
+    margin-top: 12px;
+    padding-left: 12px;
     border-left: 1px solid color-mix(in srgb, var(--accent) 58%, rgba(255,255,255,0.18));
     color: rgba(255, 255, 255, 0.50);
-    font-size: 13px;
+    font-size: 12px;
     font-style: normal;
     line-height: 1.45;
     opacity: 0;
     transform: translateY(10px);
     transition: opacity 620ms var(--ease), transform 620ms var(--ease);
+  }
+
+  .lineup-grid button {
+    margin-top: auto;
   }
 
   .lineup-grid article:hover em {
@@ -909,7 +1037,7 @@
   }
 
   .hub-cta {
-    min-height: 72svh;
+    min-height: 52svh;
     display: grid;
     place-items: center;
     align-content: center;
@@ -925,16 +1053,16 @@
     max-width: 880px;
   }
 
-  @keyfjeepes hero-drift {
+  @keyframes hero-drift {
     from {
-      transform: scale(1.08) translateX(-18px);
+      transform: scale(1.045) translateX(-18px);
     }
     to {
-      transform: scale(1.02) translateX(0);
+      transform: scale(1.015) translateX(0);
     }
   }
 
-  @keyfjeepes hero-copy-in {
+  @keyframes hero-copy-in {
     from {
       opacity: 0;
       transform: translateY(34px);
@@ -947,29 +1075,7 @@
     }
   }
 
-  @keyfjeepes border-bloom {
-    from {
-      opacity: 0;
-      transform: scale(0.985);
-    }
-    to {
-      opacity: 1;
-      transform: scale(1);
-    }
-  }
-
-  @keyfjeepes line-scan {
-    from {
-      opacity: 0;
-      transform: translateX(-42px) scaleX(0.45);
-    }
-    to {
-      opacity: 0.72;
-      transform: translateX(0) scaleX(1);
-    }
-  }
-
-  @keyfjeepes reveal-up {
+  @keyframes reveal-up {
     from {
       opacity: 0;
       transform: translateY(54px);
@@ -982,7 +1088,7 @@
     }
   }
 
-  @keyfjeepes card-rise {
+  @keyframes card-rise {
     from {
       opacity: 0;
       transform: translateY(50px) scale(0.985);
@@ -995,7 +1101,7 @@
     }
   }
 
-  @keyfjeepes tile-rise {
+  @keyframes tile-rise {
     from {
       opacity: 0;
       transform: translateY(32px);
@@ -1016,6 +1122,26 @@
   }
 
   @media (max-width: 980px) {
+    .hub-hero {
+      min-height: 720px;
+    }
+
+    .hub-hero > img {
+      object-position: 68% center;
+    }
+
+    .hub-hero {
+      align-items: start;
+    }
+
+    .hero-inner {
+      width: min(360px, calc(40vw - 18px));
+      margin-top: 108px;
+      margin-left: 18px;
+      margin-bottom: 0;
+      padding: 18px 20px;
+    }
+
     .model-carousel {
       --card-w: min(82vw, 520px);
       --gap: 18px;
@@ -1028,12 +1154,12 @@
     }
 
     .model-track img {
-      height: clamp(280px, 56vw, 460px);
+      height: clamp(220px, 52vw, 380px);
       border-radius: 22px;
     }
 
     .model-track article::before {
-      height: clamp(280px, 56vw, 460px);
+      height: clamp(220px, 52vw, 380px);
       border-radius: 22px;
     }
 
@@ -1043,8 +1169,8 @@
       margin: 0;
       border-left: 0;
       border-top: 0;
-      padding-left: 6px;
-      padding-right: 6px;
+      padding-left: 14px;
+      padding-right: 14px;
     }
 
     .chooser,
@@ -1052,26 +1178,67 @@
       grid-template-columns: 1fr;
     }
 
+    .chooser {
+      gap: 30px;
+    }
+
     .lineup-grid article,
     .lineup-grid article:nth-child(n + 3) {
       grid-column: auto;
       min-height: auto;
     }
+
+    .lineup-grid img {
+      height: clamp(220px, 46vw, 320px);
+      object-position: top;
+    }
   }
 
   @media (max-width: 620px) {
+    .hub-hero {
+      min-height: 660px;
+    }
+
+    .hub-hero > img {
+      object-position: 70% center;
+    }
+
     .model-carousel {
       --card-w: min(86vw, 390px);
       --gap: 16px;
+      padding-top: 46px;
+      padding-bottom: 54px;
     }
 
     .hero-inner {
-      margin-left: 20px;
-      margin-bottom: 80px;
+      width: min(300px, calc(100% - 28px));
+      margin: 92px 14px 0;
+      padding: 16px 18px;
+      border-radius: 16px;
     }
 
     .hero-inner h1 {
-      font-size: 48px;
+      font-size: 24px;
+      line-height: 1.08;
+    }
+
+    .hero-inner > span {
+      margin-top: 10px;
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .lineup-grid button,
+    .hub-cta a {
+      width: 100%;
+    }
+
+    .hero-inner button {
+      width: auto;
+      min-height: 40px;
+      margin-top: 14px;
+      padding: 0 15px;
+      font-size: 12px;
     }
 
     .use-grid {
@@ -1084,26 +1251,57 @@
     }
 
     .carousel-controls {
-      gap: 14px;
+      gap: 12px;
+      justify-content: flex-start;
     }
 
-    .carousel-dots {
-      flex: 1;
-      min-width: 0;
-      gap: 8px;
+    .carousel-pill {
+      gap: 6px;
+      padding: 15px 18px;
     }
 
-    .carousel-arrows {
-      flex-shrink: 0;
+    .carousel-pill button {
+      width: 6px;
+      height: 6px;
     }
 
-    .carousel-arrows button {
+    .carousel-pill button.active {
+      width: 22px;
+    }
+
+    .play-btn {
       width: 42px;
       height: 42px;
     }
 
     .slide-glass h3 {
-      font-size: 32px;
+      font-size: 26px;
+    }
+
+    .lineup-grid img {
+      height: 242px;
+      object-position: top;
+    }
+
+    .lineup-grid article {
+      border-radius: 24px;
+    }
+
+    .lineup-grid article > div {
+      padding: 20px;
+    }
+
+    .lineup-grid h3 {
+      font-size: 20px;
+      line-height: 1.15;
+    }
+
+    .hub-cta h2 {
+      font-size: clamp(28px, 7vw, 40px);
+    }
+
+    .chooser-copy h2 {
+      font-size: clamp(28px, 7.5vw, 40px);
     }
   }
 </style>

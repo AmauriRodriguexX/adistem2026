@@ -97,7 +97,7 @@
         Cotizar Ahora <ChevronDown size={16} />
       </button>
       <a href="#" class="w-full flex items-center justify-center gap-2 py-3.5 text-sm font-bold tracking-wide btn-glow-border transition-all active:scale-[0.98]">
-        Test Drive <ChevronRight size={16} />
+        Prueba de manejo <ChevronRight size={16} />
       </a>
     </div>
   </div>
@@ -112,7 +112,7 @@
         {config?.subtitle ?? ''}
       </p>
       <div class="flex gap-3">
-        <a href="#" class="flex items-center gap-2 px-6 py-3 text-sm font-bold btn-glow-border tracking-wide">Agenda tu Test Drive <ChevronRight size={15} /></a>
+        <a href="#" class="flex items-center gap-2 px-6 py-3 text-sm font-bold btn-glow-border tracking-wide">Agenda tu prueba de manejo <ChevronRight size={15} /></a>
         {#if config?.hideForm}
           <button onclick={onCotizarClick} class="flex items-center gap-2 px-6 py-3 rounded-2xl text-white/85 text-sm font-medium cursor-pointer" style={glassBtn}>Cotizar Ahora <ChevronDown size={15} /></button>
         {/if}
