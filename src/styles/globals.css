@@ -97,7 +97,7 @@ src: url('https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign
   to   { opacity: 1; transform: translateY(0) scale(1); }
 }
 
-@keyframes emoji-float {
+@keyframes icon-float {
   0%, 100% { transform: translateY(0px) rotate(0deg); }
   38%       { transform: translateY(-7px) rotate(-7deg); }
   68%       { transform: translateY(-3px) rotate(5deg); }

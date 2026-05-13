@@ -1,0 +1,924 @@
+[2m3:52:23 p. m.[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: src/lib/components/GlassTopNav.svelte:205:67 This type of directive is not valid on components
+https://svelte.dev/e/component_invalid_directive
+  Plugin: [35mvite-plugin-svelte[39m
+  File: [36msrc/lib/components/GlassTopNav.svelte[39m:205:67
+[33m   203 |    >
+   204 |      Modelos
+   205 |      <ChevronDown size={14} class="opacity-70 transition-transform" class:rotate-180={megaOpen} />
+                                                                                                        ^
+   206 |    </button>
+   207 |  [39m
+[2m3:52:23 p. m.[22m [31m[1m[vite][22m[39m [31mInternal server error: src/lib/components/GlassTopNav.svelte:205:67 This type of directive is not valid on components
+https://svelte.dev/e/component_invalid_directive[39m
+  Plugin: [35mvite-plugin-svelte[39m
+  File: [36msrc/lib/components/GlassTopNav.svelte[39m:205:67
+[33m   203 |    >
+   204 |      Modelos
+   205 |      <ChevronDown size={14} class="opacity-70 transition-transform" class:rotate-180={megaOpen} />
+                                                                                                        ^
+   206 |    </button>
+   207 |  [39m
+[2m3:52:27 p. m.[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: src/lib/components/GlassTopNav.svelte:205:67 This type of directive is not valid on components
+https://svelte.dev/e/component_invalid_directive
+  Plugin: [35mvite-plugin-svelte[39m
+  File: [36msrc/lib/components/GlassTopNav.svelte[39m:205:67
+[33m   203 |    >
+   204 |      Modelos
+   205 |      <ChevronDown size={14} class="opacity-70 transition-transform" class:rotate-180={megaOpen} />
+                                                                                                        ^
+   206 |    </button>
+   207 |  [39m
+[2m3:52:27 p. m.[22m [31m[1m[vite][22m[39m [31mInternal server error: src/lib/components/GlassTopNav.svelte:205:67 This type of directive is not valid on components
+https://svelte.dev/e/component_invalid_directive[39m
+  Plugin: [35mvite-plugin-svelte[39m
+  File: [36msrc/lib/components/GlassTopNav.svelte[39m:205:67
+[33m   203 |    >
+   204 |      Modelos
+   205 |      <ChevronDown size={14} class="opacity-70 transition-transform" class:rotate-180={megaOpen} />
+                                                                                                        ^
+   206 |    </button>
+   207 |  [39m
+[2m3:52:38 p. m.[22m [31m[1m[vite][22m[39m [31mInternal server error: src/lib/components/GlassTopNav.svelte:205:67 This type of directive is not valid on components
+https://svelte.dev/e/component_invalid_directive[39m
+  Plugin: [35mvite-plugin-svelte[39m
+  File: [36msrc/lib/components/GlassTopNav.svelte[39m:205:67
+[33m   203 |    >
+   204 |      Modelos
+   205 |      <ChevronDown size={14} class="opacity-70 transition-transform" class:rotate-180={megaOpen} />
+                                                                                                        ^
+   206 |    </button>
+   207 |  [39m
+[2m3:52:39 p. m.[22m [31m[1m[vite][22m[39m [31mInternal server error: src/lib/components/GlassTopNav.svelte:205:67 This type of directive is not valid on components
+https://svelte.dev/e/component_invalid_directive[39m
+  Plugin: [35mvite-plugin-svelte[39m
+  File: [36msrc/lib/components/GlassTopNav.svelte[39m:205:67
+[33m   203 |    >
+   204 |      Modelos
+   205 |      <ChevronDown size={14} class="opacity-70 transition-transform" class:rotate-180={megaOpen} />
+                                                                                                        ^
+   206 |    </button>
+   207 |  [39m
+[2m3:52:39 p. m.[22m [31m[1m[vite][22m[39m [31mInternal server error: src/lib/components/GlassTopNav.svelte:205:67 This type of directive is not valid on components
+https://svelte.dev/e/component_invalid_directive[39m
+  Plugin: [35mvite-plugin-svelte[39m
+  File: [36msrc/lib/components/GlassTopNav.svelte[39m:205:67
+[33m   203 |    >
+   204 |      Modelos
+   205 |      <ChevronDown size={14} class="opacity-70 transition-transform" class:rotate-180={megaOpen} />
+                                                                                                        ^
+   206 |    </button>
+   207 |  [39m
+[2m3:52:40 p. m.[22m [31m[1m[vite][22m[39m [31mInternal server error: src/lib/components/GlassTopNav.svelte:205:67 This type of directive is not valid on components
+https://svelte.dev/e/component_invalid_directive[39m
+  Plugin: [35mvite-plugin-svelte[39m
+  File: [36msrc/lib/components/GlassTopNav.svelte[39m:205:67
+[33m   203 |    >
+   204 |      Modelos
+   205 |      <ChevronDown size={14} class="opacity-70 transition-transform" class:rotate-180={megaOpen} />
+                                                                                                        ^
+   206 |    </button>
+   207 |  [39m
+[2m3:52:53 p. m.[22m [31m[1m[vite][22m[39m [31mInternal server error: src/lib/components/GlassTopNav.svelte:205:67 This type of directive is not valid on components
+https://svelte.dev/e/component_invalid_directive[39m
+  Plugin: [35mvite-plugin-svelte[39m
+  File: [36msrc/lib/components/GlassTopNav.svelte[39m:205:67
+[33m   203 |    >
+   204 |      Modelos
+   205 |      <ChevronDown size={14} class="opacity-70 transition-transform" class:rotate-180={megaOpen} />
+                                                                                                        ^
+   206 |    </button>
+   207 |  [39m
+[2m3:52:53 p. m.[22m [31m[1m[vite][22m[39m [31mInternal server error: src/lib/components/GlassTopNav.svelte:205:67 This type of directive is not valid on components
+https://svelte.dev/e/component_invalid_directive[39m
+  Plugin: [35mvite-plugin-svelte[39m
+  File: [36msrc/lib/components/GlassTopNav.svelte[39m:205:67
+[33m   203 |    >
+   204 |      Modelos
+   205 |      <ChevronDown size={14} class="opacity-70 transition-transform" class:rotate-180={megaOpen} />
+                                                                                                        ^
+   206 |    </button>
+   207 |  [39m
+[2m3:53:08 p. m.[22m [31m[1m[vite][22m[39m [31mInternal server error: src/lib/components/GlassTopNav.svelte:205:67 This type of directive is not valid on components
+https://svelte.dev/e/component_invalid_directive[39m
+  Plugin: [35mvite-plugin-svelte[39m
+  File: [36msrc/lib/components/GlassTopNav.svelte[39m:205:67
+[33m   203 |    >
+   204 |      Modelos
+   205 |      <ChevronDown size={14} class="opacity-70 transition-transform" class:rotate-180={megaOpen} />
+                                                                                                        ^
+   206 |    </button>
+   207 |  [39m
+[2m3:53:08 p. m.[22m [31m[1m[vite][22m[39m [31mInternal server error: src/lib/components/GlassTopNav.svelte:205:67 This type of directive is not valid on components
+https://svelte.dev/e/component_invalid_directive[39m
+  Plugin: [35mvite-plugin-svelte[39m
+  File: [36msrc/lib/components/GlassTopNav.svelte[39m:205:67
+[33m   203 |    >
+   204 |      Modelos
+   205 |      <ChevronDown size={14} class="opacity-70 transition-transform" class:rotate-180={megaOpen} />
+                                                                                                        ^
+   206 |    </button>
+   207 |  [39m
+[2m3:53:10 p. m.[22m [31m[1m[vite][22m[39m [31mInternal server error: src/lib/components/GlassTopNav.svelte:205:67 This type of directive is not valid on components
+https://svelte.dev/e/component_invalid_directive[39m
+  Plugin: [35mvite-plugin-svelte[39m
+  File: [36msrc/lib/components/GlassTopNav.svelte[39m:205:67
+[33m   203 |    >
+   204 |      Modelos
+   205 |      <ChevronDown size={14} class="opacity-70 transition-transform" class:rotate-180={megaOpen} />
+                                                                                                        ^
+   206 |    </button>
+   207 |  [39m
+[2m3:53:10 p. m.[22m [31m[1m[vite][22m[39m [31mInternal server error: src/lib/components/GlassTopNav.svelte:205:67 This type of directive is not valid on components
+https://svelte.dev/e/component_invalid_directive[39m
+  Plugin: [35mvite-plugin-svelte[39m
+  File: [36msrc/lib/components/GlassTopNav.svelte[39m:205:67
+[33m   203 |    >
+   204 |      Modelos
+   205 |      <ChevronDown size={14} class="opacity-70 transition-transform" class:rotate-180={megaOpen} />
+                                                                                                        ^
+   206 |    </button>
+   207 |  [39m
+[2m3:53:10 p. m.[22m [31m[1m[vite][22m[39m [31mInternal server error: src/lib/components/GlassTopNav.svelte:205:67 This type of directive is not valid on components
+https://svelte.dev/e/component_invalid_directive[39m
+  Plugin: [35mvite-plugin-svelte[39m
+  File: [36msrc/lib/components/GlassTopNav.svelte[39m:205:67
+[33m   203 |    >
+   204 |      Modelos
+   205 |      <ChevronDown size={14} class="opacity-70 transition-transform" class:rotate-180={megaOpen} />
+                                                                                                        ^
+   206 |    </button>
+   207 |  [39m
+[2m3:53:24 p. m.[22m [31m[1m[vite][22m[39m [31mInternal server error: src/lib/components/GlassTopNav.svelte:205:67 This type of directive is not valid on components
+https://svelte.dev/e/component_invalid_directive[39m
+  Plugin: [35mvite-plugin-svelte[39m
+  File: [36msrc/lib/components/GlassTopNav.svelte[39m:205:67
+[33m   203 |    >
+   204 |      Modelos
+   205 |      <ChevronDown size={14} class="opacity-70 transition-transform" class:rotate-180={megaOpen} />
+                                                                                                        ^
+   206 |    </button>
+   207 |  [39m
+[2m3:53:24 p. m.[22m [31m[1m[vite][22m[39m [31mInternal server error: src/lib/components/GlassTopNav.svelte:205:67 This type of directive is not valid on components
+https://svelte.dev/e/component_invalid_directive[39m
+  Plugin: [35mvite-plugin-svelte[39m
+  File: [36msrc/lib/components/GlassTopNav.svelte[39m:205:67
+[33m   203 |    >
+   204 |      Modelos
+   205 |      <ChevronDown size={14} class="opacity-70 transition-transform" class:rotate-180={megaOpen} />
+                                                                                                        ^
+   206 |    </button>
+   207 |  [39m
+[2m3:53:34 p. m.[22m [31m[1m[vite][22m[39m [31mInternal server error: src/lib/components/GlassTopNav.svelte:205:67 This type of directive is not valid on components
+https://svelte.dev/e/component_invalid_directive[39m
+  Plugin: [35mvite-plugin-svelte[39m
+  File: [36msrc/lib/components/GlassTopNav.svelte[39m:205:67
+[33m   203 |    >
+   204 |      Modelos
+   205 |      <ChevronDown size={14} class="opacity-70 transition-transform" class:rotate-180={megaOpen} />
+                                                                                                        ^
+   206 |    </button>
+   207 |  [39m
+[2m3:53:34 p. m.[22m [31m[1m[vite][22m[39m [31mInternal server error: src/lib/components/GlassTopNav.svelte:205:67 This type of directive is not valid on components
+https://svelte.dev/e/component_invalid_directive[39m
+  Plugin: [35mvite-plugin-svelte[39m
+  File: [36msrc/lib/components/GlassTopNav.svelte[39m:205:67
+[33m   203 |    >
+   204 |      Modelos
+   205 |      <ChevronDown size={14} class="opacity-70 transition-transform" class:rotate-180={megaOpen} />
+                                                                                                        ^
+   206 |    </button>
+   207 |  [39m
+[2m3:53:35 p. m.[22m [31m[1m[vite][22m[39m [31mInternal server error: src/lib/components/GlassTopNav.svelte:205:67 This type of directive is not valid on components
+https://svelte.dev/e/component_invalid_directive[39m
+  Plugin: [35mvite-plugin-svelte[39m
+  File: [36msrc/lib/components/GlassTopNav.svelte[39m:205:67
+[33m   203 |    >
+   204 |      Modelos
+   205 |      <ChevronDown size={14} class="opacity-70 transition-transform" class:rotate-180={megaOpen} />
+                                                                                                        ^
+   206 |    </button>
+   207 |  [39m
+[2m3:53:38 p. m.[22m [31m[1m[vite][22m[39m [31mInternal server error: src/lib/components/GlassTopNav.svelte:205:67 This type of directive is not valid on components
+https://svelte.dev/e/component_invalid_directive[39m
+  Plugin: [35mvite-plugin-svelte[39m
+  File: [36msrc/lib/components/GlassTopNav.svelte[39m:205:67
+[33m   203 |    >
+   204 |      Modelos
+   205 |      <ChevronDown size={14} class="opacity-70 transition-transform" class:rotate-180={megaOpen} />
+                                                                                                        ^
+   206 |    </button>
+   207 |  [39m
+[2m3:53:50 p. m.[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: src/lib/components/GlassTopNav.svelte:205:67 This type of directive is not valid on components
+https://svelte.dev/e/component_invalid_directive
+  Plugin: [35mvite-plugin-svelte[39m
+  File: [36msrc/lib/components/GlassTopNav.svelte[39m:205:67
+[33m   203 |    >
+   204 |      Modelos
+   205 |      <ChevronDown size={14} class="opacity-70 transition-transform" class:rotate-180={megaOpen} />
+                                                                                                        ^
+   206 |    </button>
+   207 |  [39m
+[2m3:53:51 p. m.[22m [31m[1m[vite][22m[39m [31mInternal server error: src/lib/components/GlassTopNav.svelte:205:67 This type of directive is not valid on components
+https://svelte.dev/e/component_invalid_directive[39m
+  Plugin: [35mvite-plugin-svelte[39m
+  File: [36msrc/lib/components/GlassTopNav.svelte[39m:205:67
+[33m   203 |    >
+   204 |      Modelos
+   205 |      <ChevronDown size={14} class="opacity-70 transition-transform" class:rotate-180={megaOpen} />
+                                                                                                        ^
+   206 |    </button>
+   207 |  [39m
+[2m3:53:56 p. m.[22m [31m[1m[vite][22m[39m [31mInternal server error: src/lib/components/GlassTopNav.svelte:205:67 This type of directive is not valid on components
+https://svelte.dev/e/component_invalid_directive[39m
+  Plugin: [35mvite-plugin-svelte[39m
+  File: [36msrc/lib/components/GlassTopNav.svelte[39m:205:67
+[33m   203 |    >
+   204 |      Modelos
+   205 |      <ChevronDown size={14} class="opacity-70 transition-transform" class:rotate-180={megaOpen} />
+                                                                                                        ^
+   206 |    </button>
+   207 |  [39m
+[2m3:53:56 p. m.[22m [31m[1m[vite][22m[39m [31mInternal server error: src/lib/components/GlassTopNav.svelte:205:67 This type of directive is not valid on components
+https://svelte.dev/e/component_invalid_directive[39m
+  Plugin: [35mvite-plugin-svelte[39m
+  File: [36msrc/lib/components/GlassTopNav.svelte[39m:205:67
+[33m   203 |    >
+   204 |      Modelos
+   205 |      <ChevronDown size={14} class="opacity-70 transition-transform" class:rotate-180={megaOpen} />
+                                                                                                        ^
+   206 |    </button>
+   207 |  [39m
+[2m3:53:56 p. m.[22m [31m[1m[vite][22m[39m [31mInternal server error: src/lib/components/GlassTopNav.svelte:205:67 This type of directive is not valid on components
+https://svelte.dev/e/component_invalid_directive[39m
+  Plugin: [35mvite-plugin-svelte[39m
+  File: [36msrc/lib/components/GlassTopNav.svelte[39m:205:67
+[33m   203 |    >
+   204 |      Modelos
+   205 |      <ChevronDown size={14} class="opacity-70 transition-transform" class:rotate-180={megaOpen} />
+                                                                                                        ^
+   206 |    </button>
+   207 |  [39m
+[2m3:54:13 p. m.[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: src/lib/components/GlassTopNav.svelte:205:67 This type of directive is not valid on components
+https://svelte.dev/e/component_invalid_directive
+  Plugin: [35mvite-plugin-svelte[39m
+  File: [36msrc/lib/components/GlassTopNav.svelte[39m:205:67
+[33m   203 |    >
+   204 |      Modelos
+   205 |      <ChevronDown size={14} class="opacity-70 transition-transform" class:rotate-180={megaOpen} />
+                                                                                                        ^
+   206 |    </button>
+   207 |  [39m
+[2m3:54:13 p. m.[22m [31m[1m[vite][22m[39m [31mInternal server error: src/lib/components/GlassTopNav.svelte:205:67 This type of directive is not valid on components
+https://svelte.dev/e/component_invalid_directive[39m
+  Plugin: [35mvite-plugin-svelte[39m
+  File: [36msrc/lib/components/GlassTopNav.svelte[39m:205:67
+[33m   203 |    >
+   204 |      Modelos
+   205 |      <ChevronDown size={14} class="opacity-70 transition-transform" class:rotate-180={megaOpen} />
+                                                                                                        ^
+   206 |    </button>
+   207 |  [39m
+[2m3:54:15 p. m.[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: src/lib/components/GlassTopNav.svelte:205:67 This type of directive is not valid on components
+https://svelte.dev/e/component_invalid_directive
+  Plugin: [35mvite-plugin-svelte[39m
+  File: [36msrc/lib/components/GlassTopNav.svelte[39m:205:67
+[33m   203 |    >
+   204 |      Modelos
+   205 |      <ChevronDown size={14} class="opacity-70 transition-transform" class:rotate-180={megaOpen} />
+                                                                                                        ^
+   206 |    </button>
+   207 |  [39m
+[2m3:54:15 p. m.[22m [31m[1m[vite][22m[39m [31mInternal server error: src/lib/components/GlassTopNav.svelte:205:67 This type of directive is not valid on components
+https://svelte.dev/e/component_invalid_directive[39m
+  Plugin: [35mvite-plugin-svelte[39m
+  File: [36msrc/lib/components/GlassTopNav.svelte[39m:205:67
+[33m   203 |    >
+   204 |      Modelos
+   205 |      <ChevronDown size={14} class="opacity-70 transition-transform" class:rotate-180={megaOpen} />
+                                                                                                        ^
+   206 |    </button>
+   207 |  [39m
+[2m5:21:40 p. m.[22m [31m[1m[vite][22m[39m [31mInternal server error: Invalid declaration: `ChevronRight, Star, Shield, Zap, Wrench, ChevronDown, CreditCard, Mail, Phone, Banknote, ArrowRight, MapPin`[39m
+  Plugin: [35m@tailwindcss/vite:generate:serve[39m
+  File: [36mD:/adistem 2026/adistem2026/src/lib/components/HeroSection.svelte?svelte&type=style&lang.css[39m
+      at Te (file:///D:/adistem%202026/adistem2026/node_modules/tailwindcss/dist/chunk-3IR7ZFJX.mjs:1:3315)
+      at Rf (file:///D:/adistem%202026/adistem2026/node_modules/tailwindcss/dist/chunk-3IR7ZFJX.mjs:38:1384)
+      at hu (file:///D:/adistem%202026/adistem2026/node_modules/@tailwindcss/node/dist/index.mjs:10:3463)
+      at B.generate (file:///D:/adistem%202026/adistem2026/node_modules/@tailwindcss/vite/dist/index.mjs:1:5510)
+      at TransformPluginContext.handler (file:///D:/adistem%202026/adistem2026/node_modules/@tailwindcss/vite/dist/index.mjs:1:2994)
+      at EnvironmentPluginContainer.transform (file:///D:/adistem%202026/adistem2026/node_modules/vite/dist/node/chunks/dep-Dq2t6Dq0.js:42349:19)
+      at async loadAndTransform (file:///D:/adistem%202026/adistem2026/node_modules/vite/dist/node/chunks/dep-Dq2t6Dq0.js:35740:27)
+      at async viteTransformMiddleware (file:///D:/adistem%202026/adistem2026/node_modules/vite/dist/node/chunks/dep-Dq2t6Dq0.js:37264:24)
+[2m5:21:40 p. m.[22m [31m[1m[vite][22m[39m [31mInternal server error: Invalid declaration: `ChevronRight, Star, Shield, Zap, Wrench, ChevronDown, CreditCard, Mail, Phone, Banknote, ArrowRight, MapPin`[39m
+  Plugin: [35m@tailwindcss/vite:generate:serve[39m
+  File: [36mD:/adistem 2026/adistem2026/src/lib/components/HeroSection.svelte?svelte&type=style&lang.css[39m
+      at Te (file:///D:/adistem%202026/adistem2026/node_modules/tailwindcss/dist/chunk-3IR7ZFJX.mjs:1:3315)
+      at Rf (file:///D:/adistem%202026/adistem2026/node_modules/tailwindcss/dist/chunk-3IR7ZFJX.mjs:38:1384)
+      at hu (file:///D:/adistem%202026/adistem2026/node_modules/@tailwindcss/node/dist/index.mjs:10:3463)
+      at B.generate (file:///D:/adistem%202026/adistem2026/node_modules/@tailwindcss/vite/dist/index.mjs:1:5510)
+      at TransformPluginContext.handler (file:///D:/adistem%202026/adistem2026/node_modules/@tailwindcss/vite/dist/index.mjs:1:2994)
+      at EnvironmentPluginContainer.transform (file:///D:/adistem%202026/adistem2026/node_modules/vite/dist/node/chunks/dep-Dq2t6Dq0.js:42349:19)
+      at async loadAndTransform (file:///D:/adistem%202026/adistem2026/node_modules/vite/dist/node/chunks/dep-Dq2t6Dq0.js:35740:27)
+      at async viteTransformMiddleware (file:///D:/adistem%202026/adistem2026/node_modules/vite/dist/node/chunks/dep-Dq2t6Dq0.js:37264:24)
+[2m5:36:36 p. m.[22m [31m[1m[vite][22m[39m [31mInternal server error: Invalid declaration: `isDark`[39m
+  Plugin: [35m@tailwindcss/vite:generate:serve[39m
+  File: [36mD:/adistem 2026/adistem2026/src/lib/components/LeadFormSection.svelte?svelte&type=style&lang.css[39m
+      at Te (file:///D:/adistem%202026/adistem2026/node_modules/tailwindcss/dist/chunk-3IR7ZFJX.mjs:1:3315)
+      at Rf (file:///D:/adistem%202026/adistem2026/node_modules/tailwindcss/dist/chunk-3IR7ZFJX.mjs:38:1384)
+      at hu (file:///D:/adistem%202026/adistem2026/node_modules/@tailwindcss/node/dist/index.mjs:10:3463)
+      at B.generate (file:///D:/adistem%202026/adistem2026/node_modules/@tailwindcss/vite/dist/index.mjs:1:5510)
+      at TransformPluginContext.handler (file:///D:/adistem%202026/adistem2026/node_modules/@tailwindcss/vite/dist/index.mjs:1:2994)
+      at EnvironmentPluginContainer.transform (file:///D:/adistem%202026/adistem2026/node_modules/vite/dist/node/chunks/dep-Dq2t6Dq0.js:42349:19)
+      at async loadAndTransform (file:///D:/adistem%202026/adistem2026/node_modules/vite/dist/node/chunks/dep-Dq2t6Dq0.js:35740:27)
+      at async viteTransformMiddleware (file:///D:/adistem%202026/adistem2026/node_modules/vite/dist/node/chunks/dep-Dq2t6Dq0.js:37264:24)
+[2m5:36:36 p. m.[22m [31m[1m[vite][22m[39m [31mInternal server error: Invalid declaration: `isDark`[39m
+  Plugin: [35m@tailwindcss/vite:generate:serve[39m
+  File: [36mD:/adistem 2026/adistem2026/src/lib/components/LeadFormSection.svelte?svelte&type=style&lang.css[39m
+      at Te (file:///D:/adistem%202026/adistem2026/node_modules/tailwindcss/dist/chunk-3IR7ZFJX.mjs:1:3315)
+      at Rf (file:///D:/adistem%202026/adistem2026/node_modules/tailwindcss/dist/chunk-3IR7ZFJX.mjs:38:1384)
+      at hu (file:///D:/adistem%202026/adistem2026/node_modules/@tailwindcss/node/dist/index.mjs:10:3463)
+      at B.generate (file:///D:/adistem%202026/adistem2026/node_modules/@tailwindcss/vite/dist/index.mjs:1:5510)
+      at TransformPluginContext.handler (file:///D:/adistem%202026/adistem2026/node_modules/@tailwindcss/vite/dist/index.mjs:1:2994)
+      at EnvironmentPluginContainer.transform (file:///D:/adistem%202026/adistem2026/node_modules/vite/dist/node/chunks/dep-Dq2t6Dq0.js:42349:19)
+      at async loadAndTransform (file:///D:/adistem%202026/adistem2026/node_modules/vite/dist/node/chunks/dep-Dq2t6Dq0.js:35740:27)
+      at async viteTransformMiddleware (file:///D:/adistem%202026/adistem2026/node_modules/vite/dist/node/chunks/dep-Dq2t6Dq0.js:37264:24)
+[2m5:47:41 p. m.[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: D:/adistem 2026/adistem2026/src/lib/components/GlassTopNav.svelte:457:124 Expected token }
+https://svelte.dev/e/expected_token
+
+- Did you forget to add a lang attribute to your style tag?
+  Plugin: [35mvite-plugin-svelte[39m
+  File: [36mD:/adistem 2026/adistem2026/src/lib/components/GlassTopNav.svelte[39m:457:124
+[33m   455 |                      />
+   456 |                    </div>
+   457 |                    <div class="border-t p-4" style="border-color:{$isDark ? 'rgba(255,255,255,0.08)' : 'rgba(30,60,120,0.10)'; background:$isDark ? 'transparent' : '#ffffff'}">
+                                                                                                                                      ^
+   458 |                      <div class="flex items-center justify-between gap-3">
+   459 |                        <p class="text-[11px] font-black uppercase tracking-[0.14em]" style="color:{vehicle.accent}">{vehicle.brand}</p>[39m
+[2m5:47:41 p. m.[22m [31m[1m[vite][22m[39m [31mInternal server error: D:/adistem 2026/adistem2026/src/lib/components/GlassTopNav.svelte:457:124 Expected token }
+https://svelte.dev/e/expected_token
+
+- Did you forget to add a lang attribute to your style tag?[39m
+  Plugin: [35mvite-plugin-svelte[39m
+  File: [36mD:/adistem 2026/adistem2026/src/lib/components/GlassTopNav.svelte[39m:457:124
+[33m   455 |                      />
+   456 |                    </div>
+   457 |                    <div class="border-t p-4" style="border-color:{$isDark ? 'rgba(255,255,255,0.08)' : 'rgba(30,60,120,0.10)'; background:$isDark ? 'transparent' : '#ffffff'}">
+                                                                                                                                      ^
+   458 |                      <div class="flex items-center justify-between gap-3">
+   459 |                        <p class="text-[11px] font-black uppercase tracking-[0.14em]" style="color:{vehicle.accent}">{vehicle.brand}</p>[39m
+[2m5:47:41 p. m.[22m [31m[1m[vite][22m[39m [31mInternal server error: D:/adistem 2026/adistem2026/src/lib/components/GlassTopNav.svelte:457:124 Expected token }
+https://svelte.dev/e/expected_token
+
+- Did you forget to add a lang attribute to your style tag?[39m
+  Plugin: [35mvite-plugin-svelte[39m
+  File: [36mD:/adistem 2026/adistem2026/src/lib/components/GlassTopNav.svelte[39m:457:124
+[33m   455 |                      />
+   456 |                    </div>
+   457 |                    <div class="border-t p-4" style="border-color:{$isDark ? 'rgba(255,255,255,0.08)' : 'rgba(30,60,120,0.10)'; background:$isDark ? 'transparent' : '#ffffff'}">
+                                                                                                                                      ^
+   458 |                      <div class="flex items-center justify-between gap-3">
+   459 |                        <p class="text-[11px] font-black uppercase tracking-[0.14em]" style="color:{vehicle.accent}">{vehicle.brand}</p>[39m
+[2m5:47:44 p. m.[22m [31m[1m[vite][22m[39m [31mInternal server error: D:/adistem 2026/adistem2026/src/lib/components/GlassTopNav.svelte:457:124 Expected token }
+https://svelte.dev/e/expected_token
+
+- Did you forget to add a lang attribute to your style tag?[39m
+  Plugin: [35mvite-plugin-svelte[39m
+  File: [36mD:/adistem 2026/adistem2026/src/lib/components/GlassTopNav.svelte[39m:457:124
+[33m   455 |                      />
+   456 |                    </div>
+   457 |                    <div class="border-t p-4" style="border-color:{$isDark ? 'rgba(255,255,255,0.08)' : 'rgba(30,60,120,0.10)'; background:$isDark ? 'transparent' : '#ffffff'}">
+                                                                                                                                      ^
+   458 |                      <div class="flex items-center justify-between gap-3">
+   459 |                        <p class="text-[11px] font-black uppercase tracking-[0.14em]" style="color:{vehicle.accent}">{vehicle.brand}</p>[39m
+[2m5:49:16 p. m.[22m [31m[1m[vite][22m[39m [31mInternal server error: D:/adistem 2026/adistem2026/src/lib/components/GlassTopNav.svelte:457:124 Expected token }
+https://svelte.dev/e/expected_token
+
+- Did you forget to add a lang attribute to your style tag?[39m
+  Plugin: [35mvite-plugin-svelte[39m
+  File: [36mD:/adistem 2026/adistem2026/src/lib/components/GlassTopNav.svelte[39m:457:124
+[33m   455 |                      />
+   456 |                    </div>
+   457 |                    <div class="border-t p-4" style="border-color:{$isDark ? 'rgba(255,255,255,0.08)' : 'rgba(30,60,120,0.10)'; background:$isDark ? 'transparent' : '#ffffff'}">
+                                                                                                                                      ^
+   458 |                      <div class="flex items-center justify-between gap-3">
+   459 |                        <p class="text-[11px] font-black uppercase tracking-[0.14em]" style="color:{vehicle.accent}">{vehicle.brand}</p>[39m
+[2m5:49:17 p. m.[22m [31m[1m[vite][22m[39m [31mInternal server error: D:/adistem 2026/adistem2026/src/lib/components/GlassTopNav.svelte:457:124 Expected token }
+https://svelte.dev/e/expected_token
+
+- Did you forget to add a lang attribute to your style tag?[39m
+  Plugin: [35mvite-plugin-svelte[39m
+  File: [36mD:/adistem 2026/adistem2026/src/lib/components/GlassTopNav.svelte[39m:457:124
+[33m   455 |                      />
+   456 |                    </div>
+   457 |                    <div class="border-t p-4" style="border-color:{$isDark ? 'rgba(255,255,255,0.08)' : 'rgba(30,60,120,0.10)'; background:$isDark ? 'transparent' : '#ffffff'}">
+                                                                                                                                      ^
+   458 |                      <div class="flex items-center justify-between gap-3">
+   459 |                        <p class="text-[11px] font-black uppercase tracking-[0.14em]" style="color:{vehicle.accent}">{vehicle.brand}</p>[39m
+[2m5:49:17 p. m.[22m [31m[1m[vite][22m[39m [31mInternal server error: D:/adistem 2026/adistem2026/src/lib/components/GlassTopNav.svelte:457:124 Expected token }
+https://svelte.dev/e/expected_token
+
+- Did you forget to add a lang attribute to your style tag?[39m
+  Plugin: [35mvite-plugin-svelte[39m
+  File: [36mD:/adistem 2026/adistem2026/src/lib/components/GlassTopNav.svelte[39m:457:124
+[33m   455 |                      />
+   456 |                    </div>
+   457 |                    <div class="border-t p-4" style="border-color:{$isDark ? 'rgba(255,255,255,0.08)' : 'rgba(30,60,120,0.10)'; background:$isDark ? 'transparent' : '#ffffff'}">
+                                                                                                                                      ^
+   458 |                      <div class="flex items-center justify-between gap-3">
+   459 |                        <p class="text-[11px] font-black uppercase tracking-[0.14em]" style="color:{vehicle.accent}">{vehicle.brand}</p>[39m
+[2m5:49:20 p. m.[22m [31m[1m[vite][22m[39m [31mInternal server error: D:/adistem 2026/adistem2026/src/lib/components/GlassTopNav.svelte:457:124 Expected token }
+https://svelte.dev/e/expected_token
+
+- Did you forget to add a lang attribute to your style tag?[39m
+  Plugin: [35mvite-plugin-svelte[39m
+  File: [36mD:/adistem 2026/adistem2026/src/lib/components/GlassTopNav.svelte[39m:457:124
+[33m   455 |                      />
+   456 |                    </div>
+   457 |                    <div class="border-t p-4" style="border-color:{$isDark ? 'rgba(255,255,255,0.08)' : 'rgba(30,60,120,0.10)'; background:$isDark ? 'transparent' : '#ffffff'}">
+                                                                                                                                      ^
+   458 |                      <div class="flex items-center justify-between gap-3">
+   459 |                        <p class="text-[11px] font-black uppercase tracking-[0.14em]" style="color:{vehicle.accent}">{vehicle.brand}</p>[39m
+[2m5:49:20 p. m.[22m [31m[1m[vite][22m[39m [31mInternal server error: D:/adistem 2026/adistem2026/src/lib/components/GlassTopNav.svelte:457:124 Expected token }
+https://svelte.dev/e/expected_token
+
+- Did you forget to add a lang attribute to your style tag?[39m
+  Plugin: [35mvite-plugin-svelte[39m
+  File: [36mD:/adistem 2026/adistem2026/src/lib/components/GlassTopNav.svelte[39m:457:124
+[33m   455 |                      />
+   456 |                    </div>
+   457 |                    <div class="border-t p-4" style="border-color:{$isDark ? 'rgba(255,255,255,0.08)' : 'rgba(30,60,120,0.10)'; background:$isDark ? 'transparent' : '#ffffff'}">
+                                                                                                                                      ^
+   458 |                      <div class="flex items-center justify-between gap-3">
+   459 |                        <p class="text-[11px] font-black uppercase tracking-[0.14em]" style="color:{vehicle.accent}">{vehicle.brand}</p>[39m
+[2m5:49:22 p. m.[22m [31m[1m[vite][22m[39m [31mInternal server error: D:/adistem 2026/adistem2026/src/lib/components/GlassTopNav.svelte:457:124 Expected token }
+https://svelte.dev/e/expected_token
+
+- Did you forget to add a lang attribute to your style tag?[39m
+  Plugin: [35mvite-plugin-svelte[39m
+  File: [36mD:/adistem 2026/adistem2026/src/lib/components/GlassTopNav.svelte[39m:457:124
+[33m   455 |                      />
+   456 |                    </div>
+   457 |                    <div class="border-t p-4" style="border-color:{$isDark ? 'rgba(255,255,255,0.08)' : 'rgba(30,60,120,0.10)'; background:$isDark ? 'transparent' : '#ffffff'}">
+                                                                                                                                      ^
+   458 |                      <div class="flex items-center justify-between gap-3">
+   459 |                        <p class="text-[11px] font-black uppercase tracking-[0.14em]" style="color:{vehicle.accent}">{vehicle.brand}</p>[39m
+[2m5:49:24 p. m.[22m [31m[1m[vite][22m[39m [31mInternal server error: D:/adistem 2026/adistem2026/src/lib/components/GlassTopNav.svelte:457:124 Expected token }
+https://svelte.dev/e/expected_token
+
+- Did you forget to add a lang attribute to your style tag?[39m
+  Plugin: [35mvite-plugin-svelte[39m
+  File: [36mD:/adistem 2026/adistem2026/src/lib/components/GlassTopNav.svelte[39m:457:124
+[33m   455 |                      />
+   456 |                    </div>
+   457 |                    <div class="border-t p-4" style="border-color:{$isDark ? 'rgba(255,255,255,0.08)' : 'rgba(30,60,120,0.10)'; background:$isDark ? 'transparent' : '#ffffff'}">
+                                                                                                                                      ^
+   458 |                      <div class="flex items-center justify-between gap-3">
+   459 |                        <p class="text-[11px] font-black uppercase tracking-[0.14em]" style="color:{vehicle.accent}">{vehicle.brand}</p>[39m
+[2m5:49:24 p. m.[22m [31m[1m[vite][22m[39m [31mInternal server error: D:/adistem 2026/adistem2026/src/lib/components/GlassTopNav.svelte:457:124 Expected token }
+https://svelte.dev/e/expected_token
+
+- Did you forget to add a lang attribute to your style tag?[39m
+  Plugin: [35mvite-plugin-svelte[39m
+  File: [36mD:/adistem 2026/adistem2026/src/lib/components/GlassTopNav.svelte[39m:457:124
+[33m   455 |                      />
+   456 |                    </div>
+   457 |                    <div class="border-t p-4" style="border-color:{$isDark ? 'rgba(255,255,255,0.08)' : 'rgba(30,60,120,0.10)'; background:$isDark ? 'transparent' : '#ffffff'}">
+                                                                                                                                      ^
+   458 |                      <div class="flex items-center justify-between gap-3">
+   459 |                        <p class="text-[11px] font-black uppercase tracking-[0.14em]" style="color:{vehicle.accent}">{vehicle.brand}</p>[39m
+[2m5:49:24 p. m.[22m [31m[1m[vite][22m[39m [31mInternal server error: D:/adistem 2026/adistem2026/src/lib/components/GlassTopNav.svelte:457:124 Expected token }
+https://svelte.dev/e/expected_token
+
+- Did you forget to add a lang attribute to your style tag?[39m
+  Plugin: [35mvite-plugin-svelte[39m
+  File: [36mD:/adistem 2026/adistem2026/src/lib/components/GlassTopNav.svelte[39m:457:124
+[33m   455 |                      />
+   456 |                    </div>
+   457 |                    <div class="border-t p-4" style="border-color:{$isDark ? 'rgba(255,255,255,0.08)' : 'rgba(30,60,120,0.10)'; background:$isDark ? 'transparent' : '#ffffff'}">
+                                                                                                                                      ^
+   458 |                      <div class="flex items-center justify-between gap-3">
+   459 |                        <p class="text-[11px] font-black uppercase tracking-[0.14em]" style="color:{vehicle.accent}">{vehicle.brand}</p>[39m
+[2m5:49:24 p. m.[22m [31m[1m[vite][22m[39m [31mInternal server error: D:/adistem 2026/adistem2026/src/lib/components/GlassTopNav.svelte:457:124 Expected token }
+https://svelte.dev/e/expected_token
+
+- Did you forget to add a lang attribute to your style tag?[39m
+  Plugin: [35mvite-plugin-svelte[39m
+  File: [36mD:/adistem 2026/adistem2026/src/lib/components/GlassTopNav.svelte[39m:457:124
+[33m   455 |                      />
+   456 |                    </div>
+   457 |                    <div class="border-t p-4" style="border-color:{$isDark ? 'rgba(255,255,255,0.08)' : 'rgba(30,60,120,0.10)'; background:$isDark ? 'transparent' : '#ffffff'}">
+                                                                                                                                      ^
+   458 |                      <div class="flex items-center justify-between gap-3">
+   459 |                        <p class="text-[11px] font-black uppercase tracking-[0.14em]" style="color:{vehicle.accent}">{vehicle.brand}</p>[39m
+[2m8:09:07 p. m.[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: D:/adistem 2026/adistem2026/src/lib/components/JeepPremiumLanding.svelte:1653:2 Expected a valid CSS identifier
+https://svelte.dev/e/css_expected_identifier
+
+- Did you forget to add a lang attribute to your style tag?
+- Did you forget to add a lang attribute to your style tag?
+- Did you forget to add a lang attribute to your style tag?
+- Did you forget to add a lang attribute to your style tag?
+- Did you forget to add a lang attribute to your style tag?
+  Plugin: [35mvite-plugin-svelte[39m
+  File: [36mD:/adistem 2026/adistem2026/src/lib/components/JeepPremiumLanding.svelte[39m:1653:2
+[33m   1651 |        padding: 70px 20px;
+   1652 |      }
+   1653 |    }
+             ^
+   1654 |  
+   1655 |    @media (max-width: 560px) {[39m
+[2m8:09:07 p. m.[22m [31m[1m[vite][22m[39m [31mInternal server error: D:/adistem 2026/adistem2026/src/lib/components/JeepPremiumLanding.svelte:1653:2 Expected a valid CSS identifier
+https://svelte.dev/e/css_expected_identifier
+
+- Did you forget to add a lang attribute to your style tag?
+- Did you forget to add a lang attribute to your style tag?
+- Did you forget to add a lang attribute to your style tag?
+- Did you forget to add a lang attribute to your style tag?
+- Did you forget to add a lang attribute to your style tag?[39m
+  Plugin: [35mvite-plugin-svelte[39m
+  File: [36mD:/adistem 2026/adistem2026/src/lib/components/JeepPremiumLanding.svelte[39m:1653:2
+[33m   1651 |        padding: 70px 20px;
+   1652 |      }
+   1653 |    }
+             ^
+   1654 |  
+   1655 |    @media (max-width: 560px) {[39m
+[2m8:09:09 p. m.[22m [31m[1m[vite][22m[39m [31mInternal server error: D:/adistem 2026/adistem2026/src/lib/components/JeepPremiumLanding.svelte:1653:2 Expected a valid CSS identifier
+https://svelte.dev/e/css_expected_identifier
+
+- Did you forget to add a lang attribute to your style tag?
+- Did you forget to add a lang attribute to your style tag?
+- Did you forget to add a lang attribute to your style tag?
+- Did you forget to add a lang attribute to your style tag?
+- Did you forget to add a lang attribute to your style tag?[39m
+  Plugin: [35mvite-plugin-svelte[39m
+  File: [36mD:/adistem 2026/adistem2026/src/lib/components/JeepPremiumLanding.svelte[39m:1653:2
+[33m   1651 |        padding: 70px 20px;
+   1652 |      }
+   1653 |    }
+             ^
+   1654 |  
+   1655 |    @media (max-width: 560px) {[39m
+[2m8:09:30 p. m.[22m [31m[1m[vite][22m[39m [31mInternal server error: D:/adistem 2026/adistem2026/src/lib/components/JeepPremiumLanding.svelte:1653:2 Expected a valid CSS identifier
+https://svelte.dev/e/css_expected_identifier
+
+- Did you forget to add a lang attribute to your style tag?
+- Did you forget to add a lang attribute to your style tag?
+- Did you forget to add a lang attribute to your style tag?
+- Did you forget to add a lang attribute to your style tag?
+- Did you forget to add a lang attribute to your style tag?[39m
+  Plugin: [35mvite-plugin-svelte[39m
+  File: [36mD:/adistem 2026/adistem2026/src/lib/components/JeepPremiumLanding.svelte[39m:1653:2
+[33m   1651 |        padding: 70px 20px;
+   1652 |      }
+   1653 |    }
+             ^
+   1654 |  
+   1655 |    @media (max-width: 560px) {[39m
+[2m8:09:30 p. m.[22m [31m[1m[vite][22m[39m [31mInternal server error: D:/adistem 2026/adistem2026/src/lib/components/JeepPremiumLanding.svelte:1653:2 Expected a valid CSS identifier
+https://svelte.dev/e/css_expected_identifier
+
+- Did you forget to add a lang attribute to your style tag?
+- Did you forget to add a lang attribute to your style tag?
+- Did you forget to add a lang attribute to your style tag?
+- Did you forget to add a lang attribute to your style tag?
+- Did you forget to add a lang attribute to your style tag?[39m
+  Plugin: [35mvite-plugin-svelte[39m
+  File: [36mD:/adistem 2026/adistem2026/src/lib/components/JeepPremiumLanding.svelte[39m:1653:2
+[33m   1651 |        padding: 70px 20px;
+   1652 |      }
+   1653 |    }
+             ^
+   1654 |  
+   1655 |    @media (max-width: 560px) {[39m
+[2m8:09:30 p. m.[22m [31m[1m[vite][22m[39m [31mInternal server error: D:/adistem 2026/adistem2026/src/lib/components/JeepPremiumLanding.svelte:1653:2 Expected a valid CSS identifier
+https://svelte.dev/e/css_expected_identifier
+
+- Did you forget to add a lang attribute to your style tag?
+- Did you forget to add a lang attribute to your style tag?
+- Did you forget to add a lang attribute to your style tag?
+- Did you forget to add a lang attribute to your style tag?
+- Did you forget to add a lang attribute to your style tag?[39m
+  Plugin: [35mvite-plugin-svelte[39m
+  File: [36mD:/adistem 2026/adistem2026/src/lib/components/JeepPremiumLanding.svelte[39m:1653:2
+[33m   1651 |        padding: 70px 20px;
+   1652 |      }
+   1653 |    }
+             ^
+   1654 |  
+   1655 |    @media (max-width: 560px) {[39m
+[2m8:14:04 p. m.[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: D:/adistem 2026/adistem2026/src/lib/components/JeepPremiumLanding.svelte:1653:2 Expected a valid CSS identifier
+https://svelte.dev/e/css_expected_identifier
+
+- Did you forget to add a lang attribute to your style tag?
+- Did you forget to add a lang attribute to your style tag?
+- Did you forget to add a lang attribute to your style tag?
+- Did you forget to add a lang attribute to your style tag?
+- Did you forget to add a lang attribute to your style tag?
+  Plugin: [35mvite-plugin-svelte[39m
+  File: [36mD:/adistem 2026/adistem2026/src/lib/components/JeepPremiumLanding.svelte[39m:1653:2
+[33m   1651 |        padding: 70px 20px;
+   1652 |      }
+   1653 |    }
+             ^
+   1654 |  
+   1655 |    @media (max-width: 560px) {[39m
+[2m8:14:04 p. m.[22m [31m[1m[vite][22m[39m [31mInternal server error: D:/adistem 2026/adistem2026/src/lib/components/JeepPremiumLanding.svelte:1653:2 Expected a valid CSS identifier
+https://svelte.dev/e/css_expected_identifier
+
+- Did you forget to add a lang attribute to your style tag?
+- Did you forget to add a lang attribute to your style tag?
+- Did you forget to add a lang attribute to your style tag?
+- Did you forget to add a lang attribute to your style tag?
+- Did you forget to add a lang attribute to your style tag?[39m
+  Plugin: [35mvite-plugin-svelte[39m
+  File: [36mD:/adistem 2026/adistem2026/src/lib/components/JeepPremiumLanding.svelte[39m:1653:2
+[33m   1651 |        padding: 70px 20px;
+   1652 |      }
+   1653 |    }
+             ^
+   1654 |  
+   1655 |    @media (max-width: 560px) {[39m
+[2m8:14:05 p. m.[22m [31m[1m[vite][22m[39m [31mInternal server error: D:/adistem 2026/adistem2026/src/lib/components/JeepPremiumLanding.svelte:1653:2 Expected a valid CSS identifier
+https://svelte.dev/e/css_expected_identifier
+
+- Did you forget to add a lang attribute to your style tag?
+- Did you forget to add a lang attribute to your style tag?
+- Did you forget to add a lang attribute to your style tag?
+- Did you forget to add a lang attribute to your style tag?
+- Did you forget to add a lang attribute to your style tag?[39m
+  Plugin: [35mvite-plugin-svelte[39m
+  File: [36mD:/adistem 2026/adistem2026/src/lib/components/JeepPremiumLanding.svelte[39m:1653:2
+[33m   1651 |        padding: 70px 20px;
+   1652 |      }
+   1653 |    }
+             ^
+   1654 |  
+   1655 |    @media (max-width: 560px) {[39m
+[2m8:14:06 p. m.[22m [31m[1m[vite][22m[39m [31mInternal server error: D:/adistem 2026/adistem2026/src/lib/components/JeepPremiumLanding.svelte:1653:2 Expected a valid CSS identifier
+https://svelte.dev/e/css_expected_identifier
+
+- Did you forget to add a lang attribute to your style tag?
+- Did you forget to add a lang attribute to your style tag?
+- Did you forget to add a lang attribute to your style tag?
+- Did you forget to add a lang attribute to your style tag?
+- Did you forget to add a lang attribute to your style tag?[39m
+  Plugin: [35mvite-plugin-svelte[39m
+  File: [36mD:/adistem 2026/adistem2026/src/lib/components/JeepPremiumLanding.svelte[39m:1653:2
+[33m   1651 |        padding: 70px 20px;
+   1652 |      }
+   1653 |    }
+             ^
+   1654 |  
+   1655 |    @media (max-width: 560px) {[39m
+[2m8:16:20 p. m.[22m [31m[1m[vite][22m[39m [31mInternal server error: D:/adistem 2026/adistem2026/src/lib/components/JeepPremiumLanding.svelte:1653:2 Expected a valid CSS identifier
+https://svelte.dev/e/css_expected_identifier
+
+- Did you forget to add a lang attribute to your style tag?
+- Did you forget to add a lang attribute to your style tag?
+- Did you forget to add a lang attribute to your style tag?
+- Did you forget to add a lang attribute to your style tag?
+- Did you forget to add a lang attribute to your style tag?[39m
+  Plugin: [35mvite-plugin-svelte[39m
+  File: [36mD:/adistem 2026/adistem2026/src/lib/components/JeepPremiumLanding.svelte[39m:1653:2
+[33m   1651 |        padding: 70px 20px;
+   1652 |      }
+   1653 |    }
+             ^
+   1654 |  
+   1655 |    @media (max-width: 560px) {[39m
+[2m8:17:42 p. m.[22m [31m[1m[vite][22m[39m [31mInternal server error: D:/adistem 2026/adistem2026/src/lib/components/JeepPremiumLanding.svelte:1653:2 Expected a valid CSS identifier
+https://svelte.dev/e/css_expected_identifier
+
+- Did you forget to add a lang attribute to your style tag?
+- Did you forget to add a lang attribute to your style tag?
+- Did you forget to add a lang attribute to your style tag?
+- Did you forget to add a lang attribute to your style tag?
+- Did you forget to add a lang attribute to your style tag?[39m
+  Plugin: [35mvite-plugin-svelte[39m
+  File: [36mD:/adistem 2026/adistem2026/src/lib/components/JeepPremiumLanding.svelte[39m:1653:2
+[33m   1651 |        padding: 70px 20px;
+   1652 |      }
+   1653 |    }
+             ^
+   1654 |  
+   1655 |    @media (max-width: 560px) {[39m
+[2m8:54:55 p. m.[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: D:/adistem 2026/adistem2026/src/lib/components/GlassTopNav.svelte:573:2 `</div>` attempted to close an element that was not open
+https://svelte.dev/e/element_invalid_closing_tag
+  Plugin: [35mvite-plugin-svelte[39m
+  File: [36mD:/adistem 2026/adistem2026/src/lib/components/GlassTopNav.svelte[39m:573:2
+[33m   571 |  {/if}/div>
+   572 |      </div>
+   573 |    </div>
+            ^
+   574 |  {/if}
+   575 |  [39m
+[2m8:54:55 p. m.[22m [31m[1m[vite][22m[39m [31mInternal server error: D:/adistem 2026/adistem2026/src/lib/components/GlassTopNav.svelte:573:2 `</div>` attempted to close an element that was not open
+https://svelte.dev/e/element_invalid_closing_tag[39m
+  Plugin: [35mvite-plugin-svelte[39m
+  File: [36mD:/adistem 2026/adistem2026/src/lib/components/GlassTopNav.svelte[39m:573:2
+[33m   571 |  {/if}/div>
+   572 |      </div>
+   573 |    </div>
+            ^
+   574 |  {/if}
+   575 |  [39m
+[2m8:54:57 p. m.[22m [31m[1m[vite][22m[39m [31mInternal server error: D:/adistem 2026/adistem2026/src/lib/components/GlassTopNav.svelte:573:2 `</div>` attempted to close an element that was not open
+https://svelte.dev/e/element_invalid_closing_tag[39m
+  Plugin: [35mvite-plugin-svelte[39m
+  File: [36mD:/adistem 2026/adistem2026/src/lib/components/GlassTopNav.svelte[39m:573:2
+[33m   571 |  {/if}/div>
+   572 |      </div>
+   573 |    </div>
+            ^
+   574 |  {/if}
+   575 |  [39m
+[2m8:54:57 p. m.[22m [31m[1m[vite][22m[39m [31mInternal server error: D:/adistem 2026/adistem2026/src/lib/components/GlassTopNav.svelte:573:2 `</div>` attempted to close an element that was not open
+https://svelte.dev/e/element_invalid_closing_tag[39m
+  Plugin: [35mvite-plugin-svelte[39m
+  File: [36mD:/adistem 2026/adistem2026/src/lib/components/GlassTopNav.svelte[39m:573:2
+[33m   571 |  {/if}/div>
+   572 |      </div>
+   573 |    </div>
+            ^
+   574 |  {/if}
+   575 |  [39m
+[2m8:56:49 p. m.[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: D:/adistem 2026/adistem2026/src/lib/components/GlassTopNav.svelte:573:2 `</div>` attempted to close an element that was not open
+https://svelte.dev/e/element_invalid_closing_tag
+  Plugin: [35mvite-plugin-svelte[39m
+  File: [36mD:/adistem 2026/adistem2026/src/lib/components/GlassTopNav.svelte[39m:573:2
+[33m   571 |  {/if}/div>
+   572 |      </div>
+   573 |    </div>
+            ^
+   574 |  {/if}
+   575 |  [39m
+[2m8:56:49 p. m.[22m [31m[1m[vite][22m[39m [31mInternal server error: D:/adistem 2026/adistem2026/src/lib/components/GlassTopNav.svelte:573:2 `</div>` attempted to close an element that was not open
+https://svelte.dev/e/element_invalid_closing_tag[39m
+  Plugin: [35mvite-plugin-svelte[39m
+  File: [36mD:/adistem 2026/adistem2026/src/lib/components/GlassTopNav.svelte[39m:573:2
+[33m   571 |  {/if}/div>
+   572 |      </div>
+   573 |    </div>
+            ^
+   574 |  {/if}
+   575 |  [39m
+[2m8:56:50 p. m.[22m [31m[1m[vite][22m[39m [31mInternal server error: D:/adistem 2026/adistem2026/src/lib/components/GlassTopNav.svelte:573:2 `</div>` attempted to close an element that was not open
+https://svelte.dev/e/element_invalid_closing_tag[39m
+  Plugin: [35mvite-plugin-svelte[39m
+  File: [36mD:/adistem 2026/adistem2026/src/lib/components/GlassTopNav.svelte[39m:573:2
+[33m   571 |  {/if}/div>
+   572 |      </div>
+   573 |    </div>
+            ^
+   574 |  {/if}
+   575 |  [39m
+[2m8:56:51 p. m.[22m [31m[1m[vite][22m[39m [31mInternal server error: D:/adistem 2026/adistem2026/src/lib/components/GlassTopNav.svelte:573:2 `</div>` attempted to close an element that was not open
+https://svelte.dev/e/element_invalid_closing_tag[39m
+  Plugin: [35mvite-plugin-svelte[39m
+  File: [36mD:/adistem 2026/adistem2026/src/lib/components/GlassTopNav.svelte[39m:573:2
+[33m   571 |  {/if}/div>
+   572 |      </div>
+   573 |    </div>
+            ^
+   574 |  {/if}
+   575 |  [39m
+[2m8:57:36 p. m.[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: D:/adistem 2026/adistem2026/src/lib/components/GlassTopNav.svelte:573:2 `</div>` attempted to close an element that was not open
+https://svelte.dev/e/element_invalid_closing_tag
+  Plugin: [35mvite-plugin-svelte[39m
+  File: [36mD:/adistem 2026/adistem2026/src/lib/components/GlassTopNav.svelte[39m:573:2
+[33m   571 |  {/if}/div>
+   572 |      </div>
+   573 |    </div>
+            ^
+   574 |  {/if}
+   575 |  [39m
+[2m8:57:36 p. m.[22m [31m[1m[vite][22m[39m [31mInternal server error: D:/adistem 2026/adistem2026/src/lib/components/GlassTopNav.svelte:573:2 `</div>` attempted to close an element that was not open
+https://svelte.dev/e/element_invalid_closing_tag[39m
+  Plugin: [35mvite-plugin-svelte[39m
+  File: [36mD:/adistem 2026/adistem2026/src/lib/components/GlassTopNav.svelte[39m:573:2
+[33m   571 |  {/if}/div>
+   572 |      </div>
+   573 |    </div>
+            ^
+   574 |  {/if}
+   575 |  [39m
+[2m8:57:37 p. m.[22m [31m[1m[vite][22m[39m [31mInternal server error: D:/adistem 2026/adistem2026/src/lib/components/GlassTopNav.svelte:573:2 `</div>` attempted to close an element that was not open
+https://svelte.dev/e/element_invalid_closing_tag[39m
+  Plugin: [35mvite-plugin-svelte[39m
+  File: [36mD:/adistem 2026/adistem2026/src/lib/components/GlassTopNav.svelte[39m:573:2
+[33m   571 |  {/if}/div>
+   572 |      </div>
+   573 |    </div>
+            ^
+   574 |  {/if}
+   575 |  [39m
+[2m8:59:20 p. m.[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: D:/adistem 2026/adistem2026/src/lib/components/GlassTopNav.svelte:573:2 `</div>` attempted to close an element that was not open
+https://svelte.dev/e/element_invalid_closing_tag
+  Plugin: [35mvite-plugin-svelte[39m
+  File: [36mD:/adistem 2026/adistem2026/src/lib/components/GlassTopNav.svelte[39m:573:2
+[33m   571 |  {/if}/div>
+   572 |      </div>
+   573 |    </div>
+            ^
+   574 |  {/if}
+   575 |  [39m
+[2m8:59:20 p. m.[22m [31m[1m[vite][22m[39m [31mInternal server error: D:/adistem 2026/adistem2026/src/lib/components/GlassTopNav.svelte:573:2 `</div>` attempted to close an element that was not open
+https://svelte.dev/e/element_invalid_closing_tag[39m
+  Plugin: [35mvite-plugin-svelte[39m
+  File: [36mD:/adistem 2026/adistem2026/src/lib/components/GlassTopNav.svelte[39m:573:2
+[33m   571 |  {/if}/div>
+   572 |      </div>
+   573 |    </div>
+            ^
+   574 |  {/if}
+   575 |  [39m
+[2m9:00:42 p. m.[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: D:/adistem 2026/adistem2026/src/lib/components/GlassTopNav.svelte:293:2 Block was left open
+https://svelte.dev/e/block_unclosed
+  Plugin: [35mvite-plugin-svelte[39m
+  File: [36mD:/adistem 2026/adistem2026/src/lib/components/GlassTopNav.svelte[39m:293:2
+[33m   291 |        <span>Cotizar</span>
+   292 |      </button>
+   293 |    {#if megaOpen}
+             ^
+   294 |    <div
+   295 |      class="fixed top-16 left-0 md:left-20 right-0 bottom-0 z-[9999] overflow-hidden overscroll-contain"[39m
+[2m9:00:42 p. m.[22m [31m[1m[vite][22m[39m [31mInternal server error: D:/adistem 2026/adistem2026/src/lib/components/GlassTopNav.svelte:293:2 Block was left open
+https://svelte.dev/e/block_unclosed[39m
+  Plugin: [35mvite-plugin-svelte[39m
+  File: [36mD:/adistem 2026/adistem2026/src/lib/components/GlassTopNav.svelte[39m:293:2
+[33m   291 |        <span>Cotizar</span>
+   292 |      </button>
+   293 |    {#if megaOpen}
+             ^
+   294 |    <div
+   295 |      class="fixed top-16 left-0 md:left-20 right-0 bottom-0 z-[9999] overflow-hidden overscroll-contain"[39m
+[2m9:00:43 p. m.[22m [31m[1m[vite][22m[39m [31mInternal server error: D:/adistem 2026/adistem2026/src/lib/components/GlassTopNav.svelte:293:2 Block was left open
+https://svelte.dev/e/block_unclosed[39m
+  Plugin: [35mvite-plugin-svelte[39m
+  File: [36mD:/adistem 2026/adistem2026/src/lib/components/GlassTopNav.svelte[39m:293:2
+[33m   291 |        <span>Cotizar</span>
+   292 |      </button>
+   293 |    {#if megaOpen}
+             ^
+   294 |    <div
+   295 |      class="fixed top-16 left-0 md:left-20 right-0 bottom-0 z-[9999] overflow-hidden overscroll-contain"[39m
+[2m9:00:44 p. m.[22m [31m[1m[vite][22m[39m [31mInternal server error: D:/adistem 2026/adistem2026/src/lib/components/GlassTopNav.svelte:293:2 Block was left open
+https://svelte.dev/e/block_unclosed[39m
+  Plugin: [35mvite-plugin-svelte[39m
+  File: [36mD:/adistem 2026/adistem2026/src/lib/components/GlassTopNav.svelte[39m:293:2
+[33m   291 |        <span>Cotizar</span>
+   292 |      </button>
+   293 |    {#if megaOpen}
+             ^
+   294 |    <div
+   295 |      class="fixed top-16 left-0 md:left-20 right-0 bottom-0 z-[9999] overflow-hidden overscroll-contain"[39m
+[2m9:00:44 p. m.[22m [31m[1m[vite][22m[39m [31mInternal server error: D:/adistem 2026/adistem2026/src/lib/components/GlassTopNav.svelte:293:2 Block was left open
+https://svelte.dev/e/block_unclosed[39m
+  Plugin: [35mvite-plugin-svelte[39m
+  File: [36mD:/adistem 2026/adistem2026/src/lib/components/GlassTopNav.svelte[39m:293:2
+[33m   291 |        <span>Cotizar</span>
+   292 |      </button>
+   293 |    {#if megaOpen}
+             ^
+   294 |    <div
+   295 |      class="fixed top-16 left-0 md:left-20 right-0 bottom-0 z-[9999] overflow-hidden overscroll-contain"[39m
+[2m9:00:44 p. m.[22m [31m[1m[vite][22m[39m [31mInternal server error: D:/adistem 2026/adistem2026/src/lib/components/GlassTopNav.svelte:293:2 Block was left open
+https://svelte.dev/e/block_unclosed[39m
+  Plugin: [35mvite-plugin-svelte[39m
+  File: [36mD:/adistem 2026/adistem2026/src/lib/components/GlassTopNav.svelte[39m:293:2
+[33m   291 |        <span>Cotizar</span>
+   292 |      </button>
+   293 |    {#if megaOpen}
+             ^
+   294 |    <div
+   295 |      class="fixed top-16 left-0 md:left-20 right-0 bottom-0 z-[9999] overflow-hidden overscroll-contain"[39m
+[2m9:00:44 p. m.[22m [31m[1m[vite][22m[39m [31mInternal server error: D:/adistem 2026/adistem2026/src/lib/components/GlassTopNav.svelte:293:2 Block was left open
+https://svelte.dev/e/block_unclosed[39m
+  Plugin: [35mvite-plugin-svelte[39m
+  File: [36mD:/adistem 2026/adistem2026/src/lib/components/GlassTopNav.svelte[39m:293:2
+[33m   291 |        <span>Cotizar</span>
+   292 |      </button>
+   293 |    {#if megaOpen}
+             ^
+   294 |    <div
+   295 |      class="fixed top-16 left-0 md:left-20 right-0 bottom-0 z-[9999] overflow-hidden overscroll-contain"[39m
+[2m9:01:33 p. m.[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: D:/adistem 2026/adistem2026/src/lib/components/GlassTopNav.svelte:264:2 `<div>` was left open
+https://svelte.dev/e/element_unclosed
+  Plugin: [35mvite-plugin-svelte[39m
+  File: [36mD:/adistem 2026/adistem2026/src/lib/components/GlassTopNav.svelte[39m:264:2
+[33m   262 |    </div>
+   263 |  
+   264 |    <div class="flex items-center gap-5 flex-shrink-0">
+             ^
+   265 |      <div class="hidden md:flex items-center gap-5 mr-1">
+   266 |        <a href="#" class="flex items-center gap-2 text-[13px] font-semibold transition-all hover:opacity-80 cursor-pointer" style="color:{$isDark ? 'rgba(255,255,255,0.85)' : '#1a2040'}">[39m
+[2m9:01:33 p. m.[22m [31m[1m[vite][22m[39m [31mInternal server error: D:/adistem 2026/adistem2026/src/lib/components/GlassTopNav.svelte:264:2 `<div>` was left open
+https://svelte.dev/e/element_unclosed[39m
+  Plugin: [35mvite-plugin-svelte[39m
+  File: [36mD:/adistem 2026/adistem2026/src/lib/components/GlassTopNav.svelte[39m:264:2
+[33m   262 |    </div>
+   263 |  
+   264 |    <div class="flex items-center gap-5 flex-shrink-0">
+             ^
+   265 |      <div class="hidden md:flex items-center gap-5 mr-1">
+   266 |        <a href="#" class="flex items-center gap-2 text-[13px] font-semibold transition-all hover:opacity-80 cursor-pointer" style="color:{$isDark ? 'rgba(255,255,255,0.85)' : '#1a2040'}">[39m

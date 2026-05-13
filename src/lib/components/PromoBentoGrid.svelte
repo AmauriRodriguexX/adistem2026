@@ -1,10 +1,10 @@
 <script lang="ts">
   import type { VehicleType, BrandFilter } from '$lib/types'
-  import { ChevronRight, ChevronLeft, Tag, LayoutGrid, List, Search, ChevronDown } from 'lucide-svelte'
   import { isDark } from '$lib/stores/theme'
   import { untrack } from 'svelte'
   import { onMount } from 'svelte'
   import LiquidGlass from './LiquidGlass.svelte'
+  import GoogleIcon from './GoogleIcon.svelte'
 
   interface Props {
     initialBrand?: BrandFilter
@@ -13,38 +13,38 @@
   let { initialBrand = 'Todas', initialType = 'Todos' }: Props = $props()
 
   const ALL_VEHICLES = [
-    { id:1,  brand:'Jeep',    type:'SUV',        model:'Wrangler',       year:'2026', version:'Willys Unlimited',     img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2Fdbbe0b1e89813d5569554d4d88221a1b92e0d6f2.jpg?generation=1777350234515482&alt=media',    deal:'Bono de hasta $200,000 ó 24 MSI sin comisión por apertura', badge:'⭐ ESTRELLA',    link:'#', accent:'#334E8B' },
-    { id:2,  brand:'Jeep',    type:'SUV',        model:'Compass',        year:'2026', version:'Limited Premium',       img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F0d3d7a1dc7e07f0e64c4fb84601cc8fa871c5acc.jpg?generation=1777350234540448&alt=media',    deal:'Descuento $70,000 · Mensualidad desde $6,499',              badge:'🔥 HOT',         link:'#', accent:'#334E8B' },
-    { id:3,  brand:'Jeep',    type:'SUV',        model:'Commander',      year:'2026', version:'Overland FWD',          img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F0c31e45701627ca72a88b646087445172fc4a302.jpg?generation=1777350234492066&alt=media',    deal:'Descuento $82,000 · Tasa desde 13.99%',                     badge:null,             link:'#', accent:'#334E8B' },
-    { id:4,  brand:'Jeep',    type:'SUV',        model:'Renegade',       year:'2026', version:'Latitude',              img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F03eb70622ac5b618a05ca4b50608ada9e5f36dff.jpg?generation=1777350234483821&alt=media',    deal:'Descuento $40,000 · Mensualidad desde $5,499',              badge:null,             link:'#', accent:'#334E8B' },
-    { id:5,  brand:'Fiat',    type:'SUV',        model:'Pulse',          year:'2026', version:'Drive T200',            img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F12af6dc13f44f29033d673c803a50f637af22da0.jpg?generation=1777350234700225&alt=media',    deal:'Bono $20,000 · Tasa 7.99% · Enganche $39,000',             badge:'💎 NUEVO',       link:'#', accent:'#D50000' },
+    { id:1,  brand:'Jeep',    type:'SUV',        model:'Wrangler',       year:'2026', version:'Willys Unlimited',     img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2Fdbbe0b1e89813d5569554d4d88221a1b92e0d6f2.jpg?generation=1777350234515482&alt=media',    deal:'Bono de hasta $200,000 ó 24 MSI sin comisión por apertura', badge:'ESTRELLA',    link:'#', accent:'#424D07' },
+    { id:2,  brand:'Jeep',    type:'SUV',        model:'Compass',        year:'2026', version:'Limited Premium',       img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F0d3d7a1dc7e07f0e64c4fb84601cc8fa871c5acc.jpg?generation=1777350234540448&alt=media',    deal:'Descuento $70,000 · Mensualidad desde $6,499',              badge:'HOT',         link:'#', accent:'#424D07' },
+    { id:3,  brand:'Jeep',    type:'SUV',        model:'Commander',      year:'2026', version:'Overland FWD',          img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F0c31e45701627ca72a88b646087445172fc4a302.jpg?generation=1777350234492066&alt=media',    deal:'Descuento $82,000 · Tasa desde 13.99%',                     badge:null,             link:'#', accent:'#424D07' },
+    { id:4,  brand:'Jeep',    type:'SUV',        model:'Renegade',       year:'2026', version:'Latitude',              img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F03eb70622ac5b618a05ca4b50608ada9e5f36dff.jpg?generation=1777350234483821&alt=media',    deal:'Descuento $40,000 · Mensualidad desde $5,499',              badge:null,             link:'#', accent:'#424D07' },
+    { id:5,  brand:'Fiat',    type:'SUV',        model:'Pulse',          year:'2026', version:'Drive T200',            img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F12af6dc13f44f29033d673c803a50f637af22da0.jpg?generation=1777350234700225&alt=media',    deal:'Bono $20,000 · Tasa 7.99% · Enganche $39,000',             badge:'NUEVO',       link:'#', accent:'#D50000' },
     { id:6,  brand:'Fiat',    type:'Deportivos', model:'Pulse Abarth',   year:'2026', version:'Abarth',                img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2Fcab9193a2663f242fe2c565e771d2cb7acb3bdfd.jpg?generation=1777350234690980&alt=media',    deal:'Bono $20,000 · Enganche desde $52,000',                     badge:'SPORT',          link:'#', accent:'#D50000' },
     { id:7,  brand:'Fiat',    type:'SUV',        model:'Fastback',       year:'2026', version:'Limited',               img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F73305e43e64c51813013640443da7b7c6dbe392e.jpg?generation=1777350234711531&alt=media',    deal:'Enganche $55,000 · Bono $20,000 · Tasa 7.99%',             badge:null,             link:'#', accent:'#D50000' },
-    { id:8,  brand:'Fiat',    type:'Sedán',      model:'Argo',           year:'2026', version:'Drive',                 img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F35bd343876d4e41f21a86499747f1af99d5fe2b2.jpg?generation=1777350234727796&alt=media',    deal:'Bono $40,000 · Tasa desde 9.99%',                           badge:null,             link:'#', accent:'#D50000' },
-    { id:9,  brand:'Dodge',   type:'SUV',        model:'Durango',        year:'2026', version:'R/T Plus',              img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F1d6f3f42a55407817e0572a9323b9aa10c891633.jpg?generation=1777350234722595&alt=media',    deal:'Plan de financiamiento · Tasa desde 14.50%',                badge:'💪 POTENCIA',    link:'#', accent:'#D50000' },
+    { id:8,  brand:'Fiat',    type:'Hatchback',  model:'Argo',           year:'2026', version:'Drive',                 img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F35bd343876d4e41f21a86499747f1af99d5fe2b2.jpg?generation=1777350234727796&alt=media',    deal:'Bono $40,000 · Tasa desde 9.99%',                           badge:null,             link:'#', accent:'#D50000' },
+    { id:9,  brand:'Dodge',   type:'SUV',        model:'Durango',        year:'2026', version:'R/T Plus',              img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F1d6f3f42a55407817e0572a9323b9aa10c891633.jpg?generation=1777350234722595&alt=media',    deal:'Plan de financiamiento · Tasa desde 14.50%',                badge:'POTENCIA',    link:'#', accent:'#D50000' },
     { id:10, brand:'Dodge',   type:'Sedán',      model:'Attitude',       year:'2026', version:'SXT',                   img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2Ffd24ea9b590e1057b2b5aece02f0924645f557d3.jpg?generation=1777350234728971&alt=media',    deal:'Precio $379,900 · Mensualidad desde $4,299',                badge:null,             link:'#', accent:'#D50000' },
     { id:11, brand:'Dodge',   type:'SUV',        model:'Journey',        year:'2026', version:'GT',                    img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2Fc8f39b8a62ba049430811aa128ea21a793615787.jpg?generation=1777350234748118&alt=media',    deal:'0% comisión por apertura · Tasa desde 14.50%',              badge:null,             link:'#', accent:'#D50000' },
-    { id:12, brand:'Peugeot', type:'SUV',        model:'Nueva 2008',     year:'2026', version:'GT Pack',               img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F7ac848efe89adde5660e4d2956b4983e1775ce00.jpg?generation=1777350234794617&alt=media',    deal:'Bono $62,000 · Tasa 9.99% · 3 años mantenimiento gratis',  badge:'🏆 MEJOR PRECIO', link:'#', accent:'#0074E8' },
+    { id:12, brand:'Peugeot', type:'SUV',        model:'Nueva 2008',     year:'2026', version:'GT Pack',               img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F7ac848efe89adde5660e4d2956b4983e1775ce00.jpg?generation=1777350234794617&alt=media',    deal:'Bono $62,000 · Tasa 9.99% · 3 años mantenimiento gratis',  badge:'MEJOR PRECIO', link:'#', accent:'#0074E8' },
     { id:13, brand:'Peugeot', type:'SUV',        model:'Nueva 5008',     year:'2026', version:'GT',                    img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2Fa324072dc54a25de50940520db820b447f976fdd.jpg?generation=1777350234728825&alt=media',    deal:'Tasa 9.99% · 0% comisión · 3 años mantenimiento',           badge:null,             link:'#', accent:'#0074E8' },
     { id:14, brand:'Peugeot', type:'SUV',        model:'Nueva 3008',     year:'2026', version:'Allure Pack',           img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F97992cfc1a6ba95676e9baa2cff5b4fe94dd63c7.jpg?generation=1777350234796103&alt=media',    deal:'Bono $15,000 · Tasa 9.99% · 3 años mantenimiento',          badge:null,             link:'#', accent:'#0074E8' },
     { id:15, brand:'Peugeot', type:'Pick-ups',   model:'Nueva Partner',  year:'2026', version:'Active',                img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2Fb1d61b52adc2aa72f9170a07361f38035b5794a8.jpg?generation=1777350234922828&alt=media',    deal:'Bono $25,000 · Tasa 11.99% · 2 años mantenimiento',         badge:null,             link:'#', accent:'#0074E8' },
-    { id:16, brand:'Ram',     type:'Pick-ups',   model:'1500',           year:'2026', version:'Laramie 4x4',           img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F366059fdfc8601cb267c2dfe66bce5eff26e9802.jpg?generation=1777350234982606&alt=media',    deal:'Bono $50,000 · 24 meses sin intereses sin comisión',        badge:'🚀 TOP',          link:'#', accent:'#7B1F1F' },
-    { id:17, brand:'Ram',     type:'Pick-ups',   model:'1200',           year:'2026', version:'Limited',               img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2Fd77a3a9cf0b124b56b0ca97a272a05d66cdb4f9b.jpg?generation=1777350234972552&alt=media',    deal:'Precio $402,900 · Bono $47,000 · Tasa 14.50%',             badge:null,             link:'#', accent:'#7B1F1F' },
-    { id:18, brand:'Ram',     type:'Pick-ups',   model:'700',            year:'2026', version:'Rebel',                 img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2Ff5ec5130c0e32e9b8f088516b511cd201f316b59.jpg?generation=1777350234996294&alt=media',    deal:'Precio desde $344,900 · 0% comisión por apertura',          badge:null,             link:'#', accent:'#7B1F1F' },
+    { id:16, brand:'Ram',     type:'Pick-ups',   model:'1500',           year:'2026', version:'Laramie 4x4',           img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F366059fdfc8601cb267c2dfe66bce5eff26e9802.jpg?generation=1777350234982606&alt=media',    deal:'Bono $50,000 · 24 meses sin intereses sin comisión',        badge:'TOP',          link:'#', accent:'#880D00' },
+    { id:17, brand:'Ram',     type:'Pick-ups',   model:'1200',           year:'2026', version:'Limited',               img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2Fd77a3a9cf0b124b56b0ca97a272a05d66cdb4f9b.jpg?generation=1777350234972552&alt=media',    deal:'Precio $402,900 · Bono $47,000 · Tasa 14.50%',             badge:null,             link:'#', accent:'#880D00' },
+    { id:18, brand:'Ram',     type:'Pick-ups',   model:'700',            year:'2026', version:'Rebel',                 img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2Ff5ec5130c0e32e9b8f088516b511cd201f316b59.jpg?generation=1777350234996294&alt=media',    deal:'Precio desde $344,900 · 0% comisión por apertura',          badge:null,             link:'#', accent:'#880D00' },
   ]
 
   const TODAS_IDS: number[] = [1, 2, 9, 12, 16, 5, 3, 11, 13]
 
   const BRANDS: BrandFilter[] = ['Todas', 'Jeep', 'Fiat', 'Dodge', 'Peugeot', 'Ram']
-  const TYPES:  VehicleType[] = ['Todos', 'Sedán', 'SUV', 'Deportivos', 'Pick-ups']
-  const TYPE_ICONS: Record<VehicleType, string> = { 'Todos':'🚗','Sedán':'🚙','SUV':'🛻','Deportivos':'🏎️','Pick-ups':'🚚' }
+  const TYPES:  VehicleType[] = ['Todos', 'Hatchback', 'Sedán', 'SUV', 'Deportivos', 'Pick-ups']
+  const TYPE_ICONS: Record<VehicleType, string> = { 'Todos':'directions_car','Hatchback':'directions_car','Sedán':'directions_car','SUV':'terrain','Deportivos':'bolt','Pick-ups':'local_shipping' }
 
   const SPECIAL_PROMOS = [
-    { id:901, brand:'Jeep',    hugeText:'$200K',  hugeSub:'EN BONO FLEXIBLE',       title:'LÍNEA JEEP 2026',   desc:'Aplica bono a enganche o precio. Aventura sin límites.',            img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2Fdbbe0b1e89813d5569554d4d88221a1b92e0d6f2.jpg?generation=1777350234515482&alt=media',    models:['Wrangler Willys','Compass Limited','Commander Overland'], accent:'#1d4e2f' },
+    { id:901, brand:'Jeep',    hugeText:'$200K',  hugeSub:'EN BONO FLEXIBLE',       title:'LÍNEA JEEP 2026',   desc:'Aplica bono a enganche o precio. Aventura sin límites.',            img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2Fdbbe0b1e89813d5569554d4d88221a1b92e0d6f2.jpg?generation=1777350234515482&alt=media',    models:['Wrangler Willys','Compass Limited','Commander Overland'], accent:'#424D07' },
     { id:902, brand:'Fiat',    hugeText:'7.99%',  hugeSub:'TASA ANUAL',              title:'FIAT PULSE 2026',   desc:'La tasa más baja del mercado en el SUV favorito de la familia.',    img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F12af6dc13f44f29033d673c803a50f637af22da0.jpg?generation=1777350234700225&alt=media',  models:['Pulse Drive T200','Fastback Limited','Argo Drive'],        accent:'#b91c1c' },
     { id:903, brand:'Dodge',   hugeText:'14.5%',  hugeSub:'TASA PREFERENCIAL',      title:'DODGE DURANGO R/T', desc:'Potencia y lujo familiar con la mejor tasa de financiamiento.',    img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F1d6f3f42a55407817e0572a9323b9aa10c891633.jpg?generation=1777350234722595&alt=media',  models:['Durango R/T Plus','Journey GT','Attitude SXT'],            accent:'#7c2d12' },
     { id:904, brand:'Peugeot', hugeText:'3 AÑOS', hugeSub:'MANTENIMIENTO INCLUIDO', title:'PEUGEOT CARE',      desc:'Disfruta 3 años de mantenimientos cubiertos en tu nueva Peugeot.', img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F7ac848efe89adde5660e4d2956b4983e1775ce00.jpg?generation=1777350234794617&alt=media',    models:['Nueva 2008 GT Pack','Nueva 5008 GT','Nueva 3008 Allure'],  accent:'#0074E8' },
-    { id:905, brand:'Ram',     hugeText:'0%',     hugeSub:'COMISIÓN POR APERTURA',  title:'LÍNEA RAM 2026',    desc:'Potencia extrema con beneficios exclusivos de financiamiento.',    img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F366059fdfc8601cb267c2dfe66bce5eff26e9802.jpg?generation=1777350234982606&alt=media',   models:['RAM 1500 Laramie','RAM 2500 HD','RAM 700 Rebel'],           accent:'#4361ee' },
+    { id:905, brand:'Ram',     hugeText:'0%',     hugeSub:'COMISIÓN POR APERTURA',  title:'LÍNEA RAM 2026',    desc:'Potencia extrema con beneficios exclusivos de financiamiento.',    img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F366059fdfc8601cb267c2dfe66bce5eff26e9802.jpg?generation=1777350234982606&alt=media',   models:['RAM 1500 Laramie','RAM 2500 HD','RAM 700 Rebel'],           accent:'#880D00' },
   ]
 
   let activeBrand    = $state<BrandFilter>(initialBrand)
@@ -202,10 +202,10 @@
           {:else}
             {@const bColor = 
               activeBrand === 'Dodge'   ? ($isDark ? '#ff5252' : '#d50000') : 
-              activeBrand === 'Jeep'    ? ($isDark ? '#a4ad7c' : '#4B5320') : 
-              activeBrand === 'Ram'     ? ($isDark ? '#ff6b6b' : '#D32F2F') : 
-              activeBrand === 'Peugeot' ? ($isDark ? '#60a5fa' : '#002E6B') : 
-              activeBrand === 'Fiat'    ? ($isDark ? '#ff8a80' : '#9A2128') : 
+              activeBrand === 'Jeep'    ? ($isDark ? '#6f7a20' : '#424D07') : 
+              activeBrand === 'Ram'     ? ($isDark ? '#BA0000' : '#880D00') : 
+              activeBrand === 'Peugeot' ? ($isDark ? '#0074E8' : '#0074E8') : 
+              activeBrand === 'Fiat'    ? ($isDark ? '#FF1530' : '#FF1530') : 
               'inherit'}
             Línea <span style="color: {bColor};">{activeBrand.toUpperCase()}</span> <span class="font-light opacity-50">2026</span>
           {/if}
@@ -214,14 +214,14 @@
       <div class="flex items-center gap-3">
         <div class="hidden md:flex items-center rounded-xl p-1 gap-1" style={toggleBg}>
           <button onclick={() => viewMode='grid'} class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all duration-200" style={viewBtnStyle(viewMode==='grid')}>
-            <LayoutGrid size={13} /> Grid
+            <GoogleIcon name="grid_view" size={13} /> Grid
           </button>
           <button onclick={() => viewMode='matrix'} class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all duration-200" style={viewBtnStyle(viewMode==='matrix')}>
-            <List size={13} /> Matriz
+            <GoogleIcon name="view_list" size={13} /> Matriz
           </button>
         </div>
         <a href="#" class="flex items-center gap-1.5 text-xs transition-colors hover:text-blue-600" style="color:{seeAllColor}">
-          Ver todas <ChevronRight size={13} />
+          Ver todas <GoogleIcon name="chevron_right" size={15} />
         </a>
       </div>
     </div>
@@ -280,7 +280,7 @@
             <tr>
               <th class="px-4 py-3 rounded-xl text-xs font-medium text-left" style="background:{headerBg};border:1px solid {headerBorder};color:{textMuted}">Marca / Tipo</th>
               {#each activeTypes as type (type)}
-                <th class="px-4 py-3 rounded-xl text-xs font-medium text-center whitespace-nowrap" style="background:{headerBg};border:1px solid {headerBorder};color:{textPrimary}">{TYPE_ICONS[type]} {type}</th>
+                <th class="px-4 py-3 rounded-xl text-xs font-medium text-center whitespace-nowrap" style="background:{headerBg};border:1px solid {headerBorder};color:{textPrimary}"><GoogleIcon name={TYPE_ICONS[type]} size={15} class="mr-1" /> {type}</th>
               {/each}
             </tr>
           </thead>
@@ -311,7 +311,7 @@
                               <p class="text-xs font-medium truncate" style="color:{textPrimary}">{v.model}</p>
                               <p class="text-xs truncate" style="color:{textMuted}">{v.year}</p>
                             </div>
-                            <ChevronRight size={10} class="flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity" style="color:{$isDark ? 'rgba(100,150,255,0.9)' : '#334E8B'}" />
+                            <GoogleIcon name="chevron_right" size={14} class="flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity" style="color:{$isDark ? 'rgba(100,150,255,0.9)' : '#334E8B'}" />
                           </a>
                         {/each}
                       </div>
@@ -329,7 +329,7 @@
     {#if viewMode === 'grid'}
       {#if vehicles.length === 0}
         <div class="flex flex-col items-center justify-center py-16 gap-3" style="color:{textMuted}">
-          <span class="text-4xl">🔍</span>
+          <GoogleIcon name="search" size={42} />
           <p class="text-sm">No hay vehículos con esa combinación de filtros.</p>
           <button onclick={() => { activeBrand='Todas'; activeType='Todos' }}
             class="text-xs underline" style="color:{$isDark ? 'rgba(100,150,255,0.8)' : '#334E8B'}">Ver todos</button>
@@ -341,7 +341,7 @@
             <div class="flex flex-col gap-4">
               {#each vehicles as v, i (v.id)}
                 <div style="height:340px;{cardsVisible ? `animation:benefit-card-in 0.55s cubic-bezier(0.22,1,0.36,1) ${i * 60}ms both` : 'opacity:0;transform:translateY(24px) scale(0.96)'};will-change:transform,opacity;">
-                  {@render VehicleCard({vehicle: v, featured: i === 0})}
+                  {@render VehicleCard({vehicle: v})}
                 </div>
               {/each}
             </div>
@@ -374,14 +374,14 @@
                   aria-label="Anterior"
                   class="flex items-center justify-center w-9 h-9 rounded-full transition-all active:scale-90"
                   style="background:{$isDark ? 'rgba(255,255,255,0.08)' : 'rgba(51,78,139,0.08)'};border:{$isDark ? '1px solid rgba(255,255,255,0.12)' : '1px solid rgba(51,78,139,0.18)'};backdrop-filter:blur(12px);opacity:{carouselIdx === 0 ? 0.3 : 1};color:{$isDark ? 'rgba(255,255,255,0.75)' : '#334E8B'};">
-                  <ChevronLeft size={17} />
+                  <GoogleIcon name="chevron_left" size={17} />
                 </button>
                 <!-- Next -->
                 <button onclick={() => goTo(Math.min(vehicles.length - 1, carouselIdx + 1))} disabled={carouselIdx === vehicles.length - 1}
                   aria-label="Siguiente"
                   class="flex items-center justify-center w-9 h-9 rounded-full transition-all active:scale-90"
                   style="background:{$isDark ? 'rgba(255,255,255,0.08)' : 'rgba(51,78,139,0.08)'};border:{$isDark ? '1px solid rgba(255,255,255,0.12)' : '1px solid rgba(51,78,139,0.18)'};backdrop-filter:blur(12px);opacity:{carouselIdx === vehicles.length-1 ? 0.3 : 1};color:{$isDark ? 'rgba(255,255,255,0.75)' : '#334E8B'};">
-                  <ChevronRight size={17} />
+                  <GoogleIcon name="chevron_right" size={17} />
                 </button>
               </div>
             </div>
@@ -453,7 +453,7 @@
           <div style="flex:1;">
             <p class="text-xs mb-1 font-semibold tracking-wider uppercase" style="color:{isDarkVal ? 'rgba(100,150,255,0.75)' : '#334E8B'};opacity:0.85;">{vehicle.version}</p>
             <p class="leading-snug" style="font-size:0.71rem;color:{isDarkVal ? 'rgba(255,255,255,0.68)' : 'rgba(20,30,80,0.68)'};display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:30px;">
-              <Tag size={10} style="display:inline;margin-right:4px;color:{isDarkVal ? '#60a5fa' : '#3b82f6'};vertical-align:-1px;" />
+              <GoogleIcon name="sell" size={12} style="display:inline-flex;margin-right:4px;color:{isDarkVal ? '#60a5fa' : '#3b82f6'};vertical-align:-2px;" />
               {vehicle.deal}
             </p>
           </div>
@@ -462,7 +462,7 @@
             class="{isWide ? 'w-fit px-8 self-start' : 'w-full'} inline-flex items-center justify-center gap-1.5 rounded-full font-semibold transition-all duration-250 group/btn"
             style="margin-top:auto;font-size:0.74rem;padding:8px 14px;background:{isDarkVal ? 'linear-gradient(135deg,rgba(51,78,139,0.55),rgba(80,110,180,0.40))' : 'linear-gradient(135deg,rgba(51,78,139,0.12),rgba(80,110,180,0.08))'};border:{isDarkVal ? '1px solid rgba(100,150,255,0.35)' : '1px solid rgba(51,78,139,0.28)'};color:{isDarkVal ? 'rgba(140,180,255,1)' : '#334E8B'};box-shadow:{isDarkVal ? '0 2px 12px rgba(51,78,139,0.30),inset 0 1px 0 rgba(255,255,255,0.12)' : '0 2px 12px rgba(51,78,139,0.12),inset 0 1px 0 rgba(255,255,255,0.80)'};backdrop-filter:blur(8px);flex-shrink:0;">
             Ver detalles
-            <ChevronRight size={12} class="transition-transform duration-250 group-hover/btn:translate-x-0.5" />
+            <GoogleIcon name="chevron_right" size={14} class="transition-transform duration-250 group-hover/btn:translate-x-0.5" />
           </a>
         </div>
       </div>
@@ -494,10 +494,10 @@
             <option value="" class="text-black">Seleccionar modelo</option>
             {#each promo.models as model}<option value={model} class="text-black">{model}</option>{/each}
           </select>
-          <ChevronDown size={15} class="absolute right-3 top-1/2 -translate-y-1/2 text-white/70 pointer-events-none" />
+          <GoogleIcon name="keyboard_arrow_down" size={18} class="absolute right-3 top-1/2 -translate-y-1/2 text-white/70 pointer-events-none" />
         </div>
         <button class="w-full h-11 bg-white rounded-xl font-bold text-sm tracking-wide uppercase flex items-center justify-center gap-2 hover:bg-gray-100 transition-colors cursor-pointer shadow-lg" style="color:{promo.accent};">
-          Consultar Modelos <Search size={14} />
+          Consultar Modelos <GoogleIcon name="search" size={14} />
         </button>
       </div>
     </div>

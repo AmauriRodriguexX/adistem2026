@@ -1,0 +1,1793 @@
+
+> adistem2026@0.0.1 dev
+> vite --host 127.0.0.1
+
+Port 5173 is in use, trying another one...
+
+  [32m[1mVITE[22m v6.4.2[39m  [2mready in [0m[1m653[22m[2m[0m ms[22m
+
+  [32m➜[39m  [1mLocal[22m:   [36mhttp://127.0.0.1:[1m5174[22m/adistem2026/[39m
+[2m[32m  ➜[39m[22m[2m  press [22m[1mh + enter[22m[2m to show help[22m
+9:35:33 a. m. [vite-plugin-svelte] src/App.svelte:338:15 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+9:35:33 a. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:96:13 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+9:35:33 a. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:98:13 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+9:35:33 a. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:102:13 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+9:35:33 a. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:104:13 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+9:35:33 a. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:108:8 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+9:35:33 a. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:124:10 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+9:35:33 a. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:137:10 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+9:35:33 a. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:156:103 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+9:35:33 a. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:219:13 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+9:35:33 a. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:264:13 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+9:35:33 a. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:284:20 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+9:35:33 a. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:286:20 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+9:35:33 a. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:288:20 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+9:35:33 a. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:292:20 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+9:35:33 a. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:95:5 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+9:35:33 a. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:145:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+9:35:33 a. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:149:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+9:35:33 a. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:153:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+9:35:33 a. m. [vite-plugin-svelte] src/lib/components/BrandBenefitsSection.svelte:55:15 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+9:35:33 a. m. [vite-plugin-svelte] src/lib/components/GlassSidebar.svelte:145:2 Visible, non-interactive elements with a click event must be accompanied by a keyboard event handler. Consider whether an interactive element such as `<button type="button">` or `<a>` might be more appropriate
+https://svelte.dev/e/a11y_click_events_have_key_events
+9:35:33 a. m. [vite-plugin-svelte] src/lib/components/GlassSidebar.svelte:145:2 `<div>` with a click handler must have an ARIA role
+https://svelte.dev/e/a11y_no_static_element_interactions
+9:35:33 a. m. [vite-plugin-svelte] src/lib/components/GlassSidebar.svelte:158:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+9:35:33 a. m. [vite-plugin-svelte] src/lib/components/GlassSidebar.svelte:215:11 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+9:35:33 a. m. [vite-plugin-svelte] src/lib/components/GlassSidebar.svelte:218:11 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+9:35:33 a. m. [vite-plugin-svelte] src/lib/components/GlassSidebar.svelte:221:11 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+9:35:33 a. m. [vite-plugin-svelte] src/lib/components/GlassSidebar.svelte:224:11 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+9:35:33 a. m. [vite-plugin-svelte] src/lib/components/MobileBottomNav.svelte:57:2 Visible, non-interactive elements with a click event must be accompanied by a keyboard event handler. Consider whether an interactive element such as `<button type="button">` or `<a>` might be more appropriate
+https://svelte.dev/e/a11y_click_events_have_key_events
+9:35:33 a. m. [vite-plugin-svelte] src/lib/components/MobileBottomNav.svelte:57:2 `<div>` with a click handler must have an ARIA role
+https://svelte.dev/e/a11y_no_static_element_interactions
+9:35:33 a. m. [vite-plugin-svelte] src/lib/components/PromoBentoGrid.svelte:50:43 This reference only captures the initial value of `initialBrand`. Did you mean to reference it inside a closure instead?
+https://svelte.dev/e/state_referenced_locally
+9:35:33 a. m. [vite-plugin-svelte] src/lib/components/PromoBentoGrid.svelte:51:43 This reference only captures the initial value of `initialType`. Did you mean to reference it inside a closure instead?
+https://svelte.dev/e/state_referenced_locally
+9:35:33 a. m. [vite-plugin-svelte] src/lib/components/PromoBentoGrid.svelte:223:11 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+9:35:33 a. m. [vite-plugin-svelte] src/lib/components/PromoBentoGrid.svelte:461:13 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+[2m10:10:25 a. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.svelte, /src/styles/index.css[22m
+10:10:25 a. m. [vite-plugin-svelte] src/App.svelte:341:15 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+[2m10:11:46 a. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/PromoBentoGrid.svelte, /src/styles/index.css[22m
+10:11:46 a. m. [vite-plugin-svelte] src/lib/components/PromoBentoGrid.svelte:50:43 This reference only captures the initial value of `initialBrand`. Did you mean to reference it inside a closure instead?
+https://svelte.dev/e/state_referenced_locally
+10:11:46 a. m. [vite-plugin-svelte] src/lib/components/PromoBentoGrid.svelte:51:43 This reference only captures the initial value of `initialType`. Did you mean to reference it inside a closure instead?
+https://svelte.dev/e/state_referenced_locally
+10:11:46 a. m. [vite-plugin-svelte] src/lib/components/PromoBentoGrid.svelte:223:11 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+10:11:46 a. m. [vite-plugin-svelte] src/lib/components/PromoBentoGrid.svelte:461:13 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+[2m10:14:34 a. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/RamPremiumLanding.svelte, /src/styles/index.css[22m
+[2m10:15:52 a. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/RamPremiumLanding.svelte?svelte&type=style&lang.css[22m
+[2m10:17:10 a. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/RamPremiumLanding.svelte, /src/styles/index.css[22m
+[2m10:17:21 a. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/RamPremiumLanding.svelte?svelte&type=style&lang.css[22m
+[2m10:28:04 a. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.svelte, /src/styles/index.css[22m
+10:28:04 a. m. [vite-plugin-svelte] src/App.svelte:359:15 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+10:28:04 a. m. [vite-plugin-svelte] src/lib/components/RamBrandHub.svelte:377:2 Unused CSS selector ".use-grid svg"
+https://svelte.dev/e/css_unused_selector
+10:28:04 a. m. [vite-plugin-svelte] src/lib/components/RamBrandHub.svelte:489:2 Unused CSS selector ".hub-cta svg"
+https://svelte.dev/e/css_unused_selector
+[2m10:28:47 a. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@fs/D:\adistem 2026\adistem2026\src\lib\components\RamBrandHub.svelte, /src/styles/index.css, /src/lib/components/RamBrandHub.svelte?svelte&type=style&lang.css[22m
+[2m10:30:34 a. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/RamPremiumLanding.svelte, /src/styles/index.css, /src/lib/components/RamPremiumLanding.svelte?svelte&type=style&lang.css[22m
+[2m10:31:58 a. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/RamBrandHub.svelte?svelte&type=style&lang.css[22m
+1:50:03 p. m. [vite-plugin-svelte] src/App.svelte:359:15 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+[2m2:38:17 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@fs/D:\adistem 2026\adistem2026\src\lib\components\RamBrandHub.svelte, /src/styles/index.css[22m
+[2m2:38:23 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@fs/D:\adistem 2026\adistem2026\src\lib\components\RamBrandHub.svelte, /src/styles/index.css[22m
+2:38:34 p. m. [vite-plugin-svelte] src/App.svelte:359:15 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+[2m2:39:03 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/RamBrandHub.svelte?svelte&type=style&lang.css[22m
+2:39:34 p. m. [vite-plugin-svelte] src/App.svelte:359:15 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+[2m2:40:37 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.svelte, /src/styles/index.css[22m
+2:40:38 p. m. [vite-plugin-svelte] src/App.svelte:360:15 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+[2m2:40:58 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@fs/D:\adistem 2026\adistem2026\src\lib\components\RamBrandHub.svelte, /src/styles/index.css, /src/lib/components/RamBrandHub.svelte?svelte&type=style&lang.css[22m
+[2m2:41:16 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/RamPremiumLanding.svelte?svelte&type=style&lang.css[22m
+[2m2:42:09 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/PromoBentoGrid.svelte, /src/styles/index.css[22m
+2:42:09 p. m. [vite-plugin-svelte] src/lib/components/PromoBentoGrid.svelte:50:43 This reference only captures the initial value of `initialBrand`. Did you mean to reference it inside a closure instead?
+https://svelte.dev/e/state_referenced_locally
+2:42:09 p. m. [vite-plugin-svelte] src/lib/components/PromoBentoGrid.svelte:51:43 This reference only captures the initial value of `initialType`. Did you mean to reference it inside a closure instead?
+https://svelte.dev/e/state_referenced_locally
+2:42:09 p. m. [vite-plugin-svelte] src/lib/components/PromoBentoGrid.svelte:223:11 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+2:42:09 p. m. [vite-plugin-svelte] src/lib/components/PromoBentoGrid.svelte:461:13 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+[2m2:42:18 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/PromoBentoGrid.svelte, /src/styles/index.css[22m
+2:42:18 p. m. [vite-plugin-svelte] src/lib/components/PromoBentoGrid.svelte:50:43 This reference only captures the initial value of `initialBrand`. Did you mean to reference it inside a closure instead?
+https://svelte.dev/e/state_referenced_locally
+2:42:18 p. m. [vite-plugin-svelte] src/lib/components/PromoBentoGrid.svelte:51:43 This reference only captures the initial value of `initialType`. Did you mean to reference it inside a closure instead?
+https://svelte.dev/e/state_referenced_locally
+2:42:18 p. m. [vite-plugin-svelte] src/lib/components/PromoBentoGrid.svelte:223:11 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+2:42:18 p. m. [vite-plugin-svelte] src/lib/components/PromoBentoGrid.svelte:461:13 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+[2m2:43:12 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@fs/D:\adistem 2026\adistem2026\src\lib\components\RamBrandHub.svelte, /src/styles/index.css, /src/lib/components/RamBrandHub.svelte?svelte&type=style&lang.css[22m
+2:43:12 p. m. [vite-plugin-svelte] src/lib/components/RamBrandHub.svelte:372:2 Unused CSS selector ".model-strip"
+https://svelte.dev/e/css_unused_selector
+2:43:12 p. m. [vite-plugin-svelte] src/lib/components/RamBrandHub.svelte:385:2 Unused CSS selector ".model-strip button"
+https://svelte.dev/e/css_unused_selector
+2:43:12 p. m. [vite-plugin-svelte] src/lib/components/RamBrandHub.svelte:400:2 Unused CSS selector ".model-strip button::before"
+https://svelte.dev/e/css_unused_selector
+2:43:12 p. m. [vite-plugin-svelte] src/lib/components/RamBrandHub.svelte:411:2 Unused CSS selector ".model-strip img"
+https://svelte.dev/e/css_unused_selector
+2:43:12 p. m. [vite-plugin-svelte] src/lib/components/RamBrandHub.svelte:422:2 Unused CSS selector ".model-strip button::after"
+https://svelte.dev/e/css_unused_selector
+2:43:12 p. m. [vite-plugin-svelte] src/lib/components/RamBrandHub.svelte:429:2 Unused CSS selector ".model-strip button:hover"
+https://svelte.dev/e/css_unused_selector
+2:43:12 p. m. [vite-plugin-svelte] src/lib/components/RamBrandHub.svelte:435:2 Unused CSS selector ".model-strip button:hover img"
+https://svelte.dev/e/css_unused_selector
+2:43:12 p. m. [vite-plugin-svelte] src/lib/components/RamBrandHub.svelte:436:2 Unused CSS selector ".model-strip button.featured img"
+https://svelte.dev/e/css_unused_selector
+2:43:12 p. m. [vite-plugin-svelte] src/lib/components/RamBrandHub.svelte:441:2 Unused CSS selector ".model-strip button:hover::before"
+https://svelte.dev/e/css_unused_selector
+2:43:12 p. m. [vite-plugin-svelte] src/lib/components/RamBrandHub.svelte:442:2 Unused CSS selector ".model-strip button.featured::before"
+https://svelte.dev/e/css_unused_selector
+2:43:12 p. m. [vite-plugin-svelte] src/lib/components/RamBrandHub.svelte:448:2 Unused CSS selector ".model-strip div"
+https://svelte.dev/e/css_unused_selector
+2:43:12 p. m. [vite-plugin-svelte] src/lib/components/RamBrandHub.svelte:456:2 Unused CSS selector ".model-strip small"
+https://svelte.dev/e/css_unused_selector
+2:43:12 p. m. [vite-plugin-svelte] src/lib/components/RamBrandHub.svelte:464:2 Unused CSS selector ".model-strip strong"
+https://svelte.dev/e/css_unused_selector
+2:43:12 p. m. [vite-plugin-svelte] src/lib/components/RamBrandHub.svelte:471:2 Unused CSS selector ".model-strip span"
+https://svelte.dev/e/css_unused_selector
+2:43:12 p. m. [vite-plugin-svelte] src/lib/components/RamBrandHub.svelte:478:2 Unused CSS selector ".model-strip i"
+https://svelte.dev/e/css_unused_selector
+2:43:12 p. m. [vite-plugin-svelte] src/lib/components/RamBrandHub.svelte:493:2 Unused CSS selector ".model-strip i::before"
+https://svelte.dev/e/css_unused_selector
+2:43:12 p. m. [vite-plugin-svelte] src/lib/components/RamBrandHub.svelte:507:2 Unused CSS selector ".model-strip button:hover i::before"
+https://svelte.dev/e/css_unused_selector
+2:43:12 p. m. [vite-plugin-svelte] src/lib/components/RamBrandHub.svelte:508:2 Unused CSS selector ".model-strip button.featured i::before"
+https://svelte.dev/e/css_unused_selector
+2:43:12 p. m. [vite-plugin-svelte] src/lib/components/RamBrandHub.svelte:862:4 Unused CSS selector ".model-strip"
+https://svelte.dev/e/css_unused_selector
+2:43:12 p. m. [vite-plugin-svelte] src/lib/components/RamBrandHub.svelte:871:4 Unused CSS selector ".model-strip"
+https://svelte.dev/e/css_unused_selector
+2:44:17 p. m. [vite-plugin-svelte] src/lib/components/RamBrandHub.svelte:1000:4 Unused CSS selector ".model-strip"
+https://svelte.dev/e/css_unused_selector
+2:44:17 p. m. [vite-plugin-svelte] src/lib/components/RamBrandHub.svelte:1009:4 Unused CSS selector ".model-strip"
+https://svelte.dev/e/css_unused_selector
+[2m2:44:17 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/RamBrandHub.svelte?svelte&type=style&lang.css[22m
+[2m2:44:42 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/RamBrandHub.svelte?svelte&type=style&lang.css[22m
+[2m2:44:52 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/RamBrandHub.svelte?svelte&type=style&lang.css[22m
+2:45:04 p. m. [vite-plugin-svelte] src/App.svelte:360:15 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+[2m3:06:00 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/GlassTopNav.svelte, /src/styles/index.css[22m
+3:06:00 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:96:5 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+3:06:00 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:146:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+3:06:00 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:150:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+3:06:00 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:154:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+[2m3:07:18 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/HeroSection.svelte, /src/styles/index.css[22m
+3:07:19 p. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:96:13 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+3:07:19 p. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:98:13 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+3:07:19 p. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:102:13 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+3:07:19 p. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:104:13 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+3:07:19 p. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:108:8 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+3:07:19 p. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:124:10 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+3:07:19 p. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:137:10 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+3:07:19 p. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:156:103 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+3:07:19 p. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:219:13 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+3:07:19 p. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:264:13 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+3:07:19 p. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:284:20 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+3:07:19 p. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:286:20 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+3:07:19 p. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:288:20 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+3:07:19 p. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:292:20 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+[2m3:10:13 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@fs/D:\adistem 2026\adistem2026\src\lib\components\RamBrandHub.svelte, /src/styles/index.css[22m
+[2m3:10:23 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/RamBrandHub.svelte?svelte&type=style&lang.css[22m
+3:11:56 p. m. [vite-plugin-svelte] src/App.svelte:360:15 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+[2m3:12:10 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/RamBrandHub.svelte?svelte&type=style&lang.css[22m
+[2m3:12:24 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/RamBrandHub.svelte?svelte&type=style&lang.css[22m
+3:13:34 p. m. [vite-plugin-svelte] src/App.svelte:360:15 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+[2m3:13:36 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@fs/D:\adistem 2026\adistem2026\src\lib\components\RamBrandHub.svelte, /src/styles/index.css[22m
+[2m3:14:06 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/RamBrandHub.svelte?svelte&type=style&lang.css[22m
+[2m3:14:28 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/RamBrandHub.svelte?svelte&type=style&lang.css[22m
+[2m3:15:44 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/GlassSidebar.svelte, /src/styles/index.css[22m
+3:15:44 p. m. [vite-plugin-svelte] src/lib/components/GlassSidebar.svelte:160:2 Visible, non-interactive elements with a click event must be accompanied by a keyboard event handler. Consider whether an interactive element such as `<button type="button">` or `<a>` might be more appropriate
+https://svelte.dev/e/a11y_click_events_have_key_events
+3:15:44 p. m. [vite-plugin-svelte] src/lib/components/GlassSidebar.svelte:160:2 `<div>` with a click handler must have an ARIA role
+https://svelte.dev/e/a11y_no_static_element_interactions
+3:15:44 p. m. [vite-plugin-svelte] src/lib/components/GlassSidebar.svelte:173:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+3:15:44 p. m. [vite-plugin-svelte] src/lib/components/GlassSidebar.svelte:230:11 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+3:15:44 p. m. [vite-plugin-svelte] src/lib/components/GlassSidebar.svelte:233:11 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+3:15:44 p. m. [vite-plugin-svelte] src/lib/components/GlassSidebar.svelte:236:11 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+3:15:44 p. m. [vite-plugin-svelte] src/lib/components/GlassSidebar.svelte:239:11 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+[2m3:16:07 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/GlassSidebar.svelte, /src/styles/index.css[22m
+3:16:07 p. m. [vite-plugin-svelte] src/lib/components/GlassSidebar.svelte:161:2 Visible, non-interactive elements with a click event must be accompanied by a keyboard event handler. Consider whether an interactive element such as `<button type="button">` or `<a>` might be more appropriate
+https://svelte.dev/e/a11y_click_events_have_key_events
+3:16:07 p. m. [vite-plugin-svelte] src/lib/components/GlassSidebar.svelte:161:2 `<div>` with a click handler must have an ARIA role
+https://svelte.dev/e/a11y_no_static_element_interactions
+3:16:07 p. m. [vite-plugin-svelte] src/lib/components/GlassSidebar.svelte:174:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+3:16:07 p. m. [vite-plugin-svelte] src/lib/components/GlassSidebar.svelte:231:11 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+3:16:07 p. m. [vite-plugin-svelte] src/lib/components/GlassSidebar.svelte:234:11 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+3:16:07 p. m. [vite-plugin-svelte] src/lib/components/GlassSidebar.svelte:237:11 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+3:16:07 p. m. [vite-plugin-svelte] src/lib/components/GlassSidebar.svelte:240:11 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+[2m3:16:30 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/GlassSidebar.svelte, /src/styles/index.css[22m
+3:16:30 p. m. [vite-plugin-svelte] src/lib/components/GlassSidebar.svelte:161:2 Visible, non-interactive elements with a click event must be accompanied by a keyboard event handler. Consider whether an interactive element such as `<button type="button">` or `<a>` might be more appropriate
+https://svelte.dev/e/a11y_click_events_have_key_events
+3:16:30 p. m. [vite-plugin-svelte] src/lib/components/GlassSidebar.svelte:161:2 `<div>` with a click handler must have an ARIA role
+https://svelte.dev/e/a11y_no_static_element_interactions
+3:16:30 p. m. [vite-plugin-svelte] src/lib/components/GlassSidebar.svelte:174:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+3:16:30 p. m. [vite-plugin-svelte] src/lib/components/GlassSidebar.svelte:232:11 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+3:16:30 p. m. [vite-plugin-svelte] src/lib/components/GlassSidebar.svelte:235:11 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+3:16:30 p. m. [vite-plugin-svelte] src/lib/components/GlassSidebar.svelte:238:11 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+3:16:30 p. m. [vite-plugin-svelte] src/lib/components/GlassSidebar.svelte:241:11 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+[2m3:17:55 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/GlassSidebar.svelte, /src/styles/index.css[22m
+3:17:55 p. m. [vite-plugin-svelte] src/lib/components/GlassSidebar.svelte:161:2 Visible, non-interactive elements with a click event must be accompanied by a keyboard event handler. Consider whether an interactive element such as `<button type="button">` or `<a>` might be more appropriate
+https://svelte.dev/e/a11y_click_events_have_key_events
+3:17:55 p. m. [vite-plugin-svelte] src/lib/components/GlassSidebar.svelte:161:2 `<div>` with a click handler must have an ARIA role
+https://svelte.dev/e/a11y_no_static_element_interactions
+3:17:55 p. m. [vite-plugin-svelte] src/lib/components/GlassSidebar.svelte:174:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+3:17:55 p. m. [vite-plugin-svelte] src/lib/components/GlassSidebar.svelte:232:11 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+3:17:55 p. m. [vite-plugin-svelte] src/lib/components/GlassSidebar.svelte:235:11 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+3:17:55 p. m. [vite-plugin-svelte] src/lib/components/GlassSidebar.svelte:238:11 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+3:17:55 p. m. [vite-plugin-svelte] src/lib/components/GlassSidebar.svelte:241:11 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+[2m3:23:20 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.svelte, /src/styles/index.css[22m
+3:23:20 p. m. [vite-plugin-svelte] src/App.svelte:360:15 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+[2m3:23:56 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/RamPremiumLanding.svelte, /src/styles/index.css[22m
+[2m3:24:23 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/RamPremiumLanding.svelte, /src/styles/index.css[22m
+[2m3:24:32 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/RamPremiumLanding.svelte, /src/styles/index.css[22m
+[2m3:25:26 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/RamPremiumLanding.svelte?svelte&type=style&lang.css[22m
+[2m3:25:49 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/RamPremiumLanding.svelte?svelte&type=style&lang.css[22m
+[2m3:31:03 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/HeroSection.svelte, /src/styles/index.css[22m
+3:31:03 p. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:96:13 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+3:31:03 p. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:98:13 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+3:31:03 p. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:102:13 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+3:31:03 p. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:104:13 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+3:31:03 p. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:108:8 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+3:31:03 p. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:124:10 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+3:31:03 p. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:137:10 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+3:31:03 p. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:156:103 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+3:31:03 p. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:219:13 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+3:31:03 p. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:264:13 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+3:31:03 p. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:284:20 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+3:31:03 p. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:286:20 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+3:31:03 p. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:288:20 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+3:31:03 p. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:292:20 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+[2m3:33:16 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.svelte, /src/styles/index.css[22m
+3:33:16 p. m. [vite-plugin-svelte] src/App.svelte:360:15 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+[2m3:44:45 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/lib/types.ts[22m
+[2m3:44:46 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/PromoBentoGrid.svelte, /src/styles/index.css[22m
+3:44:46 p. m. [vite-plugin-svelte] src/lib/components/PromoBentoGrid.svelte:50:43 This reference only captures the initial value of `initialBrand`. Did you mean to reference it inside a closure instead?
+https://svelte.dev/e/state_referenced_locally
+3:44:46 p. m. [vite-plugin-svelte] src/lib/components/PromoBentoGrid.svelte:51:43 This reference only captures the initial value of `initialType`. Did you mean to reference it inside a closure instead?
+https://svelte.dev/e/state_referenced_locally
+3:44:46 p. m. [vite-plugin-svelte] src/lib/components/PromoBentoGrid.svelte:223:11 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+3:44:46 p. m. [vite-plugin-svelte] src/lib/components/PromoBentoGrid.svelte:461:13 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+[2m3:46:11 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/GlassTopNav.svelte, /src/styles/index.css[22m
+3:46:11 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:159:5 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+3:46:11 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:209:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+3:46:11 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:213:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+3:46:11 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:217:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+[2m3:47:27 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/GlassTopNav.svelte, /src/styles/index.css[22m
+3:47:27 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:175:5 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+3:47:27 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:349:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+3:47:27 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:353:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+3:47:27 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:357:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+[2m3:47:33 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.svelte, /src/styles/index.css[22m
+3:47:33 p. m. [vite-plugin-svelte] src/App.svelte:361:15 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+[2m3:48:03 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/GlassTopNav.svelte, /src/styles/index.css[22m
+3:48:03 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:175:5 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+3:48:03 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:349:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+3:48:03 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:353:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+3:48:03 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:357:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+[2m3:50:58 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/GlassTopNav.svelte, /src/styles/index.css[22m
+3:50:58 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:193:5 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+3:50:58 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:367:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+3:50:58 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:371:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+3:50:58 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:375:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+[2m3:54:35 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/GlassTopNav.svelte, /src/styles/index.css, /src/lib/components/GlassTopNav.svelte?svelte&type=style&lang.css[22m
+3:54:35 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:193:5 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+3:54:35 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:217:4 `<div>` with a mouseenter handler must have an ARIA role
+https://svelte.dev/e/a11y_no_static_element_interactions
+3:54:35 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:235:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+3:54:35 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:239:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+3:54:35 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:243:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+3:54:35 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:265:4 `<div>` with a mouseenter or mouseleave handler must have an ARIA role
+https://svelte.dev/e/a11y_no_static_element_interactions
+[2m3:55:08 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/GlassTopNav.svelte, /src/styles/index.css[22m
+3:55:08 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:193:5 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+3:55:08 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:235:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+3:55:08 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:239:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+3:55:08 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:243:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+[2m3:58:21 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/GlassTopNav.svelte, /src/styles/index.css[22m
+3:58:21 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:197:5 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+3:58:21 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:239:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+3:58:21 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:243:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+3:58:21 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:247:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+[2m3:59:30 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/GlassTopNav.svelte, /src/styles/index.css, /src/lib/components/GlassTopNav.svelte?svelte&type=style&lang.css[22m
+3:59:30 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:197:5 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+3:59:30 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:239:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+3:59:30 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:243:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+3:59:30 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:247:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+3:59:30 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:282:2 Unused CSS selector ".animate-mega-shell"
+https://svelte.dev/e/css_unused_selector
+[2m4:00:39 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/GlassTopNav.svelte, /src/styles/index.css, /src/lib/components/GlassTopNav.svelte?svelte&type=style&lang.css[22m
+4:00:39 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:197:5 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+4:00:39 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:239:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+4:00:39 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:243:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+4:00:39 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:247:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+[2m4:00:47 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/GlassTopNav.svelte, /src/styles/index.css[22m
+4:00:47 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:196:5 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+4:00:47 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:238:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+4:00:47 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:242:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+4:00:47 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:246:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+[2m4:02:36 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/GlassTopNav.svelte, /src/styles/index.css[22m
+4:02:36 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:209:5 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+4:02:36 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:251:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+4:02:36 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:255:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+4:02:36 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:259:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+[2m4:02:48 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/GlassTopNav.svelte, /src/styles/index.css[22m
+4:02:48 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:209:5 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+4:02:48 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:251:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+4:02:48 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:255:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+4:02:48 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:259:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+[2m4:06:10 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/GlassTopNav.svelte, /src/styles/index.css[22m
+4:06:10 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:209:5 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+4:06:10 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:251:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+4:06:11 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:255:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+4:06:11 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:259:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+[2m4:06:18 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/GlassTopNav.svelte, /src/styles/index.css, /src/lib/components/GlassTopNav.svelte?svelte&type=style&lang.css[22m
+4:06:18 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:209:5 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+4:06:18 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:251:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+4:06:18 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:255:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+4:06:18 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:259:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+4:06:18 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:456:2 Unused CSS selector ".animate-mega-shell"
+https://svelte.dev/e/css_unused_selector
+4:07:31 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:209:5 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+4:07:31 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:251:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+4:07:31 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:255:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+4:07:31 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:259:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+[2m4:07:31 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/GlassTopNav.svelte?svelte&type=style&lang.css[22m
+[2m4:09:51 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/GlassTopNav.svelte, /src/styles/index.css[22m
+4:09:51 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:209:5 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+4:09:51 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:251:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+4:09:51 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:255:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+4:09:51 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:259:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+[2m4:10:36 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/GlassSidebar.svelte, /src/styles/index.css[22m
+4:10:36 p. m. [vite-plugin-svelte] src/lib/components/GlassSidebar.svelte:161:2 Visible, non-interactive elements with a click event must be accompanied by a keyboard event handler. Consider whether an interactive element such as `<button type="button">` or `<a>` might be more appropriate
+https://svelte.dev/e/a11y_click_events_have_key_events
+4:10:36 p. m. [vite-plugin-svelte] src/lib/components/GlassSidebar.svelte:161:2 `<div>` with a click handler must have an ARIA role
+https://svelte.dev/e/a11y_no_static_element_interactions
+4:10:36 p. m. [vite-plugin-svelte] src/lib/components/GlassSidebar.svelte:174:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+4:10:36 p. m. [vite-plugin-svelte] src/lib/components/GlassSidebar.svelte:232:11 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+4:10:36 p. m. [vite-plugin-svelte] src/lib/components/GlassSidebar.svelte:235:11 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+4:10:36 p. m. [vite-plugin-svelte] src/lib/components/GlassSidebar.svelte:238:11 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+4:10:36 p. m. [vite-plugin-svelte] src/lib/components/GlassSidebar.svelte:241:11 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+[2m4:19:15 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/GlassTopNav.svelte, /src/styles/index.css[22m
+4:19:15 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:224:5 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+4:19:15 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:266:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+4:19:15 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:270:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+4:19:15 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:274:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+[2m4:19:51 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/GlassTopNav.svelte, /src/styles/index.css[22m
+4:19:51 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:224:5 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+4:19:51 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:266:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+4:19:51 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:270:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+4:19:51 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:274:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+[2m4:20:17 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/GlassTopNav.svelte, /src/styles/index.css[22m
+4:20:17 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:224:5 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+4:20:17 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:266:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+4:20:17 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:270:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+4:20:17 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:274:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+[2m4:20:37 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/GlassSidebar.svelte, /src/styles/index.css[22m
+4:20:37 p. m. [vite-plugin-svelte] src/lib/components/GlassSidebar.svelte:124:2 Visible, non-interactive elements with a click event must be accompanied by a keyboard event handler. Consider whether an interactive element such as `<button type="button">` or `<a>` might be more appropriate
+https://svelte.dev/e/a11y_click_events_have_key_events
+4:20:37 p. m. [vite-plugin-svelte] src/lib/components/GlassSidebar.svelte:124:2 `<div>` with a click handler must have an ARIA role
+https://svelte.dev/e/a11y_no_static_element_interactions
+4:20:37 p. m. [vite-plugin-svelte] src/lib/components/GlassSidebar.svelte:137:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+4:20:37 p. m. [vite-plugin-svelte] src/lib/components/GlassSidebar.svelte:195:11 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+4:20:37 p. m. [vite-plugin-svelte] src/lib/components/GlassSidebar.svelte:198:11 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+4:20:37 p. m. [vite-plugin-svelte] src/lib/components/GlassSidebar.svelte:201:11 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+4:20:37 p. m. [vite-plugin-svelte] src/lib/components/GlassSidebar.svelte:204:11 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+[2m4:21:06 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/GlassTopNav.svelte, /src/styles/index.css[22m
+4:21:07 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:224:5 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+4:21:07 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:266:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+4:21:07 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:270:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+4:21:07 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:274:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+[2m4:22:18 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/GlassTopNav.svelte, /src/styles/index.css[22m
+4:22:18 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:224:5 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+4:22:18 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:266:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+4:22:18 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:270:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+4:22:18 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:274:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+[2m4:23:59 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/HeroSection.svelte, /src/styles/index.css[22m
+4:23:59 p. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:96:13 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+4:23:59 p. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:98:13 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+4:23:59 p. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:102:13 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+4:23:59 p. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:104:13 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+4:23:59 p. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:108:8 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+4:23:59 p. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:124:10 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+4:23:59 p. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:137:10 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+4:23:59 p. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:156:103 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+4:23:59 p. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:219:13 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+4:23:59 p. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:264:13 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+4:23:59 p. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:284:20 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+4:23:59 p. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:286:20 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+4:23:59 p. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:288:20 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+4:23:59 p. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:292:20 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+[2m4:24:08 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/FloatingContact.svelte, /src/styles/index.css[22m
+[2m4:24:30 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/MobileBottomNav.svelte, /src/styles/index.css[22m
+4:24:30 p. m. [vite-plugin-svelte] src/lib/components/MobileBottomNav.svelte:57:2 Visible, non-interactive elements with a click event must be accompanied by a keyboard event handler. Consider whether an interactive element such as `<button type="button">` or `<a>` might be more appropriate
+https://svelte.dev/e/a11y_click_events_have_key_events
+4:24:30 p. m. [vite-plugin-svelte] src/lib/components/MobileBottomNav.svelte:57:2 `<div>` with a click handler must have an ARIA role
+https://svelte.dev/e/a11y_no_static_element_interactions
+[2m4:25:10 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/BrandBenefitsSection.svelte, /src/styles/index.css[22m
+4:25:10 p. m. [vite-plugin-svelte] src/lib/components/BrandBenefitsSection.svelte:55:15 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+[2m4:25:22 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/SeminuevosView.svelte, /src/styles/index.css[22m
+[2m4:25:40 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@fs/D:\adistem 2026\adistem2026\src\lib\components\RamBrandHub.svelte, /src/styles/index.css[22m
+[2m4:25:53 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/RamPremiumLanding.svelte, /src/styles/index.css[22m
+4:26:19 p. m. [vite-plugin-svelte] src/App.svelte:361:15 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+[2m4:26:44 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/PromoBentoGrid.svelte, /src/styles/index.css[22m
+4:26:44 p. m. [vite-plugin-svelte] src/lib/components/PromoBentoGrid.svelte:50:43 This reference only captures the initial value of `initialBrand`. Did you mean to reference it inside a closure instead?
+https://svelte.dev/e/state_referenced_locally
+4:26:44 p. m. [vite-plugin-svelte] src/lib/components/PromoBentoGrid.svelte:51:43 This reference only captures the initial value of `initialType`. Did you mean to reference it inside a closure instead?
+https://svelte.dev/e/state_referenced_locally
+4:26:44 p. m. [vite-plugin-svelte] src/lib/components/PromoBentoGrid.svelte:223:11 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+4:26:44 p. m. [vite-plugin-svelte] src/lib/components/PromoBentoGrid.svelte:461:13 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+[2m4:27:07 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/PromoBentoGrid.svelte, /src/styles/index.css[22m
+4:27:08 p. m. [vite-plugin-svelte] src/lib/components/PromoBentoGrid.svelte:50:43 This reference only captures the initial value of `initialBrand`. Did you mean to reference it inside a closure instead?
+https://svelte.dev/e/state_referenced_locally
+4:27:08 p. m. [vite-plugin-svelte] src/lib/components/PromoBentoGrid.svelte:51:43 This reference only captures the initial value of `initialType`. Did you mean to reference it inside a closure instead?
+https://svelte.dev/e/state_referenced_locally
+4:27:08 p. m. [vite-plugin-svelte] src/lib/components/PromoBentoGrid.svelte:223:11 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+4:27:08 p. m. [vite-plugin-svelte] src/lib/components/PromoBentoGrid.svelte:461:13 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+[2m4:27:50 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.svelte, /src/styles/index.css[22m
+4:27:50 p. m. [vite-plugin-svelte] src/App.svelte:362:15 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+[2m4:28:06 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2mindex.html[22m
+[2m4:28:35 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.svelte, /src/styles/index.css[22m
+4:28:36 p. m. [vite-plugin-svelte] src/App.svelte:362:15 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+[2m4:28:41 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles/index.css[22m
+[2m4:29:20 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2mpackage.json[22m
+[2m4:29:35 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/GlassSidebar.svelte, /src/styles/index.css[22m
+4:29:35 p. m. [vite-plugin-svelte] src/lib/components/GlassSidebar.svelte:124:2 Visible, non-interactive elements with a click event must be accompanied by a keyboard event handler. Consider whether an interactive element such as `<button type="button">` or `<a>` might be more appropriate
+https://svelte.dev/e/a11y_click_events_have_key_events
+4:29:35 p. m. [vite-plugin-svelte] src/lib/components/GlassSidebar.svelte:124:2 `<div>` with a click handler must have an ARIA role
+https://svelte.dev/e/a11y_no_static_element_interactions
+4:29:35 p. m. [vite-plugin-svelte] src/lib/components/GlassSidebar.svelte:137:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+4:29:35 p. m. [vite-plugin-svelte] src/lib/components/GlassSidebar.svelte:194:11 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+4:29:35 p. m. [vite-plugin-svelte] src/lib/components/GlassSidebar.svelte:197:11 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+4:29:35 p. m. [vite-plugin-svelte] src/lib/components/GlassSidebar.svelte:200:11 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+4:29:35 p. m. [vite-plugin-svelte] src/lib/components/GlassSidebar.svelte:203:11 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+[2m4:40:30 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/HeroSection.svelte, /src/styles/index.css[22m
+4:40:30 p. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:96:13 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+4:40:30 p. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:98:13 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+4:40:30 p. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:102:13 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+4:40:30 p. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:104:13 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+4:40:30 p. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:108:8 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+4:40:30 p. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:124:10 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+4:40:30 p. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:137:10 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+4:40:30 p. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:156:103 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+4:40:30 p. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:217:11 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+[2m4:40:51 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.svelte, /src/styles/index.css[22m
+4:40:51 p. m. [vite-plugin-svelte] src/App.svelte:364:15 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+4:40:51 p. m. [vite-plugin-svelte] src/lib/components/LeadFormSection.svelte:103:14 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+4:40:51 p. m. [vite-plugin-svelte] src/lib/components/LeadFormSection.svelte:107:14 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+4:40:51 p. m. [vite-plugin-svelte] src/lib/components/LeadFormSection.svelte:114:14 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+4:40:51 p. m. [vite-plugin-svelte] src/lib/components/LeadFormSection.svelte:118:14 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+4:40:51 p. m. [vite-plugin-svelte] src/lib/components/LeadFormSection.svelte:124:12 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+4:40:51 p. m. [vite-plugin-svelte] src/lib/components/LeadFormSection.svelte:141:14 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+4:40:51 p. m. [vite-plugin-svelte] src/lib/components/LeadFormSection.svelte:154:14 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+4:40:51 p. m. [vite-plugin-svelte] src/lib/components/LeadFormSection.svelte:171:14 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+4:40:51 p. m. [vite-plugin-svelte] src/lib/components/LeadFormSection.svelte:175:14 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+4:40:51 p. m. [vite-plugin-svelte] src/lib/components/LeadFormSection.svelte:179:14 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+4:40:51 p. m. [vite-plugin-svelte] src/lib/components/LeadFormSection.svelte:185:14 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+4:40:51 p. m. [vite-plugin-svelte] src/lib/components/LeadFormSection.svelte:198:38 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+[2m4:41:11 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.svelte, /src/styles/index.css[22m
+4:41:11 p. m. [vite-plugin-svelte] src/App.svelte:364:15 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+[2m4:57:40 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/HeroSection.svelte, /src/styles/index.css[22m
+4:57:40 p. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:69:11 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+[2m5:05:27 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.svelte, /src/styles/index.css[22m
+5:05:27 p. m. [vite-plugin-svelte] src/App.svelte:364:15 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+[2m5:10:21 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.svelte, /src/styles/index.css[22m
+5:10:21 p. m. [vite-plugin-svelte] src/App.svelte:364:15 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+[2m5:14:43 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/MobileBottomNav.svelte, /src/styles/index.css[22m
+5:14:43 p. m. [vite-plugin-svelte] src/lib/components/MobileBottomNav.svelte:70:2 Visible, non-interactive elements with a click event must be accompanied by a keyboard event handler. Consider whether an interactive element such as `<button type="button">` or `<a>` might be more appropriate
+https://svelte.dev/e/a11y_click_events_have_key_events
+5:14:43 p. m. [vite-plugin-svelte] src/lib/components/MobileBottomNav.svelte:70:2 `<div>` with a click handler must have an ARIA role
+https://svelte.dev/e/a11y_no_static_element_interactions
+[2m5:14:48 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.svelte, /src/styles/index.css[22m
+5:14:49 p. m. [vite-plugin-svelte] src/App.svelte:364:15 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+[2m5:15:03 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/HeroSection.svelte, /src/styles/index.css[22m
+5:15:03 p. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:70:11 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+[2m5:15:09 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/HeroSection.svelte, /src/styles/index.css[22m
+5:15:09 p. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:70:11 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+[2m5:15:16 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.svelte, /src/styles/index.css[22m
+5:15:16 p. m. [vite-plugin-svelte] src/App.svelte:365:15 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+[2m5:21:40 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/HeroSection.svelte, /src/styles/index.css, /src/lib/components/HeroSection.svelte?svelte&type=style&lang.css[22m
+5:21:40 p. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:96:13 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+5:21:40 p. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:98:13 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+5:21:40 p. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:102:13 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+5:21:40 p. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:104:13 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+5:21:40 p. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:108:8 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+5:21:40 p. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:124:10 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+5:21:40 p. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:137:10 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+5:21:40 p. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:156:103 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+5:21:40 p. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:219:13 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+5:21:40 p. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:264:13 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+5:21:40 p. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:284:20 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+5:21:40 p. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:286:20 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+5:21:40 p. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:288:20 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+5:21:40 p. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:292:20 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+[2m5:23:03 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/HeroSection.svelte, /src/styles/index.css[22m
+5:23:03 p. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:95:13 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+5:23:03 p. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:97:13 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+5:23:03 p. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:101:13 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+5:23:03 p. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:103:13 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+5:23:03 p. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:107:8 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+5:23:03 p. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:123:10 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+5:23:03 p. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:136:10 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+5:23:03 p. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:155:103 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+5:23:03 p. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:219:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+5:23:03 p. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:235:11 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+5:23:03 p. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:256:21 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+5:23:03 p. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:258:21 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+5:23:03 p. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:260:21 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+5:23:03 p. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:264:21 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+[2m5:23:22 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.svelte, /src/styles/index.css[22m
+5:23:22 p. m. [vite-plugin-svelte] src/App.svelte:365:15 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+[2m5:23:46 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.svelte, /src/styles/index.css[22m
+5:23:46 p. m. [vite-plugin-svelte] src/App.svelte:371:15 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+[2m5:35:54 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2mpackage.json[22m
+[2m5:36:36 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@fs/D:\adistem 2026\adistem2026\src\lib\components\LeadFormSection.svelte, /src/styles/index.css, /src/lib/components/LeadFormSection.svelte?svelte&type=style&lang.css[22m
+5:36:36 p. m. [vite-plugin-svelte] src/lib/components/ContactFormCard.svelte:93:13 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+5:36:36 p. m. [vite-plugin-svelte] src/lib/components/ContactFormCard.svelte:95:13 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+5:36:36 p. m. [vite-plugin-svelte] src/lib/components/ContactFormCard.svelte:99:13 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+5:36:36 p. m. [vite-plugin-svelte] src/lib/components/ContactFormCard.svelte:101:13 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+5:36:36 p. m. [vite-plugin-svelte] src/lib/components/ContactFormCard.svelte:105:8 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+5:36:36 p. m. [vite-plugin-svelte] src/lib/components/ContactFormCard.svelte:121:10 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+5:36:36 p. m. [vite-plugin-svelte] src/lib/components/ContactFormCard.svelte:134:10 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+5:36:36 p. m. [vite-plugin-svelte] src/lib/components/ContactFormCard.svelte:153:103 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+5:36:36 p. m. [vite-plugin-svelte] src/lib/components/ContactFormCard.svelte:158:13 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+5:36:36 p. m. [vite-plugin-svelte] src/lib/components/ContactFormCard.svelte:160:13 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+5:36:36 p. m. [vite-plugin-svelte] src/lib/components/ContactFormCard.svelte:162:13 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+5:36:36 p. m. [vite-plugin-svelte] src/lib/components/ContactFormCard.svelte:166:13 A form label must be associated with a control
+https://svelte.dev/e/a11y_label_has_associated_control
+[2m5:37:00 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/HeroSection.svelte, /src/styles/index.css[22m
+5:37:00 p. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:99:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+5:37:00 p. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:115:11 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+[2m5:37:10 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.svelte, /src/styles/index.css[22m
+5:37:10 p. m. [vite-plugin-svelte] src/App.svelte:375:15 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+[2m5:37:19 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.svelte, /src/styles/index.css[22m
+5:37:19 p. m. [vite-plugin-svelte] src/App.svelte:376:15 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+[2m5:46:38 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/GlassTopNav.svelte, /src/styles/index.css[22m
+5:46:38 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:224:5 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+5:46:38 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:266:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+5:46:38 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:270:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+5:46:38 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:274:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+[2m5:50:03 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/GlassTopNav.svelte, /src/styles/index.css, /src/lib/components/GlassTopNav.svelte?svelte&type=style&lang.css[22m
+5:50:03 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:224:5 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+5:50:03 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:266:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+5:50:03 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:270:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+5:50:03 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:274:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+[2m6:00:07 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/HeroSection.svelte, /src/styles/index.css[22m
+6:00:07 p. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:99:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+6:00:07 p. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:115:11 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+[2m6:01:14 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/HeroSection.svelte, /src/styles/index.css[22m
+6:01:14 p. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:99:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+6:01:14 p. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:115:11 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+[2m6:03:02 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/HeroSection.svelte, /src/styles/index.css[22m
+6:03:02 p. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:99:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+6:03:02 p. m. [vite-plugin-svelte] src/lib/components/HeroSection.svelte:115:11 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+[2m7:15:06 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.svelte, /src/styles/index.css[22m
+7:15:06 p. m. [vite-plugin-svelte] src/App.svelte:394:15 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+7:15:06 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1108:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+7:15:06 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1113:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+7:15:06 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1121:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+7:15:06 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1126:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+7:15:06 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1154:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+7:15:06 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1159:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+7:15:06 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1166:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+7:15:06 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1171:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+7:15:06 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1179:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+7:15:06 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1184:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+7:15:06 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1192:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+7:15:06 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1197:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+7:15:06 p. m. [vite-plugin-svelte] src/lib/components/JeepBrandHub.svelte:918:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+7:15:07 p. m. [vite-plugin-svelte] src/lib/components/JeepBrandHub.svelte:921:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+7:15:07 p. m. [vite-plugin-svelte] src/lib/components/JeepBrandHub.svelte:927:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+7:15:07 p. m. [vite-plugin-svelte] src/lib/components/JeepBrandHub.svelte:932:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+7:15:07 p. m. [vite-plugin-svelte] src/lib/components/JeepBrandHub.svelte:940:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+7:15:07 p. m. [vite-plugin-svelte] src/lib/components/JeepBrandHub.svelte:944:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+7:15:07 p. m. [vite-plugin-svelte] src/lib/components/JeepBrandHub.svelte:951:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+7:15:07 p. m. [vite-plugin-svelte] src/lib/components/JeepBrandHub.svelte:955:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+7:15:07 p. m. [vite-plugin-svelte] src/lib/components/JeepBrandHub.svelte:962:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+7:15:07 p. m. [vite-plugin-svelte] src/lib/components/JeepBrandHub.svelte:967:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+7:15:07 p. m. [vite-plugin-svelte] src/lib/components/JeepBrandHub.svelte:975:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+7:15:07 p. m. [vite-plugin-svelte] src/lib/components/JeepBrandHub.svelte:980:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+7:15:07 p. m. [vite-plugin-svelte] src/lib/components/JeepBrandHub.svelte:988:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+7:15:07 p. m. [vite-plugin-svelte] src/lib/components/JeepBrandHub.svelte:992:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+[2m7:33:49 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/JeepBrandHub.svelte, /src/styles/index.css[22m
+7:33:49 p. m. [vite-plugin-svelte] src/lib/components/JeepBrandHub.svelte:929:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+7:33:49 p. m. [vite-plugin-svelte] src/lib/components/JeepBrandHub.svelte:932:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+7:33:49 p. m. [vite-plugin-svelte] src/lib/components/JeepBrandHub.svelte:938:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+7:33:49 p. m. [vite-plugin-svelte] src/lib/components/JeepBrandHub.svelte:943:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+7:33:49 p. m. [vite-plugin-svelte] src/lib/components/JeepBrandHub.svelte:951:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+7:33:49 p. m. [vite-plugin-svelte] src/lib/components/JeepBrandHub.svelte:955:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+7:33:49 p. m. [vite-plugin-svelte] src/lib/components/JeepBrandHub.svelte:962:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+7:33:49 p. m. [vite-plugin-svelte] src/lib/components/JeepBrandHub.svelte:966:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+7:33:49 p. m. [vite-plugin-svelte] src/lib/components/JeepBrandHub.svelte:973:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+7:33:49 p. m. [vite-plugin-svelte] src/lib/components/JeepBrandHub.svelte:978:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+7:33:49 p. m. [vite-plugin-svelte] src/lib/components/JeepBrandHub.svelte:986:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+7:33:49 p. m. [vite-plugin-svelte] src/lib/components/JeepBrandHub.svelte:991:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+7:33:49 p. m. [vite-plugin-svelte] src/lib/components/JeepBrandHub.svelte:999:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+7:33:49 p. m. [vite-plugin-svelte] src/lib/components/JeepBrandHub.svelte:1003:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+[2m7:34:43 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/JeepPremiumLanding.svelte, /src/styles/index.css[22m
+7:34:43 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1153:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+7:34:43 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1158:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+7:34:43 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1166:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+7:34:43 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1171:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+7:34:43 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1199:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+7:34:43 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1204:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+7:34:43 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1211:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+7:34:43 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1216:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+7:34:43 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1224:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+7:34:43 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1229:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+7:34:43 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1237:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+7:34:43 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1242:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+[2m7:41:40 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/JeepPremiumLanding.svelte, /src/styles/index.css, /src/lib/components/JeepPremiumLanding.svelte?svelte&type=style&lang.css[22m
+7:41:40 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1252:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+7:41:40 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1257:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+7:41:40 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1265:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+7:41:40 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1270:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+7:41:40 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1298:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+7:41:40 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1303:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+7:41:40 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1310:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+7:41:40 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1315:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+7:41:40 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1323:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+7:41:40 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1328:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+7:41:40 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1336:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+7:41:40 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1341:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+7:41:58 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1253:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+7:41:58 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1258:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+7:41:58 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1266:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+7:41:58 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1271:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+7:41:58 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1299:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+7:41:58 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1304:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+7:41:58 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1311:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+7:41:58 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1316:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+7:41:58 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1324:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+7:41:58 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1329:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+7:41:58 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1337:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+7:41:58 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1342:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+[2m7:41:58 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/JeepPremiumLanding.svelte?svelte&type=style&lang.css[22m
+7:42:24 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1253:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+7:42:24 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1258:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+7:42:24 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1266:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+7:42:24 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1271:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+7:42:24 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1299:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+7:42:24 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1304:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+7:42:24 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1311:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+7:42:24 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1316:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+7:42:24 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1324:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+7:42:24 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1329:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+7:42:24 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1337:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+7:42:24 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1342:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+7:46:00 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1264:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+7:46:00 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1269:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+7:46:00 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1277:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+7:46:00 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1282:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+7:46:00 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1310:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+7:46:00 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1315:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+7:46:00 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1322:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+7:46:00 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1327:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+7:46:00 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1335:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+7:46:00 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1340:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+7:46:00 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1348:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+7:46:00 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1353:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+[2m7:46:00 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/JeepPremiumLanding.svelte?svelte&type=style&lang.css[22m
+7:56:10 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1264:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+7:56:10 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1269:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+7:56:10 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1277:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+7:56:10 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1282:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+7:56:10 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1310:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+7:56:10 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1315:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+7:56:10 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1322:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+7:56:10 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1327:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+7:56:10 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1335:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+7:56:10 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1340:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+7:56:10 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1348:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+7:56:10 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1353:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+[2m7:57:01 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/JeepPremiumLanding.svelte, /src/styles/index.css, /src/lib/components/JeepPremiumLanding.svelte?svelte&type=style&lang.css[22m
+7:57:01 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1547:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+7:57:01 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1552:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+7:57:01 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1560:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+7:57:01 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1565:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+7:57:01 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1593:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+7:57:01 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1598:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+7:57:01 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1605:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+7:57:01 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1610:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+7:57:01 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1618:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+7:57:01 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1623:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+7:57:01 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1631:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+7:57:01 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1636:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+[2m8:00:11 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/JeepPremiumLanding.svelte, /src/styles/index.css[22m
+8:00:11 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1550:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:00:11 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1555:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+8:00:11 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1563:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:00:11 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1568:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+8:00:11 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1596:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:00:11 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1601:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+8:00:11 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1608:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:00:11 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1613:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+8:00:11 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1621:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:00:11 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1626:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+8:00:11 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1634:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:00:11 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1639:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+[2m8:05:46 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/JeepPremiumLanding.svelte, /src/styles/index.css[22m
+8:05:46 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1550:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:05:46 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1555:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+8:05:46 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1563:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:05:46 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1568:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+8:05:46 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1596:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:05:46 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1601:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+8:05:46 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1608:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:05:46 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1613:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+8:05:46 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1621:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:05:46 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1626:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+8:05:46 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1634:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:05:46 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1639:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+[2m8:18:16 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/JeepPremiumLanding.svelte, /src/styles/index.css, /src/lib/components/JeepPremiumLanding.svelte?svelte&type=style&lang.css[22m
+8:19:46 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1696:4 Unused CSS selector ".versions-layout"
+https://svelte.dev/e/css_unused_selector
+8:19:46 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1697:4 Unused CSS selector ".features-columns"
+https://svelte.dev/e/css_unused_selector
+8:19:46 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1709:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:19:46 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1714:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+8:19:46 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1722:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:19:46 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1727:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+8:19:46 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1755:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:19:46 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1760:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+8:19:46 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1767:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:19:46 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1772:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+8:19:46 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1780:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:19:46 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1785:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+8:19:46 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1793:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:19:46 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1798:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+[2m8:20:08 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2mpackage.json[22m
+[2m8:25:25 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/JeepPremiumLanding.svelte, /src/styles/index.css[22m
+8:25:25 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1695:4 Unused CSS selector ".versions-layout"
+https://svelte.dev/e/css_unused_selector
+8:25:25 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1696:4 Unused CSS selector ".features-columns"
+https://svelte.dev/e/css_unused_selector
+8:25:25 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1708:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:25:25 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1713:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+8:25:25 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1721:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:25:25 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1726:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+8:25:25 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1754:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:25:25 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1759:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+8:25:25 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1766:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:25:25 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1771:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+8:25:25 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1779:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:25:25 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1784:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+8:25:25 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1792:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:25:25 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1797:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+[2m8:27:35 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/JeepPremiumLanding.svelte, /src/styles/index.css, /src/lib/components/JeepPremiumLanding.svelte?svelte&type=style&lang.css[22m
+8:27:35 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1728:4 Unused CSS selector ".versions-layout"
+https://svelte.dev/e/css_unused_selector
+8:27:35 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1729:4 Unused CSS selector ".features-columns"
+https://svelte.dev/e/css_unused_selector
+8:27:35 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1741:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:27:35 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1746:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+8:27:35 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1754:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:27:35 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1759:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+8:27:35 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1787:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:27:35 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1792:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+8:27:35 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1799:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:27:35 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1804:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+8:27:35 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1812:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:27:35 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1817:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+8:27:35 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1825:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:27:35 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1830:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+[2m8:32:12 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/JeepPremiumLanding.svelte, /src/styles/index.css, /src/lib/components/JeepPremiumLanding.svelte?svelte&type=style&lang.css[22m
+8:32:12 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1273:2 Unused CSS selector ".versions-section"
+https://svelte.dev/e/css_unused_selector
+8:32:12 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1280:2 Unused CSS selector ".vs-heading"
+https://svelte.dev/e/css_unused_selector
+8:32:12 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1285:2 Unused CSS selector ".vs-heading p"
+https://svelte.dev/e/css_unused_selector
+8:32:12 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1294:2 Unused CSS selector ".vs-heading h2"
+https://svelte.dev/e/css_unused_selector
+8:32:12 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1302:2 Unused CSS selector ".vs-slider"
+https://svelte.dev/e/css_unused_selector
+8:32:12 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1312:2 Unused CSS selector ".vs-slide"
+https://svelte.dev/e/css_unused_selector
+8:32:12 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1327:2 Unused CSS selector ".vs-slide img"
+https://svelte.dev/e/css_unused_selector
+8:32:12 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1336:2 Unused CSS selector ".vs-slide.active img"
+https://svelte.dev/e/css_unused_selector
+8:32:12 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1340:2 Unused CSS selector ".vs-slide span"
+https://svelte.dev/e/css_unused_selector
+8:32:12 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1348:2 Unused CSS selector ".vs-slide.active"
+https://svelte.dev/e/css_unused_selector
+8:32:12 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1352:2 Unused CSS selector ".vs-slide.active span"
+https://svelte.dev/e/css_unused_selector
+8:32:12 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1357:2 Unused CSS selector ".vs-toggle"
+https://svelte.dev/e/css_unused_selector
+8:32:12 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1366:2 Unused CSS selector ".vs-toggle button"
+https://svelte.dev/e/css_unused_selector
+8:32:12 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1380:2 Unused CSS selector ".vs-toggle button.active"
+https://svelte.dev/e/css_unused_selector
+8:32:12 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1387:2 Unused CSS selector ".vs-detail"
+https://svelte.dev/e/css_unused_selector
+8:32:12 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1398:2 Unused CSS selector ".vs-left"
+https://svelte.dev/e/css_unused_selector
+8:32:12 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1403:2 Unused CSS selector ".vs-version-name"
+https://svelte.dev/e/css_unused_selector
+8:32:12 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1410:2 Unused CSS selector ".vs-precio"
+https://svelte.dev/e/css_unused_selector
+8:32:12 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1418:2 Unused CSS selector ".vs-palette-label"
+https://svelte.dev/e/css_unused_selector
+8:32:12 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1427:2 Unused CSS selector ".vs-color-name"
+https://svelte.dev/e/css_unused_selector
+8:32:12 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1436:2 Unused CSS selector ".vs-swatches"
+https://svelte.dev/e/css_unused_selector
+8:32:12 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1442:2 Unused CSS selector ".vs-swatch"
+https://svelte.dev/e/css_unused_selector
+8:32:12 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1452:2 Unused CSS selector ".vs-swatch.active"
+https://svelte.dev/e/css_unused_selector
+8:32:12 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1457:2 Unused CSS selector ".vs-feat-label"
+https://svelte.dev/e/css_unused_selector
+8:32:12 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1467:2 Unused CSS selector ".vs-feat-list"
+https://svelte.dev/e/css_unused_selector
+8:32:12 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1480:2 Unused CSS selector ".vs-feat-list li"
+https://svelte.dev/e/css_unused_selector
+8:32:12 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1489:2 Unused CSS selector ".vs-bullet"
+https://svelte.dev/e/css_unused_selector
+8:32:12 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1498:2 Unused CSS selector ".vs-right"
+https://svelte.dev/e/css_unused_selector
+8:32:12 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1504:2 Unused CSS selector ".vs-car-frame"
+https://svelte.dev/e/css_unused_selector
+8:32:12 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1521:2 Unused CSS selector ".vs-car-img"
+https://svelte.dev/e/css_unused_selector
+8:32:12 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1531:2 Unused CSS selector ".vs-car-vignette"
+https://svelte.dev/e/css_unused_selector
+8:32:12 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1549:2 Unused CSS selector ".vs-cta"
+https://svelte.dev/e/css_unused_selector
+8:32:12 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1558:2 Unused CSS selector ".vs-btn-cta"
+https://svelte.dev/e/css_unused_selector
+8:32:12 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1577:2 Unused CSS selector ".vs-btn-cta.primary"
+https://svelte.dev/e/css_unused_selector
+8:32:12 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1582:2 Unused CSS selector ".vs-btn-cta:hover"
+https://svelte.dev/e/css_unused_selector
+8:32:12 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1587:2 Unused CSS selector ".vs-btn-cta.primary:hover"
+https://svelte.dev/e/css_unused_selector
+8:32:12 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1592:4 Unused CSS selector ".vs-detail"
+https://svelte.dev/e/css_unused_selector
+8:32:12 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1596:4 Unused CSS selector ".vs-right"
+https://svelte.dev/e/css_unused_selector
+8:32:12 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1600:4 Unused CSS selector ".vs-toggle"
+https://svelte.dev/e/css_unused_selector
+8:32:12 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1601:4 Unused CSS selector ".vs-cta"
+https://svelte.dev/e/css_unused_selector
+8:32:12 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1605:4 Unused CSS selector ".vs-slide"
+https://svelte.dev/e/css_unused_selector
+8:32:12 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1609:4 Unused CSS selector ".vs-slide img"
+https://svelte.dev/e/css_unused_selector
+8:32:12 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1725:4 Unused CSS selector ".versions-layout"
+https://svelte.dev/e/css_unused_selector
+8:32:12 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1726:4 Unused CSS selector ".features-columns"
+https://svelte.dev/e/css_unused_selector
+8:32:12 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1738:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:32:12 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1743:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+8:32:12 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1751:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:32:12 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1756:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+8:32:12 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1784:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:32:12 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1789:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+8:32:12 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1796:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:32:12 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1801:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+8:32:12 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1809:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:32:12 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1814:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+8:32:12 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1822:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:32:12 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1827:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+8:33:21 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1437:4 Unused CSS selector ".versions-layout"
+https://svelte.dev/e/css_unused_selector
+8:33:21 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1438:4 Unused CSS selector ".features-columns"
+https://svelte.dev/e/css_unused_selector
+8:33:21 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1450:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:33:21 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1455:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+8:33:21 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1463:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:33:21 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1468:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+8:33:21 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1496:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:33:21 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1501:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+8:33:21 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1508:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:33:21 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1513:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+8:33:21 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1521:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:33:21 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1526:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+8:33:21 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1534:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:33:21 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1539:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+[2m8:33:21 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/JeepPremiumLanding.svelte?svelte&type=style&lang.css[22m
+8:33:38 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1437:4 Unused CSS selector ".versions-layout"
+https://svelte.dev/e/css_unused_selector
+8:33:38 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1438:4 Unused CSS selector ".features-columns"
+https://svelte.dev/e/css_unused_selector
+8:33:38 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1450:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:33:38 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1455:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+8:33:38 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1463:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:33:38 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1468:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+8:33:38 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1496:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:33:38 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1501:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+8:33:38 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1508:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:33:38 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1513:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+8:33:38 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1521:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:33:38 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1526:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+8:33:38 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1534:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:33:38 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1539:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+[2m8:37:37 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/GlassTopNav.svelte, /src/styles/index.css[22m
+8:37:37 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:224:5 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+8:37:37 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:266:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+8:37:37 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:270:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+8:37:37 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:274:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+8:37:49 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1437:4 Unused CSS selector ".versions-layout"
+https://svelte.dev/e/css_unused_selector
+8:37:49 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1438:4 Unused CSS selector ".features-columns"
+https://svelte.dev/e/css_unused_selector
+8:37:49 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1450:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:37:49 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1455:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+8:37:49 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1463:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:37:49 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1468:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+8:37:49 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1496:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:37:49 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1501:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+8:37:49 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1508:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:37:49 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1513:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+8:37:49 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1521:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:37:49 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1526:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+8:37:49 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1534:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:37:49 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1539:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+[2m8:37:49 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/JeepPremiumLanding.svelte?svelte&type=style&lang.css[22m
+8:39:01 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1437:4 Unused CSS selector ".versions-layout"
+https://svelte.dev/e/css_unused_selector
+8:39:01 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1438:4 Unused CSS selector ".features-columns"
+https://svelte.dev/e/css_unused_selector
+8:39:01 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1450:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:39:01 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1455:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+8:39:01 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1463:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:39:01 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1468:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+8:39:01 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1496:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:39:01 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1501:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+8:39:01 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1508:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:39:01 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1513:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+8:39:01 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1521:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:39:01 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1526:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+8:39:01 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1534:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:39:02 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1539:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+[2m8:40:48 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/JeepPremiumLanding.svelte, /src/styles/index.css, /src/lib/components/JeepPremiumLanding.svelte?svelte&type=style&lang.css[22m
+8:40:48 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:568:2 Unused CSS selector ".model-spotlight"
+https://svelte.dev/e/css_unused_selector
+8:40:48 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:581:2 Unused CSS selector ".model-spotlight span"
+https://svelte.dev/e/css_unused_selector
+8:40:48 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:590:2 Unused CSS selector ".model-spotlight img"
+https://svelte.dev/e/css_unused_selector
+8:40:49 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1333:4 Unused CSS selector ".model-spotlight"
+https://svelte.dev/e/css_unused_selector
+8:40:49 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1397:4 Unused CSS selector ".model-spotlight"
+https://svelte.dev/e/css_unused_selector
+8:40:49 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1433:4 Unused CSS selector ".versions-layout"
+https://svelte.dev/e/css_unused_selector
+8:40:49 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1434:4 Unused CSS selector ".features-columns"
+https://svelte.dev/e/css_unused_selector
+8:40:49 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1446:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:40:49 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1451:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+8:40:49 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1459:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:40:49 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1464:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+8:40:49 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1492:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:40:49 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1497:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+8:40:49 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1504:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:40:49 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1509:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+8:40:49 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1517:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:40:49 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1522:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+8:40:50 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1530:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:40:50 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1535:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+8:42:20 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1388:4 Unused CSS selector ".versions-layout"
+https://svelte.dev/e/css_unused_selector
+8:42:20 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1389:4 Unused CSS selector ".features-columns"
+https://svelte.dev/e/css_unused_selector
+8:42:20 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1401:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:42:20 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1406:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+8:42:20 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1414:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:42:20 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1419:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+8:42:20 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1447:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:42:20 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1452:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+8:42:20 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1460:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:42:21 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1465:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+8:42:21 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1473:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:42:21 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1478:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+[2m8:42:21 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/JeepPremiumLanding.svelte?svelte&type=style&lang.css[22m
+8:43:43 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1388:4 Unused CSS selector ".versions-layout"
+https://svelte.dev/e/css_unused_selector
+8:43:43 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1389:4 Unused CSS selector ".features-columns"
+https://svelte.dev/e/css_unused_selector
+8:43:43 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1401:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:43:43 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1406:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+8:43:43 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1414:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:43:43 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1419:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+8:43:43 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1447:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:43:43 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1452:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+8:43:43 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1460:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:43:43 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1465:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+8:43:43 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1473:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:43:43 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1478:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+[2m8:54:59 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/JeepPremiumLanding.svelte, /src/styles/index.css[22m
+[2m8:56:09 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/JeepPremiumLanding.svelte, /src/styles/index.css[22m
+8:56:49 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1394:4 Unused CSS selector ".versions-layout"
+https://svelte.dev/e/css_unused_selector
+8:56:49 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1395:4 Unused CSS selector ".features-columns"
+https://svelte.dev/e/css_unused_selector
+8:56:49 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1407:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:56:49 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1412:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+8:56:49 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1420:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:56:49 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1425:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+8:56:49 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1453:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:56:49 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1458:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+8:56:49 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1466:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:56:49 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1471:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+8:56:49 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1479:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:56:49 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1484:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+[2m8:57:11 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/JeepPremiumLanding.svelte, /src/styles/index.css[22m
+8:57:36 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1422:4 Unused CSS selector ".versions-layout"
+https://svelte.dev/e/css_unused_selector
+8:57:36 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1423:4 Unused CSS selector ".features-columns"
+https://svelte.dev/e/css_unused_selector
+8:57:36 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1435:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:57:36 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1440:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+8:57:36 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1448:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:57:36 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1453:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+8:57:36 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1481:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:57:36 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1486:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+8:57:36 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1494:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:57:36 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1499:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+8:57:36 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1507:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:57:36 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1512:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+8:58:32 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1511:4 Unused CSS selector ".versions-layout"
+https://svelte.dev/e/css_unused_selector
+8:58:32 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1512:4 Unused CSS selector ".features-columns"
+https://svelte.dev/e/css_unused_selector
+8:58:32 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1524:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:58:32 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1529:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+8:58:32 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1537:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:58:32 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1542:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+8:58:32 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1570:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:58:32 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1575:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+8:58:32 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1583:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:58:32 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1588:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+8:58:32 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1596:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:58:32 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1601:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+[2m8:58:32 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/JeepPremiumLanding.svelte?svelte&type=style&lang.css[22m
+8:59:20 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1511:4 Unused CSS selector ".versions-layout"
+https://svelte.dev/e/css_unused_selector
+8:59:20 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1512:4 Unused CSS selector ".features-columns"
+https://svelte.dev/e/css_unused_selector
+8:59:20 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1524:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:59:20 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1529:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+8:59:20 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1537:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:59:20 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1542:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+8:59:20 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1570:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:59:20 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1575:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+8:59:20 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1583:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:59:20 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1588:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+8:59:20 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1596:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+8:59:20 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1601:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+[2m9:02:00 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/GlassTopNav.svelte, /src/styles/index.css, /src/lib/components/GlassTopNav.svelte?svelte&type=style&lang.css[22m
+9:02:40 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1515:4 Unused CSS selector ".versions-layout"
+https://svelte.dev/e/css_unused_selector
+9:02:40 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1516:4 Unused CSS selector ".features-columns"
+https://svelte.dev/e/css_unused_selector
+9:02:40 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1528:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+9:02:40 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1533:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+9:02:40 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1541:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+9:02:40 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1546:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+9:02:40 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1574:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+9:02:40 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1579:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+9:02:40 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1587:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+9:02:40 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1592:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+9:02:40 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1600:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+9:02:40 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1605:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+[2m9:02:40 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/JeepPremiumLanding.svelte?svelte&type=style&lang.css[22m
+9:03:08 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:224:5 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+9:03:08 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:266:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+9:03:08 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:270:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+9:03:08 p. m. [vite-plugin-svelte] src/lib/components/GlassTopNav.svelte:274:9 '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute
+9:03:08 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1515:4 Unused CSS selector ".versions-layout"
+https://svelte.dev/e/css_unused_selector
+9:03:08 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1516:4 Unused CSS selector ".features-columns"
+https://svelte.dev/e/css_unused_selector
+9:03:08 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1528:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+9:03:08 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1533:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+9:03:08 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1541:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+9:03:08 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1546:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+9:03:08 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1574:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+9:03:08 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1579:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+9:03:08 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1587:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+9:03:08 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1592:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+9:03:08 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1600:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+9:03:08 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1605:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+9:03:42 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1542:4 Unused CSS selector ".versions-layout"
+https://svelte.dev/e/css_unused_selector
+9:03:42 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1543:4 Unused CSS selector ".features-columns"
+https://svelte.dev/e/css_unused_selector
+9:03:42 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1555:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+9:03:42 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1560:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+9:03:42 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1568:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+9:03:42 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1573:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+9:03:42 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1601:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+9:03:42 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1606:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+9:03:42 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1614:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+9:03:42 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1619:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+9:03:42 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1627:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+9:03:42 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1632:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+[2m9:03:42 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/lib/components/JeepPremiumLanding.svelte?svelte&type=style&lang.css[22m
+9:03:46 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1542:4 Unused CSS selector ".versions-layout"
+https://svelte.dev/e/css_unused_selector
+9:03:46 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1543:4 Unused CSS selector ".features-columns"
+https://svelte.dev/e/css_unused_selector
+9:03:46 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1555:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+9:03:46 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1560:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+9:03:46 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1568:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+9:03:46 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1573:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+9:03:46 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1601:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+9:03:46 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1606:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+9:03:46 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1614:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+9:03:46 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1619:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector
+9:03:46 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1627:4 Unused CSS selector "from"
+https://svelte.dev/e/css_unused_selector
+9:03:46 p. m. [vite-plugin-svelte] src/lib/components/JeepPremiumLanding.svelte:1632:4 Unused CSS selector "to"
+https://svelte.dev/e/css_unused_selector

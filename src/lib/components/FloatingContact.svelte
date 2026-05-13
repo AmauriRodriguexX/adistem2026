@@ -1,7 +1,7 @@
 <script lang="ts">
-  import { MessageCircle, X, ArrowRight } from 'lucide-svelte'
   import { fade, scale } from 'svelte/transition'
   import { isDark } from '$lib/stores/theme'
+  import GoogleIcon from './GoogleIcon.svelte'
 
   let isOpen = $state(false)
 
@@ -66,7 +66,7 @@
             onmouseleave={(e) => e.currentTarget.style.cssText = btnBg}
           >
             <span class="{textPrimary} text-[15px] font-semibold">{opt.label}</span>
-            <ArrowRight size={16} class="{iconColor} transition-colors" />
+            <GoogleIcon name="arrow_forward" size={16} class="{iconColor} transition-colors" />
           </a>
         {/each}
       </div>
@@ -82,7 +82,7 @@
   >
     {#if isOpen}
       <div class="w-12 h-12 rounded-full flex items-center justify-center text-white shadow-xl bg-[#ef4444]">
-        <X size={26} />
+        <GoogleIcon name="close" size={26} />
       </div>
     {:else}
       <div class="w-full h-full flex items-center justify-center drop-shadow-xl">

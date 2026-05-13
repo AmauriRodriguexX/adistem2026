@@ -7,13 +7,20 @@
   import HeroSection        from '$lib/components/HeroSection.svelte'
   import PromoBentoGrid     from '$lib/components/PromoBentoGrid.svelte'
   import BrandBenefitsSection from '$lib/components/BrandBenefitsSection.svelte'
+  import LeadFormSection     from '$lib/components/LeadFormSection.svelte'
+  import RamBrandHub        from '$lib/components/RamBrandHub.svelte'
+  import RamPremiumLanding  from '$lib/components/RamPremiumLanding.svelte'
+  import JeepBrandHub       from '$lib/components/JeepBrandHub.svelte'
+  import JeepPremiumLanding from '$lib/components/JeepPremiumLanding.svelte'
   import SeminuevosView     from '$lib/components/SeminuevosView.svelte'
   import FloatingContact    from '$lib/components/FloatingContact.svelte'
   import MobileBottomNav    from '$lib/components/MobileBottomNav.svelte'
+  import GoogleIcon         from '$lib/components/GoogleIcon.svelte'
   import type { BrandFilter, VehicleType } from '$lib/types'
 
   let heroEl:  HTMLDivElement | null = $state(null)
   let promoEl: HTMLDivElement | null = $state(null)
+  let formEl:  HTMLElement | null = $state(null)
   let brandStripEl:   HTMLElement | null = $state(null)
   let benefitsEl:     HTMLElement | null = $state(null)
   let serviceBannerEl: HTMLElement | null = $state(null)
@@ -23,6 +30,8 @@
   let brandFilter: BrandFilter = $state('Todas')
   let typeFilter:  VehicleType = $state('Todos')
   let currentView: 'Portal' | 'Seminuevos' = $state('Portal')
+  let ramModelSlug: string | null = $state(null)
+  let jeepModelSlug: string | null = $state(null)
   let mobileMenuOpen = $state(false)
   let brandStripVisible   = $state(false)
   let benefitsVisible     = $state(false)
@@ -39,7 +48,7 @@
     'Jeep': {
       video: 'm0A2E2v0wF8', 
       image: '/adistem2026/jeep-banner.png',
-      accent: '#4B5320', // Olive Green
+      accent: '#424D07',
       title: 'Aventura sin límites. Línea Jeep 2026.',
       subtitle: 'Descubre la libertad de ir a cualquier lugar con la tecnología y confort de Jeep.',
       hideForm: true
@@ -47,7 +56,7 @@
     'Ram': {
       video: 'q8E3E6kR_hY',
       image: '/adistem2026/ram-banner.jpg',
-      accent: '#D32F2F', // RAM Red
+      accent: '#880D00',
       title: 'Poder y lujo sin compromiso. RAM 2026.',
       subtitle: 'La Pick-up más premiada, diseñada para los trabajos más exigentes.',
       hideForm: true
@@ -55,7 +64,7 @@
     'Fiat': {
       video: 'CqL-XjM-v5Y',
       image: '/adistem2026/fiat-banner.jpg',
-      accent: '#9A2128', // FIAT Red
+      accent: '#FF1530',
       title: 'Estilo italiano para tu día a día. FIAT 2026.',
       subtitle: 'Diseño, eficiencia y diversión en cada kilómetro.',
       hideForm: true
@@ -63,7 +72,7 @@
     'Dodge': {
       video: 'p5U3W6XkXoI',
       image: '/adistem2026/dodge-banner.jpg',
-      accent: '#E53935', // Dodge Red
+      accent: '#D50000',
       title: 'Dominio absoluto. Línea Dodge 2026.',
       subtitle: 'Desempeño legendario y músculo americano en su máxima expresión.',
       hideForm: true
@@ -71,7 +80,7 @@
     'Peugeot': {
       video: '2kY99v9l6I4',
       image: '/adistem2026/peugeot-banner.jpg',
-      accent: '#002E6B', // Peugeot Blue
+      accent: '#0074E8',
       title: 'Allure y excelencia. Peugeot 2026.',
       subtitle: 'La combinación perfecta de innovación, tecnología y diseño francés.',
       hideForm: true
@@ -79,6 +88,7 @@
   }
 
   const currentBrandConfig = $derived(BRAND_CONFIGS[brandFilter])
+  const brandAccent = $derived(currentBrandConfig.accent)
 
   onMount(() => {
     const cleanup = initSystemListener()
@@ -110,13 +120,23 @@
   const SERVICE_IMG = 'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2Fbd8508bc699e5f308774822640426d6c72892e95.jpg?generation=1777350235000404&alt=media'
 
   const benefits = [
-    { emoji: '⚡', title: 'Rapidez en el Servicio',  desc: 'Porque entendemos que el tiempo es de gran valor para nuestros clientes.',   color: '#334E8B' },
-    { emoji: '🛡',  title: 'Atención de Calidad',     desc: 'Nuestra prioridad es que nuestros clientes estén 100% satisfechos.',         color: '#2E6CCF' },
-    { emoji: '⭐',  title: 'Profesionales Expertos',  desc: 'Servicios de alta calidad con expertos en el cuidado de tu vehículo.',       color: '#4C8EF0' },
+    { icon: 'bolt',              title: 'Rapidez en el Servicio',  desc: 'Porque entendemos que el tiempo es de gran valor para nuestros clientes.',   color: '#334E8B' },
+    { icon: 'verified_user',     title: 'Atención de Calidad',     desc: 'Nuestra prioridad es que nuestros clientes estén 100% satisfechos.',         color: '#2E6CCF' },
+    { icon: 'workspace_premium', title: 'Profesionales Expertos',  desc: 'Servicios de alta calidad con expertos en el cuidado de tu vehículo.',       color: '#4C8EF0' },
   ]
 
+  let heroComponent: any = $state()
+
   function scrollToHero()  { heroEl?.scrollIntoView({ behavior: 'smooth' }) }
-  function scrollToPromo() { setTimeout(() => promoEl?.scrollIntoView({ behavior: 'smooth' }), 30) }
+  function scrollToForm() {
+    if (!currentBrandConfig.hideForm && typeof window !== 'undefined' && window.innerWidth >= 1024) {
+      scrollToHero()
+      setTimeout(() => heroComponent?.highlight(), 400)
+    } else {
+      formEl?.scrollIntoView({ behavior: 'smooth' })
+      setTimeout(() => formEl?.highlight(), 400)
+    }
+  }
   function scrollToMap()   { mapEl?.scrollIntoView({ behavior: 'smooth' }) }
 
   function syncBrandFromUrl() {
@@ -125,17 +145,22 @@
     
     if (path.toLowerCase().startsWith(base + 'seminuevos')) {
       currentView = 'Seminuevos'
+      ramModelSlug = null
       window.scrollTo(0, 0)
       return
     }
 
     currentView = 'Portal'
+    ramModelSlug = null
     if (path.startsWith(base)) {
-      const brandPath = path.replace(base, '').replace(/\//g, '')
+      const routeParts = path.replace(base, '').split('/').filter(Boolean)
+      const brandPath = routeParts[0] || ''
       const brands: BrandFilter[] = ['Jeep', 'Fiat', 'Dodge', 'Ram', 'Peugeot']
       const found = brands.find(b => b.toLowerCase() === brandPath.toLowerCase())
       if (found) {
         brandFilter = found
+        if (found === 'Ram') ramModelSlug = routeParts[1] || null
+        if (found === 'Jeep') jeepModelSlug = routeParts[1] || null
         return
       }
     }
@@ -152,6 +177,8 @@
     if (brandFilter === brand && currentView === 'Portal') return
     brandFilter = brand
     currentView = 'Portal'
+    ramModelSlug = null
+    jeepModelSlug = null
     
     // Update URL without reload
     const base = '/adistem2026/'
@@ -162,12 +189,30 @@
     scrollToHero()
   }
 
+  function handleRamModelSelect(slug: string) {
+    brandFilter = 'Ram'
+    currentView = 'Portal'
+    ramModelSlug = slug
+    history.pushState({ brand: 'Ram', model: slug }, '', `/adistem2026/ram/${slug}/`)
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
+  function handleJeepModelSelect(slug: string) {
+    brandFilter = 'Jeep'
+    currentView = 'Portal'
+    jeepModelSlug = slug
+    history.pushState({ brand: 'Jeep', model: slug }, '', `/adistem2026/jeep/${slug}/`)
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
   function handleSeminuevosClick() {
     currentView = 'Seminuevos'
+    ramModelSlug = null
+    jeepModelSlug = null
     history.pushState({ view: 'Seminuevos' }, '', '/adistem2026/seminuevos/')
     window.scrollTo(0, 0)
   }
-  function handleTypeSelect(type: VehicleType)   { typeFilter  = type;  scrollToPromo() }
+  function handleTypeSelect(type: VehicleType)   { typeFilter  = type;  scrollToForm() }
 
   const pageBg = $derived($isDark
     ? 'linear-gradient(160deg,#05080F 0%,#080C18 40%,#05080F 100%)'
@@ -243,8 +288,9 @@
   <!-- Fixed top nav -->
   <GlassTopNav
     activeType={typeFilter}
+    activeBrand={brandFilter}
     onTypeSelect={handleTypeSelect}
-    onCotizarClick={scrollToPromo}
+    onCotizarClick={scrollToForm}
     onMenuToggle={() => mobileMenuOpen = !mobileMenuOpen}
     onMapClick={scrollToMap}
     onHomeClick={() => handleBrandSelect('Todas')}
@@ -252,17 +298,27 @@
   />
 
   <!-- Mobile bottom nav -->
-  <MobileBottomNav />
+  <MobileBottomNav onCotizarClick={scrollToForm} />
 
   <!-- Main content -->
   <div class="ml-0 md:ml-20 pb-32 md:pb-0">
 
-    {#if currentView === 'Portal'}
+    {#if currentView === 'Portal' && brandFilter === 'Ram' && ramModelSlug}
+      <RamPremiumLanding modelSlug={ramModelSlug} />
+    {:else if currentView === 'Portal' && brandFilter === 'Ram'}
+      <RamBrandHub onModelSelect={handleRamModelSelect} />
+    {:else if currentView === 'Portal' && brandFilter === 'Jeep' && jeepModelSlug}
+      <JeepPremiumLanding modelSlug={jeepModelSlug} />
+    {:else if currentView === 'Portal' && brandFilter === 'Jeep'}
+      <JeepBrandHub onModelSelect={handleJeepModelSelect} />
+    {:else if currentView === 'Portal'}
       <!-- HERO -->
       <div bind:this={heroEl}>
       <HeroSection 
-        id="hero" 
+        id="hero"
+        bind:this={heroComponent}
         onMapClick={scrollToMap} 
+        onCotizarClick={scrollToForm}
         brand={brandFilter}
         config={currentBrandConfig}
       />
@@ -282,7 +338,7 @@
             <button
               onclick={() => handleBrandSelect(brand.filter)}
               class="group flex-shrink-0 flex flex-col items-center gap-2 px-6 py-4 md:px-8 md:py-6 rounded-2xl transition-all duration-250 cursor-pointer"
-              style="background:{brandFilter === brand.filter ? ($isDark ? 'rgba(51,78,139,0.35)' : 'rgba(51,78,139,0.12)') : bsBase.cardBg};border:1px solid {brandFilter === brand.filter ? 'rgba(51,78,139,0.60)' : bsBase.cardBorder};backdrop-filter:blur(30px);-webkit-backdrop-filter:blur(30px);box-shadow:{$isDark ? 'inset 0 1px 0 rgba(255,255,255,0.08)' : 'inset 0 1px 0 rgba(255,255,255,0.90)'};{brandStripVisible ? `animation:brand-card-in 0.55s cubic-bezier(0.22,1,0.36,1) ${i * 85}ms both` : 'opacity:0;transform:translateY(20px) scale(0.94)'};will-change:transform,opacity;"
+              style="background:{brandFilter === brand.filter ? `${brandAccent}22` : bsBase.cardBg};border:1px solid {brandFilter === brand.filter ? `${brandAccent}88` : bsBase.cardBorder};backdrop-filter:blur(30px);-webkit-backdrop-filter:blur(30px);box-shadow:{$isDark ? 'inset 0 1px 0 rgba(255,255,255,0.08)' : 'inset 0 1px 0 rgba(255,255,255,0.90)'};{brandStripVisible ? `animation:brand-card-in 0.55s cubic-bezier(0.22,1,0.36,1) ${i * 85}ms both` : 'opacity:0;transform:translateY(20px) scale(0.94)'};will-change:transform,opacity;"
               onmouseenter={(e) => {
                 const el = e.currentTarget as HTMLElement
                 el.style.background = $isDark ? 'rgba(255,255,255,0.10)' : 'rgba(255,255,255,0.92)'
@@ -291,7 +347,7 @@
               onmouseleave={(e) => {
                 const el = e.currentTarget as HTMLElement
                 el.style.background = brandFilter === brand.filter
-                  ? ($isDark ? 'rgba(51,78,139,0.35)' : 'rgba(51,78,139,0.12)')
+                  ? `${brandAccent}22`
                   : bsBase.cardBg
                 el.style.transform = 'translateY(0)'
               }}>
@@ -366,8 +422,8 @@
             <div class="p-5 md:p-6 rounded-2xl transition-all duration-300 cursor-default"
               style="{glassCard};{benefitsVisible ? `animation:benefit-card-in 0.60s cubic-bezier(0.22,1,0.36,1) ${80 + i * 120}ms both` : 'opacity:0;transform:translateY(32px) scale(0.93)'};will-change:transform,opacity;">
               <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-3 text-lg"
-                style="background:{b.color}22;border:1px solid {b.color}44;{benefitsVisible ? `animation:emoji-float 3.6s ease-in-out ${i * 1.1}s infinite` : ''}">
-                {b.emoji}
+                style="background:{b.color}22;border:1px solid {b.color}44;{benefitsVisible ? `animation:icon-float 3.6s ease-in-out ${i * 1.1}s infinite` : ''}">
+                <GoogleIcon name={b.icon} size={23} style="color:{b.color}" />
               </div>
               <p class="font-semibold mb-1.5 text-sm" style="color:{T.primary}">{b.title}</p>
               <p class="text-xs leading-relaxed" style="color:{T.secondary}">{b.desc}</p>
@@ -376,6 +432,10 @@
         </div>
       </div>
     </section>
+
+    <div class={!currentBrandConfig.hideForm ? 'lg:hidden' : ''}>
+      <LeadFormSection id="contacto" bind:this={formEl} accent={currentBrandConfig.accent} />
+    </div>
 
     <!-- LOCATION MAP -->
     <section bind:this={mapEl} class="py-8 md:py-12 px-4 md:px-8 relative overflow-hidden"
@@ -390,28 +450,23 @@
           style="{glassCard}; padding: 6px; {footerVisible ? 'animation:hero-fade-up 0.65s cubic-bezier(0.22,1,0.36,1) 0.2s both' : 'opacity:0;transform:translateY(30px)'}">
           <div class="relative w-full h-[400px] md:h-[500px] rounded-[14px] md:rounded-[22px] overflow-hidden">
 
-            <!-- Mapa con filtro calibrado al design system:
-                 hue-rotate(195deg) desplaza: calles (amarillo→azul #334E8B),
-                 agua (azul→dorado #f59e0b), parques (verde→magenta/púrpura),
-                 edificios (gris→azul-gris) -->
+            <!-- Mapa con filtro neutro cercano al modo oscuro de Google Maps. -->
             <iframe
               src="https://maps.google.com/maps?q=BLVD%20SAN%20LUIS%201158,%20San%20Luis%20Potos%C3%AD,%20San%20Luis%20Potos%C3%AD&t=&z=16&ie=UTF8&iwloc=&output=embed"
               class="w-full h-full border-0 block"
               style="filter:{$isDark
-                ? 'brightness(0.50) contrast(1.20) saturate(5.0) hue-rotate(195deg) sepia(0.18)'
-                : 'brightness(1.04) contrast(1.10) saturate(4.2) hue-rotate(195deg) sepia(0.14) grayscale(0.05)'};"
+                ? 'invert(92%) hue-rotate(180deg) saturate(0.72) brightness(0.82) contrast(0.95)'
+                : 'none'};"
               allowfullscreen={false}
               loading="lazy"
               referrerpolicy="no-referrer-when-downgrade"
               title="Ubicación VAPSA">
             </iframe>
 
-            <!-- Capa de color del design system (overlay) -->
+            <!-- Overlay transparente para conservar la paleta nativa del mapa. -->
             <div class="absolute inset-0 pointer-events-none"
-              style="background:{$isDark
-                ? 'linear-gradient(135deg,rgba(51,78,139,0.32) 0%,rgba(5,8,20,0.10) 45%,rgba(76,142,240,0.22) 100%)'
-                : 'linear-gradient(135deg,rgba(51,78,139,0.12) 0%,transparent 45%,rgba(107,142,212,0.10) 100%)'};
-              mix-blend-mode:{$isDark ? 'screen' : 'multiply'};
+              style="background:transparent;
+              mix-blend-mode:normal;
               border-radius:inherit;">
             </div>
 
@@ -442,7 +497,7 @@
               <div class="flex items-start gap-3">
                 <div class="w-8 h-8 rounded-xl flex-shrink-0 flex items-center justify-center mt-0.5"
                   style="background:linear-gradient(135deg,rgba(51,78,139,0.30),rgba(46,108,207,0.20));border:1px solid rgba(51,78,139,0.35);">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4C8EF0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                  <GoogleIcon name="location_on" size={16} style="color:#4C8EF0" />
                 </div>
                 <div>
                   <p class="text-sm font-bold mb-0.5" style="color:{T.primary}">VAPSA San Luis Potosí</p>
@@ -453,7 +508,7 @@
               </div>
               <a href="https://www.google.com/maps/search/?api=1&query=BLVD+SAN+LUIS+1158,+San+Luis+Potosí,+San+Luis+Potosí" target="_blank" rel="noopener noreferrer"
                 class="w-full py-3 text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 btn-glow-border">
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                <GoogleIcon name="location_on" size={16} />
                 Llévame ahí
               </a>
             </div>
@@ -499,14 +554,14 @@
           style="{ratingCard};{footerVisible ? 'animation:hero-fade-up 0.50s cubic-bezier(0.22,1,0.36,1) 360ms both' : 'opacity:0;transform:translateY(20px)'}">
           <div class="flex items-center gap-3">
             <div class="flex">
-              {#each [1,2,3,4] as s (s)}<span class="text-yellow-400 text-xs">★</span>{/each}
-              <span class="text-yellow-300/40 text-xs">★</span>
+              {#each [1,2,3,4] as s (s)}<GoogleIcon name="star" size={15} class="text-yellow-400" fill={1} />{/each}
+              <GoogleIcon name="star" size={15} class="text-yellow-300/40" fill={1} />
             </div>
             <span class="text-xs" style="color:{T.secondary}">4.2 estrellas · 53 reseñas en Google</span>
           </div>
           <a href="https://www.google.com/maps/search/?api=1&query=BLVD+SAN+LUIS+1158,+San+Luis+Potosí,+San+Luis+Potosí" target="_blank" rel="noopener noreferrer"
             class="flex items-center gap-1.5 text-xs transition-all hover:scale-[1.02]" style="color:{T.secondary}">
-            📍 Ver Ubicación en Mapa ›
+            <GoogleIcon name="location_on" size={15} /> Ver Ubicación en Mapa <GoogleIcon name="chevron_right" size={15} />
           </a>
         </div>
 

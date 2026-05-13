@@ -1,13 +1,18 @@
 <script lang="ts">
-  import { Calculator, Wrench, Gauge, Phone, MessageCircle, X, ChevronRight } from 'lucide-svelte'
   import { isDark } from '$lib/stores/theme'
+  import GoogleIcon from './GoogleIcon.svelte'
+
+  interface Props {
+    onCotizarClick?: () => void
+  }
+  let { onCotizarClick }: Props = $props()
 
   const LINKS = [
-    { icon: Gauge,         label: 'Test Drive', href: '#', isWA: false },
-    { icon: Calculator,    label: 'Cotizar',    href: '#', isWA: false },
-    { icon: Wrench,        label: 'Servicio',   href: '#', isWA: false },
-    { icon: Phone,         label: 'Contacto',   href: '#', isWA: false },
-    { icon: MessageCircle, label: 'WhatsApp',   href: '#', isWA: true  },
+    { icon: 'speed',      label: 'Test Drive', href: '#', isWA: false, action: 'cotizar' },
+    { icon: 'calculate',  label: 'Cotizar',    href: '#', isWA: false, action: 'cotizar' },
+    { icon: 'build',      label: 'Servicio',   href: '#', isWA: false, action: 'cotizar' },
+    { icon: 'call',       label: 'Contacto',   href: '#', isWA: false, action: 'cotizar' },
+    { icon: 'chat',       label: 'WhatsApp',   href: '#', isWA: true,  action: 'wa' },
   ] as const
 
   const WA_CONTACTS = [
@@ -38,6 +43,14 @@
   const textMuted     = $derived($isDark ? 'rgba(255,255,255,0.48)' : 'rgba(20,30,80,0.50)')
   const divider       = $derived($isDark ? '1px solid rgba(255,255,255,0.08)' : '1px solid rgba(100,130,220,0.12)')
   const noiseBlend    = $derived($isDark ? 'soft-light' : 'overlay')
+
+  function handleAction(action: string) {
+    if (action === 'cotizar') {
+      onCotizarClick?.()
+    } else if (action === 'wa') {
+      waOpen = true
+    }
+  }
 </script>
 
 <style>
@@ -73,10 +86,10 @@
           <div class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></div>
           <span class="text-sm font-semibold" style="color:{$isDark ? 'white' : '#1a2040'}">VAPSA — Contáctanos</span>
         </div>
-        <button onclick={() => waOpen = false} class="p-1" style="color:{textMuted}"><X size={16} /></button>
+        <button onclick={() => waOpen = false} class="p-1" style="color:{textMuted}"><GoogleIcon name="close" size={16} /></button>
       </div>
       <div class="p-4 space-y-3">
-        <p class="text-xs mb-3" style="color:{textMuted}">Hola 👋 Escríbenos al número que prefieras:</p>
+        <p class="text-xs mb-3" style="color:{textMuted}">Hola, escríbenos al número que prefieras:</p>
         {#each WA_CONTACTS as c (c.number)}
           <a href="https://wa.me/{c.number}?text=Hola,%20me%20interesa%20informaci%C3%B3n%20sobre%20sus%20veh%C3%ADculos"
             target="_blank" rel="noopener noreferrer"
@@ -85,20 +98,20 @@
             style="background:{$isDark ? 'rgba(37,211,102,0.10)' : 'rgba(37,211,102,0.08)'};border:1px solid rgba(37,211,102,0.26);">
             <div class="flex items-center gap-3">
               <div class="w-9 h-9 rounded-full flex items-center justify-center" style="background:rgba(37,211,102,0.18);">
-                <MessageCircle size={17} style="color:#25D366" />
+                <GoogleIcon name="chat" size={17} style="color:#25D366" />
               </div>
               <div>
                 <p class="text-xs" style="color:{textMuted}">{c.label}</p>
                 <p class="text-sm font-semibold" style="color:{$isDark ? 'white' : '#1a2040'}">{c.display}</p>
               </div>
             </div>
-            <ChevronRight size={14} style="color:#25D366" />
+            <GoogleIcon name="chevron_right" size={14} style="color:#25D366" />
           </a>
         {/each}
         <a href="tel:+524871108899"
           class="flex items-center justify-center gap-2 w-full py-3 rounded-full text-sm font-medium active:scale-[0.97] transition-all"
           style="background:{$isDark ? 'rgba(255,255,255,0.07)' : 'rgba(240,245,255,0.80)'};border:{$isDark ? '1px solid rgba(255,255,255,0.10)' : '1px solid rgba(100,130,220,0.20)'};color:{$isDark ? 'rgba(255,255,255,0.80)' : '#1a2040'};">
-          <Phone size={14} /> Llamar directamente
+          <GoogleIcon name="call" size={14} /> Llamar directamente
         </a>
       </div>
     </div>
@@ -119,26 +132,19 @@
     {#each LINKS as link (link.label)}
       {@const iconColor  = link.isWA ? '#25D366' : textMuted}
       {@const labelColor = link.isWA ? '#25D366' : textMuted}
-      {#if link.isWA}
-        <button
-          onclick={() => waOpen = true}
-          class="flex-1 flex flex-col items-center justify-center gap-1.5 active:scale-90 transition-transform"
-          style="min-width:0;">
-          <div class="relative flex items-center justify-center">
-            <link.icon size={21} style="color:{iconColor}" />
+      <button
+        onclick={() => handleAction(link.action)}
+        class="flex-1 flex flex-col items-center justify-center gap-1.5 active:scale-90 transition-transform"
+        style="min-width:0;">
+        <div class="relative flex items-center justify-center">
+          <GoogleIcon name={link.icon} size={21} style="color:{iconColor}" />
+          {#if link.isWA}
             <span class="absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full border-2"
               style="background:#25D366;border-color:{$isDark ? 'rgba(6,8,22,0.80)' : 'rgba(255,255,255,0.85)'}"></span>
-          </div>
-          <span class="text-[9.5px] font-medium leading-none" style="color:{labelColor}">{link.label}</span>
-        </button>
-      {:else}
-        <a href={link.href} target="_blank" rel="noopener noreferrer"
-          class="flex-1 flex flex-col items-center justify-center gap-1.5 active:scale-90 transition-transform"
-          style="min-width:0;">
-          <link.icon size={21} style="color:{iconColor}" />
-          <span class="text-[9.5px] font-medium leading-none" style="color:{labelColor}">{link.label}</span>
-        </a>
-      {/if}
+          {/if}
+        </div>
+        <span class="text-[9.5px] font-medium leading-none" style="color:{labelColor}">{link.label}</span>
+      </button>
     {/each}
   </div>
 </nav>

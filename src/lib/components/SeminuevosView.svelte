@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { Search, SlidersHorizontal, ChevronRight, CheckCircle2, ShieldCheck, Wrench, FileText } from 'lucide-svelte'
   import { isDark } from '$lib/stores/theme'
+  import GoogleIcon from './GoogleIcon.svelte'
 
   const INVENTORY = [
     { id: 1, title: 'Jeep Grand Cherokee', year: 2024, price: '$950,000', km: '15,000 km', image: 'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&q=80&w=800', type: 'SUV' },
@@ -56,7 +56,7 @@
     <!-- Filters Bar -->
     <div class="flex flex-col md:flex-row gap-4 mb-10 p-4 rounded-2xl" style={glassCard}>
       <div class="relative flex-1">
-        <Search class="absolute left-4 top-1/2 -translate-y-1/2 opacity-50" size={18} style="color:{T.primary}" />
+        <GoogleIcon name="search" class="absolute left-4 top-1/2 -translate-y-1/2 opacity-50" size={18} style="color:{T.primary}" />
         <input 
           type="text" 
           bind:value={filterText}
@@ -67,7 +67,7 @@
       </div>
       <button class="flex items-center justify-center gap-2 px-6 h-12 rounded-xl font-semibold transition-all hover:opacity-80" 
         style="background:{$isDark ? 'rgba(255,255,255,0.08)' : 'rgba(51,78,139,0.08)'}; color:{T.primary}; border:1px solid {T.divider}">
-        <SlidersHorizontal size={18} />
+        <GoogleIcon name="tune" size={18} />
         Filtros Avanzados
       </button>
     </div>
@@ -95,7 +95,7 @@
               </div>
               <button class="w-10 h-10 rounded-full flex items-center justify-center transition-all group-hover:bg-blue-500 group-hover:text-white" 
                 style="background:{$isDark ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)'}; color:{T.primary}">
-                <ChevronRight size={18} />
+                <GoogleIcon name="chevron_right" size={18} />
               </button>
             </div>
           </div>
@@ -106,17 +106,17 @@
     <!-- Benefits Section -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
       <div class="p-6 rounded-2xl" style={glassCard}>
-        <ShieldCheck class="mb-4 text-blue-500" size={32} />
+        <GoogleIcon name="verified_user" class="mb-4 text-blue-500" size={32} />
         <h4 class="text-lg font-bold mb-2" style="color:{T.primary}">Garantía VAPSA</h4>
         <p class="text-sm" style="color:{T.secondary}">Hasta 1 año de garantía en motor y transmisión en modelos seleccionados.</p>
       </div>
       <div class="p-6 rounded-2xl" style={glassCard}>
-        <Wrench class="mb-4 text-blue-500" size={32} />
+        <GoogleIcon name="build" class="mb-4 text-blue-500" size={32} />
         <h4 class="text-lg font-bold mb-2" style="color:{T.primary}">Inspección Mecánica</h4>
         <p class="text-sm" style="color:{T.secondary}">Evaluación exhaustiva de 117 puntos de seguridad, estética y funcionamiento.</p>
       </div>
       <div class="p-6 rounded-2xl" style={glassCard}>
-        <FileText class="mb-4 text-blue-500" size={32} />
+        <GoogleIcon name="description" class="mb-4 text-blue-500" size={32} />
         <h4 class="text-lg font-bold mb-2" style="color:{T.primary}">Documentación en regla</h4>
         <p class="text-sm" style="color:{T.secondary}">Garantizamos que todos nuestros vehículos cuentan con facturas y pagos al día.</p>
       </div>
