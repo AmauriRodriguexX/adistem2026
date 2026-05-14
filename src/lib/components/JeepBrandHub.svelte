@@ -130,6 +130,18 @@
     activeModelIndex = (index + models.length) % models.length
   }
 
+  // Cotización: navega al form con el modelo pre-seleccionado
+  function goToCotizacion(modelSlug?: string) {
+    const base = '/adistem2026/cotizacion/'
+    const url = modelSlug ? `${base}?modelo=${encodeURIComponent(modelSlug)}` : base
+    history.pushState({ view: 'Cotizacion' }, '', url)
+    window.dispatchEvent(new PopStateEvent('popstate', { state: { view: 'Cotizacion' } }))
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
+  // Modelo seleccionado en el inline-form preview
+  let selectedQuoteModel = $state('renegade')
+
   let isPlaying = $state(true)
 
   function togglePlay() {
@@ -314,11 +326,115 @@
   </section>
 
 
+  <section class="trust-strip" aria-label="Diferenciadores VAPSA">
+    <div class="trust-head">
+      <p>VAPSA Río Verde</p>
+      <h2>Concesionario oficial Jeep con experiencia comprobada.</h2>
+    </div>
+    <div class="trust-grid">
+      <article>
+        <strong>20+</strong>
+        <span>Años representando marcas Stellantis en la región.</span>
+      </article>
+      <article>
+        <strong>5,000+</strong>
+        <span>Familias mexicanas que ya manejan su Jeep con nosotros.</span>
+      </article>
+      <article>
+        <strong>8</strong>
+        <span>Modelos Jeep 2026 disponibles para prueba y cotización.</span>
+      </article>
+      <article>
+        <strong>24h</strong>
+        <span>Pre-aprobación de crédito y seguimiento personalizado.</span>
+      </article>
+    </div>
+  </section>
+
+  <section class="quick-pick" aria-label="Cotización rápida por modelo">
+    <div class="quick-pick-head">
+      <p>Elige tu Jeep</p>
+      <h2>Tres caminos, mismo destino: tu próximo Jeep.</h2>
+      <span>Selecciona el modelo que más te encaja y cotiza en menos de un minuto.</span>
+    </div>
+    <div class="quick-pick-grid">
+      <article class="pick-card" style={`--accent:${JEEP_HOVER}`}>
+        <GoogleIcon name="directions_car" size={22} style={`color:${JEEP_HOVER}`} />
+        <small>Más vendido</small>
+        <h3>Renegade Latitude</h3>
+        <p>SUV compacto, motor 1.3L Turbo 173 HP y tecnología ADAS para la ciudad.</p>
+        <strong>Desde $456,900</strong>
+        <button onclick={() => goToCotizacion('renegade')}>
+          Cotizar Renegade <GoogleIcon name="arrow_forward" size={16} />
+        </button>
+      </article>
+      <article class="pick-card featured" style={`--accent:${JEEP_HOVER}`}>
+        <GoogleIcon name="family_restroom" size={22} style={`color:${JEEP_HOVER}`} />
+        <small>Familia + Espacio</small>
+        <h3>Commander 7 plazas</h3>
+        <p>3 filas de asientos, confort premium y capacidad sin concesiones.</p>
+        <strong>Desde $899,900</strong>
+        <button onclick={() => goToCotizacion('commander')}>
+          Cotizar Commander <GoogleIcon name="arrow_forward" size={16} />
+        </button>
+      </article>
+      <article class="pick-card" style={`--accent:${JEEP_HOVER}`}>
+        <GoogleIcon name="terrain" size={22} style={`color:${JEEP_HOVER}`} />
+        <small>Off-Road Total</small>
+        <h3>Wrangler 4x4</h3>
+        <p>Tracción 4x4 con reducida. El todoterreno original e irrenunciable.</p>
+        <strong>Desde $1,149,900</strong>
+        <button onclick={() => goToCotizacion('wrangler')}>
+          Cotizar Wrangler <GoogleIcon name="arrow_forward" size={16} />
+        </button>
+      </article>
+    </div>
+  </section>
+
+  <section id="cotizar" class="cotizar-band" aria-label="Cotización Jeep">
+    <div class="cotizar-inner">
+      <div class="cotizar-copy">
+        <p>Cotización Jeep</p>
+        <h2>Tu próximo Jeep, sin complicaciones.</h2>
+        <span>Esquemas de financiamiento a tu medida, pre-aprobación en menos de 24 horas y asesoría personalizada con expertos VAPSA.</span>
+        <ul class="cotizar-perks">
+          <li><GoogleIcon name="payments" size={16} /> Enganche desde 10%</li>
+          <li><GoogleIcon name="schedule" size={16} /> Respuesta en 24h</li>
+          <li><GoogleIcon name="verified" size={16} /> Tasas preferenciales</li>
+        </ul>
+      </div>
+      <div class="cotizar-form">
+        <label class="cotizar-field">
+          <span>Modelo de interés</span>
+          <select bind:value={selectedQuoteModel}>
+            {#each models as model (model.slug)}
+              <option value={model.slug}>{model.name} · {model.price}</option>
+            {/each}
+          </select>
+        </label>
+        <button class="cotizar-primary" onclick={() => goToCotizacion(selectedQuoteModel)}>
+          Cotizar este modelo <GoogleIcon name="arrow_forward" size={18} />
+        </button>
+        <a
+          class="cotizar-secondary"
+          href={`https://wa.me/524871108899?text=Hola,%20me%20interesa%20cotizar%20un%20${encodeURIComponent(models.find(m => m.slug === selectedQuoteModel)?.name || 'Jeep')}`}
+          target="_blank" rel="noopener noreferrer">
+          <GoogleIcon name="chat" size={16} /> Cotizar por WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
   <section class="hub-cta">
     <GoogleIcon name="route" size={24} style="margin-bottom:20px;color:{JEEP_HOVER}" />
     <p>¿No sabes cuál te conviene?</p>
     <h2>Te ayudamos a elegir por uso, presupuesto y disponibilidad.</h2>
-    <a href="https://wa.me/524871108899?text=Hola,%20quiero%20comparar%20modelos%20JEEP" target="_blank" rel="noopener noreferrer">Comparar por WhatsApp</a>
+    <div class="hub-cta-actions">
+      <button onclick={() => goToCotizacion()}>Cotizar online <GoogleIcon name="arrow_forward" size={16} /></button>
+      <a href="https://wa.me/524871108899?text=Hola,%20quiero%20comparar%20modelos%20JEEP" target="_blank" rel="noopener noreferrer">
+        <GoogleIcon name="chat" size={16} /> Comparar por WhatsApp
+      </a>
+    </div>
   </section>
 </main>
 
@@ -1163,6 +1279,418 @@
     transform: translateY(0);
   }
 
+  /* ───── Trust strip ───── */
+  .trust-strip {
+    position: relative;
+    z-index: 1;
+    padding: clamp(56px, 7vw, 92px) clamp(20px, 6vw, 90px);
+    background:
+      radial-gradient(circle at 18% 30%, rgba(90, 105, 10, 0.10), transparent 40%),
+      linear-gradient(180deg, #050507 0%, #0a0a0e 100%);
+  }
+
+  .trust-head {
+    max-width: 720px;
+    margin: 0 auto clamp(34px, 4vw, 50px);
+    text-align: center;
+  }
+
+  .trust-head p {
+    margin: 0 0 10px;
+    color: var(--jeep-hover);
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .trust-head h2 {
+    margin: 0;
+    font-size: clamp(22px, 2.4vw, 32px);
+    line-height: 1.15;
+    font-weight: 950;
+    letter-spacing: -0.02em;
+  }
+
+  .trust-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: clamp(12px, 1.6vw, 22px);
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .trust-grid article {
+    padding: clamp(22px, 2.6vw, 30px);
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);
+    transition: transform 460ms var(--ease), background 460ms var(--ease), border-color 460ms var(--ease);
+    animation: tile-rise both;
+    animation-timeline: view();
+    animation-range: entry 12% cover 34%;
+  }
+
+  .trust-grid article:hover {
+    transform: translateY(-3px);
+    background: rgba(255, 255, 255, 0.07);
+    border-color: color-mix(in srgb, var(--jeep-hover) 38%, rgba(255,255,255,0.18));
+  }
+
+  .trust-grid strong {
+    display: block;
+    font-size: clamp(32px, 3.8vw, 52px);
+    line-height: 1;
+    font-weight: 950;
+    letter-spacing: -0.025em;
+    background: linear-gradient(135deg, #fff 0%, color-mix(in srgb, var(--jeep-hover) 60%, white) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 10px;
+  }
+
+  .trust-grid span {
+    display: block;
+    color: rgba(255, 255, 255, 0.62);
+    font-size: 13px;
+    line-height: 1.45;
+  }
+
+  /* ───── Quick-pick (3 modelos destacados) ───── */
+  .quick-pick {
+    position: relative;
+    z-index: 1;
+    padding: clamp(60px, 8vw, 110px) clamp(20px, 6vw, 90px);
+    background:
+      radial-gradient(circle at 80% 12%, rgba(136, 13, 0, 0.10), transparent 32%),
+      #050507;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .quick-pick-head {
+    max-width: 720px;
+    margin: 0 auto clamp(34px, 4vw, 50px);
+    text-align: center;
+  }
+
+  .quick-pick-head p {
+    margin: 0 0 10px;
+    color: var(--jeep-hover);
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .quick-pick-head h2 {
+    margin: 0;
+    font-size: clamp(26px, 3vw, 40px);
+    line-height: 1.1;
+    font-weight: 950;
+    letter-spacing: -0.02em;
+  }
+
+  .quick-pick-head span {
+    display: block;
+    max-width: 460px;
+    margin: 14px auto 0;
+    color: rgba(255, 255, 255, 0.62);
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .quick-pick-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(16px, 2vw, 26px);
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .pick-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: clamp(24px, 2.6vw, 32px);
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    border-radius: 26px;
+    background:
+      radial-gradient(circle at 100% 0%, color-mix(in srgb, var(--accent) 14%, transparent), transparent 36%),
+      linear-gradient(180deg, #0c0c12, #08080c);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.06), 0 20px 60px rgba(0,0,0,0.30);
+    transition: transform 520ms var(--ease), border-color 520ms var(--ease), box-shadow 520ms var(--ease);
+    animation: card-rise both;
+    animation-timeline: view();
+    animation-range: entry 6% cover 32%;
+  }
+
+  .pick-card:hover {
+    transform: translateY(-4px);
+    border-color: color-mix(in srgb, var(--accent) 38%, rgba(255,255,255,0.18));
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.12), 0 30px 80px rgba(0,0,0,0.40);
+  }
+
+  .pick-card.featured {
+    border-color: color-mix(in srgb, var(--accent) 30%, rgba(255,255,255,0.16));
+    background:
+      radial-gradient(circle at 100% 0%, color-mix(in srgb, var(--accent) 22%, transparent), transparent 38%),
+      linear-gradient(180deg, #14141a, #0a0a0e);
+  }
+
+  .pick-card.featured::before {
+    content: 'RECOMENDADO';
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--accent) 44%, rgba(255,255,255,0.10));
+    color: white;
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: 0.14em;
+  }
+
+  .pick-card small {
+    color: var(--accent);
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .pick-card h3 {
+    margin: 4px 0 0;
+    font-size: clamp(20px, 2vw, 26px);
+    line-height: 1.1;
+    font-weight: 950;
+    letter-spacing: -0.02em;
+  }
+
+  .pick-card p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.60);
+    font-size: 13px;
+    line-height: 1.5;
+    flex: 1;
+  }
+
+  .pick-card strong {
+    display: block;
+    margin-top: 4px;
+    font-size: 22px;
+    font-weight: 950;
+    letter-spacing: -0.015em;
+    color: white;
+  }
+
+  .pick-card button {
+    margin-top: 8px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    padding: 0 18px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 999px;
+    color: white;
+    background: color-mix(in srgb, var(--accent) 28%, rgba(255,255,255,0.08));
+    backdrop-filter: blur(14px);
+    font-size: 13px;
+    font-weight: 900;
+    cursor: pointer;
+    transition: transform 380ms var(--ease), background 380ms var(--ease), border-color 380ms var(--ease);
+  }
+
+  .pick-card button:hover {
+    transform: translateY(-2px);
+    background: color-mix(in srgb, var(--accent) 48%, rgba(255,255,255,0.12));
+    border-color: color-mix(in srgb, var(--accent) 52%, rgba(255,255,255,0.24));
+  }
+
+  /* ───── Cotización band ───── */
+  .cotizar-band {
+    position: relative;
+    z-index: 1;
+    padding: clamp(60px, 8vw, 110px) clamp(20px, 6vw, 90px);
+    background:
+      radial-gradient(circle at 12% 50%, rgba(90, 105, 10, 0.16), transparent 38%),
+      radial-gradient(circle at 92% 8%, rgba(136, 13, 0, 0.10), transparent 30%),
+      #050507;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .cotizar-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: clamp(28px, 4vw, 60px);
+    align-items: center;
+    padding: clamp(28px, 3.6vw, 48px);
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    border-radius: 32px;
+    background: rgba(255, 255, 255, 0.035);
+    backdrop-filter: blur(26px) saturate(180%);
+    -webkit-backdrop-filter: blur(26px) saturate(180%);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.06), 0 40px 120px rgba(0,0,0,0.40);
+  }
+
+  .cotizar-copy p {
+    margin: 0 0 10px;
+    color: var(--jeep-hover);
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .cotizar-copy h2 {
+    margin: 0;
+    font-size: clamp(28px, 3.2vw, 44px);
+    line-height: 1.08;
+    font-weight: 950;
+    letter-spacing: -0.025em;
+  }
+
+  .cotizar-copy > span {
+    display: block;
+    max-width: 460px;
+    margin-top: 14px;
+    color: rgba(255, 255, 255, 0.66);
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .cotizar-perks {
+    list-style: none;
+    margin: clamp(20px, 2.4vw, 30px) 0 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px 20px;
+  }
+
+  .cotizar-perks li {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255, 255, 255, 0.74);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+
+  .cotizar-perks li :global(.material-symbols-outlined) {
+    color: var(--jeep-hover);
+  }
+
+  .cotizar-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .cotizar-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .cotizar-field > span {
+    color: rgba(255, 255, 255, 0.62);
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .cotizar-field select {
+    min-height: 52px;
+    padding: 0 18px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 16px;
+    background: rgba(8, 8, 14, 0.55);
+    color: white;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: border-color 340ms var(--ease), background 340ms var(--ease);
+    appearance: none;
+    background-image: linear-gradient(45deg, transparent 50%, rgba(255,255,255,0.5) 50%), linear-gradient(135deg, rgba(255,255,255,0.5) 50%, transparent 50%);
+    background-position: calc(100% - 22px) 50%, calc(100% - 16px) 50%;
+    background-size: 6px 6px, 6px 6px;
+    background-repeat: no-repeat;
+  }
+
+  .cotizar-field select:hover {
+    border-color: rgba(255, 255, 255, 0.28);
+    background-color: rgba(12, 12, 20, 0.65);
+  }
+
+  .cotizar-field select option {
+    background: #0c0c14;
+    color: white;
+  }
+
+  .cotizar-primary {
+    min-height: 54px;
+    margin-top: 4px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 0 22px;
+    border: 0;
+    border-radius: 16px;
+    color: white;
+    background: linear-gradient(135deg, var(--jeep-default) 0%, var(--jeep-hover) 100%);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.18), 0 16px 40px rgba(90, 105, 10, 0.36);
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 900;
+    letter-spacing: 0.01em;
+    cursor: pointer;
+    transition: transform 380ms var(--ease), box-shadow 380ms var(--ease), filter 380ms var(--ease);
+  }
+
+  .cotizar-primary:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.12);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.24), 0 22px 56px rgba(90, 105, 10, 0.50);
+  }
+
+  .cotizar-secondary {
+    min-height: 46px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    padding: 0 18px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 16px;
+    color: rgba(255, 255, 255, 0.86);
+    background: rgba(255, 255, 255, 0.04);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: transform 340ms var(--ease), background 340ms var(--ease), border-color 340ms var(--ease);
+  }
+
+  .cotizar-secondary:hover {
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.28);
+  }
+
   .hub-cta {
     min-height: 52svh;
     display: grid;
@@ -1178,6 +1706,56 @@
 
   .hub-cta h2 {
     max-width: 880px;
+  }
+
+  .hub-cta-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-top: clamp(20px, 2.4vw, 30px);
+  }
+
+  .hub-cta-actions button,
+  .hub-cta-actions a {
+    min-height: 48px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    padding: 0 22px;
+    border-radius: 999px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 850;
+    cursor: pointer;
+    transition: transform 380ms var(--ease), background 380ms var(--ease), border-color 380ms var(--ease);
+  }
+
+  .hub-cta-actions button {
+    border: 0;
+    color: white;
+    background: linear-gradient(135deg, var(--jeep-default) 0%, var(--jeep-hover) 100%);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.18), 0 14px 36px rgba(90, 105, 10, 0.34);
+  }
+
+  .hub-cta-actions button:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.12);
+  }
+
+  .hub-cta-actions a {
+    color: white;
+    text-decoration: none;
+    border: 1px solid rgba(255, 255, 255, 0.20);
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(16px);
+  }
+
+  .hub-cta-actions a:hover {
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.10);
+    border-color: rgba(255, 255, 255, 0.30);
   }
 
   @keyframes hero-drift {
@@ -1249,6 +1827,19 @@
   }
 
   @media (max-width: 980px) {
+    .trust-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .quick-pick-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .cotizar-inner {
+      grid-template-columns: 1fr;
+      padding: clamp(22px, 4vw, 32px);
+    }
+
     .hub-hero {
       min-height: 720px;
     }
@@ -1322,6 +1913,14 @@
   }
 
   @media (max-width: 620px) {
+    .trust-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .cotizar-perks {
+      gap: 10px 16px;
+    }
+
     .hub-hero {
       min-height: 660px;
     }
