@@ -5,14 +5,18 @@
   import type { VehicleType, BrandFilter } from '$lib/types'
 
   interface Props {
-    onCotizarClick?:    () => void
-    onTypeSelect?:      (type: VehicleType) => void
-    activeType?:        VehicleType
-    activeBrand?:       BrandFilter
-    onMenuToggle?:      () => void
-    onMapClick?:        () => void
-    onHomeClick?:       () => void
-    onSeminuevosClick?: () => void
+    onCotizarClick?:         () => void
+    onTypeSelect?:           (type: VehicleType) => void
+    activeType?:             VehicleType
+    activeBrand?:            BrandFilter
+    onMenuToggle?:           () => void
+    onMapClick?:             () => void
+    onHomeClick?:            () => void
+    onSeminuevosClick?:      () => void
+    onPruebaManejoClick?:    () => void
+    onServicioClick?:        () => void
+    onContactoClick?:        () => void
+    onUbicacionClick?:       () => void
   }
 
   let {
@@ -24,6 +28,10 @@
     onMapClick,
     onHomeClick,
     onSeminuevosClick,
+    onPruebaManejoClick,
+    onServicioClick,
+    onContactoClick,
+    onUbicacionClick,
   }: Props = $props()
 
   type FuelFilter = 'Todos' | 'Eléctrico' | 'Híbridos' | 'Gasolina'
@@ -199,9 +207,9 @@
   {:else if type === 'Sedán'}
     <GoogleIcon name="directions_car" size={18} />
   {:else if type === 'SUV'}
-    <GoogleIcon name="terrain" size={18} />
+    <GoogleIcon name="airport_shuttle" size={18} />
   {:else if type === 'Deportivos'}
-    <GoogleIcon name="bolt" size={18} />
+    <GoogleIcon name="sports_motorsports" size={18} />
   {:else}
     <GoogleIcon name="local_shipping" size={18} />
   {/if}
@@ -245,7 +253,7 @@
       style="color:{$isDark ? 'rgba(255,255,255,0.85)' : '#1a2040'}">
       Inicio
     </button>
-    <div class="relative h-full flex items-center" role="presentation" onmouseenter={openMega}>
+    <div class="relative h-full flex items-center" role="presentation">
       <button
         class="flex items-center gap-1.5 text-sm font-medium transition-all cursor-pointer"
         style="color:{$isDark ? 'rgba(255,255,255,0.85)' : '#1a2040'}"
@@ -263,19 +271,19 @@
 
   <div class="flex items-center gap-5 flex-shrink-0">
     <div class="hidden md:flex items-center gap-5 mr-1">
-      <a href="#" class="flex items-center gap-2 text-[13px] font-semibold transition-all hover:opacity-80 cursor-pointer" style="color:{$isDark ? 'rgba(255,255,255,0.85)' : '#1a2040'}">
+      <button onclick={onPruebaManejoClick} class="flex items-center gap-2 text-[13px] font-semibold transition-all hover:opacity-80 cursor-pointer" style="color:{$isDark ? 'rgba(255,255,255,0.85)' : '#1a2040'}">
         <GoogleIcon name="speed" size={16} class="opacity-70" />
         Prueba de manejo
-      </a>
-      <a href="#" class="flex items-center gap-2 text-[13px] font-semibold transition-all hover:opacity-80 cursor-pointer" style="color:{$isDark ? 'rgba(255,255,255,0.85)' : '#1a2040'}">
+      </button>
+      <button onclick={onServicioClick} class="flex items-center gap-2 text-[13px] font-semibold transition-all hover:opacity-80 cursor-pointer" style="color:{$isDark ? 'rgba(255,255,255,0.85)' : '#1a2040'}">
         <GoogleIcon name="build" size={16} class="opacity-70" />
         Servicio
-      </a>
-      <a href="#" class="flex items-center gap-2 text-[13px] font-semibold transition-all hover:opacity-80 cursor-pointer" style="color:{$isDark ? 'rgba(255,255,255,0.85)' : '#1a2040'}">
+      </button>
+      <button onclick={onContactoClick} class="flex items-center gap-2 text-[13px] font-semibold transition-all hover:opacity-80 cursor-pointer" style="color:{$isDark ? 'rgba(255,255,255,0.85)' : '#1a2040'}">
         <GoogleIcon name="call" size={16} class="opacity-70" />
         Contacto
-      </a>
-      <button onclick={onMapClick} class="flex items-center gap-2 text-[13px] font-semibold transition-all hover:opacity-80 cursor-pointer" style="color:{$isDark ? 'rgba(255,255,255,0.85)' : '#1a2040'}">
+      </button>
+      <button onclick={onUbicacionClick || onMapClick} class="flex items-center gap-2 text-[13px] font-semibold transition-all hover:opacity-80 cursor-pointer" style="color:{$isDark ? 'rgba(255,255,255,0.85)' : '#1a2040'}">
         <GoogleIcon name="location_on" size={16} class="opacity-70" />
         Ubicación
       </button>
@@ -297,7 +305,6 @@
   <div
     class="fixed top-16 left-0 md:left-20 right-0 bottom-0 z-[9999] overflow-hidden overscroll-contain"
     role="presentation"
-    onmouseenter={openMega}
   >
     <div class="h-full overflow-hidden overscroll-contain" style="{megaPanelStyle}border-radius:0;">
       <div class="flex flex-col md:grid h-[calc(100dvh-4rem)] md:grid-cols-[292px_minmax(0,1fr)] overflow-hidden overscroll-contain">
@@ -415,17 +422,17 @@
 
           <p class="text-[11px] font-black uppercase tracking-[0.16em] mb-3 md:mb-4" style="color:{$isDark ? 'rgba(255,255,255,0.72)' : '#111827'}">Servicios</p>
           <div class="grid grid-cols-2 gap-2 md:flex md:flex-col md:gap-1.5">
-            <button onclick={() => { onCotizarClick?.(); closeMega() }} class="flex cursor-pointer items-center justify-between gap-2 rounded-xl px-3 py-2.5 text-left text-xs font-bold transition-all hover:translate-x-1 md:text-sm" style="color:{$isDark ? 'rgba(255,255,255,0.86)' : '#111827'}">
-              <span class="flex items-center gap-2"><GoogleIcon name="speed" size={16} style="color:{megaAccent}" /> Prueba de manejo</span>
-              <span style="color:{megaAccent}">→</span>
+            <button onclick={() => { onPruebaManejoClick?.(); closeMega() }} class="flex cursor-pointer items-center justify-between gap-2 rounded-xl px-3 py-2.5 text-left text-xs font-bold transition-all hover:translate-x-1 md:text-sm" style="color:{$isDark ? 'rgba(255,255,255,0.86)' : '#111827'}">
+              <span class="flex items-center gap-2"><GoogleIcon name="speed" size={16} class="opacity-70" /> Prueba de manejo</span>
+              <span class="opacity-30">→</span>
             </button>
-            <button onclick={() => { onCotizarClick?.(); closeMega() }} class="flex cursor-pointer items-center justify-between gap-2 rounded-xl px-3 py-2.5 text-left text-xs font-bold transition-all hover:translate-x-1 md:text-sm" style="color:{$isDark ? 'rgba(255,255,255,0.86)' : '#111827'}">
-              <span class="flex items-center gap-2"><GoogleIcon name="build" size={16} style="color:{megaAccent}" /> Servicio</span>
-              <span style="color:{megaAccent}">→</span>
+            <button onclick={() => { onServicioClick?.(); closeMega() }} class="flex cursor-pointer items-center justify-between gap-2 rounded-xl px-3 py-2.5 text-left text-xs font-bold transition-all hover:translate-x-1 md:text-sm" style="color:{$isDark ? 'rgba(255,255,255,0.86)' : '#111827'}">
+              <span class="flex items-center gap-2"><GoogleIcon name="build" size={16} class="opacity-70" /> Servicio</span>
+              <span class="opacity-30">→</span>
             </button>
-            <button onclick={() => { onMapClick?.(); closeMega() }} class="flex cursor-pointer items-center justify-between gap-2 rounded-xl px-3 py-2.5 text-left text-xs font-bold transition-all hover:translate-x-1 md:text-sm" style="color:{$isDark ? 'rgba(255,255,255,0.86)' : '#111827'}">
-              <span class="flex items-center gap-2"><GoogleIcon name="location_on" size={16} style="color:{megaAccent}" /> Ubicación</span>
-              <span style="color:{megaAccent}">→</span>
+            <button onclick={() => { (onUbicacionClick || onMapClick)?.(); closeMega() }} class="flex cursor-pointer items-center justify-between gap-2 rounded-xl px-3 py-2.5 text-left text-xs font-bold transition-all hover:translate-x-1 md:text-sm" style="color:{$isDark ? 'rgba(255,255,255,0.86)' : '#111827'}">
+              <span class="flex items-center gap-2"><GoogleIcon name="location_on" size={16} class="opacity-70" /> Ubicación</span>
+              <span class="opacity-30">→</span>
             </button>
           </div>
         </aside>
@@ -526,8 +533,7 @@
                           <p class="mt-1 text-base font-black leading-none" style="color:{$isDark ? 'white' : '#111827'}">{vehicle.price}</p>
                         </div>
                         <span class="inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[10px] font-black uppercase tracking-[0.08em]"
-                          style="background:{vehicle.accent}16;color:{vehicle.accent};border:1px solid {vehicle.accent}34;">
-                          <GoogleIcon name={vehicle.fuel === 'Eléctrico' ? 'electric_car' : vehicle.fuel === 'Híbridos' ? 'ev_station' : 'local_gas_station'} size={14} />
+                          style="background:{$isDark ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.05)'}; color:{$isDark ? 'rgba(255,255,255,0.6)' : 'rgba(0,0,0,0.5)'}; border:1px solid {$isDark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)'};">
                           {vehicle.fuel}
                         </span>
                       </div>
@@ -549,11 +555,11 @@
             <div class="md:hidden mt-10 pt-6 border-t flex flex-col gap-3" style="border-color:{$isDark ? 'rgba(255,255,255,0.1)' : 'rgba(30,60,120,0.1)'};">
               <p class="text-[11px] font-black uppercase tracking-[0.16em] mb-1" style="color:{$isDark ? 'rgba(255,255,255,0.5)' : '#111827'}">Servicios rápidos</p>
               <div class="grid grid-cols-2 gap-2">
-                <button onclick={() => { onCotizarClick?.(); closeMega() }} class="flex cursor-pointer items-center justify-between gap-2 rounded-xl px-4 py-3 text-left text-xs font-bold transition-all" style="background:{$isDark ? 'rgba(255,255,255,0.04)' : 'rgba(0,0,0,0.02)'}; color:{$isDark ? 'rgba(255,255,255,0.86)' : '#111827'}">
-                  <span class="flex items-center gap-2"><GoogleIcon name="speed" size={16} style="color:{megaAccent}" /> Prueba de manejo</span>
+                <button onclick={() => { onPruebaManejoClick?.(); closeMega() }} class="flex cursor-pointer items-center justify-between gap-2 rounded-xl px-4 py-3 text-left text-xs font-bold transition-all" style="background:{$isDark ? 'rgba(255,255,255,0.04)' : 'rgba(0,0,0,0.02)'}; color:{$isDark ? 'rgba(255,255,255,0.86)' : '#111827'}">
+                  <span class="flex items-center gap-2"><GoogleIcon name="speed" size={16} class="opacity-70" /> Prueba de manejo</span>
                 </button>
-                <button onclick={() => { onMapClick?.(); closeMega() }} class="flex cursor-pointer items-center justify-between gap-2 rounded-xl px-4 py-3 text-left text-xs font-bold transition-all" style="background:{$isDark ? 'rgba(255,255,255,0.04)' : 'rgba(0,0,0,0.02)'}; color:{$isDark ? 'rgba(255,255,255,0.86)' : '#111827'}">
-                  <span class="flex items-center gap-2"><GoogleIcon name="location_on" size={16} style="color:{megaAccent}" /> Ubicación</span>
+                <button onclick={() => { onServicioClick?.(); closeMega() }} class="flex cursor-pointer items-center justify-between gap-2 rounded-xl px-4 py-3 text-left text-xs font-bold transition-all" style="background:{$isDark ? 'rgba(255,255,255,0.04)' : 'rgba(0,0,0,0.02)'}; color:{$isDark ? 'rgba(255,255,255,0.86)' : '#111827'}">
+                  <span class="flex items-center gap-2"><GoogleIcon name="build" size={16} class="opacity-70" /> Servicio</span>
                 </button>
               </div>
               <button

@@ -145,9 +145,16 @@
     }
   })
 
-  function openQuote() {
-    const target = document.getElementById('ram-quote')
-    target?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+  function goToQuote() {
+    history.pushState({ view: 'Contacto', tab: 'cotizacion' }, '', '/adistem2026/contacto/')
+    window.dispatchEvent(new PopStateEvent('popstate', { state: { view: 'Contacto', tab: 'cotizacion' } }))
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
+  function goToTestDrive() {
+    history.pushState({ view: 'Contacto', tab: 'prueba' }, '', '/adistem2026/contacto/')
+    window.dispatchEvent(new PopStateEvent('popstate', { state: { view: 'Contacto', tab: 'prueba' } }))
+    window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
   function goBackToRam() {
@@ -184,7 +191,7 @@
       <p>{model.kicker}</p>
       <h1>{model.title}</h1>
       <span>{model.subtitle}</span>
-      <button onclick={openQuote}>Cotizar {model.name} <GoogleIcon name="arrow_forward" size={18} /></button>
+      <button onclick={goToQuote}>Cotizar {model.name} <GoogleIcon name="arrow_forward" size={18} /></button>
     </div>
     <div class="progress-rail" aria-hidden="true"><span></span></div>
     <div class="scroll-cue">Desliza</div>
@@ -194,16 +201,14 @@
     <strong>{model.name}</strong>
     <a href="#ram-motion">Movimiento</a>
     <a href="#ram-story">Detalles</a>
-    <button onclick={openQuote}>Cotizar</button>
+    <button onclick={goToTestDrive} class="ghost-nav">Prueba de manejo</button>
+    <button onclick={goToQuote}>Cotizar</button>
   </nav>
 
   <section class="pin-stage">
     <div class="pin-visual">
       <img class="truck-main" src={model.spotlightImage} alt={model.name} />
-      <div class="pin-readout">
-        <span>Momentum visual</span>
-        <strong>{Math.round(progress * 100)}%</strong>
-      </div>
+
     </div>
     <div class="pin-copy">
       <p>{model.motionCopy}</p>
@@ -281,11 +286,27 @@
   <section id="ram-quote" class="quote-section">
     <p>VAPSA RAM</p>
     <h2>Agenda una prueba de manejo o recibe una cotización.</h2>
-    <div class="quote-actions">
-      <a href={`https://wa.me/524871108899?text=${model.quote}`} target="_blank" rel="noopener noreferrer">
-        WhatsApp
-      </a>
-      <a href="tel:+524871108899">Llamar ahora</a>
+    <p class="quote-sub">Elige la opción que mejor se ajuste a lo que necesitas. Nuestro equipo está listo para atenderte.</p>
+
+    <div class="quote-cta-grid">
+      <button class="quote-cta-card" onclick={() => { history.pushState({ view: 'Contacto', tab: 'prueba' }, '', '/adistem2026/contacto/'); window.dispatchEvent(new PopStateEvent('popstate', { state: { view: 'Contacto', tab: 'prueba' } })); window.scrollTo({ top: 0, behavior: 'smooth' }) }}>
+        <span class="qcc-icon"><GoogleIcon name="speed" size={28} /></span>
+        <strong>Prueba de Manejo</strong>
+        <span class="qcc-desc">Agenda una cita para manejar el {model.name}</span>
+        <span class="qcc-arrow"><GoogleIcon name="arrow_forward" size={18} /></span>
+      </button>
+      <button class="quote-cta-card" onclick={() => { history.pushState({ view: 'Contacto', tab: 'cita' }, '', '/adistem2026/contacto/'); window.dispatchEvent(new PopStateEvent('popstate', { state: { view: 'Contacto', tab: 'cita' } })); window.scrollTo({ top: 0, behavior: 'smooth' }) }}>
+        <span class="qcc-icon"><GoogleIcon name="build" size={28} /></span>
+        <strong>Cita de Servicio</strong>
+        <span class="qcc-desc">Programa el mantenimiento de tu vehículo</span>
+        <span class="qcc-arrow"><GoogleIcon name="arrow_forward" size={18} /></span>
+      </button>
+      <button class="quote-cta-card" onclick={() => { history.pushState({ view: 'Contacto', tab: 'cotizacion' }, '', '/adistem2026/contacto/'); window.dispatchEvent(new PopStateEvent('popstate', { state: { view: 'Contacto', tab: 'cotizacion' } })); window.scrollTo({ top: 0, behavior: 'smooth' }) }}>
+        <span class="qcc-icon"><GoogleIcon name="description" size={28} /></span>
+        <strong>Solicitar Cotización</strong>
+        <span class="qcc-desc">Recibe precios, versiones y financiamiento</span>
+        <span class="qcc-arrow"><GoogleIcon name="arrow_forward" size={18} /></span>
+      </button>
     </div>
   </section>
 </main>
@@ -579,6 +600,17 @@
     padding: 0 14px;
     color: white;
     background: var(--ram-hover);
+  }
+
+  .product-nav button.ghost-nav {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    color: rgba(255, 255, 255, 0.86);
+  }
+
+  .product-nav button.ghost-nav:hover {
+    border-color: rgba(255, 255, 255, 0.35);
+    background: rgba(255, 255, 255, 0.04);
   }
 
   .product-nav a:hover,
@@ -1210,5 +1242,106 @@
       scroll-behavior: auto !important;
       transition-duration: 1ms !important;
     }
+  }
+
+  /* ─ Quote CTA grid ─────────────────────────────────────────────── */
+  .quote-sub {
+    margin: 0 auto 32px;
+    max-width: 560px;
+    font-size: 15px;
+    color: rgba(255,255,255,0.52);
+    line-height: 1.6;
+  }
+
+  .quote-cta-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    max-width: 740px;
+    margin: 0 auto 28px;
+  }
+
+  .quote-cta-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 22px 20px;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.10);
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(24px);
+    color: white;
+    text-align: left;
+    cursor: pointer;
+    transition: background 350ms ease, border-color 350ms ease, transform 350ms cubic-bezier(0.22,1,0.36,1);
+  }
+
+  .quote-cta-card:hover {
+    background: rgba(255,255,255,0.10);
+    border-color: rgba(255,255,255,0.22);
+    transform: translateY(-3px);
+  }
+
+  .qcc-icon { font-size: 24px; line-height: 1; }
+
+  .quote-cta-card strong {
+    display: block;
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+  }
+
+  .qcc-desc {
+    font-size: 12px;
+    color: rgba(255,255,255,0.50);
+    line-height: 1.4;
+    flex: 1;
+  }
+
+  .qcc-arrow {
+    display: flex;
+    align-items: center;
+    color: rgba(255,255,255,0.40);
+    margin-top: auto;
+    transition: transform 300ms cubic-bezier(0.22, 1, 0.36, 1), color 300ms ease;
+  }
+
+  .quote-cta-card:hover .qcc-arrow {
+    transform: translateX(6px);
+    color: rgba(255,255,255,0.90);
+  }
+
+  .quote-secondary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 8px;
+  }
+
+  .quote-secondary-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 18px;
+    height: 42px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.14);
+    background: rgba(255,255,255,0.06);
+    backdrop-filter: blur(16px);
+    color: rgba(255,255,255,0.72);
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 300ms ease, border-color 300ms ease, color 300ms ease;
+  }
+
+  .quote-secondary-btn:hover {
+    background: rgba(255,255,255,0.12);
+    border-color: rgba(255,255,255,0.26);
+    color: white;
   }
 </style>

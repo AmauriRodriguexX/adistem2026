@@ -13,6 +13,11 @@
   import JeepBrandHub       from '$lib/components/JeepBrandHub.svelte'
   import JeepPremiumLanding from '$lib/components/JeepPremiumLanding.svelte'
   import SeminuevosView     from '$lib/components/SeminuevosView.svelte'
+  import ContactView        from '$lib/components/ContactView.svelte'
+  import CotizacionLanding  from '$lib/components/CotizacionLanding.svelte'
+  import CitaServicioLanding from '$lib/components/CitaServicioLanding.svelte'
+  import PruebaManejoLanding from '$lib/components/PruebaManejoLanding.svelte'
+  import UbicacionLanding   from '$lib/components/UbicacionLanding.svelte'
   import FloatingContact    from '$lib/components/FloatingContact.svelte'
   import MobileBottomNav    from '$lib/components/MobileBottomNav.svelte'
   import GoogleIcon         from '$lib/components/GoogleIcon.svelte'
@@ -29,7 +34,8 @@
 
   let brandFilter: BrandFilter = $state('Todas')
   let typeFilter:  VehicleType = $state('Todos')
-  let currentView: 'Portal' | 'Seminuevos' = $state('Portal')
+  let currentView: 'Portal' | 'Seminuevos' | 'Contacto' | 'Cotizacion' | 'CitaServicio' | 'PruebaManejo' | 'Ubicacion' = $state('Portal')
+  let initialContactTab: 'cotizacion' | 'cita' | 'prueba' = $state('cotizacion')
   let ramModelSlug: string | null = $state(null)
   let jeepModelSlug: string | null = $state(null)
   let mobileMenuOpen = $state(false)
@@ -153,6 +159,13 @@
       setTimeout(() => formEl?.highlight(), 400)
     }
   }
+  function handleNavCotizarClick() {
+    if (brandFilter === 'Todas' && currentView === 'Portal') {
+      scrollToForm()
+    } else {
+      handleContactClick('cotizacion')
+    }
+  }
   function scrollToMap()   { mapEl?.scrollIntoView({ behavior: 'smooth' }) }
 
   function syncBrandFromUrl() {
@@ -162,6 +175,36 @@
     if (path.toLowerCase().startsWith(base + 'seminuevos')) {
       currentView = 'Seminuevos'
       ramModelSlug = null
+      window.scrollTo(0, 0)
+      return
+    }
+
+    if (path.toLowerCase().startsWith(base + 'cotizacion')) {
+      currentView = 'Cotizacion'
+      window.scrollTo(0, 0)
+      return
+    }
+
+    if (path.toLowerCase().startsWith(base + 'cita-servicio')) {
+      currentView = 'CitaServicio'
+      window.scrollTo(0, 0)
+      return
+    }
+
+    if (path.toLowerCase().startsWith(base + 'prueba-manejo')) {
+      currentView = 'PruebaManejo'
+      window.scrollTo(0, 0)
+      return
+    }
+
+    if (path.toLowerCase().startsWith(base + 'ubicacion')) {
+      currentView = 'Ubicacion'
+      window.scrollTo(0, 0)
+      return
+    }
+
+    if (path.toLowerCase().startsWith(base + 'contacto')) {
+      currentView = 'Cotizacion'
       window.scrollTo(0, 0)
       return
     }
@@ -228,6 +271,27 @@
     history.pushState({ view: 'Seminuevos' }, '', '/adistem2026/seminuevos/')
     window.scrollTo(0, 0)
   }
+
+  function handleContactClick(tab: 'cotizacion' | 'cita' | 'prueba' = 'cotizacion') {
+    if (tab === 'cotizacion') {
+      currentView = 'Cotizacion'
+      history.pushState({ view: 'Cotizacion' }, '', '/adistem2026/cotizacion/')
+    } else if (tab === 'cita') {
+      currentView = 'CitaServicio'
+      history.pushState({ view: 'CitaServicio' }, '', '/adistem2026/cita-servicio/')
+    } else {
+      currentView = 'PruebaManejo'
+      history.pushState({ view: 'PruebaManejo' }, '', '/adistem2026/prueba-manejo/')
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
+  function handleUbicacionClick() {
+    currentView = 'Ubicacion'
+    history.pushState({ view: 'Ubicacion' }, '', '/adistem2026/ubicacion/')
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
   function handleTypeSelect(type: VehicleType)   { typeFilter  = type;  scrollToForm() }
 
   const pageBg = $derived($isDark
@@ -306,15 +370,19 @@
     activeType={typeFilter}
     activeBrand={brandFilter}
     onTypeSelect={handleTypeSelect}
-    onCotizarClick={scrollToForm}
+    onCotizarClick={handleNavCotizarClick}
     onMenuToggle={() => mobileMenuOpen = !mobileMenuOpen}
     onMapClick={scrollToMap}
     onHomeClick={() => handleBrandSelect('Todas')}
     onSeminuevosClick={handleSeminuevosClick}
+    onPruebaManejoClick={() => handleContactClick('prueba')}
+    onServicioClick={() => handleContactClick('cita')}
+    onContactoClick={() => handleContactClick('cotizacion')}
+    onUbicacionClick={handleUbicacionClick}
   />
 
   <!-- Mobile bottom nav -->
-  <MobileBottomNav onCotizarClick={scrollToForm} />
+  <MobileBottomNav onCotizarClick={handleNavCotizarClick} />
 
   <!-- Main content -->
   <div class="ml-0 md:ml-20 pb-32 md:pb-0">
@@ -407,9 +475,9 @@
             <p class="mb-5 leading-relaxed text-sm" style="color:{T.secondary}">
               Agenda tu cita de servicio en línea y asegura el mejor cuidado para tu vehículo.
             </p>
-            <a href="#"
-              class="inline-flex items-center gap-2 px-6 py-3 text-sm font-bold w-fit btn-glow-border tracking-wide"
-              >Programa tu cita</a>
+            <button onclick={() => handleContactClick('cita')}
+              class="inline-flex items-center gap-2 px-6 py-3 text-sm font-bold w-fit btn-glow-border tracking-wide cursor-pointer"
+              >Programa tu cita</button>
           </div>
           <div class="absolute top-0 right-0 w-64 h-64 pointer-events-none"
             style="background:radial-gradient(circle,rgba(51,78,139,0.22) 0%,transparent 70%)"></div>
@@ -532,8 +600,18 @@
         </div>
       </div>
     </section>
-    {:else}
+    {:else if currentView === 'Seminuevos'}
       <SeminuevosView />
+    {:else if currentView === 'Contacto'}
+      <ContactView initialTab={initialContactTab} />
+    {:else if currentView === 'Cotizacion'}
+      <CotizacionLanding />
+    {:else if currentView === 'CitaServicio'}
+      <CitaServicioLanding />
+    {:else if currentView === 'PruebaManejo'}
+      <PruebaManejoLanding />
+    {:else if currentView === 'Ubicacion'}
+      <UbicacionLanding />
     {/if}
 
     <!-- FOOTER -->

@@ -253,3 +253,21 @@ src: url('https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign
     animation-play-state: paused;
   }
 }
+
+/* ── Card Glow Highlight — soft multi-wave ripple (tenue) ────────────────── */
+@keyframes card-wave-1 {
+  0%   { box-shadow: 0 0 0 0   rgba(100,140,255,0.28); }
+  70%  { box-shadow: 0 0 0 18px rgba(100,140,255,0);    }
+  100% { box-shadow: 0 0 0 18px rgba(100,140,255,0);    }
+}
+@keyframes card-wave-2 {
+  0%   { outline: 0px solid rgba(130,170,255,0); outline-offset: 0px; }
+  30%  { outline: 0px solid rgba(130,170,255,0); outline-offset: 0px; }
+  75%  { outline: 2px solid rgba(130,170,255,0.14); outline-offset: 12px; }
+  100% { outline: 2px solid rgba(130,170,255,0);    outline-offset: 22px; }
+}
+
+.card-glow-highlighted {
+  animation: card-wave-1 1.4s ease-out forwards, card-wave-2 1.8s ease-out forwards !important;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}

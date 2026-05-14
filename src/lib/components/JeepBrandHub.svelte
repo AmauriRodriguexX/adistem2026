@@ -11,6 +11,7 @@
     stat: string
     metric: string
     detail: string
+    price: string
   }
 
   let { onModelSelect }: { onModelSelect?: (slug: string) => void } = $props()
@@ -33,6 +34,7 @@
       stat: 'Aventura Urbana',
       metric: '1.3L Turbo 173 HP',
       detail: 'El SUV con más actitud: eficiente, tecnológico y con espíritu 4x4.',
+      price: '$456,900'
     },
     {
       slug: 'compass',
@@ -44,6 +46,7 @@
       stat: 'Diseño & Confort',
       metric: 'AWD Disponible',
       detail: 'Diseñado para conquistarte: tecnología, espacio y presencia.',
+      price: '$599,900'
     },
     {
       slug: 'commander',
@@ -55,6 +58,7 @@
       stat: '7 Pasajeros',
       metric: 'Familia & Espacio',
       detail: 'Tres filas de asientos con confort y capacidad sin concesiones.',
+      price: '$734,900'
     },
     {
       slug: 'cherokee',
@@ -66,6 +70,7 @@
       stat: 'Icónico',
       metric: '2.0T 270 HP',
       detail: 'Un clásico reinventado con potencia turbo y carácter Jeep.',
+      price: '$899,900'
     },
     {
       slug: 'grand-cherokee',
@@ -77,6 +82,7 @@
       stat: 'Premium',
       metric: 'V6 3.6L / 4xe',
       detail: 'El SUV más premiado: lujo real con capacidad off-road legendaria.',
+      price: '$1,199,900'
     },
     {
       slug: 'wrangler',
@@ -88,6 +94,7 @@
       stat: 'Off-Road Total',
       metric: '4x4 con reducida',
       detail: 'Icónico, irreducible y sin límites. El Jeep definitivo.',
+      price: '$1,149,900'
     },
     {
       slug: 'jt',
@@ -99,6 +106,7 @@
       stat: 'Pickup 4x4',
       metric: 'Cama + Off-Road',
       detail: 'La única pickup todoterreno con raíces Wrangler y cama abierta.',
+      price: '$1,249,900'
     },
     {
       slug: 'grand-wagoneer-l',
@@ -110,6 +118,7 @@
       stat: 'Ultra Premium',
       metric: 'V8 6.4L 471 HP',
       detail: 'La cúspide del lujo americano: 8 plazas, V8 y tecnología de clase mundial.',
+      price: '$2,299,900'
     },
   ]
 
@@ -131,7 +140,7 @@
     if (!isPlaying) return
     const id = setInterval(() => {
       activeModelIndex = (activeModelIndex + 1) % models.length
-    }, 4500)
+    }, 7000)
     return () => clearInterval(id)
   })
 
@@ -163,12 +172,41 @@
 
 <main class="jeep-hub">
   <section class="hub-hero">
-    <img src={`${A}/hero.avif`} alt="JEEP Renegade en movimiento" />
-    <div class="hero-inner">
-      <p>Gama JEEP 2026</p>
-      <h1>8 modelos. Una sola forma de vivir la aventura.</h1>
-      <span>Desde la actitud urbana del Renegade hasta el lujo extremo del Grand Wagoneer L, encuentra el Jeep que encaja con tu ruta, tu familia y tu estilo.</span>
-      <button onclick={() => selectModel('renegade')}>Ver modelos <GoogleIcon name="arrow_forward" size={18} /></button>
+    {#each models as model, i (model.slug)}
+      <img class="hero-bg" class:active={i === activeModelIndex} src={model.image} alt={model.name} />
+    {/each}
+    <div class="hero-shade-new"></div>
+    <div class="hero-copy-new">
+      {#key activeModelIndex}
+        <div class="hero-content-new">
+          <h1>{models[activeModelIndex].name} 2026</h1>
+          <p class="hero-slogan-new">{models[activeModelIndex].role}</p>
+          <span class="price-badge-new">Desde {models[activeModelIndex].price}</span>
+          <div class="hero-actions-new">
+            <button class="primary" onclick={() => selectModel(models[activeModelIndex].slug)}>
+              Explorar <GoogleIcon name="arrow_forward" size={18} />
+            </button>
+          </div>
+        </div>
+      {/key}
+    </div>
+    
+    <div class="carousel-controls hero-controls-new">
+      <div class="carousel-pill" aria-label="Seleccionar modelo">
+        {#each models as model, i (model.slug)}
+          <button
+            class:active={i === activeModelIndex}
+            aria-label={`Ver ${model.name}`}
+            onclick={() => goToModel(i)}>
+          </button>
+        {/each}
+      </div>
+      <button
+        class="play-btn"
+        aria-label={isPlaying ? 'Pausar carrusel' : 'Reproducir carrusel'}
+        onclick={togglePlay}>
+        <GoogleIcon name={isPlaying ? 'pause' : 'play_arrow'} size={16} />
+      </button>
     </div>
   </section>
 
@@ -179,8 +217,8 @@
     onmouseleave={onCarouselLeave}>
     <div class="carousel-head">
       <div>
-        <p>Explora la gama</p>
-        <h2>8 Modelos Jeep 2026</h2>
+        <p>Promociones exclusivas</p>
+        <h2>Estrena tu Jeep con ofertas únicas.</h2>
       </div>
     </div>
 
@@ -190,15 +228,29 @@
       ontouchend={onTouchEnd}>
       <div class="model-track" style={`--active:${activeModelIndex};`}>
         {#each models as model, i (model.slug)}
-          <article class:active={i === activeModelIndex} style={`--accent:${model.accent}`}>
-            <img src={model.image} alt={model.name} />
-            <div class="slide-glass">
-              <small>{model.stat}</small>
-              <h3>{model.name}</h3>
-              <span>{model.role}</span>
-              <i>{model.metric}</i>
-              <p>{model.detail}</p>
-              <button onclick={() => selectModel('renegade')}>Ver modelo <GoogleIcon name="arrow_forward" size={16} /></button>
+          <article class="promo-card" class:active={i === activeModelIndex} style={`--accent:${model.accent}`}>
+            <div class="pc-glass-bg"></div>
+            <div class="pc-glass-shine"></div>
+            <div class="pc-glass-border"></div>
+            <div class="pc-img-wrap">
+              <img src={model.image} alt={model.name} />
+              <div class="pc-img-gradient"></div>
+              <span class="pc-badge-stat">{model.stat}</span>
+              <span class="pc-badge-promo">PROMO</span>
+              <div class="pc-img-footer">
+                <p>Jeep</p>
+                <h3>{model.name.replace('Jeep ', '')} <span>2026</span></h3>
+              </div>
+            </div>
+            <div class="pc-body">
+              <p class="pc-metric">{model.metric}</p>
+              <p class="pc-detail">
+                <GoogleIcon name="sell" size={12} style="display:inline-flex;margin-right:4px;color:#9eb821;vertical-align:-2px;" />
+                Bono especial · {model.price}
+              </p>
+              <button onclick={() => selectModel(model.slug)} class="pc-cta">
+                Ver promoción <GoogleIcon name="chevron_right" size={14} />
+              </button>
             </div>
           </article>
         {/each}
@@ -228,6 +280,14 @@
     <div class="chooser-copy">
       <p>Elige por necesidad</p>
       <h2>No todos los Jeep hacen lo mismo. Esa es la idea.</h2>
+      <div class="chooser-img-wrap">
+        <img
+          src="https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/wrangler/vlp/desktop/my26-jeep-wrangler-inicio-vlp-mx-dk.jpg.img.2880.jpg"
+          alt="Jeep Wrangler en terreno"
+          class="chooser-img"
+        />
+        <div class="chooser-img-shade"></div>
+      </div>
     </div>
     <div class="use-grid">
       <article>
@@ -253,27 +313,6 @@
     </div>
   </section>
 
-  <section class="lineup">
-    <div class="lineup-head">
-      <p>Modelos disponibles</p>
-      <h2>La gama completa, en una sola vista.</h2>
-    </div>
-    <div class="lineup-grid">
-      {#each models as model (model.slug)}
-        <article style={`--accent:${model.accent}`}>
-          <img src={model.image} alt={model.name} />
-          <div>
-            <small>{model.metric}</small>
-            <p>{model.role}</p>
-            <h3>{model.name}</h3>
-            <span>{model.use}</span>
-            <em>{model.detail}</em>
-            <button onclick={() => selectModel('renegade')}>Explorar modelo <GoogleIcon name="arrow_forward" size={16} /></button>
-          </div>
-        </article>
-      {/each}
-    </div>
-  </section>
 
   <section class="hub-cta">
     <GoogleIcon name="route" size={24} style="margin-bottom:20px;color:{JEEP_HOVER}" />
@@ -302,7 +341,7 @@
   }
 
   .hub-hero {
-    min-height: clamp(620px, 92svh, 860px);
+    min-height: clamp(620px, 100svh, 935px);
     position: relative;
     display: grid;
     align-items: center;
@@ -323,62 +362,151 @@
     pointer-events: none;
   }
 
-  .hub-hero > img {
+  @keyframes hero-zoom-in {
+    0% { transform: scale(1.15); opacity: 0; filter: blur(4px); }
+    15% { opacity: 1; filter: blur(0); }
+    100% { transform: scale(1); opacity: 1; }
+  }
+
+  @keyframes badge-glow {
+    0%, 100% { box-shadow: 0 0 8px rgba(90, 105, 10, 0.5), 0 0 0 rgba(90, 105, 10, 0); }
+    50% { box-shadow: 0 0 18px rgba(90, 105, 10, 0.8), 0 0 32px rgba(90, 105, 10, 0.25); }
+  }
+
+  /* Promo cards grid — fallback for when Tailwind classes aren't processed */
+  .promo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 24px;
+  }
+
+  /* Card hover lift */
+  .jeep-hub .group:hover > div {
+    transform: translateY(-4px) !important;
+    box-shadow: rgba(255, 255, 255, 0.14) 0px 0px 0px 1px, rgba(0, 0, 0, 0.6) 0px 20px 48px !important;
+    transition: transform 350ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 350ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .hub-hero > img.hero-bg {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: 66% center;
-    filter: saturate(1.06) contrast(1.04) brightness(1.02);
-    transform: scale(1.015);
-    animation: hero-drift 9s var(--ease) both;
+    object-position: 60% center;
+    opacity: 0;
+    transition: opacity 1s var(--ease);
   }
 
-  .hub-hero::after {
-    content: '';
-    position: absolute;
+  .hub-hero > img.hero-bg.active {
+    opacity: 1;
     z-index: 1;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: clamp(140px, 22vh, 260px);
-    background: linear-gradient(180deg,
-      transparent 0%,
-      rgba(5, 5, 7, 0.45) 50%,
-      rgba(5, 5, 7, 0.85) 78%,
-      #050507 100%);
-    pointer-events: none;
+    animation: hero-zoom-in 10s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
   }
 
-  .hero-inner {
-    position: relative;
+  .hero-shade-new {
+    position: absolute;
+    inset: 0;
     z-index: 2;
-    width: min(360px, calc(36vw - 20px));
-    margin: 0 0 0 clamp(22px, 5vw, 78px);
-    padding: clamp(18px, 1.6vw, 24px) clamp(20px, 1.8vw, 26px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 18px;
-    background: rgba(5, 7, 18, 0.30);
-    box-shadow:
-      rgba(0, 0, 0, 0.55) 0 30px 80px,
-      rgba(0, 0, 0, 0.20) 0 4px 16px,
-      rgba(255, 255, 255, 0.05) 0 1px 0 inset;
-    backdrop-filter: blur(28px) saturate(180%);
-    -webkit-backdrop-filter: blur(28px) saturate(180%);
-    animation: hero-copy-in 1100ms var(--ease) both 120ms;
+    background:
+      radial-gradient(circle at 72% 46%, rgba(136, 13, 0, 0.18), transparent 32%),
+      linear-gradient(90deg, rgba(3, 3, 5, 0.50) 0%, rgba(3, 3, 5, 0.20) 40%, rgba(3, 3, 5, 0.05) 100%),
+      linear-gradient(0deg, #030305 0%, transparent 42%);
   }
 
-  .hero-inner::before {
-    content: '';
-    display: block;
-    width: 32px;
-    height: 1px;
+  .hero-copy-new {
+    position: relative;
+    z-index: 10;
+    align-self: end;
+    width: min(600px, calc(100vw - 48px));
+    margin: 0 0 clamp(65px, 10vh, 85px) clamp(24px, 6vw, 90px);
+    padding: 0;
+  }
+
+  .hero-controls-new {
+    position: absolute;
+    bottom: clamp(16px, 2.5vh, 24px);
+    left: 50%;
+    transform: translateX(-50%);
+    justify-content: center;
+    margin-top: 0;
+    gap: 16px;
+    z-index: 15;
+  }
+
+  .hero-content-new {
+    animation: hero-copy-in 1200ms var(--ease) both 100ms;
+  }
+
+  @keyframes hero-copy-in {
+    from { opacity: 0; transform: translateY(20px); filter: blur(8px); }
+    to { opacity: 1; transform: translateY(0); filter: blur(0); }
+  }
+
+  .hero-copy-new h1 {
+    margin: 0 0 12px;
+    font-size: clamp(32px, 4vw, 48px);
+    line-height: 1;
+    letter-spacing: -0.01em;
+    font-weight: 900;
+    text-transform: uppercase;
+    text-shadow: 0 4px 24px rgba(0, 0, 0, 0.8), 0 2px 8px rgba(0, 0, 0, 0.5);
+  }
+
+  .hero-copy-new .price-badge-new {
+    display: inline-block;
+    padding: 6px 14px;
     margin-bottom: 12px;
-    background: linear-gradient(90deg, var(--jeep-hover), transparent);
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    color: white;
+    backdrop-filter: blur(10px);
   }
 
-  .hero-inner p,
+  .hero-copy-new .hero-slogan-new {
+    margin: 0 0 16px;
+    font-size: 15px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.85);
+    text-transform: none;
+    letter-spacing: normal;
+  }
+
+  .hero-actions-new {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 20px;
+  }
+
+  .hero-actions-new button.primary {
+    min-height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 0 20px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    cursor: pointer;
+    background: var(--jeep-default);
+    color: white;
+    border: 1px solid transparent;
+    transition: all 300ms var(--ease);
+  }
+
+  .hero-actions-new button.primary:hover {
+    background: var(--jeep-hover);
+    transform: translateY(-2px);
+  }
+
   .chooser-copy p,
   .lineup-head p,
   .hub-cta p {
@@ -388,94 +516,6 @@
     font-weight: 900;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-  }
-
-  .hero-inner p {
-    margin: 0 0 8px;
-    font-size: 10px;
-    letter-spacing: 0.22em;
-    color: color-mix(in srgb, var(--jeep-hover) 28%, rgba(255, 255, 255, 0.94));
-    text-shadow: 0 1px 12px rgba(0, 0, 0, 0.50);
-  }
-
-  .hero-inner h1,
-  .chooser-copy h2,
-  .lineup-head h2,
-  .hub-cta h2 {
-    margin: 0;
-    font-weight: 950;
-    letter-spacing: -0.02em;
-  }
-
-  .hero-inner h1 {
-    max-width: 320px;
-    font-size: clamp(26px, 3vw, 38px);
-    line-height: 1.05;
-    font-weight: 900;
-    letter-spacing: -0.025em;
-  }
-
-  .chooser-copy h2 {
-    font-size: clamp(34px, 3.8vw, 52px);
-    line-height: 1.08;
-  }
-
-  .lineup-head h2 {
-    font-size: clamp(20px, 2.2vw, 28px);
-    line-height: 1.15;
-  }
-
-  .hub-cta h2 {
-    font-size: clamp(34px, 3.8vw, 52px);
-    line-height: 1.08;
-  }
-
-  .hero-inner > span {
-    display: block;
-    max-width: 320px;
-    margin-top: 12px;
-    color: rgba(255, 255, 255, 0.70);
-    font-size: 13px;
-    font-weight: 400;
-    line-height: 1.5;
-  }
-
-  .hero-inner button,
-  .lineup-grid button,
-  .hub-cta a {
-    min-height: 48px;
-    margin-top: 30px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    padding: 0 22px;
-    border: 1px solid rgba(255, 255, 255, 0.22);
-    border-radius: 999px;
-    color: white;
-    background: rgba(255, 255, 255, 0.10);
-    backdrop-filter: blur(18px);
-    font-size: 14px;
-    font-weight: 850;
-    text-decoration: none;
-    cursor: pointer;
-    transition: transform 420ms var(--ease), background 420ms var(--ease);
-  }
-
-  .hero-inner button:hover,
-  .lineup-grid button:hover,
-  .hub-cta a:hover {
-    transform: translateY(-2px);
-    background: color-mix(in srgb, var(--accent, var(--jeep-hover)) 28%, rgba(255, 255, 255, 0.10));
-  }
-
-  .hero-inner button {
-    min-height: 36px;
-    margin-top: 18px;
-    padding: 0 16px;
-    font-size: 12px;
-    font-weight: 800;
-    letter-spacing: 0.01em;
   }
 
   .model-carousel {
@@ -634,109 +674,165 @@
     box-shadow: inset 0 1px 0 rgba(255,255,255,0.10), 0 30px 86px rgba(0, 0, 0, 0.32);
   }
 
-  .slide-glass {
+  /* ── Promo cards inside carousel ─────────────────────────── */
+  .promo-card {
+    display: flex !important;
+    flex-direction: column !important;
+    padding: 0 !important;
+    overflow: hidden;
     position: relative;
-    z-index: 3;
+    isolation: isolate;
+  }
+
+  .pc-glass-bg {
+    position: absolute; inset: 0;
+    backdrop-filter: blur(40px) saturate(175%);
+    z-index: 0;
+  }
+  .pc-glass-shine {
+    position: absolute; inset: 0;
+    background: linear-gradient(175deg, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0.07) 16%, transparent 40%);
+    pointer-events: none; z-index: 3;
+  }
+  .pc-glass-border {
+    position: absolute; inset: 0; border-radius: inherit;
+    border: 1px solid rgba(255,255,255,0.14);
+    pointer-events: none; z-index: 5;
+  }
+
+  .pc-img-wrap {
+    position: relative;
     width: 100%;
-    min-height: auto;
+    aspect-ratio: 3 / 2;
+    flex-shrink: 0;
+    overflow: hidden;
+    z-index: 6;
+  }
+
+  .pc-img-wrap img {
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: top;
+    transform: scale(1.02);
+    transition: transform 700ms cubic-bezier(0.16,1,0.3,1);
+  }
+
+  .promo-card:hover .pc-img-wrap img {
+    transform: scale(1.08);
+  }
+
+  .pc-img-gradient {
+    position: absolute; inset: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.02) 0%, rgba(5,8,20,0.75) 70%, rgba(5,8,20,0.95) 100%);
+  }
+
+  .pc-badge-stat {
+    position: absolute; top: 12px; right: 12px;
+    padding: 3px 8px;
+    border-radius: 999px;
+    background: rgba(0,0,0,0.55);
+    border: 1px solid rgba(255,255,255,0.18);
+    color: rgba(255,255,255,0.85);
+    font-size: 10px; font-weight: 600;
+    letter-spacing: 0.02em;
+    backdrop-filter: blur(14px);
+    box-shadow: rgba(255,255,255,0.14) 0 1px 0 inset, rgba(0,0,0,0.3) 0 2px 8px;
+  }
+
+  .pc-badge-promo {
+    position: absolute; top: 12px; left: 12px;
+    padding: 4px 10px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, rgba(66,77,7,0.95), rgba(90,105,10,0.90));
+    border: 1px solid rgba(255,255,255,0.28);
+    color: #c4d75d;
+    font-size: 10px; font-weight: 800; letter-spacing: 0.08em;
+    text-transform: uppercase;
+    backdrop-filter: blur(12px);
+    animation: badge-glow 2.8s ease-in-out infinite;
+  }
+
+  .pc-img-footer {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 20px 16px 14px;
+    background: linear-gradient(to top, rgba(5,8,20,0.85) 0%, transparent 100%);
+  }
+
+  .pc-img-footer p {
+    margin: 0 0 2px;
+    color: rgba(255,255,255,0.55);
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+  }
+
+  .pc-img-footer h3 {
     margin: 0;
-    padding: 24px 10px 8px;
+    font-size: clamp(18px, 1.8vw, 22px);
+    font-weight: 800;
+    line-height: 1.1;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+  }
+
+  .pc-img-footer h3 span {
+    font-weight: 300;
+    opacity: 0.65;
+    display: inline;
+    font-size: inherit;
+    margin: 0;
+    color: inherit;
+  }
+
+  .pc-body {
+    position: relative;
+    z-index: 6;
     display: flex;
     flex-direction: column;
-    opacity: 1;
-    transform: translateY(0);
-    background: transparent;
-    border: 0;
-    box-shadow: none;
-    transition: opacity 680ms var(--ease) 160ms, transform 680ms var(--ease) 160ms;
+    flex: 1;
+    padding: 14px;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    background: rgba(255,255,255,0.04);
   }
 
-  .slide-glass small {
-    color: var(--accent);
-    font-size: 11px;
-    font-weight: 900;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-  }
-
-  .slide-glass h3 {
-    margin: 10px 0 0;
-    font-size: clamp(24px, 2.6vw, 36px);
-    line-height: 1.05;
-    letter-spacing: 0;
-  }
-
-  .slide-glass span {
-    display: block;
-    margin-top: 12px;
-    color: rgba(255, 255, 255, 0.72);
-    font-size: clamp(15px, 1.5vw, 19px);
-  }
-
-  .slide-glass i {
-    position: relative;
-    display: block;
-    width: 100%;
-    margin-top: 18px;
-    padding-top: 13px;
-    color: rgba(255, 255, 255, 0.74);
-    border-top: 1px solid rgba(255, 255, 255, 0.16);
-    font-size: 11px;
-    font-style: normal;
-    font-weight: 900;
+  .pc-metric {
+    margin: 0 0 4px;
+    color: #c4d75d;
+    font-size: 10px; font-weight: 800;
     letter-spacing: 0.14em;
     text-transform: uppercase;
+    opacity: 0.9;
   }
 
-  .slide-glass i::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: -1px;
-    width: 34%;
-    height: 1px;
-    background: var(--accent);
-    box-shadow: 0 0 18px var(--accent);
-    transform-origin: left;
-    transform: scaleX(0.35);
-    transition: transform 720ms var(--ease);
+  .pc-detail {
+    margin: 0 0 14px;
+    color: rgba(255,255,255,0.65);
+    font-size: 12px;
+    line-height: 1.5;
   }
 
-  .model-track article.active i::before {
-    transform: scaleX(1);
-  }
-
-  .slide-glass p {
-    margin: 14px 0 0;
-    color: rgba(255, 255, 255, 0.56);
-    font-size: 14px;
-    line-height: 1.55;
-  }
-
-  .slide-glass button {
-    min-height: 44px;
-    margin-top: 22px;
+  .pc-cta {
+    margin-top: auto;
+    width: 100%;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 9px;
-    padding: 0 18px;
-    border: 1px solid rgba(255,255,255,0.18);
+    gap: 4px;
+    padding: 8px 14px;
     border-radius: 999px;
-    color: white;
-    background: color-mix(in srgb, var(--accent) 28%, rgba(255,255,255,0.08));
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    font-size: 13px;
-    font-weight: 900;
+    font-size: 12px; font-weight: 700;
+    background: linear-gradient(135deg, rgba(66,77,7,0.55), rgba(90,105,10,0.4));
+    border: 1px solid rgba(90,105,10,0.45);
+    color: #c4d75d;
+    box-shadow: rgba(66,77,7,0.3) 0 2px 12px, rgba(255,255,255,0.12) 0 1px 0 inset;
+    backdrop-filter: blur(8px);
     cursor: pointer;
-    transition: transform 420ms var(--ease), background 420ms var(--ease), border-color 420ms var(--ease);
+    transition: all 280ms cubic-bezier(0.16,1,0.3,1);
   }
 
-  .slide-glass button:hover {
-    transform: translateY(-2px);
-    background: color-mix(in srgb, var(--accent) 42%, rgba(255,255,255,0.10));
-    border-color: color-mix(in srgb, var(--accent) 46%, rgba(255,255,255,0.22));
+  .pc-cta:hover {
+    background: linear-gradient(135deg, rgba(90,105,10,0.75), rgba(66,77,7,0.6));
+    border-color: rgba(196,215,93,0.5);
+    transform: translateY(-1px);
   }
 
   .carousel-pill {
@@ -812,6 +908,37 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: clamp(14px, 1.8vw, 22px);
+  }
+
+  .chooser-img-wrap {
+    position: relative;
+    width: 100%;
+    margin-top: 24px;
+    border-radius: 20px;
+    overflow: hidden;
+    aspect-ratio: 16 / 7;
+  }
+
+  .chooser-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 40%;
+    transform: scale(1.04);
+    transition: transform 900ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .chooser-img-wrap:hover .chooser-img {
+    transform: scale(1.09);
+  }
+
+  .chooser-img-shade {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(to bottom, transparent 30%, rgba(5, 5, 7, 0.65) 100%),
+      linear-gradient(to right, rgba(5, 5, 7, 0.2) 0%, transparent 40%);
+    border-radius: inherit;
   }
 
   .use-grid article {

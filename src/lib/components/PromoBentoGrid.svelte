@@ -264,7 +264,7 @@
       <div class="hidden md:flex items-center justify-between mb-6 px-2">
         <p class="text-sm font-medium" style="color:{textPrimary}">
           Mostrando resultados para: 
-          <span style="color:{$isDark ? '#60a5fa' : '#3b82f6'}">{activeBrand !== 'Todas' ? activeBrand : ''} {activeType !== 'Todos' ? activeType : ''}</span> 
+          <span style="color:{$isDark ? '#334E8B' : '#334E8B'}">{activeBrand !== 'Todas' ? activeBrand : ''} {activeType !== 'Todos' ? activeType : ''}</span> 
           <span style="color:{textMuted}; font-weight:normal; margin-left:8px;">({vehicles.length} vehículo{vehicles.length !== 1 ? 's' : ''})</span>
         </p>
         <button onclick={() => { activeBrand='Todas'; activeType='Todos' }}
@@ -453,7 +453,7 @@
           <div style="flex:1;">
             <p class="text-xs mb-1 font-semibold tracking-wider uppercase" style="color:{isDarkVal ? 'rgba(100,150,255,0.75)' : '#334E8B'};opacity:0.85;">{vehicle.version}</p>
             <p class="leading-snug" style="font-size:0.71rem;color:{isDarkVal ? 'rgba(255,255,255,0.68)' : 'rgba(20,30,80,0.68)'};display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:30px;">
-              <GoogleIcon name="sell" size={12} style="display:inline-flex;margin-right:4px;color:{isDarkVal ? '#60a5fa' : '#3b82f6'};vertical-align:-2px;" />
+              <GoogleIcon name="sell" size={12} style="display:inline-flex;margin-right:4px;color:{isDarkVal ? '#334E8B' : '#334E8B'};vertical-align:-2px;" />
               {vehicle.deal}
             </p>
           </div>
