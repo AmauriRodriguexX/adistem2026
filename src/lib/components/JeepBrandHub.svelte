@@ -288,106 +288,70 @@
     </div>
   </section>
 
-  <section class="chooser">
-    <div class="chooser-copy">
-      <p>Elige por necesidad</p>
-      <h2>No todos los Jeep hacen lo mismo. Esa es la idea.</h2>
-      <div class="chooser-img-wrap">
-        <img
-          src="https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/wrangler/vlp/desktop/my26-jeep-wrangler-inicio-vlp-mx-dk.jpg.img.2880.jpg"
-          alt="Jeep Wrangler en terreno"
-          class="chooser-img"
-        />
-        <div class="chooser-img-shade"></div>
+  <!-- ═══ Cinematic story panels ═══ -->
+  <section class="story-reel">
+
+    <div class="story-panel" style={`background-image: url('${models[0].image}')`}>
+      <div class="story-overlay"></div>
+      <div class="story-content">
+        <p class="story-eyebrow">Aventura Urbana</p>
+        <h2 class="story-title">Conquista<br>la ciudad.</h2>
+        <p class="story-sub">Renegade y Compass. Motor 1.3L Turbo, AWD disponible y tecnología ADAS para dominar cada ruta.</p>
+        <div class="story-actions">
+          <button class="story-btn primary" onclick={() => selectModel('renegade')}>Ver Renegade <GoogleIcon name="arrow_forward" size={16} /></button>
+          <button class="story-btn ghost" onclick={() => selectModel('compass')}>Ver Compass</button>
+        </div>
       </div>
     </div>
-    <div class="use-grid">
-      <article>
-        <GoogleIcon name="directions_car" size={22} style="margin-bottom:24px;color:{JEEP_HOVER}" />
-        <strong>Aventura urbana</strong>
-        <span>Renegade y Compass, con motor turbo y AWD disponible, para dominar la ciudad y las escapadas de fin de semana.</span>
-      </article>
-      <article>
-        <GoogleIcon name="family_restroom" size={22} style="margin-bottom:24px;color:{JEEP_HOVER}" />
-        <strong>Familia y espacio</strong>
-        <span>Commander con 7 plazas y Grand Wagoneer L con 8 para viajes, colegio y todo lo que la familia necesita.</span>
-      </article>
-      <article>
-        <GoogleIcon name="terrain" size={22} style="margin-bottom:24px;color:{JEEP_HOVER}" />
-        <strong>Terracería y extremo</strong>
-        <span>Wrangler y JT Gladiator cuando el camino sin pavimentar es parte del destino.</span>
-      </article>
-      <article>
-        <GoogleIcon name="workspace_premium" size={22} style="margin-bottom:24px;color:{JEEP_HOVER}" />
-        <strong>Lujo y presencia</strong>
-        <span>Grand Cherokee y Grand Wagoneer L para quien exige potencia, confort y tecnología de clase mundial.</span>
-      </article>
+
+    <div class="story-panel flip" style={`background-image: url('${models[2].image}')`}>
+      <div class="story-overlay flip"></div>
+      <div class="story-content flip">
+        <p class="story-eyebrow">Familia &amp; Espacio</p>
+        <h2 class="story-title">Siete plazas.<br>Un solo destino.</h2>
+        <p class="story-sub">Commander: tres filas, confort premium y capacidad sin concesiones para toda la familia.</p>
+        <div class="story-actions">
+          <button class="story-btn primary" onclick={() => selectModel('commander')}>Ver Commander <GoogleIcon name="arrow_forward" size={16} /></button>
+          <button class="story-btn ghost" onclick={() => selectModel('grand-cherokee')}>Ver Grand Cherokee</button>
+        </div>
+      </div>
     </div>
+
+    <div class="story-panel" style={`background-image: url('${models[5].image}')`}>
+      <div class="story-overlay"></div>
+      <div class="story-content">
+        <p class="story-eyebrow">Off-Road Total</p>
+        <h2 class="story-title">Sin pavimento.<br>Sin límites.</h2>
+        <p class="story-sub">Wrangler y JT Gladiator. Tracción 4×4 con reducida para ir donde ningún otro se atreve.</p>
+        <div class="story-actions">
+          <button class="story-btn primary" onclick={() => selectModel('wrangler')}>Ver Wrangler <GoogleIcon name="arrow_forward" size={16} /></button>
+          <button class="story-btn ghost" onclick={() => selectModel('jt')}>Ver Gladiator</button>
+        </div>
+      </div>
+    </div>
+
   </section>
 
-
-  <section class="trust-strip" aria-label="Diferenciadores VAPSA">
-    <div class="trust-head">
-      <p>VAPSA Río Verde</p>
-      <h2>Concesionario oficial Jeep con experiencia comprobada.</h2>
+  <!-- ═══ Stat strip ═══ -->
+  <section class="stat-strip">
+    <div class="stat-item">
+      <strong>20+</strong>
+      <span>años de experiencia</span>
     </div>
-    <div class="trust-grid">
-      <article>
-        <strong>20+</strong>
-        <span>Años representando marcas Stellantis en la región.</span>
-      </article>
-      <article>
-        <strong>5,000+</strong>
-        <span>Familias mexicanas que ya manejan su Jeep con nosotros.</span>
-      </article>
-      <article>
-        <strong>8</strong>
-        <span>Modelos Jeep 2026 disponibles para prueba y cotización.</span>
-      </article>
-      <article>
-        <strong>24h</strong>
-        <span>Pre-aprobación de crédito y seguimiento personalizado.</span>
-      </article>
+    <div class="stat-sep"></div>
+    <div class="stat-item">
+      <strong>5,000+</strong>
+      <span>familias con su Jeep</span>
     </div>
-  </section>
-
-  <section class="quick-pick" aria-label="Cotización rápida por modelo">
-    <div class="quick-pick-head">
-      <p>Elige tu Jeep</p>
-      <h2>Tres caminos, mismo destino: tu próximo Jeep.</h2>
-      <span>Selecciona el modelo que más te encaja y cotiza en menos de un minuto.</span>
+    <div class="stat-sep"></div>
+    <div class="stat-item">
+      <strong>8</strong>
+      <span>modelos 2026</span>
     </div>
-    <div class="quick-pick-grid">
-      <article class="pick-card" style={`--accent:${JEEP_HOVER}`}>
-        <GoogleIcon name="directions_car" size={22} style={`color:${JEEP_HOVER}`} />
-        <small>Más vendido</small>
-        <h3>Renegade Latitude</h3>
-        <p>SUV compacto, motor 1.3L Turbo 173 HP y tecnología ADAS para la ciudad.</p>
-        <strong>Desde $456,900</strong>
-        <button onclick={() => goToCotizacion('renegade')}>
-          Cotizar Renegade <GoogleIcon name="arrow_forward" size={16} />
-        </button>
-      </article>
-      <article class="pick-card featured" style={`--accent:${JEEP_HOVER}`}>
-        <GoogleIcon name="family_restroom" size={22} style={`color:${JEEP_HOVER}`} />
-        <small>Familia + Espacio</small>
-        <h3>Commander 7 plazas</h3>
-        <p>3 filas de asientos, confort premium y capacidad sin concesiones.</p>
-        <strong>Desde $899,900</strong>
-        <button onclick={() => goToCotizacion('commander')}>
-          Cotizar Commander <GoogleIcon name="arrow_forward" size={16} />
-        </button>
-      </article>
-      <article class="pick-card" style={`--accent:${JEEP_HOVER}`}>
-        <GoogleIcon name="terrain" size={22} style={`color:${JEEP_HOVER}`} />
-        <small>Off-Road Total</small>
-        <h3>Wrangler 4x4</h3>
-        <p>Tracción 4x4 con reducida. El todoterreno original e irrenunciable.</p>
-        <strong>Desde $1,149,900</strong>
-        <button onclick={() => goToCotizacion('wrangler')}>
-          Cotizar Wrangler <GoogleIcon name="arrow_forward" size={16} />
-        </button>
-      </article>
+    <div class="stat-sep"></div>
+    <div class="stat-item">
+      <strong>24h</strong>
+      <span>pre-aprobación</span>
     </div>
   </section>
 
@@ -415,12 +379,6 @@
         <button class="cotizar-primary" onclick={() => goToCotizacion(selectedQuoteModel)}>
           Cotizar este modelo <GoogleIcon name="arrow_forward" size={18} />
         </button>
-        <a
-          class="cotizar-secondary"
-          href={`https://wa.me/524871108899?text=Hola,%20me%20interesa%20cotizar%20un%20${encodeURIComponent(models.find(m => m.slug === selectedQuoteModel)?.name || 'Jeep')}`}
-          target="_blank" rel="noopener noreferrer">
-          <GoogleIcon name="chat" size={16} /> Cotizar por WhatsApp
-        </a>
       </div>
     </div>
   </section>
@@ -431,9 +389,6 @@
     <h2>Te ayudamos a elegir por uso, presupuesto y disponibilidad.</h2>
     <div class="hub-cta-actions">
       <button onclick={() => goToCotizacion()}>Cotizar online <GoogleIcon name="arrow_forward" size={16} /></button>
-      <a href="https://wa.me/524871108899?text=Hola,%20quiero%20comparar%20modelos%20JEEP" target="_blank" rel="noopener noreferrer">
-        <GoogleIcon name="chat" size={16} /> Comparar por WhatsApp
-      </a>
     </div>
   </section>
 </main>
@@ -623,8 +578,6 @@
     transform: translateY(-2px);
   }
 
-  .chooser-copy p,
-  .lineup-head p,
   .hub-cta p {
     margin: 0 0 10px;
     color: var(--jeep-hover);
@@ -989,27 +942,10 @@
     background: rgba(255, 255, 255, 0.92);
   }
 
-  .chooser,
   .lineup {
     padding: clamp(52px, 6.5vw, 96px) clamp(20px, 6vw, 90px);
   }
 
-  .chooser {
-    display: grid;
-    grid-template-columns: minmax(280px, 0.8fr) 1.2fr;
-    gap: clamp(34px, 7vw, 90px);
-    align-items: start;
-    background:
-      radial-gradient(circle at 22% 10%, rgba(136, 13, 0, 0.24), transparent 28%),
-      #050507;
-    animation: reveal-up both;
-    animation-timeline: view();
-    animation-range: entry 8% cover 34%;
-    position: relative;
-    z-index: 1;
-  }
-
-  .chooser::before,
   .lineup::before {
     content: '';
     position: absolute;
@@ -1018,76 +954,6 @@
     top: 0;
     height: 1px;
     background: linear-gradient(90deg, transparent, rgba(255,255,255,0.24), transparent);
-  }
-
-  .use-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: clamp(14px, 1.8vw, 22px);
-  }
-
-  .chooser-img-wrap {
-    position: relative;
-    width: 100%;
-    margin-top: 24px;
-    border-radius: 20px;
-    overflow: hidden;
-    aspect-ratio: 16 / 7;
-  }
-
-  .chooser-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center 40%;
-    transform: scale(1.04);
-    transition: transform 900ms cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  .chooser-img-wrap:hover .chooser-img {
-    transform: scale(1.09);
-  }
-
-  .chooser-img-shade {
-    position: absolute;
-    inset: 0;
-    background:
-      linear-gradient(to bottom, transparent 30%, rgba(5, 5, 7, 0.65) 100%),
-      linear-gradient(to right, rgba(5, 5, 7, 0.2) 0%, transparent 40%);
-    border-radius: inherit;
-  }
-
-  .use-grid article {
-    min-height: 180px;
-    padding: clamp(18px, 2.2vw, 26px);
-    border-radius: 24px;
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    background: rgba(255, 255, 255, 0.055);
-    backdrop-filter: blur(18px);
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
-    transition: transform 620ms var(--ease), background 620ms var(--ease), border-color 620ms var(--ease), box-shadow 620ms var(--ease);
-    animation: tile-rise both;
-    animation-timeline: view();
-    animation-range: entry 12% cover 34%;
-  }
-
-  .use-grid article:hover {
-    transform: translateY(-5px);
-    background: rgba(255, 255, 255, 0.09);
-    border-color: rgba(186, 0, 0, 0.42);
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.14), 0 20px 70px rgba(0,0,0,0.26);
-  }
-
-  .use-grid strong {
-    display: block;
-    font-size: 22px;
-    margin-bottom: 10px;
-  }
-
-  .use-grid span {
-    color: rgba(255, 255, 255, 0.58);
-    font-size: 14px;
-    line-height: 1.5;
   }
 
   .lineup {
@@ -1279,239 +1145,197 @@
     transform: translateY(0);
   }
 
-  /* ───── Trust strip ───── */
-  .trust-strip {
+  /* ═══ Story Panels (cinematic, Apple-style) ═══ */
+  .story-reel {
     position: relative;
     z-index: 1;
-    padding: clamp(56px, 7vw, 92px) clamp(20px, 6vw, 90px);
-    background:
-      radial-gradient(circle at 18% 30%, rgba(90, 105, 10, 0.10), transparent 40%),
-      linear-gradient(180deg, #050507 0%, #0a0a0e 100%);
   }
 
-  .trust-head {
-    max-width: 720px;
-    margin: 0 auto clamp(34px, 4vw, 50px);
-    text-align: center;
+  .story-panel {
+    position: relative;
+    min-height: clamp(540px, 76svh, 960px);
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center 28%;
   }
 
-  .trust-head p {
-    margin: 0 0 10px;
-    color: var(--jeep-hover);
+  .story-panel.flip {
+    background-position: 60% 28%;
+  }
+
+  .story-panel + .story-panel {
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .story-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      90deg,
+      rgba(3, 3, 5, 0.88) 0%,
+      rgba(3, 3, 5, 0.54) 46%,
+      rgba(3, 3, 5, 0.08) 100%
+    );
+  }
+
+  .story-overlay.flip {
+    background: linear-gradient(
+      270deg,
+      rgba(3, 3, 5, 0.88) 0%,
+      rgba(3, 3, 5, 0.54) 46%,
+      rgba(3, 3, 5, 0.08) 100%
+    );
+  }
+
+  .story-content {
+    position: relative;
+    z-index: 2;
+    padding: clamp(48px, 8vw, 110px);
+    max-width: clamp(360px, 54vw, 740px);
+    animation: reveal-up both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 26%;
+  }
+
+  .story-content.flip {
+    margin-left: auto;
+    text-align: right;
+  }
+
+  .story-eyebrow {
+    margin: 0 0 18px;
+    color: color-mix(in srgb, var(--jeep-hover) 28%, rgba(255,255,255,0.94));
     font-size: 11px;
     font-weight: 900;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.20em;
     text-transform: uppercase;
+    text-shadow: 0 1px 10px rgba(0,0,0,0.7);
   }
 
-  .trust-head h2 {
-    margin: 0;
-    font-size: clamp(22px, 2.4vw, 32px);
-    line-height: 1.15;
+  .story-title {
+    margin: 0 0 22px;
+    font-size: clamp(46px, 7.5vw, 104px);
+    line-height: 0.95;
     font-weight: 950;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.035em;
+    text-shadow: 0 4px 48px rgba(0, 0, 0, 0.60), 0 2px 12px rgba(0, 0, 0, 0.4);
   }
 
-  .trust-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: clamp(12px, 1.6vw, 22px);
-    max-width: 1200px;
-    margin: 0 auto;
+  .story-sub {
+    margin: 0 0 30px;
+    max-width: 460px;
+    color: rgba(255, 255, 255, 0.80);
+    font-size: clamp(14px, 1.35vw, 17px);
+    line-height: 1.6;
+    text-shadow: 0 2px 14px rgba(0, 0, 0, 0.55);
   }
 
-  .trust-grid article {
-    padding: clamp(22px, 2.6vw, 30px);
-    border: 1px solid rgba(255, 255, 255, 0.10);
-    border-radius: 22px;
-    background: rgba(255, 255, 255, 0.04);
+  .story-content.flip .story-sub {
+    margin-left: auto;
+  }
+
+  .story-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .story-content.flip .story-actions {
+    justify-content: flex-end;
+  }
+
+  .story-btn {
+    min-height: 48px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 24px;
+    border-radius: 999px;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.01em;
+    cursor: pointer;
+    transition: transform 340ms var(--ease), background 340ms var(--ease), box-shadow 340ms var(--ease), filter 340ms var(--ease);
+  }
+
+  .story-btn.primary {
+    background: linear-gradient(135deg, var(--jeep-default) 0%, var(--jeep-hover) 100%);
+    color: white;
+    border: 0;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.18), 0 10px 32px rgba(90,105,10,0.40);
+  }
+
+  .story-btn.primary:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.14);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.24), 0 16px 44px rgba(90,105,10,0.54);
+  }
+
+  .story-btn.ghost {
+    background: rgba(255, 255, 255, 0.10);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.28);
     backdrop-filter: blur(18px);
     -webkit-backdrop-filter: blur(18px);
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);
-    transition: transform 460ms var(--ease), background 460ms var(--ease), border-color 460ms var(--ease);
+  }
+
+  .story-btn.ghost:hover {
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.18);
+    border-color: rgba(255, 255, 255, 0.44);
+  }
+
+  /* ═══ Stat strip ═══ */
+  .stat-strip {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: clamp(24px, 3.6vw, 54px);
+    padding: clamp(48px, 6.5vw, 80px) clamp(20px, 6vw, 90px);
+    background: linear-gradient(180deg, #050507 0%, #07070c 100%);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .stat-item {
+    text-align: center;
     animation: tile-rise both;
     animation-timeline: view();
     animation-range: entry 12% cover 34%;
   }
 
-  .trust-grid article:hover {
-    transform: translateY(-3px);
-    background: rgba(255, 255, 255, 0.07);
-    border-color: color-mix(in srgb, var(--jeep-hover) 38%, rgba(255,255,255,0.18));
-  }
-
-  .trust-grid strong {
+  .stat-item strong {
     display: block;
-    font-size: clamp(32px, 3.8vw, 52px);
+    font-size: clamp(40px, 5.5vw, 72px);
     line-height: 1;
     font-weight: 950;
-    letter-spacing: -0.025em;
-    background: linear-gradient(135deg, #fff 0%, color-mix(in srgb, var(--jeep-hover) 60%, white) 100%);
+    letter-spacing: -0.03em;
+    background: linear-gradient(135deg, #fff 0%, color-mix(in srgb, var(--jeep-hover) 56%, white) 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
   }
 
-  .trust-grid span {
+  .stat-item span {
     display: block;
-    color: rgba(255, 255, 255, 0.62);
-    font-size: 13px;
-    line-height: 1.45;
-  }
-
-  /* ───── Quick-pick (3 modelos destacados) ───── */
-  .quick-pick {
-    position: relative;
-    z-index: 1;
-    padding: clamp(60px, 8vw, 110px) clamp(20px, 6vw, 90px);
-    background:
-      radial-gradient(circle at 80% 12%, rgba(136, 13, 0, 0.10), transparent 32%),
-      #050507;
-    border-top: 1px solid rgba(255, 255, 255, 0.06);
-  }
-
-  .quick-pick-head {
-    max-width: 720px;
-    margin: 0 auto clamp(34px, 4vw, 50px);
-    text-align: center;
-  }
-
-  .quick-pick-head p {
-    margin: 0 0 10px;
-    color: var(--jeep-hover);
+    color: rgba(255, 255, 255, 0.50);
     font-size: 11px;
-    font-weight: 900;
-    letter-spacing: 0.18em;
+    font-weight: 600;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
   }
 
-  .quick-pick-head h2 {
-    margin: 0;
-    font-size: clamp(26px, 3vw, 40px);
-    line-height: 1.1;
-    font-weight: 950;
-    letter-spacing: -0.02em;
-  }
-
-  .quick-pick-head span {
-    display: block;
-    max-width: 460px;
-    margin: 14px auto 0;
-    color: rgba(255, 255, 255, 0.62);
-    font-size: 14px;
-    line-height: 1.5;
-  }
-
-  .quick-pick-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: clamp(16px, 2vw, 26px);
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  .pick-card {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding: clamp(24px, 2.6vw, 32px);
-    border: 1px solid rgba(255, 255, 255, 0.10);
-    border-radius: 26px;
-    background:
-      radial-gradient(circle at 100% 0%, color-mix(in srgb, var(--accent) 14%, transparent), transparent 36%),
-      linear-gradient(180deg, #0c0c12, #08080c);
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.06), 0 20px 60px rgba(0,0,0,0.30);
-    transition: transform 520ms var(--ease), border-color 520ms var(--ease), box-shadow 520ms var(--ease);
-    animation: card-rise both;
-    animation-timeline: view();
-    animation-range: entry 6% cover 32%;
-  }
-
-  .pick-card:hover {
-    transform: translateY(-4px);
-    border-color: color-mix(in srgb, var(--accent) 38%, rgba(255,255,255,0.18));
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.12), 0 30px 80px rgba(0,0,0,0.40);
-  }
-
-  .pick-card.featured {
-    border-color: color-mix(in srgb, var(--accent) 30%, rgba(255,255,255,0.16));
-    background:
-      radial-gradient(circle at 100% 0%, color-mix(in srgb, var(--accent) 22%, transparent), transparent 38%),
-      linear-gradient(180deg, #14141a, #0a0a0e);
-  }
-
-  .pick-card.featured::before {
-    content: 'RECOMENDADO';
-    position: absolute;
-    top: 16px;
-    right: 16px;
-    padding: 4px 10px;
-    border-radius: 999px;
-    background: color-mix(in srgb, var(--accent) 44%, rgba(255,255,255,0.10));
-    color: white;
-    font-size: 9px;
-    font-weight: 900;
-    letter-spacing: 0.14em;
-  }
-
-  .pick-card small {
-    color: var(--accent);
-    font-size: 10px;
-    font-weight: 900;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-  }
-
-  .pick-card h3 {
-    margin: 4px 0 0;
-    font-size: clamp(20px, 2vw, 26px);
-    line-height: 1.1;
-    font-weight: 950;
-    letter-spacing: -0.02em;
-  }
-
-  .pick-card p {
-    margin: 0;
-    color: rgba(255, 255, 255, 0.60);
-    font-size: 13px;
-    line-height: 1.5;
-    flex: 1;
-  }
-
-  .pick-card strong {
-    display: block;
-    margin-top: 4px;
-    font-size: 22px;
-    font-weight: 950;
-    letter-spacing: -0.015em;
-    color: white;
-  }
-
-  .pick-card button {
-    margin-top: 8px;
-    min-height: 44px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 9px;
-    padding: 0 18px;
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    border-radius: 999px;
-    color: white;
-    background: color-mix(in srgb, var(--accent) 28%, rgba(255,255,255,0.08));
-    backdrop-filter: blur(14px);
-    font-size: 13px;
-    font-weight: 900;
-    cursor: pointer;
-    transition: transform 380ms var(--ease), background 380ms var(--ease), border-color 380ms var(--ease);
-  }
-
-  .pick-card button:hover {
-    transform: translateY(-2px);
-    background: color-mix(in srgb, var(--accent) 48%, rgba(255,255,255,0.12));
-    border-color: color-mix(in srgb, var(--accent) 52%, rgba(255,255,255,0.24));
+  .stat-sep {
+    width: 1px;
+    height: 52px;
+    background: rgba(255, 255, 255, 0.12);
+    flex-shrink: 0;
   }
 
   /* ───── Cotización band ───── */
@@ -1667,30 +1491,6 @@
     box-shadow: inset 0 1px 0 rgba(255,255,255,0.24), 0 22px 56px rgba(90, 105, 10, 0.50);
   }
 
-  .cotizar-secondary {
-    min-height: 46px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 9px;
-    padding: 0 18px;
-    border: 1px solid rgba(255, 255, 255, 0.16);
-    border-radius: 16px;
-    color: rgba(255, 255, 255, 0.86);
-    background: rgba(255, 255, 255, 0.04);
-    text-decoration: none;
-    font-size: 13px;
-    font-weight: 800;
-    cursor: pointer;
-    transition: transform 340ms var(--ease), background 340ms var(--ease), border-color 340ms var(--ease);
-  }
-
-  .cotizar-secondary:hover {
-    transform: translateY(-2px);
-    background: rgba(255, 255, 255, 0.08);
-    border-color: rgba(255, 255, 255, 0.28);
-  }
-
   .hub-cta {
     min-height: 52svh;
     display: grid;
@@ -1716,46 +1516,29 @@
     margin-top: clamp(20px, 2.4vw, 30px);
   }
 
-  .hub-cta-actions button,
-  .hub-cta-actions a {
+  .hub-cta-actions button {
     min-height: 48px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 9px;
-    padding: 0 22px;
+    padding: 0 28px;
     border-radius: 999px;
     font-family: inherit;
     font-size: 14px;
     font-weight: 850;
     cursor: pointer;
-    transition: transform 380ms var(--ease), background 380ms var(--ease), border-color 380ms var(--ease);
-  }
-
-  .hub-cta-actions button {
     border: 0;
     color: white;
     background: linear-gradient(135deg, var(--jeep-default) 0%, var(--jeep-hover) 100%);
     box-shadow: inset 0 1px 0 rgba(255,255,255,0.18), 0 14px 36px rgba(90, 105, 10, 0.34);
+    transition: transform 380ms var(--ease), filter 380ms var(--ease), box-shadow 380ms var(--ease);
   }
 
   .hub-cta-actions button:hover {
     transform: translateY(-2px);
     filter: brightness(1.12);
-  }
-
-  .hub-cta-actions a {
-    color: white;
-    text-decoration: none;
-    border: 1px solid rgba(255, 255, 255, 0.20);
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(16px);
-  }
-
-  .hub-cta-actions a:hover {
-    transform: translateY(-2px);
-    background: rgba(255, 255, 255, 0.10);
-    border-color: rgba(255, 255, 255, 0.30);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.24), 0 20px 50px rgba(90, 105, 10, 0.48);
   }
 
   @keyframes hero-drift {
@@ -1826,15 +1609,8 @@
     }
   }
 
+  /* ─── Tablet (≤ 980px) ─── */
   @media (max-width: 980px) {
-    .trust-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-
-    .quick-pick-grid {
-      grid-template-columns: 1fr;
-    }
-
     .cotizar-inner {
       grid-template-columns: 1fr;
       padding: clamp(22px, 4vw, 32px);
@@ -1891,13 +1667,8 @@
       padding-right: 14px;
     }
 
-    .chooser,
     .lineup-grid {
       grid-template-columns: 1fr;
-    }
-
-    .chooser {
-      gap: 30px;
     }
 
     .lineup-grid article,
@@ -1910,13 +1681,43 @@
       height: clamp(220px, 46vw, 320px);
       object-position: top;
     }
-  }
 
-  @media (max-width: 620px) {
-    .trust-grid {
-      grid-template-columns: 1fr;
+    /* Story panels: text bottom on tablet */
+    .story-panel {
+      min-height: clamp(460px, 64svh, 760px);
+      align-items: flex-end;
     }
 
+    .story-content,
+    .story-content.flip {
+      margin-left: 0;
+      text-align: left;
+      padding: clamp(28px, 5vw, 52px);
+      padding-bottom: clamp(48px, 7vw, 72px);
+      max-width: 100%;
+    }
+
+    .story-content.flip .story-actions {
+      justify-content: flex-start;
+    }
+
+    .story-content.flip .story-sub {
+      margin-left: 0;
+    }
+
+    .story-overlay,
+    .story-overlay.flip {
+      background: linear-gradient(
+        0deg,
+        rgba(3, 3, 5, 0.92) 0%,
+        rgba(3, 3, 5, 0.60) 40%,
+        rgba(3, 3, 5, 0.10) 100%
+      );
+    }
+  }
+
+  /* ─── Mobile (≤ 620px) ─── */
+  @media (max-width: 620px) {
     .cotizar-perks {
       gap: 10px 16px;
     }
@@ -1954,8 +1755,7 @@
       line-height: 1.45;
     }
 
-    .lineup-grid button,
-    .hub-cta a {
+    .lineup-grid button {
       width: 100%;
     }
 
@@ -1965,10 +1765,6 @@
       margin-top: 14px;
       padding: 0 15px;
       font-size: 12px;
-    }
-
-    .use-grid {
-      grid-template-columns: 1fr;
     }
 
     .carousel-head {
@@ -2026,8 +1822,32 @@
       font-size: clamp(28px, 7vw, 40px);
     }
 
-    .chooser-copy h2 {
-      font-size: clamp(28px, 7.5vw, 40px);
+    /* Story panel: tighter on mobile */
+    .story-panel {
+      min-height: clamp(400px, 56svh, 620px);
+    }
+
+    .story-title {
+      font-size: clamp(38px, 10vw, 58px);
+    }
+
+    .story-btn {
+      min-height: 44px;
+      font-size: 12px;
+      padding: 0 18px;
+    }
+
+    /* Stat strip: hide separators, wrap nicely */
+    .stat-sep {
+      display: none;
+    }
+
+    .stat-strip {
+      gap: 22px 32px;
+    }
+
+    .stat-item strong {
+      font-size: clamp(32px, 9vw, 52px);
     }
   }
 </style>
