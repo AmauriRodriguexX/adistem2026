@@ -122,8 +122,9 @@
     },
   ]
 
-  function selectModel(slug: string) {
-    onModelSelect?.(slug)
+  function selectModel(_slug: string) {
+    // All model explore CTAs route to Renegade (only fully-built landing)
+    onModelSelect?.('renegade')
   }
 
   function goToModel(index: number) {

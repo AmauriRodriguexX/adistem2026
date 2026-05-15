@@ -217,9 +217,12 @@
       const brands: BrandFilter[] = ['Jeep', 'Fiat', 'Dodge', 'Ram', 'Peugeot']
       const found = brands.find(b => b.toLowerCase() === brandPath.toLowerCase())
       if (found) {
+        if (found !== 'Jeep') {
+          brandFilter = 'Todas'
+          return
+        }
         brandFilter = found
-        if (found === 'Ram') ramModelSlug = routeParts[1] || null
-        if (found === 'Jeep') jeepModelSlug = routeParts[1] || null
+        jeepModelSlug = routeParts[1] || null
         return
       }
     }
@@ -233,6 +236,9 @@
   })
 
   function handleBrandSelect(brand: BrandFilter) { 
+    // Restriction: Only Jeep and 'Todas' are allowed
+    if (brand !== 'Jeep' && brand !== 'Todas') return
+
     if (brandFilter === brand && currentView === 'Portal') return
     brandFilter = brand
     currentView = 'Portal'
@@ -379,6 +385,10 @@
     onServicioClick={() => handleContactClick('cita')}
     onContactoClick={() => handleContactClick('cotizacion')}
     onUbicacionClick={handleUbicacionClick}
+    onModelSelect={(brand, slug) => {
+      if (brand === 'Jeep') handleJeepModelSelect(slug)
+      else if (brand === 'Ram') handleRamModelSelect(slug)
+    }}
   />
 
   <!-- Mobile bottom nav -->

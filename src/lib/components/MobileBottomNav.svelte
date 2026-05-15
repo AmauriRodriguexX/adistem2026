@@ -98,7 +98,11 @@
             style="background:{$isDark ? 'rgba(37,211,102,0.10)' : 'rgba(37,211,102,0.08)'};border:1px solid rgba(37,211,102,0.26);">
             <div class="flex items-center gap-3">
               <div class="w-9 h-9 rounded-full flex items-center justify-center" style="background:rgba(37,211,102,0.18);">
-                <GoogleIcon name="chat" size={17} style="color:#25D366" />
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+                  alt="WhatsApp"
+                  style="width:18px;height:18px;background:linear-gradient(135deg,#25D366 0%,#128C7E 100%);padding:2px;border-radius:4px;display:block;"
+                />
               </div>
               <div>
                 <p class="text-xs" style="color:{textMuted}">{c.label}</p>
@@ -137,7 +141,15 @@
         class="flex-1 flex flex-col items-center justify-center gap-1.5 active:scale-90 transition-transform"
         style="min-width:0;">
         <div class="relative flex items-center justify-center">
-          <GoogleIcon name={link.icon} size={21} style="color:{iconColor}" />
+          {#if link.isWA}
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+              alt="WhatsApp"
+              style="width:22px;height:22px;background:linear-gradient(135deg,#25D366 0%,#128C7E 100%);padding:3px;border-radius:6px;display:block;"
+            />
+          {:else}
+            <GoogleIcon name={link.icon} size={21} style="color:{iconColor}" />
+          {/if}
           {#if link.isWA}
             <span class="absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full border-2"
               style="background:#25D366;border-color:{$isDark ? 'rgba(6,8,22,0.80)' : 'rgba(255,255,255,0.85)'}"></span>

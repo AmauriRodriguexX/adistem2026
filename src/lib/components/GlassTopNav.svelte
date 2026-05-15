@@ -17,6 +17,7 @@
     onServicioClick?:        () => void
     onContactoClick?:        () => void
     onUbicacionClick?:       () => void
+    onModelSelect?:          (brand: BrandFilter, slug: string) => void
   }
 
   let {
@@ -32,6 +33,7 @@
     onServicioClick,
     onContactoClick,
     onUbicacionClick,
+    onModelSelect,
   }: Props = $props()
 
   type FuelFilter = 'Todos' | 'Eléctrico' | 'Híbridos' | 'Gasolina'
@@ -45,11 +47,7 @@
     { name: 'Pick-ups',   label: 'Pick-ups',          desc: 'Capacidad para trabajo y aventura' },
   ] as const
 
-  const FUEL_TYPES: { name: Exclude<FuelFilter, 'Todos'>; label: string; desc: string; icon: string }[] = [
-    { name: 'Eléctrico', label: 'Eléctrico', desc: 'Movilidad silenciosa', icon: 'electric_car' },
-    { name: 'Híbridos',  label: 'Híbridos',  desc: 'Eficiencia y autonomía', icon: 'ev_station' },
-    { name: 'Gasolina',  label: 'Gasolina',  desc: 'Respuesta tradicional', icon: 'local_gas_station' },
-  ]
+
 
   const BRAND_TABS: { name: BrandFilter; label: string; accent: string; hover: string }[] = [
     { name: 'Todas',   label: 'Todas',             accent: '#334E8B', hover: '#2E6CCF' },
@@ -115,9 +113,7 @@
     megaType = type
   }
 
-  function selectMegaFuel(fuel: Exclude<FuelFilter, 'Todos'>) {
-    megaFuel = megaFuel === fuel ? 'Todos' : fuel
-  }
+
 
   function openMega() {
     megaOpen = true
@@ -229,10 +225,14 @@
     <GoogleIcon name="menu" size={18} />
   </button>
 
-  <a href="#" class="flex-shrink-0 md:mr-2 cursor-pointer">
+  <button
+    class="flex-shrink-0 md:mr-2 cursor-pointer bg-transparent border-0 p-0"
+    onclick={(e) => { e.preventDefault(); onHomeClick?.() }}
+    aria-label="Inicio"
+  >
     <img src="https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2Fd523ee5a3e49270550e54e77aac5fd153b37f9cb.svg?generation=1777350234230312&alt=media"
       alt="VAPSA" class="h-7 w-auto object-contain" style="filter:{logoFilter}" />
-  </a>
+  </button>
 
   <button
     class="ml-auto flex md:hidden items-center gap-1.5 rounded-full px-3 h-9 text-xs font-black uppercase tracking-[0.08em] transition-all cursor-pointer"
@@ -270,7 +270,7 @@
   </div>
 
   <div class="flex items-center gap-5 flex-shrink-0">
-    <div class="hidden md:flex items-center gap-5 mr-1">
+    <div class="hidden lg:flex items-center gap-5 mr-1">
       <button onclick={onPruebaManejoClick} class="flex items-center gap-2 text-[13px] font-semibold transition-all hover:opacity-80 cursor-pointer" style="color:{$isDark ? 'rgba(255,255,255,0.85)' : '#1a2040'}">
         <GoogleIcon name="speed" size={16} class="opacity-70" />
         Prueba de manejo
@@ -289,14 +289,14 @@
       </button>
     </div>
 
-    <div class="hidden md:block h-6 w-px flex-shrink-0" style="background:{divColor}"></div>
+    <div class="hidden lg:block h-6 w-px flex-shrink-0" style="background:{divColor}"></div>
 
     <button
       onclick={onCotizarClick}
-      class="hidden md:flex items-center gap-2 px-5 h-9 text-xs font-bold btn-glow-border tracking-wide cursor-pointer"
+      class="flex items-center justify-center gap-2 h-9 w-9 md:w-auto md:px-5 text-xs font-bold btn-glow-border tracking-wide cursor-pointer flex-shrink-0"
     >
       <GoogleIcon name="calculate" size={16} />
-      <span>Cotizar</span>
+      <span class="hidden md:inline">Cotizar</span>
     </button>
   </div>
 </nav>
@@ -362,40 +362,7 @@
           class="hidden md:block max-h-none overflow-y-auto overscroll-contain border-r px-6 py-6"
           style="border-color:{$isDark ? 'rgba(255,255,255,0.10)' : 'rgba(30,60,120,0.10)'};"
         >
-          <div class="flex items-center justify-between gap-3 md:block">
-            <p class="text-[11px] font-black uppercase tracking-[0.16em]" style="color:{$isDark ? 'rgba(255,255,255,0.72)' : '#111827'}">Opciones</p>
-          </div>
-
-          <div class="mt-5 grid grid-cols-1 gap-2">
-            {#each FUEL_TYPES as fuel}
-              {@const isFuelActive = megaFuel === fuel.name}
-              <button
-                onclick={() => selectMegaFuel(fuel.name)}
-                class="flex w-full cursor-pointer items-center justify-between gap-3 rounded-xl px-3.5 py-3 text-left transition-all duration-300 hover:translate-x-1"
-                style="background:{isFuelActive ? `${megaAccent}24` : 'transparent'};border:1px solid {isFuelActive ? `${megaAccent}82` : ($isDark ? 'rgba(255,255,255,0.06)' : 'rgba(30,60,120,0.08)')};box-shadow:{isFuelActive ? `0 12px 30px ${megaAccent}22` : 'none'};"
-              >
-                <span class="flex min-w-0 items-center gap-3">
-                  <span
-                    class="grid h-8 w-8 shrink-0 place-items-center rounded-lg"
-                    style="background:{isFuelActive ? megaAccent : ($isDark ? 'rgba(255,255,255,0.07)' : 'rgba(51,78,139,0.07)')};color:{isFuelActive ? 'white' : ($isDark ? 'rgba(255,255,255,0.62)' : '#334E8B')};"
-                  >
-                    <GoogleIcon name={fuel.icon} size={18} />
-                  </span>
-                  <span class="min-w-0">
-                    <span class="block text-sm font-extrabold leading-tight" style="color:{isFuelActive ? ($isDark ? 'white' : '#111827') : ($isDark ? 'rgba(255,255,255,0.74)' : 'rgba(17,24,39,0.78)')}">{fuel.label}</span>
-                    <span class="hidden text-[11px] font-medium leading-tight opacity-55 md:mt-1 md:block" style="color:{$isDark ? 'rgba(255,255,255,0.62)' : 'rgba(17,24,39,0.62)'}">{fuel.desc}</span>
-                  </span>
-                </span>
-                {#if isFuelActive}
-                  <span class="h-2 w-2 rounded-full" style="background:{megaAccent};box-shadow:0 0 12px {megaAccent}"></span>
-                {/if}
-              </button>
-            {/each}
-          </div>
-
-          <div class="my-5 h-px" style="background:{$isDark ? 'rgba(255,255,255,0.10)' : 'rgba(30,60,120,0.12)'}"></div>
-
-          <p class="mt-4 text-[10px] font-black uppercase tracking-[0.14em]" style="color:{$isDark ? 'rgba(255,255,255,0.42)' : 'rgba(17,24,39,0.42)'}">Carrocería</p>
+          <p class="text-[10px] font-black uppercase tracking-[0.14em]" style="color:{$isDark ? 'rgba(255,255,255,0.42)' : 'rgba(17,24,39,0.42)'}">Carrocería</p>
           <div class="mt-2 grid grid-cols-2 gap-2 md:flex md:flex-col">
             {#each VEHICLE_TYPES as item}
               {@const isTypeActive = megaType === item.name}
@@ -493,21 +460,23 @@
                   </span>
                 </h3>
               </div>
-              <button
-                onclick={applyMegaSelection}
-                class="hidden md:inline-flex h-10 w-fit cursor-pointer items-center gap-2 rounded-full px-5 text-xs font-black uppercase tracking-[0.08em] transition-all hover:-translate-y-0.5"
-                style="background:{megaAccent};color:white;box-shadow:0 14px 34px {megaAccent}45;"
-              >
-                Ver selección
-                <GoogleIcon name="keyboard_arrow_down" size={18} class="-rotate-90" />
-              </button>
+
             </div>
 
             {#if megaVehicles.length}
               <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
                 {#each megaVehicles as vehicle, i (vehicle.id)}
                   <button
-                    onclick={() => { selectMegaBrand(vehicle.brand); selectMegaType(vehicle.type); megaFuel = vehicle.fuel }}
+                    onclick={() => { 
+                      if (vehicle.brand === 'Jeep') {
+                        onModelSelect?.('Jeep', 'renegade')
+                        closeMega()
+                      } else {
+                        selectMegaBrand(vehicle.brand); 
+                        selectMegaType(vehicle.type); 
+                        applyMegaSelection() 
+                      }
+                    }}
                     class="group/card cursor-pointer overflow-hidden rounded-2xl text-left transition-all duration-500 hover:-translate-y-1"
                     style="background:{$isDark ? 'rgba(255,255,255,0.055)' : '#ffffff'};border:1px solid {$isDark ? 'rgba(255,255,255,0.10)' : 'rgba(30,60,120,0.12)'};box-shadow:0 18px 42px rgba(0,0,0,{$isDark ? 0.28 : 0.08});animation:mega-card-in 0.55s cubic-bezier(0.22,1,0.36,1) {i * 45}ms both;"
                   >
@@ -526,16 +495,13 @@
                       <h4 class="mt-2 text-lg font-black leading-none" style="color:{$isDark ? 'white' : '#111827'}">
                         {vehicle.model} <span class="opacity-45">{vehicle.year}</span>
                       </h4>
-                      <p class="mt-2 text-xs font-semibold" style="color:{$isDark ? 'rgba(255,255,255,0.54)' : 'rgba(17,24,39,0.55)'}">{vehicle.version}</p>
+
                       <div class="mt-4 flex items-end justify-between gap-3">
                         <div>
                           <p class="text-[10px] font-black uppercase tracking-[0.12em]" style="color:{$isDark ? 'rgba(255,255,255,0.38)' : 'rgba(17,24,39,0.42)'}">Precio</p>
                           <p class="mt-1 text-base font-black leading-none" style="color:{$isDark ? 'white' : '#111827'}">{vehicle.price}</p>
                         </div>
-                        <span class="inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[10px] font-black uppercase tracking-[0.08em]"
-                          style="background:{$isDark ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.05)'}; color:{$isDark ? 'rgba(255,255,255,0.6)' : 'rgba(0,0,0,0.5)'}; border:1px solid {$isDark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)'};">
-                          {vehicle.fuel}
-                        </span>
+
                       </div>
                     </div>
                   </button>
@@ -562,14 +528,7 @@
                   <span class="flex items-center gap-2"><GoogleIcon name="build" size={16} class="opacity-70" /> Servicio</span>
                 </button>
               </div>
-              <button
-                onclick={applyMegaSelection}
-                class="mt-4 flex h-12 w-full cursor-pointer items-center justify-center gap-2 rounded-full text-xs font-black uppercase tracking-[0.08em] transition-all"
-                style="background:{megaAccent};color:white;box-shadow:0 8px 24px {megaAccent}45;"
-              >
-                Ver selección ({megaVehicles.length})
-                <GoogleIcon name="keyboard_arrow_right" size={18} />
-              </button>
+
             </div>
 
           </div>

@@ -34,8 +34,8 @@
       kicker: 'RENEGADE 2026',
       title: 'Redefine la aventura urbana.',
       subtitle: 'Motor 1.3L Turbo GSE de 173 hp, el más potente de su categoría. Diseño icónico Jeep con tecnología de vanguardia y sistemas ADAS para la ciudad.',
-      heroImage: `https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/capacidad/desktop/my26-jeep-capacidad-y-desempeno-hero-mx-dk.jpg.img.2880.jpg`,
-      spotlightImage: `https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/capacidad/desktop/my26-jeep-capacidad-y-desempeno-hero-mx-dk.jpg.img.2880.jpg`,
+      heroImage: 'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/gallery/full/my26-jeep-renegade-galeriaexterior-08-v2-allbreakingpoints-mx.jpg.img.2880.jpg',
+      spotlightImage: 'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/vlp/desktop/jeep-renegade-2026-inicio-equipamiento-exterior-dk.jpg.img.2880.jpg',
       quote: 'Hola,%20me%20interesa%20cotizar%20un%20Jeep%20Renegade',
       price: 'Desde $456,900',
       specs: [
@@ -47,21 +47,21 @@
       motionTitle: 'Diseño inconfundible. Desempeño moderno.',
       motionCopy: 'Su parrilla de 7 ranuras rinde homenaje al legado Jeep, mientras su volante con paletas de cambio y frenos de disco en las 4 ruedas te dan el control que necesitas.',
       cockpitImages: [
-        '/adistem2026/jeep/int 1.avif',
-        '/adistem2026/jeep/int 2.avif',
-        '/adistem2026/jeep/jeep-renegade-2026-inicio-equipamiento-interior-dk.jpg.img.2880.avif'
+        'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/interior/full/jeep-renegade-2026-equipamiento-interior-highlights-08-full.jpg',
+        'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/gallery/full/jeep-renegade-2026-galeria-10-interior-full.jpg.img.2880.jpg',
+        'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/exterior/desktop/jeep-renegade-2026-exterior-highlights-08-full.jpg'
       ],
       storyImages: [
-        'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/capacidad/desktop/my26-jeep-capacidad-y-desempeno-hero-mx-dk.jpg.img.2880.jpg',
         'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/exterior/desktop/jeep-renegade-2026-exterior-highlights-08-full.jpg',
-        '/adistem2026/jeep/motor.avif'
+        'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/exterior/desktop/jeep-renegade-2026-exterior-highlights-02-dk.jpg.image.2880.jpg',
+        'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/exterior/desktop/jeep-renegade-2026-exterior-highlights-10-dk.jpg'
       ],
       motionImages: [
-        '/adistem2026/jeep/jeep-renegade-2025-inicio-galeria-01-all-breakpoints.avif',
-        'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/exterior/desktop/jeep-renegade-2026-exterior-highlights-08-full.jpg',
-        '/adistem2026/jeep/exterior 3.avif'
+        'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/gallery/desktop/my26-jeep-renegade-galeriaexterior-03-dk-mx.jpg.img.2880.jpg',
+        'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/gallery/full/my26-jeep-renegade-galeriaexterior-02-allbreakingpoints-mx-v2.jpg.img.2880.jpg',
+        'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/gallery/full/jeep-renegade-2026-galeria-10-interior-full.jpg.img.2880.jpg'
       ],
-      capabilityImage: '/adistem2026/jeep/jeep-renegade-2026-inicio-galeria-02-full.avif'
+      capabilityImage: 'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/capacidad/desktop/jeep-renegade-2026-capacidad-desempeno-motor-01-dk.jpg.img.2880.jpg'
     },
     '700': {
       name: 'JEEP 700',
@@ -106,8 +106,8 @@
     kicker: 'JEEP 2026',
     title: 'Fuerza que se siente antes de arrancar.',
     subtitle: 'Capacidad, presencia y tecnología útil para trabajo, viaje y aventura.',
-    heroImage: `https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/capacidad/desktop/my26-jeep-capacidad-y-desempeno-hero-mx-dk.jpg.img.2880.jpg`,
-    spotlightImage: `https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/capacidad/desktop/my26-jeep-capacidad-y-desempeno-hero-mx-dk.jpg.img.2880.jpg`,
+    heroImage: 'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/vlp/desktop/jeep-renegade-2026-inicio-equipamiento-exterior-dk.jpg.img.2880.jpg',
+    spotlightImage: 'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/vlp/desktop/jeep-renegade-2026-inicio-equipamiento-exterior-dk.jpg.img.2880.jpg',
     quote: 'Hola,%20me%20interesa%20cotizar%20una%20JEEP',
     price: 'Desde $456,900',
     specs: [
@@ -200,22 +200,22 @@
     {
       title: 'Luces Full LED',
       copy: 'Parrilla de 7 ranuras que rinde homenaje al legado Jeep, con luces Full LED que iluminan cada aventura con estilo y precisión.',
-      image: model.motionImages?.[1] || `${A}/interior-3.jpg`,
+      image: model.motionImages?.[1] || 'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/inicio/galeria/full/my26-jeep-renegade-galeriainterior-01-allbreakingpoints-mx.jpg.img.2880.jpg',
     },
     {
       title: 'Diseño inconfundible',
       copy: 'Luces traseras LED icono del Jeep® Willys, luces de niebla y detalles únicos que hacen del Renegade un SUV que llama la atención en cualquier lugar.',
-      image: model.motionImages?.[2] || `${A}/vehiculo-aislado.jpg`,
+      image: model.motionImages?.[2] || 'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/inicio/galeria/full/my26-jeep-renegade-galeriacapacidad-01-allbreakingpoints-mx.jpg.img.2880.jpg',
     },
   ])
 
   const cockpitImages = $derived(model.cockpitImages || [
-    `${A}/interior-2.jpg`,
-    `${A}/interior-4.jpg`,
-    `${A}/interior-5.jpg`,
+    'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/inicio/galeria/full/my26-jeep-renegade-galeriainterior-01-allbreakingpoints-mx.jpg.img.2880.jpg',
+    'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/inicio/galeria/full/my26-jeep-renegade-galeriainterior-02-allbreakingpoints-mx.jpg.img.2880.jpg',
+    'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/inicio/galeria/full/my26-jeep-renegade-galeriainterior-01-allbreakingpoints-mx.jpg.img.2880.jpg',
   ])
 
-  const capabilityImage = $derived(model.capabilityImage || `${A}/vehiculo-aislado.jpg`)
+  const capabilityImage = $derived(model.capabilityImage || 'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/inicio/galeria/full/my26-jeep-renegade-galeriacapacidad-01-allbreakingpoints-mx.jpg.img.2880.jpg')
 
   let pinMediaEl: HTMLElement | undefined = $state()
 
@@ -295,6 +295,28 @@
     window.dispatchEvent(new PopStateEvent('popstate', { state: { brand: 'Jeep' } }))
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
+
+  // ── ADAS Carousel Logic ──
+  const adasItems = [
+    { id: 0, label: 'Asistencia Estacionamiento', video: 'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/safety/sistemas-de-asistencia/video/jeep-totalmente-nueva-renegade-2026-highlights-sistemas-de-asistencia-01.mp4', poster: 'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/safety/sistemas-de-asistencia/jeep-totalmente-nueva-renegade-2026-highlights-sistemas-de-asistencia-01.jpg' },
+    { id: 1, label: 'Reconocimiento Señales (TSR)', video: 'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/safety/sistemas-de-asistencia/video/jeep-totalmente-nueva-renegade-2026-highlights-sistemas-de-asistencia-02.mp4', poster: 'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/safety/sistemas-de-asistencia/jeep-totalmente-nueva-renegade-2026-highlights-sistemas-de-asistencia-02.jpg' },
+    { id: 2, label: 'Alerta Colisión Frontal (FCW)', video: 'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/safety/sistemas-de-asistencia/video/jeep-renegade-2026-sistemas-de-asistencia-fcw-desktop-v02.mp4', poster: 'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/safety/sistemas-de-asistencia/jeep-renegade-2026-sistemas-de-asistencia-fcw-desktop-v02.jpeg' },
+    { id: 3, label: 'Abandono de Carril (LDP)', video: 'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/safety/sistemas-de-asistencia/video/jeep-totalmente-nueva-renegade-2026-highlights-sistemas-de-asistencia-04.mp4', poster: '' },
+    { id: 4, label: 'Sistema de Frenos ABS', video: 'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/safety/sistemas-de-asistencia/video/jeep-totalmente-nueva-renegade-2026-highlights-sistemas-de-asistencia-05.mp4', poster: '' },
+    { id: 5, label: 'Control de Estabilidad (ESC)', video: 'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/safety/sistemas-de-asistencia/video/jeep-totalmente-nueva-renegade-2026-highlights-sistemas-de-asistencia-06.mp4', poster: '' },
+    { id: 6, label: 'Oscilación Remolque (TSC)', video: 'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/safety/sistemas-de-asistencia/video/jeep-totalmente-nueva-renegade-2026-highlights-sistemas-de-asistencia-08.mp4', poster: '' }
+  ]
+
+  let adasIndex = $state(0)
+  let adasAutoplay = $state(true)
+
+  $effect(() => {
+    if (!adasAutoplay) return
+    const interval = setInterval(() => {
+      adasIndex = (adasIndex + 1) % adasItems.length
+    }, 6000)
+    return () => clearInterval(interval)
+  })
 </script>
 
 <svelte:head>
@@ -550,48 +572,35 @@
       <h2>Seguridad a donde quiera que vayas.</h2>
       <span>Sus avanzados sistemas de seguridad te ofrecen a ti y a tus acompañantes una protección integral de 360°. Frenos ABS en las 4 ruedas, control electrónico de estabilidad y 7 bolsas de aire para mantenerte a salvo en cada rodada.</span>
 
-      <!-- ── ADAS Video Grid ── -->
+      <!-- ── ADAS Slider ── -->
       <p class="safety-sub-label">Sistemas de Asistencia ADAS</p>
-      <div class="safety-videos-grid">
-        <div class="safety-vid-card">
-          <video src="https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/safety/sistemas-de-asistencia/video/jeep-totalmente-nueva-renegade-2026-highlights-sistemas-de-asistencia-01.mp4"
-            poster="https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/safety/sistemas-de-asistencia/jeep-totalmente-nueva-renegade-2026-highlights-sistemas-de-asistencia-01.jpg"
-            autoplay muted loop playsinline></video>
-          <div class="svc-label"><span>Asistencia de Estacionamiento</span></div>
+      
+      <div class="adas-carousel-container" style={`--adas-idx: ${adasIndex}`}>
+        <div class="adas-track" style={`transform: translateX(calc(-${adasIndex} * (100% / 3)));`}>
+          {#each adasItems as item, i}
+            <div class="safety-vid-card adas-slide" class:active={i === adasIndex}>
+              <video src={item.video} poster={item.poster} autoplay muted loop playsinline></video>
+              <div class="svc-label"><span>{item.label}</span></div>
+            </div>
+          {/each}
         </div>
-        <div class="safety-vid-card">
-          <video src="https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/safety/sistemas-de-asistencia/video/jeep-totalmente-nueva-renegade-2026-highlights-sistemas-de-asistencia-02.mp4"
-            poster="https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/safety/sistemas-de-asistencia/jeep-totalmente-nueva-renegade-2026-highlights-sistemas-de-asistencia-02.jpg"
-            autoplay muted loop playsinline></video>
-          <div class="svc-label"><span>Reconocimiento de Señales (TSR)</span></div>
-        </div>
-        <div class="safety-vid-card">
-          <video src="https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/safety/sistemas-de-asistencia/video/jeep-renegade-2026-sistemas-de-asistencia-fcw-desktop-v02.mp4"
-            poster="https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/safety/sistemas-de-asistencia/jeep-renegade-2026-sistemas-de-asistencia-fcw-desktop-v02.jpeg"
-            autoplay muted loop playsinline></video>
-          <div class="svc-label"><span>Alerta Colisión Frontal (FCW)</span></div>
-        </div>
-        <div class="safety-vid-card">
-          <video src="https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/safety/sistemas-de-asistencia/video/jeep-totalmente-nueva-renegade-2026-highlights-sistemas-de-asistencia-04.mp4"
-            autoplay muted loop playsinline></video>
-          <div class="svc-label"><span>Abandono de Carril (LDP)</span></div>
-        </div>
-        <div class="safety-vid-card">
-          <video src="https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/safety/sistemas-de-asistencia/video/jeep-totalmente-nueva-renegade-2026-highlights-sistemas-de-asistencia-05.mp4"
-            autoplay muted loop playsinline></video>
-          <div class="svc-label"><span>Sistema de Frenos ABS</span></div>
-        </div>
-        <div class="safety-vid-card">
-          <video src="https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/safety/sistemas-de-asistencia/video/jeep-totalmente-nueva-renegade-2026-highlights-sistemas-de-asistencia-06.mp4"
-            autoplay muted loop playsinline></video>
-          <div class="svc-label"><span>Control de Estabilidad (ESC)</span></div>
-        </div>
-        <div class="safety-vid-card">
-          <video src="https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/safety/sistemas-de-asistencia/video/jeep-totalmente-nueva-renegade-2026-highlights-sistemas-de-asistencia-08.mp4"
-            autoplay muted loop playsinline></video>
-          <div class="svc-label"><span>Control de Oscilación Remolque (TSC)</span></div>
+
+        <div class="carousel-controls adas-controls">
+          <div class="carousel-pill" aria-label="Sistemas ADAS">
+            {#each adasItems as _, i}
+              <button 
+                class:active={i === adasIndex} 
+                onclick={() => { adasIndex = i; adasAutoplay = false; }}
+                aria-label={`Ver asistente ${i + 1}`}
+              ></button>
+            {/each}
+          </div>
+          <button class="play-btn" onclick={() => adasAutoplay = !adasAutoplay} aria-label={adasAutoplay ? 'Pausar carrusel' : 'Reproducir carrusel'}>
+            <span class="material-symbols-outlined inline-flex select-none items-center justify-center align-middle" aria-hidden="true" style="font-size: 16px; line-height: 1;">{adasAutoplay ? 'pause' : 'play_arrow'}</span>
+          </button>
         </div>
       </div>
+
 
       <!-- ── Seguridad 360° — image + rich feature cards ── -->
       <p class="safety-sub-label">Seguridad Completa 360°</p>
@@ -1519,7 +1528,7 @@
 
   .safety-content span {
     display: block;
-    margin: 16px 0 38px;
+    margin: 0;
     color: rgba(255, 255, 255, 0.70);
     font-size: 14px;
     font-weight: 400;
@@ -1557,6 +1566,101 @@
   .safety-vid-card:hover {
     transform: translateY(-4px);
     border-color: var(--jeep-hover);
+  }
+
+  /* ADAS Carousel Styles */
+  .adas-carousel-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    padding-bottom: 80px;
+  }
+
+  .adas-track {
+    display: flex;
+    gap: 16px;
+    transition: transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+    width: 100%;
+  }
+
+  .adas-slide {
+    flex: 0 0 calc((100% - 32px) / 3); /* Show 3 cards */
+    min-width: 0;
+  }
+
+  @media (max-width: 1024px) {
+    .adas-slide {
+      flex: 0 0 calc((100% - 16px) / 2);
+    }
+    .adas-track {
+      transform: translateX(calc(-var(--adas-idx, 0) * (100% / 2))) !important;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .adas-slide {
+      flex: 0 0 100%;
+    }
+    .adas-track {
+      transform: translateX(calc(-var(--adas-idx, 0) * 100%)) !important;
+    }
+  }
+
+  .carousel-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 32px;
+    justify-content: center;
+  }
+
+  .carousel-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 18px 16px;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.11);
+    border-radius: 999px;
+    backdrop-filter: blur(20px);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 8px 28px rgba(0,0,0,0.15);
+  }
+
+  .carousel-pill button {
+    width: 6px;
+    height: 6px;
+    padding: 0;
+    border: 0;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.25);
+    cursor: pointer;
+    transition: width 500ms cubic-bezier(0.16, 1, 0.3, 1), background 500ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .carousel-pill button.active {
+    width: 22px;
+    background: rgba(255, 255, 255, 0.95);
+  }
+
+  .play-btn {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: white;
+    cursor: pointer;
+    padding: 0;
+    flex-shrink: 0;
+    transition: background 300ms ease, transform 200ms ease;
+  }
+
+  .play-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: scale(1.05);
   }
 
   .safety-vid-card video {

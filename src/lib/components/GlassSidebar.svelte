@@ -87,19 +87,20 @@
   <!-- Brand buttons -->
   <nav class="flex flex-col items-center gap-4 flex-1 w-full">
     {#each brands as brand (brand.name)}
+      {@const isJeep   = brand.name === 'Jeep'}
       {@const isActive  = activeBrand === brand.name}
       {@const isHovered = hoveredBrand === brand.name}
       {@const tone = brandTone(brand.name, isHovered)}
-      <div class="relative w-full flex justify-center">
+      <div class="relative w-full flex justify-center" style="opacity:{isJeep ? 1 : 0.4}; filter:{isJeep ? 'none' : 'grayscale(1)'}; pointer-events:{isJeep ? 'auto' : 'none'};">
         <LiquidGlass
           tag="button"
           variant="pill"
           noRefract
-          onclick={() => onBrandSelect?.(brand.name === activeBrand ? 'Todas' : brand.name)}
-          onmouseenter={() => hoveredBrand = brand.name}
+          onclick={() => isJeep ? onBrandSelect?.(brand.name === activeBrand ? 'Todas' : brand.name) : null}
+          onmouseenter={() => isJeep && (hoveredBrand = brand.name)}
           onmouseleave={() => hoveredBrand = null}
           class="flex items-center justify-center transition-all duration-250"
-          style="width:52px;height:52px;border-radius:14px;outline:none;cursor:pointer;transform:{(isActive || isHovered) ? 'scale(1.08)' : 'scale(1)'};background:{(isActive || isHovered) ? `color-mix(in srgb, ${tone} ${isActive ? 38 : 22}%, transparent)` : 'transparent'};border:{(isActive || isHovered) ? `1px solid color-mix(in srgb, ${tone} 62%, rgba(255,255,255,0.16))` : '1px solid transparent'};box-shadow:{isActive ? `0 4px 22px color-mix(in srgb, ${tone} 55%, transparent),inset 0 1px 0 rgba(255,255,255,0.25)` : isHovered ? `0 4px 18px color-mix(in srgb, ${tone} 34%, transparent),inset 0 1px 0 rgba(255,255,255,0.16)` : 'none'};"
+          style="width:52px;height:52px;border-radius:14px;outline:none;cursor:{isJeep ? 'pointer' : 'default'};transform:{isJeep && (isActive || isHovered) ? 'scale(1.08)' : 'scale(1)'};background:{isJeep && (isActive || isHovered) ? `color-mix(in srgb, ${tone} ${isActive ? 38 : 22}%, transparent)` : 'transparent'};border:{isActive || isHovered ? `1px solid color-mix(in srgb, ${tone} 62%, rgba(255,255,255,0.16))` : '1px solid transparent'};box-shadow:{isActive ? `0 4px 22px color-mix(in srgb, ${tone} 55%, transparent),inset 0 1px 0 rgba(255,255,255,0.25)` : isHovered ? `0 4px 18px color-mix(in srgb, ${tone} 34%, transparent),inset 0 1px 0 rgba(255,255,255,0.16)` : 'none'};"
         >
           <img src={brand.logo} alt={brand.name} class="w-8 h-8 object-contain"
             style="filter:{logoFilter};opacity:{isActive ? 1 : isHovered ? 0.88 : ($isDark ? 0.55 : 0.48)}" />

@@ -3,15 +3,34 @@
   import GoogleIcon from './GoogleIcon.svelte'
   import SeminuevoDetailLanding from './SeminuevoDetailLanding.svelte'
 
+  const GS = 'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F'
+  const GQ = '&alt=media'
+
   const INVENTORY = [
-    { id: 1, title: 'Jeep Grand Cherokee', year: 2024, price: '$950,000', km: '15,000 km', image: 'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&q=80&w=800', type: 'SUV', brand: 'Jeep', model: 'Grand Cherokee', transmission: 'Automática', numPrice: 950000, numKm: 15000 },
-    { id: 2, title: 'Dodge Journey', year: 2023, price: '$520,000', km: '32,000 km', image: 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&q=80&w=800', type: 'SUV', brand: 'Dodge', model: 'Journey', transmission: 'Automática', numPrice: 520000, numKm: 32000 },
-    { id: 3, title: 'Ram 1200 Pick-Up', year: 2025, price: '$480,000', km: '5,000 km', image: 'https://images.unsplash.com/photo-1583122620076-2f089608a092?auto=format&fit=crop&q=80&w=800', type: 'Pick-up', brand: 'Ram', model: '1200 Pick-Up', transmission: 'Automática', numPrice: 480000, numKm: 5000 },
-    { id: 4, title: 'Fiat Pulse', year: 2024, price: '$360,000', km: '20,000 km', image: 'https://images.unsplash.com/photo-1620216447814-616a2468f635?auto=format&fit=crop&q=80&w=800', type: 'SUV', brand: 'Fiat', model: 'Pulse', transmission: 'Manual', numPrice: 360000, numKm: 20000 },
-    { id: 5, title: 'Peugeot 3008', year: 2024, price: '$610,000', km: '12,000 km', image: 'https://images.unsplash.com/photo-1610647752706-3bb12232b3eb?auto=format&fit=crop&q=80&w=800', type: 'SUV', brand: 'Peugeot', model: '3008', transmission: 'Automática', numPrice: 610000, numKm: 12000 },
-    { id: 6, title: 'Ford Mustang', year: 2020, price: '$780,000', km: '45,000 km', image: 'https://images.unsplash.com/photo-1584345611127-8dd8eb0c5b59?auto=format&fit=crop&q=80&w=800', type: 'Deportivo', brand: 'Ford', model: 'Mustang', transmission: 'Automática', numPrice: 780000, numKm: 45000 },
-    { id: 7, title: 'Nissan Comerciales NP 300 Frontier', year: 2020, price: '$420,000', km: '86,853 km', image: 'https://spdfc.s3.us-west-2.amazonaws.com/distribuidores/Michoacan_Motors/seminuevos/5568/1.jpeg', type: 'Pick-up', brand: 'Nissan', model: 'NP 300 Frontier', transmission: 'Manual', numPrice: 420000, numKm: 86853 },
-    { id: 8, title: 'BMW X3', year: 2019, price: '$650,000', km: '55,000 km', image: 'https://images.unsplash.com/photo-1556189250-72ba954cfc2b?auto=format&fit=crop&q=80&w=800', type: 'SUV', brand: 'BMW', model: 'X3', transmission: 'Automática', numPrice: 650000, numKm: 55000 },
+    // ── Jeep ───────────────────────────────────────────────────────────────
+    { id:  1, title: 'Jeep Grand Cherokee', year: 2024, price: '$950,000',  km: '15,000 km',  image: `${GS}dbbe0b1e89813d5569554d4d88221a1b92e0d6f2.jpg?generation=1777350234515482${GQ}`, type: 'SUV',       brand: 'Jeep',    model: 'Grand Cherokee', transmission: 'Automática', numPrice: 950000,  numKm: 15000  },
+    { id:  2, title: 'Jeep Compass',        year: 2023, price: '$580,000',  km: '28,000 km',  image: `${GS}0d3d7a1dc7e07f0e64c4fb84601cc8fa871c5acc.jpg?generation=1777350234540448${GQ}`, type: 'SUV',       brand: 'Jeep',    model: 'Compass',        transmission: 'Automática', numPrice: 580000,  numKm: 28000  },
+    { id:  3, title: 'Jeep Commander',      year: 2023, price: '$720,000',  km: '19,500 km',  image: `${GS}0c31e45701627ca72a88b646087445172fc4a302.jpg?generation=1777350234492066${GQ}`, type: 'SUV',       brand: 'Jeep',    model: 'Commander',      transmission: 'Automática', numPrice: 720000,  numKm: 19500  },
+    { id:  4, title: 'Jeep Renegade',       year: 2023, price: '$385,000',  km: '35,000 km',  image: `${GS}03eb70622ac5b618a05ca4b50608ada9e5f36dff.jpg?generation=1777350234483821${GQ}`, type: 'SUV',       brand: 'Jeep',    model: 'Renegade',       transmission: 'Manual',     numPrice: 385000,  numKm: 35000  },
+    // ── Dodge ──────────────────────────────────────────────────────────────
+    { id:  5, title: 'Dodge Journey',       year: 2023, price: '$520,000',  km: '32,000 km',  image: `${GS}c8f39b8a62ba049430811aa128ea21a793615787.jpg?generation=1777350234748118${GQ}`, type: 'SUV',       brand: 'Dodge',   model: 'Journey',        transmission: 'Automática', numPrice: 520000,  numKm: 32000  },
+    { id:  6, title: 'Dodge Durango',       year: 2022, price: '$990,000',  km: '18,000 km',  image: `${GS}1d6f3f42a55407817e0572a9323b9aa10c891633.jpg?generation=1777350234722595${GQ}`, type: 'SUV',       brand: 'Dodge',   model: 'Durango',        transmission: 'Automática', numPrice: 990000,  numKm: 18000  },
+    { id:  7, title: 'Dodge Attitude',      year: 2023, price: '$285,000',  km: '42,000 km',  image: `${GS}fd24ea9b590e1057b2b5aece02f0924645f557d3.jpg?generation=1777350234728971${GQ}`, type: 'Sedán',     brand: 'Dodge',   model: 'Attitude',       transmission: 'Automática', numPrice: 285000,  numKm: 42000  },
+    // ── Ram ────────────────────────────────────────────────────────────────
+    { id:  8, title: 'Ram 1500',            year: 2023, price: '$1,050,000',km: '11,000 km',  image: `${GS}366059fdfc8601cb267c2dfe66bce5eff26e9802.jpg?generation=1777350234982606${GQ}`, type: 'Pick-up',   brand: 'Ram',     model: '1500',           transmission: 'Automática', numPrice: 1050000, numKm: 11000  },
+    { id:  9, title: 'Ram 1200 Pick-Up',    year: 2025, price: '$480,000',  km: '5,000 km',   image: `${GS}d77a3a9cf0b124b56b0ca97a272a05d66cdb4f9b.jpg?generation=1777350234972552${GQ}`, type: 'Pick-up',   brand: 'Ram',     model: '1200 Pick-Up',   transmission: 'Automática', numPrice: 480000,  numKm: 5000   },
+    { id: 10, title: 'Ram 700',             year: 2023, price: '$370,000',  km: '15,000 km',  image: `${GS}f5ec5130c0e32e9b8f088516b511cd201f316b59.jpg?generation=1777350234996294${GQ}`, type: 'Pick-up',   brand: 'Ram',     model: '700',            transmission: 'Manual',     numPrice: 370000,  numKm: 15000  },
+    // ── Fiat ───────────────────────────────────────────────────────────────
+    { id: 11, title: 'Fiat Pulse',          year: 2024, price: '$360,000',  km: '20,000 km',  image: `${GS}12af6dc13f44f29033d673c803a50f637af22da0.jpg?generation=1777350234700225${GQ}`, type: 'SUV',       brand: 'Fiat',    model: 'Pulse',          transmission: 'Manual',     numPrice: 360000,  numKm: 20000  },
+    { id: 12, title: 'Fiat Fastback',       year: 2023, price: '$418,000',  km: '24,000 km',  image: `${GS}73305e43e64c51813013640443da7b7c6dbe392e.jpg?generation=1777350234711531${GQ}`, type: 'SUV',       brand: 'Fiat',    model: 'Fastback',       transmission: 'Automática', numPrice: 418000,  numKm: 24000  },
+    { id: 13, title: 'Fiat Argo',           year: 2023, price: '$265,000',  km: '38,000 km',  image: `${GS}35bd343876d4e41f21a86499747f1af99d5fe2b2.jpg?generation=1777350234727796${GQ}`, type: 'Hatchback', brand: 'Fiat',    model: 'Argo',           transmission: 'Manual',     numPrice: 265000,  numKm: 38000  },
+    // ── Peugeot ────────────────────────────────────────────────────────────
+    { id: 14, title: 'Peugeot 3008',        year: 2024, price: '$610,000',  km: '12,000 km',  image: `${GS}97992cfc1a6ba95676e9baa2cff5b4fe94dd63c7.jpg?generation=1777350234796103${GQ}`, type: 'SUV',       brand: 'Peugeot', model: '3008',           transmission: 'Automática', numPrice: 610000,  numKm: 12000  },
+    { id: 15, title: 'Peugeot 5008',        year: 2023, price: '$695,000',  km: '22,000 km',  image: `${GS}a324072dc54a25de50940520db820b447f976fdd.jpg?generation=1777350234728825${GQ}`, type: 'SUV',       brand: 'Peugeot', model: '5008',           transmission: 'Automática', numPrice: 695000,  numKm: 22000  },
+    { id: 16, title: 'Peugeot 2008',        year: 2022, price: '$420,000',  km: '30,000 km',  image: `${GS}7ac848efe89adde5660e4d2956b4983e1775ce00.jpg?generation=1777350234794617${GQ}`, type: 'SUV',       brand: 'Peugeot', model: '2008',           transmission: 'Automática', numPrice: 420000,  numKm: 30000  },
+    // ── Otros ──────────────────────────────────────────────────────────────
+    { id: 18, title: 'Nissan NP 300 Frontier', year: 2020, price: '$420,000', km: '86,853 km', image: 'https://spdfc.s3.us-west-2.amazonaws.com/distribuidores/Michoacan_Motors/seminuevos/5568/1.jpeg',         type: 'Pick-up',   brand: 'Nissan',  model: 'NP 300 Frontier', transmission: 'Manual',    numPrice: 420000,  numKm: 86853  },
+    { id: 19, title: 'BMW X3',              year: 2019, price: '$650,000',  km: '55,000 km',  image: 'https://images.unsplash.com/photo-1556189250-72ba954cfc2b?auto=format&fit=crop&q=80&w=800',              type: 'SUV',       brand: 'BMW',     model: 'X3',             transmission: 'Automática', numPrice: 650000,  numKm: 55000  },
   ]
 
   // Estados de filtrado avanzado
@@ -23,11 +42,23 @@
   let maxPrice = $state(2000000)
   let maxKm = $state(499001)
 
+  // ── Price range constants ──────────────────────────────────────────────────
+  const MIN_PRICE      = 50000
+  const MAX_PRICE      = 2000000
+  const PRICE_STEP     = 25000
+  const PRICE_BINS     = 16
+  const PRICE_BIN_SIZE = (MAX_PRICE - MIN_PRICE) / PRICE_BINS
+
+  // Synthetic distribution (peaks 350k–750k, realistic for seminuevos MX)
+  const HIST_H = [0, 2, 6, 18, 36, 62, 82, 100, 88, 70, 52, 34, 20, 12, 6, 2]
+
+  let minPrice = $state(MIN_PRICE)
+
   let selectedCarId: number | null = $state(null)
 
   // Opciones derivadas para los selects
-  const availableYears = [2025, 2024, 2023, 2020, 2019]
-  const availableBrands = ['Jeep', 'Dodge', 'Ram', 'Fiat', 'Peugeot', 'Ford', 'Nissan', 'BMW']
+  const availableYears = [2025, 2024, 2023, 2022, 2020, 2019]
+  const availableBrands = ['Jeep', 'Dodge', 'Ram', 'Fiat', 'Peugeot', 'Nissan', 'BMW']
   let availableModels = $derived(
     Array.from(new Set(
       selectedBrand 
@@ -43,7 +74,7 @@
     const matchBrand = selectedBrand ? car.brand === selectedBrand : true
     const matchModel = selectedModel ? car.model === selectedModel : true
     const matchTrans = selectedTransmission ? car.transmission === selectedTransmission : true
-    const matchPrice = car.numPrice <= maxPrice
+    const matchPrice = car.numPrice >= minPrice && car.numPrice <= maxPrice
     const matchKm = car.numKm <= maxKm
     return matchSearch && matchYear && matchBrand && matchModel && matchTrans && matchPrice && matchKm
   }))
@@ -54,7 +85,8 @@
     selectedBrand = ''
     selectedModel = ''
     selectedTransmission = ''
-    maxPrice = 2000000
+    minPrice = MIN_PRICE
+    maxPrice = MAX_PRICE
     maxKm = 499001
   }
 
@@ -66,6 +98,13 @@
   function formatKm(val: number) {
     return new Intl.NumberFormat('es-MX').format(val) + ' km'
   }
+
+  function formatPriceShort(val: number) {
+    return '$ ' + new Intl.NumberFormat('es-MX').format(val)
+  }
+
+  const minPricePct = $derived(((minPrice - MIN_PRICE) / (MAX_PRICE - MIN_PRICE)) * 100)
+  const maxPricePct = $derived(((maxPrice - MIN_PRICE) / (MAX_PRICE - MIN_PRICE)) * 100)
 
   const pageBg = $derived($isDark
     ? 'linear-gradient(160deg,#05080F 0%,#080C18 40%,#05080F 100%)'
@@ -207,26 +246,65 @@
               </select>
             </div>
 
-            <!-- Precio Slider -->
+            <!-- Precio Range con Histograma -->
             <div class="pt-2">
-              <div class="flex justify-between items-center text-xs font-bold mb-1" style="color:{T.primary}">
-                <span>Precio</span>
+              <p class="text-xs font-bold mb-3" style="color:{T.primary}">Precio</p>
+
+              <!-- Desde / Hasta boxes -->
+              <div class="flex items-center gap-1.5 mb-3">
+                <div class="flex-1 rounded-lg border px-2.5 py-2 min-w-0" style="background:{T.selectBg}; border-color:{T.divider};">
+                  <p class="text-[8px] font-black uppercase tracking-widest mb-0.5" style="color:{T.muted}">Desde</p>
+                  <p class="text-[11px] font-bold leading-none whitespace-nowrap overflow-hidden text-ellipsis" style="color:{T.primary}">{formatPriceShort(minPrice)}</p>
+                </div>
+                <span class="text-xs flex-shrink-0" style="color:{T.muted}">—</span>
+                <div class="flex-1 rounded-lg border px-2.5 py-2 min-w-0" style="background:{T.selectBg}; border-color:{T.divider};">
+                  <p class="text-[8px] font-black uppercase tracking-widest mb-0.5" style="color:{T.muted}">Hasta</p>
+                  <p class="text-[11px] font-bold leading-none whitespace-nowrap overflow-hidden text-ellipsis" style="color:{T.primary}">{formatPriceShort(maxPrice)}</p>
+                </div>
               </div>
-              <div class="flex justify-between items-center text-[11px] mb-1.5 font-medium" style="color:{T.muted}">
-                <span>$50,000.00</span>
-                <span>$2,000,000.00</span>
+
+              <!-- Histograma -->
+              <div class="flex items-end gap-[2px] h-10 mb-1.5 px-0.5">
+                {#each HIST_H as h, i}
+                  {@const lo = MIN_PRICE + i * PRICE_BIN_SIZE}
+                  {@const hi = MIN_PRICE + (i + 1) * PRICE_BIN_SIZE}
+                  {@const active = hi > minPrice && lo < maxPrice}
+                  <div
+                    class="flex-1 rounded-[2px] transition-colors duration-150"
+                    style="height:{h}%;min-height:{h > 0 ? '3px' : '0px'};background:{active
+                      ? ($isDark ? '#4A6BC4' : '#334E8B')
+                      : ($isDark ? 'rgba(255,255,255,0.10)' : 'rgba(51,78,139,0.14)')};"
+                  ></div>
+                {/each}
               </div>
-              <input 
-                type="range" 
-                min="50000" 
-                max="2000000" 
-                step="25000"
-                bind:value={maxPrice}
-                class="w-full h-2 rounded-lg appearance-none cursor-pointer accent-black dark:accent-blue-500 bg-gray-200 dark:bg-gray-700"
-              />
-              <span class="block text-[11px] font-medium mt-1 text-left" style="color:{T.muted}">
-                Hasta {formatCurr(maxPrice)}
-              </span>
+
+              <!-- Dual-handle range slider -->
+              <div class="relative h-5 mx-0.5">
+                <!-- Track fondo -->
+                <div class="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[3px] rounded-full"
+                  style="background:{$isDark ? 'rgba(255,255,255,0.12)' : 'rgba(51,78,139,0.14)'}"></div>
+                <!-- Track fill activo -->
+                <div class="absolute top-1/2 -translate-y-1/2 h-[3px] rounded-full"
+                  style="left:{minPricePct}%;right:{100 - maxPricePct}%;background:{$isDark ? '#4A6BC4' : '#334E8B'};"></div>
+                <!-- Handle mínimo -->
+                <input
+                  type="range"
+                  min={MIN_PRICE} max={MAX_PRICE} step={PRICE_STEP}
+                  bind:value={minPrice}
+                  oninput={() => { if (minPrice >= maxPrice - PRICE_STEP) minPrice = maxPrice - PRICE_STEP }}
+                  class="price-thumb"
+                  aria-label="Precio mínimo"
+                />
+                <!-- Handle máximo -->
+                <input
+                  type="range"
+                  min={MIN_PRICE} max={MAX_PRICE} step={PRICE_STEP}
+                  bind:value={maxPrice}
+                  oninput={() => { if (maxPrice <= minPrice + PRICE_STEP) maxPrice = minPrice + PRICE_STEP }}
+                  class="price-thumb"
+                  aria-label="Precio máximo"
+                />
+              </div>
             </div>
 
             <!-- Kilometraje Slider -->
@@ -389,3 +467,63 @@
     </div>
   </div>
 {/if}
+
+<style>
+  /* ── Dual-handle price range thumbs ──────────────────────────────────────── */
+  .price-thumb {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    -webkit-appearance: none;
+    appearance: none;
+    outline: none;
+    pointer-events: none;
+    cursor: pointer;
+  }
+
+  /* Webkit thumb */
+  .price-thumb::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #334E8B;
+    border: 2.5px solid white;
+    box-shadow: 0 1px 8px rgba(51, 78, 139, 0.50), 0 0 0 0 rgba(51,78,139,0);
+    pointer-events: all;
+    cursor: grab;
+    transition: transform 0.1s, box-shadow 0.1s;
+  }
+  .price-thumb::-webkit-slider-thumb:hover {
+    transform: scale(1.15);
+    box-shadow: 0 2px 12px rgba(51, 78, 139, 0.65);
+  }
+  .price-thumb:active::-webkit-slider-thumb {
+    cursor: grabbing;
+    transform: scale(1.2);
+  }
+  .price-thumb::-webkit-slider-runnable-track {
+    background: transparent;
+    height: 3px;
+  }
+
+  /* Firefox thumb */
+  .price-thumb::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #334E8B;
+    border: 2.5px solid white;
+    box-shadow: 0 1px 8px rgba(51, 78, 139, 0.50);
+    pointer-events: all;
+    cursor: grab;
+  }
+  .price-thumb::-moz-range-track {
+    background: transparent;
+    height: 3px;
+  }
+</style>
