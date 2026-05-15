@@ -1,5 +1,32 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 @import 'tailwindcss';
+
+@theme {
+  /* VAPSA Corporate Blue: #334E8B */
+  --color-blue-50: color-mix(in srgb, #334E8B 5%, white);
+  --color-blue-100: color-mix(in srgb, #334E8B 15%, white);
+  --color-blue-200: color-mix(in srgb, #334E8B 30%, white);
+  --color-blue-300: color-mix(in srgb, #334E8B 45%, white);
+  --color-blue-400: color-mix(in srgb, #334E8B 60%, white);
+  --color-blue-500: #334E8B;
+  --color-blue-600: color-mix(in srgb, #334E8B 80%, black);
+  --color-blue-700: color-mix(in srgb, #334E8B 60%, black);
+  --color-blue-800: color-mix(in srgb, #334E8B 40%, black);
+  --color-blue-900: color-mix(in srgb, #334E8B 20%, black);
+  
+  /* VAPSA Corporate Gray: #818082 */
+  --color-gray-50: color-mix(in srgb, #818082 5%, white);
+  --color-gray-100: color-mix(in srgb, #818082 15%, white);
+  --color-gray-200: color-mix(in srgb, #818082 30%, white);
+  --color-gray-300: color-mix(in srgb, #818082 45%, white);
+  --color-gray-400: color-mix(in srgb, #818082 60%, white);
+  --color-gray-500: #818082;
+  --color-gray-600: color-mix(in srgb, #818082 80%, black);
+  --color-gray-700: color-mix(in srgb, #818082 60%, black);
+  --color-gray-800: color-mix(in srgb, #818082 40%, black);
+  --color-gray-900: color-mix(in srgb, #818082 20%, black);
+}
+
 /* @import 'tw-animate-css'; — removed, not installed */
 @import './default_theme.css';
 @import './globals.css';

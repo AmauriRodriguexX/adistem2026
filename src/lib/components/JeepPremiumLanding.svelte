@@ -7,6 +7,7 @@
   let { modelSlug = '1500-rho' }: { modelSlug?: string | null } = $props()
   let progress = $state(0)
   let videoReady = $state(false)
+  let zoomedImage = $state<string | null>(null)
   let pinVideoActive = $state(false)
 
   type ModelDetail = {
@@ -24,6 +25,7 @@
     storyImages?: string[]
     motionImages?: string[]
     capabilityImage?: string
+    price: string
   }
 
   const modelDetails: Record<string, ModelDetail> = {
@@ -32,9 +34,10 @@
       kicker: 'RENEGADE 2026',
       title: 'Redefine la aventura urbana.',
       subtitle: 'Motor 1.3L Turbo GSE de 173 hp, el más potente de su categoría. Diseño icónico Jeep con tecnología de vanguardia y sistemas ADAS para la ciudad.',
-      heroImage: `https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/vlp/desktop/my26-jeep-renegade-vlp-dk-mx.jpg.img.2880.jpg`,
-      spotlightImage: `https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/vlp/desktop/my26-jeep-renegade-vlp-dk-mx.jpg.img.2880.jpg`,
+      heroImage: `https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/capacidad/desktop/my26-jeep-capacidad-y-desempeno-hero-mx-dk.jpg.img.2880.jpg`,
+      spotlightImage: `https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/capacidad/desktop/my26-jeep-capacidad-y-desempeno-hero-mx-dk.jpg.img.2880.jpg`,
       quote: 'Hola,%20me%20interesa%20cotizar%20un%20Jeep%20Renegade',
+      price: 'Desde $456,900',
       specs: [
         { value: '173 hp', label: 'Motor 1.3L Turbo GSE' },
         { value: '8.4"', label: 'Pantalla Táctil Uconnect' },
@@ -49,13 +52,13 @@
         '/adistem2026/jeep/jeep-renegade-2026-inicio-equipamiento-interior-dk.jpg.img.2880.avif'
       ],
       storyImages: [
-        '/adistem2026/jeep/exteriro 2.avif',
-        '/adistem2026/jeep/exterior 4.avif',
+        'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/capacidad/desktop/my26-jeep-capacidad-y-desempeno-hero-mx-dk.jpg.img.2880.jpg',
+        'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/exterior/desktop/jeep-renegade-2026-exterior-highlights-08-full.jpg',
         '/adistem2026/jeep/motor.avif'
       ],
       motionImages: [
         '/adistem2026/jeep/jeep-renegade-2025-inicio-galeria-01-all-breakpoints.avif',
-        '/adistem2026/jeep/luces de niebal.avif',
+        'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/exterior/desktop/jeep-renegade-2026-exterior-highlights-08-full.jpg',
         '/adistem2026/jeep/exterior 3.avif'
       ],
       capabilityImage: '/adistem2026/jeep/jeep-renegade-2026-inicio-galeria-02-full.avif'
@@ -68,6 +71,7 @@
       heroImage: `${L}/jeep-700.jpg`,
       spotlightImage: `${L}/jeep-700.jpg`,
       quote: 'Hola,%20me%20interesa%20cotizar%20una%20JEEP%20700',
+      price: 'Desde $394,900',
       specs: [
         { value: '700', label: 'Pickup compacta JEEP' },
         { value: 'Ágil', label: 'Formato práctico para ciudad' },
@@ -75,7 +79,7 @@
         { value: 'Daily', label: 'Lista para trabajo y movilidad' },
       ],
       motionTitle: 'Se mueve ligera, se ve decidida.',
-      motionCopy: 'La JEEP 700 funciona como herjeepienta diaria: entra fácil, carga cuando toca y mantiene una presencia clara en cada trayecto.',
+      motionCopy: 'La JEEP 700 funciona como herramienta diaria: entra fácil, carga cuando toca y mantiene una presencia clara en cada trayecto.',
     },
     '1500-rho': {
       name: 'JEEP 1500 RHO',
@@ -85,6 +89,7 @@
       heroImage: `${L}/jeep-1500-rho.jpg`,
       spotlightImage: `${L}/jeep-1500-rho.jpg`,
       quote: 'Hola,%20me%20interesa%20cotizar%20una%20JEEP%201500%20RHO',
+      price: 'Desde $1,169,900',
       specs: [
         { value: 'RHO', label: 'Desempeño off-road' },
         { value: '4x4', label: 'Tracción para terrenos abiertos' },
@@ -101,16 +106,17 @@
     kicker: 'JEEP 2026',
     title: 'Fuerza que se siente antes de arrancar.',
     subtitle: 'Capacidad, presencia y tecnología útil para trabajo, viaje y aventura.',
-    heroImage: `${A}/hero.jpg`,
-    spotlightImage: `${A}/modelo-solo.jpg`,
+    heroImage: `https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/capacidad/desktop/my26-jeep-capacidad-y-desempeno-hero-mx-dk.jpg.img.2880.jpg`,
+    spotlightImage: `https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/capacidad/desktop/my26-jeep-capacidad-y-desempeno-hero-mx-dk.jpg.img.2880.jpg`,
     quote: 'Hola,%20me%20interesa%20cotizar%20una%20JEEP',
+    price: 'Desde $456,900',
     specs: [
       { value: '6.7L', label: 'Turbodiesel disponible' },
       { value: '4x4', label: 'Tracción para trabajo pesado' },
       { value: '12"', label: 'Pantalla vertical central' },
       { value: '360°', label: 'Visión para maniobras' },
     ],
-    motionTitle: 'Más que una pickup: una herjeepienta premium.',
+    motionTitle: 'Más que una pickup: una herramienta premium.',
     motionCopy: 'Diseñada para cargar, remolcar y llegar con autoridad.',
   }
 
@@ -135,10 +141,9 @@
         ['Sistema de anclaje ISOFIX para sillas infantiles', 'Controles de audio y teléfono al volante', 'Desempañador trasero', 'Luces proyectoras LED bifuncionales', 'Frenos de disco en las 4 ruedas', 'Sistemas de asistencia ADAS']
       ],
       colors: [
-        { name: 'Granito Cristal', hex: '#a8a8a8', img: `${JEEP_CDN}/modelizer/latitude/jelly-my26-jeep-renegade-sport-modelizer-configurator-granito-cristal-mx-v2.jpg.img.2880.jpg` },
-        { name: 'Negro Carbón', hex: '#0e0e0e', img: '/adistem2026/jeep/black.png' },
-        { name: 'Gris Mantarraya', hex: '#5a5a5a', img: '/adistem2026/jeep/grey.png' },
-        { name: 'Blanco Polar', hex: '#ffffff', img: '/adistem2026/jeep/whute s.png' }
+        { name: 'Granito Cristal', hex: '#a8a8a8', img: 'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/modelizer/latitude/jelly-my26-jeep-renegade-sport-modelizer-configurator-granito-cristal-mx-v2.jpg.img.2880.jpg' },
+        { name: 'Negro Carbón',   hex: '#1a1a1a', img: 'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/modelizer/latitude/jeep-color-renegade-latitud-2026-inicio-modelizer-negro-carbon.jpg.img.2880.jpg' },
+        { name: 'Gris Mantarraya', hex: '#5a5a5a', img: 'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/modelizer/latitude/jeep-color-renegade-latitud-2026-inicio-modelizer-gris-mantarraya-Gris-Mantarraya-Roof-V1.png.img.2880.png' }
       ]
     },
     {
@@ -151,10 +156,9 @@
         ['Alerta de cambio involuntario de carril plus', 'Sistema de detección de fatiga del conductor', 'Espejo retrovisor electrocrómico', 'Parabrisas con sensor de lluvia', 'Volante rediseñado con paletas de cambio', 'Pantalla Uconnect táctil de 8.4"']
       ],
       colors: [
-        { name: 'Negro Carbón', hex: '#0e0e0e', img: `${JEEP_CDN}/vlp/desktop/jeep-renegade-limited-2026-inicio-modelizer-negro-carbon-mx.jpg.img.2880.jpg` },
-        { name: 'Granito Cristal', hex: '#a8a8a8', img: '/adistem2026/jeep/grey s.png' },
-        { name: 'Gris Mantarraya', hex: '#5a5a5a', img: '/adistem2026/jeep/grey black.png' },
-        { name: 'Gris Bajo', hex: '#9a9da2', img: '/adistem2026/jeep/grey low s.png' }
+        { name: 'Gris Mantarraya', hex: '#5a5a5a', img: 'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/modelizer/limited/jeep-renegade-limited-2026-inicio-modelizer-gris-mantarraya.jpg.img.2880.jpg' },
+        { name: 'Granito Cristal', hex: '#a8a8a8', img: 'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/modelizer/limited/jelly-my26-jeep-renegade-sport-modelizer-configurator-granito-cristal-mx-v2.jpg.img.2880.jpg' },
+        { name: 'Blanco Polar',    hex: '#f5f5f0', img: 'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/modelizer/limited/jeep-renegade-limited-2026-inicio-modelizer-blanco-polar.jpg.img.2880.jpg' }
       ]
     }
   ]
@@ -168,39 +172,39 @@
 
   const story = $derived([
     {
-      kicker: 'Presencia',
-      title: model.motionTitle,
-      copy: model.motionCopy,
+      kicker: 'Exterior',
+      title: 'Inigualable por fuera.',
+      copy: 'Un Jeep® es inconfundible en cualquier lugar. Con Jeep® Renegade, además de superar cualquier camino, brillarás con luz propia gracias a su increíble silueta y accesorios.',
       image: model.storyImages?.[0] || model.heroImage,
     },
     {
-      kicker: 'Tecnología',
-      title: 'Control total desde el centro.',
-      copy: 'Pantalla táctil y sistema avanzado en una cabina pensada para decidir rápido y manejar mejor.',
+      kicker: 'Iluminación',
+      title: 'Luces Full LED en todas las versiones.',
+      copy: 'Haz de la noche tu mejor aliada. Las luces traseras LED rinden homenaje al icono Jeep® Willys, con luces de niebla en las versiones Latitude y Limited.',
       image: model.storyImages?.[1] || `${A}/interior-3.jpg`,
     },
     {
-      kicker: 'Desempeño',
-      title: 'Potencia inteligente para lo que sigue.',
-      copy: 'Eficiencia y respuesta dinámica que convierten cada trayecto en una extensión real de tu libertad.',
+      kicker: 'Versión Limited',
+      title: 'Quemacocos panorámico y rines de 19".',
+      copy: 'Siente la libertad y transforma cada viaje con el quemacocos panorámico bi-tono y los rines de aluminio de 19" — únicos en su segmento.',
       image: model.storyImages?.[2] || `${A}/interior-1.jpg`,
     },
   ])
 
   const motionCards = $derived([
     {
-      title: model.name,
-      copy: model.motionCopy,
+      title: 'Diseñado para sobresalir',
+      copy: 'Haz tuyo cualquier camino, desafía la naturaleza y descubre un mundo lleno de emoción con las increíbles capacidades que hacen de Jeep® Renegade tu mejor opción.',
       image: model.motionImages?.[0] || model.heroImage,
     },
     {
-      title: 'Iluminación y diseño',
-      copy: 'Detalles visuales modernos, iluminación eficiente y una experiencia pensada para destacar.',
+      title: 'Luces Full LED',
+      copy: 'Parrilla de 7 ranuras que rinde homenaje al legado Jeep, con luces Full LED que iluminan cada aventura con estilo y precisión.',
       image: model.motionImages?.[1] || `${A}/interior-3.jpg`,
     },
     {
-      title: 'Actitud en movimiento',
-      copy: 'Postura dominante y soluciones prácticas para moverse con intención todos los días.',
+      title: 'Diseño inconfundible',
+      copy: 'Luces traseras LED icono del Jeep® Willys, luces de niebla y detalles únicos que hacen del Renegade un SUV que llama la atención en cualquier lugar.',
       image: model.motionImages?.[2] || `${A}/vehiculo-aislado.jpg`,
     },
   ])
@@ -261,9 +265,29 @@
     }
   })
 
-  function openQuote() {
-    const target = document.getElementById('jeep-quote')
-    target?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+  function toggleZoom(url: string | null) {
+    zoomedImage = url
+  }
+
+  function handleKeydown(e: KeyboardEvent) {
+    if (e.key === 'Escape') zoomedImage = null
+  }
+
+  onMount(() => {
+    window.addEventListener('keydown', handleKeydown)
+    return () => window.removeEventListener('keydown', handleKeydown)
+  })
+
+  function goToQuote() {
+    history.pushState({ view: 'Contacto', tab: 'cotizacion' }, '', '/adistem2026/contacto/')
+    window.dispatchEvent(new PopStateEvent('popstate', { state: { view: 'Contacto', tab: 'cotizacion' } }))
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
+  function goToTestDrive() {
+    history.pushState({ view: 'Contacto', tab: 'prueba' }, '', '/adistem2026/contacto/')
+    window.dispatchEvent(new PopStateEvent('popstate', { state: { view: 'Contacto', tab: 'prueba' } }))
+    window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
   function goBackToJeep() {
@@ -278,27 +302,34 @@
 </svelte:head>
 
 <main class="jeep-premium" style={`--scroll:${progress}`}>
+  <!-- Progress rail is a direct child of main to avoid stacking context trapping -->
+  <div class="progress-rail" aria-hidden="true"><span></span></div>
+
+  <!-- Global Lightbox -->
+  {#if zoomedImage}
+    <!-- svelte-ignore a11y_click_events_have_key_events -->
+    <!-- svelte-ignore a11y_no_static_element_interactions -->
+    <div class="lightbox-overlay" onclick={() => toggleZoom(null)}>
+      <div class="lightbox-content">
+        <img src={zoomedImage} alt="Zoom view" />
+        <button class="lightbox-close" onclick={() => toggleZoom(null)}>
+          <GoogleIcon name="close" size={24} />
+        </button>
+      </div>
+    </div>
+  {/if}
   <section id="inicio" class="jeep-hero">
-    <div class:ready={videoReady} class="video-wash">
-      <ifjeepe
-        src="https://www.youtube.com/embed/OaZSEoMmedw?autoplay=1&mute=1&loop=1&playlist=OaZSEoMmedw&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&start=2&vq=hd1080"
-        title="JEEP video"
-        allow="autoplay; encrypted-media; picture-in-picture"
-        referrerpolicy="strict-origin-when-cross-origin"
-        loading="eager"
-        onload={() => videoReady = true}>
-      </ifjeepe>
-    </div>
-    <img class:video-loaded={videoReady} class="hero-fallback" src={model.heroImage} alt={model.name} />
+    <img class="hero-fallback" src={model.heroImage} alt={model.name} />
     <div class="hero-shade"></div>
-    <button class="back-button" onclick={goBackToJeep}><GoogleIcon name="arrow_back" size={17} /> JEEP</button>
     <div class="hero-copy">
-      <p>{model.kicker}</p>
-      <h1>{model.title}</h1>
-      <span>{model.subtitle}</span>
-      <button onclick={openQuote}>Cotizar {model.name} <GoogleIcon name="arrow_forward" size={18} /></button>
+      <h1>{model.kicker}</h1>
+      <p class="hero-slogan">{model.title}</p>
+      <span class="price-badge">{model.price}</span>
+      <div class="hero-actions">
+        <button class="primary" onclick={goToQuote}>Cotiza Ahora <GoogleIcon name="arrow_forward" size={18} /></button>
+        <button class="ghost" onclick={goToTestDrive}>Prueba de Manejo</button>
+      </div>
     </div>
-    <div class="progress-rail" aria-hidden="true"><span></span></div>
     <div class="scroll-cue">Desliza</div>
   </section>
 
@@ -310,7 +341,8 @@
     <a href="#capacidad" class="s-mteEPoerD6_z">Capacidad y desempeño</a>
     <a href="#equipamiento-exterior" class="s-mteEPoerD6_z">Equipamiento exterior</a>
     <a href="#seguridad" class="s-mteEPoerD6_z">Seguridad</a>
-    <button onclick={openQuote} class="s-mteEPoerD6_z">Cotizar</button>
+    <button onclick={goToTestDrive} class="s-mteEPoerD6_z ghost-nav">Prueba de manejo</button>
+    <button onclick={goToQuote} class="s-mteEPoerD6_z">Cotizar</button>
   </nav>
 
   <section class="pin-stage">
@@ -347,10 +379,7 @@
           </span>
         </div>
 
-        <div class="pin-readout">
-          <span>Momentum visual</span>
-          <strong>{Math.round(progress * 100)}%</strong>
-        </div>
+
       </div>
 
       <div class="pin-copy">
@@ -426,25 +455,24 @@
         </div>
       {:else}
         <div class="vs-exterior-row">
-          <div class="vs-ext-card">
-            <img src={activeVersion.thumb} alt={activeVersion.name} />
-            <span>Vista lateral</span>
-          </div>
-          <div class="vs-ext-card">
-            <img src="/adistem2026/jeep/exterior 1.avif" alt="Frontal" />
-            <span>Vista frontal</span>
-          </div>
-          <div class="vs-ext-card">
-            <img src="/adistem2026/jeep/exterior 3.avif" alt="Trasera" />
-            <span>Vista trasera</span>
-          </div>
+          <button class="vs-ext-card" onclick={() => toggleZoom('https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/gallery/full/my26-jeep-renegade-galeriaexterior-05-allbreakingpoints-mx.jpg.img.2880.jpg')}>
+            <img src="https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/gallery/full/my26-jeep-renegade-galeriaexterior-05-allbreakingpoints-mx.jpg.img.2880.jpg" alt="Lateral" />
+            <span>Vista lateral <GoogleIcon name="zoom_in" size={14} /></span>
+          </button>
+          <button class="vs-ext-card" onclick={() => toggleZoom('https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/exterior/desktop/jeep-renegade-2026-exterior-highlights-07-full.jpg')}>
+            <img src="https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/exterior/desktop/jeep-renegade-2026-exterior-highlights-07-full.jpg" alt="Frontal" />
+            <span>Vista frontal <GoogleIcon name="zoom_in" size={14} /></span>
+          </button>
+          <button class="vs-ext-card" onclick={() => toggleZoom('https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/gallery/full/my26-jeep-renegade-galeriaexterior-02-allbreakingpoints-mx-v2.jpg.img.2880.jpg')}>
+            <img src="https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/gallery/full/my26-jeep-renegade-galeriaexterior-02-allbreakingpoints-mx-v2.jpg.img.2880.jpg" alt="Trasera" />
+            <span>Vista trasera <GoogleIcon name="zoom_in" size={14} /></span>
+          </button>
         </div>
       {/if}
 
-      <!-- CTA -->
       <div class="vs-actions">
-        <button onclick={openQuote} class="vs-action primary">Cotizar ahora <GoogleIcon name="arrow_forward" size={16} /></button>
-        <a href="https://wa.me/524871108899?text=Hola%2C%20me%20interesa%20el%20Jeep%20Renegade" target="_blank" rel="noopener noreferrer" class="vs-action ghost">Prueba de manejo</a>
+        <button onclick={goToQuote} class="vs-action primary">Cotizar ahora <GoogleIcon name="arrow_forward" size={16} /></button>
+        <button onclick={goToTestDrive} class="vs-action ghost">Prueba de manejo</button>
       </div>
     </section>
   {/if}
@@ -460,8 +488,8 @@
 
   <section id="galeria" class="motion-gallery">
     <div class="motion-head">
-      <p>Movimiento</p>
-      <h2>Cards limpias, producto limpio.</h2>
+      <p>Diseño Exterior</p>
+      <h2>Diseñado para sobresalir.</h2>
     </div>
     <div class="motion-cards">
       {#each motionCards as card, i (card.title)}
@@ -491,9 +519,9 @@
 
   <section id="equipamiento-interior" class="cockpit">
     <div class="cockpit-copy">
-      <p>Cabina JEEP</p>
-      <h2>Oscura, silenciosa, lista.</h2>
-      <span>Materiales sobrios, displays claros y espacio real para que cada viaje se sienta bajo control.</span>
+      <p>Único por dentro</p>
+      <h2>La mayor comodidad.</h2>
+      <span>Pantalla táctil Uconnect® de 8.4" con Apple CarPlay® y Android Auto™ inalámbrico, clúster digital TFT a color de 7", cargador inalámbrico y controles al volante para mantenerte conectado sin distracciones.</span>
     </div>
     <div class="cockpit-grid">
       <img src={cockpitImages[0]} alt="Pantalla JEEP" />
@@ -505,55 +533,143 @@
   <section id="capacidad" class="capability">
     <img src={capabilityImage} alt="JEEP exterior de trabajo" />
     <div class="capability-card">
-      <p>Capacidad</p>
-      <h2>Hecha para días pesados.</h2>
+      <p>Capacidad y Desempeño</p>
+      <h2>Siempre listo para romper la rutina.</h2>
       <div class="cap-list">
-        <span><GoogleIcon name="local_shipping" size={18} /> Remolque y carga</span>
-        <span><GoogleIcon name="speed" size={18} /> Respuesta inmediata</span>
-        <span><GoogleIcon name="verified_user" size={18} /> Seguridad avanzada</span>
-        <span><GoogleIcon name="bolt" size={18} /> Tecnología útil</span>
+        <span><GoogleIcon name="speed" size={18} /> 173 hp — motor más potente de su categoría</span>
+        <span><GoogleIcon name="local_gas_station" size={18} /> Motor 1.3L Turbo GSE</span>
+        <span><GoogleIcon name="sync_alt" size={18} /> Transmisión automática de 9 velocidades</span>
+        <span><GoogleIcon name="verified_user" size={18} /> Frenos de disco en las 4 ruedas</span>
       </div>
     </div>
   </section>
 
   <section id="seguridad" class="safety-section">
     <div class="safety-content">
-      <p>Sistemas de Asistencia ADAS</p>
-      <h2>Seguridad que te acompaña.</h2>
-      <span>Frenos de disco en las 4 ruedas, ADAS de primer nivel y materiales pensados para protegerte a ti y a los tuyos en cada rodada.</span>
-      <div class="safety-grid">
-        <div class="safety-video-wrapper">
-          <video
-            src="/adistem2026/jeep/jeep-totalmente-nueva-renegade-2026-highlights-sistemas-de-asistencia-04.mp4"
-            autoplay muted loop playsinline>
-          </video>
+      <p>Confianza y Seguridad</p>
+      <h2>Seguridad a donde quiera que vayas.</h2>
+      <span>Sus avanzados sistemas de seguridad te ofrecen a ti y a tus acompañantes una protección integral de 360°. Frenos ABS en las 4 ruedas, control electrónico de estabilidad y 7 bolsas de aire para mantenerte a salvo en cada rodada.</span>
+
+      <!-- ── ADAS Video Grid ── -->
+      <p class="safety-sub-label">Sistemas de Asistencia ADAS</p>
+      <div class="safety-videos-grid">
+        <div class="safety-vid-card">
+          <video src="https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/safety/sistemas-de-asistencia/video/jeep-totalmente-nueva-renegade-2026-highlights-sistemas-de-asistencia-01.mp4"
+            poster="https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/safety/sistemas-de-asistencia/jeep-totalmente-nueva-renegade-2026-highlights-sistemas-de-asistencia-01.jpg"
+            autoplay muted loop playsinline></video>
+          <div class="svc-label"><span>Asistencia de Estacionamiento</span></div>
         </div>
-        <div class="safety-images">
-          <img src="/adistem2026/jeep/jeep-renegade-2026-inicio-galeria-04-full.avif" alt="Seguridad 1" />
-          <img src="/adistem2026/jeep/jeep-renegade-2026-inicio-galeria-06-full.avif" alt="Seguridad 2" />
+        <div class="safety-vid-card">
+          <video src="https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/safety/sistemas-de-asistencia/video/jeep-totalmente-nueva-renegade-2026-highlights-sistemas-de-asistencia-02.mp4"
+            poster="https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/safety/sistemas-de-asistencia/jeep-totalmente-nueva-renegade-2026-highlights-sistemas-de-asistencia-02.jpg"
+            autoplay muted loop playsinline></video>
+          <div class="svc-label"><span>Reconocimiento de Señales (TSR)</span></div>
+        </div>
+        <div class="safety-vid-card">
+          <video src="https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/safety/sistemas-de-asistencia/video/jeep-renegade-2026-sistemas-de-asistencia-fcw-desktop-v02.mp4"
+            poster="https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/safety/sistemas-de-asistencia/jeep-renegade-2026-sistemas-de-asistencia-fcw-desktop-v02.jpeg"
+            autoplay muted loop playsinline></video>
+          <div class="svc-label"><span>Alerta Colisión Frontal (FCW)</span></div>
+        </div>
+        <div class="safety-vid-card">
+          <video src="https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/safety/sistemas-de-asistencia/video/jeep-totalmente-nueva-renegade-2026-highlights-sistemas-de-asistencia-04.mp4"
+            autoplay muted loop playsinline></video>
+          <div class="svc-label"><span>Abandono de Carril (LDP)</span></div>
+        </div>
+        <div class="safety-vid-card">
+          <video src="https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/safety/sistemas-de-asistencia/video/jeep-totalmente-nueva-renegade-2026-highlights-sistemas-de-asistencia-05.mp4"
+            autoplay muted loop playsinline></video>
+          <div class="svc-label"><span>Sistema de Frenos ABS</span></div>
+        </div>
+        <div class="safety-vid-card">
+          <video src="https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/safety/sistemas-de-asistencia/video/jeep-totalmente-nueva-renegade-2026-highlights-sistemas-de-asistencia-06.mp4"
+            autoplay muted loop playsinline></video>
+          <div class="svc-label"><span>Control de Estabilidad (ESC)</span></div>
+        </div>
+        <div class="safety-vid-card">
+          <video src="https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/safety/sistemas-de-asistencia/video/jeep-totalmente-nueva-renegade-2026-highlights-sistemas-de-asistencia-08.mp4"
+            autoplay muted loop playsinline></video>
+          <div class="svc-label"><span>Control de Oscilación Remolque (TSC)</span></div>
         </div>
       </div>
-      <div class="safety-features">
-        <div class="safety-feat"><GoogleIcon name="airline_seat_recline_normal" size={18} /><span>Anclaje ISOFIX para sillas infantiles</span></div>
-        <div class="safety-feat"><GoogleIcon name="warning" size={18} /><span>Alerta de colisión frontal plus</span></div>
-        <div class="safety-feat"><GoogleIcon name="alt_route" size={18} /><span>Alerta de cambio involuntario de carril</span></div>
-        <div class="safety-feat"><GoogleIcon name="visibility" size={18} /><span>Detección de fatiga del conductor</span></div>
-        <div class="safety-feat"><GoogleIcon name="rv_hookup" size={18} /><span>Control de estabilidad para remolque (TSD)</span></div>
-        <div class="safety-feat"><GoogleIcon name="rainy" size={18} /><span>Parabrisas con sensor de lluvia</span></div>
-        <div class="safety-feat"><GoogleIcon name="brightness_auto" size={18} /><span>Espejo retrovisor electrocrómico</span></div>
-        <div class="safety-feat"><GoogleIcon name="disc_full" size={18} /><span>Frenos de disco en las 4 ruedas</span></div>
+
+      <!-- ── Seguridad 360° — image + rich feature cards ── -->
+      <p class="safety-sub-label">Seguridad Completa 360°</p>
+      <div class="safety-360-wrap">
+        <img class="s360-hero" src="https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/safety/desktop/jeep-renegade-2026-seguridad-01-dk.jpg" alt="Renegade seguridad completa" />
+        <div class="s360-cards">
+          <div class="s360-item">
+            <div class="s360-body">
+              <span class="s360-num">— 01</span>
+              <strong>Seguridad Completa</strong>
+              <p>Equipado con siete bolsas de aire: 2 frontales, 2 laterales, una de rodillas para el conductor y 2 de cortina que protegen a los pasajeros combinando su despliegue con la gravedad del impacto.</p>
+            </div>
+          </div>
+          <div class="s360-item">
+            <div class="s360-body">
+              <span class="s360-num">— 02</span>
+              <strong>Detección de Fatiga</strong>
+              <p>Sistema de detección de fatiga del conductor para garantizar tu seguridad en tramos largos, alertándote cuando detecta señales de cansancio al volante.</p>
+            </div>
+          </div>
+          <div class="s360-item">
+            <div class="s360-body">
+              <span class="s360-num">— 03</span>
+              <strong>Ajuste de Intensidad de Luces</strong>
+              <p>Control de ajuste automático de intensidad de luces para mayor comodidad en el camino, perfecto para conducción nocturna en carretera.</p>
+            </div>
+          </div>
+          <div class="s360-item">
+            <div class="s360-body">
+              <span class="s360-num">— 04</span>
+              <strong>Control de Velocidad</strong>
+              <p>Mantén fija la velocidad sin necesidad de seguir presionando el acelerador, con el control de velocidad de crucero integrado del Jeep® Renegade.</p>
+            </div>
+          </div>
+          <div class="s360-item">
+            <div class="s360-body">
+              <span class="s360-num">— 05</span>
+              <strong>Arranque en Subidas (HSA)</strong>
+              <p>No tendrás que preocuparte al reanudar la marcha en una pendiente — la asistencia de arranque en subidas mantiene el vehículo firme mientras cambias de freno a acelerador.</p>
+            </div>
+          </div>
+          <div class="s360-item">
+            <div class="s360-body">
+              <span class="s360-num">— 06</span>
+              <strong>Encendido Automático de Luces</strong>
+              <p>Tendrás siempre la mejor iluminación sin importar el clima o el entorno, gracias al sistema de encendido automático de luces que detecta las condiciones de visibilidad.</p>
+            </div>
+          </div>
+        </div>
       </div>
+
     </div>
   </section>
 
   <section id="jeep-quote" class="quote-section">
     <p>VAPSA JEEP</p>
     <h2>Agenda una prueba de manejo o recibe una cotización.</h2>
-    <div class="quote-actions">
-      <a href={`https://wa.me/524871108899?text=${model.quote}`} target="_blank" rel="noopener noreferrer">
-        WhatsApp
-      </a>
-      <a href="tel:+524871108899">Llamar ahora</a>
+    <p class="quote-sub">Elige la opción que mejor se ajuste a lo que necesitas. Nuestro equipo está listo para atenderte.</p>
+
+    <div class="quote-cta-grid">
+      <button class="quote-cta-card" onclick={() => { history.pushState({ view: 'Contacto', tab: 'prueba' }, '', '/adistem2026/contacto/'); window.dispatchEvent(new PopStateEvent('popstate', { state: { view: 'Contacto', tab: 'prueba' } })); window.scrollTo({ top: 0, behavior: 'smooth' }) }}>
+        <span class="qcc-icon"><GoogleIcon name="speed" size={28} /></span>
+        <strong>Prueba de Manejo</strong>
+        <span class="qcc-desc">Agenda una cita para manejar el {model.name}</span>
+        <span class="qcc-arrow"><GoogleIcon name="arrow_forward" size={18} /></span>
+      </button>
+      <button class="quote-cta-card" onclick={() => { history.pushState({ view: 'Contacto', tab: 'cita' }, '', '/adistem2026/contacto/'); window.dispatchEvent(new PopStateEvent('popstate', { state: { view: 'Contacto', tab: 'cita' } })); window.scrollTo({ top: 0, behavior: 'smooth' }) }}>
+        <span class="qcc-icon"><GoogleIcon name="build" size={28} /></span>
+        <strong>Cita de Servicio</strong>
+        <span class="qcc-desc">Programa el mantenimiento de tu vehículo</span>
+        <span class="qcc-arrow"><GoogleIcon name="arrow_forward" size={18} /></span>
+      </button>
+      <button class="quote-cta-card" onclick={() => { history.pushState({ view: 'Contacto', tab: 'cotizacion' }, '', '/adistem2026/contacto/'); window.dispatchEvent(new PopStateEvent('popstate', { state: { view: 'Contacto', tab: 'cotizacion' } })); window.scrollTo({ top: 0, behavior: 'smooth' }) }}>
+        <span class="qcc-icon"><GoogleIcon name="description" size={28} /></span>
+        <strong>Solicitar Cotización</strong>
+        <span class="qcc-desc">Recibe precios, versiones y financiamiento</span>
+        <span class="qcc-arrow"><GoogleIcon name="arrow_forward" size={18} /></span>
+      </button>
     </div>
   </section>
 </main>
@@ -584,58 +700,35 @@
     height: 100svh;
     display: grid;
     align-items: center;
-    isolation: isolate;
     overflow: hidden;
   }
 
-  .video-wash,
+
+
   .hero-fallback,
   .hero-shade {
     position: absolute;
     inset: 0;
   }
 
-  .video-wash {
-    z-index: -2;
-    opacity: 0;
-    transform: scale(1.08);
-    filter: saturate(0.8) contrast(1.2);
-    transition: opacity 1600ms var(--ease-out), transform 2200ms var(--ease-out);
-  }
-
-  .video-wash.ready {
-    opacity: 0.74;
-    transform: scale(1.03);
-  }
-
-  .video-wash ifjeepe {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: max(100vw, 177.78vh);
-    height: max(56.25vw, 100vh);
-    transform: translate(-50%, -50%);
-    border: 0;
-    pointer-events: none;
+  @keyframes hero-zoom-out {
+    0% { transform: scale(1.15); opacity: 0; }
+    3% { opacity: 1; }
+    100% { transform: scale(1); opacity: 1; }
   }
 
   .hero-fallback {
-    z-index: -3;
+    z-index: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: 60% center;
-    opacity: 0.95;
-    transform: scale(calc(1.015 + var(--scroll) * 0.03));
-    transition: opacity 1200ms var(--ease-out), transform 1600ms var(--ease-out);
-  }
-
-  .hero-fallback.video-loaded {
     opacity: 0;
+    animation: hero-zoom-out 16s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
   }
 
   .hero-shade {
-    z-index: -1;
+    z-index: 2;
     background:
       radial-gradient(circle at 72% 46%, rgba(136, 13, 0, 0.18), transparent 32%),
       linear-gradient(90deg, rgba(3, 3, 5, 0.50) 0%, rgba(3, 3, 5, 0.20) 40%, rgba(3, 3, 5, 0.05) 100%),
@@ -645,7 +738,7 @@
   .jeep-hero::after {
     content: '';
     position: absolute;
-    z-index: 0;
+    z-index: 3;
     left: 0;
     right: 0;
     bottom: 0;
@@ -660,50 +753,13 @@
 
   .hero-copy {
     position: relative;
-    z-index: 2;
-    width: min(420px, calc(42vw - 20px));
-    margin: 0 0 clamp(60px, 8vw, 100px) clamp(24px, 9vw, 128px);
-    padding: clamp(20px, 1.8vw, 28px) clamp(22px, 2vw, 30px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 20px;
-    background: rgba(5, 7, 18, 0.30);
-    box-shadow:
-      rgba(0, 0, 0, 0.55) 0 30px 80px,
-      rgba(255, 255, 255, 0.05) 0 1px 0 inset;
-    backdrop-filter: blur(28px) saturate(180%);
-    -webkit-backdrop-filter: blur(28px) saturate(180%);
+    z-index: 10;
+    align-self: end;
+    width: min(500px, calc(100vw - 48px));
+    margin: 0 0 clamp(40px, 8vh, 80px) clamp(24px, 8vw, 128px);
+    padding: 0;
     transform: translateY(calc(var(--scroll) * -52px));
     animation: hero-copy-in 1200ms var(--ease-out) both 180ms;
-  }
-
-  .back-button {
-    position: absolute;
-    z-index: 2;
-    top: clamp(88px, 9vw, 118px);
-    left: clamp(22px, 8vw, 124px);
-    min-height: 42px;
-    display: inline-flex;
-    align-items: center;
-    gap: 9px;
-    padding: 0 16px;
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    border-radius: 999px;
-    color: rgba(255, 255, 255, 0.86);
-    background: rgba(8, 8, 12, 0.34);
-    backdrop-filter: blur(20px) saturate(160%);
-    -webkit-backdrop-filter: blur(20px) saturate(160%);
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.12), 0 12px 34px rgba(0,0,0,0.28);
-    font-size: 13px;
-    font-weight: 850;
-    cursor: pointer;
-    animation: hero-copy-in 900ms var(--ease-out) both;
-    transition: transform 420ms var(--ease-out), background 420ms var(--ease-out), border-color 420ms var(--ease-out);
-  }
-
-  .back-button:hover {
-    transform: translateY(-2px);
-    border-color: rgba(255, 255, 255, 0.30);
-    background: rgba(255, 255, 255, 0.12);
   }
 
   .hero-copy p,
@@ -719,53 +775,99 @@
     text-transform: uppercase;
   }
 
-  .hero-copy p {
-    margin: 0 0 8px;
-    font-size: 10px;
-    letter-spacing: 0.22em;
-    color: color-mix(in srgb, var(--jeep-hover) 28%, rgba(255, 255, 255, 0.94));
-    text-shadow: 0 1px 12px rgba(0, 0, 0, 0.50);
-  }
-
   .hero-copy h1 {
-    margin: 0;
-    max-width: 360px;
-    font-size: clamp(28px, 3.2vw, 44px);
-    line-height: 1.05;
-    letter-spacing: -0.025em;
+    margin: 0 0 12px;
+    font-size: clamp(32px, 4vw, 48px);
+    line-height: 1;
+    letter-spacing: -0.01em;
     font-weight: 900;
+    text-transform: uppercase;
+    text-shadow: 0 4px 24px rgba(0, 0, 0, 0.8), 0 2px 8px rgba(0, 0, 0, 0.5);
   }
 
-  .hero-copy > span {
+  .hero-copy .price-badge {
+    display: inline-block;
+    padding: 6px 14px;
+    margin-bottom: 12px;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    color: white;
+    backdrop-filter: blur(10px);
+  }
+
+  .hero-copy .subtitle-text {
     display: block;
-    max-width: 360px;
-    margin-top: 12px;
+    max-width: 380px;
+    margin: 0;
     color: rgba(255, 255, 255, 0.70);
     font-size: 13px;
     font-weight: 400;
     line-height: 1.5;
+    text-transform: none;
+    letter-spacing: normal;
   }
 
-  .hero-copy button,
-  .quote-actions a {
-    margin-top: 18px;
-    min-height: 38px;
+  .hero-copy .hero-slogan {
+    display: none;
+    margin: 0 0 16px;
+    font-size: 15px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.85);
+    text-transform: none;
+    letter-spacing: normal;
+  }
+
+  .hero-copy .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 20px;
+  }
+
+  .hero-copy .hero-actions button {
+    min-height: 40px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 9px;
-    border: 1px solid rgba(255, 255, 255, 0.22);
+    gap: 8px;
+    padding: 0 20px;
     border-radius: 999px;
-    padding: 0 16px;
-    color: white;
-    background: rgba(255, 255, 255, 0.10);
-    backdrop-filter: blur(20px);
-    text-decoration: none;
     font-size: 12px;
     font-weight: 800;
-    letter-spacing: 0.01em;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
     cursor: pointer;
-    transition: transform 420ms var(--ease-out), background 420ms var(--ease-out), border-color 420ms var(--ease-out);
+    transition: all 300ms var(--ease-out);
+  }
+
+  .hero-copy .hero-actions button.primary {
+    background: var(--jeep-default);
+    color: white;
+    border: 1px solid transparent;
+    box-shadow: 0 4px 16px rgba(66, 77, 7, 0.4);
+  }
+
+  .hero-copy .hero-actions button.primary:hover {
+    background: var(--jeep-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(66, 77, 7, 0.6);
+  }
+
+  .hero-copy .hero-actions button.ghost {
+    background: rgba(255, 255, 255, 0.10);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    backdrop-filter: blur(10px);
+  }
+
+  .hero-copy .hero-actions button.ghost:hover {
+    background: rgba(255, 255, 255, 0.20);
+    border-color: rgba(255, 255, 255, 0.35);
+    transform: translateY(-2px);
   }
 
   .quote-actions a {
@@ -874,6 +976,17 @@
     background: var(--jeep-hover);
   }
 
+  .product-nav button.ghost-nav {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    color: rgba(255, 255, 255, 0.86);
+  }
+
+  .product-nav button.ghost-nav:hover {
+    border-color: rgba(255, 255, 255, 0.35);
+    background: rgba(255, 255, 255, 0.04);
+  }
+
   .product-nav a:hover,
   .product-nav button:hover {
     color: white;
@@ -881,7 +994,7 @@
   }
 
   .pin-stage {
-    min-height: 205vh;
+    min-height: 140vh;
     position: relative;
     background:
       radial-gradient(circle at 52% 25%, rgba(136, 13, 0, 0.28), transparent 34%),
@@ -889,16 +1002,16 @@
   }
 
   .pin-visual {
-    min-height: 100svh;
+    min-height: 80svh;
     position: sticky;
-    top: 0;
+    top: 10svh;
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(310px, 0.42fr);
     align-items: center;
     gap: clamp(26px, 4vw, 64px);
     width: min(1520px, calc(100% - clamp(32px, 7vw, 112px)));
     margin: 0 auto;
-    padding: clamp(88px, 9vw, 132px) 0 clamp(44px, 5vw, 80px);
+    padding: clamp(40px, 5vw, 60px) 0;
     overflow: visible;
   }
 
@@ -1414,41 +1527,140 @@
     max-width: 480px;
   }
 
-  .safety-grid {
+  /* ── Safety sub-label ── */
+  .safety-sub-label {
+    margin: 0 0 14px;
+    margin-top: 32px;
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--jeep-hover);
+  }
+
+  /* ── Video cards grid ── */
+  .safety-videos-grid {
     display: grid;
-    grid-template-columns: 1.4fr 1fr;
-    gap: 24px;
-    align-items: stretch;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
   }
 
-  .safety-video-wrapper {
-    position: relative;
-    border-radius: 30px;
+  .safety-vid-card {
+    border-radius: 20px;
     overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    box-shadow: 0 34px 90px rgba(0,0,0,0.36), inset 0 1px 0 rgba(255,255,255,0.10);
+    border: 1px solid rgba(255,255,255,0.10);
+    background: rgba(255,255,255,0.04);
+    backdrop-filter: blur(12px);
+    transition: transform 350ms var(--ease-out), border-color 350ms var(--ease-out);
   }
 
-  .safety-video-wrapper video {
+  .safety-vid-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--jeep-hover);
+  }
+
+  .safety-vid-card video {
     width: 100%;
-    height: 100%;
+    aspect-ratio: 16 / 10;
     object-fit: cover;
     display: block;
   }
 
-  .safety-images {
-    display: grid;
-    grid-template-rows: 1fr 1fr;
-    gap: 24px;
+  .svc-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 14px;
+    font-size: 11px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.75);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
   }
 
-  .safety-images img {
+  .svc-label :global(.material-symbols-outlined) {
+    color: var(--jeep-hover);
+    flex-shrink: 0;
+  }
+
+  /* ── 360 wrap: image left + tiles right ── */
+  .safety-360-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    align-items: start;
+  }
+
+  .s360-hero {
     width: 100%;
-    height: 100%;
+    border-radius: 20px;
     object-fit: cover;
-    border-radius: 30px;
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    box-shadow: 0 34px 90px rgba(0,0,0,0.36), inset 0 1px 0 rgba(255,255,255,0.10);
+    display: block;
+    border: 1px solid rgba(255,255,255,0.10);
+  }
+
+  /* ── 360° rich feature list ── */
+  .s360-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 520px;
+    overflow-y: auto;
+    padding-right: 6px;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(90,105,10,0.35) transparent;
+  }
+
+  .s360-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 16px 18px;
+    border-radius: 14px;
+    border: 1px solid rgba(255,255,255,0.07);
+    border-left: 3px solid rgba(90,105,10,0.35);
+    background: rgba(255,255,255,0.03);
+    transition: transform 260ms var(--ease-out), border-color 260ms var(--ease-out), border-left-color 260ms var(--ease-out), background 260ms var(--ease-out);
+    cursor: default;
+  }
+
+  .s360-item:hover {
+    transform: translateX(4px);
+    border-color: rgba(255,255,255,0.12);
+    border-left-color: var(--jeep-hover);
+    background: rgba(90,105,10,0.07);
+  }
+
+  .s360-num {
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--jeep-hover);
+    line-height: 1;
+  }
+
+  .s360-body {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .s360-body strong {
+    display: block;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.92);
+    margin-bottom: 5px;
+  }
+
+  .s360-body p {
+    margin: 0;
+    font-size: 12px;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.50);
+    font-weight: 400;
   }
 
   .safety-features {
@@ -1460,20 +1672,23 @@
 
   .safety-feat {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 12px;
-    padding: 16px 18px;
+    justify-content: center;
+    text-align: center;
+    gap: 16px;
+    padding: 24px 18px;
     border: 1px solid rgba(255, 255, 255, 0.10);
-    border-radius: 16px;
+    border-radius: 20px;
     background: rgba(255, 255, 255, 0.04);
     backdrop-filter: blur(18px);
     transition: transform 420ms var(--ease-out), background 420ms var(--ease-out), border-color 420ms var(--ease-out);
   }
 
   .safety-feat:hover {
-    transform: translateY(-2px);
+    transform: translateY(-4px);
     background: rgba(255, 255, 255, 0.07);
-    border-color: rgba(186, 0, 0, 0.32);
+    border-color: var(--jeep-hover);
   }
 
   .safety-feat :global(.material-symbols-outlined) {
@@ -1482,21 +1697,44 @@
   }
 
   .safety-feat span {
-    font-size: 13px;
-    font-weight: 500;
-    line-height: 1.35;
-    color: rgba(255, 255, 255, 0.86);
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1.4;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color: rgba(255, 255, 255, 0.7);
   }
 
   @media (max-width: 980px) {
-    .safety-features {
+    .safety-features,
+    .safety-videos-grid {
       grid-template-columns: repeat(2, 1fr);
+    }
+    .safety-360-wrap {
+      grid-template-columns: 1fr;
+    }
+    .s360-cards {
+      max-height: none;
+      overflow-y: visible;
     }
   }
 
   @media (max-width: 560px) {
-    .safety-features {
+    .safety-features,
+    .safety-videos-grid,
+    .safety-360-wrap,
+    .safety-360-grid {
       grid-template-columns: 1fr;
+    }
+    .s360-cards {
+      max-height: none;
+      overflow-y: visible;
+    }
+    .safety-vid-card video {
+      aspect-ratio: 16 / 9;
+    }
+    .svc-label {
+      padding: 10px 12px;
     }
   }
 
@@ -1538,10 +1776,11 @@
   @keyframes feat-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
   .vs-exterior-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 1100px; margin: 0 auto; padding: 0 20px; }
-  .vs-ext-card { border-radius: 24px; overflow: hidden; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); padding: 20px; display: flex; flex-direction: column; align-items: center; gap: 12px; transition: transform .3s, border-color .3s; }
-  .vs-ext-card:hover { transform: translateY(-4px); border-color: rgba(255,255,255,0.14); }
+  .vs-ext-card { width: 100%; border-radius: 24px; overflow: hidden; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); padding: 20px; display: flex; flex-direction: column; align-items: center; gap: 12px; transition: transform .3s, border-color .3s, background .3s; cursor: pointer; font-family: inherit; }
+  .vs-ext-card:hover { transform: translateY(-4px); border-color: rgba(255,255,255,0.14); background: rgba(255,255,255,0.05); }
   .vs-ext-card img { width: 100%; height: 180px; object-fit: contain; }
-  .vs-ext-card span { font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: .08em; }
+  .vs-ext-card span { display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: .08em; }
+  .vs-ext-card span :global(.material-symbols-outlined) { color: var(--jeep-hover); opacity: 0.7; }
 
   .vs-actions { display: flex; justify-content: center; gap: 14px; margin-top: 48px; flex-wrap: wrap; }
   .vs-action { display: inline-flex; align-items: center; gap: 8px; height: 52px; padding: 0 32px; border-radius: 999px; font-size: 14px; font-weight: 800; cursor: pointer; text-decoration: none; border: none; font-family: inherit; transition: all .3s cubic-bezier(.16,1,.3,1); }
@@ -1559,8 +1798,9 @@
 
   @media (max-width: 900px) {
     .hero-copy {
-      margin-left: 22px;
-      margin-bottom: 92px;
+      margin-left: 20px;
+      margin-bottom: 110px;
+      width: calc(100% - 40px);
     }
 
     .video-wash {
@@ -1692,7 +1932,7 @@
     }
   }
 
-  @keyfjeepes hero-copy-in {
+  @keyframes hero-copy-in {
     from {
       opacity: 0;
       transform: translateY(34px);
@@ -1705,7 +1945,7 @@
     }
   }
 
-  @keyfjeepes reveal-up {
+  @keyframes reveal-up {
     from {
       opacity: 0;
       transform: translateY(54px);
@@ -1718,7 +1958,7 @@
     }
   }
 
-  @keyfjeepes cue-pulse {
+  @keyframes cue-pulse {
     0%, 100% {
       opacity: 0.38;
       transform: translateY(0);
@@ -1729,7 +1969,7 @@
     }
   }
 
-  @keyfjeepes soft-float {
+  @keyframes soft-float {
     0%, 100% {
       transform: translateY(0);
     }
@@ -1738,7 +1978,7 @@
     }
   }
 
-  @keyfjeepes spec-rise {
+  @keyframes spec-rise {
     from {
       opacity: 0;
       transform: translateY(42px);
@@ -1751,7 +1991,7 @@
     }
   }
 
-  @keyfjeepes card-flow {
+  @keyframes card-flow {
     from {
       opacity: 0;
       transform: translateX(72px) scale(0.97);
@@ -1764,7 +2004,7 @@
     }
   }
 
-  @keyfjeepes image-unmask {
+  @keyframes image-unmask {
     from {
       clip-path: inset(12% round 0);
       transform: translateY(34px) scale(1.04);
@@ -1785,6 +2025,247 @@
       animation-iteration-count: 1 !important;
       scroll-behavior: auto !important;
       transition-duration: 1ms !important;
+    }
+  }
+
+  /* ─ Quote CTA grid ─────────────────────────────────────────── */
+  .quote-sub {
+    margin: 0 auto 32px;
+    max-width: 560px;
+    font-size: 15px;
+    color: rgba(255,255,255,0.52);
+    line-height: 1.6;
+  }
+
+  .quote-cta-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    max-width: 740px;
+    margin: 0 auto 28px;
+  }
+
+  .quote-cta-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 22px 20px;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.10);
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(24px);
+    color: white;
+    text-align: left;
+    cursor: pointer;
+    transition: background 350ms ease, border-color 350ms ease, transform 350ms cubic-bezier(0.22,1,0.36,1);
+  }
+
+  .quote-cta-card:hover {
+    background: rgba(255,255,255,0.10);
+    border-color: rgba(255,255,255,0.22);
+    transform: translateY(-3px);
+  }
+
+  .qcc-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.10);
+    color: rgba(255,255,255,0.85);
+    flex-shrink: 0;
+  }
+
+  .quote-cta-card strong {
+    display: block;
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+  }
+
+  .qcc-desc {
+    font-size: 12px;
+    color: rgba(255,255,255,0.50);
+    line-height: 1.4;
+    flex: 1;
+  }
+
+  .qcc-arrow {
+    display: flex;
+    align-items: center;
+    color: rgba(255,255,255,0.45);
+    margin-top: auto;
+    transition: transform 300ms cubic-bezier(0.22, 1, 0.36, 1), color 300ms ease;
+  }
+
+  .quote-cta-card:hover .qcc-arrow {
+    transform: translateX(6px);
+    color: rgba(255,255,255,0.90);
+  }
+
+  .quote-secondary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 8px;
+  }
+
+  .quote-secondary-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 18px;
+    height: 42px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.14);
+    background: rgba(255,255,255,0.06);
+    backdrop-filter: blur(16px);
+    color: rgba(255,255,255,0.72);
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 300ms ease, border-color 300ms ease, color 300ms ease;
+  }
+
+  .quote-secondary-btn:hover {
+    background: rgba(255,255,255,0.12);
+    border-color: rgba(255,255,255,0.26);
+    color: white;
+  }
+  /* ── Lightbox Zoom Overlay ── */
+  .lightbox-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(0, 0, 0, 0.88);
+    backdrop-filter: blur(20px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    cursor: zoom-out;
+    animation: lb-fade .3s ease-out;
+  }
+
+  @keyframes lb-fade { from { opacity: 0; } to { opacity: 1; } }
+
+  .lightbox-content {
+    position: relative;
+    max-width: 90vw;
+    max-height: 90vh;
+    animation: lb-zoom .4s cubic-bezier(.16, 1, .3, 1);
+  }
+
+  @keyframes lb-zoom { from { opacity: 0; transform: scale(.92); } to { opacity: 1; transform: scale(1); } }
+
+  .lightbox-content img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 12px;
+    box-shadow: 0 40px 100px rgba(0,0,0,0.8);
+  }
+
+  .lightbox-close {
+    position: absolute;
+    top: -48px;
+    right: 0;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: opacity .3s, transform .3s;
+  }
+
+  .lightbox-close:hover {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+
+  @media (max-width: 560px) {
+    .lightbox-close { top: -40px; right: 0; }
+  }
+
+  /* MOBILE HERO SPLIT LAYOUT */
+  @media (max-width: 768px) {
+    .jeep-premium {
+      display: flex;
+      flex-direction: column;
+    }
+    .product-nav {
+      order: -1;
+      margin: 64px 0 0 0;
+      top: 64px;
+      width: 100%;
+      border-radius: 0;
+      border-left: none;
+      border-right: none;
+      z-index: 50;
+      padding: 0 16px;
+    }
+    .jeep-hero {
+      order: 0;
+      display: flex;
+      flex-direction: column;
+      height: auto;
+      min-height: auto;
+      background: #000;
+      padding-top: 0;
+      margin-bottom: 40px;
+    }
+    .hero-fallback {
+      position: relative;
+      width: 100%;
+      height: auto;
+      max-height: 50vh;
+      object-fit: contain;
+      object-position: center bottom;
+      display: block;
+      margin: 0;
+      /* Animación heredada del desktop */
+    }
+    .hero-shade {
+      display: none;
+    }
+    .hero-copy {
+      position: relative;
+      width: 100%;
+      margin: 0;
+      padding: 24px 24px 32px;
+      transform: none !important;
+      align-self: flex-start;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      animation: none;
+    }
+    .hero-copy h1 {
+      font-size: 32px;
+      margin-bottom: 8px;
+    }
+    .hero-copy .hero-slogan {
+      display: block;
+    }
+    .hero-copy .hero-actions {
+      width: 100%;
+      flex-direction: column;
+      gap: 14px;
+      margin-top: 16px;
+    }
+    .hero-copy .hero-actions button {
+      width: 100%;
+      min-height: 48px;
+    }
+    .scroll-cue {
+      display: none;
     }
   }
 </style>
