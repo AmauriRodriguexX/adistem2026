@@ -204,6 +204,9 @@
       {/key}
     </div>
     
+    <!-- Mobile: fade bottom de imagen hacia el bloque de texto -->
+    <div class="hub-mobile-fade" aria-hidden="true"></div>
+
     <div class="carousel-controls hero-controls-new">
       <div class="carousel-pill" aria-label="Seleccionar modelo">
         {#each models as model, i (model.slug)}
@@ -222,6 +225,23 @@
       </button>
     </div>
   </section>
+
+  <!-- ── Mobile-only: texto + CTA debajo de la imagen ── -->
+  <div class="hub-hero-mobile">
+    {#key activeModelIndex}
+      <div class="hub-hero-mobile-inner">
+        <h2>{models[activeModelIndex].name} <span class="hub-mobile-year">2026</span></h2>
+        <p>{models[activeModelIndex].role}</p>
+        <span class="hub-mobile-price">Desde {models[activeModelIndex].price}</span>
+        <button
+          class="hub-mobile-cta"
+          onclick={() => selectModel(models[activeModelIndex].slug)}
+        >
+          Explorar <GoogleIcon name="arrow_forward" size={16} />
+        </button>
+      </div>
+    {/key}
+  </div>
 
   <section
     class="model-carousel"
@@ -293,6 +313,7 @@
   <section class="story-reel">
 
     <div class="story-panel" style={`background-image: url('${models[0].image}')`}>
+      <img class="story-mobile-img" src={models[0].image} alt="Aventura Urbana" />
       <div class="story-overlay"></div>
       <div class="story-content">
         <p class="story-eyebrow">Aventura Urbana</p>
@@ -306,6 +327,7 @@
     </div>
 
     <div class="story-panel flip" style={`background-image: url('${models[2].image}')`}>
+      <img class="story-mobile-img" src={models[2].image} alt="Familia & Espacio" />
       <div class="story-overlay flip"></div>
       <div class="story-content flip">
         <p class="story-eyebrow">Familia &amp; Espacio</p>
@@ -319,6 +341,7 @@
     </div>
 
     <div class="story-panel" style={`background-image: url('${models[5].image}')`}>
+      <img class="story-mobile-img" src={models[5].image} alt="Off-Road Total" />
       <div class="story-overlay"></div>
       <div class="story-content">
         <p class="story-eyebrow">Off-Road Total</p>
@@ -1152,6 +1175,11 @@
     z-index: 1;
   }
 
+  /* Imagen mobile: oculta en desktop, visible solo en ≤620px */
+  .story-mobile-img {
+    display: none;
+  }
+
   .story-panel {
     position: relative;
     min-height: clamp(540px, 76svh, 960px);
@@ -1717,18 +1745,128 @@
     }
   }
 
+  /* ── Hub-hero mobile text block (hidden on desktop) ── */
+  .hub-mobile-fade { display: none; }
+
+  .hub-hero-mobile { display: none; }
+
+  /* ─── Mobile (≤ 768px): 2-block hero layout ─── */
+  @media (max-width: 768px) {
+    /* Clamp hero a solo la imagen */
+    .hub-hero {
+      height: 52svh !important;
+      min-height: 200px !important;
+      max-height: 400px;
+    }
+
+    /* Ocultar overlay y texto desktop dentro del hero */
+    .hero-shade-new,
+    .hero-copy-new {
+      display: none;
+    }
+
+    /* Fade inferior de la imagen al bloque de texto */
+    .hub-mobile-fade {
+      display: block;
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 56px;
+      background: linear-gradient(to bottom, transparent, #030305);
+      pointer-events: none;
+      z-index: 3;
+    }
+
+    /* Dots se quedan sobre la imagen */
+    .hero-controls-new {
+      bottom: 10px;
+    }
+
+    /* Bloque de texto visible en mobile */
+    .hub-hero-mobile {
+      display: block;
+      background: #030305;
+    }
+
+    .hub-hero-mobile-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding: 18px 20px 20px;
+      animation: hero-copy-in 480ms ease both;
+    }
+
+    .hub-hero-mobile h2 {
+      margin: 0;
+      font-size: clamp(26px, 7vw, 34px);
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      color: white;
+    }
+
+    .hub-mobile-year {
+      color: rgba(255, 255, 255, 0.40);
+      font-weight: 700;
+    }
+
+    .hub-hero-mobile p {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.62);
+      font-size: 13.5px;
+      line-height: 1.5;
+    }
+
+    .hub-mobile-price {
+      display: inline-block;
+      width: fit-content;
+      padding: 5px 13px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      color: white;
+    }
+
+    .hub-mobile-cta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      height: 46px;
+      padding: 0 22px;
+      border-radius: 999px;
+      background: #424D07;
+      color: white;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      cursor: pointer;
+      border: none;
+      font-family: inherit;
+      width: 100%;
+      margin-top: 4px;
+      box-shadow: 0 4px 16px rgba(66, 77, 7, 0.36);
+      transition: background 280ms ease, transform 280ms ease, box-shadow 280ms ease;
+    }
+
+    .hub-mobile-cta:hover {
+      background: #5A690A;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(66, 77, 7, 0.52);
+    }
+  }
+
   /* ─── Mobile (≤ 620px) ─── */
   @media (max-width: 620px) {
-    .cotizar-perks {
-      gap: 10px 16px;
-    }
-
-    .hub-hero {
-      min-height: 660px;
-    }
-
     .hub-hero > img {
       object-position: 70% center;
+    }
+
+    .cotizar-perks {
+      gap: 10px 16px;
     }
 
     .model-carousel {
@@ -1823,13 +1961,59 @@
       font-size: clamp(28px, 7vw, 40px);
     }
 
-    /* Story panel: tighter on mobile */
+    /* ── Story panel mobile: imagen arriba, texto abajo separados ── */
+
+    /* Imagen real visible solo en mobile */
+    .story-mobile-img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      object-position: center 28%;
+      flex-shrink: 0;
+    }
+
     .story-panel {
-      min-height: clamp(400px, 56svh, 620px);
+      min-height: unset;
+      flex-direction: column;
+      align-items: stretch;
+      background-image: none !important;
+    }
+
+    /* Quitamos el overlay que oscurece (no hace falta sobre fondo sólido) */
+    .story-overlay,
+    .story-overlay.flip {
+      display: none;
+    }
+
+    /* El contenido baja sobre fondo sólido */
+    .story-content,
+    .story-content.flip {
+      position: static;
+      max-width: 100%;
+      padding: 24px 20px 32px;
+      margin-left: 0;
+      text-align: left;
+      background: #07070c;
+      animation: none;
+    }
+
+    .story-content.flip .story-actions {
+      justify-content: flex-start;
+    }
+
+    .story-eyebrow {
+      text-shadow: none;
     }
 
     .story-title {
-      font-size: clamp(38px, 10vw, 58px);
+      font-size: clamp(34px, 9vw, 52px);
+      text-shadow: none;
+    }
+
+    .story-sub {
+      text-shadow: none;
+      color: rgba(255, 255, 255, 0.72);
     }
 
     .story-btn {

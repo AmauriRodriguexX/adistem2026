@@ -381,6 +381,16 @@
     mobileOpen={mobileMenuOpen}
     onMobileClose={() => mobileMenuOpen = false}
     onMapClick={scrollToMap}
+    onSeminuevosClick={handleSeminuevosClick}
+    onCotizarClick={handleNavCotizarClick}
+    onPruebaManejoClick={() => handleContactClick('prueba')}
+    onContactoClick={() => {
+      currentView = 'Contacto'
+      history.pushState({ view: 'Contacto' }, '', '/adistem2026/contacto/')
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+      mobileMenuOpen = false
+    }}
+    onUbicacionClick={() => { handleUbicacionClick('ventas'); mobileMenuOpen = false }}
   />
 
   <!-- Fixed top nav -->
