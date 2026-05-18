@@ -4,7 +4,7 @@
   import type { BrandFilter } from '$lib/types'
   import ContactFormCard from './ContactFormCard.svelte'
 
-  interface Props { 
+  interface Props {
     id?: string
     onMapClick?: () => void
     onCotizarClick?: () => void
@@ -27,7 +27,7 @@
   )
 
   const glassBtn   = $derived('background:rgba(255,255,255,0.10);border:1px solid rgba(255,255,255,0.20);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);')
-  
+
   const textPrimary = $derived($isDark ? 'white' : '#1a2040')
   const textMuted   = $derived($isDark ? 'rgba(255,255,255,0.65)' : 'rgba(20,30,80,0.75)')
   const bottomFade = $derived($isDark
@@ -73,7 +73,7 @@
   </div>
 
   {#if brand === 'Jeep'}
-    <div class="absolute inset-0 pointer-events-none opacity-[0.25] mix-blend-overlay z-[15]" 
+    <div class="absolute inset-0 pointer-events-none opacity-[0.25] mix-blend-overlay z-[15]"
       style="background-image:url({TOPO_PATTERN});background-repeat:repeat;background-size:450px;"></div>
   {/if}
 

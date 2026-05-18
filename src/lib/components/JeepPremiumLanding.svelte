@@ -368,16 +368,17 @@
     <div class="scroll-cue">Desliza</div>
   </section>
 
-  <nav class="product-nav s-mteEPoerD6_z" aria-label="Navegación de producto JEEP">
+  <nav class="product-nav hidden md:flex s-mteEPoerD6_z" aria-label="Navegación de producto JEEP">
     <strong class="s-mteEPoerD6_z">{model.name} <span class="nav-year">2026</span></strong>
     <a href="#inicio" class="s-mteEPoerD6_z">Inicio</a>
     <a href="#versiones" class="s-mteEPoerD6_z">Versiones</a>
     <a href="#galeria" class="s-mteEPoerD6_z">Galería</a>
-    <a href="#equipamiento-exterior" class="s-mteEPoerD6_z">Equipamiento exterior</a>
-    <a href="#equipamiento-interior" class="s-mteEPoerD6_z">Equipamiento interior</a>
+    <a href="#equipamiento-exterior" class="s-mteEPoerD6_z nav-link-short" data-short="Exterior">Equipamiento exterior</a>
+    <a href="#equipamiento-interior" class="s-mteEPoerD6_z nav-link-short" data-short="Interior">Equipamiento interior</a>
     <a href="#capacidad" class="s-mteEPoerD6_z">Capacidad</a>
     <a href="#seguridad" class="s-mteEPoerD6_z">Seguridad</a>
-    <button onclick={goToTestDrive} class="s-mteEPoerD6_z ghost-nav">Prueba de manejo</button>
+    <span class="nav-divider"></span>
+    <button onclick={goToTestDrive} class="s-mteEPoerD6_z ghost-nav nav-btn-short" data-short="Prueba">Prueba de manejo</button>
     <button onclick={goToQuote} class="s-mteEPoerD6_z">Cotizar</button>
   </nav>
 
@@ -649,7 +650,8 @@
       </div>
 
 
-      <!-- ── Seguridad 360° — image + rich feature cards ── -->
+      <!-- ── Seguridad 360° — hidden ── -->
+      {#if false}
       <p class="safety-sub-label">Seguridad Completa 360°</p>
       <div class="safety-360-wrap">
         <img class="s360-hero" src="https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/safety/desktop/jeep-renegade-2026-seguridad-01-dk.jpg" alt="Renegade seguridad completa" />
@@ -698,6 +700,7 @@
           </div>
         </div>
       </div>
+      {/if}
 
     </div>
   </section>
@@ -727,7 +730,7 @@
 <!-- ── Floating CTA bar (desktop only, visible after scroll past hero) ── -->
 {#if showFloating}
   <div
-    class="floating-cta hidden md:flex"
+    class="floating-cta flex md:hidden"
     transition:fade={{ duration: 260 }}
   >
     <span class="floating-cta-name">{model.name}</span>
@@ -1026,13 +1029,13 @@
     position: sticky;
     top: 74px;
     z-index: 35;
-    width: min(1080px, calc(100% - 32px));
-    min-height: 54px;
-    margin: -27px auto 0;
+    width: min(1160px, calc(100% - 24px));
+    min-height: 46px;
+    margin: -23px auto 0;
     display: flex;
     align-items: center;
-    gap: 12px;
-    padding: 0 12px 0 22px;
+    gap: 4px;
+    padding: 0 8px 0 16px;
     border: 1px solid rgba(255, 255, 255, 0.14);
     border-radius: 999px;
     background: rgba(12, 12, 16, 0.76);
@@ -1050,34 +1053,68 @@
   }
 
   .product-nav strong {
-    margin-right: auto;
-    font-size: 14px;
+    margin-right: 6px;
+    font-size: 13px;
     flex-shrink: 0;
     white-space: nowrap;
+    padding-right: 10px;
+    border-right: 1px solid rgba(255,255,255,0.12);
   }
 
   .product-nav a,
   .product-nav button {
-    min-height: 34px;
+    min-height: 30px;
     display: inline-flex;
     align-items: center;
     border: 0;
     border-radius: 999px;
-    color: rgba(255, 255, 255, 0.72);
+    color: rgba(255, 255, 255, 0.65);
     background: transparent;
-    font-size: 11px;
-    font-weight: 850;
+    font-size: 10px;
+    font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 0.04em;
     text-decoration: none;
     white-space: nowrap;
     flex-shrink: 0;
     cursor: pointer;
+    padding: 0 8px;
     transition: color 320ms var(--ease-out), background 320ms var(--ease-out), transform 320ms var(--ease-out);
   }
 
+  /* Separador visual antes de los botones CTA */
+  .nav-divider {
+    width: 1px;
+    height: 20px;
+    background: rgba(255,255,255,0.12);
+    flex-shrink: 0;
+    margin: 0 4px;
+  }
+
+  /* Labels cortos en pantallas medianas (md → lg) */
+  @media (min-width: 768px) and (max-width: 1199px) {
+    .nav-link-short,
+    .nav-btn-short {
+      font-size: 0;
+    }
+    .nav-link-short::after {
+      content: attr(data-short);
+      font-size: 10px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .nav-btn-short::after {
+      content: attr(data-short);
+      font-size: 10px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+  }
+
   .product-nav button {
-    padding: 0 14px;
+    padding: 0 12px;
     color: white;
     background: var(--jeep-hover);
   }
@@ -1616,7 +1653,7 @@
 
   .safety-content h2 {
     max-width: 720px;
-    margin: 0;
+    margin: 0 0 20px;
     font-size: clamp(30px, 3.6vw, 48px);
     line-height: 1.08;
     font-weight: 950;
@@ -1625,18 +1662,17 @@
 
   .safety-content span {
     display: block;
-    margin: 0;
+    margin: 0 0 0;
     color: rgba(255, 255, 255, 0.70);
     font-size: 14px;
     font-weight: 400;
-    line-height: 1.5;
-    max-width: 480px;
+    line-height: 1.65;
+    max-width: 540px;
   }
 
   /* ── Safety sub-label ── */
   .safety-sub-label {
-    margin: 0 0 14px;
-    margin-top: 32px;
+    margin: 44px 0 14px;
     font-size: 12px;
     font-weight: 900;
     letter-spacing: 0.18em;
@@ -1997,6 +2033,24 @@
     .vs-feat-grid { grid-template-columns: 1fr; }
     .vs-hero-car { max-height: 280px; }
     .vs-pill { padding: 8px 20px; font-size: 12px; }
+
+    /* ── 16px de separación lateral en mobile ── */
+    .vs-pill-bar,
+    .vs-title-row,
+    .vs-showcase,
+    .vs-color-bar,
+    .vs-panel-toggle,
+    .vs-actions {
+      padding-left: 16px;
+      padding-right: 16px;
+      box-sizing: border-box;
+    }
+
+    .vs-feat-grid,
+    .vs-exterior-row {
+      padding-left: 16px;
+      padding-right: 16px;
+    }
   }
 
   @media (max-width: 900px) {
@@ -2056,6 +2110,20 @@
 
     .spec-band {
       grid-template-columns: 1fr 1fr;
+    }
+
+    .spec-band article {
+      min-height: 140px;
+      padding: 24px 20px;
+    }
+
+    .spec-band strong {
+      font-size: clamp(28px, 8vw, 40px);
+    }
+
+    .spec-band span {
+      font-size: 12px;
+      margin-top: 8px;
     }
 
     .story-panel {
@@ -2119,13 +2187,17 @@
       padding: 9px 12px;
     }
 
-    .spec-band,
     .cap-list,
     .cockpit-grid,
     .safety-grid,
     .versions-layout,
     .features-columns {
       grid-template-columns: 1fr;
+    }
+
+    /* spec-band mantiene 2 columnas en mobile (2x2) */
+    .spec-band {
+      grid-template-columns: 1fr 1fr;
     }
 
     .cockpit-grid img,
