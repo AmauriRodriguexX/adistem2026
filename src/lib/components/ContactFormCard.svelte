@@ -148,17 +148,30 @@
 
   const BRANDS = ['Jeep','Fiat','Dodge','Ram','Peugeot']
   const VEHICLE_YEARS = ['2026','2025','2024','2023','2022','2021','2020','2019','2018','2017','2016']
+
+  // 1 modelo por marca (con año)
   const VEHICLE_MODELS: Record<string, string[]> = {
-    Jeep: ['Renegade', 'Compass', 'Gladiator', 'Wrangler', 'Grand Cherokee'],
-    Fiat: ['Mobi', 'Argo', 'Pulse', 'Fastback', 'Ducato'],
-    Dodge: ['Attitude', 'Durango', 'Charger', 'Journey'],
-    Ram: ['700', '1200', '1500', '1500 RHO', 'Tungsten'],
-    Peugeot: ['2008', '3008', '5008', 'Partner', 'Rifter'],
+    Jeep:    ['Renegade 2026'],
+    Fiat:    ['Pulse 2026'],
+    Dodge:   ['Attitude 2026'],
+    Ram:     ['1500 2026'],
+    Peugeot: ['5008 2026'],
   }
-  const VEHICLE_VERSIONS = ['Base', 'Sport', 'Latitude', 'Limited', 'Premium', 'Otro']
+
+  // 1 versión por modelo
+  const VEHICLE_VERSIONS: Record<string, Record<string, string[]>> = {
+    Jeep:    { 'Renegade 2026':  ['Latitude'] },
+    Fiat:    { 'Pulse 2026':     ['Drive'] },
+    Dodge:   { 'Attitude 2026':  ['SXT'] },
+    Ram:     { '1500 2026':      ['Tungsten'] },
+    Peugeot: { '5008 2026':      ['GT'] },
+  }
+
   const HORARIOS = ['09:00', '10:00', '11:00', '12:00', '13:00', '16:00', '17:00', '18:00']
-  const modelosServicio = $derived(VEHICLE_MODELS[vehiculoMarca] ?? [])
-  const modelosPrueba = $derived(VEHICLE_MODELS[marca] ?? [])
+  const modelosServicio  = $derived(VEHICLE_MODELS[vehiculoMarca] ?? [])
+  const modelosPrueba    = $derived(VEHICLE_MODELS[marca] ?? [])
+  const versionesCotiz   = $derived(VEHICLE_VERSIONS[marca]?.[modelo] ?? [])
+  const versionesServicio = $derived(VEHICLE_VERSIONS[vehiculoMarca]?.[vehiculoModelo] ?? [])
   const SERVICIOS = [
     { value: 'mantenimiento', label: 'Mantenimiento preventivo' },
     { value: 'revision',      label: 'Revisión general' },
@@ -171,7 +184,7 @@
      style="{glassForm}">
   {#if !hideTabs}
     <div class="grid grid-cols-3 gap-2 px-4 pt-5 pb-4 sm:px-6 sm:pt-6" style={formBorder}>
-      {#each [{key:'cotizacion',label:'Cotización'},{key:'cita',label:'Cita Servicio'},{key:'prueba',label:'Prueba Manejo'}] as tab (tab.key)}
+      {#each [{key:'cotizacion',label:'Cotización'},{key:'cita',label:'Cita servicio'},{key:'prueba',label:'Prueba de manejo'}] as tab (tab.key)}
         <button onclick={() => setActiveTab(tab.key as TabKey)}
           class="min-h-10 py-2 px-2 rounded-lg text-[11px] sm:text-xs font-semibold leading-tight transition-all duration-200 cursor-pointer"
           style={tabStyle(tab.key as TabKey)}>{tab.label}</button>
@@ -204,17 +217,17 @@
       <div>
         <label class="block text-[10px] font-bold tracking-wider uppercase mb-1" style="color:{labelColor}">Modelo de interés *</label>
         <div class="grid grid-cols-3 gap-2">
-          <select bind:value={marca} class="w-full h-10 px-2 rounded-lg text-xs outline-none cursor-pointer" style={glassSelect} required>
+          <select bind:value={marca} onchange={() => { modelo = ''; version = '' }} class="w-full h-10 px-2 rounded-lg text-xs outline-none cursor-pointer" style={glassSelect} required>
             <option value="">Marca</option>
             {#each BRANDS as m (m)}<option value={m}>{m}</option>{/each}
           </select>
-          <select bind:value={modelo} class="w-full h-10 px-2 rounded-lg text-xs outline-none cursor-pointer" style={glassSelect} required>
+          <select bind:value={modelo} onchange={() => version = ''} class="w-full h-10 px-2 rounded-lg text-xs outline-none cursor-pointer" style={glassSelect} required>
             <option value="">Modelo</option>
             {#each modelosPrueba as item (item)}<option value={item}>{item}</option>{/each}
           </select>
           <select bind:value={version} class="w-full h-10 px-2 rounded-lg text-xs outline-none cursor-pointer" style={glassSelect} required>
             <option value="">Versión</option>
-            {#each VEHICLE_VERSIONS as item (item)}<option value={item}>{item}</option>{/each}
+            {#each versionesCotiz as item (item)}<option value={item}>{item}</option>{/each}
           </select>
         </div>
       </div>
@@ -363,7 +376,7 @@
             <div><label class="block text-[10px] font-bold tracking-wider uppercase mb-1" style="color:{labelColor}">Versión *</label>
               <select bind:value={vehiculoVersion} class="w-full h-10 px-3 rounded-lg text-sm outline-none cursor-pointer" style={glassSelect} required>
                 <option value="">Versión</option>
-                {#each VEHICLE_VERSIONS as item (item)}<option value={item}>{item}</option>{/each}
+                {#each versionesServicio as item (item)}<option value={item}>{item}</option>{/each}
               </select></div>
           </div>
           <div class="flex items-center gap-3">
@@ -500,7 +513,7 @@
       style={`${primaryBtn}${(activeTab === 'cotizacion' && !cotizacionComplete) || (activeTab === 'cita' && citaStep === 1 && !citaStepOneComplete) || (activeTab === 'cita' && citaStep === 2 && !citaComplete) || (activeTab === 'prueba' && !pruebaComplete) ? 'filter:grayscale(0.35);' : 'cursor:pointer;'}`}
       disabled={(activeTab === 'cotizacion' && !cotizacionComplete) || (activeTab === 'cita' && citaStep === 1 && !citaStepOneComplete) || (activeTab === 'cita' && citaStep === 2 && !citaComplete) || (activeTab === 'prueba' && !pruebaComplete)}
       onclick={handlePrimaryAction}>
-      {activeTab === 'cotizacion' ? 'Solicitar Información' : activeTab === 'cita' ? (citaStep === 1 ? 'Continuar con datos del vehículo' : 'Agendar Cita') : 'Agendar Prueba de Manejo'}
+      {activeTab === 'cotizacion' ? 'Solicitar información' : activeTab === 'cita' ? (citaStep === 1 ? 'Continuar con datos del vehículo' : 'Agendar cita') : 'Agendar prueba de manejo'}
     </button>
   </div>
 </div>

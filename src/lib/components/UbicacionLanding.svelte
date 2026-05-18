@@ -2,6 +2,11 @@
   import { isDark } from '$lib/stores/theme'
   import GoogleIcon from './GoogleIcon.svelte'
 
+  interface Props {
+    context?: 'servicio' | 'ventas'
+  }
+  let { context = 'ventas' }: Props = $props()
+
   // Estado interactivo
   let copiedPhone = $state(false)
   let copiedAddress = $state(false)
@@ -120,6 +125,22 @@
     ? 'background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.05);'
     : 'background:rgba(255,255,255,0.5);border:1px solid rgba(51,78,139,0.08);'
   )
+
+  // Contexto dinámico
+  const isServicio = $derived(context === 'servicio')
+  const mapMinHeight = $derived(isServicio ? '780px' : '650px')
+  const pageTitle = $derived(isServicio ? 'Servicio y Taller' : 'Horarios y Ubicación')
+  const pageBadgeLabel = $derived(isServicio ? 'Departamento de Servicio' : 'Visita Nuestro Piso de Venta')
+  const pageBadgeIcon = $derived(isServicio ? 'build' : 'location_on')
+  const pageSubtitle = $derived(isServicio
+    ? 'Agenda tu cita de mantenimiento, revisa horarios del taller y llega fácilmente a nuestro centro de servicio autorizado.'
+    : 'Conoce la ubicación exacta de nuestra agencia autorizada, explora los horarios por departamento y programa tu visita con atención personalizada.'
+  )
+  // Ordenar departamentos: en contexto servicio, poner Servicio primero
+  const sortedDepts = $derived(isServicio
+    ? [...currentBranch.departments].sort((a) => a.name === 'Servicio' ? -1 : 0)
+    : currentBranch.departments
+  )
 </script>
 
 <div class="min-h-screen pt-28 pb-24 px-4 md:px-8 transition-colors duration-500" style="background:{pageBg}">
@@ -128,15 +149,19 @@
     <!-- Encabezado UX Tendencia 2026 -->
     <div class="text-center mb-8 w-full">
       <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest mb-4 transition-all duration-300 hover:scale-105"
-        style="background:{$isDark ? 'rgba(59,130,246,0.12)' : 'rgba(59,130,246,0.08)'}; color:#3b82f6; border:1px solid rgba(59,130,246,0.25);">
-        <GoogleIcon name="location_on" size={16} />
-        <span>Visita Nuestros Pisos de Venta</span>
+        style="background:{isServicio ? 'rgba(129,128,130,0.12)' : ($isDark ? 'rgba(59,130,246,0.12)' : 'rgba(59,130,246,0.08)')}; color:{isServicio ? '#818082' : '#3b82f6'}; border:1px solid {isServicio ? 'rgba(129,128,130,0.30)' : 'rgba(59,130,246,0.25)'};">
+        <GoogleIcon name={pageBadgeIcon} size={16} />
+        <span>{pageBadgeLabel}</span>
       </div>
       <h1 class="text-4xl md:text-6xl font-black tracking-tight mb-4" style="color:{T.primary}">
-        Horarios y <span style="background:linear-gradient(135deg,#3b82f6,#8b5cf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Ubicación</span>
+        {#if isServicio}
+          Servicio y <span style="background:linear-gradient(135deg,#818082,#555);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Taller</span>
+        {:else}
+          Horarios y <span style="background:linear-gradient(135deg,#334E8B,#2E6CCF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Ubicación</span>
+        {/if}
       </h1>
       <p class="max-w-2xl mx-auto text-sm md:text-base leading-relaxed" style="color:{T.secondary}">
-        Conoce las coordenadas exactas de nuestras agencias autorizadas, explora los horarios por departamento y programa tu visita con atención personalizada.
+        {pageSubtitle}
       </p>
     </div>
 
@@ -164,12 +189,12 @@
             <button 
               onclick={handleContactRedirect}
               class="hidden sm:flex py-2 px-4 bg-blue-500 hover:bg-blue-600 text-white font-black rounded-xl text-[10px] tracking-wider uppercase transition-all shadow-md items-center justify-center gap-1.5 cursor-pointer">
-              <span>CONTÁCTANOS</span>
+              <span>Contáctanos</span>
             </button>
           </div>
 
           <div class="flex flex-col gap-3.5 overflow-y-auto pr-2 custom-scrollbar" style="max-height: 520px;">
-            {#each currentBranch.departments as dept}
+            {#each sortedDepts as dept}
               <div class="p-4 rounded-2xl flex flex-col transition-all group hover:scale-[1.01]" style="{innerCard}">
                 
                 <!-- Encabezado de Área -->
@@ -186,7 +211,7 @@
                     <button 
                       onclick={() => copyToClipboard(dept.phone, 'phone')}
                       class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-colors hover:bg-blue-500/10 cursor-pointer self-start sm:self-auto"
-                      style="color:{dept.accent}; background:transparent; border:1px solid {dept.accent}30;"
+                      style="color:{T.primary}; background:{dept.accent}18; border:1px solid {dept.accent}35;"
                       title="Copiar teléfono">
                       <GoogleIcon name="phone" size={13} />
                       <span class="text-xs font-bold tracking-tight">{dept.phoneDisplay}</span>
@@ -213,8 +238,8 @@
           <!-- Mobile Contact Button (Bottom) -->
           <button 
             onclick={handleContactRedirect}
-            class="sm:hidden w-full mt-2 py-3 bg-blue-500 text-white font-black rounded-xl text-xs tracking-wider uppercase transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer">
-            <span>CONTÁCTANOS</span>
+            class="sm:hidden w-full mt-2 py-3 bg-blue-500 text-white font-black rounded-xl text-xs tracking-wide transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer">
+            <span>Contáctanos</span>
           </button>
         </div>
 
@@ -222,8 +247,8 @@
 
       <!-- Panel Derecho: Mapa 'Home Style' (7 columnas) -->
       <div class="lg:col-span-7 flex flex-col">
-        <div class="relative w-full h-[600px] md:h-full min-h-[650px] rounded-[32px] overflow-hidden shadow-2xl transition-all duration-500 flex flex-col" 
-             style="{glassContainer}; padding: 6px;">
+        <div class="relative w-full h-[600px] md:h-full rounded-[32px] overflow-hidden shadow-2xl transition-all duration-500 flex flex-col"
+             style="{glassContainer}; padding: 6px; min-height:{mapMinHeight};">
           
           <div class="relative w-full h-full rounded-[26px] overflow-hidden bg-black/5 dark:bg-white/5">
               <iframe

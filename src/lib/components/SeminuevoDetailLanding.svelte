@@ -84,7 +84,7 @@
       style="background: {$isDark ? 'rgba(255,255,255,0.06)' : 'rgba(51,78,139,0.06)'}; color: {T.primary}; border: 1px solid {T.divider};"
     >
       <GoogleIcon name="arrow_back" size={16} />
-      <span>Regresar al inventario</span>
+      <span class="hidden sm:inline">Regresar al inventario</span>
     </button>
 
     <!-- Encabezado Principal -->
@@ -239,7 +239,7 @@
               style="background: #334E8B;"
             >
               <GoogleIcon name="calculate" size={16} />
-              <span>Solicitar Cotización</span>
+              <span>Solicitar cotización</span>
             </button>
           </div>
 

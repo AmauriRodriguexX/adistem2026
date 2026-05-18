@@ -204,7 +204,7 @@
     }
 
     if (path.toLowerCase().startsWith(base + 'contacto')) {
-      currentView = 'Cotizacion'
+      currentView = 'Contacto'
       window.scrollTo(0, 0)
       return
     }
@@ -217,9 +217,12 @@
       const brands: BrandFilter[] = ['Jeep', 'Fiat', 'Dodge', 'Ram', 'Peugeot']
       const found = brands.find(b => b.toLowerCase() === brandPath.toLowerCase())
       if (found) {
+        if (found !== 'Jeep') {
+          brandFilter = 'Todas'
+          return
+        }
         brandFilter = found
-        if (found === 'Ram') ramModelSlug = routeParts[1] || null
-        if (found === 'Jeep') jeepModelSlug = routeParts[1] || null
+        jeepModelSlug = routeParts[1] || null
         return
       }
     }
@@ -233,6 +236,9 @@
   })
 
   function handleBrandSelect(brand: BrandFilter) { 
+    // Restriction: Only Jeep and 'Todas' are allowed
+    if (brand !== 'Jeep' && brand !== 'Todas') return
+
     if (brandFilter === brand && currentView === 'Portal') return
     brandFilter = brand
     currentView = 'Portal'
@@ -286,7 +292,10 @@
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
-  function handleUbicacionClick() {
+  let ubicacionContext = $state<'servicio' | 'ventas'>('ventas')
+
+  function handleUbicacionClick(ctx: 'servicio' | 'ventas' = 'ventas') {
+    ubicacionContext = ctx
     currentView = 'Ubicacion'
     history.pushState({ view: 'Ubicacion' }, '', '/adistem2026/ubicacion/')
     window.scrollTo({ top: 0, behavior: 'smooth' })
@@ -369,6 +378,7 @@
   <GlassTopNav
     activeType={typeFilter}
     activeBrand={brandFilter}
+    activeView={currentView}
     onTypeSelect={handleTypeSelect}
     onCotizarClick={handleNavCotizarClick}
     onMenuToggle={() => mobileMenuOpen = !mobileMenuOpen}
@@ -377,12 +387,24 @@
     onSeminuevosClick={handleSeminuevosClick}
     onPruebaManejoClick={() => handleContactClick('prueba')}
     onServicioClick={() => handleContactClick('cita')}
-    onContactoClick={() => handleContactClick('cotizacion')}
+    onContactoClick={() => {
+      currentView = 'Contacto'
+      history.pushState({ view: 'Contacto' }, '', '/adistem2026/contacto/')
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }}
     onUbicacionClick={handleUbicacionClick}
+    onModelSelect={(brand, slug) => {
+      if (brand === 'Jeep') handleJeepModelSelect(slug)
+      else if (brand === 'Ram') handleRamModelSelect(slug)
+    }}
   />
 
   <!-- Mobile bottom nav -->
-  <MobileBottomNav onCotizarClick={handleNavCotizarClick} />
+  <MobileBottomNav
+    onCotizarClick={handleNavCotizarClick}
+    onPruebaManejoClick={() => handleContactClick('prueba')}
+    mode={(currentView === 'Portal' && (brandFilter === 'Jeep' || brandFilter === 'Ram') && (jeepModelSlug || ramModelSlug)) ? 'model-detail' : 'default'}
+  />
 
   <!-- Main content -->
   <div class="ml-0 md:ml-20 pb-32 md:pb-0">
@@ -591,7 +613,7 @@
                 </div>
               </div>
               <a href="https://www.google.com/maps/search/?api=1&query=BLVD+SAN+LUIS+1158,+San+Luis+Potosí,+San+Luis+Potosí" target="_blank" rel="noopener noreferrer"
-                class="w-full py-3 text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 btn-glow-border">
+                class="w-full py-3 text-xs font-bold tracking-wide flex items-center justify-center gap-2 btn-glow-border">
                 <GoogleIcon name="location_on" size={16} />
                 Llévame ahí
               </a>
@@ -611,7 +633,7 @@
     {:else if currentView === 'PruebaManejo'}
       <PruebaManejoLanding />
     {:else if currentView === 'Ubicacion'}
-      <UbicacionLanding />
+      <UbicacionLanding context={ubicacionContext} />
     {/if}
 
     <!-- FOOTER -->

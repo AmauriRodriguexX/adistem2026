@@ -27,7 +27,6 @@
   )
 
   const glassBtn   = $derived('background:rgba(255,255,255,0.10);border:1px solid rgba(255,255,255,0.20);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);')
-  const primaryBtn = $derived(`background:linear-gradient(135deg,${config?.accent},#2E6CCF);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,0.28);box-shadow:0 8px 30px ${config?.accent}66,inset 0 1px 0 rgba(255,255,255,0.30);`)
   
   const textPrimary = $derived($isDark ? 'white' : '#1a2040')
   const textMuted   = $derived($isDark ? 'rgba(255,255,255,0.65)' : 'rgba(20,30,80,0.75)')
@@ -92,10 +91,7 @@
       {config?.subtitle ?? ''}
     </p>
 
-    <div class="flex flex-col sm:flex-row w-full max-w-xs gap-3">
-      <button onclick={onCotizarClick} class="w-full flex items-center justify-center gap-2 py-3.5 rounded-2xl text-white/85 text-sm font-medium transition-all active:scale-[0.98] cursor-pointer" style={primaryBtn}>
-        Cotizar Ahora <ChevronDown size={16} />
-      </button>
+    <div class="w-full max-w-xs">
       <a href="#" class="w-full flex items-center justify-center gap-2 py-3.5 text-sm font-bold tracking-wide btn-glow-border transition-all active:scale-[0.98]">
         Prueba de manejo <ChevronRight size={16} />
       </a>
