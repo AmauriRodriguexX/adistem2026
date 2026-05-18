@@ -149,30 +149,15 @@
       style="color:{$isDark ? 'rgba(255,255,255,0.38)' : 'rgba(20,30,80,0.40)'}">Selecciona una marca</p>
 
     <nav class="flex flex-col gap-3 px-3 flex-1 overflow-y-auto pb-6">
-      <!-- Todas -->
-      <button onclick={() => { onBrandSelect?.('Todas'); onMobileClose?.() }}
-        class="w-full flex items-center gap-3 px-4 py-3 rounded-2xl text-left transition-all active:scale-[0.98]"
-        style="background:{brandActiveBg(activeBrand === 'Todas', 'Todas')};border:{brandActiveBorder(activeBrand === 'Todas', 'Todas')}">
-        <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
-          style="background:{activeBrand === 'Todas' ? 'color-mix(in srgb, #334E8B 24%, transparent)' : ($isDark ? 'rgba(255,255,255,0.08)' : 'rgba(51,78,139,0.08)')};border:{activeBrand === 'Todas' ? '1px solid color-mix(in srgb, #334E8B 55%, rgba(255,255,255,0.18))' : '1px solid transparent'}">
-          <GoogleIcon name="layers" size={20} style="color:{activeBrand === 'Todas' ? '#2E6CCF' : ($isDark ? 'rgba(255,255,255,0.8)' : 'rgba(51,78,139,0.8)')}" />
-        </div>
-        <div class="flex-1">
-          <p class="text-sm font-bold tracking-tight" style="color:{$isDark ? 'white' : '#1a2040'}">Todas las marcas</p>
-        </div>
-        {#if activeBrand === 'Todas'}
-          <div class="w-1.5 h-1.5 rounded-full flex-shrink-0" style="background:#334E8B;box-shadow:0 0 10px #334E8B"></div>
-        {/if}
-      </button>
-
       <!-- Grid of logos -->
       <div class="grid grid-cols-2 gap-2">
         {#each brands as brand (brand.name)}
           {@const isActive = activeBrand === brand.name}
           {@const tone = brandTone(brand.name)}
-          <button onclick={() => { onBrandSelect?.(brand.name); onMobileClose?.() }}
+          {@const isEnabled = brand.name === 'Jeep'}
+          <button onclick={() => { if (isEnabled) { onBrandSelect?.(brand.name); onMobileClose?.() } }}
             class="relative aspect-[1.1/1] flex flex-col items-center justify-center rounded-2xl transition-all active:scale-[0.95]"
-            style="background:{brandActiveBg(isActive, brand.name)};border:{brandActiveBorder(isActive, brand.name)};box-shadow:{isActive ? `0 8px 24px color-mix(in srgb, ${tone} 25%, transparent)` : 'none'}">
+            style="background:{brandActiveBg(isActive, brand.name)};border:{brandActiveBorder(isActive, brand.name)};box-shadow:{isActive ? `0 8px 24px color-mix(in srgb, ${tone} 25%, transparent)` : 'none'};opacity:{isEnabled ? 1 : 0.35};filter:{isEnabled ? 'none' : 'grayscale(1)'};cursor:{isEnabled ? 'pointer' : 'default'};">
             
             <div class="w-14 h-14 rounded-xl flex items-center justify-center p-2.5 transition-all"
               style="background:{isActive ? `color-mix(in srgb, ${tone} ${$isDark ? 32 : 14}%, transparent)` : ($isDark ? 'rgba(255,255,255,0.04)' : `rgba(255,255,255,0.40)`)};border:{isActive ? `1px solid color-mix(in srgb, ${tone} 54%, rgba(255,255,255,0.18))` : ($isDark ? '1px solid rgba(255,255,255,0.05)' : '1px solid rgba(100,130,220,0.10)')};transform:{isActive ? 'scale(1.05)' : 'scale(1)'}">
@@ -184,7 +169,6 @@
               <div class="absolute top-2 right-2 w-1.5 h-1.5 rounded-full" style="background:{tone};box-shadow:0 0 10px {tone}"></div>
             {/if}
             
-            <span class="mt-2 text-[10px] font-black uppercase tracking-widest opacity-40" style="color:{$isDark ? 'white' : '#1a2040'}">{brand.name}</span>
           </button>
         {/each}
       </div>
@@ -199,7 +183,7 @@
           <GoogleIcon name="build" size={20} class="opacity-70" /> Servicio
         </a>
         <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold transition-all" style="color:{$isDark ? 'rgba(255,255,255,0.85)' : '#1a2040'}" onclick={(e) => { e.preventDefault(); onMobileClose?.(); onMapClick?.() }}>
-          <GoogleIcon name="location_on" size={20} class="opacity-70" /> Ubicación
+          <GoogleIcon name="location_on" size={20} class="opacity-70" /> Horarios y ubicación
         </a>
         <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold transition-all" style="color:{$isDark ? 'rgba(255,255,255,0.85)' : '#1a2040'}">
           <GoogleIcon name="call" size={20} class="opacity-70" /> Contacto

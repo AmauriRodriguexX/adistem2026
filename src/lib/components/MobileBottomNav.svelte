@@ -3,16 +3,23 @@
   import GoogleIcon from './GoogleIcon.svelte'
 
   interface Props {
-    onCotizarClick?: () => void
+    onCotizarClick?:      () => void
+    onPruebaManejoClick?: () => void
+    mode?: 'default' | 'model-detail'
   }
-  let { onCotizarClick }: Props = $props()
+  let { onCotizarClick, onPruebaManejoClick, mode = 'default' }: Props = $props()
 
   const LINKS = [
-    { icon: 'speed',      label: 'Prueba de manejo', href: '#', isWA: false, action: 'cotizar' },
+    { icon: 'speed',      label: 'Prueba de manejo', href: '#', isWA: false, action: 'prueba' },
     { icon: 'calculate',  label: 'Cotizar',    href: '#', isWA: false, action: 'cotizar' },
     { icon: 'build',      label: 'Servicio',   href: '#', isWA: false, action: 'cotizar' },
     { icon: 'call',       label: 'Contacto',   href: '#', isWA: false, action: 'cotizar' },
     { icon: 'chat',       label: 'WhatsApp',   href: '#', isWA: true,  action: 'wa' },
+  ] as const
+
+  const MODEL_LINKS = [
+    { icon: 'calculate',  label: 'Cotizar',          isWA: false, action: 'cotizar', primary: true  },
+    { icon: 'speed',      label: 'Prueba de manejo', isWA: false, action: 'prueba',  primary: false },
   ] as const
 
   const WA_CONTACTS = [
@@ -47,6 +54,8 @@
   function handleAction(action: string) {
     if (action === 'cotizar') {
       onCotizarClick?.()
+    } else if (action === 'prueba') {
+      onPruebaManejoClick?.() ?? onCotizarClick?.()
     } else if (action === 'wa') {
       waOpen = true
     }
@@ -133,30 +142,46 @@
          pointer-events:auto; overflow-x:auto; -ms-overflow-style:none; scrollbar-width:none;">
   
   <div class="flex items-stretch w-full justify-between" style="height:54px;">
-    {#each LINKS as link (link.label)}
-      {@const iconColor  = link.isWA ? '#25D366' : textMuted}
-      {@const labelColor = link.isWA ? '#25D366' : textMuted}
-      <button
-        onclick={() => handleAction(link.action)}
-        class="flex-1 flex flex-col items-center justify-center gap-1.5 active:scale-90 transition-transform"
-        style="min-width:0;">
-        <div class="relative flex items-center justify-center">
-          {#if link.isWA}
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
-              alt="WhatsApp"
-              style="width:22px;height:22px;background:linear-gradient(135deg,#25D366 0%,#128C7E 100%);padding:3px;border-radius:6px;display:block;"
-            />
-          {:else}
-            <GoogleIcon name={link.icon} size={21} style="color:{iconColor}" />
-          {/if}
-          {#if link.isWA}
-            <span class="absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full border-2"
-              style="background:#25D366;border-color:{$isDark ? 'rgba(6,8,22,0.80)' : 'rgba(255,255,255,0.85)'}"></span>
-          {/if}
-        </div>
-        <span class="text-[9.5px] font-medium leading-none" style="color:{labelColor}">{link.label}</span>
-      </button>
-    {/each}
+    {#if mode === 'model-detail'}
+      <!-- Modo detalle de modelo: solo Cotizar + Prueba de manejo -->
+      {#each MODEL_LINKS as link (link.label)}
+        <button
+          onclick={() => handleAction(link.action)}
+          class="flex-1 flex items-center justify-center gap-2 mx-1 rounded-xl text-sm font-bold transition-all active:scale-[0.96] cursor-pointer"
+          style="{link.primary
+            ? 'background:#334E8B;color:white;'
+            : `background:${$isDark ? 'rgba(255,255,255,0.08)' : 'rgba(51,78,139,0.08)'};color:${$isDark ? 'rgba(255,255,255,0.88)' : '#1a2040'};`}">
+          <GoogleIcon name={link.icon} size={18} />
+          <span>{link.label}</span>
+        </button>
+      {/each}
+    {:else}
+      <!-- Modo default: 5 botones -->
+      {#each LINKS as link (link.label)}
+        {@const iconColor  = link.isWA ? '#25D366' : textMuted}
+        {@const labelColor = link.isWA ? '#25D366' : textMuted}
+        <button
+          onclick={() => handleAction(link.action)}
+          class="flex-1 flex flex-col items-center justify-center gap-1.5 active:scale-90 transition-transform"
+          style="min-width:0;">
+          <div class="relative flex items-center justify-center">
+            {#if link.isWA}
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+                alt="WhatsApp"
+                style="width:22px;height:22px;background:linear-gradient(135deg,#25D366 0%,#128C7E 100%);padding:3px;border-radius:6px;display:block;"
+              />
+            {:else}
+              <GoogleIcon name={link.icon} size={21} style="color:{iconColor}" />
+            {/if}
+            {#if link.isWA}
+              <span class="absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full border-2"
+                style="background:#25D366;border-color:{$isDark ? 'rgba(6,8,22,0.80)' : 'rgba(255,255,255,0.85)'}"></span>
+            {/if}
+          </div>
+          <span class="text-[9.5px] font-medium leading-none" style="color:{labelColor}">{link.label}</span>
+        </button>
+      {/each}
+    {/if}
   </div>
 </nav>

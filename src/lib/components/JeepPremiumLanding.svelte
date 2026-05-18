@@ -1,6 +1,13 @@
 <script lang="ts">
   import { onMount } from 'svelte'
+  import { fade } from 'svelte/transition'
   import GoogleIcon from './GoogleIcon.svelte'
+  import ContactFormCard from './ContactFormCard.svelte'
+
+  // ── Cotizar Drawer ──────────────────────────────────────────────────────
+  let showCotizarDrawer = $state(false)
+  type DrawerTab = 'cotizacion' | 'prueba' | 'cita'
+  let drawerTab = $state<DrawerTab>('cotizacion')
 
   const A = '/adistem2026/jeep-demo'
   const L = '/adistem2026/jeep-lineup'
@@ -114,7 +121,7 @@
       { value: '6.7L', label: 'Turbodiesel disponible' },
       { value: '4x4', label: 'Tracción para trabajo pesado' },
       { value: '12"', label: 'Pantalla vertical central' },
-      { value: '360°', label: 'Visión para maniobras' },
+      { value: 'AWD', label: 'Tracción integral disponible' },
     ],
     motionTitle: 'Más que una pickup: una herramienta premium.',
     motionCopy: 'Diseñada para cargar, remolcar y llegar con autoridad.',
@@ -279,15 +286,13 @@
   })
 
   function goToQuote() {
-    history.pushState({ view: 'Contacto', tab: 'cotizacion' }, '', '/adistem2026/contacto/')
-    window.dispatchEvent(new PopStateEvent('popstate', { state: { view: 'Contacto', tab: 'cotizacion' } }))
-    window.scrollTo({ top: 0, behavior: 'smooth' })
+    drawerTab = 'cotizacion'
+    showCotizarDrawer = true
   }
 
   function goToTestDrive() {
-    history.pushState({ view: 'Contacto', tab: 'prueba' }, '', '/adistem2026/contacto/')
-    window.dispatchEvent(new PopStateEvent('popstate', { state: { view: 'Contacto', tab: 'prueba' } }))
-    window.scrollTo({ top: 0, behavior: 'smooth' })
+    drawerTab = 'prueba'
+    showCotizarDrawer = true
   }
 
   function goBackToJeep() {
@@ -301,10 +306,7 @@
     { id: 0, label: 'Asistencia Estacionamiento', video: 'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/safety/sistemas-de-asistencia/video/jeep-totalmente-nueva-renegade-2026-highlights-sistemas-de-asistencia-01.mp4', poster: 'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/safety/sistemas-de-asistencia/jeep-totalmente-nueva-renegade-2026-highlights-sistemas-de-asistencia-01.jpg' },
     { id: 1, label: 'Reconocimiento Señales (TSR)', video: 'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/safety/sistemas-de-asistencia/video/jeep-totalmente-nueva-renegade-2026-highlights-sistemas-de-asistencia-02.mp4', poster: 'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/safety/sistemas-de-asistencia/jeep-totalmente-nueva-renegade-2026-highlights-sistemas-de-asistencia-02.jpg' },
     { id: 2, label: 'Alerta Colisión Frontal (FCW)', video: 'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/safety/sistemas-de-asistencia/video/jeep-renegade-2026-sistemas-de-asistencia-fcw-desktop-v02.mp4', poster: 'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/safety/sistemas-de-asistencia/jeep-renegade-2026-sistemas-de-asistencia-fcw-desktop-v02.jpeg' },
-    { id: 3, label: 'Abandono de Carril (LDP)', video: 'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/safety/sistemas-de-asistencia/video/jeep-totalmente-nueva-renegade-2026-highlights-sistemas-de-asistencia-04.mp4', poster: '' },
-    { id: 4, label: 'Sistema de Frenos ABS', video: 'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/safety/sistemas-de-asistencia/video/jeep-totalmente-nueva-renegade-2026-highlights-sistemas-de-asistencia-05.mp4', poster: '' },
-    { id: 5, label: 'Control de Estabilidad (ESC)', video: 'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/safety/sistemas-de-asistencia/video/jeep-totalmente-nueva-renegade-2026-highlights-sistemas-de-asistencia-06.mp4', poster: '' },
-    { id: 6, label: 'Oscilación Remolque (TSC)', video: 'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/safety/sistemas-de-asistencia/video/jeep-totalmente-nueva-renegade-2026-highlights-sistemas-de-asistencia-08.mp4', poster: '' }
+    { id: 3, label: 'Abandono de Carril (LDP)', video: 'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/safety/sistemas-de-asistencia/video/jeep-totalmente-nueva-renegade-2026-highlights-sistemas-de-asistencia-04.mp4', poster: '' }
   ]
 
   let adasIndex = $state(0)
@@ -348,8 +350,8 @@
       <p class="hero-slogan">{model.title}</p>
       <span class="price-badge">{model.price}</span>
       <div class="hero-actions">
-        <button class="primary" onclick={goToQuote}>Cotiza Ahora <GoogleIcon name="arrow_forward" size={18} /></button>
-        <button class="ghost" onclick={goToTestDrive}>Prueba de Manejo</button>
+        <button class="primary" onclick={goToQuote}>Cotiza ahora <GoogleIcon name="arrow_forward" size={18} /></button>
+        <button class="ghost" onclick={goToTestDrive}>Prueba de manejo</button>
       </div>
     </div>
     <div class="scroll-cue">Desliza</div>
@@ -358,10 +360,11 @@
   <nav class="product-nav s-mteEPoerD6_z" aria-label="Navegación de producto JEEP">
     <strong class="s-mteEPoerD6_z">{model.name}</strong>
     <a href="#inicio" class="s-mteEPoerD6_z">Inicio</a>
+    <a href="#versiones" class="s-mteEPoerD6_z">Versiones</a>
     <a href="#galeria" class="s-mteEPoerD6_z">Galería</a>
-    <a href="#equipamiento-interior" class="s-mteEPoerD6_z">Equipamiento interior</a>
-    <a href="#capacidad" class="s-mteEPoerD6_z">Capacidad y desempeño</a>
     <a href="#equipamiento-exterior" class="s-mteEPoerD6_z">Equipamiento exterior</a>
+    <a href="#equipamiento-interior" class="s-mteEPoerD6_z">Equipamiento interior</a>
+    <a href="#capacidad" class="s-mteEPoerD6_z">Capacidad</a>
     <a href="#seguridad" class="s-mteEPoerD6_z">Seguridad</a>
     <button onclick={goToTestDrive} class="s-mteEPoerD6_z ghost-nav">Prueba de manejo</button>
     <button onclick={goToQuote} class="s-mteEPoerD6_z">Cotizar</button>
@@ -493,8 +496,8 @@
       {/if}
 
       <div class="vs-actions">
-        <button onclick={goToQuote} class="vs-action primary">Cotizar ahora <GoogleIcon name="arrow_forward" size={16} /></button>
-        <button onclick={goToTestDrive} class="vs-action ghost">Prueba de manejo</button>
+        <button onclick={() => showCotizarDrawer = true} class="vs-action primary">Cotizar ahora <GoogleIcon name="arrow_forward" size={16} /></button>
+        <button onclick={() => { showCotizarDrawer = true; drawerTab = 'prueba' }} class="vs-action ghost">Prueba de manejo</button>
       </div>
     </section>
   {/if}
@@ -661,21 +664,15 @@
     <p class="quote-sub">Elige la opción que mejor se ajuste a lo que necesitas. Nuestro equipo está listo para atenderte.</p>
 
     <div class="quote-cta-grid">
-      <button class="quote-cta-card" onclick={() => { history.pushState({ view: 'Contacto', tab: 'prueba' }, '', '/adistem2026/contacto/'); window.dispatchEvent(new PopStateEvent('popstate', { state: { view: 'Contacto', tab: 'prueba' } })); window.scrollTo({ top: 0, behavior: 'smooth' }) }}>
+      <button class="quote-cta-card" onclick={() => { drawerTab = 'prueba'; showCotizarDrawer = true }}>
         <span class="qcc-icon"><GoogleIcon name="speed" size={28} /></span>
-        <strong>Prueba de Manejo</strong>
+        <strong>Prueba de manejo</strong>
         <span class="qcc-desc">Agenda una cita para manejar el {model.name}</span>
         <span class="qcc-arrow"><GoogleIcon name="arrow_forward" size={18} /></span>
       </button>
-      <button class="quote-cta-card" onclick={() => { history.pushState({ view: 'Contacto', tab: 'cita' }, '', '/adistem2026/contacto/'); window.dispatchEvent(new PopStateEvent('popstate', { state: { view: 'Contacto', tab: 'cita' } })); window.scrollTo({ top: 0, behavior: 'smooth' }) }}>
-        <span class="qcc-icon"><GoogleIcon name="build" size={28} /></span>
-        <strong>Cita de Servicio</strong>
-        <span class="qcc-desc">Programa el mantenimiento de tu vehículo</span>
-        <span class="qcc-arrow"><GoogleIcon name="arrow_forward" size={18} /></span>
-      </button>
-      <button class="quote-cta-card" onclick={() => { history.pushState({ view: 'Contacto', tab: 'cotizacion' }, '', '/adistem2026/contacto/'); window.dispatchEvent(new PopStateEvent('popstate', { state: { view: 'Contacto', tab: 'cotizacion' } })); window.scrollTo({ top: 0, behavior: 'smooth' }) }}>
+      <button class="quote-cta-card" onclick={() => { drawerTab = 'cotizacion'; showCotizarDrawer = true }}>
         <span class="qcc-icon"><GoogleIcon name="description" size={28} /></span>
-        <strong>Solicitar Cotización</strong>
+        <strong>Solicitar cotización</strong>
         <span class="qcc-desc">Recibe precios, versiones y financiamiento</span>
         <span class="qcc-arrow"><GoogleIcon name="arrow_forward" size={18} /></span>
       </button>
@@ -683,7 +680,51 @@
   </section>
 </main>
 
+<!-- ── Cotizar Drawer ─────────────────────────────────────────────────── -->
+{#if showCotizarDrawer}
+  <!-- Scrim -->
+  <div
+    class="fixed inset-0 z-[60]"
+    style="background:rgba(0,0,0,0.54);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);"
+    onclick={() => showCotizarDrawer = false}
+    role="presentation"
+  ></div>
+
+  <!-- Panel lateral -->
+  <div
+    class="fixed right-0 top-0 bottom-0 z-[61] flex flex-col overflow-y-auto"
+    style="width:min(480px,100vw);background:#08091a;border-left:1px solid rgba(255,255,255,0.10);box-shadow:-8px 0 48px rgba(0,0,0,0.60);animation:drawer-in 0.38s cubic-bezier(0.22,1,0.36,1) both;"
+  >
+    <!-- Header del drawer -->
+    <div class="flex items-center justify-between px-5 py-4 flex-shrink-0" style="border-bottom:1px solid rgba(255,255,255,0.08);">
+      <div class="flex items-center gap-2.5">
+        <div class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></div>
+        <span class="text-sm font-black text-white tracking-tight">Jeep Renegade 2026</span>
+      </div>
+      <button
+        onclick={() => showCotizarDrawer = false}
+        class="w-8 h-8 rounded-full flex items-center justify-center transition-all hover:bg-white/10 cursor-pointer"
+        style="color:rgba(255,255,255,0.60);"
+      >
+        <GoogleIcon name="close" size={18} />
+      </button>
+    </div>
+
+    <!-- ContactFormCard -->
+    <div class="flex-1 flex flex-col p-4 overflow-y-auto">
+      <ContactFormCard
+        initialTab={drawerTab}
+        accent="#424D07"
+      />
+    </div>
+  </div>
+{/if}
+
 <style>
+  @keyframes drawer-in {
+    from { transform: translateX(100%); opacity: 0; }
+    to   { transform: translateX(0);   opacity: 1; }
+  }
   :global(html) {
     scroll-behavior: smooth;
   }
@@ -1824,7 +1865,9 @@
   }
 
   @media (max-width: 560px) {
-    .safety-features,
+    .safety-features {
+      grid-template-columns: repeat(2, 1fr);
+    }
     .safety-videos-grid,
     .safety-360-wrap,
     .safety-360-grid {
@@ -2311,7 +2354,7 @@
       border-radius: 0;
       border-left: none;
       border-right: none;
-      z-index: 50;
+      z-index: 38;
       padding: 0 16px;
     }
     .jeep-hero {

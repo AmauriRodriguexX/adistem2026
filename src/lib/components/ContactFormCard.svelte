@@ -184,7 +184,7 @@
      style="{glassForm}">
   {#if !hideTabs}
     <div class="grid grid-cols-3 gap-2 px-4 pt-5 pb-4 sm:px-6 sm:pt-6" style={formBorder}>
-      {#each [{key:'cotizacion',label:'Cotización'},{key:'cita',label:'Cita Servicio'},{key:'prueba',label:'Prueba Manejo'}] as tab (tab.key)}
+      {#each [{key:'cotizacion',label:'Cotización'},{key:'cita',label:'Cita servicio'},{key:'prueba',label:'Prueba de manejo'}] as tab (tab.key)}
         <button onclick={() => setActiveTab(tab.key as TabKey)}
           class="min-h-10 py-2 px-2 rounded-lg text-[11px] sm:text-xs font-semibold leading-tight transition-all duration-200 cursor-pointer"
           style={tabStyle(tab.key as TabKey)}>{tab.label}</button>
@@ -513,7 +513,7 @@
       style={`${primaryBtn}${(activeTab === 'cotizacion' && !cotizacionComplete) || (activeTab === 'cita' && citaStep === 1 && !citaStepOneComplete) || (activeTab === 'cita' && citaStep === 2 && !citaComplete) || (activeTab === 'prueba' && !pruebaComplete) ? 'filter:grayscale(0.35);' : 'cursor:pointer;'}`}
       disabled={(activeTab === 'cotizacion' && !cotizacionComplete) || (activeTab === 'cita' && citaStep === 1 && !citaStepOneComplete) || (activeTab === 'cita' && citaStep === 2 && !citaComplete) || (activeTab === 'prueba' && !pruebaComplete)}
       onclick={handlePrimaryAction}>
-      {activeTab === 'cotizacion' ? 'Solicitar Información' : activeTab === 'cita' ? (citaStep === 1 ? 'Continuar con datos del vehículo' : 'Agendar Cita') : 'Agendar Prueba de Manejo'}
+      {activeTab === 'cotizacion' ? 'Solicitar información' : activeTab === 'cita' ? (citaStep === 1 ? 'Continuar con datos del vehículo' : 'Agendar cita') : 'Agendar prueba de manejo'}
     </button>
   </div>
 </div>

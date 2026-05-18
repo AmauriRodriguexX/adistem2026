@@ -98,7 +98,7 @@
     },
     {
       slug: 'jt',
-      name: 'Jeep JT Gladiator',
+      name: 'Jeep JT',
       role: 'La única pickup Jeep todoterreno',
       image: `${CDN}/nafta/jeep/es_mx/2026/jt-gladiator/vlp/desktop/my26-jeep-mojave-inicio-vlp-mx-dk.jpg.img.2880.jpg`,
       accent: '#8C6420',
@@ -299,8 +299,8 @@
         <h2 class="story-title">Conquista<br>la ciudad.</h2>
         <p class="story-sub">Renegade y Compass. Motor 1.3L Turbo, AWD disponible y tecnología ADAS para dominar cada ruta.</p>
         <div class="story-actions">
-          <button class="story-btn primary" onclick={() => selectModel('renegade')}>Ver Renegade <GoogleIcon name="arrow_forward" size={16} /></button>
-          <button class="story-btn ghost" onclick={() => selectModel('compass')}>Ver Compass</button>
+          <button class="story-btn primary" onclick={() => selectModel('renegade')}>Explorar <GoogleIcon name="arrow_forward" size={16} /></button>
+          <button class="story-btn ghost" onclick={() => selectModel('compass')}>Explorar</button>
         </div>
       </div>
     </div>
@@ -312,8 +312,8 @@
         <h2 class="story-title">Siete plazas.<br>Un solo destino.</h2>
         <p class="story-sub">Commander: tres filas, confort premium y capacidad sin concesiones para toda la familia.</p>
         <div class="story-actions">
-          <button class="story-btn primary" onclick={() => selectModel('commander')}>Ver Commander <GoogleIcon name="arrow_forward" size={16} /></button>
-          <button class="story-btn ghost" onclick={() => selectModel('grand-cherokee')}>Ver Grand Cherokee</button>
+          <button class="story-btn primary" onclick={() => selectModel('commander')}>Explorar <GoogleIcon name="arrow_forward" size={16} /></button>
+          <button class="story-btn ghost" onclick={() => selectModel('grand-cherokee')}>Explorar</button>
         </div>
       </div>
     </div>
@@ -323,10 +323,10 @@
       <div class="story-content">
         <p class="story-eyebrow">Off-Road Total</p>
         <h2 class="story-title">Sin pavimento.<br>Sin límites.</h2>
-        <p class="story-sub">Wrangler y JT Gladiator. Tracción 4×4 con reducida para ir donde ningún otro se atreve.</p>
+        <p class="story-sub">Wrangler y JT. Tracción 4×4 con reducida para ir donde ningún otro se atreve.</p>
         <div class="story-actions">
-          <button class="story-btn primary" onclick={() => selectModel('wrangler')}>Ver Wrangler <GoogleIcon name="arrow_forward" size={16} /></button>
-          <button class="story-btn ghost" onclick={() => selectModel('jt')}>Ver Gladiator</button>
+          <button class="story-btn primary" onclick={() => selectModel('wrangler')}>Explorar <GoogleIcon name="arrow_forward" size={16} /></button>
+          <button class="story-btn ghost" onclick={() => selectModel('jt')}>Explorar</button>
         </div>
       </div>
     </div>

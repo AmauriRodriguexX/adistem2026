@@ -53,8 +53,23 @@
   const HIST_H = [0, 2, 6, 18, 36, 62, 82, 100, 88, 70, 52, 34, 20, 12, 6, 2]
 
   let minPrice = $state(MIN_PRICE)
+  let showFilters = $state(false)   // mobile: oculto por defecto
 
   let selectedCarId: number | null = $state(null)
+
+  // ── Paginador ────────────────────────────────────────────────────────────
+  const ITEMS_PER_PAGE = 6
+  let currentPage = $state(1)
+
+  $effect(() => {
+    filteredInventory.length  // eslint-disable-line @typescript-eslint/no-unused-expressions
+    currentPage = 1
+  })
+
+  const totalPages      = $derived(Math.max(1, Math.ceil(filteredInventory.length / ITEMS_PER_PAGE)))
+  const paginatedInventory = $derived(filteredInventory.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE))
+  const showingFrom     = $derived(filteredInventory.length === 0 ? 0 : (currentPage - 1) * ITEMS_PER_PAGE + 1)
+  const showingTo       = $derived(Math.min(currentPage * ITEMS_PER_PAGE, filteredInventory.length))
 
   // Opciones derivadas para los selects
   const availableYears = [2025, 2024, 2023, 2022, 2020, 2019]
@@ -135,8 +150,9 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }}
     onContact={(tab) => {
-      history.pushState({ view: 'Contacto', tab }, '', '/adistem2026/contacto/');
-      window.location.reload();
+      history.pushState({ view: 'Contacto', tab }, '', '/adistem2026/contacto/')
+      window.dispatchEvent(new PopStateEvent('popstate', { state: { view: 'Contacto', tab } }))
+      window.scrollTo({ top: 0, behavior: 'smooth' })
     }}
   />
 {:else}
@@ -150,7 +166,7 @@
           Garantía y Confianza
         </span>
         <h1 class="text-4xl md:text-5xl font-black mb-3 tracking-tight" style="color:{T.primary}">
-          Catálogo de <span style="background:linear-gradient(135deg,#334E8B,#8b5cf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Seminuevos</span>
+          Catálogo de <span style="background:linear-gradient(135deg,#334E8B,#2E6CCF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Seminuevos</span>
         </h1>
         <p class="max-w-2xl mx-auto text-sm md:text-base" style="color:{T.secondary}">
           Encuentra el auto perfecto para ti. Todos nuestros vehículos superan una rigurosa inspección técnica para garantizar tu tranquilidad.
@@ -164,15 +180,20 @@
         <div class="rounded-2xl overflow-hidden border shadow-xl flex flex-col lg:sticky lg:top-24" 
           style="background:{T.panelBg}; border-color:{T.divider}; backdrop-filter:blur(24px);">
           
-          <!-- Encabezado Negro Fiel a la Imagen -->
-          <div class="bg-black py-4 px-6 text-center">
-            <h2 class="text-white font-black tracking-wider text-sm md:text-base uppercase">
-              Filtros de Búsqueda
-            </h2>
+          <!-- Encabezado con toggle mobile -->
+          <div class="bg-black py-3 px-4 flex items-center justify-between">
+            <h2 class="text-white font-black tracking-wide text-sm">Filtros de búsqueda</h2>
+            <button
+              class="lg:hidden flex items-center gap-1.5 text-[11px] font-bold text-white/70 hover:text-white transition-colors cursor-pointer"
+              onclick={() => showFilters = !showFilters}
+            >
+              <GoogleIcon name={showFilters ? 'expand_less' : 'tune'} size={16} />
+              {showFilters ? 'Ocultar' : 'Mostrar'}
+            </button>
           </div>
 
-          <!-- Formulario de Filtros Interno -->
-          <div class="p-6 flex flex-col gap-5">
+          <!-- Formulario de Filtros Interno: visible siempre en desktop, toggle en mobile -->
+          <div class="p-6 flex-col gap-5 {showFilters ? 'flex' : 'hidden lg:flex'}">
             
             <!-- Año -->
             <div>
@@ -185,7 +206,7 @@
                 class="w-full h-10 px-3 rounded-lg text-xs font-semibold outline-none border transition-all cursor-pointer"
                 style="background:{T.selectBg}; color:{T.primary}; border-color:{T.divider};"
               >
-                <option value="">ELIJA UN AÑO</option>
+                <option value="">Elige un año</option>
                 {#each availableYears as yr}
                   <option value={yr.toString()}>{yr}</option>
                 {/each}
@@ -204,7 +225,7 @@
                 class="w-full h-10 px-3 rounded-lg text-xs font-semibold outline-none border transition-all cursor-pointer"
                 style="background:{T.selectBg}; color:{T.primary}; border-color:{T.divider};"
               >
-                <option value="">ELIJA UNA MARCA</option>
+                <option value="">Elige una marca</option>
                 {#each availableBrands as b}
                   <option value={b}>{b}</option>
                 {/each}
@@ -222,7 +243,7 @@
                 class="w-full h-10 px-3 rounded-lg text-xs font-semibold outline-none border transition-all cursor-pointer"
                 style="background:{T.selectBg}; color:{T.primary}; border-color:{T.divider};"
               >
-                <option value="">ELIJA UN MODELO</option>
+                <option value="">Elige un modelo</option>
                 {#each availableModels as mod}
                   <option value={mod}>{mod}</option>
                 {/each}
@@ -240,7 +261,7 @@
                 class="w-full h-10 px-3 rounded-lg text-xs font-semibold outline-none border transition-all cursor-pointer"
                 style="background:{T.selectBg}; color:{T.primary}; border-color:{T.divider};"
               >
-                <option value="">ELIJA UNA TRANSMISIÓN</option>
+                <option value="">Elige una transmisión</option>
                 <option value="Automática">Automática</option>
                 <option value="Manual">Manual</option>
               </select>
@@ -332,8 +353,7 @@
                   // Desplazarse a la cuadrícula de resultados suavemente en pantallas medianas o pequeñas
                   window.scrollTo({ top: 300, behavior: 'smooth' });
                 }}
-                class="w-full py-3.5 bg-black hover:bg-black/80 text-white font-bold rounded-lg text-sm tracking-wide transition-all shadow-md cursor-pointer flex items-center justify-center gap-2"
-                style="background: {$isDark ? '#334E8B' : '#000000'}"
+                class="w-full py-3.5 font-bold rounded-lg text-sm tracking-wide transition-all shadow-md cursor-pointer flex items-center justify-center gap-2 btn-glow-border"
               >
                 <span>Ver Resultados</span>
                 <span class="text-xs bg-white/20 px-2 py-0.5 rounded-full">{filteredInventory.length}</span>
@@ -373,16 +393,16 @@
             <div class="flex items-center gap-2 text-xs font-semibold" style="color:{T.primary}">
               <span>Mostrando</span>
               <span class="px-2.5 py-1 rounded-md bg-blue-500/10 text-blue-500 font-black border border-blue-500/20">
-                {filteredInventory.length}
+                {showingFrom}–{showingTo}
               </span>
-              <span>vehículos disponibles</span>
+              <span>de {filteredInventory.length} vehículos</span>
             </div>
           </div>
 
           <!-- Cuadrícula de tarjetas -->
           {#if filteredInventory.length > 0}
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {#each filteredInventory as car (car.id)}
+              {#each paginatedInventory as car (car.id)}
                 <div 
                   role="button"
                   tabindex="0"
@@ -402,7 +422,7 @@
                   </div>
                   <div class="p-4 flex flex-col flex-1 justify-between gap-3">
                     <div>
-                      <span class="text-[9px] font-black uppercase tracking-wider text-blue-500 block mb-0.5">{car.type}</span>
+                      <span class="text-[9px] font-black uppercase tracking-wider block mb-0.5" style="color:{T.muted}">{car.type}</span>
                       <h3 class="text-base font-bold leading-tight line-clamp-1" style="color:{T.primary}">{car.title}</h3>
                       <div class="flex items-center gap-2 mt-1.5 text-[11px]" style="color:{T.muted}">
                         <span class="font-medium bg-black/5 dark:bg-white/5 px-2 py-0.5 rounded">{car.km}</span>
@@ -413,12 +433,12 @@
                     <div class="pt-2 border-t flex items-end justify-between" style="border-color:{T.divider}">
                       <div>
                         <p class="text-[9px] uppercase tracking-wider mb-0.5 font-bold" style="color:{T.muted}">Precio</p>
-                        <p class="text-lg font-black text-blue-500">{car.price}</p>
+                        <p class="text-lg font-black" style="color:{T.primary}">{car.price}</p>
                       </div>
-                      <button class="w-8 h-8 rounded-full flex items-center justify-center transition-all group-hover:bg-blue-500 group-hover:text-white" 
+                      <div class="w-8 h-8 rounded-full flex items-center justify-center transition-all group-hover:bg-blue-500 group-hover:text-white pointer-events-none"
                         style="background:{$isDark ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.04)'}; color:{T.primary}">
                         <GoogleIcon name="chevron_right" size={16} />
-                      </button>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -432,12 +452,46 @@
               <p class="text-xs max-w-md" style="color:{T.secondary}">
                 Ningún seminuevo coincide con la combinación de filtros seleccionada. Intenta ampliar el rango de precio o restablecer los valores.
               </p>
-              <button 
-                onclick={resetFilters} 
-                class="mt-2 px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-wider bg-blue-500 text-white transition-all hover:opacity-90"
+              <button
+                onclick={resetFilters}
+                class="mt-2 px-4 py-2 rounded-lg text-xs font-bold bg-blue-500 text-white transition-all hover:opacity-90"
               >
                 Restablecer Filtros
               </button>
+            </div>
+          {/if}
+
+          <!-- ── Paginador ── -->
+          {#if totalPages > 1}
+            <div class="flex items-center justify-between gap-4 mt-6 pt-5 border-t" style="border-color:{T.divider};">
+              <p class="text-xs" style="color:{T.muted}">
+                Mostrando {showingFrom}–{showingTo} de {filteredInventory.length}
+              </p>
+              <div class="flex items-center gap-1">
+                <button
+                  onclick={() => { currentPage = Math.max(1, currentPage - 1); window.scrollTo({ top: 200, behavior: 'smooth' }) }}
+                  disabled={currentPage === 1}
+                  class="w-8 h-8 rounded-lg flex items-center justify-center transition-all cursor-pointer disabled:opacity-30 disabled:cursor-default"
+                  style="background:{$isDark ? 'rgba(255,255,255,0.06)' : 'rgba(51,78,139,0.07)'};border:1px solid {T.divider};color:{T.primary};"
+                >
+                  <GoogleIcon name="chevron_left" size={16} />
+                </button>
+                {#each Array.from({ length: totalPages }, (_, i) => i + 1) as page (page)}
+                  <button
+                    onclick={() => { currentPage = page; window.scrollTo({ top: 200, behavior: 'smooth' }) }}
+                    class="w-8 h-8 rounded-lg text-xs font-bold transition-all cursor-pointer"
+                    style="background:{currentPage === page ? '#334E8B' : ($isDark ? 'rgba(255,255,255,0.06)' : 'rgba(51,78,139,0.07)')};border:1px solid {currentPage === page ? '#334E8B' : T.divider};color:{currentPage === page ? 'white' : T.primary};"
+                  >{page}</button>
+                {/each}
+                <button
+                  onclick={() => { currentPage = Math.min(totalPages, currentPage + 1); window.scrollTo({ top: 200, behavior: 'smooth' }) }}
+                  disabled={currentPage === totalPages}
+                  class="w-8 h-8 rounded-lg flex items-center justify-center transition-all cursor-pointer disabled:opacity-30 disabled:cursor-default"
+                  style="background:{$isDark ? 'rgba(255,255,255,0.06)' : 'rgba(51,78,139,0.07)'};border:1px solid {T.divider};color:{T.primary};"
+                >
+                  <GoogleIcon name="chevron_right" size={16} />
+                </button>
+              </div>
             </div>
           {/if}
 

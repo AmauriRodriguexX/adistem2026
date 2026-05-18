@@ -102,7 +102,7 @@
                 </div>
               </div>
               <a href="https://www.google.com/maps/search/?api=1&query=BLVD+SAN+LUIS+1158,+San+Luis+Potosí,+San+Luis+Potosí" target="_blank" rel="noopener noreferrer"
-                class="w-full py-3 text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 btn-glow-border">
+                class="w-full py-3 text-xs font-bold tracking-wide flex items-center justify-center gap-2 btn-glow-border">
                 <GoogleIcon name="directions_car" size={16} />
                 Llévame ahí
               </a>

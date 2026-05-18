@@ -16,7 +16,8 @@
     onPruebaManejoClick?:    () => void
     onServicioClick?:        () => void
     onContactoClick?:        () => void
-    onUbicacionClick?:       () => void
+    onUbicacionClick?:       (ctx?: 'servicio' | 'ventas') => void
+    activeView?:             string
     onModelSelect?:          (brand: BrandFilter, slug: string) => void
   }
 
@@ -33,10 +34,9 @@
     onServicioClick,
     onContactoClick,
     onUbicacionClick,
+    activeView,
     onModelSelect,
   }: Props = $props()
-
-  type FuelFilter = 'Todos' | 'Eléctrico' | 'Híbridos' | 'Gasolina'
 
   const VEHICLE_TYPES = [
     { name: 'Todos',      label: 'Todas',             desc: 'Sin filtro de carrocería' },
@@ -60,32 +60,38 @@
 
   const MENU_VEHICLES: {
     id: number; brand: Exclude<BrandFilter, 'Todas'>; type: VehicleType; model: string
-    year: string; version: string; fuel: Exclude<FuelFilter, 'Todos'>; price: string; img: string; accent: string
+    year: string; version: string; fuel: string; price: string; img: string; accent: string
   }[] = [
     { id:1,  brand:'Jeep',    type:'SUV',        model:'Wrangler',      year:'2026', version:'Willys Unlimited', fuel:'Gasolina', price:'Desde $1,099,900', img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2Fdbbe0b1e89813d5569554d4d88221a1b92e0d6f2.jpg?generation=1777350234515482&alt=media', accent:'#424D07' },
     { id:2,  brand:'Jeep',    type:'SUV',        model:'Compass',       year:'2026', version:'Limited Premium',  fuel:'Gasolina', price:'Desde $689,900', img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F0d3d7a1dc7e07f0e64c4fb84601cc8fa871c5acc.jpg?generation=1777350234540448&alt=media', accent:'#424D07' },
     { id:3,  brand:'Jeep',    type:'SUV',        model:'Commander',     year:'2026', version:'Overland FWD',     fuel:'Gasolina', price:'Desde $789,900', img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F0c31e45701627ca72a88b646087445172fc4a302.jpg?generation=1777350234492066&alt=media', accent:'#424D07' },
     { id:4,  brand:'Jeep',    type:'SUV',        model:'Renegade',      year:'2026', version:'Latitude',         fuel:'Gasolina', price:'Desde $489,900', img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F03eb70622ac5b618a05ca4b50608ada9e5f36dff.jpg?generation=1777350234483821&alt=media', accent:'#424D07' },
-    { id:5,  brand:'Fiat',    type:'SUV',        model:'Pulse',         year:'2026', version:'Drive T200',       fuel:'Gasolina', price:'Desde $389,900', img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F12af6dc13f44f29033d673c803a50f637af22da0.jpg?generation=1777350234700225&alt=media', accent:'#FF1530' },
+    { id:5,  brand:'Fiat',    type:'SUV',        model:'Pulse',         year:'2026', version:'Drive',            fuel:'Gasolina', price:'Desde $389,900', img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F12af6dc13f44f29033d673c803a50f637af22da0.jpg?generation=1777350234700225&alt=media', accent:'#FF1530' },
     { id:6,  brand:'Fiat',    type:'Deportivos', model:'Pulse Abarth',  year:'2026', version:'Abarth',           fuel:'Gasolina', price:'Desde $529,900', img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2Fcab9193a2663f242fe2c565e771d2cb7acb3bdfd.jpg?generation=1777350234690980&alt=media', accent:'#FF1530' },
     { id:7,  brand:'Fiat',    type:'SUV',        model:'Fastback',      year:'2026', version:'Limited',          fuel:'Gasolina', price:'Desde $459,900', img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F73305e43e64c51813013640443da7b7c6dbe392e.jpg?generation=1777350234711531&alt=media', accent:'#FF1530' },
     { id:8,  brand:'Fiat',    type:'Hatchback',  model:'Argo',          year:'2026', version:'Drive',            fuel:'Gasolina', price:'Desde $289,900', img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F35bd343876d4e41f21a86499747f1af99d5fe2b2.jpg?generation=1777350234727796&alt=media', accent:'#FF1530' },
     { id:9,  brand:'Dodge',   type:'SUV',        model:'Durango',       year:'2026', version:'R/T Plus',         fuel:'Gasolina', price:'Desde $1,229,900', img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F1d6f3f42a55407817e0572a9323b9aa10c891633.jpg?generation=1777350234722595&alt=media', accent:'#D50000' },
     { id:10, brand:'Dodge',   type:'Sedán',      model:'Attitude',      year:'2026', version:'SXT',              fuel:'Gasolina', price:'Desde $299,900', img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2Ffd24ea9b590e1057b2b5aece02f0924645f557d3.jpg?generation=1777350234728971&alt=media', accent:'#D50000' },
     { id:11, brand:'Dodge',   type:'SUV',        model:'Journey',       year:'2026', version:'GT',               fuel:'Gasolina', price:'Desde $599,900', img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2Fc8f39b8a62ba049430811aa128ea21a793615787.jpg?generation=1777350234748118&alt=media', accent:'#D50000' },
-    { id:12, brand:'Peugeot', type:'SUV',        model:'Nueva 2008',    year:'2026', version:'GT Pack',          fuel:'Gasolina', price:'Desde $448,900', img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F7ac848efe89adde5660e4d2956b4983e1775ce00.jpg?generation=1777350234794617&alt=media', accent:'#0074E8' },
+    { id:12, brand:'Peugeot', type:'SUV',        model:'Nueva 2008',    year:'2026', version:'GT',               fuel:'Gasolina', price:'Desde $448,900', img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F7ac848efe89adde5660e4d2956b4983e1775ce00.jpg?generation=1777350234794617&alt=media', accent:'#0074E8' },
     { id:13, brand:'Peugeot', type:'SUV',        model:'Nueva 5008',    year:'2026', version:'GT',               fuel:'Gasolina', price:'Desde $779,900', img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2Fa324072dc54a25de50940520db820b447f976fdd.jpg?generation=1777350234728825&alt=media', accent:'#0074E8' },
     { id:14, brand:'Peugeot', type:'SUV',        model:'Nueva 3008',    year:'2026', version:'Allure Pack',      fuel:'Gasolina', price:'Desde $639,900', img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F97992cfc1a6ba95676e9baa2cff5b4fe94dd63c7.jpg?generation=1777350234796103&alt=media', accent:'#0074E8' },
     { id:15, brand:'Peugeot', type:'Pick-ups',   model:'Nueva Partner', year:'2026', version:'Active',           fuel:'Gasolina', price:'Desde $469,900', img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2Fb1d61b52adc2aa72f9170a07361f38035b5794a8.jpg?generation=1777350234922828&alt=media', accent:'#0074E8' },
     { id:16, brand:'Ram',     type:'Pick-ups',   model:'1500',          year:'2026', version:'Laramie 4x4',      fuel:'Híbridos', price:'Desde $1,169,900', img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F366059fdfc8601cb267c2dfe66bce5eff26e9802.jpg?generation=1777350234982606&alt=media', accent:'#880D00' },
     { id:17, brand:'Ram',     type:'Pick-ups',   model:'1200',          year:'2026', version:'Limited',          fuel:'Gasolina', price:'Desde $629,900', img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2Fd77a3a9cf0b124b56b0ca97a272a05d66cdb4f9b.jpg?generation=1777350234972552&alt=media', accent:'#880D00' },
-    { id:18, brand:'Ram',     type:'Pick-ups',   model:'700',           year:'2026', version:'Rebel',            fuel:'Gasolina', price:'Desde $394,900', img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2Ff5ec5130c0e32e9b8f088516b511cd201f316b59.jpg?generation=1777350234996294&alt=media', accent:'#880D00' },
   ]
 
   let megaBrand = $state<BrandFilter>('Todas')
   let megaType  = $state<VehicleType>('Todos')
-  let megaFuel  = $state<FuelFilter>('Todos')
   let megaOpen  = $state(false)
+
+  // ── Micro-dropdowns ──
+  let compraOpen   = $state(false)
+  let contactoOpen = $state(false)
+
+  function closeDropdowns() { compraOpen = false; contactoOpen = false }
+  function toggleCompra()   { compraOpen = !compraOpen; contactoOpen = false }
+  function toggleContacto() { contactoOpen = !contactoOpen; compraOpen = false }
 
   $effect(() => {
     megaBrand = activeBrand
@@ -99,15 +105,19 @@
   const megaVehicles = $derived(MENU_VEHICLES.filter(vehicle => {
     const brandOk = megaBrand === 'Todas' || vehicle.brand === megaBrand
     const typeOk = megaType === 'Todos' || vehicle.type === megaType
-    const fuelOk = megaFuel === 'Todos' || vehicle.fuel === megaFuel
-    return brandOk && typeOk && fuelOk
+    return brandOk && typeOk
   }))
 
   function selectMegaBrand(brand: BrandFilter) {
     megaBrand = brand
     megaType = 'Todos'
-    megaFuel = 'Todos'
   }
+
+  // ── Active nav indicators ──
+  const isHomeActive       = $derived(activeView === 'Portal')
+  const isSeminuevosActive = $derived(activeView === 'Seminuevos')
+  const isCompraActive     = $derived(activeView === 'Cotizacion' || activeView === 'PruebaManejo')
+  const isContactoActive   = $derived(activeView === 'Ubicacion' || activeView === 'CitaServicio' || activeView === 'Contacto')
 
   function selectMegaType(type: VehicleType) {
     megaType = type
@@ -151,7 +161,15 @@
     const onScroll = () => scrolled = window.scrollY > 20
     onScroll()
     window.addEventListener('scroll', onScroll)
-    return () => window.removeEventListener('scroll', onScroll)
+    const onClickOutside = (e: MouseEvent) => {
+      const t = e.target as HTMLElement
+      if (!t.closest('[data-dropdown]')) closeDropdowns()
+    }
+    document.addEventListener('click', onClickOutside)
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      document.removeEventListener('click', onClickOutside)
+    }
   })
 
   const logoFilter = $derived($isDark ? 'brightness(0) invert(1)' : 'brightness(0)')
@@ -235,7 +253,7 @@
   </button>
 
   <button
-    class="ml-auto flex md:hidden items-center gap-1.5 rounded-full px-3 h-9 text-xs font-black uppercase tracking-[0.08em] transition-all cursor-pointer"
+    class="ml-auto flex md:hidden items-center gap-1.5 rounded-full px-3 h-9 text-xs font-black tracking-tight transition-all cursor-pointer"
     style="background:{megaOpen ? `${megaAccent}22` : ($isDark ? 'rgba(255,255,255,0.07)' : 'rgba(51,78,139,0.07)')};border:1px solid {megaOpen ? `${megaAccent}70` : ($isDark ? 'rgba(255,255,255,0.10)' : 'rgba(51,78,139,0.14)')};color:{$isDark ? 'rgba(255,255,255,0.88)' : '#1a2040'};"
     onclick={toggleMega}
     aria-expanded={megaOpen}
@@ -247,11 +265,14 @@
   <div class="hidden md:block h-6 w-px flex-shrink-0" style="background:{divColor}"></div>
 
   <div class="hidden md:flex items-center gap-6 flex-1 px-4">
-    <button 
-      onclick={(e) => { e.preventDefault(); onHomeClick?.() }} 
-      class="flex items-center gap-1.5 text-sm font-medium transition-all hover:opacity-80 cursor-pointer" 
-      style="color:{$isDark ? 'rgba(255,255,255,0.85)' : '#1a2040'}">
+    <button
+      onclick={(e) => { e.preventDefault(); onHomeClick?.() }}
+      class="flex items-center gap-1.5 text-sm transition-all hover:opacity-80 cursor-pointer relative pb-0.5"
+      style="color:{$isDark ? 'rgba(255,255,255,0.85)' : '#1a2040'};font-weight:{isHomeActive ? 700 : 500};">
       Inicio
+      {#if isHomeActive}
+        <span class="absolute bottom-0 inset-x-0 h-0.5 rounded-full" style="background:{$isDark ? 'rgba(255,255,255,0.7)' : '#334E8B'}"></span>
+      {/if}
     </button>
     <div class="relative h-full flex items-center" role="presentation">
       <button
@@ -264,29 +285,103 @@
         Modelos <GoogleIcon name="keyboard_arrow_down" size={18} class="opacity-70 transition-transform {megaOpen ? 'rotate-180' : ''}" />
       </button>
     </div>
-    <a href="/adistem2026/seminuevos/" onclick={(e) => { e.preventDefault(); onSeminuevosClick?.() }} class="text-sm font-medium transition-all hover:opacity-80 cursor-pointer" style="color:{$isDark ? 'rgba(255,255,255,0.85)' : '#1a2040'}">
+    <a href="/adistem2026/seminuevos/" onclick={(e) => { e.preventDefault(); onSeminuevosClick?.() }}
+      class="text-sm transition-all hover:opacity-80 cursor-pointer relative pb-0.5"
+      style="color:{$isDark ? 'rgba(255,255,255,0.85)' : '#1a2040'};font-weight:{isSeminuevosActive ? 700 : 500};">
       Seminuevos
+      {#if isSeminuevosActive}
+        <span class="absolute bottom-0 inset-x-0 h-0.5 rounded-full" style="background:{$isDark ? 'rgba(255,255,255,0.7)' : '#334E8B'}"></span>
+      {/if}
     </a>
   </div>
 
   <div class="flex items-center gap-5 flex-shrink-0">
-    <div class="hidden lg:flex items-center gap-5 mr-1">
-      <button onclick={onPruebaManejoClick} class="flex items-center gap-2 text-[13px] font-semibold transition-all hover:opacity-80 cursor-pointer" style="color:{$isDark ? 'rgba(255,255,255,0.85)' : '#1a2040'}">
-        <GoogleIcon name="speed" size={16} class="opacity-70" />
-        Prueba de manejo
-      </button>
-      <button onclick={onServicioClick} class="flex items-center gap-2 text-[13px] font-semibold transition-all hover:opacity-80 cursor-pointer" style="color:{$isDark ? 'rgba(255,255,255,0.85)' : '#1a2040'}">
-        <GoogleIcon name="build" size={16} class="opacity-70" />
-        Servicio
-      </button>
-      <button onclick={onContactoClick} class="flex items-center gap-2 text-[13px] font-semibold transition-all hover:opacity-80 cursor-pointer" style="color:{$isDark ? 'rgba(255,255,255,0.85)' : '#1a2040'}">
-        <GoogleIcon name="call" size={16} class="opacity-70" />
-        Contacto
-      </button>
-      <button onclick={onUbicacionClick || onMapClick} class="flex items-center gap-2 text-[13px] font-semibold transition-all hover:opacity-80 cursor-pointer" style="color:{$isDark ? 'rgba(255,255,255,0.85)' : '#1a2040'}">
-        <GoogleIcon name="location_on" size={16} class="opacity-70" />
-        Ubicación
-      </button>
+    <div class="hidden lg:flex items-center gap-1 mr-1">
+
+      <!-- ── Dropdown: Compra ── -->
+      <div class="relative" data-dropdown>
+        <button
+          onclick={toggleCompra}
+          class="flex items-center gap-1.5 px-3 h-8 rounded-lg text-[13px] transition-all cursor-pointer"
+          style="color:{$isDark ? 'rgba(255,255,255,0.85)' : '#1a2040'};background:{compraOpen || isCompraActive ? ($isDark ? 'rgba(255,255,255,0.08)' : 'rgba(51,78,139,0.07)') : 'transparent'};font-weight:{isCompraActive ? 700 : 600};"
+        >
+          Compra
+          <GoogleIcon name="keyboard_arrow_down" size={16} class="opacity-60 transition-transform {compraOpen ? 'rotate-180' : ''}" />
+        </button>
+        {#if compraOpen}
+          <div
+            class="absolute top-full left-0 mt-2 w-52 rounded-2xl overflow-hidden shadow-2xl z-50"
+            style="background:{$isDark ? 'rgba(8,11,24,0.96)' : 'rgba(255,255,255,0.97)'};backdrop-filter:blur(24px);border:1px solid {$isDark ? 'rgba(255,255,255,0.10)' : 'rgba(51,78,139,0.12)'};"
+          >
+            <div class="py-1.5">
+              <button onclick={() => { onCotizarClick?.(); closeDropdowns() }}
+                class="w-full flex items-center gap-3 px-4 py-2.5 text-sm font-medium transition-all hover:opacity-80 cursor-pointer text-left"
+                style="color:{$isDark ? 'rgba(255,255,255,0.88)' : '#1a2040'};">
+                <GoogleIcon name="calculate" size={16} class="opacity-60 flex-shrink-0" />
+                Cotización
+              </button>
+              <button onclick={() => { onPruebaManejoClick?.(); closeDropdowns() }}
+                class="w-full flex items-center gap-3 px-4 py-2.5 text-sm font-medium transition-all hover:opacity-80 cursor-pointer text-left"
+                style="color:{$isDark ? 'rgba(255,255,255,0.88)' : '#1a2040'};">
+                <GoogleIcon name="speed" size={16} class="opacity-60 flex-shrink-0" />
+                Prueba de manejo
+              </button>
+              <button onclick={() => { closeDropdowns() }}
+                class="w-full flex items-center gap-3 px-4 py-2.5 text-sm font-medium transition-all hover:opacity-80 cursor-pointer text-left"
+                style="color:{$isDark ? 'rgba(255,255,255,0.88)' : '#1a2040'};">
+                <GoogleIcon name="local_offer" size={16} class="opacity-60 flex-shrink-0" />
+                Promociones
+              </button>
+              <button onclick={() => { closeDropdowns() }}
+                class="w-full flex items-center gap-3 px-4 py-2.5 text-sm font-medium transition-all hover:opacity-80 cursor-pointer text-left"
+                style="color:{$isDark ? 'rgba(255,255,255,0.88)' : '#1a2040'};">
+                <GoogleIcon name="description" size={16} class="opacity-60 flex-shrink-0" />
+                Fichas técnicas
+              </button>
+            </div>
+          </div>
+        {/if}
+      </div>
+
+      <!-- ── Dropdown: Contacto ── -->
+      <div class="relative" data-dropdown>
+        <button
+          onclick={toggleContacto}
+          class="flex items-center gap-1.5 px-3 h-8 rounded-lg text-[13px] transition-all cursor-pointer"
+          style="color:{$isDark ? 'rgba(255,255,255,0.85)' : '#1a2040'};background:{contactoOpen || isContactoActive ? ($isDark ? 'rgba(255,255,255,0.08)' : 'rgba(51,78,139,0.07)') : 'transparent'};font-weight:{isContactoActive ? 700 : 600};"
+        >
+          Contacto
+          <GoogleIcon name="keyboard_arrow_down" size={16} class="opacity-60 transition-transform {contactoOpen ? 'rotate-180' : ''}" />
+        </button>
+        {#if contactoOpen}
+          <div
+            class="absolute top-full left-0 mt-2 w-52 rounded-2xl overflow-hidden shadow-2xl z-50"
+            style="background:{$isDark ? 'rgba(8,11,24,0.96)' : 'rgba(255,255,255,0.97)'};backdrop-filter:blur(24px);border:1px solid {$isDark ? 'rgba(255,255,255,0.10)' : 'rgba(51,78,139,0.12)'};"
+          >
+            <div class="py-1.5">
+              <button onclick={() => { onContactoClick?.(); closeDropdowns() }}
+                class="w-full flex items-center gap-3 px-4 py-2.5 text-sm font-medium transition-all hover:opacity-80 cursor-pointer text-left"
+                style="color:{$isDark ? 'rgba(255,255,255,0.88)' : '#1a2040'};">
+                <GoogleIcon name="support_agent" size={16} class="opacity-60 flex-shrink-0" />
+                Soporte
+              </button>
+              <button onclick={() => { onUbicacionClick?.('servicio'); closeDropdowns() }}
+                class="w-full flex items-center gap-3 px-4 py-2.5 text-sm font-medium transition-all hover:opacity-80 cursor-pointer text-left"
+                style="color:{$isDark ? 'rgba(255,255,255,0.88)' : '#1a2040'};">
+                <GoogleIcon name="build" size={16} class="opacity-60 flex-shrink-0" />
+                Servicio
+              </button>
+              <button onclick={() => { onUbicacionClick?.('ventas'); closeDropdowns() }}
+                class="w-full flex items-center gap-3 px-4 py-2.5 text-sm font-medium transition-all hover:opacity-80 cursor-pointer text-left"
+                style="color:{$isDark ? 'rgba(255,255,255,0.88)' : '#1a2040'};">
+                <GoogleIcon name="location_on" size={16} class="opacity-60 flex-shrink-0" />
+                Horarios y ubicación
+              </button>
+            </div>
+          </div>
+        {/if}
+      </div>
+
     </div>
 
     <div class="hidden lg:block h-6 w-px flex-shrink-0" style="background:{divColor}"></div>
@@ -385,23 +480,6 @@
             {/each}
           </div>
 
-          <div class="my-5 h-px md:my-7" style="background:{$isDark ? 'rgba(255,255,255,0.10)' : 'rgba(30,60,120,0.12)'}"></div>
-
-          <p class="text-[11px] font-black uppercase tracking-[0.16em] mb-3 md:mb-4" style="color:{$isDark ? 'rgba(255,255,255,0.72)' : '#111827'}">Servicios</p>
-          <div class="grid grid-cols-2 gap-2 md:flex md:flex-col md:gap-1.5">
-            <button onclick={() => { onPruebaManejoClick?.(); closeMega() }} class="flex cursor-pointer items-center justify-between gap-2 rounded-xl px-3 py-2.5 text-left text-xs font-bold transition-all hover:translate-x-1 md:text-sm" style="color:{$isDark ? 'rgba(255,255,255,0.86)' : '#111827'}">
-              <span class="flex items-center gap-2"><GoogleIcon name="speed" size={16} class="opacity-70" /> Prueba de manejo</span>
-              <span class="opacity-30">→</span>
-            </button>
-            <button onclick={() => { onServicioClick?.(); closeMega() }} class="flex cursor-pointer items-center justify-between gap-2 rounded-xl px-3 py-2.5 text-left text-xs font-bold transition-all hover:translate-x-1 md:text-sm" style="color:{$isDark ? 'rgba(255,255,255,0.86)' : '#111827'}">
-              <span class="flex items-center gap-2"><GoogleIcon name="build" size={16} class="opacity-70" /> Servicio</span>
-              <span class="opacity-30">→</span>
-            </button>
-            <button onclick={() => { (onUbicacionClick || onMapClick)?.(); closeMega() }} class="flex cursor-pointer items-center justify-between gap-2 rounded-xl px-3 py-2.5 text-left text-xs font-bold transition-all hover:translate-x-1 md:text-sm" style="color:{$isDark ? 'rgba(255,255,255,0.86)' : '#111827'}">
-              <span class="flex items-center gap-2"><GoogleIcon name="location_on" size={16} class="opacity-70" /> Ubicación</span>
-              <span class="opacity-30">→</span>
-            </button>
-          </div>
         </aside>
 
         <!-- ======================= -->
@@ -433,7 +511,7 @@
               </span>
               <button
                 onclick={closeMega}
-                class="h-9 cursor-pointer items-center justify-center rounded-full px-4 text-xs font-black uppercase tracking-[0.08em] inline-flex"
+                class="h-9 cursor-pointer items-center justify-center rounded-full px-4 text-xs font-black tracking-tight inline-flex"
                 style="background:{$isDark ? 'rgba(255,255,255,0.08)' : 'rgba(51,78,139,0.08)'};border:1px solid {$isDark ? 'rgba(255,255,255,0.14)' : 'rgba(51,78,139,0.16)'};color:{$isDark ? 'rgba(255,255,255,0.78)' : '#1a2040'};"
               >
                 Cerrar
@@ -517,19 +595,6 @@
               </div>
             {/if}
 
-            <!-- Mobile Only Footer: Services & Full Search -->
-            <div class="md:hidden mt-10 pt-6 border-t flex flex-col gap-3" style="border-color:{$isDark ? 'rgba(255,255,255,0.1)' : 'rgba(30,60,120,0.1)'};">
-              <p class="text-[11px] font-black uppercase tracking-[0.16em] mb-1" style="color:{$isDark ? 'rgba(255,255,255,0.5)' : '#111827'}">Servicios rápidos</p>
-              <div class="grid grid-cols-2 gap-2">
-                <button onclick={() => { onPruebaManejoClick?.(); closeMega() }} class="flex cursor-pointer items-center justify-between gap-2 rounded-xl px-4 py-3 text-left text-xs font-bold transition-all" style="background:{$isDark ? 'rgba(255,255,255,0.04)' : 'rgba(0,0,0,0.02)'}; color:{$isDark ? 'rgba(255,255,255,0.86)' : '#111827'}">
-                  <span class="flex items-center gap-2"><GoogleIcon name="speed" size={16} class="opacity-70" /> Prueba de manejo</span>
-                </button>
-                <button onclick={() => { onServicioClick?.(); closeMega() }} class="flex cursor-pointer items-center justify-between gap-2 rounded-xl px-4 py-3 text-left text-xs font-bold transition-all" style="background:{$isDark ? 'rgba(255,255,255,0.04)' : 'rgba(0,0,0,0.02)'}; color:{$isDark ? 'rgba(255,255,255,0.86)' : '#111827'}">
-                  <span class="flex items-center gap-2"><GoogleIcon name="build" size={16} class="opacity-70" /> Servicio</span>
-                </button>
-              </div>
-
-            </div>
 
           </div>
         </div>
