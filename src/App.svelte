@@ -96,6 +96,15 @@
   const currentBrandConfig = $derived(BRAND_CONFIGS[brandFilter])
   const brandAccent = $derived(currentBrandConfig.accent)
 
+  function hexToRgb(hex: string): string {
+    const h = hex.replace('#', '')
+    const r = parseInt(h.slice(0, 2), 16)
+    const g = parseInt(h.slice(2, 4), 16)
+    const b = parseInt(h.slice(4, 6), 16)
+    return `${r},${g},${b}`
+  }
+  const brandAccentRgb = $derived(hexToRgb(brandAccent))
+
   onMount(() => initSystemListener())
 
   $effect(() => {
@@ -434,7 +443,7 @@
     <section bind:this={brandStripEl} class="py-8 md:py-10 px-4 md:px-8"
       style="background:{bsBase.bg};border-top:1px solid {bsBase.border};border-bottom:1px solid {bsBase.border};backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);">
       <div class="max-w-7xl mx-auto">
-        <p class="text-center text-xs uppercase tracking-widest mb-5"
+        <p class="text-left md:text-center text-xs uppercase tracking-widest mb-5"
           style="color:{T.muted};{brandStripVisible ? 'animation:section-title-in 0.50s cubic-bezier(0.22,1,0.36,1) both' : 'opacity:0'}">
           Elige una marca — o usa la barra lateral
         </p>
@@ -502,7 +511,7 @@
               >Programa tu cita</button>
           </div>
           <div class="absolute top-0 right-0 w-64 h-64 pointer-events-none"
-            style="background:radial-gradient(circle,rgba(51,78,139,0.22) 0%,transparent 70%)"></div>
+            style="background:radial-gradient(circle,rgba({brandAccentRgb},0.22) 0%,transparent 70%)"></div>
         </div>
       </div>
     </section>
@@ -511,7 +520,7 @@
     <section bind:this={benefitsEl} class="py-12 md:py-16 px-4 md:px-8 relative overflow-hidden"
       style="background:{benefitsBg};border-top:1px solid {T.divider};">
       <div class="absolute inset-0 pointer-events-none"
-        style="background:radial-gradient(ellipse at 50% 50%,{$isDark ? 'rgba(51,78,139,0.18)' : 'rgba(51,78,139,0.07)'} 0%,transparent 70%)"></div>
+        style="background:radial-gradient(ellipse at 50% 50%,{$isDark ? `rgba(${brandAccentRgb},0.18)` : `rgba(${brandAccentRgb},0.07)`} 0%,transparent 70%)"></div>
       <div class="max-w-7xl mx-auto relative z-10">
         <div class="mb-8 md:mb-0 md:hidden"
           style="{benefitsVisible ? 'animation:section-title-in 0.55s cubic-bezier(0.22,1,0.36,1) both' : 'opacity:0'}">
@@ -547,7 +556,7 @@
     <section bind:this={mapEl} class="py-8 md:py-12 px-4 md:px-8 relative overflow-hidden"
       style="background:{benefitsBg};border-top:1px solid {T.divider};">
       <div class="max-w-7xl mx-auto relative z-10">
-        <div class="mb-6 md:mb-8 text-center"
+        <div class="mb-6 md:mb-8 text-left md:text-center"
           style="{footerVisible ? 'animation:section-title-in 0.55s cubic-bezier(0.22,1,0.36,1) both' : 'opacity:0'}">
           <p class="text-xs uppercase tracking-widest mb-2" style="color:{T.muted}">Visítanos</p>
           <h3 style="font-size:clamp(1.5rem,3vw,2rem);font-weight:800;line-height:1.2;color:{T.primary};">Nuestra Ubicación</h3>

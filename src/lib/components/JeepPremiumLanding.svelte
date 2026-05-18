@@ -319,6 +319,17 @@
     }, 6000)
     return () => clearInterval(interval)
   })
+
+  // ── Baja prioridad: Ver más equipamiento + cockpit carousel ──
+  let showAllFeatures = $state(false)
+  let cockpitIndex = $state(0)
+
+  $effect(() => {
+    activeVersionId
+    showAllFeatures = false
+  })
+
+  const showFloating = $derived(progress > 0.08)
 </script>
 
 <svelte:head>
@@ -358,7 +369,7 @@
   </section>
 
   <nav class="product-nav s-mteEPoerD6_z" aria-label="Navegación de producto JEEP">
-    <strong class="s-mteEPoerD6_z">{model.name}</strong>
+    <strong class="s-mteEPoerD6_z">{model.name} <span class="nav-year">2026</span></strong>
     <a href="#inicio" class="s-mteEPoerD6_z">Inicio</a>
     <a href="#versiones" class="s-mteEPoerD6_z">Versiones</a>
     <a href="#galeria" class="s-mteEPoerD6_z">Galería</a>
@@ -471,12 +482,21 @@
       <!-- Features grid -->
       {#if activePanel === 'features'}
         <div class="vs-feat-grid">
-          {#each [...activeVersion.features[0], ...activeVersion.features[1]] as feat, i}
+          {#each showAllFeatures ? [...activeVersion.features[0], ...activeVersion.features[1]] : activeVersion.features[0] as feat, i}
             <div class="vs-feat-card" style={`--d:${i * 40}ms`}>
               <GoogleIcon name="check_circle" size={18} />
               <span>{feat}</span>
             </div>
           {/each}
+        </div>
+        <div class="vs-feat-more">
+          <button class="vs-more-btn" onclick={() => showAllFeatures = !showAllFeatures}>
+            {#if showAllFeatures}
+              <GoogleIcon name="expand_less" size={16} /> Ver menos
+            {:else}
+              <GoogleIcon name="expand_more" size={16} /> Ver más equipamiento ({activeVersion.features[1].length} más)
+            {/if}
+          </button>
         </div>
       {:else}
         <div class="vs-exterior-row">
@@ -548,10 +568,34 @@
       <h2>La mayor comodidad.</h2>
       <span>Pantalla táctil Uconnect® de 8.4" con Apple CarPlay® y Android Auto™ inalámbrico, clúster digital TFT a color de 7", cargador inalámbrico y controles al volante para mantenerte conectado sin distracciones.</span>
     </div>
-    <div class="cockpit-grid">
-      <img src={cockpitImages[0]} alt="Pantalla JEEP" />
-      <img src={cockpitImages[1]} alt="Cluster JEEP" />
-      <img src={cockpitImages[2]} alt="Cabina JEEP" />
+    <div class="cockpit-carousel">
+      <div class="cockpit-track" style={`transform: translateX(calc(-${cockpitIndex} * 100%))`}>
+        {#each cockpitImages as img, i}
+          <img src={img} alt={`Interior JEEP ${i + 1}`} class="cockpit-slide" />
+        {/each}
+      </div>
+      <!-- Prev / Next -->
+      <button
+        class="cockpit-nav prev"
+        onclick={() => cockpitIndex = (cockpitIndex - 1 + cockpitImages.length) % cockpitImages.length}
+        aria-label="Imagen anterior"
+      ><GoogleIcon name="chevron_left" size={22} /></button>
+      <button
+        class="cockpit-nav next"
+        onclick={() => cockpitIndex = (cockpitIndex + 1) % cockpitImages.length}
+        aria-label="Imagen siguiente"
+      ><GoogleIcon name="chevron_right" size={22} /></button>
+      <!-- Dots -->
+      <div class="cockpit-dots">
+        {#each cockpitImages as _, i}
+          <button
+            class="cockpit-dot"
+            class:active={cockpitIndex === i}
+            onclick={() => cockpitIndex = i}
+            aria-label={`Imagen ${i + 1}`}
+          ></button>
+        {/each}
+      </div>
     </div>
   </section>
 
@@ -679,6 +723,18 @@
     </div>
   </section>
 </main>
+
+<!-- ── Floating CTA bar (desktop only, visible after scroll past hero) ── -->
+{#if showFloating}
+  <div
+    class="floating-cta hidden md:flex"
+    transition:fade={{ duration: 260 }}
+  >
+    <span class="floating-cta-name">{model.name}</span>
+    <button class="floating-cta-ghost" onclick={goToTestDrive}>Prueba de manejo</button>
+    <button class="floating-cta-primary" onclick={goToQuote}>Cotizar <GoogleIcon name="arrow_forward" size={15} /></button>
+  </div>
+{/if}
 
 <!-- ── Cotizar Drawer ─────────────────────────────────────────────────── -->
 {#if showCotizarDrawer}
@@ -2260,6 +2316,198 @@
     flex-wrap: wrap;
     gap: 12px;
     margin-top: 8px;
+  }
+
+  /* ── #22 Year badge in product-nav ── */
+  .nav-year {
+    display: inline-block;
+    padding: 1px 7px;
+    margin-left: 4px;
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border-radius: 999px;
+    background: rgba(90, 105, 10, 0.28);
+    border: 1px solid rgba(90, 105, 10, 0.45);
+    color: var(--jeep-hover);
+    vertical-align: middle;
+  }
+
+  /* ── Ver más equipamiento ── */
+  .vs-feat-more {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  .vs-more-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 24px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: rgba(255, 255, 255, 0.05);
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 13px;
+    font-weight: 700;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background 300ms ease, border-color 300ms ease, color 300ms ease;
+  }
+
+  .vs-more-btn:hover {
+    background: rgba(255, 255, 255, 0.10);
+    border-color: rgba(255, 255, 255, 0.28);
+    color: white;
+  }
+
+  /* ── Cockpit carousel ── */
+  .cockpit-carousel {
+    position: relative;
+    overflow: hidden;
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.10);
+  }
+
+  .cockpit-track {
+    display: flex;
+    transition: transform 560ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .cockpit-slide {
+    flex: 0 0 100%;
+    width: 100%;
+    height: clamp(300px, 46vh, 560px);
+    object-fit: cover;
+    display: block;
+  }
+
+  .cockpit-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(8, 8, 14, 0.60);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    color: white;
+    cursor: pointer;
+    backdrop-filter: blur(14px);
+    transition: background 250ms ease, transform 250ms ease;
+    padding: 0;
+    z-index: 2;
+  }
+
+  .cockpit-nav:hover {
+    background: rgba(8, 8, 14, 0.88);
+    transform: translateY(-50%) scale(1.06);
+  }
+
+  .cockpit-nav.prev { left: 12px; }
+  .cockpit-nav.next { right: 12px; }
+
+  .cockpit-dots {
+    position: absolute;
+    bottom: 14px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 2;
+  }
+
+  .cockpit-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.30);
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    transition: width 400ms cubic-bezier(0.16, 1, 0.3, 1), background 400ms ease;
+  }
+
+  .cockpit-dot.active {
+    width: 20px;
+    background: rgba(255, 255, 255, 0.92);
+  }
+
+  /* ── Floating CTA bar ── */
+  .floating-cta {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 36;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    border-radius: 999px;
+    background: rgba(8, 8, 14, 0.78);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    backdrop-filter: blur(28px) saturate(160%);
+    -webkit-backdrop-filter: blur(28px) saturate(160%);
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.44), inset 0 1px 0 rgba(255, 255, 255, 0.10);
+  }
+
+  .floating-cta-name {
+    font-size: 12px;
+    font-weight: 800;
+    color: rgba(255, 255, 255, 0.55);
+    letter-spacing: 0.03em;
+    padding-right: 4px;
+    border-right: 1px solid rgba(255, 255, 255, 0.14);
+    margin-right: 2px;
+    white-space: nowrap;
+  }
+
+  .floating-cta-ghost,
+  .floating-cta-primary {
+    height: 34px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 0 16px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-family: inherit;
+    white-space: nowrap;
+    transition: all 280ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .floating-cta-ghost {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    color: rgba(255, 255, 255, 0.80);
+  }
+
+  .floating-cta-ghost:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.32);
+    color: white;
+  }
+
+  .floating-cta-primary {
+    background: var(--jeep-default);
+    border: 1px solid transparent;
+    color: white;
+    box-shadow: 0 4px 16px rgba(66, 77, 7, 0.40);
+  }
+
+  .floating-cta-primary:hover {
+    background: var(--jeep-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 22px rgba(66, 77, 7, 0.60);
   }
 
   .quote-secondary-btn {
