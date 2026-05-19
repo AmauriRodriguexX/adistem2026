@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { onMount } from 'svelte'
+  import { onMount, tick } from 'svelte'
   import { isDark, initSystemListener } from '$lib/stores/theme'
   import LiquidGlassFilters from '$lib/components/LiquidGlassFilters.svelte'
   import GlassSidebar       from '$lib/components/GlassSidebar.svelte'
@@ -13,6 +13,7 @@
   import JeepBrandHub       from '$lib/components/JeepBrandHub.svelte'
   import JeepPremiumLanding from '$lib/components/JeepPremiumLanding.svelte'
   import SeminuevosView     from '$lib/components/SeminuevosView.svelte'
+  import PostventaView      from '$lib/components/PostventaView.svelte'
   import ContactView        from '$lib/components/ContactView.svelte'
   import CotizacionLanding  from '$lib/components/CotizacionLanding.svelte'
   import CitaServicioLanding from '$lib/components/CitaServicioLanding.svelte'
@@ -34,7 +35,8 @@
 
   let brandFilter: BrandFilter = $state('Todas')
   let typeFilter:  VehicleType = $state('Todos')
-  let currentView: 'Portal' | 'Seminuevos' | 'Contacto' | 'Cotizacion' | 'CitaServicio' | 'PruebaManejo' | 'Ubicacion' = $state('Portal')
+  let currentView: 'Portal' | 'Seminuevos' | 'Contacto' | 'Cotizacion' | 'CitaServicio' | 'PruebaManejo' | 'Ubicacion' | 'Postventa' = $state('Portal')
+  let postventaInitialTab = $state<'cita' | 'fichas'>('cita')
   let initialContactTab: 'cotizacion' | 'cita' | 'prueba' = $state('cotizacion')
   let ramModelSlug: string | null = $state(null)
   let jeepModelSlug: string | null = $state(null)
@@ -175,7 +177,18 @@
       handleContactClick('cotizacion')
     }
   }
-  function scrollToMap()   { mapEl?.scrollIntoView({ behavior: 'smooth' }) }
+  function scrollToMap()       { mapEl?.scrollIntoView({ behavior: 'smooth' }) }
+  async function scrollToPromociones() {
+    if (currentView !== 'Portal' || brandFilter !== 'Todas') {
+      brandFilter = 'Todas'
+      currentView = 'Portal'
+      jeepModelSlug = null
+      ramModelSlug = null
+      history.pushState({ brand: 'Todas' }, '', '/adistem2026/')
+      await tick()
+    }
+    promoEl?.scrollIntoView({ behavior: 'smooth' })
+  }
 
   function syncBrandFromUrl() {
     const path = window.location.pathname
@@ -214,6 +227,12 @@
 
     if (path.toLowerCase().startsWith(base + 'contacto')) {
       currentView = 'Contacto'
+      window.scrollTo(0, 0)
+      return
+    }
+
+    if (path.toLowerCase().startsWith(base + 'postventa')) {
+      currentView = 'Postventa'
       window.scrollTo(0, 0)
       return
     }
@@ -303,6 +322,14 @@
 
   let ubicacionContext = $state<'servicio' | 'ventas'>('ventas')
 
+  function handlePostventaClick(tab: 'cita' | 'fichas' = 'cita') {
+    postventaInitialTab = tab
+    currentView = 'Postventa'
+    history.pushState({ view: 'Postventa' }, '', '/adistem2026/postventa/')
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+    mobileMenuOpen = false
+  }
+
   function handleUbicacionClick(ctx: 'servicio' | 'ventas' = 'ventas') {
     ubicacionContext = ctx
     currentView = 'Ubicacion'
@@ -391,6 +418,7 @@
       mobileMenuOpen = false
     }}
     onUbicacionClick={() => { handleUbicacionClick('ventas'); mobileMenuOpen = false }}
+    onPostventaClick={handlePostventaClick}
   />
 
   <!-- Fixed top nav -->
@@ -412,6 +440,8 @@
       window.scrollTo({ top: 0, behavior: 'smooth' })
     }}
     onUbicacionClick={handleUbicacionClick}
+    onPostventaClick={handlePostventaClick}
+    onPromocionesClick={scrollToPromociones}
     onModelSelect={(brand, slug) => {
       if (brand === 'Jeep') handleJeepModelSelect(slug)
       else if (brand === 'Ram') handleRamModelSelect(slug)
@@ -439,11 +469,12 @@
     {:else if currentView === 'Portal'}
       <!-- HERO -->
       <div bind:this={heroEl}>
-      <HeroSection 
+      <HeroSection
         id="hero"
         bind:this={heroComponent}
-        onMapClick={scrollToMap} 
+        onMapClick={scrollToMap}
         onCotizarClick={scrollToForm}
+        onPruebaManejoClick={() => handleContactClick('prueba')}
         brand={brandFilter}
         config={currentBrandConfig}
       />
@@ -498,31 +529,73 @@
     {/if}
 
     <!-- SERVICE BANNER -->
-    <section bind:this={serviceBannerEl} class="py-8 md:py-12 px-4 md:px-8" style="background:{serviceBg}">
-      <div class="max-w-7xl mx-auto">
-        <div class="relative overflow-hidden rounded-2xl md:rounded-3xl flex flex-col md:flex-row" style={glassCard}>
-          <div class="md:w-1/2 relative overflow-hidden"
-            style="min-height:220px;{serviceBannerVisible ? 'animation:slide-in-left 0.70s cubic-bezier(0.22,1,0.36,1) 0.05s both' : 'opacity:0;transform:translateX(-40px)'}">
-            <img src={SERVICE_IMG} alt="Servicio de Mantenimiento" class="w-full h-full object-cover absolute inset-0" />
-            <div class="absolute inset-0" style="background:{serviceGrad}"></div>
-          </div>
-          <div class="md:w-1/2 p-6 md:p-12 flex flex-col justify-center"
-            style="{serviceBannerVisible ? 'animation:slide-in-right 0.70s cubic-bezier(0.22,1,0.36,1) 0.18s both' : 'opacity:0;transform:translateX(40px)'}">
-            <span class="text-xs uppercase tracking-widest mb-2" style="color:{T.muted}">Servicio</span>
-            <h3 class="mb-3" style="font-size:clamp(1.5rem,4vw,2rem);font-weight:800;line-height:1.2;color:{T.primary};">
-              Servicio de<br />
-              <span style="background:linear-gradient(135deg,#334E8B,#6B8ED4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Mantenimiento</span>
-            </h3>
-            <p class="mb-5 leading-relaxed text-sm" style="color:{T.secondary}">
-              Agenda tu cita de servicio en línea y asegura el mejor cuidado para tu vehículo.
-            </p>
-            <button onclick={() => handleContactClick('cita')}
-              class="inline-flex items-center gap-2 px-6 py-3 text-sm font-bold w-fit btn-glow-border tracking-wide cursor-pointer"
-              >Programa tu cita</button>
-          </div>
-          <div class="absolute top-0 right-0 w-64 h-64 pointer-events-none"
-            style="background:radial-gradient(circle,rgba({brandAccentRgb},0.22) 0%,transparent 70%)"></div>
+    <section bind:this={serviceBannerEl} class="py-10 md:py-14 px-4 md:px-8" style="background:{serviceBg}">
+      <div class="max-w-7xl mx-auto flex flex-col gap-5">
+
+        <!-- Section header -->
+        <div style="{serviceBannerVisible ? 'animation:section-title-in 0.50s cubic-bezier(0.22,1,0.36,1) both' : 'opacity:0'}">
+          <p class="text-xs uppercase tracking-widest mb-1" style="color:{T.muted}">Taller certificado</p>
+          <h3 style="font-size:clamp(1.5rem,3vw,2rem);font-weight:800;line-height:1.15;color:{T.primary};">
+            Servicio de <span style="background:linear-gradient(135deg,#334E8B,#6B8ED4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Mantenimiento</span>
+          </h3>
         </div>
+
+        <!-- Promo banner -->
+        <div class="relative overflow-hidden rounded-2xl flex flex-col sm:flex-row items-center gap-4 px-5 py-4"
+          style="background:linear-gradient(135deg,rgba(51,78,139,0.18) 0%,rgba(46,108,207,0.12) 100%);border:1px solid rgba(51,78,139,0.30);backdrop-filter:blur(16px);{serviceBannerVisible ? 'animation:slide-in-left 0.60s cubic-bezier(0.22,1,0.36,1) 0.10s both' : 'opacity:0;transform:translateX(-24px)'}">
+          <div class="absolute inset-0 pointer-events-none" style="background:radial-gradient(ellipse at 0% 50%,rgba(51,78,139,0.18) 0%,transparent 60%)"></div>
+          <div class="flex items-center gap-3 flex-1 z-10">
+            <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
+              style="background:linear-gradient(135deg,#334E8B,#2E6CCF);box-shadow:0 4px 18px rgba(51,78,139,0.40);">
+              <GoogleIcon name="local_offer" size={18} style="color:white" />
+            </div>
+            <div>
+              <div class="flex items-center gap-2 mb-0.5">
+                <span class="text-[10px] font-black uppercase tracking-widest px-2 py-0.5 rounded-full" style="background:rgba(76,142,240,0.18);color:#4C8EF0;border:1px solid rgba(76,142,240,0.28);">Promo del mes</span>
+              </div>
+              <p class="text-sm font-bold" style="color:{T.primary}">Afinación completa + revisión de 30 puntos</p>
+              <p class="text-xs" style="color:{T.secondary}">Solo con cita previa · Válido hasta fin de mes</p>
+            </div>
+          </div>
+          <button onclick={() => handleContactClick('cita')}
+            class="flex-shrink-0 flex items-center gap-2 px-5 py-2.5 text-xs font-bold btn-glow-border tracking-wide cursor-pointer z-10 whitespace-nowrap">
+            Aprovechar oferta <GoogleIcon name="arrow_forward" size={14} />
+          </button>
+        </div>
+
+        <!-- Service cards grid -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+          {#each [
+            { icon: 'settings',        name: 'Afinación',          desc: 'Bujías, filtros y ajuste de motor',        price: 'Desde $1,200' },
+            { icon: 'oil_barrel',      name: 'Cambio de Aceite',   desc: 'Aceite sintético + filtro original',       price: 'Desde $650'   },
+            { icon: 'tire_repair',     name: 'Revisión de Frenos', desc: 'Pastillas, discos y líquido de frenos',    price: 'Desde $800'   },
+            { icon: 'build_circle',    name: 'Mant. Preventivo',   desc: 'Revisión de 30 puntos certificada',        price: 'Desde $2,500' },
+          ] as svc, i}
+            <button onclick={() => handleContactClick('cita')}
+              class="group flex flex-col gap-3 p-4 md:p-5 rounded-2xl text-left transition-all duration-250 cursor-pointer hover:-translate-y-0.5"
+              style="{glassCard};{serviceBannerVisible ? `animation:benefit-card-in 0.55s cubic-bezier(0.22,1,0.36,1) ${0.20 + i * 0.08}s both` : 'opacity:0;transform:translateY(24px) scale(0.95)'}">
+              <div class="w-9 h-9 rounded-xl flex items-center justify-center"
+                style="background:rgba(51,78,139,0.14);border:1px solid rgba(51,78,139,0.22);">
+                <GoogleIcon name={svc.icon} size={18} style="color:#4C8EF0" />
+              </div>
+              <div class="flex-1">
+                <p class="text-sm font-bold mb-0.5" style="color:{T.primary}">{svc.name}</p>
+                <p class="text-[11px] leading-relaxed" style="color:{T.secondary}">{svc.desc}</p>
+              </div>
+              <p class="text-xs font-black" style="color:#4C8EF0">{svc.price}</p>
+            </button>
+          {/each}
+        </div>
+
+        <!-- Bottom CTA -->
+        <div class="flex justify-center" style="{serviceBannerVisible ? 'animation:hero-fade-up 0.50s cubic-bezier(0.22,1,0.36,1) 0.55s both' : 'opacity:0'}">
+          <button onclick={() => handleContactClick('cita')}
+            class="flex items-center gap-2 px-7 py-3 text-sm font-bold btn-glow-border tracking-wide cursor-pointer">
+            <GoogleIcon name="calendar_month" size={16} />
+            Programa tu cita de servicio
+          </button>
+        </div>
+
       </div>
     </section>
 
@@ -641,6 +714,8 @@
         </div>
       </div>
     </section>
+    {:else if currentView === 'Postventa'}
+      <PostventaView initialTab={postventaInitialTab} />
     {:else if currentView === 'Seminuevos'}
       <SeminuevosView />
     {:else if currentView === 'Contacto'}

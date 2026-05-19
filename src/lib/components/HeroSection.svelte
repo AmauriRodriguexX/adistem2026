@@ -8,10 +8,11 @@
     id?: string
     onMapClick?: () => void
     onCotizarClick?: () => void
+    onPruebaManejoClick?: () => void
     brand?: BrandFilter
     config?: { video: string; image?: string; accent: string; title: string; subtitle: string; hideForm?: boolean }
   }
-  let { id, onMapClick, onCotizarClick, brand = 'Todas', config }: Props = $props()
+  let { id, onMapClick, onCotizarClick, onPruebaManejoClick, brand = 'Todas', config }: Props = $props()
 
   const TOPO_PATTERN = 'https://www.transparenttextures.com/patterns/topography.png'
 
@@ -92,9 +93,9 @@
     </p>
 
     <div class="w-full max-w-xs">
-      <a href="#" class="w-full flex items-center justify-center gap-2 py-3.5 text-sm font-bold tracking-wide btn-glow-border transition-all active:scale-[0.98]">
+      <button onclick={onPruebaManejoClick} class="w-full flex items-center justify-center gap-2 py-3.5 text-sm font-bold tracking-wide btn-glow-border transition-all active:scale-[0.98] cursor-pointer">
         Prueba de manejo <ChevronRight size={16} />
-      </a>
+      </button>
     </div>
   </div>
 
