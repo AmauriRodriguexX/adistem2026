@@ -339,12 +339,6 @@
                 <GoogleIcon name="local_offer" size={16} class="opacity-60 flex-shrink-0" />
                 Promociones
               </button>
-              <button onclick={() => { closeDropdowns() }}
-                class="w-full flex items-center gap-3 px-4 py-2.5 text-sm font-medium transition-all hover:opacity-80 cursor-pointer text-left"
-                style="color:{$isDark ? 'rgba(255,255,255,0.88)' : '#1a2040'};">
-                <GoogleIcon name="description" size={16} class="opacity-60 flex-shrink-0" />
-                Fichas técnicas
-              </button>
             </div>
           </div>
         {/if}
