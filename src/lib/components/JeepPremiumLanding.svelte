@@ -1662,7 +1662,7 @@
 
   .safety-content span {
     display: block;
-    margin: 0 0 0;
+    margin: 0 0 44px;
     color: rgba(255, 255, 255, 0.70);
     font-size: 14px;
     font-weight: 400;
@@ -1671,8 +1671,8 @@
   }
 
   /* ── Safety sub-label ── */
-  .safety-sub-label {
-    margin: 44px 0 14px;
+  .safety-content .safety-sub-label {
+    margin: 0 0 14px;
     font-size: 12px;
     font-weight: 900;
     letter-spacing: 0.18em;

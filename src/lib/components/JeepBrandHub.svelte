@@ -140,6 +140,14 @@
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
+  function goToPrueba(modelSlug?: string) {
+    const base = '/adistem2026/prueba-manejo/'
+    const url = modelSlug ? `${base}?modelo=${encodeURIComponent(modelSlug)}` : base
+    history.pushState({ view: 'PruebaManejo' }, '', url)
+    window.dispatchEvent(new PopStateEvent('popstate', { state: { view: 'PruebaManejo' } }))
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
   // Modelo seleccionado en el inline-form preview
   let selectedQuoteModel = $state('renegade')
 
@@ -320,8 +328,9 @@
         <h2 class="story-title">Conquista<br>la ciudad.</h2>
         <p class="story-sub">Renegade y Compass. Motor 1.3L Turbo, AWD disponible y tecnología ADAS para dominar cada ruta.</p>
         <div class="story-actions">
-          <button class="story-btn primary" onclick={() => selectModel('renegade')}>Explorar <GoogleIcon name="arrow_forward" size={16} /></button>
-          <button class="story-btn ghost" onclick={() => selectModel('compass')}>Explorar</button>
+          <button class="story-btn primary" onclick={() => goToCotizacion('renegade')}><GoogleIcon name="description" size={15} /> Cotizar</button>
+          <button class="story-btn ghost" onclick={() => selectModel('renegade')}>Explorar <GoogleIcon name="arrow_forward" size={15} /></button>
+          <button class="story-btn link" onclick={() => goToPrueba('renegade')}><GoogleIcon name="speed" size={14} /> Prueba de manejo</button>
         </div>
       </div>
     </div>
@@ -334,8 +343,9 @@
         <h2 class="story-title">Siete plazas.<br>Un solo destino.</h2>
         <p class="story-sub">Commander: tres filas, confort premium y capacidad sin concesiones para toda la familia.</p>
         <div class="story-actions">
-          <button class="story-btn primary" onclick={() => selectModel('commander')}>Explorar <GoogleIcon name="arrow_forward" size={16} /></button>
-          <button class="story-btn ghost" onclick={() => selectModel('grand-cherokee')}>Explorar</button>
+          <button class="story-btn primary" onclick={() => goToCotizacion('commander')}><GoogleIcon name="description" size={15} /> Cotizar</button>
+          <button class="story-btn ghost" onclick={() => selectModel('commander')}>Explorar <GoogleIcon name="arrow_forward" size={15} /></button>
+          <button class="story-btn link" onclick={() => goToPrueba('commander')}><GoogleIcon name="speed" size={14} /> Prueba de manejo</button>
         </div>
       </div>
     </div>
@@ -348,8 +358,9 @@
         <h2 class="story-title">Sin pavimento.<br>Sin límites.</h2>
         <p class="story-sub">Wrangler y JT. Tracción 4×4 con reducida para ir donde ningún otro se atreve.</p>
         <div class="story-actions">
-          <button class="story-btn primary" onclick={() => selectModel('wrangler')}>Explorar <GoogleIcon name="arrow_forward" size={16} /></button>
-          <button class="story-btn ghost" onclick={() => selectModel('jt')}>Explorar</button>
+          <button class="story-btn primary" onclick={() => goToCotizacion('wrangler')}><GoogleIcon name="description" size={15} /> Cotizar</button>
+          <button class="story-btn ghost" onclick={() => selectModel('wrangler')}>Explorar <GoogleIcon name="arrow_forward" size={15} /></button>
+          <button class="story-btn link" onclick={() => goToPrueba('wrangler')}><GoogleIcon name="speed" size={14} /> Prueba de manejo</button>
         </div>
       </div>
     </div>
@@ -1315,6 +1326,21 @@
     transform: translateY(-2px);
     background: rgba(255, 255, 255, 0.18);
     border-color: rgba(255, 255, 255, 0.44);
+  }
+
+  .story-btn.link {
+    background: transparent;
+    color: rgba(255, 255, 255, 0.72);
+    border: none;
+    padding: 0 8px;
+    font-size: 12px;
+    text-decoration: none;
+    gap: 6px;
+  }
+
+  .story-btn.link:hover {
+    color: white;
+    transform: translateX(2px);
   }
 
   /* ═══ Stat strip ═══ */

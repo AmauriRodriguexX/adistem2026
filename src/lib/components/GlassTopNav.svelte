@@ -17,6 +17,8 @@
     onServicioClick?:        () => void
     onContactoClick?:        () => void
     onUbicacionClick?:       (ctx?: 'servicio' | 'ventas') => void
+    onPostventaClick?:       (tab?: 'cita' | 'fichas') => void
+    onPromocionesClick?:     () => void
     activeView?:             string
     onModelSelect?:          (brand: BrandFilter, slug: string) => void
   }
@@ -34,6 +36,8 @@
     onServicioClick,
     onContactoClick,
     onUbicacionClick,
+    onPostventaClick,
+    onPromocionesClick,
     activeView,
     onModelSelect,
   }: Props = $props()
@@ -86,12 +90,14 @@
   let megaOpen  = $state(false)
 
   // ── Micro-dropdowns ──
-  let compraOpen   = $state(false)
-  let contactoOpen = $state(false)
+  let compraOpen     = $state(false)
+  let postventaOpen  = $state(false)
+  let contactoOpen   = $state(false)
 
-  function closeDropdowns() { compraOpen = false; contactoOpen = false }
-  function toggleCompra()   { compraOpen = !compraOpen; contactoOpen = false }
-  function toggleContacto() { contactoOpen = !contactoOpen; compraOpen = false }
+  function closeDropdowns()  { compraOpen = false; postventaOpen = false; contactoOpen = false }
+  function toggleCompra()    { compraOpen = !compraOpen; postventaOpen = false; contactoOpen = false }
+  function togglePostventa() { postventaOpen = !postventaOpen; compraOpen = false; contactoOpen = false }
+  function toggleContacto()  { contactoOpen = !contactoOpen; compraOpen = false; postventaOpen = false }
 
   $effect(() => {
     megaBrand = activeBrand
@@ -117,7 +123,8 @@
   const isHomeActive       = $derived(activeView === 'Portal')
   const isSeminuevosActive = $derived(activeView === 'Seminuevos')
   const isCompraActive     = $derived(activeView === 'Cotizacion' || activeView === 'PruebaManejo')
-  const isContactoActive   = $derived(activeView === 'Ubicacion' || activeView === 'CitaServicio' || activeView === 'Contacto')
+  const isPostventaActive  = $derived(activeView === 'Postventa')
+  const isContactoActive   = $derived(activeView === 'Ubicacion' || activeView === 'Contacto')
 
   function selectMegaType(type: VehicleType) {
     megaType = type
@@ -326,7 +333,7 @@
                 <GoogleIcon name="speed" size={16} class="opacity-60 flex-shrink-0" />
                 Prueba de manejo
               </button>
-              <button onclick={() => { closeDropdowns() }}
+              <button onclick={() => { onPromocionesClick?.(); closeDropdowns() }}
                 class="w-full flex items-center gap-3 px-4 py-2.5 text-sm font-medium transition-all hover:opacity-80 cursor-pointer text-left"
                 style="color:{$isDark ? 'rgba(255,255,255,0.88)' : '#1a2040'};">
                 <GoogleIcon name="local_offer" size={16} class="opacity-60 flex-shrink-0" />
@@ -337,6 +344,39 @@
                 style="color:{$isDark ? 'rgba(255,255,255,0.88)' : '#1a2040'};">
                 <GoogleIcon name="description" size={16} class="opacity-60 flex-shrink-0" />
                 Fichas técnicas
+              </button>
+            </div>
+          </div>
+        {/if}
+      </div>
+
+      <!-- ── Dropdown: Postventa ── -->
+      <div class="relative" data-dropdown>
+        <button
+          onclick={togglePostventa}
+          class="flex items-center gap-1.5 px-3 h-8 rounded-lg text-[13px] transition-all cursor-pointer"
+          style="color:{$isDark ? 'rgba(255,255,255,0.85)' : '#1a2040'};background:{postventaOpen || isPostventaActive ? ($isDark ? 'rgba(255,255,255,0.08)' : 'rgba(51,78,139,0.07)') : 'transparent'};font-weight:{isPostventaActive ? 700 : 600};"
+        >
+          Postventa
+          <GoogleIcon name="keyboard_arrow_down" size={16} class="opacity-60 transition-transform {postventaOpen ? 'rotate-180' : ''}" />
+        </button>
+        {#if postventaOpen}
+          <div
+            class="absolute top-full left-0 mt-2 w-52 rounded-2xl overflow-hidden shadow-2xl z-50"
+            style="background:{$isDark ? 'rgba(8,11,24,0.96)' : 'rgba(255,255,255,0.97)'};backdrop-filter:blur(24px);border:1px solid {$isDark ? 'rgba(255,255,255,0.10)' : 'rgba(51,78,139,0.12)'};"
+          >
+            <div class="py-1.5">
+              <button onclick={() => { onPostventaClick?.('cita'); closeDropdowns() }}
+                class="w-full flex items-center gap-3 px-4 py-2.5 text-sm font-medium transition-all hover:opacity-80 cursor-pointer text-left"
+                style="color:{$isDark ? 'rgba(255,255,255,0.88)' : '#1a2040'};">
+                <GoogleIcon name="build" size={16} class="opacity-60 flex-shrink-0" />
+                Cita de Servicio
+              </button>
+              <button onclick={() => { onPostventaClick?.('fichas'); closeDropdowns() }}
+                class="w-full flex items-center gap-3 px-4 py-2.5 text-sm font-medium transition-all hover:opacity-80 cursor-pointer text-left"
+                style="color:{$isDark ? 'rgba(255,255,255,0.88)' : '#1a2040'};">
+                <GoogleIcon name="description" size={16} class="opacity-60 flex-shrink-0" />
+                Fichas Técnicas
               </button>
             </div>
           </div>
@@ -364,12 +404,6 @@
                 style="color:{$isDark ? 'rgba(255,255,255,0.88)' : '#1a2040'};">
                 <GoogleIcon name="support_agent" size={16} class="opacity-60 flex-shrink-0" />
                 Soporte
-              </button>
-              <button onclick={() => { onUbicacionClick?.('servicio'); closeDropdowns() }}
-                class="w-full flex items-center gap-3 px-4 py-2.5 text-sm font-medium transition-all hover:opacity-80 cursor-pointer text-left"
-                style="color:{$isDark ? 'rgba(255,255,255,0.88)' : '#1a2040'};">
-                <GoogleIcon name="build" size={16} class="opacity-60 flex-shrink-0" />
-                Servicio
               </button>
               <button onclick={() => { onUbicacionClick?.('ventas'); closeDropdowns() }}
                 class="w-full flex items-center gap-3 px-4 py-2.5 text-sm font-medium transition-all hover:opacity-80 cursor-pointer text-left"

@@ -15,6 +15,7 @@
     onPruebaManejoClick?: () => void
     onContactoClick?:     () => void
     onUbicacionClick?:    () => void
+    onPostventaClick?:    (tab?: 'cita' | 'fichas') => void
   }
 
   let {
@@ -28,6 +29,7 @@
     onPruebaManejoClick,
     onContactoClick,
     onUbicacionClick,
+    onPostventaClick,
   }: Props = $props()
 
   const brands: { name: BrandFilter; logo: string; enabled: boolean }[] = [
@@ -253,6 +255,38 @@
       >
         <GoogleIcon name="speed" size={20} />
         <span class="text-sm font-semibold flex-1 text-left">Prueba de manejo</span>
+        <GoogleIcon name="chevron_right" size={16} />
+      </button>
+    </div>
+
+    <!-- Divider -->
+    <div class="mx-4 my-3" style="height:1px;background:{dividerColor}"></div>
+
+    <!-- ── POSTVENTA ── -->
+    <div class="px-4">
+      <p class="text-[10px] font-black uppercase tracking-widest mb-2" style="color:{labelColor}">Postventa</p>
+
+      <button
+        onclick={() => { onPostventaClick?.('cita'); close() }}
+        class="flex items-center gap-3 w-full px-3 py-3 rounded-xl transition-all"
+        style="color:{textColor};"
+        onmouseenter={(e) => (e.currentTarget as HTMLElement).style.background = rowHoverBg}
+        onmouseleave={(e) => (e.currentTarget as HTMLElement).style.background = 'transparent'}
+      >
+        <GoogleIcon name="build" size={20} />
+        <span class="text-sm font-semibold flex-1 text-left">Cita de Servicio</span>
+        <GoogleIcon name="chevron_right" size={16} />
+      </button>
+
+      <button
+        onclick={() => { onPostventaClick?.('fichas'); close() }}
+        class="flex items-center gap-3 w-full px-3 py-3 rounded-xl transition-all"
+        style="color:{textColor};"
+        onmouseenter={(e) => (e.currentTarget as HTMLElement).style.background = rowHoverBg}
+        onmouseleave={(e) => (e.currentTarget as HTMLElement).style.background = 'transparent'}
+      >
+        <GoogleIcon name="description" size={20} />
+        <span class="text-sm font-semibold flex-1 text-left">Fichas Técnicas</span>
         <GoogleIcon name="chevron_right" size={16} />
       </button>
     </div>

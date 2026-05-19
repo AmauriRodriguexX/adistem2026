@@ -23,8 +23,10 @@
   ] as const
 
   const WA_CONTACTS = [
-    { label: 'Ventas',   number: '524871108899', display: '(487) 110-8899' },
-    { label: 'Servicio', number: '524871005896', display: '(487) 100-5896' },
+    { label: 'Ventas',      number: '524871108899', display: '(487) 110-8899', text: 'Hola,%20me%20interesan%20los%20vehículos%20nuevos' },
+    { label: 'Seminuevos',  number: '524871108899', display: '(487) 110-8899', text: 'Hola,%20busco%20información%20de%20seminuevos' },
+    { label: 'Servicio',    number: '524871005896', display: '(487) 100-5896', text: 'Hola,%20quiero%20agendar%20una%20cita%20de%20servicio' },
+    { label: 'Refacciones', number: '524871108899', display: '(487) 110-8899', text: 'Hola,%20busco%20una%20refacción' },
   ]
 
   const NOISE_SVG = `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.90' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`
@@ -93,32 +95,31 @@
       <div class="flex items-center justify-between px-5 py-4" style="border-bottom:{divider}">
         <div class="flex items-center gap-2.5">
           <div class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></div>
-          <span class="text-sm font-semibold" style="color:{$isDark ? 'white' : '#1a2040'}">VAPSA — Contáctanos</span>
+          <span class="text-sm font-semibold" style="color:{$isDark ? 'white' : '#1a2040'}">Contáctanos</span>
         </div>
         <button onclick={() => waOpen = false} class="p-1" style="color:{textMuted}"><GoogleIcon name="close" size={16} /></button>
       </div>
       <div class="p-4 space-y-3">
         <p class="text-xs mb-3" style="color:{textMuted}">Hola, escríbenos al número que prefieras:</p>
-        {#each WA_CONTACTS as c (c.number)}
-          <a href="https://wa.me/{c.number}?text=Hola,%20me%20interesa%20informaci%C3%B3n%20sobre%20sus%20veh%C3%ADculos"
+        {#each WA_CONTACTS as c (c.label)}
+          <a href="https://wa.me/{c.number}?text={c.text}"
             target="_blank" rel="noopener noreferrer"
             onclick={() => waOpen = false}
-            class="flex items-center justify-between p-3.5 rounded-full active:scale-[0.97] transition-all"
-            style="background:{$isDark ? 'rgba(37,211,102,0.10)' : 'rgba(37,211,102,0.08)'};border:1px solid rgba(37,211,102,0.26);">
-            <div class="flex items-center gap-3">
-              <div class="w-9 h-9 rounded-full flex items-center justify-center" style="background:rgba(37,211,102,0.18);">
-                <img
-                  src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
-                  alt="WhatsApp"
-                  style="width:18px;height:18px;background:linear-gradient(135deg,#25D366 0%,#128C7E 100%);padding:2px;border-radius:4px;display:block;"
-                />
-              </div>
-              <div>
-                <p class="text-xs" style="color:{textMuted}">{c.label}</p>
-                <p class="text-sm font-semibold" style="color:{$isDark ? 'white' : '#1a2040'}">{c.display}</p>
-              </div>
+            class="flex items-center gap-3 px-4 py-3 rounded-2xl active:scale-[0.97] transition-all"
+            style="background:{$isDark ? 'rgba(255,255,255,0.06)' : 'rgba(20,40,120,0.04)'};border:1px solid {$isDark ? 'rgba(255,255,255,0.08)' : 'rgba(20,40,120,0.08)'};">
+            <div class="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0"
+              style="background:linear-gradient(135deg,#25D366,#128C7E);">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+                alt="WhatsApp"
+                style="width:20px;height:20px;display:block;"
+              />
             </div>
-            <GoogleIcon name="chevron_right" size={14} style="color:#25D366" />
+            <div class="flex-1 leading-none">
+              <p class="text-[11px] font-semibold mb-0.5" style="color:{textMuted}">{c.label}</p>
+              <p class="text-[14px] font-black tracking-wide" style="color:{$isDark ? 'white' : '#1a2040'}">{c.display}</p>
+            </div>
+            <GoogleIcon name="chevron_right" size={16} style="color:{textMuted}" />
           </a>
         {/each}
         <a href="tel:+524871108899"
