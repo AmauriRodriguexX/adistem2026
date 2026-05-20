@@ -44,14 +44,20 @@
 
   const VEHICLE_TYPES = [
     { name: 'Todos',      label: 'Todas',             desc: 'Sin filtro de carrocería' },
-    { name: 'Hatchback',  label: 'Hatchback',         desc: 'Ciudad, eficiencia y agilidad' },
     { name: 'Sedán',      label: 'Sedán',             desc: 'Confort ejecutivo y manejo suave' },
     { name: 'SUV',        label: 'SUV',               desc: 'Espacio familiar y presencia' },
-    { name: 'Deportivos', label: 'Deportivos',        desc: 'Diseño con carácter y respuesta' },
     { name: 'Pick-ups',   label: 'Pick-ups',          desc: 'Capacidad para trabajo y aventura' },
+    { name: 'Van',        label: 'Van',               desc: 'Volumen, negocio y movilidad' },
   ] as const
 
-
+  const BRAND_ALLOWED_TYPES: Record<BrandFilter, VehicleType[]> = {
+    Todas:   ['SUV', 'Sedán', 'Pick-ups', 'Van'],
+    Ram:     ['Pick-ups'],
+    Fiat:    ['SUV'],
+    Dodge:   ['SUV', 'Sedán'],
+    Jeep:    ['SUV', 'Pick-ups'],
+    Peugeot: ['SUV', 'Van'],
+  }
 
   const BRAND_TABS: { name: BrandFilter; label: string; accent: string; hover: string }[] = [
     { name: 'Todas',   label: 'Todas',             accent: '#334E8B', hover: '#2E6CCF' },
@@ -66,23 +72,23 @@
     id: number; brand: Exclude<BrandFilter, 'Todas'>; type: VehicleType; model: string
     year: string; version: string; fuel: string; price: string; img: string; accent: string
   }[] = [
-    { id:1,  brand:'Jeep',    type:'SUV',        model:'Wrangler',      year:'2026', version:'Willys Unlimited', fuel:'Gasolina', price:'Desde $1,099,900', img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2Fdbbe0b1e89813d5569554d4d88221a1b92e0d6f2.jpg?generation=1777350234515482&alt=media', accent:'#424D07' },
-    { id:2,  brand:'Jeep',    type:'SUV',        model:'Compass',       year:'2026', version:'Limited Premium',  fuel:'Gasolina', price:'Desde $689,900', img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F0d3d7a1dc7e07f0e64c4fb84601cc8fa871c5acc.jpg?generation=1777350234540448&alt=media', accent:'#424D07' },
-    { id:3,  brand:'Jeep',    type:'SUV',        model:'Commander',     year:'2026', version:'Overland FWD',     fuel:'Gasolina', price:'Desde $789,900', img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F0c31e45701627ca72a88b646087445172fc4a302.jpg?generation=1777350234492066&alt=media', accent:'#424D07' },
-    { id:4,  brand:'Jeep',    type:'SUV',        model:'Renegade',      year:'2026', version:'Latitude',         fuel:'Gasolina', price:'Desde $489,900', img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F03eb70622ac5b618a05ca4b50608ada9e5f36dff.jpg?generation=1777350234483821&alt=media', accent:'#424D07' },
-    { id:5,  brand:'Fiat',    type:'SUV',        model:'Pulse',         year:'2026', version:'Drive',            fuel:'Gasolina', price:'Desde $389,900', img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F12af6dc13f44f29033d673c803a50f637af22da0.jpg?generation=1777350234700225&alt=media', accent:'#FF1530' },
+    { id:1,  brand:'Jeep',    type:'SUV',        model:'Wrangler',      year:'2026', version:'Willys Unlimited', fuel:'Gasolina', price:'Desde $1,098,900', img:'/adistem2026/jeep/wrangler-2026.jpg', accent:'#424D07' },
+    { id:2,  brand:'Jeep',    type:'SUV',        model:'Compass',       year:'2026', version:'Limited Premium',  fuel:'Gasolina', price:'Desde $541,900', img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F0d3d7a1dc7e07f0e64c4fb84601cc8fa871c5acc.jpg?generation=1777350234540448&alt=media', accent:'#424D07' },
+    { id:3,  brand:'Jeep',    type:'SUV',        model:'Commander',     year:'2026', version:'Overland FWD',     fuel:'Gasolina', price:'Desde $766,900', img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F0c31e45701627ca72a88b646087445172fc4a302.jpg?generation=1777350234492066&alt=media', accent:'#424D07' },
+    { id:4,  brand:'Jeep',    type:'SUV',        model:'Renegade',      year:'2026', version:'Latitude',         fuel:'Gasolina', price:'Desde $456,900', img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F03eb70622ac5b618a05ca4b50608ada9e5f36dff.jpg?generation=1777350234483821&alt=media', accent:'#424D07' },
+    { id:5,  brand:'Fiat',    type:'SUV',        model:'Pulse',         year:'2026', version:'Drive',            fuel:'Gasolina', price:'Desde $368,900', img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F12af6dc13f44f29033d673c803a50f637af22da0.jpg?generation=1777350234700225&alt=media', accent:'#FF1530' },
     { id:6,  brand:'Fiat',    type:'Deportivos', model:'Pulse Abarth',  year:'2026', version:'Abarth',           fuel:'Gasolina', price:'Desde $529,900', img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2Fcab9193a2663f242fe2c565e771d2cb7acb3bdfd.jpg?generation=1777350234690980&alt=media', accent:'#FF1530' },
-    { id:7,  brand:'Fiat',    type:'SUV',        model:'Fastback',      year:'2026', version:'Limited',          fuel:'Gasolina', price:'Desde $459,900', img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F73305e43e64c51813013640443da7b7c6dbe392e.jpg?generation=1777350234711531&alt=media', accent:'#FF1530' },
+    { id:7,  brand:'Fiat',    type:'SUV',        model:'Fastback',      year:'2026', version:'Limited',          fuel:'Gasolina', price:'Desde $482,900', img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F73305e43e64c51813013640443da7b7c6dbe392e.jpg?generation=1777350234711531&alt=media', accent:'#FF1530' },
     { id:8,  brand:'Fiat',    type:'Hatchback',  model:'Argo',          year:'2026', version:'Drive',            fuel:'Gasolina', price:'Desde $289,900', img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F35bd343876d4e41f21a86499747f1af99d5fe2b2.jpg?generation=1777350234727796&alt=media', accent:'#FF1530' },
-    { id:9,  brand:'Dodge',   type:'SUV',        model:'Durango',       year:'2026', version:'R/T Plus',         fuel:'Gasolina', price:'Desde $1,229,900', img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F1d6f3f42a55407817e0572a9323b9aa10c891633.jpg?generation=1777350234722595&alt=media', accent:'#D50000' },
-    { id:10, brand:'Dodge',   type:'Sedán',      model:'Attitude',      year:'2026', version:'SXT',              fuel:'Gasolina', price:'Desde $299,900', img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2Ffd24ea9b590e1057b2b5aece02f0924645f557d3.jpg?generation=1777350234728971&alt=media', accent:'#D50000' },
-    { id:11, brand:'Dodge',   type:'SUV',        model:'Journey',       year:'2026', version:'GT',               fuel:'Gasolina', price:'Desde $599,900', img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2Fc8f39b8a62ba049430811aa128ea21a793615787.jpg?generation=1777350234748118&alt=media', accent:'#D50000' },
+    { id:9,  brand:'Dodge',   type:'SUV',        model:'Durango',       year:'2026', version:'R/T Plus',         fuel:'Gasolina', price:'Desde $2,174,900', img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F1d6f3f42a55407817e0572a9323b9aa10c891633.jpg?generation=1777350234722595&alt=media', accent:'#D50000' },
+    { id:10, brand:'Dodge',   type:'Sedán',      model:'Attitude',      year:'2026', version:'SXT',              fuel:'Gasolina', price:'Desde $379,900', img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2Ffd24ea9b590e1057b2b5aece02f0924645f557d3.jpg?generation=1777350234728971&alt=media', accent:'#D50000' },
+    { id:11, brand:'Dodge',   type:'SUV',        model:'Journey',       year:'2026', version:'GT',               fuel:'Gasolina', price:'Desde $603,900', img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2Fc8f39b8a62ba049430811aa128ea21a793615787.jpg?generation=1777350234748118&alt=media', accent:'#D50000' },
     { id:12, brand:'Peugeot', type:'SUV',        model:'Nueva 2008',    year:'2026', version:'GT',               fuel:'Gasolina', price:'Desde $448,900', img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F7ac848efe89adde5660e4d2956b4983e1775ce00.jpg?generation=1777350234794617&alt=media', accent:'#0074E8' },
     { id:13, brand:'Peugeot', type:'SUV',        model:'Nueva 5008',    year:'2026', version:'GT',               fuel:'Gasolina', price:'Desde $779,900', img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2Fa324072dc54a25de50940520db820b447f976fdd.jpg?generation=1777350234728825&alt=media', accent:'#0074E8' },
     { id:14, brand:'Peugeot', type:'SUV',        model:'Nueva 3008',    year:'2026', version:'Allure Pack',      fuel:'Gasolina', price:'Desde $639,900', img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F97992cfc1a6ba95676e9baa2cff5b4fe94dd63c7.jpg?generation=1777350234796103&alt=media', accent:'#0074E8' },
-    { id:15, brand:'Peugeot', type:'Pick-ups',   model:'Nueva Partner', year:'2026', version:'Active',           fuel:'Gasolina', price:'Desde $469,900', img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2Fb1d61b52adc2aa72f9170a07361f38035b5794a8.jpg?generation=1777350234922828&alt=media', accent:'#0074E8' },
-    { id:16, brand:'Ram',     type:'Pick-ups',   model:'1500',          year:'2026', version:'Laramie 4x4',      fuel:'Híbridos', price:'Desde $1,169,900', img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F366059fdfc8601cb267c2dfe66bce5eff26e9802.jpg?generation=1777350234982606&alt=media', accent:'#880D00' },
-    { id:17, brand:'Ram',     type:'Pick-ups',   model:'1200',          year:'2026', version:'Limited',          fuel:'Gasolina', price:'Desde $629,900', img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2Fd77a3a9cf0b124b56b0ca97a272a05d66cdb4f9b.jpg?generation=1777350234972552&alt=media', accent:'#880D00' },
+    { id:15, brand:'Peugeot', type:'Van',        model:'Nueva Partner', year:'2026', version:'Active',           fuel:'Gasolina', price:'Desde $439,900', img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2Fb1d61b52adc2aa72f9170a07361f38035b5794a8.jpg?generation=1777350234922828&alt=media', accent:'#0074E8' },
+    { id:16, brand:'Ram',     type:'Pick-ups',   model:'1500',          year:'2026', version:'Laramie 4x4',      fuel:'Híbridos', price:'Desde $1,290,000', img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F366059fdfc8601cb267c2dfe66bce5eff26e9802.jpg?generation=1777350234982606&alt=media', accent:'#880D00' },
+    { id:17, brand:'Ram',     type:'Pick-ups',   model:'1200',          year:'2026', version:'Limited',          fuel:'Gasolina', price:'Desde $408,400', img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2Fd77a3a9cf0b124b56b0ca97a272a05d66cdb4f9b.jpg?generation=1777350234972552&alt=media', accent:'#880D00' },
   ]
 
   let megaBrand = $state<BrandFilter>('Todas')
@@ -107,11 +113,21 @@
     megaType = activeType
   })
 
+  $effect(() => {
+    if (megaType !== 'Todos' && !BRAND_ALLOWED_TYPES[megaBrand].includes(megaType)) {
+      megaType = 'Todos'
+    }
+  })
+
   const megaAccent = $derived(BRAND_TABS.find(b => b.name === megaBrand)?.accent ?? '#334E8B')
+  const visibleMegaTypes = $derived(
+    VEHICLE_TYPES.filter(type => type.name === 'Todos' || BRAND_ALLOWED_TYPES[megaBrand].includes(type.name as VehicleType))
+  )
   const megaVehicles = $derived(MENU_VEHICLES.filter(vehicle => {
     const brandOk = megaBrand === 'Todas' || vehicle.brand === megaBrand
     const typeOk = megaType === 'Todos' || vehicle.type === megaType
-    return brandOk && typeOk
+    const allowedTypeOk = BRAND_ALLOWED_TYPES[megaBrand].includes(vehicle.type)
+    return brandOk && typeOk && allowedTypeOk
   }))
 
   function selectMegaBrand(brand: BrandFilter) {
@@ -127,6 +143,7 @@
   const isContactoActive   = $derived(activeView === 'Ubicacion' || activeView === 'Contacto')
 
   function selectMegaType(type: VehicleType) {
+    if (type !== 'Todos' && !BRAND_ALLOWED_TYPES[megaBrand].includes(type)) return
     megaType = type
   }
 
@@ -231,6 +248,8 @@
     <GoogleIcon name="airport_shuttle" size={18} />
   {:else if type === 'Deportivos'}
     <GoogleIcon name="sports_motorsports" size={18} />
+  {:else if type === 'Van'}
+    <GoogleIcon name="airport_shuttle" size={18} />
   {:else}
     <GoogleIcon name="local_shipping" size={18} />
   {/if}
@@ -465,7 +484,7 @@
         <!-- ======================= -->
         <div class="md:hidden flex-shrink-0 border-b py-2.5 shadow-sm relative z-10" style="border-color:{$isDark ? 'rgba(255,255,255,0.05)' : 'rgba(30,60,120,0.05)'}; background:{$isDark ? 'rgba(0,0,0,0.1)' : 'rgba(255,255,255,0.4)'};">
           <div class="flex overflow-x-auto gap-2 px-4 snap-x hide-scrollbar" style="scrollbar-width: none;">
-            {#each VEHICLE_TYPES as type}
+            {#each visibleMegaTypes as type}
               {@const isActive = megaType === type.name}
               <button
                 onclick={() => selectMegaType(type.name as VehicleType)}
@@ -487,7 +506,7 @@
         >
           <p class="text-[10px] font-black uppercase tracking-[0.14em]" style="color:{$isDark ? 'rgba(255,255,255,0.42)' : 'rgba(17,24,39,0.42)'}">Carrocería</p>
           <div class="mt-2 grid grid-cols-2 gap-2 md:flex md:flex-col">
-            {#each VEHICLE_TYPES as item}
+            {#each visibleMegaTypes as item}
               {@const isTypeActive = megaType === item.name}
               <button
                 onclick={() => selectMegaType(item.name as VehicleType)}

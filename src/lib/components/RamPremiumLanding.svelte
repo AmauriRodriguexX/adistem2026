@@ -16,6 +16,7 @@
     heroImage: string
     spotlightImage: string
     quote: string
+    price?: string
     specs: { value: string; label: string }[]
     motionTitle: string
     motionCopy: string
@@ -47,6 +48,7 @@
       heroImage: `${L}/ram-1500-rho.jpg`,
       spotlightImage: `${L}/ram-1500-rho.jpg`,
       quote: 'Hola,%20me%20interesa%20cotizar%20una%20RAM%201500%20RHO',
+      price: 'Desde $1,290,000',
       specs: [
         { value: 'RHO', label: 'Desempeño off-road' },
         { value: '4x4', label: 'Tracción para terrenos abiertos' },
@@ -55,6 +57,42 @@
       ],
       motionTitle: 'Movimiento hecho para terreno abierto.',
       motionCopy: 'La 1500 RHO está pensada para que la ruta se sienta viva: más presencia, más respuesta y una lectura visual inmediata.',
+    },
+    '1500': {
+      name: 'RAM 1500',
+      kicker: 'RAM 1500 2026',
+      title: 'Potencia diaria con presencia premium.',
+      subtitle: 'Una pickup para remolque, familia y aventura con equilibrio entre fuerza, confort y capacidad diaria.',
+      heroImage: `${L}/ram-1500.jpg`,
+      spotlightImage: `${L}/ram-1500.jpg`,
+      quote: 'Hola,%20me%20interesa%20cotizar%20una%20RAM%201500',
+      price: 'Desde $1,290,000',
+      specs: [
+        { value: '1500', label: 'Pickup RAM 2026' },
+        { value: '4x4', label: 'Capacidad para aventura' },
+        { value: 'Remolque', label: 'Lista para carga y ruta' },
+        { value: 'Confort', label: 'Cabina amplia y equipada' },
+      ],
+      motionTitle: 'Fuerza amplia para todos los días.',
+      motionCopy: 'La RAM 1500 combina capacidad, presencia y comodidad para trabajar, viajar y moverse con autoridad.',
+    },
+    '1200': {
+      name: 'RAM 1200',
+      kicker: 'RAM 1200 2026',
+      title: 'Trabajo inteligente, listo para producir.',
+      subtitle: 'Una pickup práctica para flotillas, campo y carga productiva con una lectura visual fuerte y funcional.',
+      heroImage: `${L}/ram-1200.jpg`,
+      spotlightImage: `${L}/ram-1200.jpg`,
+      quote: 'Hola,%20me%20interesa%20cotizar%20una%20RAM%201200',
+      price: 'Desde $408,400',
+      specs: [
+        { value: '1200', label: 'Pickup RAM 2026' },
+        { value: 'Trabajo', label: 'Configuración productiva' },
+        { value: 'Carga', label: 'Caja útil para jornadas reales' },
+        { value: 'Negocio', label: 'Pensada para operación diaria' },
+      ],
+      motionTitle: 'Capacidad práctica para avanzar más.',
+      motionCopy: 'La RAM 1200 está enfocada en resolver: cargar, moverse y acompañar jornadas productivas sin exceso.',
     },
   }
 
@@ -190,6 +228,7 @@
     <div class="hero-copy">
       <p>{model.kicker}</p>
       <h1>{model.title}</h1>
+      {#if model.price}<strong class="model-price">{model.price}</strong>{/if}
       <span>{model.subtitle}</span>
       <button onclick={goToQuote}>Cotizar {model.name} <GoogleIcon name="arrow_forward" size={18} /></button>
     </div>
@@ -484,6 +523,23 @@
     line-height: 0.92;
     letter-spacing: 0;
     font-weight: 900;
+  }
+
+  .model-price {
+    display: block;
+    width: fit-content;
+    margin-top: 18px;
+    padding: 8px 14px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 999px;
+    color: white;
+    background: rgba(136, 13, 0, 0.34);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.14);
+    font-size: clamp(13px, 1.2vw, 16px);
+    font-weight: 900;
+    letter-spacing: 0;
   }
 
   .hero-copy > span {

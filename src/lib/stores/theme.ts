@@ -2,16 +2,15 @@ import { writable, derived } from 'svelte/store'
 
 export type ThemeMode = 'light' | 'dark' | 'system'
 export type ResolvedTheme = 'light' | 'dark'
-export const THEME_CYCLE: ThemeMode[] = ['light', 'dark', 'system']
+export const THEME_CYCLE: ThemeMode[] = ['dark']
 
 function getStored(): ThemeMode {
-  try { return (localStorage.getItem('vapsa-theme') as ThemeMode) || 'system' }
-  catch { return 'system' }
+  try { localStorage.setItem('vapsa-theme', 'dark') } catch { /* noop */ }
+  return 'dark'
 }
 
 function getSystemDark(): boolean {
-  try { return window.matchMedia('(prefers-color-scheme: dark)').matches }
-  catch { return false }
+  return true
 }
 
 // Core stores
@@ -20,29 +19,22 @@ export const systemDark = writable<boolean>(getSystemDark())
 
 // Derived: resolved & isDark
 export const resolvedTheme = derived(
-  [themeMode, systemDark],
-  ([$mode, $sys]) => ($mode === 'system' ? ($sys ? 'dark' : 'light') : $mode) as ResolvedTheme
+  themeMode,
+  () => 'dark' as ResolvedTheme
 )
 
-export const isDark = derived(resolvedTheme, ($r) => $r === 'dark')
+export const isDark = derived(resolvedTheme, () => true)
 
 // Action
 export function setTheme(t: ThemeMode) {
-  try { localStorage.setItem('vapsa-theme', t) } catch { /* noop */ }
-  themeMode.set(t)
+  try { localStorage.setItem('vapsa-theme', 'dark') } catch { /* noop */ }
+  themeMode.set('dark')
 }
 
-// Wire up system‑preference listener (call once from App.svelte onMount)
+// Theme is intentionally locked to dark, regardless of OS/browser preference.
 export function initSystemListener() {
-  try {
-    const mq = window.matchMedia('(prefers-color-scheme: dark)')
-    // Crucial fix: sync the current state immediately on mount
-    systemDark.set(mq.matches)
-    
-    const handler = (e: MediaQueryListEvent) => systemDark.set(e.matches)
-    mq.addEventListener('change', handler)
-    return () => mq.removeEventListener('change', handler)
-  } catch {
-    return () => { /* noop */ }
-  }
+  themeMode.set('dark')
+  systemDark.set(true)
+  try { localStorage.setItem('vapsa-theme', 'dark') } catch { /* noop */ }
+  return () => { /* noop */ }
 }
