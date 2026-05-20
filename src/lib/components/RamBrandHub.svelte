@@ -8,6 +8,7 @@
     image: string
     accent: string
     use: string
+    price?: string
     stat: string
     metric: string
     detail: string
@@ -28,6 +29,7 @@
       image: `${A}/ram-1500-rho.jpg`,
       accent: RAM_HOVER,
       use: 'Para quien quiere velocidad, presencia y terracería.',
+      price: 'Desde $1,290,000',
       stat: 'Performance',
       metric: 'Off-road',
       detail: 'Suspensión y respuesta para terrenos abiertos',
@@ -39,6 +41,7 @@
       image: `${A}/ram-1500-tungsten.jpg`,
       accent: RAM_DEFAULT,
       use: 'Para viajes, negocio y confort ejecutivo.',
+      price: 'Desde $1,290,000',
       stat: 'Premium',
       metric: 'Lujo',
       detail: 'Cabina elevada, materiales premium y gran presencia',
@@ -61,6 +64,7 @@
       image: `${A}/ram-1500.jpg`,
       accent: RAM_DEFAULT,
       use: 'Para remolque, familia y aventura.',
+      price: 'Desde $1,290,000',
       stat: 'Versátil',
       metric: 'Remolque',
       detail: 'Balance entre fuerza, confort y capacidad diaria',
@@ -72,6 +76,7 @@
       image: `${A}/ram-1200.jpg`,
       accent: '#7f7f7f',
       use: 'Para flotillas, campo y carga productiva.',
+      price: 'Desde $408,400',
       stat: 'Trabajo',
       metric: 'Carga',
       detail: 'Configuración práctica para jornadas productivas',
@@ -120,6 +125,7 @@
               <small>{model.stat}</small>
               <h3>{model.name}</h3>
               <span>{model.role}</span>
+              {#if model.price}<b>{model.price}</b>{/if}
               <i>{model.metric}</i>
               <p>{model.detail}</p>
               <button onclick={() => selectModel(model.slug)}>Ver modelo <GoogleIcon name="arrow_forward" size={16} /></button>
@@ -189,6 +195,7 @@
             <small>{model.metric}</small>
             <p>{model.role}</p>
             <h3>{model.name}</h3>
+            {#if model.price}<b>{model.price}</b>{/if}
             <span>{model.use}</span>
             <em>{model.detail}</em>
             <button onclick={() => selectModel(model.slug)}>Explorar modelo <GoogleIcon name="arrow_forward" size={16} /></button>
@@ -555,6 +562,21 @@
     margin-top: 12px;
     color: rgba(255, 255, 255, 0.72);
     font-size: clamp(15px, 1.5vw, 19px);
+  }
+
+  .slide-glass b,
+  .lineup-grid b {
+    display: block;
+    width: fit-content;
+    margin-top: 12px;
+    padding: 7px 12px;
+    border: 1px solid color-mix(in srgb, var(--accent) 46%, rgba(255,255,255,0.18));
+    border-radius: 999px;
+    color: white;
+    background: color-mix(in srgb, var(--accent) 18%, rgba(255,255,255,0.06));
+    font-size: 13px;
+    font-weight: 950;
+    letter-spacing: 0;
   }
 
   .slide-glass i {

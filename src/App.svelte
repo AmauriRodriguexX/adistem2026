@@ -161,6 +161,16 @@
   let heroComponent: any = $state()
 
   function scrollToHero()  { heroEl?.scrollIntoView({ behavior: 'smooth' }) }
+  async function handleHomeClick() {
+    brandFilter = 'Todas'
+    typeFilter = 'Todos'
+    currentView = 'Portal'
+    jeepModelSlug = null
+    ramModelSlug = null
+    history.pushState({ brand: 'Todas' }, '', '/adistem2026/')
+    await tick()
+    scrollToHero()
+  }
   function scrollToForm() {
     if (!currentBrandConfig.hideForm && typeof window !== 'undefined' && window.innerWidth >= 1024) {
       scrollToHero()
@@ -382,15 +392,19 @@
       { label:'Ram',     href:'#' },
       { label:'Peugeot', href:'#' },
     ]},
-    { title: 'Servicios', links: [
-      { label:'Cotización',       href:'#' },
-      { label:'Cita de Servicio', href:'#' },
-      { label:'Prueba de manejo', href:'#' },
-      { label:'Contáctanos',      href:'#' },
+    { title: 'Compra', links: [
+      { label:'Cotización',       action: () => handleContactClick('cotizacion') },
+      { label:'Prueba de manejo', action: () => handleContactClick('prueba') },
+      { label:'Promociones',      action: scrollToPromociones },
+      { label:'Seminuevos',       action: handleSeminuevosClick },
     ]},
-    { title: 'Empresa', links: [
-      { label:'Aviso de Privacidad', href:'#' },
-      { label:'Ubicación',           href:'https://maps.google.com/' },
+    { title: 'Postventa', links: [
+      { label:'Cita de Servicio', action: () => handlePostventaClick('cita') },
+      { label:'Fichas Técnicas',   action: () => handlePostventaClick('fichas') },
+    ]},
+    { title: 'Contacto', links: [
+      { label:'Soporte',              action: () => handleContactClick('cotizacion') },
+      { label:'Horarios y ubicación', action: () => handleUbicacionClick('ventas') },
     ]},
   ]
 </script>
@@ -409,6 +423,7 @@
     onMobileClose={() => mobileMenuOpen = false}
     onMapClick={scrollToMap}
     onSeminuevosClick={handleSeminuevosClick}
+    onPromocionesClick={scrollToPromociones}
     onCotizarClick={handleNavCotizarClick}
     onPruebaManejoClick={() => handleContactClick('prueba')}
     onContactoClick={() => {
@@ -430,7 +445,7 @@
     onCotizarClick={handleNavCotizarClick}
     onMenuToggle={() => mobileMenuOpen = !mobileMenuOpen}
     onMapClick={scrollToMap}
-    onHomeClick={() => handleBrandSelect('Todas')}
+    onHomeClick={handleHomeClick}
     onSeminuevosClick={handleSeminuevosClick}
     onPruebaManejoClick={() => handleContactClick('prueba')}
     onServicioClick={() => handleContactClick('cita')}
@@ -733,11 +748,16 @@
     <!-- FOOTER -->
     <footer bind:this={footerEl} class="py-10 md:py-12 px-4 md:px-8" style="background:{footerBg};border-top:1px solid {T.divider};">
       <div class="max-w-7xl mx-auto">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 mb-8 md:mb-10">
-          <div class="col-span-2 md:col-span-1"
-            style="{footerVisible ? 'animation:hero-fade-up 0.55s cubic-bezier(0.22,1,0.36,1) 0ms both' : 'opacity:0;transform:translateY(20px)'}">
-            <img src="https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2Fd523ee5a3e49270550e54e77aac5fd153b37f9cb.svg?generation=1777350234230312&alt=media"
-              alt="VAPSA" class="h-9 w-auto mb-4" style="filter:{T.logoF}" />
+        <div class="grid grid-cols-2 md:grid-cols-5 gap-6 md:gap-8 mb-8 md:mb-10">
+          <div class="col-span-2 md:col-span-1 justify-self-start text-left"
+            style="margin-left:0;{footerVisible ? 'animation:hero-fade-up 0.55s cubic-bezier(0.22,1,0.36,1) 0ms both' : 'opacity:0;transform:translateY(20px)'}">
+            <button type="button" onclick={handleHomeClick}
+              class="mb-4 cursor-pointer bg-transparent border-0 p-0 transition-opacity hover:opacity-80 block"
+              style="margin-left:0;display:block;width:max-content;"
+              aria-label="Ir al inicio">
+              <img src="https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2Fd523ee5a3e49270550e54e77aac5fd153b37f9cb.svg?generation=1777350234230312&alt=media"
+                alt="VAPSA" class="h-9 w-auto" style="filter:{T.logoF}" />
+            </button>
             <p class="text-xs leading-relaxed mb-3" style="color:{T.muted}">
               Concesionaria autorizada de Jeep, FIAT, Dodge, Ram y Peugeot en Rioverde, SLP.
             </p>
@@ -751,7 +771,15 @@
               <ul class="space-y-2">
                 {#each col.links as link (link.label)}
                   <li>
-                    <a href={link.href} class="text-xs transition-colors hover:text-blue-500" style="color:{T.muted}">{link.label}</a>
+                    {#if 'action' in link}
+                      <button type="button" onclick={link.action}
+                        class="text-xs transition-colors hover:text-blue-500 cursor-pointer text-left"
+                        style="color:{T.muted}">
+                        {link.label}
+                      </button>
+                    {:else}
+                      <a href={link.href} class="text-xs transition-colors hover:text-blue-500" style="color:{T.muted}">{link.label}</a>
+                    {/if}
                   </li>
                 {/each}
               </ul>
@@ -780,9 +808,20 @@
           <p class="text-xs" style="color:{$isDark ? 'rgba(255,255,255,0.22)' : 'rgba(20,30,80,0.28)'}">
             © {new Date().getFullYear()} VAPSA Rioverde. Todos los derechos reservados.
           </p>
-          <p class="text-xs" style="color:{$isDark ? 'rgba(255,255,255,0.18)' : 'rgba(20,30,80,0.24)'}">
-            Jeep · Fiat · Dodge · Ram · Peugeot
-          </p>
+          <div class="flex flex-wrap items-center justify-center gap-x-4 gap-y-2">
+            <button type="button" class="text-xs transition-colors hover:text-blue-500 cursor-pointer"
+              style="color:{$isDark ? 'rgba(255,255,255,0.28)' : 'rgba(20,30,80,0.34)'}">
+              Términos y condiciones
+            </button>
+            <span class="text-xs" aria-hidden="true"
+              style="color:{$isDark ? 'rgba(255,255,255,0.16)' : 'rgba(20,30,80,0.22)'}">
+              |
+            </span>
+            <button type="button" class="text-xs transition-colors hover:text-blue-500 cursor-pointer"
+              style="color:{$isDark ? 'rgba(255,255,255,0.28)' : 'rgba(20,30,80,0.34)'}">
+              Aviso de Privacidad
+            </button>
+          </div>
         </div>
       </div>
     </footer>

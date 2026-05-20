@@ -11,6 +11,7 @@
     onMobileClose?:       () => void
     onMapClick?:          () => void
     onSeminuevosClick?:   () => void
+    onPromocionesClick?:  () => void
     onCotizarClick?:      () => void
     onPruebaManejoClick?: () => void
     onContactoClick?:     () => void
@@ -25,6 +26,7 @@
     onMobileClose,
     onMapClick,
     onSeminuevosClick,
+    onPromocionesClick,
     onCotizarClick,
     onPruebaManejoClick,
     onContactoClick,
@@ -174,13 +176,14 @@
     <!-- ── MARCAS ── -->
     <div class="px-4 pt-5 pb-2">
       <p class="text-[10px] font-black uppercase tracking-widest mb-3" style="color:{labelColor}">Marcas</p>
-      <div class="flex flex-col gap-1">
+      <div class="grid grid-cols-2 gap-2">
         {#each brands as brand (brand.name)}
           {@const isActive  = activeBrand === brand.name}
           {@const tone      = brandTone(brand.name)}
           <button
             onclick={() => handleBrand(brand.name, brand.enabled)}
-            class="flex items-center gap-3 w-full px-3 py-2.5 rounded-xl transition-all text-left"
+            class="relative flex items-center justify-center w-full h-20 rounded-2xl transition-all"
+            aria-label={brand.name}
             style="
               background:{isActive ? `color-mix(in srgb, ${tone} ${$isDark ? 20 : 10}%, transparent)` : 'transparent'};
               border:{isActive ? `1px solid color-mix(in srgb, ${tone} 40%, rgba(255,255,255,0.10))` : '1px solid transparent'};
@@ -190,16 +193,14 @@
             "
           >
             <!-- Logo pill -->
-            <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 p-1.5"
+            <div class="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0 p-2.5"
               style="background:{isActive ? `color-mix(in srgb, ${tone} ${$isDark ? 28 : 14}%, transparent)` : ($isDark ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.04)')};border:{isActive ? `1px solid color-mix(in srgb, ${tone} 50%, transparent)` : `1px solid ${$isDark ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.07)'}`};">
               <img src={brand.logo} alt={brand.name} class="w-full h-full object-contain"
                 style="filter:{logoFilter};opacity:{isActive ? 1 : ($isDark ? 0.55 : 0.45)}" />
             </div>
-            <!-- Name -->
-            <span class="text-sm font-semibold flex-1" style="color:{isActive ? textColor : textMuted}">{brand.name}</span>
             <!-- Active dot -->
             {#if isActive}
-              <span class="w-1.5 h-1.5 rounded-full flex-shrink-0"
+              <span class="absolute top-2 right-2 w-2 h-2 rounded-full flex-shrink-0"
                 style="background:{tone};box-shadow:0 0 8px {tone}"></span>
             {/if}
           </button>
@@ -255,6 +256,19 @@
       >
         <GoogleIcon name="speed" size={20} />
         <span class="text-sm font-semibold flex-1 text-left">Prueba de manejo</span>
+        <GoogleIcon name="chevron_right" size={16} />
+      </button>
+
+      <!-- Promociones -->
+      <button
+        onclick={() => { onPromocionesClick?.(); close() }}
+        class="flex items-center gap-3 w-full px-3 py-3 rounded-xl transition-all"
+        style="color:{textColor};"
+        onmouseenter={(e) => (e.currentTarget as HTMLElement).style.background = rowHoverBg}
+        onmouseleave={(e) => (e.currentTarget as HTMLElement).style.background = 'transparent'}
+      >
+        <GoogleIcon name="local_offer" size={20} />
+        <span class="text-sm font-semibold flex-1 text-left">Promociones</span>
         <GoogleIcon name="chevron_right" size={16} />
       </button>
     </div>

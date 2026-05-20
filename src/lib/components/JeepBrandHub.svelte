@@ -46,7 +46,7 @@
       stat: 'Diseño & Confort',
       metric: 'AWD Disponible',
       detail: 'Diseñado para conquistarte: tecnología, espacio y presencia.',
-      price: '$599,900'
+      price: '$541,900'
     },
     {
       slug: 'commander',
@@ -58,7 +58,7 @@
       stat: '7 Pasajeros',
       metric: 'Familia & Espacio',
       detail: 'Tres filas de asientos con confort y capacidad sin concesiones.',
-      price: '$734,900'
+      price: '$766,900'
     },
     {
       slug: 'cherokee',
@@ -88,13 +88,13 @@
       slug: 'wrangler',
       name: 'Jeep Wrangler',
       role: 'El todoterreno original y eterno',
-      image: `${CDN}/nafta/jeep/es_mx/2026/wrangler/vlp/desktop/my26-jeep-wrangler-inicio-vlp-mx-dk.jpg.img.2880.jpg`,
+      image: '/adistem2026/jeep/wrangler-2026.jpg',
       accent: JEEP_HOVER,
       use: 'Para aventura extrema, off-road y espíritu libre.',
       stat: 'Off-Road Total',
       metric: '4x4 con reducida',
       detail: 'Icónico, irreducible y sin límites. El Jeep definitivo.',
-      price: '$1,149,900'
+      price: '$1,098,900'
     },
     {
       slug: 'jt',

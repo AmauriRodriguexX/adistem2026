@@ -109,7 +109,7 @@
         {config?.subtitle ?? ''}
       </p>
       <div class="flex gap-3">
-        <a href="#" class="flex items-center gap-2 px-6 py-3 text-sm font-bold btn-glow-border tracking-wide">Agenda tu prueba de manejo <ChevronRight size={15} /></a>
+        <button onclick={onPruebaManejoClick} class="flex items-center gap-2 px-6 py-3 text-sm font-bold btn-glow-border tracking-wide cursor-pointer">Agenda tu prueba de manejo <ChevronRight size={15} /></button>
         {#if config?.hideForm}
           <button onclick={onCotizarClick} class="flex items-center gap-2 px-6 py-3 rounded-2xl text-white/85 text-sm font-medium cursor-pointer" style={glassBtn}>Cotizar Ahora <ChevronDown size={15} /></button>
         {/if}
