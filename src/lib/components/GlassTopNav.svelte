@@ -385,9 +385,9 @@
                 <GoogleIcon name="build" size={16} class="opacity-60 flex-shrink-0" />
                 Cita de Servicio
               </button>
-              <button onclick={() => { onPostventaClick?.('fichas'); closeDropdowns() }}
+              <button onclick={() => undefined}
                 class="w-full flex items-center gap-3 px-4 py-2.5 text-sm font-medium transition-all hover:opacity-80 cursor-pointer text-left"
-                style="color:{$isDark ? 'rgba(255,255,255,0.88)' : '#1a2040'};">
+                style="color:{$isDark ? 'rgba(255,255,255,0.42)' : 'rgba(26,32,64,0.45)'};">
                 <GoogleIcon name="description" size={16} class="opacity-60 flex-shrink-0" />
                 Fichas Técnicas
               </button>

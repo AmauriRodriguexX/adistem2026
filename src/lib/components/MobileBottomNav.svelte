@@ -5,15 +5,16 @@
   interface Props {
     onCotizarClick?:      () => void
     onPruebaManejoClick?: () => void
+    onServicioClick?:     () => void
+    onContactoClick?:     () => void
     mode?: 'default' | 'model-detail'
   }
-  let { onCotizarClick, onPruebaManejoClick, mode = 'default' }: Props = $props()
+  let { onCotizarClick, onPruebaManejoClick, onServicioClick, onContactoClick, mode = 'default' }: Props = $props()
 
   const LINKS = [
     { icon: 'speed',      label: 'Prueba de manejo', href: '#', isWA: false, action: 'prueba' },
     { icon: 'calculate',  label: 'Cotizar',    href: '#', isWA: false, action: 'cotizar' },
-    { icon: 'build',      label: 'Servicio',   href: '#', isWA: false, action: 'cotizar' },
-    { icon: 'call',       label: 'Contacto',   href: '#', isWA: false, action: 'cotizar' },
+    { icon: 'build',      label: 'Servicio',   href: '#', isWA: false, action: 'servicio' },
     { icon: 'chat',       label: 'WhatsApp',   href: '#', isWA: true,  action: 'wa' },
   ] as const
 
@@ -58,6 +59,10 @@
       onCotizarClick?.()
     } else if (action === 'prueba') {
       onPruebaManejoClick?.() ?? onCotizarClick?.()
+    } else if (action === 'servicio') {
+      onServicioClick?.()
+    } else if (action === 'contacto') {
+      onContactoClick?.()
     } else if (action === 'wa') {
       waOpen = true
     }

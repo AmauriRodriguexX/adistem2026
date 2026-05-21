@@ -147,7 +147,7 @@
   <div class="max-w-7xl mx-auto flex flex-col items-center">
     
     <!-- Encabezado UX Tendencia 2026 -->
-    <div class="text-center mb-8 w-full">
+    <div class="text-left mb-8 w-full">
       <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest mb-4 transition-all duration-300 hover:scale-105"
         style="background:{isServicio ? 'rgba(129,128,130,0.12)' : ($isDark ? 'rgba(59,130,246,0.12)' : 'rgba(59,130,246,0.08)')}; color:{isServicio ? '#818082' : '#3b82f6'}; border:1px solid {isServicio ? 'rgba(129,128,130,0.30)' : 'rgba(59,130,246,0.25)'};">
         <GoogleIcon name={pageBadgeIcon} size={16} />
@@ -160,7 +160,7 @@
           Horarios y <span style="background:linear-gradient(135deg,#334E8B,#2E6CCF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Ubicación</span>
         {/if}
       </h1>
-      <p class="max-w-2xl mx-auto text-sm md:text-base leading-relaxed" style="color:{T.secondary}">
+      <p class="max-w-2xl text-sm md:text-base leading-relaxed" style="color:{T.secondary}">
         {pageSubtitle}
       </p>
     </div>

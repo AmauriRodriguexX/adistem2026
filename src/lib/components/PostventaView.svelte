@@ -5,8 +5,9 @@
 
   interface Props {
     initialTab?: 'cita' | 'fichas'
+    hideTabs?: boolean
   }
-  let { initialTab = 'cita' }: Props = $props()
+  let { initialTab = 'cita', hideTabs = false }: Props = $props()
 
   let activeTab = $state<'cita' | 'fichas'>(initialTab)
 
@@ -93,20 +94,25 @@
   <div class="max-w-5xl mx-auto">
 
     <!-- Header -->
-    <div class="text-center mb-8">
+    <div class="text-left mb-8">
       <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest mb-3"
         style="background:rgba(51,78,139,0.10);color:#4C8EF0;border:1px solid rgba(51,78,139,0.20);">
         <GoogleIcon name="build_circle" size={15} />
         <span>Servicios para tu vehículo</span>
       </div>
-      <h1 class="text-4xl md:text-5xl font-black tracking-tight mb-2" style="color:{T.primary}">Postventa</h1>
-      <p class="max-w-lg mx-auto text-sm leading-relaxed" style="color:{T.secondary}">
-        Mantén tu vehículo en condiciones óptimas con nuestro equipo certificado y accede a las fichas técnicas oficiales.
+      <h1 class="text-4xl md:text-5xl font-black tracking-tight mb-2" style="color:{T.primary}">
+        {hideTabs && activeTab === 'fichas' ? 'Fichas Técnicas' : 'Postventa'}
+      </h1>
+      <p class="max-w-lg text-sm leading-relaxed" style="color:{T.secondary}">
+        {hideTabs && activeTab === 'fichas'
+          ? 'Consulta información técnica de modelos destacados en una vista separada del flujo de citas y pruebas de manejo.'
+          : 'Mantén tu vehículo en condiciones óptimas con nuestro equipo certificado y accede a las fichas técnicas oficiales.'}
       </p>
     </div>
 
     <!-- Tabs -->
-    <div class="flex justify-center mb-8">
+    {#if !hideTabs}
+    <div class="flex justify-start mb-8">
       <div class="inline-flex rounded-2xl p-1 gap-1"
         style="background:{$isDark ? 'rgba(255,255,255,0.07)' : 'rgba(51,78,139,0.07)'};border:1px solid {T.divider};">
         <button
@@ -129,10 +135,11 @@
         </button>
       </div>
     </div>
+    {/if}
 
     <!-- ── Tab: Cita de Servicio ── -->
     {#if activeTab === 'cita'}
-      <div class="flex flex-col items-center gap-10">
+      <div class="flex flex-col items-start gap-10">
         <div class="w-full max-w-md">
           <ContactFormCard initialTab="cita" hideTabs={true} showExtraFields={true} />
         </div>
@@ -143,7 +150,7 @@
             { icon: 'settings',          title: 'Refacciones Originales',  desc: 'Garantía de rendimiento y durabilidad superior.' },
             { icon: 'bolt',              title: 'Servicio Express',         desc: 'Mantenimientos básicos listos el mismo día.' },
           ] as item}
-            <div class="flex flex-col items-center text-center gap-2">
+            <div class="flex flex-col items-start text-left gap-2">
               <GoogleIcon name={item.icon} size={26} style="color:#4C8EF0" />
               <p class="text-xs font-bold uppercase tracking-wider" style="color:{T.primary}">{item.title}</p>
               <p class="text-[11px] leading-relaxed" style="color:{T.secondary}">{item.desc}</p>
