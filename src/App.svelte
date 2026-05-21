@@ -35,7 +35,7 @@
 
   let brandFilter: BrandFilter = $state('Todas')
   let typeFilter:  VehicleType = $state('Todos')
-  let currentView: 'Portal' | 'Seminuevos' | 'Contacto' | 'Cotizacion' | 'CitaServicio' | 'PruebaManejo' | 'Ubicacion' | 'Postventa' = $state('Portal')
+  let currentView: 'Portal' | 'Seminuevos' | 'Contacto' | 'Cotizacion' | 'CitaServicio' | 'PruebaManejo' | 'Ubicacion' | 'Postventa' | 'FichasTecnicas' = $state('Portal')
   let postventaInitialTab = $state<'cita' | 'fichas'>('cita')
   let initialContactTab: 'cotizacion' | 'cita' | 'prueba' = $state('cotizacion')
   let ramModelSlug: string | null = $state(null)
@@ -181,12 +181,16 @@
     }
   }
   function handleNavCotizarClick() {
-    if (brandFilter === 'Todas' && currentView === 'Portal') {
-      scrollToForm()
-    } else {
-      handleContactClick('cotizacion')
-    }
+    handleContactClick('cotizacion')
   }
+
+  function handleMobileContactoClick() {
+    currentView = 'Contacto'
+    history.pushState({ view: 'Contacto' }, '', '/adistem2026/contacto/')
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+    mobileMenuOpen = false
+  }
+
   function scrollToMap()       { mapEl?.scrollIntoView({ behavior: 'smooth' }) }
   async function scrollToPromociones() {
     if (currentView !== 'Portal' || brandFilter !== 'Todas') {
@@ -243,6 +247,13 @@
 
     if (path.toLowerCase().startsWith(base + 'postventa')) {
       currentView = 'Postventa'
+      window.scrollTo(0, 0)
+      return
+    }
+
+    if (path.toLowerCase().startsWith(base + 'fichas-tecnicas')) {
+      postventaInitialTab = 'fichas'
+      currentView = 'FichasTecnicas'
       window.scrollTo(0, 0)
       return
     }
@@ -333,9 +344,17 @@
   let ubicacionContext = $state<'servicio' | 'ventas'>('ventas')
 
   function handlePostventaClick(tab: 'cita' | 'fichas' = 'cita') {
-    postventaInitialTab = tab
-    currentView = 'Postventa'
-    history.pushState({ view: 'Postventa' }, '', '/adistem2026/postventa/')
+    if (tab === 'fichas') {
+      handleFichasTecnicasClick()
+      return
+    }
+    handleContactClick('cita')
+  }
+
+  function handleFichasTecnicasClick() {
+    postventaInitialTab = 'fichas'
+    currentView = 'FichasTecnicas'
+    history.pushState({ view: 'FichasTecnicas' }, '', '/adistem2026/fichas-tecnicas/')
     window.scrollTo({ top: 0, behavior: 'smooth' })
     mobileMenuOpen = false
   }
@@ -400,10 +419,14 @@
     ]},
     { title: 'Postventa', links: [
       { label:'Cita de Servicio', action: () => handlePostventaClick('cita') },
-      { label:'Fichas Técnicas',   action: () => handlePostventaClick('fichas') },
+      { label:'Fichas Técnicas',   action: () => undefined },
     ]},
     { title: 'Contacto', links: [
-      { label:'Soporte',              action: () => handleContactClick('cotizacion') },
+      { label:'Soporte',              action: () => {
+        currentView = 'Contacto'
+        history.pushState({ view: 'Contacto' }, '', '/adistem2026/contacto/')
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+      } },
       { label:'Horarios y ubicación', action: () => handleUbicacionClick('ventas') },
     ]},
   ]
@@ -424,7 +447,7 @@
     onMapClick={scrollToMap}
     onSeminuevosClick={handleSeminuevosClick}
     onPromocionesClick={scrollToPromociones}
-    onCotizarClick={handleNavCotizarClick}
+    onCotizarClick={() => handleContactClick('cotizacion')}
     onPruebaManejoClick={() => handleContactClick('prueba')}
     onContactoClick={() => {
       currentView = 'Contacto'
@@ -465,8 +488,10 @@
 
   <!-- Mobile bottom nav -->
   <MobileBottomNav
-    onCotizarClick={handleNavCotizarClick}
+    onCotizarClick={() => handleContactClick('cotizacion')}
     onPruebaManejoClick={() => handleContactClick('prueba')}
+    onServicioClick={() => handleContactClick('cita')}
+    onContactoClick={handleMobileContactoClick}
     mode={(currentView === 'Portal' && (brandFilter === 'Jeep' || brandFilter === 'Ram') && (jeepModelSlug || ramModelSlug)) ? 'model-detail' : 'default'}
   />
 
@@ -731,6 +756,8 @@
     </section>
     {:else if currentView === 'Postventa'}
       <PostventaView initialTab={postventaInitialTab} />
+    {:else if currentView === 'FichasTecnicas'}
+      <PostventaView initialTab="fichas" hideTabs={true} />
     {:else if currentView === 'Seminuevos'}
       <SeminuevosView />
     {:else if currentView === 'Contacto'}

@@ -293,9 +293,9 @@
       </button>
 
       <button
-        onclick={() => { onPostventaClick?.('fichas'); close() }}
+        onclick={() => undefined}
         class="flex items-center gap-3 w-full px-3 py-3 rounded-xl transition-all"
-        style="color:{textColor};"
+        style="color:{textMuted};"
         onmouseenter={(e) => (e.currentTarget as HTMLElement).style.background = rowHoverBg}
         onmouseleave={(e) => (e.currentTarget as HTMLElement).style.background = 'transparent'}
       >

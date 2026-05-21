@@ -15,19 +15,19 @@
 </script>
 
 <div class="min-h-screen pt-28 pb-24 px-4 md:px-8 transition-colors duration-500" style="background:{pageBg}">
-  <div class="max-w-4xl mx-auto flex flex-col items-center">
+  <div class="max-w-4xl mx-auto flex flex-col items-start w-full">
     
     <!-- Encabezado Específico -->
-    <div class="text-center mb-10">
+    <div class="text-left mb-10 w-full">
       <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest mb-3 bg-blue-500/10 text-blue-500 border border-blue-500/20">
         <GoogleIcon name="build" size={16} />
         <span>Taller Certificado</span>
       </div>
       <h1 class="text-4xl md:text-5xl font-black tracking-tight mb-3" style="color:{T.primary}">
-        Cita de Servicio
+        Formulario para cita de servicio
       </h1>
-      <p class="max-w-xl mx-auto text-sm md:text-base leading-relaxed" style="color:{T.secondary}">
-        Mantén tu auto en condiciones óptimas. Programa tu servicio de mantenimiento con técnicos certificados y refacciones originales garantizadas.
+      <p class="max-w-xl text-sm md:text-base leading-relaxed" style="color:{T.secondary}">
+        Programa tu servicio de mantenimiento con técnicos certificados y refacciones originales garantizadas.
       </p>
     </div>
 
@@ -37,7 +37,7 @@
     </div>
 
     <!-- Puntos Clave Inferiores -->
-    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-12 pt-8 border-t w-full text-center" style="border-color: {$isDark ? 'rgba(255,255,255,0.08)' : 'rgba(51,78,139,0.12)'}">
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-12 pt-8 border-t w-full text-left" style="border-color: {$isDark ? 'rgba(255,255,255,0.08)' : 'rgba(51,78,139,0.12)'}">
       <div>
         <GoogleIcon name="workspace_premium" size={24} class="text-blue-500 mb-1" />
         <h4 class="text-xs font-bold uppercase tracking-wider" style="color:{T.primary}">Mano de Obra Calificada</h4>

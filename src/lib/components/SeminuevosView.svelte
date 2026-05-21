@@ -61,6 +61,18 @@
   const ITEMS_PER_PAGE = 6
   let currentPage = $state(1)
 
+  // Filtrado reactivo en tiempo real
+  let filteredInventory = $derived(INVENTORY.filter(car => {
+    const matchSearch = filterText ? car.title.toLowerCase().includes(filterText.toLowerCase()) : true
+    const matchYear = selectedYear ? car.year.toString() === selectedYear : true
+    const matchBrand = selectedBrand ? car.brand === selectedBrand : true
+    const matchModel = selectedModel ? car.model === selectedModel : true
+    const matchTrans = selectedTransmission ? car.transmission === selectedTransmission : true
+    const matchPrice = car.numPrice >= minPrice && car.numPrice <= maxPrice
+    const matchKm = car.numKm <= maxKm
+    return matchSearch && matchYear && matchBrand && matchModel && matchTrans && matchPrice && matchKm
+  }))
+
   $effect(() => {
     filteredInventory.length  // eslint-disable-line @typescript-eslint/no-unused-expressions
     currentPage = 1
@@ -81,18 +93,6 @@
         : INVENTORY.map(c => c.model)
     ))
   )
-
-  // Filtrado reactivo en tiempo real
-  let filteredInventory = $derived(INVENTORY.filter(car => {
-    const matchSearch = filterText ? car.title.toLowerCase().includes(filterText.toLowerCase()) : true
-    const matchYear = selectedYear ? car.year.toString() === selectedYear : true
-    const matchBrand = selectedBrand ? car.brand === selectedBrand : true
-    const matchModel = selectedModel ? car.model === selectedModel : true
-    const matchTrans = selectedTransmission ? car.transmission === selectedTransmission : true
-    const matchPrice = car.numPrice >= minPrice && car.numPrice <= maxPrice
-    const matchKm = car.numKm <= maxKm
-    return matchSearch && matchYear && matchBrand && matchModel && matchTrans && matchPrice && matchKm
-  }))
 
   function resetFilters() {
     filterText = ''
@@ -160,7 +160,7 @@
     <div class="max-w-7xl mx-auto px-4 md:px-8">
       
       <!-- Header de Sección -->
-      <div class="text-center mb-10">
+      <div class="text-left mb-10 w-full">
         <span class="inline-block px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-3" 
           style="background:{$isDark ? 'rgba(59,130,246,0.15)' : 'rgba(51,78,139,0.1)'}; color:{$isDark ? '#60a5fa' : '#334E8B'}">
           Garantía y Confianza
@@ -168,7 +168,7 @@
         <h1 class="text-4xl md:text-5xl font-black mb-3 tracking-tight" style="color:{T.primary}">
           Catálogo de <span style="background:linear-gradient(135deg,#334E8B,#2E6CCF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Seminuevos</span>
         </h1>
-        <p class="max-w-2xl mx-auto text-sm md:text-base" style="color:{T.secondary}">
+        <p class="max-w-2xl text-sm md:text-base" style="color:{T.secondary}">
           Encuentra el auto perfecto para ti. Todos nuestros vehículos superan una rigurosa inspección técnica para garantizar tu tranquilidad.
         </p>
       </div>
@@ -362,7 +362,7 @@
               {#if selectedYear || selectedBrand || selectedModel || selectedTransmission || filterText || maxPrice < 2000000 || maxKm < 499001}
                 <button 
                   onclick={resetFilters}
-                  class="text-[11px] font-bold underline py-1 text-center transition-all hover:opacity-80 cursor-pointer"
+                  class="text-[11px] font-bold underline py-1 text-left transition-all hover:opacity-80 cursor-pointer"
                   style="color:{T.muted}"
                 >
                   Restablecer Filtros
@@ -446,7 +446,7 @@
             </div>
           {:else}
             <!-- Estado Vacío -->
-            <div class="p-12 text-center rounded-2xl border flex flex-col items-center justify-center gap-3" style="background:{T.panelBg}; border-color:{T.divider};">
+            <div class="p-12 text-left rounded-2xl border flex flex-col items-start justify-center gap-3" style="background:{T.panelBg}; border-color:{T.divider};">
               <GoogleIcon name="sentiment_dissatisfied" size={48} class="opacity-30 mb-2" style="color:{T.primary}" />
               <h3 class="text-lg font-bold" style="color:{T.primary}">No se encontraron vehículos</h3>
               <p class="text-xs max-w-md" style="color:{T.secondary}">
