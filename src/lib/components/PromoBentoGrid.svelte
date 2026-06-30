@@ -41,7 +41,7 @@
   const TYPE_ICONS: Record<VehicleType, string> = { 'Todos':'directions_car','Hatchback':'directions_car','Sedán':'directions_car','SUV':'terrain','Deportivos':'bolt','Pick-ups':'local_shipping','Van':'airport_shuttle' }
 
   const SPECIAL_PROMOS = [
-    { id:901, brand:'Jeep',    hugeText:'ALERTA',  hugeSub:'SEGURIDAD',              title:'Llamado a revisión',     desc:'Pensamos en tu seguridad, consulta si tu vehículo cuenta con alguna campaña de servicio pendiente.', img:'/adistem2026/recall-bg.jpg',    models:[], accent:'#b91c1c', ctaText:'Buscar VIN' },
+    { id:901, brand:'Jeep', brandLabel:'Seguridad',    hugeText:'ALERTA',  hugeSub:'SEGURIDAD',              title:'Llamado a revisión',     desc:'Pensamos en tu seguridad, consulta si tu vehículo cuenta con alguna campaña de servicio pendiente.', img:'/adistem2026/recall-bg.jpg',    models:[], accent:'#b91c1c', ctaText:'Buscar VIN' },
     { id:902, brand:'Fiat',    hugeText:'7.99%',  hugeSub:'TASA ANUAL',             title:'PULSE 2026',        desc:'Bono de hasta $20,000 ó Tasa desde 7.99% + 0% de comisión por apertura.', img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F12af6dc13f44f29033d673c803a50f637af22da0.jpg?generation=1777350234700225&alt=media',  models:['Pulse 2026','Fastback 2026','Argo 2026'],        accent:'#b91c1c' },
     { id:903, brand:'Dodge',   hugeText:'14.5%',  hugeSub:'TASA PREFERENCIAL',      title:'DURANGO 2026',     desc:'Plan de financiamiento con Tasa desde 14.50%.',    img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F1d6f3f42a55407817e0572a9323b9aa10c891633.jpg?generation=1777350234722595&alt=media',  models:['Durango 2026','Journey 2026','Attitude 2026'],            accent:'#7c2d12' },
     { id:904, brand:'Peugeot', hugeText:'3 AÑOS', hugeSub:'MANTENIMIENTO GRATIS',   title:'NUEVA 2008 2026',  desc:'Bono de $62,000 + Tasa de 9.99% sin comisión por apertura + 3 años de mantenimiento gratis.', img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F7ac848efe89adde5660e4d2956b4983e1775ce00.jpg?generation=1777350234794617&alt=media',    models:['Nueva 2008 2026','Nueva 5008 2026','Nueva 3008 2026'],  accent:'#0074E8' },
@@ -482,7 +482,7 @@
     </div>
     <div class="relative z-10 flex flex-col h-full px-6 pt-6 pb-4">
       <div class="flex-1 flex flex-col justify-center items-start">
-        <p class="text-white/70 text-[10px] font-bold tracking-[0.2em] uppercase mb-1">{promo.brand}</p>
+        <p class="text-white/70 text-[10px] font-bold tracking-[0.2em] uppercase mb-1">{promo.brandLabel || promo.brand}</p>
         <h4 class="text-white font-bold mt-3 tracking-wide" style="font-size:clamp(2.2rem,2.2vw,1.45rem);line-height:1.08;text-shadow:0 3px 14px rgba(0,0,0,0.34);">{promo.title}</h4>
         <p class="text-white/90 mt-2 leading-relaxed max-w-[250px]" style="font-size:clamp(0.84rem,1.15vw,0.98rem);">{promo.desc}</p>
       </div>
