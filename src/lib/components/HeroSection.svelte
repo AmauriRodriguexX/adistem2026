@@ -93,8 +93,8 @@
     </p>
 
     <div class="w-full max-w-xs">
-      <button onclick={onPruebaManejoClick} class="w-full flex items-center justify-center gap-2 py-3.5 text-sm font-bold tracking-wide btn-glow-border transition-all active:scale-[0.98] cursor-pointer">
-        Prueba de manejo <ChevronRight size={16} />
+      <button onclick={onPruebaManejoClick} class="w-full flex items-center justify-center gap-2 px-6 py-3 text-sm font-bold btn-glow-border tracking-wide transition-all active:scale-[0.98] cursor-pointer">
+        Agenda tu prueba de manejo <ChevronRight size={15} />
       </button>
     </div>
   </div>
