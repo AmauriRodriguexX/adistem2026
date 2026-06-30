@@ -18,6 +18,7 @@
   import CotizacionLanding  from '$lib/components/CotizacionLanding.svelte'
   import CitaServicioLanding from '$lib/components/CitaServicioLanding.svelte'
   import PruebaManejoLanding from '$lib/components/PruebaManejoLanding.svelte'
+  import RecallTakataModal  from '$lib/components/RecallTakataModal.svelte'
   import UbicacionLanding   from '$lib/components/UbicacionLanding.svelte'
   import FloatingContact    from '$lib/components/FloatingContact.svelte'
   import MobileBottomNav    from '$lib/components/MobileBottomNav.svelte'
@@ -45,6 +46,7 @@
   let benefitsVisible     = $state(false)
   let serviceBannerVisible = $state(false)
   let footerVisible        = $state(false)
+  let showTakataModal      = $state(false)
 
   const BRAND_CONFIGS: Record<BrandFilter, { video: string; image?: string; accent: string; title: string; subtitle: string; hideForm?: boolean }> = {
     'Todas': {
@@ -107,7 +109,17 @@
   }
   const brandAccentRgb = $derived(hexToRgb(brandAccent))
 
-  onMount(() => initSystemListener())
+  onMount(() => {
+    initSystemListener()
+    
+    // Automatically show Takata recall modal on first load in this session
+    if (!sessionStorage.getItem('takata_modal_shown')) {
+      setTimeout(() => {
+        showTakataModal = true
+        sessionStorage.setItem('takata_modal_shown', 'true')
+      }, 1500)
+    }
+  })
 
   $effect(() => {
     if (!brandStripEl) return
@@ -420,6 +432,7 @@
     { title: 'Postventa', links: [
       { label:'Cita de Servicio', action: () => handlePostventaClick('cita') },
       { label:'Fichas Técnicas',   action: () => undefined },
+      { label:'Recall Takata',   action: () => { showTakataModal = true } },
     ]},
     { title: 'Contacto', links: [
       { label:'Soporte',              action: () => {
@@ -848,6 +861,15 @@
               style="color:{$isDark ? 'rgba(255,255,255,0.28)' : 'rgba(20,30,80,0.34)'}">
               Aviso de Privacidad
             </button>
+            <span class="text-xs" aria-hidden="true"
+              style="color:{$isDark ? 'rgba(255,255,255,0.16)' : 'rgba(20,30,80,0.22)'}">
+              |
+            </span>
+            <button type="button" onclick={() => showTakataModal = true}
+              class="text-xs transition-colors hover:text-red-500 cursor-pointer font-bold"
+              style="color: #ef4444;">
+              Recall Takata
+            </button>
           </div>
         </div>
       </div>
@@ -858,4 +880,14 @@
   <div class="hidden md:block">
     <FloatingContact />
   </div>
+
+  {#if showTakataModal}
+    <RecallTakataModal
+      onClose={() => showTakataModal = false}
+      onScheduleService={() => {
+        showTakataModal = false
+        handlePostventaClick('cita')
+      }}
+    />
+  {/if}
 </div>
