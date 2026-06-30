@@ -9,8 +9,9 @@
   interface Props {
     initialBrand?: BrandFilter
     initialType?:  VehicleType
+    onRecallClick?: () => void
   }
-  let { initialBrand = 'Todas', initialType = 'Todos' }: Props = $props()
+  let { initialBrand = 'Todas', initialType = 'Todos', onRecallClick }: Props = $props()
 
   const ALL_VEHICLES = [
     { id:1,  brand:'Jeep',    type:'SUV',        model:'Wrangler',       year:'2026', version:'Willys Unlimited',     img:'/adistem2026/jeep/wrangler-2026.jpg',    deal:'Bono de hasta $176,000 ó 24 meses sin intereses sin comisión por apertura', badge:'ESTRELLA',    link:'#', accent:'#424D07' },
@@ -40,7 +41,7 @@
   const TYPE_ICONS: Record<VehicleType, string> = { 'Todos':'directions_car','Hatchback':'directions_car','Sedán':'directions_car','SUV':'terrain','Deportivos':'bolt','Pick-ups':'local_shipping','Van':'airport_shuttle' }
 
   const SPECIAL_PROMOS = [
-    { id:901, brand:'Jeep',    hugeText:'$176K',  hugeSub:'BONO DISPONIBLE',        title:'WRANGLER 2026',     desc:'Bono de hasta $176,000 ó 24 meses sin intereses sin comisión por apertura.', img:'/adistem2026/jeep/wrangler-2026.jpg',    models:['Wrangler 2026','Compass 2026','Commander 2026'], accent:'#424D07' },
+    { id:901, brand:'Jeep',    hugeText:'ALERTA',  hugeSub:'SEGURIDAD',              title:'Llamado a revisión',     desc:'Pensamos en tu seguridad, consulta si tu vehículo cuenta con alguna campaña de servicio pendiente.', img:'/adistem2026/recall-bg.jpg',    models:[], accent:'#b91c1c', ctaText:'Buscar VIN' },
     { id:902, brand:'Fiat',    hugeText:'7.99%',  hugeSub:'TASA ANUAL',             title:'PULSE 2026',        desc:'Bono de hasta $20,000 ó Tasa desde 7.99% + 0% de comisión por apertura.', img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F12af6dc13f44f29033d673c803a50f637af22da0.jpg?generation=1777350234700225&alt=media',  models:['Pulse 2026','Fastback 2026','Argo 2026'],        accent:'#b91c1c' },
     { id:903, brand:'Dodge',   hugeText:'14.5%',  hugeSub:'TASA PREFERENCIAL',      title:'DURANGO 2026',     desc:'Plan de financiamiento con Tasa desde 14.50%.',    img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F1d6f3f42a55407817e0572a9323b9aa10c891633.jpg?generation=1777350234722595&alt=media',  models:['Durango 2026','Journey 2026','Attitude 2026'],            accent:'#7c2d12' },
     { id:904, brand:'Peugeot', hugeText:'3 AÑOS', hugeSub:'MANTENIMIENTO GRATIS',   title:'NUEVA 2008 2026',  desc:'Bono de $62,000 + Tasa de 9.99% sin comisión por apertura + 3 años de mantenimiento gratis.', img:'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F7ac848efe89adde5660e4d2956b4983e1775ce00.jpg?generation=1777350234794617&alt=media',    models:['Nueva 2008 2026','Nueva 5008 2026','Nueva 3008 2026'],  accent:'#0074E8' },
@@ -400,7 +401,7 @@
             </div>
             <!-- After index 1 (second normal vehicle) inject the brand promo card so it falls to row 2 -->
             {#if isSecond}
-              {@const promo = SPECIAL_PROMOS.find(p => activeBrand === 'Todas' ? p.brand === 'Ram' : p.brand === activeBrand)}
+              {@const promo = SPECIAL_PROMOS.find(p => activeBrand === 'Todas' ? p.brand === 'Jeep' : p.brand === activeBrand)}
               {#if promo}
                 <div class="col-span-1 row-span-1" style="min-height:420px;{cardsVisible ? 'animation:benefit-card-in 0.55s cubic-bezier(0.22,1,0.36,1) 60ms both' : 'opacity:0;transform:translateY(24px) scale(0.96)'};will-change:transform,opacity;">
                   {@render SpecialPromoCard({ promo })}
@@ -486,16 +487,26 @@
         <p class="text-white/90 mt-2 leading-relaxed max-w-[250px]" style="font-size:clamp(0.84rem,1.15vw,0.98rem);">{promo.desc}</p>
       </div>
       <!-- Select + Button -->
-      <div class="mt-auto pt-4">
-        <div class="relative mb-3">
-          <select bind:value={selectedModels[promo.id]} class="w-full h-11 px-4 pr-10 rounded-xl text-sm font-semibold text-white appearance-none cursor-pointer border border-white/20 hover:border-white/40 focus:outline-none transition-colors" style="background:rgba(255,255,255,0.20);backdrop-filter:blur(10px);">
-            <option value="" class="text-black">Seleccionar modelo</option>
-            {#each promo.models as model}<option value={model} class="text-black">{model}</option>{/each}
-          </select>
-          <GoogleIcon name="keyboard_arrow_down" size={18} class="absolute right-3 top-1/2 -translate-y-1/2 text-white/70 pointer-events-none" />
-        </div>
-        <button class="w-full h-11 bg-white rounded-xl font-bold text-sm tracking-wide uppercase flex items-center justify-center gap-2 hover:bg-gray-100 transition-colors cursor-pointer shadow-lg group/btn" style="color:{promo.accent};">
-          Conoce más <GoogleIcon name="chevron_right" size={14} class="transition-transform duration-250 group-hover/btn:translate-x-0.5" />
+      <div class="mt-auto pt-4 w-full">
+        {#if promo.models && promo.models.length > 0}
+          <div class="relative mb-3">
+            <select bind:value={selectedModels[promo.id]} class="w-full h-11 px-4 pr-10 rounded-xl text-sm font-semibold text-white appearance-none cursor-pointer border border-white/20 hover:border-white/40 focus:outline-none transition-colors" style="background:rgba(255,255,255,0.20);backdrop-filter:blur(10px);">
+              <option value="" class="text-black">Seleccionar modelo</option>
+              {#each promo.models as model}<option value={model} class="text-black">{model}</option>{/each}
+            </select>
+            <GoogleIcon name="keyboard_arrow_down" size={18} class="absolute right-3 top-1/2 -translate-y-1/2 text-white/70 pointer-events-none" />
+          </div>
+        {/if}
+        <button 
+          onclick={() => {
+            if (promo.id === 901) {
+              onRecallClick?.()
+            }
+          }}
+          class="w-full h-11 bg-white rounded-xl font-bold text-sm tracking-wide uppercase flex items-center justify-center gap-2 hover:bg-gray-100 transition-colors cursor-pointer shadow-lg group/btn" 
+          style="color:{promo.accent};"
+        >
+          {promo.ctaText || 'Conoce más'} <GoogleIcon name="chevron_right" size={14} class="transition-transform duration-250 group-hover/btn:translate-x-0.5" />
         </button>
       </div>
     </div>

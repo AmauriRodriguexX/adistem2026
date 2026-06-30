@@ -570,7 +570,7 @@
 
     <!-- PROMO BENTO -->
     <div bind:this={promoEl}>
-      <PromoBentoGrid initialBrand={brandFilter} initialType={typeFilter} />
+      <PromoBentoGrid initialBrand={brandFilter} initialType={typeFilter} onRecallClick={() => showTakataModal = true} />
     </div>
 
     <!-- BRAND BENEFITS -->
