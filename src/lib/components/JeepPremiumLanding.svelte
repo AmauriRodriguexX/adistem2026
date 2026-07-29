@@ -23,6 +23,7 @@
     title: string
     subtitle: string
     heroImage: string
+    mobileHeroImage?: string
     spotlightImage: string
     quote: string
     specs: { value: string; label: string }[]
@@ -41,7 +42,8 @@
       kicker: 'RENEGADE 2026',
       title: 'Redefine la aventura urbana.',
       subtitle: 'Motor 1.3L Turbo GSE de 173 hp, el más potente de su categoría. Diseño icónico Jeep con tecnología de vanguardia y sistemas ADAS para la ciudad.',
-      heroImage: 'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/gallery/full/my26-jeep-renegade-galeriaexterior-08-v2-allbreakingpoints-mx.jpg.img.2880.jpg',
+      heroImage: '/adistem2026/jeep/renegade-2026-hero.jpg',
+      mobileHeroImage: '/adistem2026/jeep/renegade-2026-mob.jpg',
       spotlightImage: 'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/vlp/desktop/jeep-renegade-2026-inicio-equipamiento-exterior-dk.jpg.img.2880.jpg',
       quote: 'Hola,%20me%20interesa%20cotizar%20un%20Jeep%20Renegade',
       price: 'Desde $456,900',
@@ -354,17 +356,29 @@
     </div>
   {/if}
   <section id="inicio" class="jeep-hero">
-    <img class="hero-fallback" src={model.heroImage} alt={model.name} />
+    <img class="hero-fallback hero-desktop-img" src={model.heroImage} alt={model.name} />
+    {#if model.mobileHeroImage}
+      <img class="hero-fallback hero-mobile-img" src={model.mobileHeroImage} alt={model.name} />
+    {/if}
     <div class="hero-shade"></div>
-    <div class="hero-copy">
-      <h1>{model.kicker}</h1>
-      <p class="hero-slogan">{model.title}</p>
-      <span class="price-badge">{model.price}</span>
-      <div class="hero-actions">
-        <button class="primary" onclick={goToQuote}>Cotiza ahora <GoogleIcon name="arrow_forward" size={18} /></button>
-        <button class="ghost" onclick={goToTestDrive}>Prueba de manejo</button>
+    
+    <div class="relative z-10 w-full max-w-[1650px] mx-auto px-4 sm:px-8 lg:px-12 pt-4 lg:pt-24 pb-4 lg:pb-16 flex flex-col lg:flex-row items-center lg:items-end justify-between gap-6 lg:gap-10 min-h-0 lg:min-h-screen">
+      <div class="hero-copy flex-1 max-w-lg">
+        <h1>{model.kicker}</h1>
+        <p class="hero-slogan">{model.title}</p>
+        <span class="price-badge">{model.price}</span>
+        <div class="hero-actions">
+          <button class="primary" onclick={goToQuote}>Cotiza ahora <GoogleIcon name="arrow_forward" size={18} /></button>
+          <button class="ghost" onclick={goToTestDrive}>Prueba de manejo</button>
+        </div>
+      </div>
+
+      <!-- Formulario de Cotización Desktop -->
+      <div class="hidden lg:block flex-shrink-0 w-full max-w-[380px] xl:max-w-[410px] z-10 mb-12">
+        <ContactFormCard accent="#424D07" initialBrand="Jeep" initialModel="Renegade 2027" />
       </div>
     </div>
+
     <div class="scroll-cue">Desliza</div>
   </section>
 
@@ -831,9 +845,26 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: 60% center;
+    object-position: 35% center;
     opacity: 0;
     animation: hero-zoom-out 16s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  }
+
+  .hero-desktop-img {
+    display: block;
+  }
+  .hero-mobile-img {
+    display: none;
+  }
+
+  @media (max-width: 767px) {
+    .hero-desktop-img {
+      display: none !important;
+    }
+    .hero-mobile-img {
+      display: block !important;
+      object-position: center center;
+    }
   }
 
   .hero-shade {
@@ -2169,7 +2200,7 @@
     }
 
     .pin-stage {
-      padding: 72px 0;
+      padding: 0px 0;
     }
 
     .pin-media {
@@ -2685,7 +2716,7 @@
       min-height: auto;
       background: #000;
       padding-top: 0;
-      margin-bottom: 40px;
+      margin-bottom: 16px;
     }
     .hero-fallback {
       position: relative;
@@ -2705,7 +2736,7 @@
       position: relative;
       width: 100%;
       margin: 0;
-      padding: 24px 24px 32px;
+      padding: 12px 16px 16px;
       transform: none !important;
       align-self: flex-start;
       text-align: center;
