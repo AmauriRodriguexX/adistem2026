@@ -353,6 +353,38 @@
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
+  function handleCotizarMobile() {
+    window.dispatchEvent(new CustomEvent('switch-form-tab', { detail: { tab: 'cotizacion' } }))
+    const formEl = document.getElementById('mobile-hero-form') ||
+                   document.getElementById('brandhub-mobile-form') ||
+                   document.getElementById('mobile-landing-form') ||
+                   document.getElementById('hero-quote-form') ||
+                   document.getElementById('brandhub-desktop-form') ||
+                   document.querySelector('.quote-section')
+
+    if (formEl) {
+      formEl.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    } else {
+      handleContactClick('cotizacion')
+    }
+  }
+
+  function handlePruebaMobile() {
+    window.dispatchEvent(new CustomEvent('switch-form-tab', { detail: { tab: 'prueba' } }))
+    const formEl = document.getElementById('mobile-hero-form') ||
+                   document.getElementById('brandhub-mobile-form') ||
+                   document.getElementById('mobile-landing-form') ||
+                   document.getElementById('hero-quote-form') ||
+                   document.getElementById('brandhub-desktop-form') ||
+                   document.querySelector('.quote-section')
+
+    if (formEl) {
+      formEl.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    } else {
+      handleContactClick('prueba')
+    }
+  }
+
   let ubicacionContext = $state<'servicio' | 'ventas'>('ventas')
 
   function handlePostventaClick(tab: 'cita' | 'fichas' = 'cita') {
@@ -501,8 +533,8 @@
 
   <!-- Mobile bottom nav -->
   <MobileBottomNav
-    onCotizarClick={() => handleContactClick('cotizacion')}
-    onPruebaManejoClick={() => handleContactClick('prueba')}
+    onCotizarClick={handleCotizarMobile}
+    onPruebaManejoClick={handlePruebaMobile}
     onServicioClick={() => handleContactClick('cita')}
     onContactoClick={handleMobileContactoClick}
     mode={(currentView === 'Portal' && (brandFilter === 'Jeep' || brandFilter === 'Ram') && (jeepModelSlug || ramModelSlug)) ? 'model-detail' : 'default'}

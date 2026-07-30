@@ -288,13 +288,17 @@
   })
 
   function goToQuote() {
-    drawerTab = 'cotizacion'
-    showCotizarDrawer = true
+    const el = document.getElementById('mobile-hero-form') || document.querySelector('.quote-section')
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
   }
 
   function goToTestDrive() {
-    drawerTab = 'prueba'
-    showCotizarDrawer = true
+    const el = document.getElementById('mobile-hero-form') || document.querySelector('.quote-section')
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
   }
 
   function goBackToJeep() {
@@ -374,13 +378,18 @@
       </div>
 
       <!-- Formulario de Cotización Desktop -->
-      <div class="hidden xl:block flex-shrink-0 w-full max-w-[380px] xl:max-w-[410px] z-10 mb-3">
-        <ContactFormCard accent="#424D07" initialBrand="Jeep" initialModel="Renegade 2027" />
+      <div class="hidden xl:block flex-shrink-0 w-full max-w-[380px] xl:max-w-[410px] z-10 self-center mb-12">
+        <ContactFormCard accent="#424D07" initialBrand="Jeep" initialModel="Renegade 2026" hideBrandSelect={true} />
       </div>
     </div>
 
     <div class="scroll-cue">Desliza</div>
   </section>
+
+  <!-- Formulario de Cotización Mobile (debajo del hero en mobile) -->
+  <div id="mobile-hero-form" class="w-full max-w-lg mx-auto px-4 py-6 xl:hidden relative z-10">
+    <ContactFormCard accent="#424D07" initialBrand="Jeep" initialModel="Renegade 2026" hideBrandSelect={true} />
+  </div>
 
   <nav class="product-nav hidden md:flex s-mteEPoerD6_z" aria-label="Navegación de producto JEEP">
     <strong class="s-mteEPoerD6_z">{model.name} <span class="nav-year">2026</span></strong>
@@ -741,48 +750,6 @@
   </section>
 </main>
 
-
-
-<!-- ── Cotizar Drawer ─────────────────────────────────────────────────── -->
-{#if showCotizarDrawer}
-  <!-- Scrim -->
-  <div
-    class="fixed inset-0 z-[60]"
-    style="background:rgba(0,0,0,0.54);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);"
-    onclick={() => showCotizarDrawer = false}
-    role="presentation"
-  ></div>
-
-  <!-- Panel lateral -->
-  <div
-    class="fixed right-0 top-0 bottom-0 z-[61] flex flex-col overflow-y-auto"
-    style="width:min(480px,100vw);background:#08091a;border-left:1px solid rgba(255,255,255,0.10);box-shadow:-8px 0 48px rgba(0,0,0,0.60);animation:drawer-in 0.38s cubic-bezier(0.22,1,0.36,1) both;"
-  >
-    <!-- Header del drawer -->
-    <div class="flex items-center justify-between px-5 py-4 flex-shrink-0" style="border-bottom:1px solid rgba(255,255,255,0.08);">
-      <div class="flex items-center gap-2.5">
-        <div class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></div>
-        <span class="text-sm font-black text-white tracking-tight">Jeep Renegade 2026</span>
-      </div>
-      <button
-        onclick={() => showCotizarDrawer = false}
-        class="w-8 h-8 rounded-full flex items-center justify-center transition-all hover:bg-white/10 cursor-pointer"
-        style="color:rgba(255,255,255,0.60);"
-      >
-        <GoogleIcon name="close" size={18} />
-      </button>
-    </div>
-
-    <!-- ContactFormCard -->
-    <div class="flex-1 flex flex-col p-4 overflow-y-auto">
-      <ContactFormCard
-        initialTab={drawerTab}
-        accent="#424D07"
-      />
-    </div>
-  </div>
-{/if}
-
 <style>
   @keyframes drawer-in {
     from { transform: translateX(100%); opacity: 0; }
@@ -889,7 +856,7 @@
     z-index: 10;
     align-self: end;
     width: min(500px, calc(100vw - 48px));
-    margin: 0 0 clamp(12px, 2vh, 24px) clamp(24px, 8vw, 128px);
+    margin: 0 0 clamp(65px, 10vh, 85px) clamp(24px, 8vw, 128px);
     padding: 0;
     transform: translateY(calc(var(--scroll) * -52px));
     animation: hero-copy-in 1200ms var(--ease-out) both 180ms;

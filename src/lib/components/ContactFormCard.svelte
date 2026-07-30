@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { onMount } from 'svelte'
   import { CreditCard, Mail, Phone, Banknote } from 'lucide-svelte'
   import { isDark } from '$lib/stores/theme'
 
@@ -7,8 +8,25 @@
     initialTab?: 'cotizacion' | 'cita' | 'prueba'
     hideTabs?: boolean
     showExtraFields?: boolean
+    initialBrand?: string
+    initialModel?: string
+    initialVersion?: string
+    lockBrand?: boolean
+    hideBrandSelect?: boolean
   }
-  let { accent = '#334E8B', initialTab = 'cotizacion', hideTabs = false, showExtraFields = false }: Props = $props()
+  let {
+    accent = '#334E8B',
+    initialTab = 'cotizacion',
+    hideTabs = false,
+    showExtraFields = false,
+    initialBrand,
+    initialModel,
+    initialVersion,
+    lockBrand,
+    hideBrandSelect = false
+  }: Props = $props()
+
+  const isBrandLocked = $derived(hideBrandSelect || (lockBrand ?? false))
 
   let isHighlighted = $state(false)
   export function triggerHighlight() {
@@ -22,18 +40,77 @@
 
   type TabKey = 'cotizacion' | 'cita' | 'prueba'
   let activeTab     = $state<TabKey>(initialTab)
+
+  onMount(() => {
+    const handleTabChange = (e: Event) => {
+      const detail = (e as CustomEvent<{ tab: TabKey }>).detail
+      if (detail?.tab) {
+        setActiveTab(detail.tab)
+      }
+    }
+    window.addEventListener('switch-form-tab', handleTabChange)
+    return () => window.removeEventListener('switch-form-tab', handleTabChange)
+  })
+
+  const BRANDS = ['Jeep','Fiat','Dodge','Ram','Peugeot']
+  const VEHICLE_YEARS = ['2026','2025','2024','2023','2022','2021','2020','2019','2018','2017','2016']
+
+  const VEHICLE_MODELS: Record<string, string[]> = {
+    Jeep:    ['Renegade 2026', 'Compass 2026', 'Commander 2026', 'Grand Cherokee 2026', 'Wrangler 2026', 'JT 2026'],
+    Fiat:    ['Pulse 2026', 'Fastback 2026', 'Mobi 2026', 'Argo 2026', 'Ducato 2026'],
+    Dodge:   ['Attitude 2026', 'Durango 2026'],
+    Ram:     ['700 2026', 'Rampage 2026', '1500 2026', '2500 2026', '4000 2026'],
+    Peugeot: ['2008 2026', '3008 2026', '5008 2026', 'Partner 2026', 'Manager 2026'],
+  }
+
+  const VEHICLE_VERSIONS: Record<string, Record<string, string[]>> = {
+    Jeep: {
+      'Renegade 2026':  ['Latitude', 'Limited'],
+      'Compass 2026':   ['Limited', 'Trailhawk'],
+      'Commander 2026': ['Overland', 'Limited'],
+      'Grand Cherokee 2026': ['Limited', 'Summit Reserve'],
+      'Wrangler 2026':  ['Rubicon', 'Sahara'],
+      'JT 2026':        ['Rubicon', 'Overland'],
+    },
+    Fiat: {
+      'Pulse 2026':     ['Drive', 'Audace', 'Impetus'],
+      'Fastback 2026':  ['Audace', 'Impetus'],
+      'Mobi 2026':      ['Like', 'Trekking'],
+      'Argo 2026':      ['Drive', 'Trekking'],
+      'Ducato 2026':    ['Cargo', 'Pasajeros'],
+    },
+    Dodge: {
+      'Attitude 2026':  ['SE', 'SXT', 'GT'],
+      'Durango 2026':   ['GT', 'SRT Hellcat'],
+    },
+    Ram: {
+      '700 2026':       ['SLT', 'Bighorn', 'Laramie'],
+      'Rampage 2026':   ['Laramie', 'R/T'],
+      '1500 2026':      ['Tradesman', 'Bighorn', 'Laramie', 'Tungsten'],
+      '2500 2026':      ['Limited', 'Power Wagon'],
+      '4000 2026':      ['Chasis'],
+    },
+    Peugeot: {
+      '2008 2026':      ['Active', 'Allure', 'GT'],
+      '3008 2026':      ['Allure', 'GT'],
+      '5008 2026':      ['Allure', 'GT'],
+      'Partner 2026':   ['Grand Cargo'],
+      'Manager 2026':   ['L2H2', 'L3H2'],
+    },
+  }
+
   let nombre        = $state('')
   let apellido      = $state('')
   let correo        = $state('')
   let telefono      = $state('')
-  let marca         = $state('')
+  let marca         = $state(initialBrand ?? '')
   let modelo        = $state('')
   let version       = $state('')
   let fecha         = $state('')
   let servicio      = $state('')
   let citaStep      = $state(1)
-  let vehiculoAno   = $state('')
-  let vehiculoMarca = $state('')
+  let vehiculoAno   = $state('2026')
+  let vehiculoMarca = $state(initialBrand ?? '')
   let vehiculoModelo = $state('')
   let vehiculoVersion = $state('')
   let citaHorario   = $state('')
@@ -46,6 +123,39 @@
   let marketing     = $state(false)
   let compra        = $state('credito')
   let contactoPref  = $state('telefono')
+
+  $effect(() => {
+    if (initialBrand) {
+      marca = initialBrand
+      vehiculoMarca = initialBrand
+    }
+
+    if (marca) {
+      const modelOptions = VEHICLE_MODELS[marca] ?? []
+      if (initialModel) {
+        const cleanSearch = initialModel.toLowerCase().trim()
+        const match = modelOptions.find(m => m.toLowerCase().includes(cleanSearch)) || modelOptions[0] || initialModel
+        modelo = match
+        vehiculoModelo = match
+      } else if (!modelo || !modelOptions.includes(modelo)) {
+        modelo = modelOptions[0] ?? ''
+        vehiculoModelo = modelOptions[0] ?? ''
+      }
+    }
+
+    if (marca && modelo) {
+      const verOptions = VEHICLE_VERSIONS[marca]?.[modelo] ?? []
+      if (initialVersion) {
+        const cleanVerSearch = initialVersion.toLowerCase().trim()
+        const matchVer = verOptions.find(v => v.toLowerCase().includes(cleanVerSearch)) || verOptions[0] || initialVersion
+        version = matchVer
+        vehiculoVersion = matchVer
+      } else if (!version || !verOptions.includes(version)) {
+        version = verOptions[0] ?? ''
+        vehiculoVersion = verOptions[0] ?? ''
+      }
+    }
+  })
 
   const glassForm = $derived($isDark
     ? 'background:rgb(5 7 18 / 54%);backdrop-filter:blur(65px) saturate(200%);-webkit-backdrop-filter:blur(65px) saturate(200%);border:1px solid rgba(255,255,255,0.12);box-shadow:rgba(0,0,0,0.6) 0px 32px 80px,rgba(255,255,255,0.06) 0px 1px 0px inset;'
@@ -146,27 +256,6 @@
     privacidad
   )
 
-  const BRANDS = ['Jeep','Fiat','Dodge','Ram','Peugeot']
-  const VEHICLE_YEARS = ['2026','2025','2024','2023','2022','2021','2020','2019','2018','2017','2016']
-
-  // 1 modelo por marca (con año)
-  const VEHICLE_MODELS: Record<string, string[]> = {
-    Jeep:    ['Renegade 2026'],
-    Fiat:    ['Pulse 2026'],
-    Dodge:   ['Attitude 2026'],
-    Ram:     ['1500 2026'],
-    Peugeot: ['5008 2026'],
-  }
-
-  // 1 versión por modelo
-  const VEHICLE_VERSIONS: Record<string, Record<string, string[]>> = {
-    Jeep:    { 'Renegade 2026':  ['Latitude'] },
-    Fiat:    { 'Pulse 2026':     ['Drive'] },
-    Dodge:   { 'Attitude 2026':  ['SXT'] },
-    Ram:     { '1500 2026':      ['Tungsten'] },
-    Peugeot: { '5008 2026':      ['GT'] },
-  }
-
   const HORARIOS = ['09:00', '10:00', '11:00', '12:00', '13:00', '16:00', '17:00', '18:00']
   const modelosServicio  = $derived(VEHICLE_MODELS[vehiculoMarca] ?? [])
   const modelosPrueba    = $derived(VEHICLE_MODELS[marca] ?? [])
@@ -216,11 +305,13 @@
       </div>
       <div>
         <label class="block text-[10px] font-bold tracking-wider uppercase mb-1" style="color:{labelColor}">Modelo de interés *</label>
-        <div class="grid grid-cols-3 gap-2">
-          <select bind:value={marca} onchange={() => { modelo = ''; version = '' }} class="w-full h-10 px-2 rounded-lg text-xs outline-none cursor-pointer" style={glassSelect} required>
-            <option value="">Marca</option>
-            {#each BRANDS as m (m)}<option value={m}>{m}</option>{/each}
-          </select>
+        <div class="grid {isBrandLocked ? 'grid-cols-2' : 'grid-cols-3'} gap-2">
+          {#if !isBrandLocked}
+            <select bind:value={marca} onchange={() => { modelo = ''; version = '' }} class="w-full h-10 px-2 rounded-lg text-xs outline-none cursor-pointer" style={glassSelect} required>
+              <option value="">Marca</option>
+              {#each BRANDS as m (m)}<option value={m}>{m}</option>{/each}
+            </select>
+          {/if}
           <select bind:value={modelo} onchange={() => version = ''} class="w-full h-10 px-2 rounded-lg text-xs outline-none cursor-pointer" style={glassSelect} required>
             <option value="">Modelo</option>
             {#each modelosPrueba as item (item)}<option value={item}>{item}</option>{/each}
@@ -357,17 +448,19 @@
             <span class="text-[10px] font-bold tracking-widest uppercase" style="color:{divText}">Datos del vehículo</span>
             <div class="flex-1 h-px" style="background:{divLine}"></div>
           </div>
-          <div class="grid grid-cols-2 gap-3">
+          <div class="grid {isBrandLocked ? 'grid-cols-3' : 'grid-cols-2'} gap-3">
             <div><label class="block text-[10px] font-bold tracking-wider uppercase mb-1" style="color:{labelColor}">Año *</label>
               <select bind:value={vehiculoAno} class="w-full h-10 px-3 rounded-lg text-sm outline-none cursor-pointer" style={glassSelect} required>
                 <option value="">Año</option>
                 {#each VEHICLE_YEARS as year (year)}<option value={year}>{year}</option>{/each}
               </select></div>
-            <div><label class="block text-[10px] font-bold tracking-wider uppercase mb-1" style="color:{labelColor}">Marca *</label>
-              <select bind:value={vehiculoMarca} onchange={() => { vehiculoModelo = ''; vehiculoVersion = '' }} class="w-full h-10 px-3 rounded-lg text-sm outline-none cursor-pointer" style={glassSelect} required>
-                <option value="">Marca</option>
-                {#each BRANDS as m (m)}<option value={m}>{m}</option>{/each}
-              </select></div>
+            {#if !isBrandLocked}
+              <div><label class="block text-[10px] font-bold tracking-wider uppercase mb-1" style="color:{labelColor}">Marca *</label>
+                <select bind:value={vehiculoMarca} onchange={() => { vehiculoModelo = ''; vehiculoVersion = '' }} class="w-full h-10 px-3 rounded-lg text-sm outline-none cursor-pointer" style={glassSelect} required>
+                  <option value="">Marca</option>
+                  {#each BRANDS as m (m)}<option value={m}>{m}</option>{/each}
+                </select></div>
+            {/if}
             <div><label class="block text-[10px] font-bold tracking-wider uppercase mb-1" style="color:{labelColor}">Modelo *</label>
               <select bind:value={vehiculoModelo} onchange={() => vehiculoVersion = ''} class="w-full h-10 px-3 rounded-lg text-sm outline-none cursor-pointer" style={glassSelect} required>
                 <option value="">Modelo</option>
@@ -454,18 +547,26 @@
           <span class="text-[10px] font-bold tracking-widest uppercase" style="color:{divText}">Modelo de interés</span>
           <div class="flex-1 h-px" style="background:{divLine}"></div>
         </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          <div><label class="block text-[10px] font-bold tracking-wider uppercase mb-1" style="color:{labelColor}">Marca *</label>
-            <select bind:value={marca} onchange={() => modelo = ''} class="w-full h-10 px-3 rounded-lg text-sm outline-none cursor-pointer" style={glassSelect} required>
-              <option value="">Marca</option>
-              {#each BRANDS as m (m)}<option value={m}>{m}</option>{/each}
-            </select></div>
+        {#if !isBrandLocked}
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div><label class="block text-[10px] font-bold tracking-wider uppercase mb-1" style="color:{labelColor}">Marca *</label>
+              <select bind:value={marca} onchange={() => modelo = ''} class="w-full h-10 px-3 rounded-lg text-sm outline-none cursor-pointer" style={glassSelect} required>
+                <option value="">Marca</option>
+                {#each BRANDS as m (m)}<option value={m}>{m}</option>{/each}
+              </select></div>
+            <div><label class="block text-[10px] font-bold tracking-wider uppercase mb-1" style="color:{labelColor}">Modelo *</label>
+              <select bind:value={modelo} class="w-full h-10 px-3 rounded-lg text-sm outline-none cursor-pointer" style={glassSelect} required>
+                <option value="">Modelo</option>
+                {#each modelosPrueba as model (model)}<option value={model}>{model}</option>{/each}
+              </select></div>
+          </div>
+        {:else}
           <div><label class="block text-[10px] font-bold tracking-wider uppercase mb-1" style="color:{labelColor}">Modelo *</label>
             <select bind:value={modelo} class="w-full h-10 px-3 rounded-lg text-sm outline-none cursor-pointer" style={glassSelect} required>
               <option value="">Modelo</option>
               {#each modelosPrueba as model (model)}<option value={model}>{model}</option>{/each}
             </select></div>
-        </div>
+        {/if}
 
         <div class="flex items-center gap-3">
           <div class="flex-1 h-px" style="background:{divLine}"></div>
