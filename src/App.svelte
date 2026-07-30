@@ -506,6 +506,7 @@
     onServicioClick={() => handleContactClick('cita')}
     onContactoClick={handleMobileContactoClick}
     mode={(currentView === 'Portal' && (brandFilter === 'Jeep' || brandFilter === 'Ram') && (jeepModelSlug || ramModelSlug)) ? 'model-detail' : 'default'}
+    accentColor={BRAND_CONFIGS[brandFilter]?.accent ?? '#334E8B'}
   />
 
   <!-- Main content -->

@@ -362,7 +362,7 @@
     {/if}
     <div class="hero-shade"></div>
     
-    <div class="relative z-10 w-full max-w-[1650px] mx-auto px-4 sm:px-8 lg:px-12 pt-4 lg:pt-24 pb-4 lg:pb-16 flex flex-col lg:flex-row items-center lg:items-end justify-between gap-6 lg:gap-10 min-h-0 lg:min-h-screen">
+    <div class="relative z-10 w-full max-w-[1650px] mx-auto px-4 sm:px-8 xl:px-12 pt-4 xl:pt-24 pb-3 xl:pb-4 flex flex-col xl:flex-row items-center xl:items-end justify-between gap-6 xl:gap-10 min-h-0 xl:min-h-screen">
       <div class="hero-copy flex-1 max-w-lg">
         <h1>{model.kicker}</h1>
         <p class="hero-slogan">{model.title}</p>
@@ -374,7 +374,7 @@
       </div>
 
       <!-- Formulario de Cotización Desktop -->
-      <div class="hidden lg:block flex-shrink-0 w-full max-w-[380px] xl:max-w-[410px] z-10 mb-12">
+      <div class="hidden xl:block flex-shrink-0 w-full max-w-[380px] xl:max-w-[410px] z-10 mb-3">
         <ContactFormCard accent="#424D07" initialBrand="Jeep" initialModel="Renegade 2027" />
       </div>
     </div>
@@ -658,7 +658,7 @@
             {/each}
           </div>
           <button class="play-btn" onclick={() => adasAutoplay = !adasAutoplay} aria-label={adasAutoplay ? 'Pausar carrusel' : 'Reproducir carrusel'}>
-            <span class="material-symbols-outlined inline-flex select-none items-center justify-center align-middle" aria-hidden="true" style="font-size: 16px; line-height: 1;">{adasAutoplay ? 'pause' : 'play_arrow'}</span>
+            <GoogleIcon name={adasAutoplay ? 'pause' : 'play_arrow'} size={18} />
           </button>
         </div>
       </div>
@@ -741,17 +741,7 @@
   </section>
 </main>
 
-<!-- ── Floating CTA bar (desktop only, visible after scroll past hero) ── -->
-{#if showFloating}
-  <div
-    class="floating-cta flex md:hidden"
-    transition:fade={{ duration: 260 }}
-  >
-    <span class="floating-cta-name">{model.name}</span>
-    <button class="floating-cta-ghost" onclick={goToTestDrive}>Prueba de manejo</button>
-    <button class="floating-cta-primary" onclick={goToQuote}>Cotizar <GoogleIcon name="arrow_forward" size={15} /></button>
-  </div>
-{/if}
+
 
 <!-- ── Cotizar Drawer ─────────────────────────────────────────────────── -->
 {#if showCotizarDrawer}
@@ -851,19 +841,22 @@
   }
 
   .hero-desktop-img {
-    display: block;
+    display: block !important;
   }
   .hero-mobile-img {
-    display: none;
+    display: none !important;
   }
 
-  @media (max-width: 767px) {
+  @media (max-width: 1024px) {
     .hero-desktop-img {
       display: none !important;
     }
     .hero-mobile-img {
       display: block !important;
       object-position: center center;
+      animation: none !important;
+      opacity: 1 !important;
+      transform: none !important;
     }
   }
 
@@ -896,7 +889,7 @@
     z-index: 10;
     align-self: end;
     width: min(500px, calc(100vw - 48px));
-    margin: 0 0 clamp(40px, 8vh, 80px) clamp(24px, 8vw, 128px);
+    margin: 0 0 clamp(12px, 2vh, 24px) clamp(24px, 8vw, 128px);
     padding: 0;
     transform: translateY(calc(var(--scroll) * -52px));
     animation: hero-copy-in 1200ms var(--ease-out) both 180ms;
@@ -966,6 +959,7 @@
     flex-wrap: wrap;
     gap: 12px;
     margin-top: 20px;
+    margin-bottom: 32px;
   }
 
   .hero-copy .hero-actions button {
@@ -1818,8 +1812,19 @@
     color: white;
     cursor: pointer;
     padding: 0;
+    margin: 0;
     flex-shrink: 0;
+    overflow: hidden;
+    box-sizing: border-box;
     transition: background 300ms ease, transform 200ms ease;
+  }
+
+  .play-btn * {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    margin: 0;
   }
 
   .play-btn:hover {
@@ -2200,7 +2205,8 @@
     }
 
     .pin-stage {
-      padding: 0px 0;
+      padding: 0 0 32px;
+      margin-bottom: 32px;
     }
 
     .pin-media {
@@ -2725,9 +2731,10 @@
       max-height: 50vh;
       object-fit: contain;
       object-position: center bottom;
-      display: block;
       margin: 0;
-      /* Animación heredada del desktop */
+      animation: none !important;
+      opacity: 1 !important;
+      transform: none !important;
     }
     .hero-shade {
       display: none;
@@ -2757,6 +2764,7 @@
       flex-direction: column;
       gap: 14px;
       margin-top: 16px;
+      margin-bottom: 32px;
     }
     .hero-copy .hero-actions button {
       width: 100%;

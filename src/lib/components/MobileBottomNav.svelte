@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { onMount } from 'svelte'
   import { isDark } from '$lib/stores/theme'
   import GoogleIcon from './GoogleIcon.svelte'
 
@@ -8,8 +9,21 @@
     onServicioClick?:     () => void
     onContactoClick?:     () => void
     mode?: 'default' | 'model-detail'
+    accentColor?: string
   }
-  let { onCotizarClick, onPruebaManejoClick, onServicioClick, onContactoClick, mode = 'default' }: Props = $props()
+  let { onCotizarClick, onPruebaManejoClick, onServicioClick, onContactoClick, mode = 'default', accentColor = '#334E8B' }: Props = $props()
+
+  let visible = $state(false)
+
+  onMount(() => {
+    const handleScroll = () => {
+      const threshold = Math.min(280, window.innerHeight * 0.35)
+      visible = window.scrollY > threshold
+    }
+    handleScroll()
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  })
 
   const LINKS = [
     { icon: 'speed',      label: 'Prueba de manejo', href: '#', isWA: false, action: 'prueba' },
@@ -138,14 +152,18 @@
 {/if}
 
 <!-- Bottom nav pill -->
-<nav class="fixed z-40 md:hidden flex items-center p-[10px] gap-[2px] transition-colors duration-300 nav-anim"
+<nav class="fixed z-40 md:hidden flex items-center p-[10px] gap-[2px]"
   style="left:16px;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));
          background:{navTint};
          backdrop-filter:{BD_FILTER_NAV}; -webkit-backdrop-filter:{BD_FILTER_NAV};
          border:{navBorder}; border-top-color:{navBorderTop}; border-bottom:{navBorderBot};
          border-radius:30px;
          box-shadow:{navShadow};
-         pointer-events:auto; overflow-x:auto; -ms-overflow-style:none; scrollbar-width:none;">
+         pointer-events:{visible ? 'auto' : 'none'};
+         transform:{visible ? 'translateY(0)' : 'translateY(140%)'};
+         opacity:{visible ? 1 : 0};
+         transition: transform 0.42s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+         overflow-x:auto; -ms-overflow-style:none; scrollbar-width:none;">
   
   <div class="flex items-stretch w-full justify-between" style="height:54px;">
     {#if mode === 'model-detail'}
@@ -153,10 +171,10 @@
       {#each MODEL_LINKS as link (link.label)}
         <button
           onclick={() => handleAction(link.action)}
-          class="flex-1 flex items-center justify-center gap-2 mx-1 rounded-xl text-sm font-bold transition-all active:scale-[0.96] cursor-pointer"
+          class="flex-1 flex items-center justify-center gap-2 mx-1 rounded-full text-sm font-bold transition-all active:scale-[0.96] cursor-pointer"
           style="{link.primary
-            ? 'background:#334E8B;color:white;'
-            : `background:${$isDark ? 'rgba(255,255,255,0.08)' : 'rgba(51,78,139,0.08)'};color:${$isDark ? 'rgba(255,255,255,0.88)' : '#1a2040'};`}">
+            ? `background:${accentColor};color:white;`
+            : `background:${$isDark ? 'rgba(255,255,255,0.08)' : 'rgba(255,255,255,0.12)'};color:${$isDark ? 'rgba(255,255,255,0.88)' : 'white'};`}">
           <GoogleIcon name={link.icon} size={18} />
           <span>{link.label}</span>
         </button>
