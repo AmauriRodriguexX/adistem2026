@@ -72,7 +72,11 @@
     if (action === 'cotizar') {
       onCotizarClick?.()
     } else if (action === 'prueba') {
-      onPruebaManejoClick?.() ?? onCotizarClick?.()
+      if (onPruebaManejoClick) {
+        onPruebaManejoClick()
+      } else {
+        onCotizarClick?.()
+      }
     } else if (action === 'servicio') {
       onServicioClick?.()
     } else if (action === 'contacto') {

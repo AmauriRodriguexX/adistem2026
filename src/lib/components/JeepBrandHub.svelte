@@ -1,11 +1,13 @@
 <script lang="ts">
   import GoogleIcon from './GoogleIcon.svelte'
+  import ContactFormCard from './ContactFormCard.svelte'
 
   type JeepModel = {
     slug: string
     name: string
     role: string
     image: string
+    mobileImage?: string
     accent: string
     use: string
     stat: string
@@ -20,6 +22,7 @@
   const JEEP_DEFAULT = '#424D07'
   const JEEP_HOVER = '#5A690A'
   let activeModelIndex = $state(0)
+  let showCotizarDrawer = $state(false)
 
   const CDN = 'https://www.jeep.com.mx/content/dam/cross-regional'
 
@@ -28,7 +31,8 @@
       slug: 'renegade',
       name: 'Jeep Renegade',
       role: 'SUV compacto con espíritu aventurero',
-      image: `/adistem2026/jeep/renegade-2026.jpg`,
+      image: `/adistem2026/jeep/renegade-2026.jpg?v=2`,
+      mobileImage: `/adistem2026/jeep/renegade-2026-mob.jpg?v=2`,
       accent: JEEP_HOVER,
       use: 'Para la ciudad, carretera y escapadas de fin de semana.',
       stat: 'Aventura Urbana',
@@ -40,7 +44,8 @@
       slug: 'compass',
       name: 'Jeep Compass',
       role: 'Estilo y tecnología en cada ruta',
-      image: `/adistem2026/jeep/compass-2026.jpg`,
+      image: `/adistem2026/jeep/compass-2026.jpg?v=2`,
+      mobileImage: `/adistem2026/jeep/compass-2026-mob.jpg?v=2`,
       accent: JEEP_DEFAULT,
       use: 'Para familias jóvenes, ciudad y carretera con confort.',
       stat: 'Diseño & Confort',
@@ -52,7 +57,8 @@
       slug: 'commander',
       name: 'Jeep Commander',
       role: '7 plazas para todo lo que importa',
-      image: `/adistem2026/jeep/commander-2026.jpg`,
+      image: `/adistem2026/jeep/commander-2026.jpg?v=2`,
+      mobileImage: `/adistem2026/jeep/commander-2026-mob.jpg?v=2`,
       accent: JEEP_HOVER,
       use: 'Para familia completa, viajes largos y versatilidad total.',
       stat: '7 Pasajeros',
@@ -127,8 +133,17 @@
     onModelSelect?.('renegade')
   }
 
+  const VISIBLE_SLUGS = ['renegade', 'compass', 'commander']
+
   function goToModel(index: number) {
-    activeModelIndex = (index + models.length) % models.length
+    activeModelIndex = (index + 3) % 3
+  }
+
+  function scrollToForm() {
+    const el = document.getElementById('brandhub-mobile-form') || document.getElementById('brandhub-desktop-form')
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
   }
 
   // Cotización: navega al form con el modelo pre-seleccionado
@@ -160,7 +175,7 @@
   $effect(() => {
     if (!isPlaying) return
     const id = setInterval(() => {
-      activeModelIndex = (activeModelIndex + 1) % models.length
+      activeModelIndex = (activeModelIndex + 1) % 3
     }, 7000)
     return () => clearInterval(id)
   })
@@ -194,22 +209,35 @@
 <main class="jeep-hub">
   <section class="hub-hero">
     {#each models as model, i (model.slug)}
-      <img class="hero-bg" class:active={i === activeModelIndex} src={model.image} alt={model.name} />
+      <img class="hero-bg hero-desktop-img" class:active={i === activeModelIndex} class:hide={!VISIBLE_SLUGS.includes(model.slug)} src={model.image} alt={model.name} />
+      {#if model.mobileImage}
+        <img class="hero-bg hero-mobile-img" class:active={i === activeModelIndex} class:hide={!VISIBLE_SLUGS.includes(model.slug)} src={model.mobileImage} alt={model.name} />
+      {/if}
     {/each}
     <div class="hero-shade-new"></div>
-    <div class="hero-copy-new">
-      {#key activeModelIndex}
-        <div class="hero-content-new">
-          <h1>{models[activeModelIndex].name} 2026</h1>
-          <p class="hero-slogan-new">{models[activeModelIndex].role}</p>
-          <span class="price-badge-new">Desde {models[activeModelIndex].price}</span>
-          <div class="hero-actions-new">
-            <button class="primary" onclick={() => selectModel(models[activeModelIndex].slug)}>
-              Explorar <GoogleIcon name="arrow_forward" size={18} />
-            </button>
+    <div class="relative z-10 w-full max-w-[1650px] mx-auto px-4 sm:px-8 xl:px-12 pt-4 xl:pt-24 pb-3 xl:pb-4 flex flex-col xl:flex-row items-center xl:items-end justify-between gap-6 xl:gap-10 min-h-0 xl:min-h-screen">
+      <div class="hero-copy-new flex-1 max-w-lg">
+        {#key activeModelIndex}
+          <div class="hero-content-new">
+            <h1>{models[activeModelIndex].name} 2026</h1>
+            <p class="hero-slogan-new">{models[activeModelIndex].role}</p>
+            <span class="price-badge-new">Desde {models[activeModelIndex].price}</span>
+            <div class="hero-actions-new">
+              <button class="primary" onclick={() => selectModel(models[activeModelIndex].slug)}>
+                Explorar <GoogleIcon name="arrow_forward" size={18} />
+              </button>
+              <button class="ghost" onclick={scrollToForm}>
+                Cotiza ahora <GoogleIcon name="arrow_downward" size={18} />
+              </button>
+            </div>
           </div>
-        </div>
-      {/key}
+        {/key}
+      </div>
+
+      <!-- Formulario de Cotización Desktop en Brand Hub -->
+      <div id="brandhub-desktop-form" class="hidden xl:block flex-shrink-0 w-full max-w-[380px] xl:max-w-[410px] z-10 self-center mb-12">
+        <ContactFormCard accent="#424D07" initialBrand="Jeep" initialModel={models[activeModelIndex].name.replace('Jeep ', '') + ' 2026'} />
+      </div>
     </div>
     
     <!-- Mobile: fade bottom de imagen hacia el bloque de texto -->
@@ -220,6 +248,7 @@
         {#each models as model, i (model.slug)}
           <button
             class:active={i === activeModelIndex}
+            class:hide={!VISIBLE_SLUGS.includes(model.slug)}
             aria-label={`Ver ${model.name}`}
             onclick={() => goToModel(i)}>
           </button>
@@ -241,14 +270,31 @@
         <h2>{models[activeModelIndex].name} <span class="hub-mobile-year">2026</span></h2>
         <p>{models[activeModelIndex].role}</p>
         <span class="hub-mobile-price">Desde {models[activeModelIndex].price}</span>
-        <button
-          class="hub-mobile-cta"
-          onclick={() => selectModel(models[activeModelIndex].slug)}
-        >
-          Explorar <GoogleIcon name="arrow_forward" size={16} />
-        </button>
+        <div class="flex flex-col gap-2 w-full mt-3">
+          <button
+            class="hub-mobile-cta"
+            onclick={() => selectModel(models[activeModelIndex].slug)}
+          >
+            Explorar <GoogleIcon name="arrow_forward" size={16} />
+          </button>
+          <button
+            class="hub-mobile-cta ghost"
+            onclick={scrollToForm}
+          >
+            Cotiza ahora <GoogleIcon name="arrow_downward" size={16} />
+          </button>
+        </div>
       </div>
     {/key}
+  </div>
+
+  <!-- ── Formulario Mobile (debajo de los CTAs en mobile) ── -->
+  <div id="brandhub-mobile-form" class="w-full max-w-lg mx-auto px-4 py-6 xl:hidden relative z-10">
+    <ContactFormCard
+      accent="#424D07"
+      initialBrand="Jeep"
+      initialModel={models[activeModelIndex].name.replace('Jeep ', '') + ' 2026'}
+    />
   </div>
 
   <section
@@ -269,7 +315,7 @@
       ontouchend={onTouchEnd}>
       <div class="model-track" style={`--active:${activeModelIndex};`}>
         {#each models as model, i (model.slug)}
-          <article class="promo-card" class:active={i === activeModelIndex} style={`--accent:${model.accent}`}>
+          <article class="promo-card" class:active={i === activeModelIndex} class:hide={!VISIBLE_SLUGS.includes(model.slug)} style={`--accent:${model.accent}`}>
             <div class="pc-glass-bg"></div>
             <div class="pc-glass-shine"></div>
             <div class="pc-glass-border"></div>
@@ -303,6 +349,7 @@
         {#each models as model, i (model.slug)}
           <button
             class:active={i === activeModelIndex}
+            class:hide={!VISIBLE_SLUGS.includes(model.slug)}
             aria-label={`Ver ${model.name}`}
             onclick={() => goToModel(i)}>
           </button>
@@ -429,6 +476,10 @@
 </main>
 
 <style>
+  @keyframes drawer-in {
+    from { transform: translateX(100%); opacity: 0; }
+    to   { transform: translateX(0);   opacity: 1; }
+  }
   .jeep-hub {
     min-height: 100vh;
     background: #050507;
@@ -486,6 +537,10 @@
     gap: 24px;
   }
 
+  .hide {
+    display: none !important;
+  }
+
   /* Card hover lift */
   .jeep-hub .group:hover > div {
     transform: translateY(-4px) !important;
@@ -508,6 +563,26 @@
     opacity: 1;
     z-index: 1;
     animation: hero-zoom-in 10s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  }
+
+  @media (max-width: 767px) {
+    .hub-hero > img.hero-desktop-img {
+      display: none !important;
+    }
+    .hub-hero > img.hero-mobile-img {
+      display: block !important;
+    }
+    .hub-hero > img.hero-mobile-img.active {
+      animation: none !important;
+      transform: none !important;
+      opacity: 1 !important;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .hub-hero > img.hero-mobile-img {
+      display: none !important;
+    }
   }
 
   .hero-shade-new {
@@ -610,6 +685,35 @@
 
   .hero-actions-new button.primary:hover {
     background: var(--jeep-hover);
+    transform: translateY(-2px);
+  }
+
+  .hero-actions-new button.ghost,
+  .hub-mobile-cta.ghost {
+    min-height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 0 20px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.08) !important;
+    color: white !important;
+    border: 1px solid rgba(255, 255, 255, 0.22) !important;
+    backdrop-filter: blur(12px);
+    box-shadow: none !important;
+    transition: all 300ms var(--ease);
+  }
+
+  .hero-actions-new button.ghost:hover,
+  .hub-mobile-cta.ghost:hover {
+    background: rgba(255, 255, 255, 0.16) !important;
+    border-color: rgba(255, 255, 255, 0.38) !important;
     transform: translateY(-2px);
   }
 
