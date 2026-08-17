@@ -9,9 +9,15 @@
   import BrandBenefitsSection from '$lib/components/BrandBenefitsSection.svelte'
   import LeadFormSection     from '$lib/components/LeadFormSection.svelte'
   import RamBrandHub        from '$lib/components/RamBrandHub.svelte'
+  import FiatBrandHub       from '$lib/components/FiatBrandHub.svelte'
+  import FiatPremiumLanding from '$lib/components/FiatPremiumLanding.svelte'
   import RamPremiumLanding  from '$lib/components/RamPremiumLanding.svelte'
   import JeepBrandHub       from '$lib/components/JeepBrandHub.svelte'
   import JeepPremiumLanding from '$lib/components/JeepPremiumLanding.svelte'
+  import DodgeBrandHub        from '$lib/components/DodgeBrandHub.svelte'
+  import DodgePremiumLanding  from '$lib/components/DodgePremiumLanding.svelte'
+  import PeugeotBrandHub      from '$lib/components/PeugeotBrandHub.svelte'
+  import PeugeotPremiumLanding from '$lib/components/PeugeotPremiumLanding.svelte'
   import SeminuevosView     from '$lib/components/SeminuevosView.svelte'
   import PostventaView      from '$lib/components/PostventaView.svelte'
   import ContactView        from '$lib/components/ContactView.svelte'
@@ -41,6 +47,9 @@
   let initialContactTab: 'cotizacion' | 'cita' | 'prueba' = $state('cotizacion')
   let ramModelSlug: string | null = $state(null)
   let jeepModelSlug: string | null = $state(null)
+  let fiatModelSlug: string | null = $state(null)
+  let dodgeModelSlug: string | null = $state(null)
+  let peugeotModelSlug: string | null = $state(null)
   let mobileMenuOpen = $state(false)
   let brandStripVisible   = $state(false)
   let benefitsVisible     = $state(false)
@@ -179,6 +188,9 @@
     currentView = 'Portal'
     jeepModelSlug = null
     ramModelSlug = null
+    fiatModelSlug = null
+    dodgeModelSlug = null
+    peugeotModelSlug = null
     history.pushState({ brand: 'Todas' }, '', '/adistem2026/')
     await tick()
     scrollToHero()
@@ -210,6 +222,9 @@
       currentView = 'Portal'
       jeepModelSlug = null
       ramModelSlug = null
+      fiatModelSlug = null
+      dodgeModelSlug = null
+      peugeotModelSlug = null
       history.pushState({ brand: 'Todas' }, '', '/adistem2026/')
       await tick()
     }
@@ -278,12 +293,12 @@
       const brands: BrandFilter[] = ['Jeep', 'Fiat', 'Dodge', 'Ram', 'Peugeot']
       const found = brands.find(b => b.toLowerCase() === brandPath.toLowerCase())
       if (found) {
-        if (found !== 'Jeep') {
-          brandFilter = 'Todas'
-          return
-        }
         brandFilter = found
-        jeepModelSlug = routeParts[1] || null
+        if (found === 'Jeep') jeepModelSlug = routeParts[1] || null
+        if (found === 'Ram') ramModelSlug = routeParts[1] || null
+        if (found === 'Fiat') fiatModelSlug = routeParts[1] || null
+        if (found === 'Dodge') dodgeModelSlug = routeParts[1] || null
+        if (found === 'Peugeot') peugeotModelSlug = routeParts[1] || null
         return
       }
     }
@@ -297,15 +312,15 @@
   })
 
   function handleBrandSelect(brand: BrandFilter) { 
-    // Restriction: Only Jeep and 'Todas' are allowed
-    if (brand !== 'Jeep' && brand !== 'Todas') return
-
     if (brandFilter === brand && currentView === 'Portal') return
     brandFilter = brand
     currentView = 'Portal'
     ramModelSlug = null
     jeepModelSlug = null
-    
+    fiatModelSlug = null
+    dodgeModelSlug = null
+    peugeotModelSlug = null
+
     // Update URL without reload
     const base = '/adistem2026/'
     const newPath = brand === 'Todas' ? base : `${base}${brand.toLowerCase()}/`
@@ -328,6 +343,30 @@
     currentView = 'Portal'
     jeepModelSlug = slug
     history.pushState({ brand: 'Jeep', model: slug }, '', `/adistem2026/jeep/${slug}/`)
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
+  function handleFiatModelSelect(slug: string) {
+    brandFilter = 'Fiat'
+    currentView = 'Portal'
+    fiatModelSlug = slug
+    history.pushState({ brand: 'Fiat', model: slug }, '', `/adistem2026/fiat/${slug}/`)
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
+  function handleDodgeModelSelect(slug: string) {
+    brandFilter = 'Dodge'
+    currentView = 'Portal'
+    dodgeModelSlug = slug
+    history.pushState({ brand: 'Dodge', model: slug }, '', `/adistem2026/dodge/${slug}/`)
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
+  function handlePeugeotModelSelect(slug: string) {
+    brandFilter = 'Peugeot'
+    currentView = 'Portal'
+    peugeotModelSlug = slug
+    history.pushState({ brand: 'Peugeot', model: slug }, '', `/adistem2026/peugeot/${slug}/`)
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
@@ -528,6 +567,9 @@
     onModelSelect={(brand, slug) => {
       if (brand === 'Jeep') handleJeepModelSelect(slug)
       else if (brand === 'Ram') handleRamModelSelect(slug)
+      else if (brand === 'Fiat') handleFiatModelSelect(slug)
+      else if (brand === 'Dodge') handleDodgeModelSelect(slug)
+      else if (brand === 'Peugeot') handlePeugeotModelSelect(slug)
     }}
   />
 
@@ -537,7 +579,7 @@
     onPruebaManejoClick={handlePruebaMobile}
     onServicioClick={() => handleContactClick('cita')}
     onContactoClick={handleMobileContactoClick}
-    mode={(currentView === 'Portal' && (brandFilter === 'Jeep' || brandFilter === 'Ram') && (jeepModelSlug || ramModelSlug)) ? 'model-detail' : 'default'}
+    mode={(currentView === 'Portal' && (jeepModelSlug || ramModelSlug || fiatModelSlug || dodgeModelSlug || peugeotModelSlug)) ? 'model-detail' : 'default'}
     accentColor={BRAND_CONFIGS[brandFilter]?.accent ?? '#334E8B'}
   />
 
@@ -552,6 +594,18 @@
       <JeepPremiumLanding modelSlug={jeepModelSlug} />
     {:else if currentView === 'Portal' && brandFilter === 'Jeep'}
       <JeepBrandHub onModelSelect={handleJeepModelSelect} />
+    {:else if currentView === 'Portal' && brandFilter === 'Fiat' && fiatModelSlug}
+      <FiatPremiumLanding modelSlug={fiatModelSlug} />
+    {:else if currentView === 'Portal' && brandFilter === 'Fiat'}
+      <FiatBrandHub onModelSelect={handleFiatModelSelect} />
+    {:else if currentView === 'Portal' && brandFilter === 'Dodge' && dodgeModelSlug}
+      <DodgePremiumLanding modelSlug={dodgeModelSlug} />
+    {:else if currentView === 'Portal' && brandFilter === 'Dodge'}
+      <DodgeBrandHub onModelSelect={handleDodgeModelSelect} />
+    {:else if currentView === 'Portal' && brandFilter === 'Peugeot' && peugeotModelSlug}
+      <PeugeotPremiumLanding modelSlug={peugeotModelSlug} />
+    {:else if currentView === 'Portal' && brandFilter === 'Peugeot'}
+      <PeugeotBrandHub onModelSelect={handlePeugeotModelSelect} />
     {:else if currentView === 'Portal'}
       <!-- HERO -->
       <div bind:this={heroEl}>

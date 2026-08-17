@@ -7,53 +7,9 @@
   type DrawerTab = 'cotizacion' | 'prueba' | 'cita'
   let drawerTab = $state<DrawerTab>('cotizacion')
 
-  const L = '/adistem2026/ram-lineup'
-  let { modelSlug = '1500-rho' }: { modelSlug?: string | null } = $props()
+  let { modelSlug = 'attitude' }: { modelSlug?: string | null } = $props()
   let progress = $state(0)
   let zoomedImage = $state<string | null>(null)
-
-  // ── RAM 1500 RHO 2026: colores y detalle reales (ram.com/mx/rho.html) ──
-  const RHO_BILLET_SILVER = 'https://www.ram.com/content/dam/cross-regional/nafta/ramtrucks/es_mx/2026/rho/colorizer/slices/02-RHO-Billet_Silver_Desktop.jpg.img.2880.jpg'
-  const RHO_BRIGHT_WHITE = 'https://www.ram.com/content/dam/cross-regional/nafta/ramtrucks/es_mx/2026/rho/colorizer/slices/03-RHO-Bright_White_Desktop.jpg.img.2880.jpg'
-  const RHO_DIAMOND_BLACK = 'https://www.ram.com/content/dam/cross-regional/nafta/ramtrucks/es_mx/2026/rho/colorizer/slices/05-RHO-Diamond_Black_Desktop.jpg.img.2880.jpg'
-  const RHO_FLAME_RED = 'https://www.ram.com/content/dam/cross-regional/nafta/ramtrucks/es_mx/2026/rho/colorizer/slices/06-RHO-Flame_Red_Desktop.jpg.img.2880.jpg'
-  const RHO_HYDRO_BLUE = 'https://www.ram.com/content/dam/cross-regional/nafta/ramtrucks/es_mx/2026/rho/colorizer/slices/09-RHO-Hydro_Blue_Desktop.jpg.img.2880.jpg'
-  const RHO_FEATUREPANEL_01 = 'https://www.ram.com/content/dam/cross-regional/nafta/ramtrucks/es_mx/2026/rho/desktop/my26-rho-featurepanel-01-desktop.jpg.img.2880.jpg'
-  const RHO_INTERIOR_TAB = 'https://www.ram.com/content/dam/cross-regional/nafta/ramtrucks/es_mx/2026/rho/desktop/my26-rho-tabcontainer-01-desktop.jpg.img.2880.jpg'
-  const RHO_DRIVE_MODE = 'https://www.ram.com/content/dam/cross-regional/nafta/ramtrucks/es_mx/2026/rho/desktop/my26-rho-featurepanel-04-radiobutton-01-desktop.jpg.img.2880.jpg'
-
-  const RhoColors = [
-    { name: 'Billet Silver', hex: '#c4c4c4', img: RHO_BILLET_SILVER },
-    { name: 'Bright White', hex: '#f5f5f5', img: RHO_BRIGHT_WHITE },
-    { name: 'Diamond Black', hex: '#0d0d0d', img: RHO_DIAMOND_BLACK },
-    { name: 'Flame Red', hex: '#c81414', img: RHO_FLAME_RED },
-    { name: 'Hydro Blue', hex: '#2f6fb0', img: RHO_HYDRO_BLUE },
-  ]
-
-  const RhoFeatures: [string[], string[]] = [
-    [
-      'Motor dual turbo Hurricane 3.0L I6 con 540 hp y 521 lb-pie de torque',
-      'Amortiguadores Bilstein® de alto desempeño instalados de serie',
-      'Nueve modos de manejo: Barro/Arena, Roca, Baja, Valet, Automático, Remolque, Nieve, Sport y Personalizado',
-      'Eje trasero E-Locker de alta velocidad',
-      'Neumáticos todo terreno con rines beadlock de aluminio de 18"',
-    ],
-    [
-      'Asientos tipo butaca de piel con calefacción, ventilación y masaje, ajuste eléctrico de 12 posiciones',
-      'Pantalla táctil de 14.5" con Uconnect® 5',
-      'Pantalla táctil de 10.25" exclusiva para el pasajero delantero',
-      'Clúster digital de información de 12"',
-      'Sistema de audio premium Harman Kardon® de 19 bocinas',
-      'Cargador inalámbrico dual',
-      'Espejo retrovisor digital',
-      'Más de 100 funciones de seguridad estándar',
-    ],
-  ]
-
-  let activeColorIndex = $state(0)
-  let activePanel = $state('colors')
-  let showAllFeatures = $state(false)
-  const activeColor = $derived(RhoColors[activeColorIndex] || RhoColors[0])
 
   type ModelDetail = {
     name: string
@@ -61,124 +17,211 @@
     title: string
     subtitle: string
     heroImage: string
+    mobileHeroImage?: string
     spotlightImage: string
     quote: string
     price: string
     specs: { value: string; label: string }[]
     motionTitle: string
     motionCopy: string
+    storyImages?: string[]
+    motionImages?: string[]
+    capabilityImage?: string
   }
 
+  const ATTITUDE_IMG = 'https://www.dodge.com/content/dam/cross-regional/nafta/dodge/es_mx/2026/attitude/desktop/my26-dodge-attitude-vlp-stills-dk.jpg'
+  const ATTITUDE_TECH_IMG = 'https://www.dodge.com/content/dam/cross-regional/nafta/dodge/es_mx/2026/attitude/desktop/2026-dodge-attitude-mx-tecnologia-confort-dk-v2.jpg.img.2880.jpg'
+  const ATTITUDE_COLOR_IMG = 'https://www.dodge.com/content/dam/cross-regional/nafta/dodge/es_mx/2026/attitude/colores/01-SXT/2026-dodge-attitude-mx-color-stx-02-dk.jpg.img.2880.jpg'
+  const CHARGER_IMG = 'https://www.dodge.com/content/dam/cross-regional/nafta/dodge/es_mx/2026/charger/vlp/desktop/my26-dodge-charger-mainhero-dk-pr.jpg.img.2880.jpg'
+  const CHARGER_MEDIA_IMG = 'https://www.dodge.com/content/dam/cross-regional/nafta/dodge/es_mx/2026/charger/vlp/desktop/my26-dodge-charger-mediablock-dk-pr.jpg.img.2880.jpg'
+  const CHARGER_MEDIA2_IMG = 'https://www.dodge.com/content/dam/cross-regional/nafta/dodge/es_mx/2026/charger/vlp/desktop/my26-dodge-charger-mediablock2-dk-pr.jpg.img.2880.jpg'
+  const CHARGER_OCTANE_IMG = 'https://www.dodge.com/content/dam/cross-regional/nafta/dodge/es_mx/2026/charger/vlp/desktop/my26-dodge-charger-vlp-octane-ready-sticky-container-1-v2-desktop.jpg'
+  const CHARGER_SANCTUM_IMG = 'https://www.dodge.com/content/dam/cross-regional/nafta/dodge/es_mx/2026/charger/vlp/desktop/My26-dodge-charger-vlp-innersanctum-stickycontainer-2-desktop.jpg'
+  const DURANGO_IMG = 'https://www.dodge.com/content/dam/cross-regional/nafta/dodge/es_mx/2026/buzz-model/durango/hellcat/desktop/my26-dodge-hellcat-hero-dk-mx.jpg.img.2880.jpg'
+  const DURANGO_HEMI_IMG = 'https://www.dodge.com/content/dam/cross-regional/nafta/dodge/es_mx/2026/buzz-model/durango/hellcat/desktop/my26-dodge-hellcat-hemi-dk-mx.jpg.img.2880.jpg'
+  const DURANGO_CONFIANZA_IMG = 'https://www.dodge.com/content/dam/cross-regional/nafta/dodge/es_mx/2026/buzz-model/durango/hellcat/desktop/my26-dodge-hellcat-confianza-dk-mx.jpg.img.2880.jpg'
+  const JOURNEY_IMG = 'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2Fc8f39b8a62ba049430811aa128ea21a793615787.jpg?generation=1777350234748118&alt=media'
+
+  // ── Attitude 2026: versiones/colores reales (dodge.com.mx) ──
+  const ATTITUDE_SXT_JELLY = 'https://www.dodge.com/content/dam/cross-regional/nafta/dodge/es_mx/2026/attitude/desktop/my26-dodge-attitude-sxt-jellybean-mx.jpg.img.600.jpg'
+  const ATTITUDE_SPORT_JELLY = 'https://www.dodge.com/content/dam/cross-regional/nafta/dodge/es_mx/2026/attitude/desktop/my26-dodge-attitude-sport-jellybean-mx.jpg.img.600.jpg'
+  const ATTITUDE_GT_JELLY = 'https://www.dodge.com/content/dam/cross-regional/nafta/dodge/es_mx/2026/attitude/desktop/my26-dodge-attitude-gt-jellybean-mx.jpg.img.600.jpg'
+  const ATTITUDE_SXT_BLANCO = 'https://www.dodge.com/content/dam/cross-regional/nafta/dodge/es_mx/2026/attitude/colores/01-SXT/2026-dodge-attitude-mx-color-stx-02-dk.jpg.img.2880.jpg'
+  const ATTITUDE_SXT_GRANITO = 'https://www.dodge.com/content/dam/cross-regional/nafta/dodge/es_mx/2026/attitude/colores/01-SXT/2026-dodge-attitude-mx-color-stx-03-dk.jpg.img.2880.jpg'
+  const ATTITUDE_SXT_PLATA = 'https://www.dodge.com/content/dam/cross-regional/nafta/dodge/es_mx/2026/attitude/colores/01-SXT/my26-dodge-attitude-overview-modelizer-alldevices-mx-v1.jpg.img.2880.jpg'
+  const ATTITUDE_SPORT_BLANCO = 'https://www.dodge.com/content/dam/cross-regional/nafta/dodge/es_mx/2026/attitude/colores/02-SPORT/2026-dodge-attitude-mx-color-sport-02-dk.jpg.img.2880.jpg'
+  const ATTITUDE_SPORT_GRANITO = 'https://www.dodge.com/content/dam/cross-regional/nafta/dodge/es_mx/2026/attitude/colores/02-SPORT/2026-dodge-attitude-mx-color-sport-03-dk.jpg.img.2880.jpg'
+  const ATTITUDE_SPORT_NEGRO = 'https://www.dodge.com/content/dam/cross-regional/nafta/dodge/es_mx/2026/attitude/colores/02-SPORT/2026-dodge-attitude-mx-color-sport-01-dk.jpg.img.2880.jpg'
+  const ATTITUDE_SPORT_PLATA = 'https://www.dodge.com/content/dam/cross-regional/nafta/dodge/es_mx/2026/attitude/colores/02-SPORT/2026-dodge-attitude-mx-color-sport-04-dk.jpg.img.2880.jpg'
+  const ATTITUDE_GT_BLANCO = 'https://www.dodge.com/content/dam/cross-regional/nafta/dodge/es_mx/2026/attitude/colores/03-GT/2026-dodge-attitude-mx-color-gt-02-dk.jpg.img.2880.jpg'
+  const ATTITUDE_GT_GRANITO = 'https://www.dodge.com/content/dam/cross-regional/nafta/dodge/es_mx/2026/attitude/colores/03-GT/2026-dodge-attitude-mx-color-gt-03-dk.jpg.img.2880.jpg'
+  const ATTITUDE_GT_NEGRO = 'https://www.dodge.com/content/dam/cross-regional/nafta/dodge/es_mx/2026/attitude/colores/03-GT/2026-dodge-attitude-mx-color-gt-01-dk.jpg.img.2880.jpg'
+  const ATTITUDE_GT_PLATA = 'https://www.dodge.com/content/dam/cross-regional/nafta/dodge/es_mx/2026/attitude/colores/03-GT/2026-dodge-attitude-mx-color-gt-04-dk.jpg.img.2880.jpg'
+
+  type AttitudeVersion = {
+    id: string
+    name: string
+    price: string
+    thumb: string
+    features: [string[], string[]]
+    colors: { name: string; hex: string; img: string }[]
+  }
+
+  const AttitudeVersions: AttitudeVersion[] = [
+    {
+      id: 'sxt',
+      name: 'SXT',
+      price: 'Desde $364,900',
+      thumb: ATTITUDE_SXT_JELLY,
+      features: [
+        ['Motor 1.5L Turbo con 168HP y 184 lb-pie inyección directa', 'Transmisión automática de 7 velocidades con clutch dual', 'Sistema de infoentretenimiento con pantalla LCD en color de 10.25"', 'Panel de instrumentos LCD de 7"', 'Faros automáticos y DRL LED'],
+        ['6 bolsas de aire', 'Control de velocidad crucero', 'Freno de estacionamiento electrónico (EPB) con Autohold', 'Cámara y sensores traseros de estacionamiento', 'Entrada pasiva y encendido por botón Keyless Enter & Go', 'Cristales delanteros y traseros eléctricos (antipellizco)', 'Parabrisas con sensor de lluvia', 'Rines de aluminio de 17"']
+      ],
+      colors: [
+        { name: 'Blanco', hex: '#f2f2f2', img: ATTITUDE_SXT_BLANCO },
+        { name: 'Granito', hex: '#4a4a4a', img: ATTITUDE_SXT_GRANITO },
+        { name: 'Plata Estelar', hex: '#b9babc', img: ATTITUDE_SXT_PLATA },
+      ]
+    },
+    {
+      id: 'sport',
+      name: 'SPORT',
+      price: 'Desde $364,900',
+      thumb: ATTITUDE_SPORT_JELLY,
+      features: [
+        ['Mismo equipo que versión SXT más:', 'Escape performance con sistema de sonido', 'Panel de instrumentos LCD de 10.25"', '9 asistencias de seguridad autónomas de 2.º nivel', 'Sensores delanteros de asistencia de estacionamiento'],
+        ['Espejos plegables eléctricamente, calefactables', 'A/C automático de doble zona', 'Volante deportivo de fondo plano forrado con piel', 'Paletas de cambio al volante', 'Asientos con vestiduras con piel sintética', 'Asiento del conductor ajustable eléctricamente en 6 direcciones', 'Asientos ventilados para conductor y pasajero', 'Quemacocos eléctrico', 'Rines de aluminio de 18"']
+      ],
+      colors: [
+        { name: 'Blanco', hex: '#f2f2f2', img: ATTITUDE_SPORT_BLANCO },
+        { name: 'Granito', hex: '#4a4a4a', img: ATTITUDE_SPORT_GRANITO },
+        { name: 'Negro Brillante', hex: '#0d0d0d', img: ATTITUDE_SPORT_NEGRO },
+        { name: 'Plata Estelar', hex: '#b9babc', img: ATTITUDE_SPORT_PLATA },
+      ]
+    },
+    {
+      id: 'gt',
+      name: 'GT',
+      price: 'Desde $364,900',
+      thumb: ATTITUDE_GT_JELLY,
+      features: [
+        ['Mismo equipo que la versión SPORT y más', 'Sistema de detección de punto ciego', 'Cargador inalámbrico de teléfono móvil', 'Interior deportivo en color negro o negro/rojo', 'Soporte lumbar neumático para asiento del conductor (de 4 vías)'],
+        ['Asiento del pasajero delantero ajustable eléctricamente en 4 direcciones', 'Espejo retrovisor electrocrómico', 'Rines de aluminio de 18” con acabado negro satinado y llantas performance', 'Alerón trasero deportivo']
+      ],
+      colors: [
+        { name: 'Blanco', hex: '#f2f2f2', img: ATTITUDE_GT_BLANCO },
+        { name: 'Granito', hex: '#4a4a4a', img: ATTITUDE_GT_GRANITO },
+        { name: 'Negro Brillante', hex: '#0d0d0d', img: ATTITUDE_GT_NEGRO },
+        { name: 'Plata Estelar', hex: '#b9babc', img: ATTITUDE_GT_PLATA },
+      ]
+    },
+  ]
+
+  let activeVersionId = $state('sxt')
+  let activeColorIndex = $state(0)
+  let activePanel = $state('colors')
+  let showAllFeatures = $state(false)
+
+  const activeVersion = $derived(AttitudeVersions.find(v => v.id === activeVersionId)!)
+  const activeColor = $derived(activeVersion.colors[activeColorIndex] || activeVersion.colors[0])
+
+  $effect(() => {
+    activeVersionId
+    showAllFeatures = false
+  })
+
   const modelDetails: Record<string, ModelDetail> = {
-    '1500-rho': {
-      name: 'RAM 1500 RHO',
-      kicker: 'RAM 1500 RHO 2026',
-      title: 'Performance extremo, sin límites.',
-      subtitle: 'Impulsada por un nuevo motor dual turbo, la RAM 1500 RHO 2026 redefine los límites de las pickups todoterreno, con capacidades off-road para conquistar cualquier terreno.',
-      heroImage: 'https://www.ram.com/content/dam/cross-regional/nafta/ramtrucks/es_mx/2026/rho/desktop/my26-rho-hero-desktop.jpg.img.2880.jpg',
-      spotlightImage: 'https://www.ram.com/content/dam/cross-regional/nafta/ramtrucks/es_mx/2026/rho/colorizer/slices/02-RHO-Billet_Silver_Desktop.jpg.img.2880.jpg',
-      quote: 'Hola,%20me%20interesa%20cotizar%20una%20RAM%201500%20RHO',
-      price: 'Desde $2,333,700',
+    'attitude': {
+      name: 'Dodge Attitude',
+      kicker: 'Dodge Attitude 2026',
+      title: 'Actitud que se nota desde el arranque.',
+      subtitle: 'El sedán accesible de Dodge: ágil en la ciudad, con el carácter de la marca y el equipamiento que necesitas para el día a día.',
+      heroImage: ATTITUDE_IMG,
+      spotlightImage: ATTITUDE_COLOR_IMG,
+      quote: 'Hola,%20me%20interesa%20cotizar%20un%20Dodge%20Attitude',
+      price: 'Desde $379,900',
       specs: [
-        { value: '540 hp', label: 'Motor dual turbo Hurricane 3.0L I6' },
-        { value: '521 lb-pie', label: 'Torque máximo' },
-        { value: '3,800 kg', label: 'Capacidad de remolque' },
-        { value: '9', label: 'Modos de manejo off-road' },
+        { value: 'SXT', label: 'Versión de entrada equipada' },
+        { value: 'CVT', label: 'Transmisión automática' },
+        { value: '7"', label: 'Pantalla multimedia central' },
+        { value: 'ABS', label: 'Frenos con control de estabilidad' },
       ],
-      motionTitle: 'Movimiento hecho para terreno abierto.',
-      motionCopy: 'La 1500 RHO está pensada para que la ruta se sienta viva: más presencia, más respuesta y una lectura visual inmediata.',
+      motionTitle: 'Se mueve ágil, se ve decidido.',
+      motionCopy: 'El Dodge Attitude está pensado para tu día a día: entra fácil a cualquier calle, se estaciona sin drama y mantiene la actitud Dodge en cada trayecto.',
     },
-    '1500-tungsten': {
-      name: 'RAM 1500 Tungsten',
-      kicker: 'RAM 1500 Tungsten 2026',
-      title: 'Lujo y capacidad premium, sin concesiones.',
-      subtitle: 'Cabina elevada, materiales premium y la presencia de la pickup más premiada, pensada para negocio y confort ejecutivo.',
-      heroImage: 'https://www.ram.com/content/dam/cross-regional/nafta/ramtrucks/es_mx/2026/ram-1500-tungsten/inicio/desktop/my26-ram-hero2-mx-dk.jpg.img.2880.jpg',
-      spotlightImage: 'https://www.ram.com/content/dam/cross-regional/nafta/ramtrucks/es_mx/2026/ram-1500-tungsten/inicio/desktop/my26-ram-inicio-design-dk-mx.jpg.img.2880.jpg',
-      quote: 'Hola,%20me%20interesa%20cotizar%20una%20RAM%201500%20Tungsten',
-      price: 'Desde $1,290,000',
+    'charger': {
+      name: 'Dodge Charger',
+      kicker: 'Dodge Charger 2026',
+      title: 'El músculo americano, sin disculpas.',
+      subtitle: 'Más de 100 años de historia condensados en el ícono de Dodge: potencia, presencia y un rugido que se reconoce a la distancia.',
+      heroImage: CHARGER_IMG,
+      spotlightImage: CHARGER_MEDIA_IMG,
+      quote: 'Hola,%20me%20interesa%20cotizar%20un%20Dodge%20Charger',
+      price: 'Desde $1,489,900',
       specs: [
-        { value: 'Tungsten', label: 'Versión tope de gama' },
-        { value: 'Premium', label: 'Materiales de alta gama' },
-        { value: '4x4', label: 'Tracción integral disponible' },
-        { value: 'Lujo', label: 'Cabina ejecutiva' },
+        { value: 'V8/V6', label: 'Motores de alto desempeño' },
+        { value: 'RWD', label: 'Tracción trasera deportiva' },
+        { value: 'Track', label: 'Modos de manejo en pista' },
+        { value: 'Legend', label: 'Herencia Dodge desde 1966' },
       ],
-      motionTitle: 'Confort que impone presencia.',
-      motionCopy: 'La 1500 Tungsten combina la capacidad de una RAM con el confort y los materiales de una cabina ejecutiva.',
+      motionTitle: 'Movimiento que se siente antes de arrancar.',
+      motionCopy: 'El Charger no pasa desapercibido: cada línea está diseñada para transmitir potencia y cada arranque confirma por qué es una leyenda.',
     },
-    '700': {
-      name: 'RAM 700',
-      kicker: 'RAM 700 2026',
-      title: 'Agilidad compacta con actitud de pickup.',
-      subtitle: 'Una RAM pensada para ciudad, negocio y recorridos diarios: práctica, visual y lista para moverse sin sentirse pesada.',
-      heroImage: 'https://www.ram.com/content/dam/cross-regional/nafta/ramtrucks/es_mx/2026/ram-700/inicio/desktop/my26-ram-700-cover-mx-dk.jpg.img.2880.jpg',
-      spotlightImage: 'https://www.ram.com/content/dam/cross-regional/nafta/ramtrucks/es_mx/2026/ram-700/inicio/desktop/ram-700-laramie-2026-inicio-exterior-01-dk.jpg.img.2880.jpg',
-      quote: 'Hola,%20me%20interesa%20cotizar%20una%20RAM%20700',
-      price: 'Desde $408,400',
+    'durango': {
+      name: 'Dodge Durango',
+      kicker: 'Dodge Durango 2026',
+      title: 'Dominio total en cualquier terreno.',
+      subtitle: 'La SUV con más carácter de Dodge: espacio para tres filas, fuerza de sobra y versiones que llegan hasta la brutal Hellcat Black Demon.',
+      heroImage: DURANGO_IMG,
+      spotlightImage: DURANGO_HEMI_IMG,
+      quote: 'Hola,%20me%20interesa%20cotizar%20un%20Dodge%20Durango',
+      price: 'Desde $2,179,900',
       specs: [
-        { value: '700', label: 'Pickup compacta RAM' },
-        { value: 'Ágil', label: 'Formato práctico para ciudad' },
-        { value: 'Carga', label: 'Caja útil para negocio diario' },
-        { value: 'Daily', label: 'Lista para trabajo y movilidad' },
+        { value: '3', label: 'Filas de asientos' },
+        { value: 'R/T', label: 'Versión de alto desempeño' },
+        { value: 'AWD', label: 'Tracción integral disponible' },
+        { value: 'Hellcat', label: 'Edición Black Demon 2026' },
       ],
-      motionTitle: 'Se mueve ligera, se ve decidida.',
-      motionCopy: 'La RAM 700 funciona como herramienta diaria: entra fácil, carga cuando toca y mantiene una presencia clara en cada trayecto.',
+      motionTitle: 'Espacio familiar con actitud de muscle car.',
+      motionCopy: 'El Durango combina la practicidad de una SUV de tres filas con el carácter y la potencia que solo Dodge sabe imprimir.',
     },
-    '1500': {
-      name: 'RAM 1500',
-      kicker: 'RAM 1500 2026',
-      title: 'Potencia diaria con presencia premium.',
-      subtitle: 'Una pickup para remolque, familia y aventura con equilibrio entre fuerza, confort y capacidad diaria.',
-      heroImage: 'https://www.ram.com/content/dam/cross-regional/nafta/ramtrucks/es_mx/home/cover/my26-ram-1500-inicio-hero-bhp-august-dk-mx.jpg.img.2880.jpg',
-      spotlightImage: 'https://www.ram.com/content/dam/cross-regional/nafta/ramtrucks/es_mx/home/cover/my26-ram-1500-incentives-marzo-dk-mx.jpg.img.2880.jpg',
-      quote: 'Hola,%20me%20interesa%20cotizar%20una%20RAM%201500',
-      price: 'Desde $1,290,000',
+    'journey': {
+      name: 'Dodge Journey',
+      kicker: 'Dodge Journey 2026',
+      title: 'Versatilidad familiar sin concesiones.',
+      subtitle: 'Espacio, confort y tecnología para acompañar cada viaje en familia, con el respaldo y la presencia de la marca Dodge.',
+      heroImage: JOURNEY_IMG,
+      spotlightImage: JOURNEY_IMG,
+      quote: 'Hola,%20me%20interesa%20cotizar%20un%20Dodge%20Journey',
+      price: 'Desde $603,900',
       specs: [
-        { value: '1500', label: 'Pickup RAM 2026' },
-        { value: '4x4', label: 'Capacidad para aventura' },
-        { value: 'Remolque', label: 'Lista para carga y ruta' },
-        { value: 'Confort', label: 'Cabina amplia y equipada' },
+        { value: 'GT', label: 'Versión tope de gama' },
+        { value: '5/7', label: 'Configuración de asientos' },
+        { value: 'Cargo', label: 'Espacio de carga flexible' },
+        { value: 'Safety', label: 'Sistemas de seguridad activa' },
       ],
-      motionTitle: 'Fuerza amplia para todos los días.',
-      motionCopy: 'La RAM 1500 combina capacidad, presencia y comodidad para trabajar, viajar y moverse con autoridad.',
-    },
-    '1200': {
-      name: 'RAM 1200',
-      kicker: 'RAM 1200 2026',
-      title: 'Trabajo inteligente, listo para producir.',
-      subtitle: 'Una pickup práctica para flotillas, campo y carga productiva con una lectura visual fuerte y funcional.',
-      heroImage: 'https://www.ram.com/content/dam/cross-regional/nafta/ramtrucks/es_mx/2026/ram-1200/inicio/desktop/my26-ram-1200-vlp-hero-mx-dk.jpg.img.2880.jpg',
-      spotlightImage: 'https://www.ram.com/content/dam/cross-regional/nafta/ramtrucks/es_mx/2026/ram-1200/inicio/desktop/my26-ram-1200-inicio2-seguraeficiente-mx-dk.jpg.img.2880.jpg',
-      quote: 'Hola,%20me%20interesa%20cotizar%20una%20RAM%201200',
-      price: 'Desde $408,400',
-      specs: [
-        { value: '1200', label: 'Pickup RAM 2026' },
-        { value: 'Trabajo', label: 'Configuración productiva' },
-        { value: 'Carga', label: 'Caja útil para jornadas reales' },
-        { value: 'Negocio', label: 'Pensada para operación diaria' },
-      ],
-      motionTitle: 'Capacidad práctica para avanzar más.',
-      motionCopy: 'La RAM 1200 está enfocada en resolver: cargar, moverse y acompañar jornadas productivas sin exceso.',
+      motionTitle: 'Hecho para acompañar cada trayecto.',
+      motionCopy: 'El Journey está diseñado para que cada viaje familiar se sienta cómodo, seguro y con el espacio que necesitas.',
     },
   }
 
   const fallbackModel: ModelDetail = {
-    name: 'RAM 2026',
-    kicker: 'RAM 2026',
-    title: 'Fuerza que se siente antes de arrancar.',
-    subtitle: 'Capacidad, presencia y tecnología útil para trabajo, viaje y aventura.',
-    heroImage: 'https://www.ram.com/content/dam/cross-regional/nafta/ramtrucks/es_mx/2026/rho/desktop/my26-rho-hero-desktop.jpg.img.2880.jpg',
-    spotlightImage: 'https://www.ram.com/content/dam/cross-regional/nafta/ramtrucks/es_mx/2026/rho/desktop/my26-rho-featurepanel-01-desktop.jpg.img.2880.jpg',
-    quote: 'Hola,%20me%20interesa%20cotizar%20una%20RAM',
-    price: 'Desde $408,400',
+    name: 'Dodge 2026',
+    kicker: 'Dodge 2026',
+    title: 'Actitud que se nota desde el arranque.',
+    subtitle: 'Presencia, tecnología y el carácter Dodge en cada versión de la gama.',
+    heroImage: ATTITUDE_IMG,
+    spotlightImage: ATTITUDE_IMG,
+    quote: 'Hola,%20me%20interesa%20cotizar%20un%20Dodge',
+    price: 'Desde $379,900',
     specs: [
-      { value: '6.7L', label: 'Turbodiesel disponible' },
-      { value: '4x4', label: 'Tracción para trabajo pesado' },
-      { value: '12"', label: 'Pantalla vertical central' },
-      { value: '360°', label: 'Visión para maniobras' },
+      { value: '2026', label: 'Gama del año modelo' },
+      { value: 'Dodge', label: 'Actitud americana' },
+      { value: 'ADAS', label: 'Sistemas de asistencia' },
+      { value: 'VAPSA', label: 'Distribuidor autorizado' },
     ],
-    motionTitle: 'Más que una pickup: una herramienta premium.',
-    motionCopy: 'Diseñada para cargar, remolcar y llegar con autoridad.',
+    motionTitle: 'Más que un auto: una actitud.',
+    motionCopy: 'Diseñado para destacar, con la fuerza y presencia que identifican a cada Dodge.',
   }
 
   const model = $derived(modelDetails[modelSlug ?? ''] ?? fallbackModel)
@@ -186,21 +229,17 @@
 
   const story = $derived([
     { kicker: 'Presencia', title: model.motionTitle, copy: model.motionCopy, image: model.heroImage },
-    { kicker: 'Tecnología', title: 'Control total desde el centro.', copy: 'Pantalla vertical, navegación, cámaras y comandos clave en una cabina pensada para decidir rápido y manejar mejor.', image: 'https://www.ram.com/content/dam/cross-regional/nafta/ramtrucks/es_mx/2026/ram-700/inicio/desktop/2026_ram_700_home_interior_dk.jpg.img.2880.jpg' },
-    { kicker: 'Utilidad', title: 'Espacio inteligente para lo que sigue.', copy: 'Soluciones de carga, organización y acceso que convierten la caja en una extensión real de tu trabajo.', image: 'https://www.ram.com/content/dam/cross-regional/nafta/ramtrucks/es_mx/2026/ram-700/inicio/desktop/ram-700-laramie-2026-inicio-equipamiento-01-dk.jpg.img.2880.jpg' },
+    { kicker: 'Tecnología', title: 'Control total desde el centro.', copy: 'Pantalla multimedia, conectividad inalámbrica y comandos al volante para mantenerte enfocado en el camino.', image: ATTITUDE_TECH_IMG },
+    { kicker: 'Seguridad', title: 'Confianza en cada kilómetro.', copy: 'Frenos ABS, control electrónico de estabilidad y bolsas de aire para proteger a todos los ocupantes.', image: DURANGO_CONFIANZA_IMG },
   ])
 
   const motionCards = $derived([
-    { title: model.name, copy: model.motionCopy, image: model.heroImage },
-    { title: 'Cabina clara', copy: 'Controles visibles, sensación ordenada y una experiencia pensada para el uso real.', image: 'https://www.ram.com/content/dam/cross-regional/nafta/ramtrucks/es_mx/2026/ram-1500-tungsten/inicio/desktop/my26-ram-1500-dt-image-description-the-future-is-now-d.jpg.img.2000.jpg' },
-    { title: 'Trabajo diario', copy: 'Espacio útil y soluciones prácticas para moverse con intención todos los días.', image: 'https://www.ram.com/content/dam/cross-regional/nafta/ramtrucks/es_mx/2026/ram-700/inicio/desktop/ram-700-laramie-2026-inicio-capacidad-y-desempeno-01-dk.jpg.img.2880.jpg' },
+    { title: 'Presencia que se impone', copy: 'Cada línea del diseño Dodge está pensada para transmitir carácter, dentro y fuera de la ciudad.', image: model.heroImage },
+    { title: 'Tecnología a bordo', copy: 'Pantalla multimedia y conectividad para mantenerte enfocado en el camino sin perder el control.', image: CHARGER_OCTANE_IMG },
+    { title: 'Hecho para durar', copy: 'Construcción robusta y el respaldo de más de 100 años de historia Dodge.', image: CHARGER_SANCTUM_IMG },
   ])
 
-  const cockpitImages = $derived([
-    'https://www.ram.com/content/dam/cross-regional/nafta/ramtrucks/es_mx/2026/ram-700/inicio/desktop/2026_ram_700_home_interior_dk.jpg.img.2880.jpg',
-    model.spotlightImage,
-    'https://www.ram.com/content/dam/cross-regional/nafta/ramtrucks/es_mx/home/hecho-en-mexico/my26-ram-calidad-nacional-hero-dk-mx.jpg.img.2880.jpg',
-  ])
+  const cockpitImages = $derived([model.spotlightImage, ATTITUDE_TECH_IMG, DURANGO_CONFIANZA_IMG])
   const capabilityImage = $derived(model.spotlightImage)
 
   let cockpitIndex = $state(0)
@@ -257,7 +296,7 @@
   <title>{model.name} | VAPSA</title>
 </svelte:head>
 
-<main class="ram-premium" style={`--scroll:${progress}`}>
+<main class="dodge-premium" style={`--scroll:${progress}`}>
   <div class="progress-rail" aria-hidden="true"><span></span></div>
 
   {#if zoomedImage}
@@ -273,7 +312,7 @@
     </div>
   {/if}
 
-  <section id="inicio" class="ram-hero">
+  <section id="inicio" class="dodge-hero">
     <img class="hero-fallback hero-desktop-img" src={model.heroImage} alt={model.name} />
     <div class="hero-shade"></div>
 
@@ -289,7 +328,7 @@
       </div>
 
       <div class="hidden xl:block flex-shrink-0 w-full max-w-[380px] xl:max-w-[410px] z-10 self-center mb-12">
-        <ContactFormCard accent="#880D00" initialBrand="Ram" initialModel={model.name.replace('RAM ', '') + ' 2026'} hideBrandSelect={true} />
+        <ContactFormCard accent="#D50000" initialBrand="Dodge" initialModel={model.name.replace('Dodge ', '') + ' 2026'} hideBrandSelect={true} />
       </div>
     </div>
 
@@ -297,15 +336,13 @@
   </section>
 
   <div id="mobile-hero-form" class="w-full max-w-lg mx-auto px-4 py-6 xl:hidden relative z-10">
-    <ContactFormCard accent="#880D00" initialBrand="Ram" initialModel={model.name.replace('RAM ', '') + ' 2026'} hideBrandSelect={true} />
+    <ContactFormCard accent="#D50000" initialBrand="Dodge" initialModel={model.name.replace('Dodge ', '') + ' 2026'} hideBrandSelect={true} />
   </div>
 
-  <nav class="product-nav hidden md:flex" aria-label="Navegación de producto RAM">
+  <nav class="product-nav hidden md:flex" aria-label="Navegación de producto Dodge">
     <strong>{model.name} <span class="nav-year">2026</span></strong>
     <a href="#inicio">Inicio</a>
-    {#if modelSlug === '1500-rho'}
-      <a href="#versiones">Versiones</a>
-    {/if}
+    {#if modelSlug === 'attitude'}<a href="#versiones">Versiones</a>{/if}
     <a href="#galeria">Galería</a>
     <a href="#historia">Historia</a>
     <a href="#interior">Interior</a>
@@ -334,29 +371,35 @@
     </div>
   </section>
 
-  {#if modelSlug === '1500-rho'}
+  {#if modelSlug === 'attitude'}
     <section id="versiones" class="vs">
       <div class="vs-hero-zone">
         <div class="vs-pill-bar">
-          <button class="vs-pill active">RHO</button>
+          {#each AttitudeVersions as version}
+            <button
+              class="vs-pill"
+              class:active={activeVersionId === version.id}
+              onclick={() => { activeVersionId = version.id; activeColorIndex = 0; }}
+            >{version.name}</button>
+          {/each}
         </div>
 
         <div class="vs-title-row">
-          <h2>RAM 1500 RHO 2026</h2>
-          <span class="vs-price">Desde $2,333,700</span>
+          <h2>{activeVersion.name} 2026</h2>
+          <span class="vs-price">{activeVersion.price}</span>
         </div>
 
         <div class="vs-showcase">
           <div class="vs-glow"></div>
           {#key activeColor.img}
-            <img src={activeColor.img} alt={`RHO ${activeColor.name}`} class="vs-hero-car" />
+            <img src={activeColor.img} alt={`Attitude ${activeColor.name}`} class="vs-hero-car" />
           {/key}
         </div>
 
         <div class="vs-color-bar">
           <span class="vs-color-label">{activeColor.name}</span>
           <div class="vs-dots">
-            {#each RhoColors as color, i}
+            {#each activeVersion.colors as color, i}
               <button
                 class="vs-dot"
                 class:active={activeColorIndex === i}
@@ -380,7 +423,7 @@
 
       {#if activePanel === 'features'}
         <div class="vs-feat-grid">
-          {#each showAllFeatures ? [...RhoFeatures[0], ...RhoFeatures[1]] : RhoFeatures[0] as feat, i}
+          {#each showAllFeatures ? [...activeVersion.features[0], ...activeVersion.features[1]] : activeVersion.features[0] as feat, i}
             <div class="vs-feat-card" style={`--d:${i * 40}ms`}>
               <GoogleIcon name="check_circle" size={18} />
               <span>{feat}</span>
@@ -392,23 +435,23 @@
             {#if showAllFeatures}
               <GoogleIcon name="expand_less" size={16} /> Ver menos
             {:else}
-              <GoogleIcon name="expand_more" size={16} /> Ver más equipamiento ({RhoFeatures[1].length} más)
+              <GoogleIcon name="expand_more" size={16} /> Ver más equipamiento ({activeVersion.features[1].length} más)
             {/if}
           </button>
         </div>
       {:else}
         <div class="vs-exterior-row">
-          <button class="vs-ext-card" onclick={() => toggleZoom(RHO_FEATUREPANEL_01)}>
-            <img src={RHO_FEATUREPANEL_01} alt="Diseño exterior" />
-            <span>Diseño exterior <GoogleIcon name="zoom_in" size={14} /></span>
+          <button class="vs-ext-card" onclick={() => toggleZoom(ATTITUDE_SXT_BLANCO)}>
+            <img src={ATTITUDE_SXT_BLANCO} alt="Lateral" />
+            <span>Vista lateral <GoogleIcon name="zoom_in" size={14} /></span>
           </button>
-          <button class="vs-ext-card" onclick={() => toggleZoom(RHO_DRIVE_MODE)}>
-            <img src={RHO_DRIVE_MODE} alt="Modos de manejo" />
-            <span>Modos de manejo <GoogleIcon name="zoom_in" size={14} /></span>
+          <button class="vs-ext-card" onclick={() => toggleZoom(ATTITUDE_IMG)}>
+            <img src={ATTITUDE_IMG} alt="Frontal" />
+            <span>Vista frontal <GoogleIcon name="zoom_in" size={14} /></span>
           </button>
-          <button class="vs-ext-card" onclick={() => toggleZoom(RHO_INTERIOR_TAB)}>
-            <img src={RHO_INTERIOR_TAB} alt="Interior" />
-            <span>Interior <GoogleIcon name="zoom_in" size={14} /></span>
+          <button class="vs-ext-card" onclick={() => toggleZoom(ATTITUDE_SXT_GRANITO)}>
+            <img src={ATTITUDE_SXT_GRANITO} alt="Trasera" />
+            <span>Vista trasera <GoogleIcon name="zoom_in" size={14} /></span>
           </button>
         </div>
       {/if}
@@ -432,7 +475,7 @@
   <section id="galeria" class="motion-gallery">
     <div class="motion-head">
       <p>Diseño Exterior</p>
-      <h2>Diseñada para imponer presencia.</h2>
+      <h2>Diseñado para imponer presencia.</h2>
     </div>
     <div class="motion-cards">
       {#each motionCards as card, i (card.title)}
@@ -464,12 +507,12 @@
     <div class="cockpit-copy">
       <p>Único por dentro</p>
       <h2>La mayor comodidad.</h2>
-      <span>Pantalla vertical central, navegación, cámaras y comandos clave en una cabina pensada para decidir rápido y manejar mejor.</span>
+      <span>Pantalla multimedia central, conectividad inalámbrica y comandos al volante para mantenerte enfocado en el camino sin distracciones.</span>
     </div>
     <div class="cockpit-carousel">
       <div class="cockpit-track" style={`transform: translateX(calc(-${cockpitIndex} * 100%))`}>
         {#each cockpitImages as img, i (i)}
-          <img src={img} alt={`Interior RAM ${i + 1}`} class="cockpit-slide" />
+          <img src={img} alt={`Interior Dodge ${i + 1}`} class="cockpit-slide" />
         {/each}
       </div>
       <button class="cockpit-nav prev" onclick={() => cockpitIndex = (cockpitIndex - 1 + cockpitImages.length) % cockpitImages.length} aria-label="Imagen anterior"><GoogleIcon name="chevron_left" size={22} /></button>
@@ -483,10 +526,10 @@
   </section>
 
   <section id="capacidad" class="capability">
-    <img src={capabilityImage} alt="RAM exterior de trabajo" />
+    <img src={capabilityImage} alt="Dodge exterior de trabajo" />
     <div class="capability-card">
       <p>Capacidad y Desempeño</p>
-      <h2>Siempre lista para romper la rutina.</h2>
+      <h2>Siempre listo para romper la rutina.</h2>
       <div class="cap-list">
         {#each specs as item (item.label)}
           <span><GoogleIcon name="check_circle" size={18} /> {item.label}</span>
@@ -505,13 +548,13 @@
         <div class="safety-feat"><GoogleIcon name="report" size={26} /><span>Frenos ABS 4 ruedas</span></div>
         <div class="safety-feat"><GoogleIcon name="verified_user" size={26} /><span>Control de estabilidad</span></div>
         <div class="safety-feat"><GoogleIcon name="airline_seat_recline_normal" size={26} /><span>Bolsas de aire múltiples</span></div>
-        <div class="safety-feat"><GoogleIcon name="visibility" size={26} /><span>Cámara de 360°</span></div>
+        <div class="safety-feat"><GoogleIcon name="visibility" size={26} /><span>Cámara de reversa</span></div>
       </div>
     </div>
   </section>
 
-  <section id="ram-quote" class="quote-section">
-    <p>VAPSA RAM</p>
+  <section id="dodge-quote" class="quote-section">
+    <p>VAPSA Dodge</p>
     <h2>Agenda una prueba de manejo o recibe una cotización.</h2>
     <p class="quote-sub">Elige la opción que mejor se ajuste a lo que necesitas. Nuestro equipo está listo para atenderte.</p>
 
@@ -537,22 +580,22 @@
     scroll-behavior: smooth;
   }
 
-  .ram-premium {
+  .dodge-premium {
     min-height: 100vh;
     background: #050507;
     color: white;
     overflow: clip;
     font-family: Inter, Roboto, sans-serif;
     --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
-    --ram-default: #880D00;
-    --ram-hover: #BA0000;
+    --dodge-default: #D50000;
+    --dodge-hover: #8C0000;
   }
 
-  .ram-premium * {
+  .dodge-premium * {
     box-sizing: border-box;
   }
 
-  .ram-hero {
+  .dodge-hero {
     position: relative;
     min-height: 100svh;
     height: 100svh;
@@ -586,12 +629,12 @@
   .hero-shade {
     z-index: 2;
     background:
-      radial-gradient(circle at 72% 46%, rgba(136, 13, 0, 0.24), transparent 32%),
+      radial-gradient(circle at 72% 46%, rgba(140, 0, 0, 0.20), transparent 32%),
       linear-gradient(90deg, rgba(5, 5, 7, 0.50) 0%, rgba(5, 5, 7, 0.20) 40%, rgba(5, 5, 7, 0.05) 100%),
       linear-gradient(0deg, #050507 0%, transparent 42%);
   }
 
-  .ram-hero::after {
+  .dodge-hero::after {
     content: '';
     position: absolute;
     z-index: 3;
@@ -620,7 +663,7 @@
   .capability-card p,
   .story-panel p {
     margin: 0 0 10px;
-    color: var(--ram-hover);
+    color: var(--dodge-hover);
     font-size: 11px;
     font-weight: 800;
     letter-spacing: 0.18em;
@@ -686,16 +729,16 @@
   }
 
   .hero-copy .hero-actions button.primary {
-    background: var(--ram-default);
+    background: var(--dodge-default);
     color: white;
     border: 1px solid transparent;
-    box-shadow: 0 4px 16px rgba(136, 13, 0, 0.4);
+    box-shadow: 0 4px 16px rgba(213, 0, 0, 0.4);
   }
 
   .hero-copy .hero-actions button.primary:hover {
-    background: var(--ram-hover);
+    background: var(--dodge-hover);
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(136, 13, 0, 0.6);
+    box-shadow: 0 6px 20px rgba(213, 0, 0, 0.6);
   }
 
   .hero-copy .hero-actions button.ghost {
@@ -741,8 +784,8 @@
     width: 100%;
     height: calc(var(--scroll) * 100%);
     border-radius: inherit;
-    background: linear-gradient(180deg, var(--ram-hover), rgba(255,255,255,0.72));
-    box-shadow: 0 0 16px rgba(136, 13, 0, 0.72);
+    background: linear-gradient(180deg, var(--dodge-hover), rgba(255,255,255,0.72));
+    box-shadow: 0 0 16px rgba(140, 0, 0, 0.72);
   }
 
   .product-nav {
@@ -813,7 +856,7 @@
   .product-nav button {
     padding: 0 12px;
     color: white;
-    background: var(--ram-hover);
+    background: var(--dodge-hover);
   }
 
   .product-nav button.ghost-nav {
@@ -837,7 +880,7 @@
     min-height: 100vh;
     position: relative;
     background:
-      radial-gradient(circle at 52% 25%, rgba(136, 13, 0, 0.28), transparent 34%),
+      radial-gradient(circle at 52% 25%, rgba(140, 0, 0, 0.24), transparent 34%),
       linear-gradient(180deg, #050507 0%, #09090d 48%, #050507 100%);
     display: flex;
     align-items: center;
@@ -875,8 +918,8 @@
 
   .pin-media:hover,
   .pin-media:focus-visible {
-    border-color: rgba(186, 0, 0, 0.72);
-    box-shadow: 0 46px 110px rgba(0, 0, 0, 0.66), 0 0 0 1px rgba(186, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+    border-color: rgba(213, 0, 0, 0.72);
+    box-shadow: 0 46px 110px rgba(0, 0, 0, 0.66), 0 0 0 1px rgba(213, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.12);
     outline: none;
   }
 
@@ -1011,7 +1054,7 @@
 
   .motion-head p {
     margin: 0 0 14px;
-    color: var(--ram-hover);
+    color: var(--dodge-hover);
     font-size: 12px;
     font-weight: 900;
     letter-spacing: 0.18em;
@@ -1124,7 +1167,7 @@
     gap: clamp(28px, 6vw, 90px);
     padding: clamp(28px, 6vw, 100px);
     background:
-      radial-gradient(circle at 72% 34%, rgba(35, 86, 150, 0.16), transparent 30%),
+      radial-gradient(circle at 72% 34%, rgba(140, 0, 0, 0.20), transparent 30%),
       linear-gradient(180deg, #050507 0%, #08090d 100%);
   }
 
@@ -1205,7 +1248,7 @@
     text-align: center;
     padding: 50px 22px;
     background:
-      radial-gradient(circle at 50% 40%, rgba(136, 13, 0, 0.28), transparent 30%),
+      radial-gradient(circle at 50% 40%, rgba(140, 0, 0, 0.28), transparent 30%),
       #050507;
   }
 
@@ -1227,7 +1270,7 @@
 
   .safety-content p {
     margin: 0 0 14px;
-    color: var(--ram-hover);
+    color: var(--dodge-hover);
     font-size: 12px;
     font-weight: 900;
     letter-spacing: 0.18em;
@@ -1278,11 +1321,11 @@
   .safety-feat:hover {
     transform: translateY(-4px);
     background: rgba(255, 255, 255, 0.07);
-    border-color: var(--ram-hover);
+    border-color: var(--dodge-hover);
   }
 
   .safety-feat :global(.material-symbols-outlined) {
-    color: var(--ram-hover);
+    color: var(--dodge-hover);
     flex-shrink: 0;
   }
 
@@ -1505,51 +1548,6 @@
     color: rgba(255,255,255,0.90);
   }
 
-  /* ── Versiones / selector de color (vs-*) ── */
-  .vs { padding: clamp(80px,10vw,140px) 0; text-align: center; background: #06060a; overflow: hidden; }
-  .vs-hero-zone { max-width: 1100px; margin: 0 auto; }
-  .vs-pill-bar { display: inline-flex; gap: 4px; background: rgba(255,255,255,0.06); border-radius: 999px; padding: 4px; margin-bottom: 36px; }
-  .vs-pill { background: none; border: none; padding: 9px 28px; border-radius: 999px; font-size: 13px; font-weight: 800; color: rgba(255,255,255,0.5); cursor: pointer; transition: all .3s; font-family: inherit; letter-spacing: .03em; }
-  .vs-pill.active { background: white; color: #06060a; box-shadow: 0 2px 12px rgba(0,0,0,.25); }
-  .vs-title-row { margin-bottom: 10px; }
-  .vs-title-row h2 { font-size: clamp(28px,3.4vw,44px); font-weight: 900; margin: 0; letter-spacing: -.02em; line-height: 1.08; }
-  .vs-price { font-size: 17px; color: #fff; font-weight: 700; display: block; margin-top: 4px; }
-  .vs-showcase { position: relative; max-width: 720px; margin: 10px auto 0; padding: 20px 0; }
-  .vs-glow { position: absolute; inset: 10% 15%; border-radius: 50%; background: radial-gradient(circle, rgba(186,0,0,0.20) 0%, transparent 70%); filter: blur(60px); z-index: 0; pointer-events: none; animation: vs-glow-breathe 4s ease-in-out infinite alternate; }
-  @keyframes vs-glow-breathe { from { opacity: .5; transform: scale(.95); } to { opacity: 1; transform: scale(1.08); } }
-  .vs-hero-car { position: relative; z-index: 1; width: 100%; max-height: 400px; object-fit: contain; border-radius: 40px; background: #ffffff; padding: 20px; filter: drop-shadow(0 40px 60px rgba(0,0,0,.55)); animation: vs-car-reveal .6s cubic-bezier(.16,1,.3,1); }
-  @keyframes vs-car-reveal { from { opacity: 0; transform: scale(.94) translateY(20px); } to { opacity: 1; transform: scale(1) translateY(0); } }
-  .vs-color-bar { margin-top: 6px; display: flex; flex-direction: column; align-items: center; gap: 14px; }
-  .vs-color-label { font-size: 13px; font-weight: 700; color: rgba(255,255,255,0.55); letter-spacing: .04em; text-transform: uppercase; min-height: 20px; transition: color .3s; }
-  .vs-dots { display: flex; gap: 18px; }
-  .vs-dot { width: 28px; height: 28px; border-radius: 50%; background: var(--dot-color); border: 2px solid rgba(255,255,255,0.15); cursor: pointer; position: relative; transition: transform .35s cubic-bezier(.34,1.56,.64,1), box-shadow .3s; outline: none; }
-  .vs-dot::after { content: ''; position: absolute; inset: -5px; border-radius: 50%; border: 2px solid transparent; transition: border-color .3s; }
-  .vs-dot.active { transform: scale(1.22); }
-  .vs-dot.active::after { border-color: var(--ram-hover); }
-  .vs-dot:hover { transform: scale(1.15); }
-  .vs-panel-toggle { display: flex; justify-content: center; gap: 10px; margin: 44px 0 32px; }
-  .vs-panel-toggle button { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); padding: 10px 24px; border-radius: 16px; color: rgba(255,255,255,0.45); font-size: 13px; font-weight: 700; cursor: pointer; transition: all .3s; font-family: inherit; }
-  .vs-panel-toggle button.active { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.22); color: white; }
-  .vs-feat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; max-width: 1100px; margin: 0 auto; padding: 0 20px; text-align: left; }
-  .vs-feat-card { display: flex; align-items: flex-start; gap: 12px; padding: 16px 20px; border-radius: 16px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); color: rgba(255,255,255,0.8); font-size: 14px; line-height: 1.5; animation: vs-feat-in .4s ease-out both; animation-delay: var(--d); }
-  .vs-feat-card :global(span.google-icon) { color: var(--ram-hover); flex-shrink: 0; margin-top: 2px; }
-  @keyframes vs-feat-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-  .vs-feat-more { display: flex; justify-content: center; margin-top: 20px; }
-  .vs-more-btn { display: inline-flex; align-items: center; gap: 6px; padding: 10px 24px; border-radius: 999px; border: 1px solid rgba(255, 255, 255, 0.14); background: rgba(255, 255, 255, 0.05); color: rgba(255, 255, 255, 0.65); font-size: 13px; font-weight: 700; font-family: inherit; cursor: pointer; transition: all .3s; }
-  .vs-more-btn:hover { background: rgba(255, 255, 255, 0.10); color: white; }
-  .vs-exterior-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 1100px; margin: 0 auto; padding: 0 20px; }
-  .vs-ext-card { width: 100%; border-radius: 24px; overflow: hidden; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); padding: 20px; display: flex; flex-direction: column; align-items: center; gap: 12px; transition: transform .3s, border-color .3s, background .3s; cursor: pointer; font-family: inherit; }
-  .vs-ext-card:hover { transform: translateY(-4px); border-color: rgba(255,255,255,0.14); background: rgba(255,255,255,0.05); }
-  .vs-ext-card img { width: 100%; height: 180px; object-fit: cover; border-radius: 14px; }
-  .vs-ext-card span { display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: .08em; }
-  .vs-ext-card span :global(.material-symbols-outlined) { color: var(--ram-hover); opacity: 0.7; }
-  .vs-actions { display: flex; justify-content: center; gap: 14px; margin-top: 48px; flex-wrap: wrap; }
-  .vs-action { display: inline-flex; align-items: center; gap: 8px; height: 52px; padding: 0 32px; border-radius: 999px; font-size: 14px; font-weight: 800; cursor: pointer; text-decoration: none; border: none; font-family: inherit; transition: all .3s cubic-bezier(.16,1,.3,1); }
-  .vs-action.primary { background: var(--ram-hover); color: white; box-shadow: 0 4px 24px rgba(136,13,0,0.35); }
-  .vs-action.primary:hover { transform: translateY(-2px) scale(1.02); box-shadow: 0 8px 32px rgba(136,13,0,0.5); }
-  .vs-action.ghost { background: transparent; border: 1px solid rgba(255,255,255,0.16); color: rgba(255,255,255,0.75); }
-  .vs-action.ghost:hover { border-color: rgba(255,255,255,0.35); color: white; transform: translateY(-2px); }
-
   .nav-year {
     display: inline-block;
     padding: 1px 7px;
@@ -1559,9 +1557,9 @@
     letter-spacing: 0.12em;
     text-transform: uppercase;
     border-radius: 999px;
-    background: rgba(186, 0, 0, 0.28);
-    border: 1px solid rgba(186, 0, 0, 0.45);
-    color: var(--ram-hover);
+    background: rgba(213, 0, 0, 0.28);
+    border: 1px solid rgba(213, 0, 0, 0.45);
+    color: var(--dodge-hover);
     vertical-align: middle;
   }
 
@@ -1576,9 +1574,9 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .ram-premium *,
-    .ram-premium *::before,
-    .ram-premium *::after {
+    .dodge-premium *,
+    .dodge-premium *::before,
+    .dodge-premium *::after {
       animation-duration: 1ms !important;
       animation-iteration-count: 1 !important;
       scroll-behavior: auto !important;
@@ -1697,9 +1695,88 @@
     }
   }
 
+  /* ── VERSIONES · Apple-style ── */
+  .vs { padding: clamp(80px,10vw,140px) 0; text-align: center; background: #06060a; overflow: hidden; }
+
+  .vs-hero-zone { max-width: 1100px; margin: 0 auto; }
+
+  .vs-pill-bar { display: inline-flex; gap: 4px; background: rgba(255,255,255,0.06); border-radius: 999px; padding: 4px; margin-bottom: 36px; }
+  .vs-pill { background: none; border: none; padding: 9px 28px; border-radius: 999px; font-size: 13px; font-weight: 800; color: rgba(255,255,255,0.5); cursor: pointer; transition: all .3s; font-family: inherit; letter-spacing: .03em; }
+  .vs-pill.active { background: white; color: #06060a; box-shadow: 0 2px 12px rgba(0,0,0,.25); }
+
+  .vs-title-row { margin-bottom: 10px; }
+  .vs-title-row h2 { font-size: clamp(28px,3.4vw,44px); font-weight: 900; margin: 0; letter-spacing: -.02em; line-height: 1.08; }
+  .vs-price { font-size: 17px; color: #fff; font-weight: 700; display: block; margin-top: 4px; }
+
+  .vs-showcase { position: relative; max-width: 720px; margin: 10px auto 0; padding: 20px 0; }
+  .vs-glow { position: absolute; inset: 10% 15%; border-radius: 50%; background: radial-gradient(circle, rgba(213,0,0,0.20) 0%, transparent 70%); filter: blur(60px); z-index: 0; pointer-events: none; animation: glow-breathe 4s ease-in-out infinite alternate; }
+  @keyframes glow-breathe { from { opacity: .5; transform: scale(.95); } to { opacity: 1; transform: scale(1.08); } }
+  .vs-hero-car { position: relative; z-index: 1; width: 100%; max-height: 400px; object-fit: contain; border-radius: 40px; background: #ffffff; padding: 20px; filter: drop-shadow(0 40px 60px rgba(0,0,0,.55)); animation: car-reveal .6s cubic-bezier(.16,1,.3,1); }
+  @keyframes car-reveal { from { opacity: 0; transform: scale(.94) translateY(20px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+
+  .vs-color-bar { margin-top: 6px; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+  .vs-color-label { font-size: 13px; font-weight: 700; color: rgba(255,255,255,0.55); letter-spacing: .04em; text-transform: uppercase; min-height: 20px; transition: color .3s; }
+  .vs-dots { display: flex; gap: 18px; }
+  .vs-dot { width: 28px; height: 28px; border-radius: 50%; background: var(--dot-color); border: 2px solid rgba(255,255,255,0.15); cursor: pointer; position: relative; transition: transform .35s cubic-bezier(.34,1.56,.64,1), box-shadow .3s; outline: none; }
+  .vs-dot::after { content: ''; position: absolute; inset: -5px; border-radius: 50%; border: 2px solid transparent; transition: border-color .3s; }
+  .vs-dot.active { transform: scale(1.22); }
+  .vs-dot.active::after { border-color: var(--dodge-hover); }
+  .vs-dot:hover { transform: scale(1.15); }
+
+  .vs-panel-toggle { display: flex; justify-content: center; gap: 10px; margin: 44px 0 32px; }
+  .vs-panel-toggle button { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); padding: 10px 24px; border-radius: 16px; color: rgba(255,255,255,0.45); font-size: 13px; font-weight: 700; cursor: pointer; transition: all .3s; font-family: inherit; }
+  .vs-panel-toggle button.active { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.22); color: white; }
+
+  .vs-feat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; max-width: 1100px; margin: 0 auto; padding: 0 20px; text-align: left; }
+  .vs-feat-card { display: flex; align-items: flex-start; gap: 12px; padding: 16px 20px; border-radius: 16px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); color: rgba(255,255,255,0.8); font-size: 14px; line-height: 1.5; animation: feat-in .4s ease-out both; animation-delay: var(--d); }
+  .vs-feat-card :global(span.google-icon) { color: var(--dodge-hover); flex-shrink: 0; margin-top: 2px; }
+  @keyframes feat-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+  .vs-feat-more { display: flex; justify-content: center; margin-top: 20px; }
+  .vs-more-btn { display: inline-flex; align-items: center; gap: 6px; padding: 10px 24px; border-radius: 999px; border: 1px solid rgba(255, 255, 255, 0.14); background: rgba(255, 255, 255, 0.05); color: rgba(255, 255, 255, 0.65); font-size: 13px; font-weight: 700; font-family: inherit; cursor: pointer; transition: all .3s; }
+  .vs-more-btn:hover { background: rgba(255, 255, 255, 0.10); color: white; }
+
+  .vs-exterior-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+  .vs-ext-card { width: 100%; border-radius: 24px; overflow: hidden; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); padding: 20px; display: flex; flex-direction: column; align-items: center; gap: 12px; transition: transform .3s, border-color .3s, background .3s; cursor: pointer; font-family: inherit; }
+  .vs-ext-card:hover { transform: translateY(-4px); border-color: rgba(255,255,255,0.14); background: rgba(255,255,255,0.05); }
+  .vs-ext-card img { width: 100%; height: 180px; object-fit: contain; }
+  .vs-ext-card span { display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: .08em; }
+  .vs-ext-card span :global(.material-symbols-outlined) { color: var(--dodge-hover); opacity: 0.7; }
+
+  .vs-actions { display: flex; justify-content: center; gap: 14px; margin-top: 48px; flex-wrap: wrap; }
+  .vs-action { display: inline-flex; align-items: center; gap: 8px; height: 52px; padding: 0 32px; border-radius: 999px; font-size: 14px; font-weight: 800; cursor: pointer; text-decoration: none; border: none; font-family: inherit; transition: all .3s cubic-bezier(.16,1,.3,1); }
+  .vs-action.primary { background: var(--dodge-hover); color: white; box-shadow: 0 4px 24px rgba(140,0,0,0.35); }
+  .vs-action.primary:hover { transform: translateY(-2px) scale(1.02); box-shadow: 0 8px 32px rgba(140,0,0,0.5); }
+  .vs-action.ghost { background: transparent; border: 1px solid rgba(255,255,255,0.16); color: rgba(255,255,255,0.75); }
+  .vs-action.ghost:hover { border-color: rgba(255,255,255,0.35); color: white; transform: translateY(-2px); }
+
+  @media (max-width: 900px) {
+    .vs-exterior-row { grid-template-columns: 1fr; }
+    .vs-feat-grid { grid-template-columns: 1fr; }
+    .vs-hero-car { max-height: 280px; }
+    .vs-pill { padding: 8px 20px; font-size: 12px; }
+
+    .vs-pill-bar,
+    .vs-title-row,
+    .vs-showcase,
+    .vs-color-bar,
+    .vs-panel-toggle,
+    .vs-actions {
+      padding-left: 16px;
+      padding-right: 16px;
+      box-sizing: border-box;
+    }
+
+    .vs-feat-grid,
+    .vs-exterior-row {
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+  }
+
   /* MOBILE HERO SPLIT LAYOUT */
   @media (max-width: 768px) {
-    .ram-premium {
+    .dodge-premium {
       display: flex;
       flex-direction: column;
     }
@@ -1714,7 +1791,7 @@
       z-index: 38;
       padding: 0 16px;
     }
-    .ram-hero {
+    .dodge-hero {
       order: 0;
       display: flex;
       flex-direction: column;

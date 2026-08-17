@@ -9,9 +9,9 @@
   type DrawerTab = 'cotizacion' | 'prueba' | 'cita'
   let drawerTab = $state<DrawerTab>('cotizacion')
 
-  const A = '/adistem2026/jeep-demo'
-  const L = '/adistem2026/jeep-lineup'
-  let { modelSlug = '1500-rho' }: { modelSlug?: string | null } = $props()
+  const A = '/adistem2026/Fiat-demo'
+  const L = '/adistem2026/Fiat-lineup'
+  let { modelSlug = 'pulse2026' }: { modelSlug?: string | null } = $props()
   let progress = $state(0)
   let videoReady = $state(false)
   let zoomedImage = $state<string | null>(null)
@@ -37,15 +37,15 @@
   }
 
   const modelDetails: Record<string, ModelDetail> = {
-    'renegade': {
-      name: 'Jeep Renegade',
-      kicker: 'RENEGADE 2026',
+    'pulse2026': {
+      name: 'Fiat Pulse',
+      kicker: 'Pulse 2026',
       title: 'Redefine la aventura urbana.',
-      subtitle: 'Motor 1.3L Turbo GSE de 173 hp, el más potente de su categoría. Diseño icónico Jeep con tecnología de vanguardia y sistemas ADAS para la ciudad.',
-      heroImage: '/adistem2026/jeep/renegade-2026-hero.jpg',
-      mobileHeroImage: '/adistem2026/jeep/renegade-2026-mob.jpg',
-      spotlightImage: 'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/vlp/desktop/jeep-renegade-2026-inicio-equipamiento-exterior-dk.jpg.img.2880.jpg',
-      quote: 'Hola,%20me%20interesa%20cotizar%20un%20Jeep%20Renegade',
+      subtitle: 'Motor 1.3L Turbo GSE de 173 hp, el más potente de su categoría. Diseño icónico Fiat con tecnología de vanguardia y sistemas ADAS para la ciudad.',
+      heroImage: 'https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2026/pulse-2026/desktop/my26-fiat-pulse-inicio-hero-mx-dk.jpg',
+      mobileHeroImage: 'https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2026/pulse-2026/mobile/my26-fiat-pulse-inicio-hero-mx-mb.jpg',
+      spotlightImage: 'https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2026/pulse-2026/desktop/my26-fiat-pulse-inicio-gallery-image-1-expanded-mx.jpg',
+      quote: 'Hola,%20me%20interesa%20cotizar%20un%20Fiat%20Pulse',
       price: 'Desde $456,900',
       specs: [
         { value: '173 hp', label: 'Motor 1.3L Turbo GSE' },
@@ -54,50 +54,50 @@
         { value: 'ADAS', label: 'Sistemas de asistencia' },
       ],
       motionTitle: 'Diseño inconfundible. Desempeño moderno.',
-      motionCopy: 'Su parrilla de 7 ranuras rinde homenaje al legado Jeep, mientras su volante con paletas de cambio y frenos de disco en las 4 ruedas te dan el control que necesitas.',
+      motionCopy: 'Su parrilla de 7 ranuras rinde homenaje al legado Fiat, mientras su volante con paletas de cambio y frenos de disco en las 4 ruedas te dan el control que necesitas.',
       cockpitImages: [
-        'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/interior/full/jeep-renegade-2026-equipamiento-interior-highlights-08-full.jpg',
-        'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/gallery/full/jeep-renegade-2026-galeria-10-interior-full.jpg.img.2880.jpg',
-        'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/exterior/desktop/jeep-renegade-2026-exterior-highlights-08-full.jpg'
+        'https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2026/pulse-2026/02-galerias/my26-fiat-pulse-galeria-image00-alldevices-mx-v2.jpg.img.2880.jpg',
+        'https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2026/pulse-2026/02-galerias/my26-fiat-pulse-galeria-image01-alldevices-mx-v2.jpg.img.2880.jpg',
+        'https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2026/pulse-2026/02-galerias/my26-fiat-pulse-galeria-image02-alldevices-mx-v2.jpg.img.2880.jpg'
       ],
       storyImages: [
-        'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/exterior/desktop/jeep-renegade-2026-exterior-highlights-08-full.jpg',
-        'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/exterior/desktop/jeep-renegade-2026-exterior-highlights-02-dk.jpg.image.2880.jpg',
-        'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/exterior/desktop/jeep-renegade-2026-exterior-highlights-10-dk.jpg'
+        'https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2026/pulse-2026/02-galerias/my26-fiat-pulse-galeria-image03-alldevices-mx-v2.jpg.img.2880.jpg',
+        'https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2026/pulse-2026/02-galerias/my26-fiat-pulse-galeria-image04-alldevices-mx-v2.jpg.img.2880.jpg',
+        'https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2026/pulse-2026/02-galerias/my26-fiat-pulse-galeria-image05-alldevices-mx-v2.jpg.img.2880.jpg'
       ],
       motionImages: [
-        'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/gallery/desktop/my26-jeep-renegade-galeriaexterior-03-dk-mx.jpg.img.2880.jpg',
-        'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/gallery/full/my26-jeep-renegade-galeriaexterior-02-allbreakingpoints-mx-v2.jpg.img.2880.jpg',
-        'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/gallery/full/jeep-renegade-2026-galeria-10-interior-full.jpg.img.2880.jpg'
+        'https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2026/pulse-2026/desktop/my26-fiat-pulse-inicio-qvmediablock-estiloitaliano-dk-mx.jpg',
+        'https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2025/Pulse-2025/01-Inicio/desktop/my26-fiat-pulse-inicio-qvmediablock-tecnologiadevanguardia-dk-mx.jpg',
+        'https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2026/pulse-2026/inicio/desktop/my26-fiat-pulse-inicio-qvmediablock-motorecofriendly-dk-mx.jpg'
       ],
-      capabilityImage: 'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/capacidad/desktop/jeep-renegade-2026-capacidad-desempeno-motor-01-dk.jpg.img.2880.jpg'
+      capabilityImage: 'https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2025/Pulse-2025/01-Inicio/desktop/fiat-pulse-2025-seguridad-placeholder-dk.jpg'
     },
     '700': {
-      name: 'JEEP 700',
-      kicker: 'JEEP 700 2026',
+      name: 'Fiat 700',
+      kicker: 'Fiat 700 2026',
       title: 'Agilidad compacta con actitud de pickup.',
-      subtitle: 'Una JEEP pensada para ciudad, negocio y recorridos diarios: práctica, visual y lista para moverse sin sentirse pesada.',
-      heroImage: `${L}/jeep-700.jpg`,
-      spotlightImage: `${L}/jeep-700.jpg`,
-      quote: 'Hola,%20me%20interesa%20cotizar%20una%20JEEP%20700',
+      subtitle: 'Una Fiat pensada para ciudad, negocio y recorridos diarios: práctica, visual y lista para moverse sin sentirse pesada.',
+      heroImage: `${L}/Fiat-700.jpg`,
+      spotlightImage: `${L}/Fiat-700.jpg`,
+      quote: 'Hola,%20me%20interesa%20cotizar%20una%20Fiat%20700',
       price: 'Desde $394,900',
       specs: [
-        { value: '700', label: 'Pickup compacta JEEP' },
+        { value: '700', label: 'Pickup compacta Fiat' },
         { value: 'Ágil', label: 'Formato práctico para ciudad' },
         { value: 'Carga', label: 'Caja útil para negocio diario' },
         { value: 'Daily', label: 'Lista para trabajo y movilidad' },
       ],
       motionTitle: 'Se mueve ligera, se ve decidida.',
-      motionCopy: 'La JEEP 700 funciona como herramienta diaria: entra fácil, carga cuando toca y mantiene una presencia clara en cada trayecto.',
+      motionCopy: 'La Fiat 700 funciona como herramienta diaria: entra fácil, carga cuando toca y mantiene una presencia clara en cada trayecto.',
     },
     '1500-rho': {
-      name: 'JEEP 1500 RHO',
-      kicker: 'JEEP 1500 RHO 2026',
+      name: 'Fiat 1500 RHO',
+      kicker: 'Fiat 1500 RHO 2026',
       title: 'Fuerza que se siente antes de arrancar.',
-      subtitle: 'Performance off-road con presencia JEEP: una pickup para abrir camino, cargar intención y llegar con autoridad.',
-      heroImage: `${L}/jeep-1500-rho.jpg`,
-      spotlightImage: `${L}/jeep-1500-rho.jpg`,
-      quote: 'Hola,%20me%20interesa%20cotizar%20una%20JEEP%201500%20RHO',
+      subtitle: 'Performance off-road con presencia Fiat: una pickup para abrir camino, cargar intención y llegar con autoridad.',
+      heroImage: `${L}/Fiat-1500-rho.jpg`,
+      spotlightImage: `${L}/Fiat-1500-rho.jpg`,
+      quote: 'Hola,%20me%20interesa%20cotizar%20una%20Fiat%201500%20RHO',
       price: 'Desde $1,169,900',
       specs: [
         { value: 'RHO', label: 'Desempeño off-road' },
@@ -111,13 +111,13 @@
   }
 
   const fallbackModel: ModelDetail = {
-    name: 'JEEP 2026',
-    kicker: 'JEEP 2026',
+    name: 'Fiat 2026',
+    kicker: 'Fiat 2026',
     title: 'Fuerza que se siente antes de arrancar.',
     subtitle: 'Capacidad, presencia y tecnología útil para trabajo, viaje y aventura.',
-    heroImage: 'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/vlp/desktop/jeep-renegade-2026-inicio-equipamiento-exterior-dk.jpg.img.2880.jpg',
-    spotlightImage: 'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/vlp/desktop/jeep-renegade-2026-inicio-equipamiento-exterior-dk.jpg.img.2880.jpg',
-    quote: 'Hola,%20me%20interesa%20cotizar%20una%20JEEP',
+    heroImage: 'https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2026/pulse-2026/desktop/my26-fiat-pulse-inicio-gallery-image-2-expanded-mx.jpg',
+    spotlightImage: 'https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2026/pulse-2026/desktop/my26-fiat-pulse-inicio-gallery-image-2-expanded-mx.jpg',
+    quote: 'Hola,%20me%20interesa%20cotizar%20una%20Fiat',
     price: 'Desde $456,900',
     specs: [
       { value: '6.7L', label: 'Turbodiesel disponible' },
@@ -137,94 +137,96 @@
       : ''
   )
 
-  const JEEP_CDN = 'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade'
+  const Fiat_CDN = 'https://www.Fiat.com.mx/content/dam/cross-regional/nafta/Fiat/es_mx/2026/Pulse'
 
-  const renegadeVersions = [
+  const PulseVersions = [
     {
-      id: 'latitude',
-      name: 'Latitude',
-      price: 'Desde $456,900',
-      thumb: `${JEEP_CDN}/vlp/desktop/my26-jeep-renegade-latitude-modelizer-configurator-granito-cristal-mx-v2.png.img.600.png`,
+      id: 'pulse-drive',
+      name: 'Pulse Drive',
+      price: 'Desde $349,500.00',
+      thumb: `${Fiat_CDN}/vlp/desktop/my26-fiat-pulse-latitude-modelizer-configurator-granito-cristal-mx-v2.png.img.600.png`,
       features: [
-        ['Motor 1.3L Turbo GSE de 173 hp', 'Rines de aluminio de 18"', 'Neumáticos 225/55 R18', 'Aire acondicionado automático de doble zona', 'Cluster premium de 7" con pantalla TFT a color', 'Tomacorriente auxiliar de 12V', 'Alarma de seguridad', 'Control de estabilidad para remolques (TSD)'],
-        ['Sistema de anclaje ISOFIX para sillas infantiles', 'Controles de audio y teléfono al volante', 'Desempañador trasero', 'Luces proyectoras LED bifuncionales', 'Frenos de disco en las 4 ruedas', 'Sistemas de asistencia ADAS']
+        ['Central multimedia de 8.4” con conectividad inalámbrica', 'Aire acondicionado automático', 'Faros LED'],
+        ['Cámara de reversa con sensores', 'Clúster digital de información']
       ],
       colors: [
-        { name: 'Granito Cristal', hex: '#a8a8a8', img: 'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/modelizer/latitude/jelly-my26-jeep-renegade-sport-modelizer-configurator-granito-cristal-mx-v2.jpg.img.2880.jpg' },
-        { name: 'Negro Carbón',   hex: '#1a1a1a', img: 'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/modelizer/latitude/jeep-color-renegade-latitud-2026-inicio-modelizer-negro-carbon.jpg.img.2880.jpg' },
-        { name: 'Gris Mantarraya', hex: '#5a5a5a', img: 'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/modelizer/latitude/jeep-color-renegade-latitud-2026-inicio-modelizer-gris-mantarraya-Gris-Mantarraya-Roof-V1.png.img.2880.png' }
+        { name: 'Rojo Montecarlo', hex: '#fe0000', img: 'https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2026/pulse-2026/inicio/versiones/version-1-pulse-drive/color/color-5/my26-fiat-pulse-inicio-jelly-rojo-montecarlo-alldevices-mx.png.img.2880.png' },
+        { name: 'Blanco Banchisa', hex: '#f4f4f4', img: 'https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2026/pulse-2026/inicio/versiones/version-1-pulse-drive/color/color-5/my26-fiat-pulse-inicio-jelly-blanco-banchisa-alldevices-mx.png.img.2880.png' },
+        { name: 'Gris Silverstone', hex: '#555d5f', img: 'https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2026/pulse-2026/inicio/versiones/version-1-pulse-drive/color/color-5/my26-fiat-pulse-inicio-jelly-cinza-silverstone-alldevices-mx1.png.img.2880.png' },
+        { name: 'Plata Bari', hex: '#aeaeac', img: 'https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2026/pulse-2026/inicio/versiones/version-1-pulse-drive/color/color-5/my26-fiat-pulse-inicio-jelly-plata-bari-alldevices-mx.jpg.img.2880.jpg' }
       ]
     },
     {
-      id: 'limited-s',
-      name: 'Limited S',
+      id: 'pulse-drive-plus',
+      name: 'Pulse Drive Plus',
       price: 'Desde $506,900',
-      thumb: `${JEEP_CDN}/vlp/desktop/jeep-renegade-limited-2026-inicio-modelizer-negro-carbon-mx.jpg.img.600.jpg`,
+      thumb: `${Fiat_CDN}/vlp/desktop/Fiat-Pulse-limited-2026-inicio-modelizer-negro-carbon-mx.jpg.img.600.jpg`,
       features: [
-        ['Motor 1.3L Turbo GSE de 173 hp', 'Rines de aluminio de 19" únicos en su segmento', 'Neumáticos 235/45 R19', 'Luces proyectoras LED, faros de niebla y luces diurnas', 'Quemacocos panorámico y toldo bi-tono', 'Alarma de seguridad', 'Alerta contra colisiones frontales plus'],
-        ['Alerta de cambio involuntario de carril plus', 'Sistema de detección de fatiga del conductor', 'Espejo retrovisor electrocrómico', 'Parabrisas con sensor de lluvia', 'Volante rediseñado con paletas de cambio', 'Pantalla Uconnect táctil de 8.4"']
+        ['Transmisión CVT', 'Central multimedia de 8.4” con conectividad inalámbrica', 'Aire acondicionado automático'],
+        ['Faros LED', 'Cámara de reversa con sensores', 'Clúster digital de información']
       ],
       colors: [
-        { name: 'Gris Mantarraya', hex: '#5a5a5a', img: 'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/modelizer/limited/jeep-renegade-limited-2026-inicio-modelizer-gris-mantarraya.jpg.img.2880.jpg' },
-        { name: 'Granito Cristal', hex: '#a8a8a8', img: 'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/modelizer/limited/jelly-my26-jeep-renegade-sport-modelizer-configurator-granito-cristal-mx-v2.jpg.img.2880.jpg' },
-        { name: 'Blanco Polar',    hex: '#f5f5f0', img: 'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/modelizer/limited/jeep-renegade-limited-2026-inicio-modelizer-blanco-polar.jpg.img.2880.jpg' }
+        { name: 'Rojo Montecarlo', hex: '#fe0000', img: 'https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2026/pulse-2026/inicio/versiones/version-1-pulse-drive/color/color-5/my26-fiat-pulse-inicio-jelly-rojo-montecarlo-alldevices-mx.png.img.2880.png' },
+        { name: 'Blanco Banchisa', hex: '#f4f4f4', img: 'https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2026/pulse-2026/inicio/versiones/version-1-pulse-drive/color/color-5/my26-fiat-pulse-inicio-jelly-blanco-banchisa-alldevices-mx.png.img.2880.png' },
+        { name: 'Gris Silverstone', hex: '#555d5f', img: 'https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2026/pulse-2026/inicio/versiones/version-1-pulse-drive/color/color-5/my26-fiat-pulse-inicio-jelly-cinza-silverstone-alldevices-mx1.png.img.2880.png' },
+        { name: 'Plata Bari', hex: '#aeaeac', img: 'https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2026/pulse-2026/inicio/versiones/version-1-pulse-drive/color/color-5/my26-fiat-pulse-inicio-jelly-plata-bari-alldevices-mx.jpg.img.2880.jpg' }
       ]
     }
   ]
 
-  let activeVersionId = $state('latitude')
+  let activeVersionId = $state('pulse-drive')
   let activeColorIndex = $state(0)
   let activePanel = $state('colors')
   
-  const activeVersion = $derived(renegadeVersions.find(v => v.id === activeVersionId)!)
+  const activeVersion = $derived(PulseVersions.find(v => v.id === activeVersionId)!)
   const activeColor = $derived(activeVersion.colors[activeColorIndex] || activeVersion.colors[0])
 
   const story = $derived([
     {
-      kicker: 'Exterior',
-      title: 'Inigualable por fuera.',
-      copy: 'Un Jeep® es inconfundible en cualquier lugar. Con Jeep® Renegade, además de superar cualquier camino, brillarás con luz propia gracias a su increíble silueta y accesorios.',
+      kicker: 'Diseño',
+      title: 'Estilo Italiano que robará miradas.',
+      copy: 'Conoce el SUV de Fiat® y enamórate de su auténtico diseño italiano, característico de Fiat®, dinámico y amigable con el que seguro robarás miradas.',
       image: model.storyImages?.[0] || model.heroImage,
     },
     {
-      kicker: 'Iluminación',
-      title: 'Luces Full LED en todas las versiones.',
-      copy: 'Haz de la noche tu mejor aliada. Las luces traseras LED rinden homenaje al icono Jeep® Willys, con luces de niebla en las versiones Latitude y Limited.',
+      kicker: 'Tecnología',
+      title: 'Tecnología que te mantiene en control.',
+      copy: 'El SUV de Fiat® cuenta con una pantalla de 8.4" full HD y clúster de 7“ que muestra los datos que necesitas saber del vehículo en todo momento.',
       image: model.storyImages?.[1] || `${A}/interior-3.jpg`,
     },
     {
-      kicker: 'Versión Limited',
-      title: 'Quemacocos panorámico y rines de 19".',
-      copy: 'Siente la libertad y transforma cada viaje con el quemacocos panorámico bi-tono y los rines de aluminio de 19" — únicos en su segmento.',
+      kicker: 'Seguridad',
+      title: 'Seguridad Inteligente.',
+      copy: 'Diseñada para hacerte sentir realmente seguro. Con una gama de tecnologías inteligentes y autónomas (ADAS), que te asisten para un manejo más confiable.',
       image: model.storyImages?.[2] || `${A}/interior-1.jpg`,
     },
   ])
 
   const motionCards = $derived([
     {
-      title: 'Diseñado para sobresalir',
-      copy: 'Haz tuyo cualquier camino, desafía la naturaleza y descubre un mundo lleno de emoción con las increíbles capacidades que hacen de Jeep® Renegade tu mejor opción.',
+      title: 'La combinación perfecta',
+      copy: 'Motor 1.3L más eficiente con el que siempre disfrutarás del mejor ahorro de combustible, las emisiones más bajas y un rendimiento mucho mejor.',
       image: model.motionImages?.[0] || model.heroImage,
     },
     {
-      title: 'Luces Full LED',
-      copy: 'Parrilla de 7 ranuras que rinde homenaje al legado Jeep, con luces Full LED que iluminan cada aventura con estilo y precisión.',
-      image: model.motionImages?.[1] || 'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/inicio/galeria/full/my26-jeep-renegade-galeriainterior-01-allbreakingpoints-mx.jpg.img.2880.jpg',
+      title: 'Diseño inconfundible',
+      copy: 'Un diseño robusto con luces traseras y faros LED que resaltan la deportividad de la familia Pulse, llamando la atención en cualquier lugar.',
+      image: model.motionImages?.[1] || 'https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2026/pulse-2026/desktop/my26-fiat-pulse-inicio-gallery-image-2-expanded-mx.jpg',
     },
     {
-      title: 'Diseño inconfundible',
-      copy: 'Luces traseras LED icono del Jeep® Willys, luces de niebla y detalles únicos que hacen del Renegade un SUV que llama la atención en cualquier lugar.',
-      image: model.motionImages?.[2] || 'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/inicio/galeria/full/my26-jeep-renegade-galeriacapacidad-01-allbreakingpoints-mx.jpg.img.2880.jpg',
+      title: 'Tu mejor aliado',
+      copy: 'Haz tuyo cualquier camino, desafía la ciudad y descubre un mundo lleno de emoción con las increíbles capacidades de Fiat® Pulse.',
+      image: model.motionImages?.[2] || 'https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2026/pulse-2026/desktop/my26-fiat-pulse-inicio-gallery-image-2-expanded-mx.jpg',
     },
   ])
 
   const cockpitImages = $derived(model.cockpitImages || [
-    'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/inicio/galeria/full/my26-jeep-renegade-galeriainterior-01-allbreakingpoints-mx.jpg.img.2880.jpg',
-    'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/inicio/galeria/full/my26-jeep-renegade-galeriainterior-02-allbreakingpoints-mx.jpg.img.2880.jpg',
-    'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/inicio/galeria/full/my26-jeep-renegade-galeriainterior-01-allbreakingpoints-mx.jpg.img.2880.jpg',
+    'https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2026/pulse-2026/desktop/my26-fiat-pulse-inicio-gallery-image-2-expanded-mx.jpg',
+    'https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2026/pulse-2026/desktop/my26-fiat-pulse-inicio-gallery-image-2-expanded-mx.jpg',
+    'https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2026/pulse-2026/desktop/my26-fiat-pulse-inicio-gallery-image-2-expanded-mx.jpg',
   ])
 
-  const capabilityImage = $derived(model.capabilityImage || 'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/inicio/galeria/full/my26-jeep-renegade-galeriacapacidad-01-allbreakingpoints-mx.jpg.img.2880.jpg')
+  const capabilityImage = $derived(model.capabilityImage || 'https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2026/pulse-2026/desktop/my26-fiat-pulse-inicio-gallery-image-2-expanded-mx.jpg')
 
   let pinMediaEl: HTMLElement | undefined = $state()
 
@@ -301,18 +303,18 @@
     }
   }
 
-  function goBackToJeep() {
-    history.pushState({ brand: 'Jeep' }, '', '/adistem2026/jeep/')
-    window.dispatchEvent(new PopStateEvent('popstate', { state: { brand: 'Jeep' } }))
+  function goBackToFiat() {
+    history.pushState({ brand: 'Fiat' }, '', '/adistem2026/Fiat/')
+    window.dispatchEvent(new PopStateEvent('popstate', { state: { brand: 'Fiat' } }))
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
   // ── ADAS Carousel Logic ──
   const adasItems = [
-    { id: 0, label: 'Asistencia Estacionamiento', video: 'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/safety/sistemas-de-asistencia/video/jeep-totalmente-nueva-renegade-2026-highlights-sistemas-de-asistencia-01.mp4', poster: 'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/safety/sistemas-de-asistencia/jeep-totalmente-nueva-renegade-2026-highlights-sistemas-de-asistencia-01.jpg' },
-    { id: 1, label: 'Reconocimiento Señales (TSR)', video: 'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/safety/sistemas-de-asistencia/video/jeep-totalmente-nueva-renegade-2026-highlights-sistemas-de-asistencia-02.mp4', poster: 'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/safety/sistemas-de-asistencia/jeep-totalmente-nueva-renegade-2026-highlights-sistemas-de-asistencia-02.jpg' },
-    { id: 2, label: 'Alerta Colisión Frontal (FCW)', video: 'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/safety/sistemas-de-asistencia/video/jeep-renegade-2026-sistemas-de-asistencia-fcw-desktop-v02.mp4', poster: 'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/safety/sistemas-de-asistencia/jeep-renegade-2026-sistemas-de-asistencia-fcw-desktop-v02.jpeg' },
-    { id: 3, label: 'Abandono de Carril (LDP)', video: 'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/safety/sistemas-de-asistencia/video/jeep-totalmente-nueva-renegade-2026-highlights-sistemas-de-asistencia-04.mp4', poster: '' }
+    { id: 0, label: 'Asistencia Estacionamiento', video: 'https://www.Fiat.com.mx/content/dam/cross-regional/nafta/Fiat/es_mx/2026/Pulse/safety/sistemas-de-asistencia/video/Fiat-totalmente-nueva-Pulse-2026-highlights-sistemas-de-asistencia-01.mp4', poster: 'https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2026/pulse-2026/02-galerias/my26-fiat-pulse-galeria-image00-alldevices-mx-v2.jpg.img.2880.jpg' },
+    { id: 1, label: 'Reconocimiento Señales (TSR)', video: 'https://www.Fiat.com.mx/content/dam/cross-regional/nafta/Fiat/es_mx/2026/Pulse/safety/sistemas-de-asistencia/video/Fiat-totalmente-nueva-Pulse-2026-highlights-sistemas-de-asistencia-02.mp4', poster: 'https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2026/pulse-2026/02-galerias/my26-fiat-pulse-galeria-image01-alldevices-mx-v2.jpg.img.2880.jpg' },
+    { id: 2, label: 'Alerta Colisión Frontal (FCW)', video: 'https://www.Fiat.com.mx/content/dam/cross-regional/nafta/Fiat/es_mx/2026/Pulse/safety/sistemas-de-asistencia/video/Fiat-Pulse-2026-sistemas-de-asistencia-fcw-desktop-v02.mp4', poster: 'https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2026/pulse-2026/02-galerias/my26-fiat-pulse-galeria-image02-alldevices-mx-v2.jpg.img.2880.jpg' },
+    { id: 3, label: 'Abandono de Carril (LDP)', video: 'https://www.Fiat.com.mx/content/dam/cross-regional/nafta/Fiat/es_mx/2026/Pulse/safety/sistemas-de-asistencia/video/Fiat-totalmente-nueva-Pulse-2026-highlights-sistemas-de-asistencia-04.mp4', poster: 'https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2026/pulse-2026/02-galerias/my26-fiat-pulse-galeria-image03-alldevices-mx-v2.jpg.img.2880.jpg' }
   ]
 
   let adasIndex = $state(0)
@@ -342,7 +344,7 @@
   <title>{model.name} | VAPSA</title>
 </svelte:head>
 
-<main class="jeep-premium" style={`--scroll:${progress}`}>
+<main class="Fiat-premium" style={`--scroll:${progress}`}>
   <!-- Progress rail is a direct child of main to avoid stacking context trapping -->
   <div class="progress-rail" aria-hidden="true"><span></span></div>
 
@@ -359,7 +361,7 @@
       </div>
     </div>
   {/if}
-  <section id="inicio" class="jeep-hero">
+  <section id="inicio" class="Fiat-hero">
     <img class="hero-fallback hero-desktop-img" src={model.heroImage} alt={model.name} />
     {#if model.mobileHeroImage}
       <img class="hero-fallback hero-mobile-img" src={model.mobileHeroImage} alt={model.name} />
@@ -379,7 +381,7 @@
 
       <!-- Formulario de Cotización Desktop -->
       <div class="hidden xl:block flex-shrink-0 w-full max-w-[380px] xl:max-w-[410px] z-10 self-center mb-12">
-        <ContactFormCard accent="#424D07" initialBrand="Jeep" initialModel="Renegade 2026" hideBrandSelect={true} />
+        <ContactFormCard accent="#FF1530" initialBrand="Fiat" initialModel="Pulse 2026" hideBrandSelect={true} />
       </div>
     </div>
 
@@ -388,10 +390,10 @@
 
   <!-- Formulario de Cotización Mobile (debajo del hero en mobile) -->
   <div id="mobile-hero-form" class="w-full max-w-lg mx-auto px-4 py-6 xl:hidden relative z-10">
-    <ContactFormCard accent="#424D07" initialBrand="Jeep" initialModel="Renegade 2026" hideBrandSelect={true} />
+    <ContactFormCard accent="#FF1530" initialBrand="Fiat" initialModel="Pulse 2026" hideBrandSelect={true} />
   </div>
 
-  <nav class="product-nav hidden md:flex s-mteEPoerD6_z" aria-label="Navegación de producto JEEP">
+  <nav class="product-nav hidden md:flex s-mteEPoerD6_z" aria-label="Navegación de producto Fiat">
     <strong class="s-mteEPoerD6_z">{model.name} <span class="nav-year">2026</span></strong>
     <a href="#inicio" class="s-mteEPoerD6_z">Inicio</a>
     <a href="#versiones" class="s-mteEPoerD6_z">Versiones</a>
@@ -449,12 +451,12 @@
     </div>
   </section>
 
-  {#if modelSlug === 'renegade'}
+  {#if modelSlug === 'pulse2026'}
     <section id="versiones" class="vs">
       <div class="vs-hero-zone">
         <!-- Version pill toggle -->
         <div class="vs-pill-bar">
-          {#each renegadeVersions as version}
+          {#each PulseVersions as version}
             <button
               class="vs-pill"
               class:active={activeVersionId === version.id}
@@ -464,7 +466,7 @@
         </div>
 
         <div class="vs-title-row">
-          <h2>{activeVersion.name}</h2>
+          <h2>{activeVersion.name} 2026</h2>
           <span class="vs-price">{activeVersion.price}</span>
         </div>
 
@@ -472,7 +474,7 @@
         <div class="vs-showcase">
           <div class="vs-glow"></div>
           {#key activeColor.img}
-            <img src={activeColor.img} alt={`Renegade ${activeColor.name}`} class="vs-hero-car" />
+            <img src={activeColor.img} alt={`Pulse ${activeColor.name}`} class="vs-hero-car" />
           {/key}
         </div>
 
@@ -524,16 +526,16 @@
         </div>
       {:else}
         <div class="vs-exterior-row">
-          <button class="vs-ext-card" onclick={() => toggleZoom('https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/gallery/full/my26-jeep-renegade-galeriaexterior-05-allbreakingpoints-mx.jpg.img.2880.jpg')}>
-            <img src="https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/gallery/full/my26-jeep-renegade-galeriaexterior-05-allbreakingpoints-mx.jpg.img.2880.jpg" alt="Lateral" />
+          <button class="vs-ext-card" onclick={() => toggleZoom('https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2026/pulse-2026/02-galerias/my26-fiat-pulse-galeria-image00-alldevices-mx-v2.jpg.img.2880.jpg')}>
+            <img src="https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2026/pulse-2026/02-galerias/my26-fiat-pulse-galeria-image00-alldevices-mx-v2.jpg.img.2880.jpg" alt="Lateral" />
             <span>Vista lateral <GoogleIcon name="zoom_in" size={14} /></span>
           </button>
-          <button class="vs-ext-card" onclick={() => toggleZoom('https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/exterior/desktop/jeep-renegade-2026-exterior-highlights-07-full.jpg')}>
-            <img src="https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/exterior/desktop/jeep-renegade-2026-exterior-highlights-07-full.jpg" alt="Frontal" />
+          <button class="vs-ext-card" onclick={() => toggleZoom('https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2026/pulse-2026/02-galerias/my26-fiat-pulse-galeria-image01-alldevices-mx-v2.jpg.img.2880.jpg')}>
+            <img src="https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2026/pulse-2026/02-galerias/my26-fiat-pulse-galeria-image01-alldevices-mx-v2.jpg.img.2880.jpg" alt="Frontal" />
             <span>Vista frontal <GoogleIcon name="zoom_in" size={14} /></span>
           </button>
-          <button class="vs-ext-card" onclick={() => toggleZoom('https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/gallery/full/my26-jeep-renegade-galeriaexterior-02-allbreakingpoints-mx-v2.jpg.img.2880.jpg')}>
-            <img src="https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/gallery/full/my26-jeep-renegade-galeriaexterior-02-allbreakingpoints-mx-v2.jpg.img.2880.jpg" alt="Trasera" />
+          <button class="vs-ext-card" onclick={() => toggleZoom('https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2026/pulse-2026/02-galerias/my26-fiat-pulse-galeria-image02-alldevices-mx-v2.jpg.img.2880.jpg')}>
+            <img src="https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2026/pulse-2026/02-galerias/my26-fiat-pulse-galeria-image02-alldevices-mx-v2.jpg.img.2880.jpg" alt="Trasera" />
             <span>Vista trasera <GoogleIcon name="zoom_in" size={14} /></span>
           </button>
         </div>
@@ -595,7 +597,7 @@
     <div class="cockpit-carousel">
       <div class="cockpit-track" style={`transform: translateX(calc(-${cockpitIndex} * 100%))`}>
         {#each cockpitImages as img, i}
-          <img src={img} alt={`Interior JEEP ${i + 1}`} class="cockpit-slide" />
+          <img src={img} alt={`Interior Fiat ${i + 1}`} class="cockpit-slide" />
         {/each}
       </div>
       <!-- Prev / Next -->
@@ -624,7 +626,7 @@
   </section>
 
   <section id="capacidad" class="capability">
-    <img src={capabilityImage} alt="JEEP exterior de trabajo" />
+    <img src={capabilityImage} alt="Fiat exterior de trabajo" />
     <div class="capability-card">
       <p>Capacidad y Desempeño</p>
       <h2>Siempre listo para romper la rutina.</h2>
@@ -677,7 +679,7 @@
       {#if false}
       <p class="safety-sub-label">Seguridad Completa 360°</p>
       <div class="safety-360-wrap">
-        <img class="s360-hero" src="https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/safety/desktop/jeep-renegade-2026-seguridad-01-dk.jpg" alt="Renegade seguridad completa" />
+        <img class="s360-hero" src="https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2026/pulse-2026/02-galerias/my26-fiat-pulse-galeria-image04-alldevices-mx-v2.jpg.img.2880.jpg" alt="Pulse seguridad completa" />
         <div class="s360-cards">
           <div class="s360-item">
             <div class="s360-body">
@@ -704,7 +706,7 @@
             <div class="s360-body">
               <span class="s360-num">— 04</span>
               <strong>Control de Velocidad</strong>
-              <p>Mantén fija la velocidad sin necesidad de seguir presionando el acelerador, con el control de velocidad de crucero integrado del Jeep® Renegade.</p>
+              <p>Mantén fija la velocidad sin necesidad de seguir presionando el acelerador, con el control de velocidad de crucero integrado del Fiat® Pulse.</p>
             </div>
           </div>
           <div class="s360-item">
@@ -728,8 +730,8 @@
     </div>
   </section>
 
-  <section id="jeep-quote" class="quote-section">
-    <p>VAPSA JEEP</p>
+  <section id="Fiat-quote" class="quote-section">
+    <p>VAPSA Fiat</p>
     <h2>Agenda una prueba de manejo o recibe una cotización.</h2>
     <p class="quote-sub">Elige la opción que mejor se ajuste a lo que necesitas. Nuestro equipo está listo para atenderte.</p>
 
@@ -759,22 +761,22 @@
     scroll-behavior: smooth;
   }
 
-  .jeep-premium {
+  .Fiat-premium {
     min-height: 100vh;
     background: #030305;
     color: white;
     overflow: clip;
     font-family: Inter, Roboto, sans-serif;
     --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
-    --jeep-default: #424D07;
-    --jeep-hover: #5A690A;
+    --fiat-default: #FF1530;
+    --fiat-hover: #c70606;
   }
 
-  .jeep-premium * {
+  .Fiat-premium * {
     box-sizing: border-box;
   }
 
-  .jeep-hero {
+  .Fiat-hero {
     position: relative;
     min-height: 100svh;
     height: 100svh;
@@ -835,7 +837,7 @@
       linear-gradient(0deg, #030305 0%, transparent 42%);
   }
 
-  .jeep-hero::after {
+  .Fiat-hero::after {
     content: '';
     position: absolute;
     z-index: 3;
@@ -868,7 +870,7 @@
   .capability-card p,
   .story-panel p {
     margin: 0 0 10px;
-    color: var(--jeep-hover);
+    color: var(--fiat-hover);
     font-size: 11px;
     font-weight: 800;
     letter-spacing: 0.18em;
@@ -946,16 +948,16 @@
   }
 
   .hero-copy .hero-actions button.primary {
-    background: var(--jeep-default);
+    background: var(--fiat-default);
     color: white;
     border: 1px solid transparent;
-    box-shadow: 0 4px 16px rgba(66, 77, 7, 0.4);
+    box-shadow: 0 4px 16px rgba(255, 21, 48, 0.4);
   }
 
   .hero-copy .hero-actions button.primary:hover {
-    background: var(--jeep-hover);
+    background: var(--fiat-hover);
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(66, 77, 7, 0.6);
+    box-shadow: 0 6px 20px rgba(255, 21, 48, 0.6);
   }
 
   .hero-copy .hero-actions button.ghost {
@@ -1013,7 +1015,7 @@
     width: 100%;
     height: calc(var(--scroll) * 100%);
     border-radius: inherit;
-    background: linear-gradient(180deg, var(--jeep-hover), rgba(255,255,255,0.72));
+    background: linear-gradient(180deg, var(--fiat-hover), rgba(255,255,255,0.72));
     box-shadow: 0 0 16px rgba(186, 0, 0, 0.72);
   }
 
@@ -1108,7 +1110,7 @@
   .product-nav button {
     padding: 0 12px;
     color: white;
-    background: var(--jeep-hover);
+    background: var(--fiat-hover);
   }
 
   .product-nav button.ghost-nav {
@@ -1179,8 +1181,8 @@
 
   .pin-media:hover,
   .pin-media:focus-visible {
-    border-color: rgba(66, 77, 7, 0.72);
-    box-shadow: 0 46px 110px rgba(0, 0, 0, 0.66), 0 0 0 1px rgba(66, 77, 7, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 21, 48, 0.72);
+    box-shadow: 0 46px 110px rgba(0, 0, 0, 0.66), 0 0 0 1px rgba(255, 21, 48, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.12);
     outline: none;
   }
 
@@ -1367,7 +1369,7 @@
 
   .motion-head p {
     margin: 0 0 14px;
-    color: var(--jeep-hover);
+    color: var(--fiat-hover);
     font-size: 12px;
     font-weight: 900;
     letter-spacing: 0.18em;
@@ -1637,7 +1639,7 @@
 
   .safety-content p {
     margin: 0 0 14px;
-    color: var(--jeep-hover);
+    color: var(--fiat-hover);
     font-size: 12px;
     font-weight: 900;
     letter-spacing: 0.18em;
@@ -1670,7 +1672,7 @@
     font-weight: 900;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: var(--jeep-hover);
+    color: var(--fiat-hover);
   }
 
   /* ── Video cards grid ── */
@@ -1691,7 +1693,7 @@
 
   .safety-vid-card:hover {
     transform: translateY(-4px);
-    border-color: var(--jeep-hover);
+    border-color: var(--fiat-hover);
   }
 
   /* ADAS Carousel Styles */
@@ -1820,7 +1822,7 @@
   }
 
   .svc-label :global(.material-symbols-outlined) {
-    color: var(--jeep-hover);
+    color: var(--fiat-hover);
     flex-shrink: 0;
   }
 
@@ -1849,7 +1851,7 @@
     overflow-y: auto;
     padding-right: 6px;
     scrollbar-width: thin;
-    scrollbar-color: rgba(90,105,10,0.35) transparent;
+    scrollbar-color: rgba(199,6,6,0.35) transparent;
   }
 
   .s360-item {
@@ -1859,7 +1861,7 @@
     padding: 16px 18px;
     border-radius: 14px;
     border: 1px solid rgba(255,255,255,0.07);
-    border-left: 3px solid rgba(90,105,10,0.35);
+    border-left: 3px solid rgba(199,6,6,0.35);
     background: rgba(255,255,255,0.03);
     transition: transform 260ms var(--ease-out), border-color 260ms var(--ease-out), border-left-color 260ms var(--ease-out), background 260ms var(--ease-out);
     cursor: default;
@@ -1868,8 +1870,8 @@
   .s360-item:hover {
     transform: translateX(4px);
     border-color: rgba(255,255,255,0.12);
-    border-left-color: var(--jeep-hover);
-    background: rgba(90,105,10,0.07);
+    border-left-color: var(--fiat-hover);
+    background: rgba(199,6,6,0.07);
   }
 
   .s360-num {
@@ -1877,7 +1879,7 @@
     font-weight: 900;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: var(--jeep-hover);
+    color: var(--fiat-hover);
     line-height: 1;
   }
 
@@ -1929,11 +1931,11 @@
   .safety-feat:hover {
     transform: translateY(-4px);
     background: rgba(255, 255, 255, 0.07);
-    border-color: var(--jeep-hover);
+    border-color: var(--fiat-hover);
   }
 
   .safety-feat :global(.material-symbols-outlined) {
-    color: var(--jeep-hover);
+    color: var(--fiat-hover);
     flex-shrink: 0;
   }
 
@@ -1995,9 +1997,9 @@
   .vs-price { font-size: 17px; color: #fff; font-weight: 700; display: block; margin-top: 4px; }
 
   .vs-showcase { position: relative; max-width: 720px; margin: 10px auto 0; padding: 20px 0; }
-  .vs-glow { position: absolute; inset: 10% 15%; border-radius: 50%; background: radial-gradient(circle, rgba(90,105,10,0.18) 0%, transparent 70%); filter: blur(60px); z-index: 0; pointer-events: none; animation: glow-breathe 4s ease-in-out infinite alternate; }
+  .vs-glow { position: absolute; inset: 10% 15%; border-radius: 50%; background: radial-gradient(circle, rgba(199,6,6,0.18) 0%, transparent 70%); filter: blur(60px); z-index: 0; pointer-events: none; animation: glow-breathe 4s ease-in-out infinite alternate; }
   @keyframes glow-breathe { from { opacity: .5; transform: scale(.95); } to { opacity: 1; transform: scale(1.08); } }
-  .vs-hero-car { position: relative; z-index: 1; width: 100%; max-height: 400px; object-fit: contain; border-radius: 30px; filter: drop-shadow(0 40px 60px rgba(0,0,0,.55)); animation: car-reveal .6s cubic-bezier(.16,1,.3,1); }
+  .vs-hero-car { position: relative; z-index: 1; width: 100%; max-height: 400px; object-fit: contain; border-radius: 40px; background: #ffffff; padding: 20px; filter: drop-shadow(0 40px 60px rgba(0,0,0,.55)); animation: car-reveal .6s cubic-bezier(.16,1,.3,1); }
   @keyframes car-reveal { from { opacity: 0; transform: scale(.94) translateY(20px); } to { opacity: 1; transform: scale(1) translateY(0); } }
 
   .vs-color-bar { margin-top: 6px; display: flex; flex-direction: column; align-items: center; gap: 14px; }
@@ -2006,7 +2008,7 @@
   .vs-dot { width: 28px; height: 28px; border-radius: 50%; background: var(--dot-color); border: 2px solid rgba(255,255,255,0.15); cursor: pointer; position: relative; transition: transform .35s cubic-bezier(.34,1.56,.64,1), box-shadow .3s; outline: none; }
   .vs-dot::after { content: ''; position: absolute; inset: -5px; border-radius: 50%; border: 2px solid transparent; transition: border-color .3s; }
   .vs-dot.active { transform: scale(1.22); }
-  .vs-dot.active::after { border-color: var(--jeep-hover); }
+  .vs-dot.active::after { border-color: var(--fiat-hover); }
   .vs-dot:hover { transform: scale(1.15); }
 
   .vs-panel-toggle { display: flex; justify-content: center; gap: 10px; margin: 44px 0 32px; }
@@ -2015,7 +2017,7 @@
 
   .vs-feat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; max-width: 1100px; margin: 0 auto; padding: 0 20px; text-align: left; }
   .vs-feat-card { display: flex; align-items: flex-start; gap: 12px; padding: 16px 20px; border-radius: 16px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); color: rgba(255,255,255,0.8); font-size: 14px; line-height: 1.5; animation: feat-in .4s ease-out both; animation-delay: var(--d); }
-  .vs-feat-card :global(span.google-icon) { color: var(--jeep-hover); flex-shrink: 0; margin-top: 2px; }
+  .vs-feat-card :global(span.google-icon) { color: var(--fiat-hover); flex-shrink: 0; margin-top: 2px; }
   @keyframes feat-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
   .vs-exterior-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 1100px; margin: 0 auto; padding: 0 20px; }
@@ -2023,12 +2025,12 @@
   .vs-ext-card:hover { transform: translateY(-4px); border-color: rgba(255,255,255,0.14); background: rgba(255,255,255,0.05); }
   .vs-ext-card img { width: 100%; height: 180px; object-fit: contain; }
   .vs-ext-card span { display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: .08em; }
-  .vs-ext-card span :global(.material-symbols-outlined) { color: var(--jeep-hover); opacity: 0.7; }
+  .vs-ext-card span :global(.material-symbols-outlined) { color: var(--fiat-hover); opacity: 0.7; }
 
   .vs-actions { display: flex; justify-content: center; gap: 14px; margin-top: 48px; flex-wrap: wrap; }
   .vs-action { display: inline-flex; align-items: center; gap: 8px; height: 52px; padding: 0 32px; border-radius: 999px; font-size: 14px; font-weight: 800; cursor: pointer; text-decoration: none; border: none; font-family: inherit; transition: all .3s cubic-bezier(.16,1,.3,1); }
-  .vs-action.primary { background: var(--jeep-hover); color: white; box-shadow: 0 4px 24px rgba(90,105,10,0.35); }
-  .vs-action.primary:hover { transform: translateY(-2px) scale(1.02); box-shadow: 0 8px 32px rgba(90,105,10,0.5); }
+  .vs-action.primary { background: var(--fiat-hover); color: white; box-shadow: 0 4px 24px rgba(199,6,6,0.35); }
+  .vs-action.primary:hover { transform: translateY(-2px) scale(1.02); box-shadow: 0 8px 32px rgba(199,6,6,0.5); }
   .vs-action.ghost { background: transparent; border: 1px solid rgba(255,255,255,0.16); color: rgba(255,255,255,0.75); }
   .vs-action.ghost:hover { border-color: rgba(255,255,255,0.35); color: white; transform: translateY(-2px); }
 
@@ -2298,9 +2300,9 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .jeep-premium *,
-    .jeep-premium *::before,
-    .jeep-premium *::after {
+    .Fiat-premium *,
+    .Fiat-premium *::before,
+    .Fiat-premium *::after {
       animation-duration: 1ms !important;
       animation-iteration-count: 1 !important;
       scroll-behavior: auto !important;
@@ -2405,9 +2407,9 @@
     letter-spacing: 0.12em;
     text-transform: uppercase;
     border-radius: 999px;
-    background: rgba(90, 105, 10, 0.28);
-    border: 1px solid rgba(90, 105, 10, 0.45);
-    color: var(--jeep-hover);
+    background: rgba(199, 6, 6, 0.28);
+    border: 1px solid rgba(199, 6, 6, 0.45);
+    color: var(--fiat-hover);
     vertical-align: middle;
   }
 
@@ -2575,16 +2577,16 @@
   }
 
   .floating-cta-primary {
-    background: var(--jeep-default);
+    background: var(--fiat-default);
     border: 1px solid transparent;
     color: white;
-    box-shadow: 0 4px 16px rgba(66, 77, 7, 0.40);
+    box-shadow: 0 4px 16px rgba(255, 21, 48, 0.40);
   }
 
   .floating-cta-primary:hover {
-    background: var(--jeep-hover);
+    background: var(--fiat-hover);
     transform: translateY(-1px);
-    box-shadow: 0 6px 22px rgba(66, 77, 7, 0.60);
+    box-shadow: 0 6px 22px rgba(255, 21, 48, 0.60);
   }
 
   .quote-secondary-btn {
@@ -2667,7 +2669,7 @@
 
   /* MOBILE HERO SPLIT LAYOUT */
   @media (max-width: 768px) {
-    .jeep-premium {
+    .Fiat-premium {
       display: flex;
       flex-direction: column;
     }
@@ -2682,7 +2684,7 @@
       z-index: 38;
       padding: 0 16px;
     }
-    .jeep-hero {
+    .Fiat-hero {
       order: 0;
       display: flex;
       flex-direction: column;

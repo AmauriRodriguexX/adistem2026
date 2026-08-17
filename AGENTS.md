@@ -1,0 +1,159 @@
+# AGENTS.md — Guía para agentes de IA (Claude, Gemini, Cursor, etc.)
+
+> Este archivo es la bitácora maestra y el estándar a seguir para trabajar en las
+> páginas de marca (Jeep, Fiat, Ram, Dodge, Peugeot) del sitio VAPSA. Si eres un
+> agente de IA (Gemini, Claude, o cualquier otro) y te piden tocar `*BrandHub.svelte`
+> o `*PremiumLanding.svelte`, **lee esto primero**. Evita repetir errores que ya
+> pasaron aquí (dos veces).
+
+## 1. El patrón obligatorio (Hub + Premium Landing)
+
+Cada marca tiene dos componentes en `src/lib/components/`:
+
+- **`<Marca>BrandHub.svelte`** — página de aterrizaje de la marca. Hero full-bleed con
+  carrusel autoplay de varios modelos, tarjetas de vidrio con los modelos secundarios,
+  y una sección cinematográfica tipo "story".
+- **`<Marca>PremiumLanding.svelte`** — ficha detallada de UN modelo (`modelSlug` como prop).
+
+La plantilla estructural de referencia es **`FiatBrandHub.svelte` /
+`FiatPremiumLanding.svelte`** (idéntica a `JeepBrandHub.svelte` / `JeepPremiumLanding.svelte`,
+que fue el rediseño original — rama `jeep-hub-renegade-revamp`). **Cualquier marca nueva
+o corregida debe clonar esta estructura literalmente**, no reinventar un layout más simple.
+
+Clases/secciones que SIEMPRE deben existir (cópialas del Fiat, no las aproximes):
+
+**BrandHub:**
+`hub-hero` (hero con carrusel autoplay de modelos, `hero-copy-new`, `carousel-pill`
+con play/pause), `model-carousel` con tarjetas `promo-card`/`pc-glass-bg`/`pc-img-wrap`/
+`pc-badge-promo`, `story-reel` (paneles alternados tipo "Aventura Urbana" / "Familia &
+Espacio"), `stat-strip`, `cotizar-band` con selector de modelo.
+
+**PremiumLanding:**
+hero con `hero-copy`, `pin-stage` (visual grande, video pineado al hacer scroll si hay
+uno oficial disponible — si no, imagen fija, pero **no borres la sección**), **`versiones`
+(`vs-*`) — ver punto 2, es obligatoria si hay datos reales**, `spec-band`, `motion-gallery`,
+`story-stack`, `cockpit` (carrusel de interiores), `capability`, `safety-section`
+(carrusel ADAS si hay videos reales), `quote-section` final.
+
+Contrato de props/IDs que **no se debe romper** porque `App.svelte` depende de ellos:
+- Landing recibe `modelSlug: string | null`.
+- Hub recibe `onModelSelect?: (slug: string) => void`.
+- IDs de formulario: `brandhub-desktop-form`, `brandhub-mobile-form`, `mobile-hero-form`
+  (usados por `handleCotizarMobile`/`handlePruebaMobile` en `App.svelte` vía
+  `document.getElementById`).
+- `ContactFormCard` con `accent` (hex de marca) e `initialBrand` correctos.
+
+## 2. La sección "versiones" (`vs-*`) — selector de colores/trims — **es obligatoria cuando hay datos reales**
+
+**Error que ya se cometió dos veces:** un agente asumió "no hay datos reales de
+versiones/colores para Dodge/Ram/Peugeot" y omitió la sección por completo. Era falso —
+el configurador real de dodge.com.mx (y previsiblemente ram.com/mx, peugeot.com.mx)
+sí publica trims y swatches de color reales, con imágenes en su CDN. **No asumas que no
+existen: ve a buscarlos antes de omitir la sección.**
+
+Estructura exacta a clonar (de `FiatPremiumLanding.svelte`, sección `id="versiones"`,
+clase `vs`): `vs-pill-bar` (botones para elegir versión/trim), `vs-title-row` con precio,
+`vs-showcase` + `vs-color-bar` + `vs-dots` (imagen grande que cambia según el color
+elegido, con `--dot-color` aproximado al color real), `vs-panel-toggle` (alternar
+"Exterior" / "Equipamiento"), `vs-feat-grid` con botón "ver más equipamiento" (agrupa
+el equipamiento real en 2 arrays), `vs-exterior-row` (3 fotos: lateral/frontal/trasera,
+no repitas la misma), `vs-actions` (Cotizar / Prueba de manejo).
+
+**Cómo conseguir los datos reales sin inventar nada:**
+1. Navega (con las herramientas de browser, no adivines URLs) a la página del modelo en
+   el sitio oficial de la marca (ej. `dodge.com/mx`, `jeep.com.mx`, `fiat.com.mx`,
+   `ram.com/mx`, `peugeot.com.mx`).
+2. Estos sitios (todos AEM/Stellantis) suelen tener un componente `ModelWalk` /
+   configurador embebido con un `data-props` que trae un JSON completo: trims, precios,
+   colores (`label`, `image` del swatch chico, y la imagen grande por breakpoint
+   `xs/sm/md/lg`), y bullets de equipamiento por trim. Extrae ese JSON en vez de adivinar.
+3. Las imágenes son rutas `/content/dam/cross-regional/nafta/<marca>/es_mx/...` —
+   **verifica el dominio real navegando directamente a la URL de la imagen antes de
+   usarla** (algunos sitios usan `https://www.<marca>.com/content/dam/...` sin prefijo
+   de país en la ruta, aunque el sitio se navegue bajo `/mx/`; no asumas, confirma con un
+   200 real). Para Dodge, el dominio correcto resultó ser `https://www.dodge.com` **sin**
+   `/mx`.
+4. Si genuinamente no hay swatches/trims publicados para un modelo (verificado, no
+   asumido), es aceptable omitir la sección `vs-*` temporalmente — pero dejar una nota
+   explícita en el log de esa marca diciendo qué se intentó y por qué no se encontró.
+
+## 3. Cómo se sourcean las imágenes en general
+
+- Prioridad 1: imágenes reales hotlinked del sitio oficial de la marca (mismo patrón que
+  ya usa Fiat con `fiat.com.mx` y Jeep con `jeep.com.mx`). Verifica que carguen antes de
+  usarlas.
+- Prioridad 2: el bucket `storage.googleapis.com/.../prd-storytodesign.appspot.com/...`
+  que el propio proyecto ya usa en `GlassTopNav.svelte` para varios modelos — no son
+  placeholders inventados, es contenido real ya en producción del sitio.
+- **Variedad por sección:** no repitas la misma imagen en hero + story-reel + cockpit.
+  Cada sección tiene una intención temática (hero = exterior dinámico, cockpit = interior
+  real, story-reel = lifestyle/detalle) y necesita una foto distinta que la respalde.
+- Nunca inventes una URL de imagen sin haberla confirmado (navegación directa o petición
+  que responda 200). Una URL rota es peor que reusar una imagen ya validada.
+
+## 4. Estado actual por marca (última actualización: 2026-08-17)
+
+**Modelo insignia = ÚNICO modelo por marca. Es la fuente de verdad, no la cambies sin que el usuario lo pida explícitamente:**
+
+| Marca | Modelo insignia | Hub/Landing con patrón Fiat/Jeep | Sección `versiones` real | Pendiente |
+|---|---|---|---|---|
+| Jeep | Renegade | ✅ (original) | ✅ | — |
+| Fiat | Pulse 2026 | ✅ (original) | ✅ | — |
+| Ram | 1500 RHO 2026 | ✅ | ✅ (trim único, 5 colores reales, verificado 2026-08-17) | — |
+| Dodge | Attitude 2026 | ✅ | ✅ (SXT/SPORT/GT, colores y equipamiento reales) | Charger y Durango siguen sin `versiones` real |
+| Peugeot | **5008** (⚠️ cambió de 2008 a 5008 el 2026-08-17 por instrucción explícita del usuario) | ✅ | ✅ (GT / GT Black Edition, colores y equipamiento reales, verificado 2026-08-17) | 2008 y 3008 ya no son insignia, pero siguen visibles en el carrusel del Hub |
+
+**Nota importante sobre Peugeot:** la página de producto (`/gama/nuevo-5008.html`) dice "una sola versión" pero eso es solo copy de marketing — el catálogo real (`/adquiere-tu-peugeot/lista-de-precios.html`) reveló que sí hay 2 trims (GT y GT Black Edition) con precios distintos. **Siempre cruza la página de producto con la lista de precios antes de asumir cuántas versiones tiene un modelo.**
+
+### 4.1 Regla: un solo modelo insignia por marca, y TODOS los CTA deben forzar ese modelo
+
+El usuario fue explícito (2026-08-17): cada marca muestra varios modelos de forma visual
+(carrusel del Hub, `story-reel`, mega-menú de navegación) pero **todo CTA de "Explorar" /
+"Ver modelo" / tarjeta de vehículo, sin importar cuál se haya clickeado, debe navegar
+SIEMPRE al modelo insignia único de esa marca**. Nunca dejes pasar el `slug` clickeado
+tal cual a `onModelSelect` — fuerza el insignia dentro de la función `selectModel()` del
+Hub (mira `JeepBrandHub.svelte` como referencia correcta: `onModelSelect?.('renegade')`
+sin importar el argumento). Esto aplica igual al mega-menú de vehículos en
+`GlassTopNav.svelte` (línea ~594 en adelante) — cada marca ahí también debe forzar su
+slug insignia, no bifurcar por `vehicle.model`.
+
+**Se encontraron y corrigieron estos bugs el 2026-08-17** (no los repitas si reescribes
+estos archivos desde cero):
+- `FiatBrandHub.svelte` — el comentario decía "todo va a Pulse" pero el código dejaba
+  pasar `fastback`/`argo`/`pulse-abarth` tal cual. Corregido para forzar `'pulse2026'`.
+- `RamBrandHub.svelte` / `DodgeBrandHub.svelte` / `PeugeotBrandHub.svelte` — `selectModel()`
+  no forzaba nada, pasaba el slug clickeado directo. Corregido para forzar
+  `'1500-rho'` / `'attitude'` / `'5008'` respectivamente.
+- `GlassTopNav.svelte` (mega-menú) — Dodge y Peugeot bifurcaban por `vehicle.model` a
+  slugs distintos (`durango`/`journey`/`attitude`, `2008`/`3008`/`5008`/`partner`); Ram y
+  Fiat ni siquiera navegaban a una ficha (solo filtraban). Corregido: las 5 marcas ahora
+  navegan directo a su modelo insignia sin importar la tarjeta.
+- `FiatBrandHub.svelte` tenía `selectedQuoteModel = $state('renegade')` (residuo de
+  copiar Jeep, no era ni siquiera un modelo Fiat válido) y `PeugeotBrandHub.svelte` seguía
+  en `'2008'` — corregidos a `'pulse'` y `'5008'`.
+
+Logs detallados por marca (qué se hizo, por qué, qué falta): `dodge_attitude_implementation_log.md`,
+`peugeot_2008_implementation_log.md`, `ram_1500rho_implementation_log.md`.
+
+## 5. Errores ya cometidos (no los repitas)
+
+1. **Clonar el patrón viejo en vez del nuevo.** Ram tenía un diseño simple (hero estático,
+   sin `story-reel`, sin `pin-stage`) y un agente clonó ESE patrón para Dodge/Peugeot en
+   vez de usar Fiat/Jeep como referencia. Siempre compara contra `FiatBrandHub.svelte`
+   antes de dar por terminado un Hub nuevo.
+2. **Asumir que no hay datos reales de versiones/colores sin verificar.** Pasó con Dodge
+   Attitude — sí existían, solo había que navegar al configurador real del sitio oficial.
+3. **Un fork que "termina" en segundos sin ejecutar ninguna herramienta.** Si delegas
+   trabajo a un sub-agente y su resultado llega sin `tool_uses` reales, no confíes en el
+   resumen — verifica con `git status` que los archivos realmente cambiaron antes de
+   reportarle al usuario que algo se hizo.
+
+## 6. Verificación antes de reportar terminado
+
+Siempre, antes de decir "listo":
+```
+npm run check   # svelte-check, debe dar 0 errores
+npm run build   # debe compilar sin errores
+```
+Y confirmar con `git status --short` que los archivos que dices haber tocado realmente
+cambiaron en disco. No reportes trabajo hecho sin esta verificación.
