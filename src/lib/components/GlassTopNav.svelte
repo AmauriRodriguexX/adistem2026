@@ -592,14 +592,26 @@
               <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
                 {#each megaVehicles as vehicle, i (vehicle.id)}
                   <button
-                    onclick={() => { 
+                    onclick={() => {
                       if (vehicle.brand === 'Jeep') {
                         onModelSelect?.('Jeep', 'renegade')
                         closeMega()
+                      } else if (vehicle.brand === 'Fiat') {
+                        onModelSelect?.('Fiat', 'pulse2026')
+                        closeMega()
+                      } else if (vehicle.brand === 'Ram') {
+                        onModelSelect?.('Ram', '1500-rho')
+                        closeMega()
+                      } else if (vehicle.brand === 'Dodge') {
+                        onModelSelect?.('Dodge', 'attitude')
+                        closeMega()
+                      } else if (vehicle.brand === 'Peugeot') {
+                        onModelSelect?.('Peugeot', '5008')
+                        closeMega()
                       } else {
-                        selectMegaBrand(vehicle.brand); 
-                        selectMegaType(vehicle.type); 
-                        applyMegaSelection() 
+                        selectMegaBrand(vehicle.brand);
+                        selectMegaType(vehicle.type);
+                        applyMegaSelection()
                       }
                     }}
                     class="group/card cursor-pointer overflow-hidden rounded-2xl text-left transition-all duration-500 hover:-translate-y-1"

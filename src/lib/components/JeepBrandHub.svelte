@@ -31,8 +31,8 @@
       slug: 'renegade',
       name: 'Jeep Renegade',
       role: 'SUV compacto con espíritu aventurero',
-      image: `/adistem2026/jeep/renegade-2026.jpg?v=2`,
-      mobileImage: `/adistem2026/jeep/renegade-2026-mob.jpg?v=2`,
+      image: 'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F03eb70622ac5b618a05ca4b50608ada9e5f36dff.jpg?generation=1777350234483821&alt=media',
+      mobileImage: 'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F03eb70622ac5b618a05ca4b50608ada9e5f36dff.jpg?generation=1777350234483821&alt=media',
       accent: JEEP_HOVER,
       use: 'Para la ciudad, carretera y escapadas de fin de semana.',
       stat: 'Aventura Urbana',
@@ -44,8 +44,8 @@
       slug: 'compass',
       name: 'Jeep Compass',
       role: 'Estilo y tecnología en cada ruta',
-      image: `/adistem2026/jeep/compass-2026.jpg?v=2`,
-      mobileImage: `/adistem2026/jeep/compass-2026-mob.jpg?v=2`,
+      image: 'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F0d3d7a1dc7e07f0e64c4fb84601cc8fa871c5acc.jpg?generation=1777350234540448&alt=media',
+      mobileImage: 'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F0d3d7a1dc7e07f0e64c4fb84601cc8fa871c5acc.jpg?generation=1777350234540448&alt=media',
       accent: JEEP_DEFAULT,
       use: 'Para familias jóvenes, ciudad y carretera con confort.',
       stat: 'Diseño & Confort',
@@ -57,8 +57,8 @@
       slug: 'commander',
       name: 'Jeep Commander',
       role: '7 plazas para todo lo que importa',
-      image: `/adistem2026/jeep/commander-2026.jpg?v=2`,
-      mobileImage: `/adistem2026/jeep/commander-2026-mob.jpg?v=2`,
+      image: 'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F0c31e45701627ca72a88b646087445172fc4a302.jpg?generation=1777350234492066&alt=media',
+      mobileImage: 'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F0c31e45701627ca72a88b646087445172fc4a302.jpg?generation=1777350234492066&alt=media',
       accent: JEEP_HOVER,
       use: 'Para familia completa, viajes largos y versatilidad total.',
       stat: '7 Pasajeros',
@@ -834,17 +834,7 @@
     transition: transform 620ms var(--ease), border-color 620ms var(--ease), background 620ms var(--ease), box-shadow 620ms var(--ease);
   }
 
-  .model-track article::before {
-    content: '';
-    position: absolute;
-    z-index: 2;
-    inset: 12px 12px auto;
-    height: clamp(240px, 28vw, 400px);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 24px;
-    pointer-events: none;
-    transition: border-color 620ms var(--ease), box-shadow 620ms var(--ease), transform 620ms var(--ease);
-  }
+
 
   .model-track img {
     position: relative;
@@ -868,13 +858,7 @@
     opacity: 1;
   }
 
-  .model-track article.active::before {
-    border-color: color-mix(in srgb, var(--accent) 55%, rgba(255,255,255,0.22));
-    box-shadow:
-      inset 0 1px 0 rgba(255,255,255,0.16),
-      0 0 46px color-mix(in srgb, var(--accent) 20%, transparent);
-    transform: scale(0.996);
-  }
+
 
   .model-track article.active {
     background: rgba(255, 255, 255, 0.060);

@@ -2,7 +2,7 @@
   import GoogleIcon from './GoogleIcon.svelte'
   import ContactFormCard from './ContactFormCard.svelte'
 
-  type RamModel = {
+  type PeugeotModel = {
     slug: string
     name: string
     role: string
@@ -18,83 +18,70 @@
 
   let { onModelSelect }: { onModelSelect?: (slug: string) => void } = $props()
 
-  const A = '/adistem2026/ram-lineup'
-  const RAM_DEFAULT = '#880D00'
-  const RAM_HOVER = '#BA0000'
+  const PEUGEOT_DEFAULT = '#0074E8'
+  const PEUGEOT_HOVER = '#0057AD'
   let activeModelIndex = $state(0)
 
-  const models: RamModel[] = [
+  const models: PeugeotModel[] = [
     {
-      slug: '1500-rho',
-      name: 'RAM 1500 RHO',
-      role: 'Alto desempeño off-road',
-      image: 'https://www.ram.com/content/dam/cross-regional/nafta/ramtrucks/es_mx/2026/rho/desktop/my26-rho-hero-desktop.jpg.img.2880.jpg',
-      mobileImage: 'https://www.ram.com/content/dam/cross-regional/nafta/ramtrucks/es_mx/2026/rho/desktop/my26-rho-hero-desktop.jpg.img.2880.jpg',
-      accent: RAM_HOVER,
-      use: 'Para quien quiere velocidad, presencia y terracería.',
-      stat: 'Performance',
-      metric: 'Off-Road',
-      detail: 'Suspensión y respuesta de alto desempeño para terrenos abiertos.',
-      price: '$1,290,000'
+      slug: '2008',
+      name: 'Peugeot 2008',
+      role: 'No llegaste para pasar desapercibido',
+      image: 'https://www.peugeot.com.mx/content/dam/peugeot/mexico/b2c/index/nuevo-home/banner/2008-desk.jpg?imwidth=1920',
+      mobileImage: 'https://www.peugeot.com.mx/content/dam/peugeot/mexico/b2c/index/nuevo-home/banner/2008-desk.jpg?imwidth=1920',
+      accent: PEUGEOT_HOVER,
+      use: 'Para quien quiere una SUV con actitud, ambición y tecnología.',
+      stat: 'SUV',
+      metric: 'Actitud',
+      detail: 'La SUV compacta de Peugeot, con el i-Cockpit® y el diseño que refleja lo que estás construyendo.',
+      price: '$448,900'
     },
     {
-      slug: '1500-tungsten',
-      name: 'RAM 1500 Tungsten',
-      role: 'Lujo y capacidad premium',
-      image: 'https://www.ram.com/content/dam/cross-regional/nafta/ramtrucks/es_mx/2026/ram-1500-tungsten/inicio/desktop/my26-ram-hero2-mx-dk.jpg.img.2880.jpg',
-      mobileImage: 'https://www.ram.com/content/dam/cross-regional/nafta/ramtrucks/es_mx/2026/ram-1500-tungsten/inicio/desktop/my26-ram-hero2-mx-dk.jpg.img.2880.jpg',
-      accent: RAM_DEFAULT,
-      use: 'Para viajes, negocio y confort ejecutivo.',
-      stat: 'Premium',
-      metric: 'Lujo Total',
-      detail: 'Cabina elevada, materiales premium y gran presencia en cualquier camino.',
-      price: '$1,290,000'
+      slug: '3008',
+      name: 'Peugeot 3008',
+      role: 'La sofisticación no necesita presumir',
+      image: 'https://www.peugeot.com.mx/content/dam/peugeot/mexico/b2c/our-range/nuevo-3008/desktop/3008-dk.jpg?imwidth=1920',
+      mobileImage: 'https://www.peugeot.com.mx/content/dam/peugeot/mexico/b2c/our-range/nuevo-3008/desktop/3008-dk.jpg?imwidth=1920',
+      accent: PEUGEOT_DEFAULT,
+      use: 'Para quienes entienden que el verdadero lujo está en cómo se vive.',
+      stat: 'SUV',
+      metric: 'Premium',
+      detail: 'Cada detalle fue pensado para una experiencia de conducción superior y sofisticada.',
+      price: '$639,900'
     },
     {
-      slug: '700',
-      name: 'RAM 700',
-      role: 'Compacta, ágil, urbana',
-      image: 'https://www.ram.com/content/dam/cross-regional/nafta/ramtrucks/es_mx/2026/ram-700/inicio/desktop/my26-ram-700-cover-mx-dk.jpg.img.2880.jpg',
-      mobileImage: 'https://www.ram.com/content/dam/cross-regional/nafta/ramtrucks/es_mx/2026/ram-700/inicio/desktop/my26-ram-700-cover-mx-dk.jpg.img.2880.jpg',
-      accent: RAM_HOVER,
-      use: 'Para ciudad, reparto y emprendimientos.',
-      stat: 'Ciudad',
-      metric: 'Ágil',
-      detail: 'Formato compacto para moverse y cargar todos los días.',
-      price: '$408,400'
+      slug: '5008',
+      name: 'Peugeot 5008',
+      role: 'Más espacio para vivir sin dejar atrás quien eres',
+      image: 'https://www.peugeot.com.mx/content/dam/peugeot/mexico/b2c/our-range/nuevo-5008/desktop/5008-dk.jpg?imwidth=1920',
+      mobileImage: 'https://www.peugeot.com.mx/content/dam/peugeot/mexico/b2c/our-range/nuevo-5008/desktop/5008-dk.jpg?imwidth=1920',
+      accent: PEUGEOT_HOVER,
+      use: 'Para familias que valoran espacio, estilo y confort.',
+      stat: 'SUV 7 Plazas',
+      metric: 'Familiar',
+      detail: 'Espacio para 7 personas con el estilo, confort y tecnología de la marca del león.',
+      price: '$779,900'
     },
     {
-      slug: '1500',
-      name: 'RAM 1500',
-      role: 'Potencia diaria',
-      image: 'https://www.ram.com/content/dam/cross-regional/nafta/ramtrucks/es_mx/home/cover/my26-ram-1500-inicio-hero-bhp-august-dk-mx.jpg.img.2880.jpg',
-      accent: RAM_DEFAULT,
-      use: 'Para remolque, familia y aventura.',
-      stat: 'Versátil',
-      metric: 'Remolque',
-      detail: 'Balance entre fuerza, confort y capacidad diaria.',
-      price: '$1,290,000'
-    },
-    {
-      slug: '1200',
-      name: 'RAM 1200',
-      role: 'Trabajo inteligente',
-      image: 'https://www.ram.com/content/dam/cross-regional/nafta/ramtrucks/es_mx/2026/ram-1200/inicio/desktop/my26-ram-1200-vlp-hero-mx-dk.jpg.img.2880.jpg',
-      accent: '#7f7f7f',
-      use: 'Para flotillas, campo y carga productiva.',
-      stat: 'Trabajo',
+      slug: 'partner',
+      name: 'Peugeot Partner',
+      role: 'Versatilidad para tu negocio',
+      image: 'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2Fb1d61b52adc2aa72f9170a07361f38035b5794a8.jpg?generation=1777350234922828&alt=media',
+      accent: PEUGEOT_DEFAULT,
+      use: 'Para carga, negocio y movilidad diaria.',
+      stat: 'Van',
       metric: 'Carga',
-      detail: 'Configuración práctica para jornadas productivas.',
-      price: '$408,400'
+      detail: 'Espacio y practicidad para acompañar tu negocio todos los días.',
+      price: '$439,900'
     },
   ]
 
   function selectModel(_slug: string) {
-    // All model explore CTAs route to 1500 RHO (only fully-built landing)
-    onModelSelect?.('1500-rho')
+    // All model explore CTAs route to 5008 (only fully-built landing)
+    onModelSelect?.('5008')
   }
 
-  const VISIBLE_SLUGS = ['1500-rho', '1500-tungsten', '700']
+  const VISIBLE_SLUGS = ['2008', '3008', '5008']
 
   function goToModel(index: number) {
     activeModelIndex = (index + 3) % 3
@@ -107,7 +94,6 @@
     }
   }
 
-  // Cotización: navega al form con el modelo pre-seleccionado
   function goToCotizacion(modelSlug?: string) {
     const base = '/adistem2026/cotizacion/'
     const url = modelSlug ? `${base}?modelo=${encodeURIComponent(modelSlug)}` : base
@@ -124,8 +110,7 @@
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
-  // Modelo seleccionado en el inline-form preview
-  let selectedQuoteModel = $state('1500-rho')
+  let selectedQuoteModel = $state('5008')
 
   let isPlaying = $state(true)
 
@@ -141,7 +126,6 @@
     return () => clearInterval(id)
   })
 
-  // Swipe táctil
   let touchStartX = 0
   let touchStartY = 0
 
@@ -162,10 +146,10 @@
 </script>
 
 <svelte:head>
-  <title>RAM | Gama 2026 en VAPSA</title>
+  <title>PEUGEOT | Gama 2026 en VAPSA</title>
 </svelte:head>
 
-<main class="ram-hub">
+<main class="peugeot-hub">
   <section class="hub-hero">
     {#each models as model, i (model.slug)}
       <img class="hero-bg hero-desktop-img" class:active={i === activeModelIndex} class:hide={!VISIBLE_SLUGS.includes(model.slug)} src={model.image} alt={model.name} />
@@ -190,13 +174,11 @@
         {/key}
       </div>
 
-      <!-- Formulario de Cotización Desktop en Brand Hub -->
       <div id="brandhub-desktop-form" class="hidden xl:block flex-shrink-0 w-full max-w-[380px] xl:max-w-[410px] z-10 self-center mb-12">
-        <ContactFormCard accent="#880D00" initialBrand="Ram" initialModel={models[activeModelIndex].name.replace('RAM ', '') + ' 2026'} />
+        <ContactFormCard accent="#0074E8" initialBrand="Peugeot" initialModel={models[activeModelIndex].name.replace('Peugeot ', '') + ' 2026'} />
       </div>
     </div>
 
-    <!-- Mobile: fade bottom de imagen hacia el bloque de texto -->
     <div class="hub-mobile-fade" aria-hidden="true"></div>
 
     <div class="carousel-controls hero-controls-new">
@@ -210,16 +192,12 @@
           </button>
         {/each}
       </div>
-      <button
-        class="play-btn"
-        aria-label={isPlaying ? 'Pausar carrusel' : 'Reproducir carrusel'}
-        onclick={togglePlay}>
+      <button class="play-btn" aria-label={isPlaying ? 'Pausar carrusel' : 'Reproducir carrusel'} onclick={togglePlay}>
         <GoogleIcon name={isPlaying ? 'pause' : 'play_arrow'} size={16} />
       </button>
     </div>
   </section>
 
-  <!-- ── Mobile-only: texto + CTA debajo de la imagen ── -->
   <div class="hub-hero-mobile">
     {#key activeModelIndex}
       <div class="hub-hero-mobile-inner">
@@ -238,24 +216,23 @@
     {/key}
   </div>
 
-  <!-- ── Formulario Mobile ── -->
   <div id="brandhub-mobile-form" class="w-full max-w-lg mx-auto px-4 py-6 xl:hidden relative z-10">
     <ContactFormCard
-      accent="#880D00"
-      initialBrand="Ram"
-      initialModel={models[activeModelIndex].name.replace('RAM ', '') + ' 2026'}
+      accent="#0074E8"
+      initialBrand="Peugeot"
+      initialModel={models[activeModelIndex].name.replace('Peugeot ', '') + ' 2026'}
     />
   </div>
 
   <section
     class="model-carousel"
-    aria-label="Modelos RAM"
+    aria-label="Modelos PEUGEOT"
     onmouseenter={onCarouselEnter}
     onmouseleave={onCarouselLeave}>
     <div class="carousel-head">
       <div>
         <p>Promociones exclusivas</p>
-        <h2>Estrena tu RAM con ofertas únicas.</h2>
+        <h2>Estrena tu Peugeot con ofertas únicas.</h2>
       </div>
     </div>
 
@@ -272,14 +249,14 @@
               <span class="pc-badge-stat">{model.stat}</span>
               <span class="pc-badge-promo">PROMO</span>
               <div class="pc-img-footer">
-                <p>Ram</p>
-                <h3>{model.name.replace('RAM ', '')} <span>2026</span></h3>
+                <p>Peugeot</p>
+                <h3>{model.name.replace('Peugeot ', '')} <span>2026</span></h3>
               </div>
             </div>
             <div class="pc-body">
               <p class="pc-metric">{model.metric}</p>
               <p class="pc-detail">
-                <GoogleIcon name="sell" size={12} style="display:inline-flex;margin-right:4px;color:#D50000;vertical-align:-2px;" />
+                <GoogleIcon name="sell" size={12} style="display:inline-flex;margin-right:4px;color:#0074E8;vertical-align:-2px;" />
                 Bono especial · Desde {model.price}
               </p>
               <button onclick={() => selectModel(model.slug)} class="pc-cta">
@@ -310,47 +287,47 @@
 
   <!-- ═══ Cinematic story panels ═══ -->
   <section class="story-reel">
-    <div class="story-panel" style={`background-image: url('https://www.ram.com/content/dam/cross-regional/nafta/ramtrucks/es_mx/2026/rho/desktop/my26-rho-featurepanel-01-desktop.jpg.img.2880.jpg')`}>
-      <img class="story-mobile-img" src="https://www.ram.com/content/dam/cross-regional/nafta/ramtrucks/es_mx/2026/rho/desktop/my26-rho-featurepanel-01-desktop.jpg.img.2880.jpg" alt="Alto desempeño" />
+    <div class="story-panel" style={`background-image: url('https://www.peugeot.com.mx/content/dam/peugeot/mexico/b2c/our-range/showroom/new-2008/desktop/2023-peugeot-suv2008-interior-mx-dk.jpg?imwidth=1920')`}>
+      <img class="story-mobile-img" src="https://www.peugeot.com.mx/content/dam/peugeot/mexico/b2c/our-range/showroom/new-2008/desktop/2023-peugeot-suv2008-interior-mx-dk.jpg?imwidth=1920" alt="Actitud urbana" />
       <div class="story-overlay"></div>
       <div class="story-content">
-        <p class="story-eyebrow">Alto Desempeño</p>
-        <h2 class="story-title">Domina<br>el terreno.</h2>
-        <p class="story-sub">RAM 1500 RHO. Suspensión off-road, presencia total y respuesta inmediata en cualquier terreno.</p>
+        <p class="story-eyebrow">Actitud Urbana</p>
+        <h2 class="story-title">No pasas<br>desapercibido.</h2>
+        <p class="story-sub">Peugeot 2008. Actitud, tecnología i-Cockpit® y la presencia que acompaña todo lo que estás construyendo.</p>
         <div class="story-actions">
-          <button class="story-btn primary" onclick={() => goToCotizacion('1500-rho')}><GoogleIcon name="description" size={15} /> Cotizar</button>
-          <button class="story-btn ghost" onclick={() => selectModel('1500-rho')}>Explorar <GoogleIcon name="arrow_forward" size={15} /></button>
-          <button class="story-btn link" onclick={() => goToPrueba('1500-rho')}><GoogleIcon name="speed" size={14} /> Prueba de manejo</button>
+          <button class="story-btn primary" onclick={() => goToCotizacion('2008')}><GoogleIcon name="description" size={15} /> Cotizar</button>
+          <button class="story-btn ghost" onclick={() => selectModel('2008')}>Explorar <GoogleIcon name="arrow_forward" size={15} /></button>
+          <button class="story-btn link" onclick={() => goToPrueba('2008')}><GoogleIcon name="speed" size={14} /> Prueba de manejo</button>
         </div>
       </div>
     </div>
 
-    <div class="story-panel flip" style={`background-image: url('https://www.ram.com/content/dam/cross-regional/nafta/ramtrucks/es_mx/2026/ram-1500-tungsten/inicio/desktop/my26-ram-inicio-design-dk-mx.jpg.img.2880.jpg')`}>
-      <img class="story-mobile-img" src="https://www.ram.com/content/dam/cross-regional/nafta/ramtrucks/es_mx/2026/ram-1500-tungsten/inicio/desktop/my26-ram-inicio-design-dk-mx.jpg.img.2880.jpg" alt="Lujo Premium" />
+    <div class="story-panel flip" style={`background-image: url('https://www.peugeot.com.mx/content/dam/peugeot/mexico/b2c/our-range/nuevo-3008/desktop/ventajas1.png?imwidth=1920')`}>
+      <img class="story-mobile-img" src="https://www.peugeot.com.mx/content/dam/peugeot/mexico/b2c/our-range/nuevo-3008/desktop/ventajas1.png?imwidth=1920" alt="Sofisticación" />
       <div class="story-overlay flip"></div>
       <div class="story-content flip">
-        <p class="story-eyebrow">Lujo Premium</p>
-        <h2 class="story-title">Confort que<br>impone.</h2>
-        <p class="story-sub">RAM 1500 Tungsten: cabina elevada, materiales premium y la presencia de la pickup más premiada.</p>
+        <p class="story-eyebrow">Sofisticación</p>
+        <h2 class="story-title">El lujo está<br>en cómo se vive.</h2>
+        <p class="story-sub">Peugeot 3008: cada detalle pensado para una experiencia de conducción superior.</p>
         <div class="story-actions">
-          <button class="story-btn primary" onclick={() => goToCotizacion('1500-tungsten')}><GoogleIcon name="description" size={15} /> Cotizar</button>
-          <button class="story-btn ghost" onclick={() => selectModel('1500-tungsten')}>Explorar <GoogleIcon name="arrow_forward" size={15} /></button>
-          <button class="story-btn link" onclick={() => goToPrueba('1500-tungsten')}><GoogleIcon name="speed" size={14} /> Prueba de manejo</button>
+          <button class="story-btn primary" onclick={() => goToCotizacion('3008')}><GoogleIcon name="description" size={15} /> Cotizar</button>
+          <button class="story-btn ghost" onclick={() => selectModel('3008')}>Explorar <GoogleIcon name="arrow_forward" size={15} /></button>
+          <button class="story-btn link" onclick={() => goToPrueba('3008')}><GoogleIcon name="speed" size={14} /> Prueba de manejo</button>
         </div>
       </div>
     </div>
 
-    <div class="story-panel" style={`background-image: url('https://www.ram.com/content/dam/cross-regional/nafta/ramtrucks/es_mx/2026/ram-1200/inicio/desktop/my26-ram-1200-inicio2-seguraeficiente-mx-dk.jpg.img.2880.jpg')`}>
-      <img class="story-mobile-img" src="https://www.ram.com/content/dam/cross-regional/nafta/ramtrucks/es_mx/2026/ram-1200/inicio/desktop/my26-ram-1200-inicio2-seguraeficiente-mx-dk.jpg.img.2880.jpg" alt="Trabajo inteligente" />
+    <div class="story-panel" style={`background-image: url('https://www.peugeot.com.mx/content/dam/peugeot/mexico/b2c/our-range/nuevo-5008/desktop/emocion1-dk.png?imwidth=1920')`}>
+      <img class="story-mobile-img" src="https://www.peugeot.com.mx/content/dam/peugeot/mexico/b2c/our-range/nuevo-5008/desktop/emocion1-dk.png?imwidth=1920" alt="Espacio familiar" />
       <div class="story-overlay"></div>
       <div class="story-content">
-        <p class="story-eyebrow">Trabajo Inteligente</p>
-        <h2 class="story-title">Carga que<br>rinde.</h2>
-        <p class="story-sub">RAM 1200. Configuración práctica y productiva para flotillas, campo y negocio diario.</p>
+        <p class="story-eyebrow">Espacio Familiar</p>
+        <h2 class="story-title">Siete plazas.<br>Un solo estilo.</h2>
+        <p class="story-sub">Peugeot 5008: espacio para toda la familia sin dejar atrás el confort y la tecnología.</p>
         <div class="story-actions">
-          <button class="story-btn primary" onclick={() => goToCotizacion('1200')}><GoogleIcon name="description" size={15} /> Cotizar</button>
-          <button class="story-btn ghost" onclick={() => selectModel('1200')}>Explorar <GoogleIcon name="arrow_forward" size={15} /></button>
-          <button class="story-btn link" onclick={() => goToPrueba('1200')}><GoogleIcon name="speed" size={14} /> Prueba de manejo</button>
+          <button class="story-btn primary" onclick={() => goToCotizacion('5008')}><GoogleIcon name="description" size={15} /> Cotizar</button>
+          <button class="story-btn ghost" onclick={() => selectModel('5008')}>Explorar <GoogleIcon name="arrow_forward" size={15} /></button>
+          <button class="story-btn link" onclick={() => goToPrueba('5008')}><GoogleIcon name="speed" size={14} /> Prueba de manejo</button>
         </div>
       </div>
     </div>
@@ -364,12 +341,12 @@
     </div>
     <div class="stat-sep"></div>
     <div class="stat-item">
-      <strong>3,500+</strong>
-      <span>familias con su RAM</span>
+      <strong>2,400+</strong>
+      <span>familias con su Peugeot</span>
     </div>
     <div class="stat-sep"></div>
     <div class="stat-item">
-      <strong>5</strong>
+      <strong>4</strong>
       <span>modelos 2026</span>
     </div>
     <div class="stat-sep"></div>
@@ -379,11 +356,11 @@
     </div>
   </section>
 
-  <section id="cotizar" class="cotizar-band" aria-label="Cotización RAM">
+  <section id="cotizar" class="cotizar-band" aria-label="Cotización Peugeot">
     <div class="cotizar-inner">
       <div class="cotizar-copy">
-        <p>Cotización RAM</p>
-        <h2>Tu próxima RAM, sin complicaciones.</h2>
+        <p>Cotización Peugeot</p>
+        <h2>Tu próximo Peugeot, sin complicaciones.</h2>
         <span>Esquemas de financiamiento a tu medida, pre-aprobación en menos de 24 horas y asesoría personalizada con expertos VAPSA.</span>
         <ul class="cotizar-perks">
           <li><GoogleIcon name="payments" size={16} /> Enganche desde 10%</li>
@@ -408,7 +385,7 @@
   </section>
 
   <section class="hub-cta">
-    <GoogleIcon name="route" size={24} style="margin-bottom:20px;color:{RAM_HOVER}" />
+    <GoogleIcon name="route" size={24} style="margin-bottom:20px;color:{PEUGEOT_HOVER}" />
     <p>¿No sabes cuál te conviene?</p>
     <h2>Te ayudamos a elegir por uso, presupuesto y disponibilidad.</h2>
     <div class="hub-cta-actions">
@@ -418,7 +395,7 @@
 </main>
 
 <style>
-  .ram-hub {
+  .peugeot-hub {
     min-height: 100vh;
     background: #050507;
     color: white;
@@ -426,12 +403,12 @@
     overflow: clip;
     --ease: cubic-bezier(0.16, 1, 0.3, 1);
     --hairline: rgba(255, 255, 255, 0.14);
-    --ram-default: #880D00;
-    --ram-hover: #BA0000;
+    --peugeot-default: #0074E8;
+    --peugeot-hover: #0057AD;
     --brand-bg: #7f7f7f;
   }
 
-  .ram-hub * {
+  .peugeot-hub * {
     box-sizing: border-box;
   }
 
@@ -443,14 +420,14 @@
     overflow: hidden;
   }
 
-  .ram-hub::before {
-    content: 'RAM';
+  .peugeot-hub::before {
+    content: 'PEUGEOT';
     position: fixed;
     z-index: 0;
     right: -0.06em;
     top: 38vh;
     color: rgba(255, 255, 255, 0.028);
-    font-size: clamp(170px, 24vw, 430px);
+    font-size: clamp(90px, 13vw, 260px);
     font-weight: 950;
     letter-spacing: 0;
     line-height: 1;
@@ -464,8 +441,8 @@
   }
 
   @keyframes badge-glow {
-    0%, 100% { box-shadow: 0 0 8px rgba(186, 0, 0, 0.5), 0 0 0 rgba(186, 0, 0, 0); }
-    50% { box-shadow: 0 0 18px rgba(186, 0, 0, 0.8), 0 0 32px rgba(186, 0, 0, 0.25); }
+    0%, 100% { box-shadow: 0 0 8px rgba(0, 87, 173, 0.5), 0 0 0 rgba(0, 87, 173, 0); }
+    50% { box-shadow: 0 0 18px rgba(0, 87, 173, 0.8), 0 0 32px rgba(0, 87, 173, 0.25); }
   }
 
   .hide {
@@ -500,9 +477,9 @@
     inset: 0;
     z-index: 2;
     background:
-      radial-gradient(circle at 72% 46%, rgba(136, 13, 0, 0.24), transparent 32%),
-      linear-gradient(90deg, rgba(5, 5, 7, 0.50) 0%, rgba(5, 5, 7, 0.20) 40%, rgba(5, 5, 7, 0.05) 100%),
-      linear-gradient(0deg, #050507 0%, transparent 42%);
+      radial-gradient(circle at 72% 46%, rgba(0, 87, 173, 0.20), transparent 32%),
+      linear-gradient(90deg, rgba(3, 5, 10, 0.50) 0%, rgba(3, 5, 10, 0.20) 40%, rgba(3, 5, 10, 0.05) 100%),
+      linear-gradient(0deg, #03050a 0%, transparent 42%);
   }
 
   .hero-copy-new {
@@ -587,14 +564,14 @@
     letter-spacing: 0.02em;
     text-transform: uppercase;
     cursor: pointer;
-    background: var(--ram-default);
+    background: var(--peugeot-default);
     color: white;
     border: 1px solid transparent;
     transition: all 300ms var(--ease);
   }
 
   .hero-actions-new button.primary:hover {
-    background: var(--ram-hover);
+    background: var(--peugeot-hover);
     transform: translateY(-2px);
   }
 
@@ -629,7 +606,7 @@
 
   .hub-cta p {
     margin: 0 0 10px;
-    color: var(--ram-hover);
+    color: var(--peugeot-hover);
     font-size: 11px;
     font-weight: 900;
     letter-spacing: 0.18em;
@@ -643,8 +620,8 @@
     --gap: clamp(18px, 2vw, 28px);
     padding: clamp(56px, 7vw, 98px) clamp(18px, 6vw, 90px);
     background:
-      radial-gradient(circle at 78% 22%, rgba(136, 13, 0, 0.18), transparent 32%),
-      linear-gradient(180deg, #050507 0%, #09090d 100%);
+      radial-gradient(circle at 78% 22%, rgba(0, 87, 173, 0.18), transparent 32%),
+      linear-gradient(180deg, #03050a 0%, #080b12 100%);
     border-bottom: 1px solid rgba(255, 255, 255, 0.06);
     animation: reveal-up both;
     animation-timeline: view();
@@ -668,7 +645,7 @@
 
   .carousel-head p {
     margin: 0 0 8px;
-    color: var(--ram-hover);
+    color: var(--peugeot-hover);
     font-size: 11px;
     font-weight: 950;
     letter-spacing: 0.18em;
@@ -815,7 +792,7 @@
 
   .pc-img-gradient {
     position: absolute; inset: 0;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.02) 0%, rgba(5,8,20,0.75) 70%, rgba(5,8,20,0.95) 100%);
+    background: linear-gradient(to bottom, rgba(0,0,0,0.02) 0%, rgba(3,5,10,0.75) 70%, rgba(3,5,10,0.95) 100%);
   }
 
   .pc-badge-stat {
@@ -835,9 +812,9 @@
     position: absolute; top: 12px; left: 12px;
     padding: 4px 10px;
     border-radius: 8px;
-    background: linear-gradient(135deg, rgba(213,0,0,0.95), rgba(136,13,0,0.90));
+    background: linear-gradient(135deg, rgba(0,116,232,0.95), rgba(0,87,173,0.90));
     border: 1px solid rgba(255,255,255,0.28);
-    color: #ff9e9e;
+    color: #9ecaff;
     font-size: 10px; font-weight: 800; letter-spacing: 0.08em;
     text-transform: uppercase;
     backdrop-filter: blur(12px);
@@ -847,7 +824,7 @@
   .pc-img-footer {
     position: absolute; bottom: 0; left: 0; right: 0;
     padding: 20px 16px 14px;
-    background: linear-gradient(to top, rgba(5,8,20,0.85) 0%, transparent 100%);
+    background: linear-gradient(to top, rgba(3,5,10,0.85) 0%, transparent 100%);
   }
 
   .pc-img-footer p {
@@ -889,7 +866,7 @@
 
   .pc-metric {
     margin: 0 0 4px;
-    color: #ff9e9e;
+    color: #9ecaff;
     font-size: 10px; font-weight: 800;
     letter-spacing: 0.14em;
     text-transform: uppercase;
@@ -913,18 +890,18 @@
     padding: 8px 14px;
     border-radius: 999px;
     font-size: 12px; font-weight: 700;
-    background: linear-gradient(135deg, rgba(213,0,0,0.55), rgba(136,13,0,0.4));
-    border: 1px solid rgba(136,13,0,0.45);
-    color: #ff9e9e;
-    box-shadow: rgba(213,0,0,0.3) 0 2px 12px, rgba(255,255,255,0.12) 0 1px 0 inset;
+    background: linear-gradient(135deg, rgba(0,116,232,0.55), rgba(0,87,173,0.4));
+    border: 1px solid rgba(0,87,173,0.45);
+    color: #9ecaff;
+    box-shadow: rgba(0,116,232,0.3) 0 2px 12px, rgba(255,255,255,0.12) 0 1px 0 inset;
     backdrop-filter: blur(8px);
     cursor: pointer;
     transition: all 280ms cubic-bezier(0.16,1,0.3,1);
   }
 
   .pc-cta:hover {
-    background: linear-gradient(135deg, rgba(136,13,0,0.75), rgba(213,0,0,0.6));
-    border-color: rgba(255,158,158,0.5);
+    background: linear-gradient(135deg, rgba(0,87,173,0.75), rgba(0,116,232,0.6));
+    border-color: rgba(158,202,255,0.5);
     transform: translateY(-1px);
   }
 
@@ -965,7 +942,7 @@
     background: rgba(255, 255, 255, 0.92);
   }
 
-  /* ═══ Story Panels (cinematic, Apple-style) ═══ */
+  /* ═══ Story Panels ═══ */
   .story-reel {
     position: relative;
     z-index: 1;
@@ -998,18 +975,18 @@
     inset: 0;
     background: linear-gradient(
       90deg,
-      rgba(5, 5, 7, 0.88) 0%,
-      rgba(5, 5, 7, 0.54) 46%,
-      rgba(5, 5, 7, 0.08) 100%
+      rgba(3, 5, 10, 0.88) 0%,
+      rgba(3, 5, 10, 0.54) 46%,
+      rgba(3, 5, 10, 0.08) 100%
     );
   }
 
   .story-overlay.flip {
     background: linear-gradient(
       270deg,
-      rgba(5, 5, 7, 0.88) 0%,
-      rgba(5, 5, 7, 0.54) 46%,
-      rgba(5, 5, 7, 0.08) 100%
+      rgba(3, 5, 10, 0.88) 0%,
+      rgba(3, 5, 10, 0.54) 46%,
+      rgba(3, 5, 10, 0.08) 100%
     );
   }
 
@@ -1030,7 +1007,7 @@
 
   .story-eyebrow {
     margin: 0 0 18px;
-    color: color-mix(in srgb, var(--ram-hover) 28%, rgba(255,255,255,0.94));
+    color: color-mix(in srgb, var(--peugeot-hover) 28%, rgba(255,255,255,0.94));
     font-size: 11px;
     font-weight: 900;
     letter-spacing: 0.20em;
@@ -1086,16 +1063,16 @@
   }
 
   .story-btn.primary {
-    background: linear-gradient(135deg, var(--ram-default) 0%, var(--ram-hover) 100%);
+    background: linear-gradient(135deg, var(--peugeot-default) 0%, var(--peugeot-hover) 100%);
     color: white;
     border: 0;
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.18), 0 10px 32px rgba(136,13,0,0.40);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.18), 0 10px 32px rgba(0,87,173,0.40);
   }
 
   .story-btn.primary:hover {
     transform: translateY(-2px);
     filter: brightness(1.14);
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.24), 0 16px 44px rgba(136,13,0,0.54);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.24), 0 16px 44px rgba(0,87,173,0.54);
   }
 
   .story-btn.ghost {
@@ -1137,7 +1114,7 @@
     flex-wrap: wrap;
     gap: clamp(24px, 3.6vw, 54px);
     padding: clamp(48px, 6.5vw, 80px) clamp(20px, 6vw, 90px);
-    background: linear-gradient(180deg, #050507 0%, #07070c 100%);
+    background: linear-gradient(180deg, #03050a 0%, #06090f 100%);
     border-top: 1px solid rgba(255, 255, 255, 0.08);
   }
 
@@ -1154,7 +1131,7 @@
     line-height: 1;
     font-weight: 950;
     letter-spacing: -0.03em;
-    background: linear-gradient(135deg, #fff 0%, color-mix(in srgb, var(--ram-hover) 56%, white) 100%);
+    background: linear-gradient(135deg, #fff 0%, color-mix(in srgb, var(--peugeot-hover) 56%, white) 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -1183,9 +1160,9 @@
     z-index: 1;
     padding: clamp(60px, 8vw, 110px) clamp(20px, 6vw, 90px);
     background:
-      radial-gradient(circle at 12% 50%, rgba(136, 13, 0, 0.16), transparent 38%),
-      radial-gradient(circle at 92% 8%, rgba(213, 0, 0, 0.10), transparent 30%),
-      #050507;
+      radial-gradient(circle at 12% 50%, rgba(0, 87, 173, 0.16), transparent 38%),
+      radial-gradient(circle at 92% 8%, rgba(0, 116, 232, 0.10), transparent 30%),
+      #03050a;
     border-top: 1px solid rgba(255, 255, 255, 0.06);
   }
 
@@ -1207,7 +1184,7 @@
 
   .cotizar-copy p {
     margin: 0 0 10px;
-    color: var(--ram-hover);
+    color: var(--peugeot-hover);
     font-size: 11px;
     font-weight: 900;
     letter-spacing: 0.18em;
@@ -1251,7 +1228,7 @@
   }
 
   .cotizar-perks li :global(.material-symbols-outlined) {
-    color: var(--ram-hover);
+    color: var(--peugeot-hover);
   }
 
   .cotizar-form {
@@ -1279,7 +1256,7 @@
     padding: 0 18px;
     border: 1px solid rgba(255, 255, 255, 0.16);
     border-radius: 16px;
-    background: rgba(8, 8, 14, 0.55);
+    background: rgba(6, 9, 15, 0.55);
     color: white;
     font-family: inherit;
     font-size: 14px;
@@ -1295,11 +1272,11 @@
 
   .cotizar-field select:hover {
     border-color: rgba(255, 255, 255, 0.28);
-    background-color: rgba(12, 12, 20, 0.65);
+    background-color: rgba(10, 14, 22, 0.65);
   }
 
   .cotizar-field select option {
-    background: #0c0c14;
+    background: #0a0e16;
     color: white;
   }
 
@@ -1314,8 +1291,8 @@
     border: 0;
     border-radius: 16px;
     color: white;
-    background: linear-gradient(135deg, var(--ram-default) 0%, var(--ram-hover) 100%);
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.18), 0 16px 40px rgba(136, 13, 0, 0.36);
+    background: linear-gradient(135deg, var(--peugeot-default) 0%, var(--peugeot-hover) 100%);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.18), 0 16px 40px rgba(0, 87, 173, 0.36);
     font-family: inherit;
     font-size: 15px;
     font-weight: 900;
@@ -1327,7 +1304,7 @@
   .cotizar-primary:hover {
     transform: translateY(-2px);
     filter: brightness(1.12);
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.24), 0 22px 56px rgba(136, 13, 0, 0.50);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.24), 0 22px 56px rgba(0, 87, 173, 0.50);
   }
 
   .hub-cta {
@@ -1338,8 +1315,8 @@
     text-align: center;
     padding: 60px 20px;
     background:
-      radial-gradient(circle at 50% 40%, rgba(136, 13, 0, 0.24), transparent 30%),
-      #050507;
+      radial-gradient(circle at 50% 40%, rgba(0, 87, 173, 0.24), transparent 30%),
+      #03050a;
     border-top: 1px solid rgba(255,255,255,0.10);
   }
 
@@ -1369,15 +1346,15 @@
     cursor: pointer;
     border: 0;
     color: white;
-    background: linear-gradient(135deg, var(--ram-default) 0%, var(--ram-hover) 100%);
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.18), 0 14px 36px rgba(136, 13, 0, 0.34);
+    background: linear-gradient(135deg, var(--peugeot-default) 0%, var(--peugeot-hover) 100%);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.18), 0 14px 36px rgba(0, 87, 173, 0.34);
     transition: transform 380ms var(--ease), filter 380ms var(--ease), box-shadow 380ms var(--ease);
   }
 
   .hub-cta-actions button:hover {
     transform: translateY(-2px);
     filter: brightness(1.12);
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.24), 0 20px 50px rgba(136, 13, 0, 0.48);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.24), 0 20px 50px rgba(0, 87, 173, 0.48);
   }
 
   @keyframes reveal-up {
@@ -1396,7 +1373,6 @@
     }
   }
 
-  /* ─── Tablet (≤ 980px) ─── */
   @media (max-width: 980px) {
     .cotizar-inner {
       grid-template-columns: 1fr;
@@ -1453,9 +1429,9 @@
     .story-overlay.flip {
       background: linear-gradient(
         0deg,
-        rgba(5, 5, 7, 0.92) 0%,
-        rgba(5, 5, 7, 0.60) 40%,
-        rgba(5, 5, 7, 0.10) 100%
+        rgba(3, 5, 10, 0.92) 0%,
+        rgba(3, 5, 10, 0.60) 40%,
+        rgba(3, 5, 10, 0.10) 100%
       );
     }
   }
@@ -1463,7 +1439,6 @@
   .hub-mobile-fade { display: none; }
   .hub-hero-mobile { display: none; }
 
-  /* ─── Mobile (≤ 768px): 2-block hero layout ─── */
   @media (max-width: 768px) {
     .hub-hero {
       height: 52svh !important;
@@ -1481,7 +1456,7 @@
       position: absolute;
       bottom: 0; left: 0; right: 0;
       height: 56px;
-      background: linear-gradient(to bottom, transparent, #050507);
+      background: linear-gradient(to bottom, transparent, #03050a);
       pointer-events: none;
       z-index: 3;
     }
@@ -1492,7 +1467,7 @@
 
     .hub-hero-mobile {
       display: block;
-      background: #050507;
+      background: #03050a;
     }
 
     .hub-hero-mobile-inner {
@@ -1545,7 +1520,7 @@
       height: 46px;
       padding: 0 22px;
       border-radius: 999px;
-      background: #880D00;
+      background: #0074E8;
       color: white;
       font-size: 12px;
       font-weight: 800;
@@ -1556,18 +1531,17 @@
       font-family: inherit;
       width: 100%;
       margin-top: 4px;
-      box-shadow: 0 4px 16px rgba(136, 13, 0, 0.36);
+      box-shadow: 0 4px 16px rgba(0, 116, 232, 0.36);
       transition: background 280ms ease, transform 280ms ease, box-shadow 280ms ease;
     }
 
     .hub-mobile-cta:hover {
-      background: #BA0000;
+      background: #0057AD;
       transform: translateY(-1px);
-      box-shadow: 0 6px 20px rgba(186, 0, 0, 0.52);
+      box-shadow: 0 6px 20px rgba(0, 87, 173, 0.52);
     }
   }
 
-  /* ─── Mobile (≤ 620px) ─── */
   @media (max-width: 620px) {
     .hub-hero > img {
       object-position: 70% center;
@@ -1645,7 +1619,7 @@
       padding: 24px 20px 32px;
       margin-left: 0;
       text-align: left;
-      background: #07070c;
+      background: #06090f;
       animation: none;
     }
 

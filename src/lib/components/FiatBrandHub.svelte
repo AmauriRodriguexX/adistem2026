@@ -2,7 +2,7 @@
   import GoogleIcon from './GoogleIcon.svelte'
   import ContactFormCard from './ContactFormCard.svelte'
 
-  type RamModel = {
+  type FiatModel = {
     slug: string
     name: string
     role: string
@@ -18,83 +18,75 @@
 
   let { onModelSelect }: { onModelSelect?: (slug: string) => void } = $props()
 
-  const A = '/adistem2026/ram-lineup'
-  const RAM_DEFAULT = '#880D00'
-  const RAM_HOVER = '#BA0000'
+  const A = '/adistem2026/fiat'
+  const FIAT_DEFAULT = '#FF1530'
+  const FIAT_HOVER = '#c70606'
   let activeModelIndex = $state(0)
+  let showCotizarDrawer = $state(false)
 
-  const models: RamModel[] = [
+  const CDN = 'https://www.jeep.com.mx/content/dam/cross-regional'
+
+  const models: FiatModel[] = [
     {
-      slug: '1500-rho',
-      name: 'RAM 1500 RHO',
-      role: 'Alto desempeño off-road',
-      image: 'https://www.ram.com/content/dam/cross-regional/nafta/ramtrucks/es_mx/2026/rho/desktop/my26-rho-hero-desktop.jpg.img.2880.jpg',
-      mobileImage: 'https://www.ram.com/content/dam/cross-regional/nafta/ramtrucks/es_mx/2026/rho/desktop/my26-rho-hero-desktop.jpg.img.2880.jpg',
-      accent: RAM_HOVER,
-      use: 'Para quien quiere velocidad, presencia y terracería.',
+      slug: 'pulse',
+      name: 'Fiat Pulse',
+      role: 'El SUV que late con tu estilo',
+      image: 'https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2026/pulse-2026/desktop/my26-fiat-pulse-inicio-hero-mx-dk.jpg',
+      mobileImage: 'https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2026/pulse-2026/mobile/my26-fiat-pulse-inicio-hero-mx-mb.jpg',
+      accent: FIAT_HOVER,
+      use: 'Para la ciudad, conectividad y confort diario.',
+      stat: 'SUV Urbano',
+      metric: 'Conectividad Total',
+      detail: 'Diseño italiano, tecnología avanzada y máxima seguridad en cada viaje.',
+      price: '$368,900'
+    },
+    {
+      slug: 'pulse-abarth',
+      name: 'Pulse Abarth',
+      role: 'Deportividad con el sello del escorpión',
+      image: 'https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/Home/Menu-modelos/my26-fiat-pulseabarth-inicio-global-nav-alldevices-mx.jpg.img.600.jpg',
+      mobileImage: 'https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/Home/Menu-modelos/my26-fiat-pulseabarth-inicio-global-nav-alldevices-mx.jpg.img.600.jpg',
+      accent: FIAT_DEFAULT,
+      use: 'Para los que buscan adrenalina y un manejo deportivo.',
       stat: 'Performance',
-      metric: 'Off-Road',
-      detail: 'Suspensión y respuesta de alto desempeño para terrenos abiertos.',
-      price: '$1,290,000'
+      metric: 'Motor Turbo 270',
+      detail: 'El primer SUV Abarth en el mundo. Deportividad envenenada.',
+      price: '$529,900'
     },
     {
-      slug: '1500-tungsten',
-      name: 'RAM 1500 Tungsten',
-      role: 'Lujo y capacidad premium',
-      image: 'https://www.ram.com/content/dam/cross-regional/nafta/ramtrucks/es_mx/2026/ram-1500-tungsten/inicio/desktop/my26-ram-hero2-mx-dk.jpg.img.2880.jpg',
-      mobileImage: 'https://www.ram.com/content/dam/cross-regional/nafta/ramtrucks/es_mx/2026/ram-1500-tungsten/inicio/desktop/my26-ram-hero2-mx-dk.jpg.img.2880.jpg',
-      accent: RAM_DEFAULT,
-      use: 'Para viajes, negocio y confort ejecutivo.',
-      stat: 'Premium',
-      metric: 'Lujo Total',
-      detail: 'Cabina elevada, materiales premium y gran presencia en cualquier camino.',
-      price: '$1,290,000'
+      slug: 'fastback',
+      name: 'Fiat Fastback',
+      role: 'El SUV Coupé que redefine el estilo',
+      image: 'https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2026/pulse-2026/menu/my26-fiat-fastback-inicio-global-nav-alldevices-mx.jpg.img.600.jpg',
+      mobileImage: 'https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2026/pulse-2026/menu/my26-fiat-fastback-inicio-global-nav-alldevices-mx.jpg.img.600.jpg',
+      accent: FIAT_HOVER,
+      use: 'Para quienes buscan diseño audaz y amplio espacio.',
+      stat: 'Diseño Coupé',
+      metric: 'Gran Cajuela',
+      detail: 'El SUV con diseño de coupé y el espacio interior más amplio de su categoría.',
+      price: '$482,900'
     },
     {
-      slug: '700',
-      name: 'RAM 700',
-      role: 'Compacta, ágil, urbana',
-      image: 'https://www.ram.com/content/dam/cross-regional/nafta/ramtrucks/es_mx/2026/ram-700/inicio/desktop/my26-ram-700-cover-mx-dk.jpg.img.2880.jpg',
-      mobileImage: 'https://www.ram.com/content/dam/cross-regional/nafta/ramtrucks/es_mx/2026/ram-700/inicio/desktop/my26-ram-700-cover-mx-dk.jpg.img.2880.jpg',
-      accent: RAM_HOVER,
-      use: 'Para ciudad, reparto y emprendimientos.',
-      stat: 'Ciudad',
-      metric: 'Ágil',
-      detail: 'Formato compacto para moverse y cargar todos los días.',
-      price: '$408,400'
-    },
-    {
-      slug: '1500',
-      name: 'RAM 1500',
-      role: 'Potencia diaria',
-      image: 'https://www.ram.com/content/dam/cross-regional/nafta/ramtrucks/es_mx/home/cover/my26-ram-1500-inicio-hero-bhp-august-dk-mx.jpg.img.2880.jpg',
-      accent: RAM_DEFAULT,
-      use: 'Para remolque, familia y aventura.',
-      stat: 'Versátil',
-      metric: 'Remolque',
-      detail: 'Balance entre fuerza, confort y capacidad diaria.',
-      price: '$1,290,000'
-    },
-    {
-      slug: '1200',
-      name: 'RAM 1200',
-      role: 'Trabajo inteligente',
-      image: 'https://www.ram.com/content/dam/cross-regional/nafta/ramtrucks/es_mx/2026/ram-1200/inicio/desktop/my26-ram-1200-vlp-hero-mx-dk.jpg.img.2880.jpg',
-      accent: '#7f7f7f',
-      use: 'Para flotillas, campo y carga productiva.',
-      stat: 'Trabajo',
-      metric: 'Carga',
-      detail: 'Configuración práctica para jornadas productivas.',
-      price: '$408,400'
-    },
+      slug: 'argo',
+      name: 'Fiat Argo',
+      role: 'El hatchback italiano por excelencia',
+      image: 'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F35bd343876d4e41f21a86499747f1af99d5fe2b2.jpg?generation=1777350234727796&alt=media',
+      mobileImage: 'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F35bd343876d4e41f21a86499747f1af99d5fe2b2.jpg?generation=1777350234727796&alt=media',
+      accent: FIAT_DEFAULT,
+      use: 'Para el día a día ágil y con el mejor estilo.',
+      stat: 'Hatchback',
+      metric: 'Eficiencia',
+      detail: 'Diseño envolvente y confort superior en cada trayecto.',
+      price: '$289,900'
+    }
   ]
 
   function selectModel(_slug: string) {
-    // All model explore CTAs route to 1500 RHO (only fully-built landing)
-    onModelSelect?.('1500-rho')
+    // All model explore CTAs route to Pulse (only fully-built landing)
+    onModelSelect?.('pulse2026')
   }
 
-  const VISIBLE_SLUGS = ['1500-rho', '1500-tungsten', '700']
+  const VISIBLE_SLUGS = ['pulse', 'pulse-abarth', 'fastback', 'argo']
 
   function goToModel(index: number) {
     activeModelIndex = (index + 3) % 3
@@ -125,7 +117,7 @@
   }
 
   // Modelo seleccionado en el inline-form preview
-  let selectedQuoteModel = $state('1500-rho')
+  let selectedQuoteModel = $state('pulse')
 
   let isPlaying = $state(true)
 
@@ -153,22 +145,27 @@
   function onTouchEnd(e: TouchEvent) {
     const dx = touchStartX - e.changedTouches[0].clientX
     const dy = touchStartY - e.changedTouches[0].clientY
+    // Solo swipe horizontal claro (más dx que dy)
     if (Math.abs(dx) < 40 || Math.abs(dx) < Math.abs(dy)) return
     goToModel(dx > 0 ? activeModelIndex + 1 : activeModelIndex - 1)
   }
 
+  // Pausar autoplay al hover del carrusel
   function onCarouselEnter() { isPlaying = false }
   function onCarouselLeave() { isPlaying = true }
 </script>
 
 <svelte:head>
-  <title>RAM | Gama 2026 en VAPSA</title>
+  <title>FIAT | Gama 2026 en VAPSA</title>
 </svelte:head>
 
-<main class="ram-hub">
+<main class="fiat-hub">
   <section class="hub-hero">
     {#each models as model, i (model.slug)}
       <img class="hero-bg hero-desktop-img" class:active={i === activeModelIndex} class:hide={!VISIBLE_SLUGS.includes(model.slug)} src={model.image} alt={model.name} />
+      {#if model.mobileImage}
+        <img class="hero-bg hero-mobile-img" class:active={i === activeModelIndex} class:hide={!VISIBLE_SLUGS.includes(model.slug)} src={model.mobileImage} alt={model.name} />
+      {/if}
     {/each}
     <div class="hero-shade-new"></div>
     <div class="relative z-10 w-full max-w-[1650px] mx-auto px-4 sm:px-8 xl:px-12 pt-4 xl:pt-24 pb-3 xl:pb-4 flex flex-col xl:flex-row items-center xl:items-end justify-between gap-6 xl:gap-10 min-h-0 xl:min-h-screen">
@@ -192,10 +189,10 @@
 
       <!-- Formulario de Cotización Desktop en Brand Hub -->
       <div id="brandhub-desktop-form" class="hidden xl:block flex-shrink-0 w-full max-w-[380px] xl:max-w-[410px] z-10 self-center mb-12">
-        <ContactFormCard accent="#880D00" initialBrand="Ram" initialModel={models[activeModelIndex].name.replace('RAM ', '') + ' 2026'} />
+        <ContactFormCard accent="#FF1530" initialBrand="Fiat" initialModel={models[activeModelIndex].name.replace('Fiat ', '') + ' 2026'} />
       </div>
     </div>
-
+    
     <!-- Mobile: fade bottom de imagen hacia el bloque de texto -->
     <div class="hub-mobile-fade" aria-hidden="true"></div>
 
@@ -227,10 +224,16 @@
         <p>{models[activeModelIndex].role}</p>
         <span class="hub-mobile-price">Desde {models[activeModelIndex].price}</span>
         <div class="flex flex-col gap-2 w-full mt-3">
-          <button class="hub-mobile-cta" onclick={() => selectModel(models[activeModelIndex].slug)}>
+          <button
+            class="hub-mobile-cta"
+            onclick={() => selectModel(models[activeModelIndex].slug)}
+          >
             Explorar <GoogleIcon name="arrow_forward" size={16} />
           </button>
-          <button class="hub-mobile-cta ghost" onclick={scrollToForm}>
+          <button
+            class="hub-mobile-cta ghost"
+            onclick={scrollToForm}
+          >
             Cotiza ahora <GoogleIcon name="arrow_downward" size={16} />
           </button>
         </div>
@@ -238,28 +241,31 @@
     {/key}
   </div>
 
-  <!-- ── Formulario Mobile ── -->
+  <!-- ── Formulario Mobile (debajo de los CTAs en mobile) ── -->
   <div id="brandhub-mobile-form" class="w-full max-w-lg mx-auto px-4 py-6 xl:hidden relative z-10">
     <ContactFormCard
-      accent="#880D00"
-      initialBrand="Ram"
-      initialModel={models[activeModelIndex].name.replace('RAM ', '') + ' 2026'}
+      accent="#FF1530"
+      initialBrand="Fiat"
+      initialModel={models[activeModelIndex].name.replace('Fiat ', '') + ' 2026'}
     />
   </div>
 
   <section
     class="model-carousel"
-    aria-label="Modelos RAM"
+    aria-label="Modelos FIAT"
     onmouseenter={onCarouselEnter}
     onmouseleave={onCarouselLeave}>
     <div class="carousel-head">
       <div>
         <p>Promociones exclusivas</p>
-        <h2>Estrena tu RAM con ofertas únicas.</h2>
+        <h2>Estrena tu Fiat con ofertas únicas.</h2>
       </div>
     </div>
 
-    <div class="carousel-window" ontouchstart={onTouchStart} ontouchend={onTouchEnd}>
+    <div
+      class="carousel-window"
+      ontouchstart={onTouchStart}
+      ontouchend={onTouchEnd}>
       <div class="model-track" style={`--active:${activeModelIndex};`}>
         {#each models as model, i (model.slug)}
           <article class="promo-card" class:active={i === activeModelIndex} class:hide={!VISIBLE_SLUGS.includes(model.slug)} style={`--accent:${model.accent}`}>
@@ -272,15 +278,15 @@
               <span class="pc-badge-stat">{model.stat}</span>
               <span class="pc-badge-promo">PROMO</span>
               <div class="pc-img-footer">
-                <p>Ram</p>
-                <h3>{model.name.replace('RAM ', '')} <span>2026</span></h3>
+                <p>Fiat</p>
+                <h3>{model.name.replace('Fiat ', '')} <span>2026</span></h3>
               </div>
             </div>
             <div class="pc-body">
               <p class="pc-metric">{model.metric}</p>
               <p class="pc-detail">
-                <GoogleIcon name="sell" size={12} style="display:inline-flex;margin-right:4px;color:#D50000;vertical-align:-2px;" />
-                Bono especial · Desde {model.price}
+                <GoogleIcon name="sell" size={12} style="display:inline-flex;margin-right:4px;color:#FF1530;vertical-align:-2px;" />
+                Bono especial · {model.price}
               </p>
               <button onclick={() => selectModel(model.slug)} class="pc-cta">
                 Ver promoción <GoogleIcon name="chevron_right" size={14} />
@@ -302,7 +308,10 @@
           </button>
         {/each}
       </div>
-      <button class="play-btn" aria-label={isPlaying ? 'Pausar carrusel' : 'Reproducir carrusel'} onclick={togglePlay}>
+      <button
+        class="play-btn"
+        aria-label={isPlaying ? 'Pausar carrusel' : 'Reproducir carrusel'}
+        onclick={togglePlay}>
         <GoogleIcon name={isPlaying ? 'pause' : 'play_arrow'} size={16} />
       </button>
     </div>
@@ -310,50 +319,52 @@
 
   <!-- ═══ Cinematic story panels ═══ -->
   <section class="story-reel">
-    <div class="story-panel" style={`background-image: url('https://www.ram.com/content/dam/cross-regional/nafta/ramtrucks/es_mx/2026/rho/desktop/my26-rho-featurepanel-01-desktop.jpg.img.2880.jpg')`}>
-      <img class="story-mobile-img" src="https://www.ram.com/content/dam/cross-regional/nafta/ramtrucks/es_mx/2026/rho/desktop/my26-rho-featurepanel-01-desktop.jpg.img.2880.jpg" alt="Alto desempeño" />
+
+    <div class="story-panel" style={`background-image: url('${models[0].image}')`}>
+      <img class="story-mobile-img" src={models[0].image} alt="Aventura Urbana" />
       <div class="story-overlay"></div>
       <div class="story-content">
-        <p class="story-eyebrow">Alto Desempeño</p>
-        <h2 class="story-title">Domina<br>el terreno.</h2>
-        <p class="story-sub">RAM 1500 RHO. Suspensión off-road, presencia total y respuesta inmediata en cualquier terreno.</p>
+        <p class="story-eyebrow">Aventura Urbana</p>
+        <h2 class="story-title">Latidos que<br>inspiran.</h2>
+        <p class="story-sub">Fiat Pulse. Diseño italiano, tecnología avanzada y máxima seguridad en cada viaje.</p>
         <div class="story-actions">
-          <button class="story-btn primary" onclick={() => goToCotizacion('1500-rho')}><GoogleIcon name="description" size={15} /> Cotizar</button>
-          <button class="story-btn ghost" onclick={() => selectModel('1500-rho')}>Explorar <GoogleIcon name="arrow_forward" size={15} /></button>
-          <button class="story-btn link" onclick={() => goToPrueba('1500-rho')}><GoogleIcon name="speed" size={14} /> Prueba de manejo</button>
+          <button class="story-btn primary" onclick={() => goToCotizacion('pulse')}><GoogleIcon name="description" size={15} /> Cotizar</button>
+          <button class="story-btn ghost" onclick={() => selectModel('pulse')}>Explorar <GoogleIcon name="arrow_forward" size={15} /></button>
+          <button class="story-btn link" onclick={() => goToPrueba('pulse')}><GoogleIcon name="speed" size={14} /> Prueba de manejo</button>
         </div>
       </div>
     </div>
 
-    <div class="story-panel flip" style={`background-image: url('https://www.ram.com/content/dam/cross-regional/nafta/ramtrucks/es_mx/2026/ram-1500-tungsten/inicio/desktop/my26-ram-inicio-design-dk-mx.jpg.img.2880.jpg')`}>
-      <img class="story-mobile-img" src="https://www.ram.com/content/dam/cross-regional/nafta/ramtrucks/es_mx/2026/ram-1500-tungsten/inicio/desktop/my26-ram-inicio-design-dk-mx.jpg.img.2880.jpg" alt="Lujo Premium" />
+    <div class="story-panel flip" style={`background-image: url('${models[2].image}')`}>
+      <img class="story-mobile-img" src={models[2].image} alt="Familia & Espacio" />
       <div class="story-overlay flip"></div>
       <div class="story-content flip">
-        <p class="story-eyebrow">Lujo Premium</p>
-        <h2 class="story-title">Confort que<br>impone.</h2>
-        <p class="story-sub">RAM 1500 Tungsten: cabina elevada, materiales premium y la presencia de la pickup más premiada.</p>
+        <p class="story-eyebrow">Diseño Coupé</p>
+        <h2 class="story-title">Estilo que<br>redefine todo.</h2>
+        <p class="story-sub">Fiat Fastback: diseño audaz, espacio interior inigualable y eficiencia superior.</p>
         <div class="story-actions">
-          <button class="story-btn primary" onclick={() => goToCotizacion('1500-tungsten')}><GoogleIcon name="description" size={15} /> Cotizar</button>
-          <button class="story-btn ghost" onclick={() => selectModel('1500-tungsten')}>Explorar <GoogleIcon name="arrow_forward" size={15} /></button>
-          <button class="story-btn link" onclick={() => goToPrueba('1500-tungsten')}><GoogleIcon name="speed" size={14} /> Prueba de manejo</button>
+          <button class="story-btn primary" onclick={() => goToCotizacion('fastback')}><GoogleIcon name="description" size={15} /> Cotizar</button>
+          <button class="story-btn ghost" onclick={() => selectModel('fastback')}>Explorar <GoogleIcon name="arrow_forward" size={15} /></button>
+          <button class="story-btn link" onclick={() => goToPrueba('fastback')}><GoogleIcon name="speed" size={14} /> Prueba de manejo</button>
         </div>
       </div>
     </div>
 
-    <div class="story-panel" style={`background-image: url('https://www.ram.com/content/dam/cross-regional/nafta/ramtrucks/es_mx/2026/ram-1200/inicio/desktop/my26-ram-1200-inicio2-seguraeficiente-mx-dk.jpg.img.2880.jpg')`}>
-      <img class="story-mobile-img" src="https://www.ram.com/content/dam/cross-regional/nafta/ramtrucks/es_mx/2026/ram-1200/inicio/desktop/my26-ram-1200-inicio2-seguraeficiente-mx-dk.jpg.img.2880.jpg" alt="Trabajo inteligente" />
+    <div class="story-panel" style={`background-image: url('${models[3].image}')`}>
+      <img class="story-mobile-img" src={models[3].image} alt="Hatchback Total" />
       <div class="story-overlay"></div>
       <div class="story-content">
-        <p class="story-eyebrow">Trabajo Inteligente</p>
-        <h2 class="story-title">Carga que<br>rinde.</h2>
-        <p class="story-sub">RAM 1200. Configuración práctica y productiva para flotillas, campo y negocio diario.</p>
+        <p class="story-eyebrow">Hatchback Eficiente</p>
+        <h2 class="story-title">Para el día a día.<br>Sin complicaciones.</h2>
+        <p class="story-sub">Fiat Argo. Agilidad y eficiencia para moverte por la ciudad.</p>
         <div class="story-actions">
-          <button class="story-btn primary" onclick={() => goToCotizacion('1200')}><GoogleIcon name="description" size={15} /> Cotizar</button>
-          <button class="story-btn ghost" onclick={() => selectModel('1200')}>Explorar <GoogleIcon name="arrow_forward" size={15} /></button>
-          <button class="story-btn link" onclick={() => goToPrueba('1200')}><GoogleIcon name="speed" size={14} /> Prueba de manejo</button>
+          <button class="story-btn primary" onclick={() => goToCotizacion('argo')}><GoogleIcon name="description" size={15} /> Cotizar</button>
+          <button class="story-btn ghost" onclick={() => selectModel('argo')}>Explorar <GoogleIcon name="arrow_forward" size={15} /></button>
+          <button class="story-btn link" onclick={() => goToPrueba('argo')}><GoogleIcon name="speed" size={14} /> Prueba de manejo</button>
         </div>
       </div>
     </div>
+
   </section>
 
   <!-- ═══ Stat strip ═══ -->
@@ -364,12 +375,12 @@
     </div>
     <div class="stat-sep"></div>
     <div class="stat-item">
-      <strong>3,500+</strong>
-      <span>familias con su RAM</span>
+      <strong>5,000+</strong>
+      <span>familias con su Fiat</span>
     </div>
     <div class="stat-sep"></div>
     <div class="stat-item">
-      <strong>5</strong>
+      <strong>8</strong>
       <span>modelos 2026</span>
     </div>
     <div class="stat-sep"></div>
@@ -379,11 +390,11 @@
     </div>
   </section>
 
-  <section id="cotizar" class="cotizar-band" aria-label="Cotización RAM">
+  <section id="cotizar" class="cotizar-band" aria-label="Cotización Fiat">
     <div class="cotizar-inner">
       <div class="cotizar-copy">
-        <p>Cotización RAM</p>
-        <h2>Tu próxima RAM, sin complicaciones.</h2>
+        <p>Cotización Fiat</p>
+        <h2>Tu próximo Fiat, sin complicaciones.</h2>
         <span>Esquemas de financiamiento a tu medida, pre-aprobación en menos de 24 horas y asesoría personalizada con expertos VAPSA.</span>
         <ul class="cotizar-perks">
           <li><GoogleIcon name="payments" size={16} /> Enganche desde 10%</li>
@@ -396,7 +407,7 @@
           <span>Modelo de interés</span>
           <select bind:value={selectedQuoteModel}>
             {#each models as model (model.slug)}
-              <option value={model.slug}>{model.name} · Desde {model.price}</option>
+              <option value={model.slug}>{model.name} · {model.price}</option>
             {/each}
           </select>
         </label>
@@ -408,7 +419,7 @@
   </section>
 
   <section class="hub-cta">
-    <GoogleIcon name="route" size={24} style="margin-bottom:20px;color:{RAM_HOVER}" />
+    <GoogleIcon name="route" size={24} style="margin-bottom:20px;color:{FIAT_HOVER}" />
     <p>¿No sabes cuál te conviene?</p>
     <h2>Te ayudamos a elegir por uso, presupuesto y disponibilidad.</h2>
     <div class="hub-cta-actions">
@@ -418,7 +429,11 @@
 </main>
 
 <style>
-  .ram-hub {
+  @keyframes drawer-in {
+    from { transform: translateX(100%); opacity: 0; }
+    to   { transform: translateX(0);   opacity: 1; }
+  }
+  .fiat-hub {
     min-height: 100vh;
     background: #050507;
     color: white;
@@ -426,12 +441,12 @@
     overflow: clip;
     --ease: cubic-bezier(0.16, 1, 0.3, 1);
     --hairline: rgba(255, 255, 255, 0.14);
-    --ram-default: #880D00;
-    --ram-hover: #BA0000;
+    --fiat-default: #FF1530;
+    --fiat-hover: #c70606;
     --brand-bg: #7f7f7f;
   }
 
-  .ram-hub * {
+  .fiat-hub * {
     box-sizing: border-box;
   }
 
@@ -443,8 +458,8 @@
     overflow: hidden;
   }
 
-  .ram-hub::before {
-    content: 'RAM';
+  .fiat-hub::before {
+    content: 'FIAT';
     position: fixed;
     z-index: 0;
     right: -0.06em;
@@ -464,12 +479,26 @@
   }
 
   @keyframes badge-glow {
-    0%, 100% { box-shadow: 0 0 8px rgba(186, 0, 0, 0.5), 0 0 0 rgba(186, 0, 0, 0); }
-    50% { box-shadow: 0 0 18px rgba(186, 0, 0, 0.8), 0 0 32px rgba(186, 0, 0, 0.25); }
+    0%, 100% { box-shadow: 0 0 8px rgba(199, 6, 6, 0.5), 0 0 0 rgba(199, 6, 6, 0); }
+    50% { box-shadow: 0 0 18px rgba(199, 6, 6, 0.8), 0 0 32px rgba(199, 6, 6, 0.25); }
+  }
+
+  /* Promo cards grid — fallback for when Tailwind classes aren't processed */
+  .promo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 24px;
   }
 
   .hide {
     display: none !important;
+  }
+
+  /* Card hover lift */
+  .fiat-hub .group:hover > div {
+    transform: translateY(-4px) !important;
+    box-shadow: rgba(255, 255, 255, 0.14) 0px 0px 0px 1px, rgba(0, 0, 0, 0.6) 0px 20px 48px !important;
+    transition: transform 350ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 350ms cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .hub-hero > img.hero-bg {
@@ -491,7 +520,21 @@
 
   @media (max-width: 767px) {
     .hub-hero > img.hero-desktop-img {
+      display: none !important;
+    }
+    .hub-hero > img.hero-mobile-img {
       display: block !important;
+    }
+    .hub-hero > img.hero-mobile-img.active {
+      animation: none !important;
+      transform: none !important;
+      opacity: 1 !important;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .hub-hero > img.hero-mobile-img {
+      display: none !important;
     }
   }
 
@@ -500,9 +543,9 @@
     inset: 0;
     z-index: 2;
     background:
-      radial-gradient(circle at 72% 46%, rgba(136, 13, 0, 0.24), transparent 32%),
-      linear-gradient(90deg, rgba(5, 5, 7, 0.50) 0%, rgba(5, 5, 7, 0.20) 40%, rgba(5, 5, 7, 0.05) 100%),
-      linear-gradient(0deg, #050507 0%, transparent 42%);
+      radial-gradient(circle at 72% 46%, rgba(136, 13, 0, 0.18), transparent 32%),
+      linear-gradient(90deg, rgba(3, 3, 5, 0.50) 0%, rgba(3, 3, 5, 0.20) 40%, rgba(3, 3, 5, 0.05) 100%),
+      linear-gradient(0deg, #030305 0%, transparent 42%);
   }
 
   .hero-copy-new {
@@ -587,14 +630,14 @@
     letter-spacing: 0.02em;
     text-transform: uppercase;
     cursor: pointer;
-    background: var(--ram-default);
+    background: var(--fiat-default);
     color: white;
     border: 1px solid transparent;
     transition: all 300ms var(--ease);
   }
 
   .hero-actions-new button.primary:hover {
-    background: var(--ram-hover);
+    background: var(--fiat-hover);
     transform: translateY(-2px);
   }
 
@@ -629,7 +672,7 @@
 
   .hub-cta p {
     margin: 0 0 10px;
-    color: var(--ram-hover);
+    color: var(--fiat-hover);
     font-size: 11px;
     font-weight: 900;
     letter-spacing: 0.18em;
@@ -643,7 +686,7 @@
     --gap: clamp(18px, 2vw, 28px);
     padding: clamp(56px, 7vw, 98px) clamp(18px, 6vw, 90px);
     background:
-      radial-gradient(circle at 78% 22%, rgba(136, 13, 0, 0.18), transparent 32%),
+      radial-gradient(circle at 78% 22%, rgba(136, 13, 0, 0.14), transparent 32%),
       linear-gradient(180deg, #050507 0%, #09090d 100%);
     border-bottom: 1px solid rgba(255, 255, 255, 0.06);
     animation: reveal-up both;
@@ -668,7 +711,7 @@
 
   .carousel-head p {
     margin: 0 0 8px;
-    color: var(--ram-hover);
+    color: var(--fiat-hover);
     font-size: 11px;
     font-weight: 950;
     letter-spacing: 0.18em;
@@ -744,6 +787,8 @@
     transition: transform 620ms var(--ease), border-color 620ms var(--ease), background 620ms var(--ease), box-shadow 620ms var(--ease);
   }
 
+
+
   .model-track img {
     position: relative;
     width: 100%;
@@ -757,10 +802,16 @@
     transition: transform 1200ms var(--ease), opacity 1200ms var(--ease), filter 1200ms var(--ease);
   }
 
+  .model-track article::after {
+    content: none;
+  }
+
   .model-track article.active img {
     transform: scale(1);
     opacity: 1;
   }
+
+
 
   .model-track article.active {
     background: rgba(255, 255, 255, 0.060);
@@ -768,6 +819,7 @@
     box-shadow: inset 0 1px 0 rgba(255,255,255,0.10), 0 30px 86px rgba(0, 0, 0, 0.32);
   }
 
+  /* ── Promo cards inside carousel ─────────────────────────── */
   .promo-card {
     display: flex !important;
     flex-direction: column !important;
@@ -835,9 +887,9 @@
     position: absolute; top: 12px; left: 12px;
     padding: 4px 10px;
     border-radius: 8px;
-    background: linear-gradient(135deg, rgba(213,0,0,0.95), rgba(136,13,0,0.90));
+    background: linear-gradient(135deg, rgba(255,21,48,0.95), rgba(199,6,6,0.90));
     border: 1px solid rgba(255,255,255,0.28);
-    color: #ff9e9e;
+    color: #ff9ea8;
     font-size: 10px; font-weight: 800; letter-spacing: 0.08em;
     text-transform: uppercase;
     backdrop-filter: blur(12px);
@@ -889,7 +941,7 @@
 
   .pc-metric {
     margin: 0 0 4px;
-    color: #ff9e9e;
+    color: #ff9ea8;
     font-size: 10px; font-weight: 800;
     letter-spacing: 0.14em;
     text-transform: uppercase;
@@ -913,18 +965,18 @@
     padding: 8px 14px;
     border-radius: 999px;
     font-size: 12px; font-weight: 700;
-    background: linear-gradient(135deg, rgba(213,0,0,0.55), rgba(136,13,0,0.4));
-    border: 1px solid rgba(136,13,0,0.45);
-    color: #ff9e9e;
-    box-shadow: rgba(213,0,0,0.3) 0 2px 12px, rgba(255,255,255,0.12) 0 1px 0 inset;
+    background: linear-gradient(135deg, rgba(255,21,48,0.55), rgba(199,6,6,0.4));
+    border: 1px solid rgba(199,6,6,0.45);
+    color: #ff9ea8;
+    box-shadow: rgba(255,21,48,0.3) 0 2px 12px, rgba(255,255,255,0.12) 0 1px 0 inset;
     backdrop-filter: blur(8px);
     cursor: pointer;
     transition: all 280ms cubic-bezier(0.16,1,0.3,1);
   }
 
   .pc-cta:hover {
-    background: linear-gradient(135deg, rgba(136,13,0,0.75), rgba(213,0,0,0.6));
-    border-color: rgba(255,158,158,0.5);
+    background: linear-gradient(135deg, rgba(199,6,6,0.75), rgba(255,21,48,0.6));
+    border-color: rgba(255,158,168,0.5);
     transform: translateY(-1px);
   }
 
@@ -951,6 +1003,7 @@
     background: rgba(255, 255, 255, 0.28);
     cursor: pointer;
     transition: width 500ms var(--ease), background 500ms var(--ease);
+    /* tap area generoso para mobile */
     position: relative;
   }
 
@@ -965,12 +1018,216 @@
     background: rgba(255, 255, 255, 0.92);
   }
 
+  .lineup {
+    padding: clamp(52px, 6.5vw, 96px) clamp(20px, 6vw, 90px);
+  }
+
+  .lineup::before {
+    content: '';
+    position: absolute;
+    left: clamp(20px, 6vw, 90px);
+    right: clamp(20px, 6vw, 90px);
+    top: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.24), transparent);
+  }
+
+  .lineup {
+    background: linear-gradient(180deg, #050507 0%, #0a0a0e 100%);
+    position: relative;
+    z-index: 1;
+  }
+
+  .lineup-head {
+    max-width: 560px;
+    margin-bottom: clamp(28px, 3.2vw, 44px);
+  }
+
+  .lineup-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: clamp(20px, 2.4vw, 32px);
+  }
+
+  .lineup-grid article {
+    grid-column: span 6;
+    position: relative;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    align-items: stretch;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.045);
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    border-radius: 30px;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 24px 80px rgba(0, 0, 0, 0.22);
+    animation: card-rise both;
+    animation-timeline: view();
+    animation-range: entry 8% cover 36%;
+    transform-style: preserve-3d;
+  }
+
+  .lineup-grid article::before {
+    content: '';
+    position: absolute;
+    z-index: 2;
+    inset: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.0);
+    border-radius: 20px;
+    pointer-events: none;
+    transition: border-color 700ms var(--ease), box-shadow 700ms var(--ease);
+  }
+
+  .lineup-grid article::marker {
+    content: '';
+  }
+
+  .lineup-grid article > div::before {
+    content: '';
+    position: absolute;
+    left: clamp(22px, 3vw, 36px);
+    right: clamp(22px, 3vw, 36px);
+    top: 0;
+    height: 1px;
+    background: linear-gradient(90deg, var(--accent), transparent);
+    opacity: 0.78;
+    transform: scaleX(0.18);
+    transform-origin: left;
+    transition: transform 760ms var(--ease), opacity 760ms var(--ease);
+  }
+
+  .lineup-grid article:nth-child(n + 3) {
+    grid-column: span 4;
+  }
+
+  .lineup-grid img {
+    position: relative;
+    width: 100%;
+    height: clamp(242px, 11vw, 358px);
+    object-fit: cover;
+    object-position: top;
+    opacity: 0.94;
+    transform: scale(1.02);
+    transition: transform 1000ms var(--ease), opacity 1000ms var(--ease);
+  }
+
+  .lineup-grid article:hover img {
+    transform: scale(1.075) translateY(-8px);
+    opacity: 0.98;
+  }
+
+  .lineup-grid article:hover > div::before {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+
+  .lineup-grid article:hover::before {
+    border-color: color-mix(in srgb, var(--accent) 45%, rgba(255,255,255,0.22));
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.16), 0 0 46px color-mix(in srgb, var(--accent) 22%, transparent);
+  }
+
+  .lineup-grid article::after {
+    content: none;
+  }
+
+  .lineup-grid article:hover::after {
+    content: none;
+  }
+
+  .lineup-grid article > div {
+    position: relative;
+    z-index: 1;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: clamp(22px, 2.8vw, 34px);
+    background:
+      radial-gradient(circle at 100% 0%, color-mix(in srgb, var(--accent) 22%, transparent), transparent 32%),
+      linear-gradient(180deg, #15151b, #09090d);
+    transform: translateY(0);
+    transition: transform 760ms var(--ease);
+  }
+
+  .lineup-grid article:hover > div {
+    transform: translateY(0);
+  }
+
+  .lineup-grid small {
+    position: static;
+    width: fit-content;
+    min-height: 34px;
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 16px;
+    padding: 0 12px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 999px;
+    color: rgba(255, 255, 255, 0.80);
+    background: rgba(10, 10, 14, 0.36);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.12);
+    font-size: 10px;
+    font-weight: 950;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .lineup-grid p {
+    margin: 0 0 10px;
+    color: var(--accent);
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .lineup-grid h3 {
+    margin: 0;
+    font-size: clamp(17px, 1.7vw, 22px);
+    line-height: 1.15;
+  }
+
+  .lineup-grid span {
+    display: block;
+    max-width: 440px;
+    margin-top: 10px;
+    color: rgba(255, 255, 255, 0.64);
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .lineup-grid em {
+    display: block;
+    max-width: 480px;
+    margin-top: 12px;
+    padding-left: 12px;
+    border-left: 1px solid color-mix(in srgb, var(--accent) 58%, rgba(255,255,255,0.18));
+    color: rgba(255, 255, 255, 0.50);
+    font-size: 12px;
+    font-style: normal;
+    line-height: 1.45;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 620ms var(--ease), transform 620ms var(--ease);
+  }
+
+  .lineup-grid button {
+    margin-top: auto;
+  }
+
+  .lineup-grid article:hover em {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
   /* ═══ Story Panels (cinematic, Apple-style) ═══ */
   .story-reel {
     position: relative;
     z-index: 1;
   }
 
+  /* Imagen mobile: oculta en desktop, visible solo en ≤620px */
   .story-mobile-img {
     display: none;
   }
@@ -998,18 +1255,18 @@
     inset: 0;
     background: linear-gradient(
       90deg,
-      rgba(5, 5, 7, 0.88) 0%,
-      rgba(5, 5, 7, 0.54) 46%,
-      rgba(5, 5, 7, 0.08) 100%
+      rgba(3, 3, 5, 0.88) 0%,
+      rgba(3, 3, 5, 0.54) 46%,
+      rgba(3, 3, 5, 0.08) 100%
     );
   }
 
   .story-overlay.flip {
     background: linear-gradient(
       270deg,
-      rgba(5, 5, 7, 0.88) 0%,
-      rgba(5, 5, 7, 0.54) 46%,
-      rgba(5, 5, 7, 0.08) 100%
+      rgba(3, 3, 5, 0.88) 0%,
+      rgba(3, 3, 5, 0.54) 46%,
+      rgba(3, 3, 5, 0.08) 100%
     );
   }
 
@@ -1030,7 +1287,7 @@
 
   .story-eyebrow {
     margin: 0 0 18px;
-    color: color-mix(in srgb, var(--ram-hover) 28%, rgba(255,255,255,0.94));
+    color: color-mix(in srgb, var(--fiat-hover) 28%, rgba(255,255,255,0.94));
     font-size: 11px;
     font-weight: 900;
     letter-spacing: 0.20em;
@@ -1086,16 +1343,16 @@
   }
 
   .story-btn.primary {
-    background: linear-gradient(135deg, var(--ram-default) 0%, var(--ram-hover) 100%);
+    background: linear-gradient(135deg, var(--fiat-default) 0%, var(--fiat-hover) 100%);
     color: white;
     border: 0;
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.18), 0 10px 32px rgba(136,13,0,0.40);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.18), 0 10px 32px rgba(199,6,6,0.40);
   }
 
   .story-btn.primary:hover {
     transform: translateY(-2px);
     filter: brightness(1.14);
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.24), 0 16px 44px rgba(136,13,0,0.54);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.24), 0 16px 44px rgba(199,6,6,0.54);
   }
 
   .story-btn.ghost {
@@ -1154,7 +1411,7 @@
     line-height: 1;
     font-weight: 950;
     letter-spacing: -0.03em;
-    background: linear-gradient(135deg, #fff 0%, color-mix(in srgb, var(--ram-hover) 56%, white) 100%);
+    background: linear-gradient(135deg, #fff 0%, color-mix(in srgb, var(--fiat-hover) 56%, white) 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -1183,8 +1440,8 @@
     z-index: 1;
     padding: clamp(60px, 8vw, 110px) clamp(20px, 6vw, 90px);
     background:
-      radial-gradient(circle at 12% 50%, rgba(136, 13, 0, 0.16), transparent 38%),
-      radial-gradient(circle at 92% 8%, rgba(213, 0, 0, 0.10), transparent 30%),
+      radial-gradient(circle at 12% 50%, rgba(199, 6, 6, 0.16), transparent 38%),
+      radial-gradient(circle at 92% 8%, rgba(136, 13, 0, 0.10), transparent 30%),
       #050507;
     border-top: 1px solid rgba(255, 255, 255, 0.06);
   }
@@ -1207,7 +1464,7 @@
 
   .cotizar-copy p {
     margin: 0 0 10px;
-    color: var(--ram-hover);
+    color: var(--fiat-hover);
     font-size: 11px;
     font-weight: 900;
     letter-spacing: 0.18em;
@@ -1251,7 +1508,7 @@
   }
 
   .cotizar-perks li :global(.material-symbols-outlined) {
-    color: var(--ram-hover);
+    color: var(--fiat-hover);
   }
 
   .cotizar-form {
@@ -1314,8 +1571,8 @@
     border: 0;
     border-radius: 16px;
     color: white;
-    background: linear-gradient(135deg, var(--ram-default) 0%, var(--ram-hover) 100%);
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.18), 0 16px 40px rgba(136, 13, 0, 0.36);
+    background: linear-gradient(135deg, var(--fiat-default) 0%, var(--fiat-hover) 100%);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.18), 0 16px 40px rgba(199, 6, 6, 0.36);
     font-family: inherit;
     font-size: 15px;
     font-weight: 900;
@@ -1327,7 +1584,7 @@
   .cotizar-primary:hover {
     transform: translateY(-2px);
     filter: brightness(1.12);
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.24), 0 22px 56px rgba(136, 13, 0, 0.50);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.24), 0 22px 56px rgba(199, 6, 6, 0.50);
   }
 
   .hub-cta {
@@ -1369,29 +1626,81 @@
     cursor: pointer;
     border: 0;
     color: white;
-    background: linear-gradient(135deg, var(--ram-default) 0%, var(--ram-hover) 100%);
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.18), 0 14px 36px rgba(136, 13, 0, 0.34);
+    background: linear-gradient(135deg, var(--fiat-default) 0%, var(--fiat-hover) 100%);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.18), 0 14px 36px rgba(199, 6, 6, 0.34);
     transition: transform 380ms var(--ease), filter 380ms var(--ease), box-shadow 380ms var(--ease);
   }
 
   .hub-cta-actions button:hover {
     transform: translateY(-2px);
     filter: brightness(1.12);
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.24), 0 20px 50px rgba(136, 13, 0, 0.48);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.24), 0 20px 50px rgba(199, 6, 6, 0.48);
+  }
+
+  @keyframes hero-drift {
+    from {
+      transform: scale(1.045) translateX(-18px);
+    }
+    to {
+      transform: scale(1.015) translateX(0);
+    }
+  }
+
+  @keyframes hero-copy-in {
+    from {
+      opacity: 0;
+      transform: translateY(34px);
+      filter: blur(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+    }
   }
 
   @keyframes reveal-up {
-    from { opacity: 0; transform: translateY(54px); filter: blur(10px); }
-    to { opacity: 1; transform: translateY(0); filter: blur(0); }
+    from {
+      opacity: 0;
+      transform: translateY(54px);
+      filter: blur(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+    }
+  }
+
+  @keyframes card-rise {
+    from {
+      opacity: 0;
+      transform: translateY(50px) scale(0.985);
+      filter: blur(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      filter: blur(0);
+    }
   }
 
   @keyframes tile-rise {
-    from { opacity: 0; transform: translateY(32px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+      opacity: 0;
+      transform: translateY(32px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   @supports not (animation-timeline: view()) {
-    .model-carousel {
+    .model-carousel,
+    .chooser,
+    .lineup-grid article,
+    .use-grid article {
       animation: none;
     }
   }
@@ -1411,6 +1720,18 @@
       object-position: 68% center;
     }
 
+    .hub-hero {
+      align-items: start;
+    }
+
+    .hero-inner {
+      width: min(360px, calc(40vw - 18px));
+      margin-top: 108px;
+      margin-left: 18px;
+      margin-bottom: 0;
+      padding: 18px 20px;
+    }
+
     .model-carousel {
       --card-w: min(82vw, 520px);
       --gap: 18px;
@@ -1427,6 +1748,37 @@
       border-radius: 22px;
     }
 
+    .model-track article::before {
+      height: clamp(220px, 52vw, 380px);
+      border-radius: 22px;
+    }
+
+    .slide-glass {
+      width: 100%;
+      min-height: auto;
+      margin: 0;
+      border-left: 0;
+      border-top: 0;
+      padding-left: 14px;
+      padding-right: 14px;
+    }
+
+    .lineup-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .lineup-grid article,
+    .lineup-grid article:nth-child(n + 3) {
+      grid-column: auto;
+      min-height: auto;
+    }
+
+    .lineup-grid img {
+      height: clamp(220px, 46vw, 320px);
+      object-position: top;
+    }
+
+    /* Story panels: text bottom on tablet */
     .story-panel {
       min-height: clamp(460px, 64svh, 760px);
       align-items: flex-end;
@@ -1453,46 +1805,53 @@
     .story-overlay.flip {
       background: linear-gradient(
         0deg,
-        rgba(5, 5, 7, 0.92) 0%,
-        rgba(5, 5, 7, 0.60) 40%,
-        rgba(5, 5, 7, 0.10) 100%
+        rgba(3, 3, 5, 0.92) 0%,
+        rgba(3, 3, 5, 0.60) 40%,
+        rgba(3, 3, 5, 0.10) 100%
       );
     }
   }
 
+  /* ── Hub-hero mobile text block (hidden on desktop) ── */
   .hub-mobile-fade { display: none; }
+
   .hub-hero-mobile { display: none; }
 
   /* ─── Mobile (≤ 768px): 2-block hero layout ─── */
   @media (max-width: 768px) {
+    /* Clamp hero a solo la imagen */
     .hub-hero {
       height: 52svh !important;
       min-height: 200px !important;
       max-height: 400px;
     }
 
+    /* Ocultar overlay y texto desktop dentro del hero */
     .hero-shade-new,
     .hero-copy-new {
       display: none;
     }
 
+    /* Fade inferior de la imagen al bloque de texto */
     .hub-mobile-fade {
       display: block;
       position: absolute;
       bottom: 0; left: 0; right: 0;
       height: 56px;
-      background: linear-gradient(to bottom, transparent, #050507);
+      background: linear-gradient(to bottom, transparent, #030305);
       pointer-events: none;
       z-index: 3;
     }
 
+    /* Dots se quedan sobre la imagen */
     .hero-controls-new {
       bottom: 10px;
     }
 
+    /* Bloque de texto visible en mobile */
     .hub-hero-mobile {
       display: block;
-      background: #050507;
+      background: #030305;
     }
 
     .hub-hero-mobile-inner {
@@ -1545,7 +1904,7 @@
       height: 46px;
       padding: 0 22px;
       border-radius: 999px;
-      background: #880D00;
+      background: #FF1530;
       color: white;
       font-size: 12px;
       font-weight: 800;
@@ -1556,14 +1915,14 @@
       font-family: inherit;
       width: 100%;
       margin-top: 4px;
-      box-shadow: 0 4px 16px rgba(136, 13, 0, 0.36);
+      box-shadow: 0 4px 16px rgba(255, 21, 48, 0.36);
       transition: background 280ms ease, transform 280ms ease, box-shadow 280ms ease;
     }
 
     .hub-mobile-cta:hover {
-      background: #BA0000;
+      background: #c70606;
       transform: translateY(-1px);
-      box-shadow: 0 6px 20px rgba(186, 0, 0, 0.52);
+      box-shadow: 0 6px 20px rgba(255, 21, 48, 0.52);
     }
   }
 
@@ -1582,6 +1941,36 @@
       --gap: 16px;
       padding-top: 46px;
       padding-bottom: 54px;
+    }
+
+    .hero-inner {
+      width: min(300px, calc(100% - 28px));
+      margin: 92px 14px 0;
+      padding: 16px 18px;
+      border-radius: 16px;
+    }
+
+    .hero-inner h1 {
+      font-size: 24px;
+      line-height: 1.08;
+    }
+
+    .hero-inner > span {
+      margin-top: 10px;
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .lineup-grid button {
+      width: 100%;
+    }
+
+    .hero-inner button {
+      width: auto;
+      min-height: 40px;
+      margin-top: 14px;
+      padding: 0 15px;
+      font-size: 12px;
     }
 
     .carousel-head {
@@ -1613,10 +2002,35 @@
       height: 42px;
     }
 
+    .slide-glass h3 {
+      font-size: 26px;
+    }
+
+    .lineup-grid img {
+      height: 242px;
+      object-position: top;
+    }
+
+    .lineup-grid article {
+      border-radius: 24px;
+    }
+
+    .lineup-grid article > div {
+      padding: 20px;
+    }
+
+    .lineup-grid h3 {
+      font-size: 20px;
+      line-height: 1.15;
+    }
+
     .hub-cta h2 {
       font-size: clamp(28px, 7vw, 40px);
     }
 
+    /* ── Story panel mobile: imagen arriba, texto abajo separados ── */
+
+    /* Imagen real visible solo en mobile */
     .story-mobile-img {
       display: block;
       width: 100%;
@@ -1633,11 +2047,13 @@
       background-image: none !important;
     }
 
+    /* Quitamos el overlay que oscurece (no hace falta sobre fondo sólido) */
     .story-overlay,
     .story-overlay.flip {
       display: none;
     }
 
+    /* El contenido baja sobre fondo sólido */
     .story-content,
     .story-content.flip {
       position: static;
@@ -1673,6 +2089,7 @@
       padding: 0 18px;
     }
 
+    /* Stat strip: hide separators, wrap nicely */
     .stat-sep {
       display: none;
     }
