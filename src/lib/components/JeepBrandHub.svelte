@@ -367,8 +367,8 @@
   <!-- ═══ Cinematic story panels ═══ -->
   <section class="story-reel">
 
-    <div class="story-panel" style={`background-image: url('${models[0].image}')`}>
-      <img class="story-mobile-img" src={models[0].image} alt="Aventura Urbana" />
+    <div class="story-panel" style="background-image: url('/adistem2026/jeep-toolkit/renegade-2026-section-1.jpg')">
+      <img class="story-mobile-img" src="/adistem2026/jeep-toolkit/renegade-2026-mobile.jpg" alt="Aventura Urbana" />
       <div class="story-overlay"></div>
       <div class="story-content">
         <p class="story-eyebrow">Aventura Urbana</p>
@@ -382,8 +382,8 @@
       </div>
     </div>
 
-    <div class="story-panel flip" style={`background-image: url('${models[2].image}')`}>
-      <img class="story-mobile-img" src={models[2].image} alt="Familia & Espacio" />
+    <div class="story-panel flip" style="background-image: url('/adistem2026/jeep-toolkit/commander-2026.jpg')">
+      <img class="story-mobile-img" src="/adistem2026/jeep-toolkit/commander-2026-mobile.jpg" alt="Familia & Espacio" />
       <div class="story-overlay flip"></div>
       <div class="story-content flip">
         <p class="story-eyebrow">Familia &amp; Espacio</p>
@@ -397,8 +397,8 @@
       </div>
     </div>
 
-    <div class="story-panel" style={`background-image: url('${models[5].image}')`}>
-      <img class="story-mobile-img" src={models[5].image} alt="Off-Road Total" />
+    <div class="story-panel" style="background-image: url('/adistem2026/jeep-toolkit/wrangler-2026.jpg')">
+      <img class="story-mobile-img" src="/adistem2026/jeep-toolkit/wrangler-2026-mobile.jpg" alt="Off-Road Total" />
       <div class="story-overlay"></div>
       <div class="story-content">
         <p class="story-eyebrow">Off-Road Total</p>

@@ -66,9 +66,9 @@
         'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/exterior/desktop/jeep-renegade-2026-exterior-highlights-10-dk.jpg'
       ],
       motionImages: [
-        'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/gallery/desktop/my26-jeep-renegade-galeriaexterior-03-dk-mx.jpg.img.2880.jpg',
-        'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/gallery/full/my26-jeep-renegade-galeriaexterior-02-allbreakingpoints-mx-v2.jpg.img.2880.jpg',
-        'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/gallery/full/jeep-renegade-2026-galeria-10-interior-full.jpg.img.2880.jpg'
+        '/adistem2026/jeep-toolkit/my26-jeep-renegade-galeriaexterior-03-dk-mx.jpg.img.jpg',
+        '/adistem2026/jeep-toolkit/my26-jeep-renegade-galeriaexterior-02-allbreakingpoints-mx-v2.jpg.img.jpg',
+        '/adistem2026/jeep-toolkit/jeep-renegade-2026-galeria-10-interior-full.jpg.img.jpg'
       ],
       capabilityImage: 'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/capacidad/desktop/jeep-renegade-2026-capacidad-desempeno-motor-01-dk.jpg.img.2880.jpg'
     },
