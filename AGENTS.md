@@ -138,6 +138,7 @@ estos archivos desde cero):
 - **Precios Actualizados (2026-08-19):** Se sincronizaron los nuevos precios de lista para Wrangler ($1,103,900), Compass ($546,900), Commander ($720,900), Renegade ($461,900), Pulse ($349,500), Fastback ($463,500), Durango ($2,179,900), Attitude ($364,900), Peugeot 2008 ($458,900), Peugeot 5008 ($754,900), Peugeot 3008 ($629,900), Peugeot Partner ($439,900), RAM 1500 ($1,293,700) y RAM 1200 ($409,900).
 - **Fiat Pulse 2026 Assets Locales y ADAS (2026-08-19):** Se migraron todas las imágenes de Fiat Pulse 2026 a assets locales en `public/fiat/pulse-2026/` (`hero/`, `galeria/`, `exterior/`, `equipamiento/`, `versiones/`, `interior/`, `capacidad/`, `seguridad/`). Se actualizaron los sistemas ADAS en `FiatPremiumLanding.svelte` con 1) Alerta de Cambio de Carril (LDW+) y 2) Sistema de Monitoreo de Presión de Llantas (TPMS).
 - **Dodge Attitude 2026 y Dodge Home Assets Locales (2026-08-19):** Se migraron todos los assets de Dodge Attitude 2026 (`public/dodge/attitude-2026/`) y los Story Panels de Dodge Home (`public/dodge/story-panels/` con Attitude, Charger y Durango). Se configuró el carrusel de asistencias ADAS en `DodgePremiumLanding.svelte` con: 1) SISTEMA DE BOLSAS DE AIRE y 2) FRENO DE ESTACIONAMIENTO ELECTRÓNICO (EPB), y el renderizado responsivo de `.capability` (desktop/mobile).
+- **RAM 1500 RHO 2026 y RAM Home Assets Locales (2026-08-19):** Se migraron todos los assets de RAM 1500 RHO (`public/ram/1500-rho/`: `hero/`, `galeria/`, `exterior/`, `equipamiento/`, `versiones/rho/`, `interior/`, `capacidad/`, `seguridad/`) y los Story Panels / Hero de RAM Home (`public/ram/story-panels/` con RHO, Tungsten y 1200; `public/ram/home/hero/`). Se configuraron las asistencias ADAS en `RamPremiumLanding.svelte` con: 1) ASISTENCIA DE DIRECCIÓN EVASIVA y 2) SISTEMA DE ASISTENCIA EN CASO DE COLISIÓN EN INTERSECCIONES, junto con el selector de vistas exteriores y renderizado responsivo de `.capability`.
 
 
 
@@ -248,3 +249,23 @@ Para mantener total claridad cuando el usuario proporcione carpetas o assets de 
 2. **Cuando el usuario diga "<Marca> <Modelo>" o "Landing <Modelo>"** (ej. *"fiat pulse"*, *"dodge attitude"*, *"ram 1500 rho"*, *"peugeot 5008"*, *"jeep renegade"*):
    - **Archivo objetivo:** `src/lib/components/<Marca>PremiumLanding.svelte`
    - **Mapeo estándar:** Mapea directamente a las 8 subcarpetas documentadas en la Sección 7.1 (`hero/`, `galeria/`, `exterior/`, `equipamiento/`, `versiones/`, `interior/`, `capacidad/`, `seguridad/`).
+   - **Hero de Landing (`<section id="inicio" class="...-hero">`):**
+     - Siempre debe incluir ambas etiquetas en el template:
+       ```svelte
+       <img class="hero-fallback hero-desktop-img" src={model.heroImage} alt={model.name} />
+       <img class="hero-fallback hero-mobile-img" src={model.mobileHeroImage || model.heroImage} alt={model.name} />
+       ```
+     - Reglas CSS:
+       ```css
+       .hero-desktop-img { display: block !important; }
+       .hero-mobile-img { display: none !important; }
+
+       @media (max-width: 1024px) {
+         .hero-desktop-img { display: none !important; }
+         .hero-mobile-img { display: block !important; object-position: center center; animation: none !important; opacity: 1 !important; transform: none !important; }
+       }
+       @media (max-width: 768px) {
+         .hero-fallback.hero-desktop-img { display: none !important; }
+         .hero-fallback.hero-mobile-img { display: block !important; position: relative; width: 100%; height: auto; max-height: 50vh; object-fit: contain; object-position: center bottom; margin: 0; animation: none !important; opacity: 1 !important; transform: none !important; }
+       }
+       ```

@@ -17,6 +17,7 @@
     title: string
     subtitle: string
     heroImage: string
+    mobileHeroImage?: string
     spotlightImage: string
     quote: string
     price: string
@@ -295,6 +296,7 @@
 
   <section id="inicio" class="peugeot-hero">
     <img class="hero-fallback hero-desktop-img" src={model.heroImage} alt={model.name} />
+    <img class="hero-fallback hero-mobile-img" src={model.mobileHeroImage || model.heroImage} alt={model.name} />
     <div class="hero-shade"></div>
 
     <div class="relative z-10 w-full max-w-[1650px] mx-auto px-4 sm:px-8 xl:px-12 pt-4 xl:pt-24 pb-3 xl:pb-4 flex flex-col xl:flex-row items-center xl:items-end justify-between gap-6 xl:gap-10 min-h-0 xl:min-h-screen">
@@ -607,6 +609,26 @@
     object-position: 35% center;
     opacity: 0;
     animation: hero-zoom-out 16s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  }
+
+  .hero-desktop-img {
+    display: block !important;
+  }
+  .hero-mobile-img {
+    display: none !important;
+  }
+
+  @media (max-width: 1024px) {
+    .hero-desktop-img {
+      display: none !important;
+    }
+    .hero-mobile-img {
+      display: block !important;
+      object-position: center center;
+      animation: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
   }
 
   .hero-shade {
@@ -1784,7 +1806,11 @@
       padding-top: 0;
       margin-bottom: 16px;
     }
-    .hero-fallback {
+    .hero-fallback.hero-desktop-img {
+      display: none !important;
+    }
+    .hero-fallback.hero-mobile-img {
+      display: block !important;
       position: relative;
       width: 100%;
       height: auto;
