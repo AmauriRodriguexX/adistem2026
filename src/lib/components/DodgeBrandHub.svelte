@@ -108,6 +108,26 @@
 
   let isPlaying = $state(true)
 
+  const heroModels: DodgeModel[] = [models[0]]
+  let activeHeroIndex = $state(0)
+  let isHeroPlaying = $state(true)
+
+  function goToHeroModel(index: number) {
+    activeHeroIndex = (index + heroModels.length) % heroModels.length
+  }
+
+  function toggleHeroPlay() {
+    isHeroPlaying = !isHeroPlaying
+  }
+
+  $effect(() => {
+    if (!isHeroPlaying || heroModels.length <= 1) return
+    const id = setInterval(() => {
+      activeHeroIndex = (activeHeroIndex + 1) % heroModels.length
+    }, 7000)
+    return () => clearInterval(id)
+  })
+
   function togglePlay() {
     isPlaying = !isPlaying
   }
@@ -145,19 +165,22 @@
 
 <main class="dodge-hub">
   <section class="hub-hero">
-    {#each models as model, i (model.slug)}
-      <img class="hero-bg hero-desktop-img" class:active={i === activeModelIndex} class:hide={!VISIBLE_SLUGS.includes(model.slug)} src={model.image} alt={model.name} />
+    {#each heroModels as model, i (model.slug)}
+      <img class="hero-bg hero-desktop-img" class:active={i === activeHeroIndex} src={model.image} alt={model.name} />
+      {#if model.mobileImage}
+        <img class="hero-bg hero-mobile-img" class:active={i === activeHeroIndex} src={model.mobileImage} alt={model.name} />
+      {/if}
     {/each}
     <div class="hero-shade-new"></div>
     <div class="relative z-10 w-full max-w-[1650px] mx-auto px-4 sm:px-8 xl:px-12 pt-4 xl:pt-24 pb-3 xl:pb-4 flex flex-col xl:flex-row items-center xl:items-end justify-between gap-6 xl:gap-10 min-h-0 xl:min-h-screen">
       <div class="hero-copy-new flex-1 max-w-lg">
-        {#key activeModelIndex}
+        {#key activeHeroIndex}
           <div class="hero-content-new">
-            <h1>{models[activeModelIndex].name} 2026</h1>
-            <p class="hero-slogan-new">{models[activeModelIndex].role}</p>
-            <span class="price-badge-new">Desde {models[activeModelIndex].price}</span>
+            <h1>{heroModels[activeHeroIndex].name} 2026</h1>
+            <p class="hero-slogan-new">{heroModels[activeHeroIndex].role}</p>
+            <span class="price-badge-new">Desde {heroModels[activeHeroIndex].price}</span>
             <div class="hero-actions-new">
-              <button class="primary" onclick={() => selectModel(models[activeModelIndex].slug)}>
+              <button class="primary" onclick={() => selectModel(heroModels[activeHeroIndex].slug)}>
                 Explorar <GoogleIcon name="arrow_forward" size={18} />
               </button>
               <button class="ghost" onclick={scrollToForm}>
@@ -169,7 +192,7 @@
       </div>
 
       <div id="brandhub-desktop-form" class="hidden xl:block flex-shrink-0 w-full max-w-[380px] xl:max-w-[410px] z-10 self-center mb-12">
-        <ContactFormCard accent="#D50000" initialBrand="Dodge" initialModel={models[activeModelIndex].name.replace('Dodge ', '') + ' 2026'} />
+        <ContactFormCard accent="#D50000" initialBrand="Dodge" initialModel={heroModels[activeHeroIndex].name.replace('Dodge ', '') + ' 2026'} />
       </div>
     </div>
 
@@ -177,29 +200,28 @@
 
     <div class="carousel-controls hero-controls-new">
       <div class="carousel-pill" aria-label="Seleccionar modelo">
-        {#each models as model, i (model.slug)}
+        {#each heroModels as model, i (model.slug)}
           <button
-            class:active={i === activeModelIndex}
-            class:hide={!VISIBLE_SLUGS.includes(model.slug)}
+            class:active={i === activeHeroIndex}
             aria-label={`Ver ${model.name}`}
-            onclick={() => goToModel(i)}>
+            onclick={() => goToHeroModel(i)}>
           </button>
         {/each}
       </div>
-      <button class="play-btn" aria-label={isPlaying ? 'Pausar carrusel' : 'Reproducir carrusel'} onclick={togglePlay}>
-        <GoogleIcon name={isPlaying ? 'pause' : 'play_arrow'} size={16} />
+      <button class="play-btn" aria-label={isHeroPlaying ? 'Pausar carrusel' : 'Reproducir carrusel'} onclick={toggleHeroPlay}>
+        <GoogleIcon name={isHeroPlaying ? 'pause' : 'play_arrow'} size={16} />
       </button>
     </div>
   </section>
 
   <div class="hub-hero-mobile">
-    {#key activeModelIndex}
+    {#key activeHeroIndex}
       <div class="hub-hero-mobile-inner">
-        <h2>{models[activeModelIndex].name} <span class="hub-mobile-year">2026</span></h2>
-        <p>{models[activeModelIndex].role}</p>
-        <span class="hub-mobile-price">Desde {models[activeModelIndex].price}</span>
+        <h2>{heroModels[activeHeroIndex].name} <span class="hub-mobile-year">2026</span></h2>
+        <p>{heroModels[activeHeroIndex].role}</p>
+        <span class="hub-mobile-price">Desde {heroModels[activeHeroIndex].price}</span>
         <div class="flex flex-col gap-2 w-full mt-3">
-          <button class="hub-mobile-cta" onclick={() => selectModel(models[activeModelIndex].slug)}>
+          <button class="hub-mobile-cta" onclick={() => selectModel(heroModels[activeHeroIndex].slug)}>
             Explorar <GoogleIcon name="arrow_forward" size={16} />
           </button>
           <button class="hub-mobile-cta ghost" onclick={scrollToForm}>
@@ -214,7 +236,7 @@
     <ContactFormCard
       accent="#D50000"
       initialBrand="Dodge"
-      initialModel={models[activeModelIndex].name.replace('Dodge ', '') + ' 2026'}
+      initialModel={heroModels[activeHeroIndex].name.replace('Dodge ', '') + ' 2026'}
     />
   </div>
 
