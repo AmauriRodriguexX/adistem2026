@@ -67,21 +67,7 @@
       detail: 'La SUV con más músculo de la marca, con versiones hasta la brutal Hellcat.',
       price: '$2,179,900',
       promo: 'Plan de financiamiento con Tasa desde 14.50%'
-    },
-    {
-      slug: 'journey',
-      name: 'Dodge Journey',
-      role: 'Versatilidad familiar sin concesiones',
-      image: '/adistem2026/promociones/dodge-journey-2026.jpg',
-      mobileImage: '/adistem2026/promociones/dodge-journey-2026.jpg',
-      accent: DODGE_DEFAULT,
-      use: 'Para viajes largos y espacio para toda la familia.',
-      stat: 'SUV',
-      metric: 'Espacio',
-      detail: 'Una SUV pensada para acompañarte en cada trayecto, con capacidad y confort.',
-      price: '$603,900',
-      promo: 'Plan de financiamiento con Tasa desde 14.50% sin comisión'
-    },
+    }
   ]
 
   function selectModel(_slug: string) {
@@ -327,17 +313,17 @@
       </div>
     </div>
 
-    <div class="story-panel" style={`background-image: url('${models[3].image}')`}>
-      <img class="story-mobile-img" src={models[3].image} alt="Versatilidad familiar" />
+    <div class="story-panel" style={`background-image: url('${models[2].image}')`}>
+      <img class="story-mobile-img" src={models[2].image} alt="Potencia y espacio" />
       <div class="story-overlay"></div>
       <div class="story-content">
-        <p class="story-eyebrow">Espacio Familiar</p>
-        <h2 class="story-title">Cada viaje,<br>sin concesiones.</h2>
-        <p class="story-sub">Dodge Journey. Espacio, confort y tecnología para acompañar a toda la familia.</p>
+        <p class="story-eyebrow">Potencia &amp; Espacio</p>
+        <h2 class="story-title">Dominio total.<br>Tres filas.</h2>
+        <p class="story-sub">Dodge Durango. Espacio para 7 pasajeros, capacidad de remolque y la fuerza indiscutible de Dodge.</p>
         <div class="story-actions">
-          <button class="story-btn primary" onclick={() => goToCotizacion('journey')}><GoogleIcon name="description" size={15} /> Cotizar</button>
-          <button class="story-btn ghost" onclick={() => selectModel('journey')}>Explorar <GoogleIcon name="arrow_forward" size={15} /></button>
-          <button class="story-btn link" onclick={() => goToPrueba('journey')}><GoogleIcon name="speed" size={14} /> Prueba de manejo</button>
+          <button class="story-btn primary" onclick={() => goToCotizacion('durango')}><GoogleIcon name="description" size={15} /> Cotizar</button>
+          <button class="story-btn ghost" onclick={() => selectModel('durango')}>Explorar <GoogleIcon name="arrow_forward" size={15} /></button>
+          <button class="story-btn link" onclick={() => goToPrueba('durango')}><GoogleIcon name="speed" size={14} /> Prueba de manejo</button>
         </div>
       </div>
     </div>
@@ -356,7 +342,7 @@
     </div>
     <div class="stat-sep"></div>
     <div class="stat-item">
-      <strong>4</strong>
+      <strong>3</strong>
       <span>modelos 2026</span>
     </div>
     <div class="stat-sep"></div>
@@ -974,10 +960,6 @@
 
   .story-panel.flip {
     background-position: 60% 28%;
-  }
-
-  .story-panel + .story-panel {
-    border-top: 1px solid rgba(255, 255, 255, 0.06);
   }
 
   .story-overlay {

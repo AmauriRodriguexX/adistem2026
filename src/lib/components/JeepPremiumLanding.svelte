@@ -46,7 +46,7 @@
       mobileHeroImage: '/adistem2026/jeep/renegade-2026-mob.jpg',
       spotlightImage: 'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/vlp/desktop/jeep-renegade-2026-inicio-equipamiento-exterior-dk.jpg.img.2880.jpg',
       quote: 'Hola,%20me%20interesa%20cotizar%20un%20Jeep%20Renegade',
-      price: 'Desde $456,900',
+      price: 'Desde $461,900',
       specs: [
         { value: '173 hp', label: 'Motor 1.3L Turbo GSE' },
         { value: '8.4"', label: 'Pantalla Táctil Uconnect' },
@@ -118,7 +118,7 @@
     heroImage: 'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/vlp/desktop/jeep-renegade-2026-inicio-equipamiento-exterior-dk.jpg.img.2880.jpg',
     spotlightImage: 'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/vlp/desktop/jeep-renegade-2026-inicio-equipamiento-exterior-dk.jpg.img.2880.jpg',
     quote: 'Hola,%20me%20interesa%20cotizar%20una%20JEEP',
-    price: 'Desde $456,900',
+    price: 'Desde $461,900',
     specs: [
       { value: '6.7L', label: 'Turbodiesel disponible' },
       { value: '4x4', label: 'Tracción para trabajo pesado' },
@@ -368,7 +368,7 @@
     
     <div class="relative z-10 w-full max-w-[1650px] mx-auto px-4 sm:px-8 xl:px-12 pt-4 xl:pt-24 pb-3 xl:pb-4 flex flex-col xl:flex-row items-center xl:items-end justify-between gap-6 xl:gap-10 min-h-0 xl:min-h-screen">
       <div class="hero-copy flex-1 max-w-lg">
-        <h1>{model.kicker}</h1>
+        <h1>Jeep<span class="reg-r">®</span> {model.name.replace(/Jeep®?\s*/g, '')}</h1>
         <p class="hero-slogan">{model.title}</p>
         <span class="price-badge">{model.price}</span>
         <div class="hero-actions">
@@ -392,7 +392,7 @@
   </div>
 
   <nav class="product-nav hidden md:flex s-mteEPoerD6_z" aria-label="Navegación de producto JEEP®">
-    <strong class="s-mteEPoerD6_z">{model.name} <span class="nav-year">2026</span></strong>
+    <strong class="s-mteEPoerD6_z">Jeep<span class="reg-r">®</span> {model.name.replace(/Jeep®?\s*/g, '')} <span class="nav-year">2026</span></strong>
     <a href="#inicio" class="s-mteEPoerD6_z">Inicio</a>
     <a href="#versiones" class="s-mteEPoerD6_z">Versiones</a>
     <a href="#galeria" class="s-mteEPoerD6_z">Galería</a>
@@ -729,7 +729,7 @@
   </section>
 
   <section id="jeep-quote" class="quote-section">
-    <p>VAPSA JEEP®</p>
+    <p>VAPSA JEEP<span class="reg-r">®</span></p>
     <h2>Agenda una prueba de manejo o recibe una cotización.</h2>
     <p class="quote-sub">Elige la opción que mejor se ajuste a lo que necesitas. Nuestro equipo está listo para atenderte.</p>
 

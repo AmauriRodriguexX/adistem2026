@@ -44,7 +44,7 @@
       heroImage: IMG_2008,
       spotlightImage: IMG_2008_JELLY,
       quote: 'Hola,%20me%20interesa%20cotizar%20un%20Peugeot%202008',
-      price: 'Desde $448,900',
+      price: 'Desde $458,900',
       specs: [
         { value: 'i-Cockpit', label: 'Puesto de conducción de última generación' },
         { value: 'GT', label: 'Versión tope de gama' },
@@ -62,7 +62,7 @@
       heroImage: IMG_3008,
       spotlightImage: IMG_3008_VENTAJAS,
       quote: 'Hola,%20me%20interesa%20cotizar%20un%20Peugeot%203008',
-      price: 'Desde $639,900',
+      price: 'Desde $629,900',
       specs: [
         { value: 'Allure', label: 'Paquete de equipamiento premium' },
         { value: '3D', label: 'Clúster digital i-Cockpit 3D' },
@@ -80,7 +80,7 @@
       heroImage: IMG_5008,
       spotlightImage: IMG_5008_EMOCION,
       quote: 'Hola,%20me%20interesa%20cotizar%20un%20Peugeot%205008',
-      price: 'Desde $779,900',
+      price: 'Desde $754,900',
       specs: [
         { value: '7', label: 'Plazas para toda la familia' },
         { value: 'GT', label: 'Versión tope de gama' },
@@ -118,7 +118,7 @@
     heroImage: IMG_2008,
     spotlightImage: IMG_2008,
     quote: 'Hola,%20me%20interesa%20cotizar%20un%20Peugeot',
-    price: 'Desde $448,900',
+    price: 'Desde $754,900',
     specs: [
       { value: '2026', label: 'Gama del año modelo' },
       { value: 'Allure', label: 'Diseño francés' },

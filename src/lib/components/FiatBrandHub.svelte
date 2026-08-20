@@ -40,7 +40,7 @@
       stat: 'SUV Urbano',
       metric: 'Conectividad Total',
       detail: 'Diseño italiano, tecnología avanzada y máxima seguridad en cada viaje.',
-      price: '$368,900',
+      price: '$349,500',
       promo: 'Bono de hasta $45,000 + 0% de comisión por apertura'
     },
     {
@@ -68,7 +68,7 @@
       stat: 'Diseño Coupé',
       metric: 'Gran Cajuela',
       detail: 'El SUV con diseño de coupé y el espacio interior más amplio de su categoría.',
-      price: '$482,900',
+      price: '$463,500',
       promo: 'Bono de hasta $45,000 + 0% de comisión por apertura'
     }
   ]
@@ -1238,10 +1238,6 @@
 
   .story-panel.flip {
     background-position: 60% 28%;
-  }
-
-  .story-panel + .story-panel {
-    border-top: 1px solid rgba(255, 255, 255, 0.06);
   }
 
   .story-overlay {

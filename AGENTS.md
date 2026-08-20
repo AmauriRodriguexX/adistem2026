@@ -134,6 +134,8 @@ estos archivos desde cero):
 - `Fiat`: El modelo **Argo 2026** fue eliminado de la gama FIAT (2026-08-19) a petición del usuario. La gama activa de Fiat 2026 incluye Pulse, Pulse Abarth y Fastback.
 - **Imágenes de Promociones y Brand Hubs (2026-08-19):** Todas las tarjetas del carrusel de modelos de los Brand Hubs (`*BrandHub.svelte`), la sección `#promociones` (`PromoBentoGrid.svelte`) y el mega-menú (`GlassTopNav.svelte`) fueron actualizadas para consumir las imágenes locales en `public/promociones/` con ruta `/adistem2026/promociones/<archivo>.jpg`.
 - **Textos de Promociones en Brand Hubs (2026-08-19):** Todos los carruseles de modelos en `*BrandHub.svelte` consumen ahora el campo dinámico `promo` coincidente con las ofertas oficiales reflejadas en `PromoBentoGrid.svelte`.
+- **Dodge Journey 2026:** El modelo **Journey** fue desactivado y eliminado por completo de la gama nueva de Dodge (Brand Hub, Landing, Mega-menú, Bento Grid de Promociones) el 2026-08-19 por instrucción del usuario.
+- **Precios Actualizados (2026-08-19):** Se sincronizaron los nuevos precios de lista para Wrangler ($1,103,900), Compass ($546,900), Commander ($720,900), Renegade ($461,900), Pulse ($349,500), Fastback ($463,500), Durango ($2,179,900), Attitude ($364,900), Peugeot 2008 ($458,900), Peugeot 5008 ($754,900), Peugeot 3008 ($629,900), Peugeot Partner ($439,900), RAM 1500 ($1,293,700) y RAM 1200 ($409,900).
 
 Logs detallados por marca (qué se hizo, por qué, qué falta): `dodge_attitude_implementation_log.md`,
 `peugeot_2008_implementation_log.md`, `ram_1500rho_implementation_log.md`.

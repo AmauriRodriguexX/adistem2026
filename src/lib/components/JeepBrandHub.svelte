@@ -42,7 +42,7 @@
       stat: 'Aventura Urbana',
       metric: '1.3L Turbo 173 HP',
       detail: 'El SUV con más actitud: eficiente, tecnológico y con espíritu 4x4.',
-      price: '$456,900',
+      price: '$461,900',
       promo: 'Descuento de hasta $40,000 ó Mensualidad desde $5,499'
     },
     {
@@ -57,7 +57,7 @@
       stat: 'Diseño & Confort',
       metric: 'AWD Disponible',
       detail: 'Diseñado para conquistarte: tecnología, espacio y presencia.',
-      price: '$541,900',
+      price: '$546,900',
       promo: 'Descuento promocional de $30,000 en pago de contado'
     },
     {
@@ -72,7 +72,7 @@
       stat: '7 Pasajeros',
       metric: 'Familia & Espacio',
       detail: 'Tres filas de asientos con confort y capacidad sin concesiones.',
-      price: '$766,900',
+      price: '$720,900',
       promo: 'Plan de financiamiento con Tasa desde 13.99% sin comisión'
     },
     {
@@ -115,7 +115,7 @@
       stat: 'Off-Road Total',
       metric: '4x4 con reducida',
       detail: 'Icónico, irreducible y sin límites. El Jeep® definitivo.',
-      price: '$1,098,900',
+      price: '$1,103,900',
       promo: 'Descuento promocional de $176,000 en pago de contado'
     },
     {
@@ -239,7 +239,7 @@
       <div class="hero-copy-new flex-1 max-w-lg">
         {#key activeModelIndex}
           <div class="hero-content-new">
-            <h1>{models[activeModelIndex].name} 2026</h1>
+            <h1>Jeep<span class="reg-r">®</span> {models[activeModelIndex].name.replace(/Jeep®?\s*/g, '')} 2026</h1>
             <p class="hero-slogan-new">{models[activeModelIndex].role}</p>
             <span class="price-badge-new">Desde {models[activeModelIndex].price}</span>
             <div class="hero-actions-new">
@@ -325,7 +325,7 @@
     <div class="carousel-head">
       <div>
         <p>Promociones exclusivas</p>
-        <h2>Estrena tu Jeep® con ofertas únicas.</h2>
+        <h2>Estrena tu Jeep<span class="reg-r">®</span> con ofertas únicas.</h2>
       </div>
     </div>
 
@@ -347,7 +347,7 @@
                 <span class="pc-badge-promo">PROMO</span>
               {/if}
               <div class="pc-img-footer">
-                <p>Jeep®</p>
+                <p>Jeep<span class="reg-r">®</span></p>
                 <h3>{model.name.replace(/Jeep®?\s*/g, '')} <span>2026</span></h3>
               </div>
             </div>
@@ -445,7 +445,7 @@
     <div class="stat-sep"></div>
     <div class="stat-item">
       <strong>5,000+</strong>
-      <span>familias con su Jeep®</span>
+      <span>familias con su Jeep<span class="reg-r">®</span></span>
     </div>
     <div class="stat-sep"></div>
     <div class="stat-item">
@@ -462,8 +462,8 @@
   <section id="cotizar" class="cotizar-band" aria-label="Cotización Jeep®">
     <div class="cotizar-inner">
       <div class="cotizar-copy">
-        <p>Cotización Jeep®</p>
-        <h2>Tu próximo Jeep®, sin complicaciones.</h2>
+        <p>Cotización Jeep<span class="reg-r">®</span></p>
+        <h2>Tu próximo Jeep<span class="reg-r">®</span>, sin complicaciones.</h2>
         <span>Esquemas de financiamiento a tu medida, pre-aprobación en menos de 24 horas y asesoría personalizada con expertos VAPSA.</span>
         <ul class="cotizar-perks">
           <li><GoogleIcon name="payments" size={16} /> Enganche desde 10%</li>
@@ -1313,10 +1313,6 @@
 
   .story-panel.flip {
     background-position: 60% 28%;
-  }
-
-  .story-panel + .story-panel {
-    border-top: 1px solid rgba(255, 255, 255, 0.06);
   }
 
   .story-overlay {
