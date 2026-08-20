@@ -1921,6 +1921,31 @@
   }
 
   @media (max-width: 900px) {
+    .vs-exterior-row { grid-template-columns: 1fr; }
+    .vs-feat-grid { grid-template-columns: 1fr; }
+    .vs-hero-car { max-height: 280px; }
+    .vs-pill { padding: 8px 20px; font-size: 12px; }
+
+    /* ── 16px de separación lateral en mobile ── */
+    .vs-pill-bar,
+    .vs-title-row,
+    .vs-showcase,
+    .vs-color-bar,
+    .vs-panel-toggle,
+    .vs-actions {
+      padding-left: 16px;
+      padding-right: 16px;
+      box-sizing: border-box;
+    }
+
+    .vs-feat-grid,
+    .vs-exterior-row {
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+  }
+
+  @media (max-width: 900px) {
     .hero-copy {
       margin-left: 20px;
       margin-bottom: 110px;
