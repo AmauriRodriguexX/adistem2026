@@ -24,39 +24,14 @@
     specs: { value: string; label: string }[]
     motionTitle: string
     motionCopy: string
+    cockpitImages?: string[]
     storyImages?: string[]
     motionImages?: string[]
     capabilityImage?: string
+    mobileCapabilityImage?: string
   }
 
-  const ATTITUDE_IMG = 'https://www.dodge.com/content/dam/cross-regional/nafta/dodge/es_mx/2026/attitude/desktop/my26-dodge-attitude-vlp-stills-dk.jpg'
-  const ATTITUDE_TECH_IMG = 'https://www.dodge.com/content/dam/cross-regional/nafta/dodge/es_mx/2026/attitude/desktop/2026-dodge-attitude-mx-tecnologia-confort-dk-v2.jpg.img.2880.jpg'
-  const ATTITUDE_COLOR_IMG = 'https://www.dodge.com/content/dam/cross-regional/nafta/dodge/es_mx/2026/attitude/colores/01-SXT/2026-dodge-attitude-mx-color-stx-02-dk.jpg.img.2880.jpg'
-  const CHARGER_IMG = 'https://www.dodge.com/content/dam/cross-regional/nafta/dodge/es_mx/2026/charger/vlp/desktop/my26-dodge-charger-mainhero-dk-pr.jpg.img.2880.jpg'
-  const CHARGER_MEDIA_IMG = 'https://www.dodge.com/content/dam/cross-regional/nafta/dodge/es_mx/2026/charger/vlp/desktop/my26-dodge-charger-mediablock-dk-pr.jpg.img.2880.jpg'
-  const CHARGER_MEDIA2_IMG = 'https://www.dodge.com/content/dam/cross-regional/nafta/dodge/es_mx/2026/charger/vlp/desktop/my26-dodge-charger-mediablock2-dk-pr.jpg.img.2880.jpg'
-  const CHARGER_OCTANE_IMG = 'https://www.dodge.com/content/dam/cross-regional/nafta/dodge/es_mx/2026/charger/vlp/desktop/my26-dodge-charger-vlp-octane-ready-sticky-container-1-v2-desktop.jpg'
-  const CHARGER_SANCTUM_IMG = 'https://www.dodge.com/content/dam/cross-regional/nafta/dodge/es_mx/2026/charger/vlp/desktop/My26-dodge-charger-vlp-innersanctum-stickycontainer-2-desktop.jpg'
-  const DURANGO_IMG = 'https://www.dodge.com/content/dam/cross-regional/nafta/dodge/es_mx/2026/buzz-model/durango/hellcat/desktop/my26-dodge-hellcat-hero-dk-mx.jpg.img.2880.jpg'
-  const DURANGO_HEMI_IMG = 'https://www.dodge.com/content/dam/cross-regional/nafta/dodge/es_mx/2026/buzz-model/durango/hellcat/desktop/my26-dodge-hellcat-hemi-dk-mx.jpg.img.2880.jpg'
-  const DURANGO_CONFIANZA_IMG = 'https://www.dodge.com/content/dam/cross-regional/nafta/dodge/es_mx/2026/buzz-model/durango/hellcat/desktop/my26-dodge-hellcat-confianza-dk-mx.jpg.img.2880.jpg'
-
-  // ── Attitude 2026: versiones/colores reales (dodge.com.mx) ──
-  const ATTITUDE_SXT_JELLY = 'https://www.dodge.com/content/dam/cross-regional/nafta/dodge/es_mx/2026/attitude/desktop/my26-dodge-attitude-sxt-jellybean-mx.jpg.img.600.jpg'
-  const ATTITUDE_SPORT_JELLY = 'https://www.dodge.com/content/dam/cross-regional/nafta/dodge/es_mx/2026/attitude/desktop/my26-dodge-attitude-sport-jellybean-mx.jpg.img.600.jpg'
-  const ATTITUDE_GT_JELLY = 'https://www.dodge.com/content/dam/cross-regional/nafta/dodge/es_mx/2026/attitude/desktop/my26-dodge-attitude-gt-jellybean-mx.jpg.img.600.jpg'
-  const ATTITUDE_SXT_BLANCO = 'https://www.dodge.com/content/dam/cross-regional/nafta/dodge/es_mx/2026/attitude/colores/01-SXT/2026-dodge-attitude-mx-color-stx-02-dk.jpg.img.2880.jpg'
-  const ATTITUDE_SXT_GRANITO = 'https://www.dodge.com/content/dam/cross-regional/nafta/dodge/es_mx/2026/attitude/colores/01-SXT/2026-dodge-attitude-mx-color-stx-03-dk.jpg.img.2880.jpg'
-  const ATTITUDE_SXT_PLATA = 'https://www.dodge.com/content/dam/cross-regional/nafta/dodge/es_mx/2026/attitude/colores/01-SXT/my26-dodge-attitude-overview-modelizer-alldevices-mx-v1.jpg.img.2880.jpg'
-  const ATTITUDE_SPORT_BLANCO = 'https://www.dodge.com/content/dam/cross-regional/nafta/dodge/es_mx/2026/attitude/colores/02-SPORT/2026-dodge-attitude-mx-color-sport-02-dk.jpg.img.2880.jpg'
-  const ATTITUDE_SPORT_GRANITO = 'https://www.dodge.com/content/dam/cross-regional/nafta/dodge/es_mx/2026/attitude/colores/02-SPORT/2026-dodge-attitude-mx-color-sport-03-dk.jpg.img.2880.jpg'
-  const ATTITUDE_SPORT_NEGRO = 'https://www.dodge.com/content/dam/cross-regional/nafta/dodge/es_mx/2026/attitude/colores/02-SPORT/2026-dodge-attitude-mx-color-sport-01-dk.jpg.img.2880.jpg'
-  const ATTITUDE_SPORT_PLATA = 'https://www.dodge.com/content/dam/cross-regional/nafta/dodge/es_mx/2026/attitude/colores/02-SPORT/2026-dodge-attitude-mx-color-sport-04-dk.jpg.img.2880.jpg'
-  const ATTITUDE_GT_BLANCO = 'https://www.dodge.com/content/dam/cross-regional/nafta/dodge/es_mx/2026/attitude/colores/03-GT/2026-dodge-attitude-mx-color-gt-02-dk.jpg.img.2880.jpg'
-  const ATTITUDE_GT_GRANITO = 'https://www.dodge.com/content/dam/cross-regional/nafta/dodge/es_mx/2026/attitude/colores/03-GT/2026-dodge-attitude-mx-color-gt-03-dk.jpg.img.2880.jpg'
-  const ATTITUDE_GT_NEGRO = 'https://www.dodge.com/content/dam/cross-regional/nafta/dodge/es_mx/2026/attitude/colores/03-GT/2026-dodge-attitude-mx-color-gt-01-dk.jpg.img.2880.jpg'
-  const ATTITUDE_GT_PLATA = 'https://www.dodge.com/content/dam/cross-regional/nafta/dodge/es_mx/2026/attitude/colores/03-GT/2026-dodge-attitude-mx-color-gt-04-dk.jpg.img.2880.jpg'
-
+  // ── Attitude 2026: versiones/colores locales ──
   type AttitudeVersion = {
     id: string
     name: string
@@ -71,47 +46,47 @@
       id: 'sxt',
       name: 'SXT',
       price: 'Desde $364,900',
-      thumb: ATTITUDE_SXT_JELLY,
+      thumb: '/adistem2026/dodge/attitude-2026/versiones/sxt/blanco.jpg',
       features: [
         ['Motor 1.5L Turbo con 168HP y 184 lb-pie inyección directa', 'Transmisión automática de 7 velocidades con clutch dual', 'Sistema de infoentretenimiento con pantalla LCD en color de 10.25"', 'Panel de instrumentos LCD de 7"', 'Faros automáticos y DRL LED'],
         ['6 bolsas de aire', 'Control de velocidad crucero', 'Freno de estacionamiento electrónico (EPB) con Autohold', 'Cámara y sensores traseros de estacionamiento', 'Entrada pasiva y encendido por botón Keyless Enter & Go', 'Cristales delanteros y traseros eléctricos (antipellizco)', 'Parabrisas con sensor de lluvia', 'Rines de aluminio de 17"']
       ],
       colors: [
-        { name: 'Blanco', hex: '#f2f2f2', img: ATTITUDE_SXT_BLANCO },
-        { name: 'Granito', hex: '#4a4a4a', img: ATTITUDE_SXT_GRANITO },
-        { name: 'Plata Estelar', hex: '#b9babc', img: ATTITUDE_SXT_PLATA },
+        { name: 'Blanco', hex: '#f2f2f2', img: '/adistem2026/dodge/attitude-2026/versiones/sxt/blanco.jpg' },
+        { name: 'Granito', hex: '#4a4a4a', img: '/adistem2026/dodge/attitude-2026/versiones/sxt/granito.jpg' },
+        { name: 'Plata Estelar', hex: '#b9babc', img: '/adistem2026/dodge/attitude-2026/versiones/sxt/plata-estelar.jpg' },
       ]
     },
     {
       id: 'sport',
       name: 'SPORT',
       price: 'Desde $364,900',
-      thumb: ATTITUDE_SPORT_JELLY,
+      thumb: '/adistem2026/dodge/attitude-2026/versiones/sport/blanco.jpg',
       features: [
         ['Mismo equipo que versión SXT más:', 'Escape performance con sistema de sonido', 'Panel de instrumentos LCD de 10.25"', '9 asistencias de seguridad autónomas de 2.º nivel', 'Sensores delanteros de asistencia de estacionamiento'],
         ['Espejos plegables eléctricamente, calefactables', 'A/C automático de doble zona', 'Volante deportivo de fondo plano forrado con piel', 'Paletas de cambio al volante', 'Asientos con vestiduras con piel sintética', 'Asiento del conductor ajustable eléctricamente en 6 direcciones', 'Asientos ventilados para conductor y pasajero', 'Quemacocos eléctrico', 'Rines de aluminio de 18"']
       ],
       colors: [
-        { name: 'Blanco', hex: '#f2f2f2', img: ATTITUDE_SPORT_BLANCO },
-        { name: 'Granito', hex: '#4a4a4a', img: ATTITUDE_SPORT_GRANITO },
-        { name: 'Negro Brillante', hex: '#0d0d0d', img: ATTITUDE_SPORT_NEGRO },
-        { name: 'Plata Estelar', hex: '#b9babc', img: ATTITUDE_SPORT_PLATA },
+        { name: 'Blanco', hex: '#f2f2f2', img: '/adistem2026/dodge/attitude-2026/versiones/sport/blanco.jpg' },
+        { name: 'Granito', hex: '#4a4a4a', img: '/adistem2026/dodge/attitude-2026/versiones/sport/granito.jpg' },
+        { name: 'Negro Brillante', hex: '#0d0d0d', img: '/adistem2026/dodge/attitude-2026/versiones/sport/negro-brillante.jpg' },
+        { name: 'Plata Estelar', hex: '#b9babc', img: '/adistem2026/dodge/attitude-2026/versiones/sport/plata-estelar.jpg' },
       ]
     },
     {
       id: 'gt',
       name: 'GT',
       price: 'Desde $364,900',
-      thumb: ATTITUDE_GT_JELLY,
+      thumb: '/adistem2026/dodge/attitude-2026/versiones/gt/blanco.jpg',
       features: [
         ['Mismo equipo que la versión SPORT y más', 'Sistema de detección de punto ciego', 'Cargador inalámbrico de teléfono móvil', 'Interior deportivo en color negro o negro/rojo', 'Soporte lumbar neumático para asiento del conductor (de 4 vías)'],
         ['Asiento del pasajero delantero ajustable eléctricamente en 4 direcciones', 'Espejo retrovisor electrocrómico', 'Rines de aluminio de 18” con acabado negro satinado y llantas performance', 'Alerón trasero deportivo']
       ],
       colors: [
-        { name: 'Blanco', hex: '#f2f2f2', img: ATTITUDE_GT_BLANCO },
-        { name: 'Granito', hex: '#4a4a4a', img: ATTITUDE_GT_GRANITO },
-        { name: 'Negro Brillante', hex: '#0d0d0d', img: ATTITUDE_GT_NEGRO },
-        { name: 'Plata Estelar', hex: '#b9babc', img: ATTITUDE_GT_PLATA },
+        { name: 'Blanco', hex: '#f2f2f2', img: '/adistem2026/dodge/attitude-2026/versiones/gt/blanco.jpg' },
+        { name: 'Granito', hex: '#4a4a4a', img: '/adistem2026/dodge/attitude-2026/versiones/gt/granito.jpg' },
+        { name: 'Negro Brillante', hex: '#0d0d0d', img: '/adistem2026/dodge/attitude-2026/versiones/gt/negro-brillante.jpg' },
+        { name: 'Plata Estelar', hex: '#b9babc', img: '/adistem2026/dodge/attitude-2026/versiones/gt/plata-estelar.jpg' },
       ]
     },
   ]
@@ -134,27 +109,45 @@
       name: 'Dodge Attitude',
       kicker: 'Dodge Attitude 2026',
       title: 'Actitud que se nota desde el arranque.',
-      subtitle: 'El sedán accesible de Dodge: ágil en la ciudad, con el carácter de la marca y el equipamiento que necesitas para el día a día.',
-      heroImage: ATTITUDE_IMG,
-      spotlightImage: ATTITUDE_COLOR_IMG,
+      subtitle: 'El sedán deportivo de Dodge: ágil en la ciudad, con 168 hp, transmisión de 7 velocidades Dual-Clutch y el carácter indiscutible de la marca.',
+      heroImage: '/adistem2026/dodge/attitude-2026/hero/attitude-2026.jpg',
+      mobileHeroImage: '/adistem2026/dodge/attitude-2026/hero/attitude-2026-mob.jpg',
+      spotlightImage: '/adistem2026/dodge/attitude-2026/hero/attitude-2026.jpg',
       quote: 'Hola,%20me%20interesa%20cotizar%20un%20Dodge%20Attitude',
       price: 'Desde $364,900',
       specs: [
-        { value: 'SXT', label: 'Versión de entrada equipada' },
-        { value: 'CVT', label: 'Transmisión automática' },
-        { value: '7"', label: 'Pantalla multimedia central' },
-        { value: 'ABS', label: 'Frenos con control de estabilidad' },
+        { value: '168 hp', label: 'Motor 1.5L Turbo inyección directa' },
+        { value: '7 Vel', label: 'Transmisión Dual-Clutch DCT' },
+        { value: '10.25"', label: 'Doble pantalla digital HD' },
+        { value: 'ADAS', label: '9 asistencias autónomas Nivel 2' },
       ],
       motionTitle: 'Se mueve ágil, se ve decidido.',
       motionCopy: 'El Dodge Attitude está pensado para tu día a día: entra fácil a cualquier calle, se estaciona sin drama y mantiene la actitud Dodge en cada trayecto.',
+      cockpitImages: [
+        '/adistem2026/dodge/attitude-2026/interior/interior-1.jpg',
+        '/adistem2026/dodge/attitude-2026/interior/interior-2.jpg',
+        '/adistem2026/dodge/attitude-2026/interior/interior-3.jpg'
+      ],
+      storyImages: [
+        '/adistem2026/dodge/attitude-2026/equipamiento/equipamiento-1.jpg',
+        '/adistem2026/dodge/attitude-2026/equipamiento/equipamiento-2.jpg',
+        '/adistem2026/dodge/attitude-2026/equipamiento/equipamiento-3.jpg'
+      ],
+      motionImages: [
+        '/adistem2026/dodge/attitude-2026/exterior/exterior-1.jpg',
+        '/adistem2026/dodge/attitude-2026/exterior/exterior-2.jpg',
+        '/adistem2026/dodge/attitude-2026/exterior/exterior-3.jpg'
+      ],
+      capabilityImage: '/adistem2026/dodge/attitude-2026/capacidad/capcacidad.jpg',
+      mobileCapabilityImage: '/adistem2026/dodge/attitude-2026/capacidad/capacidad-mob.jpg'
     },
     'charger': {
       name: 'Dodge Charger',
       kicker: 'Dodge Charger 2026',
       title: 'El músculo americano, sin disculpas.',
       subtitle: 'Más de 100 años de historia condensados en el ícono de Dodge: potencia, presencia y un rugido que se reconoce a la distancia.',
-      heroImage: CHARGER_IMG,
-      spotlightImage: CHARGER_MEDIA_IMG,
+      heroImage: '/adistem2026/dodge/story-panels/charger-2026.jpg',
+      spotlightImage: '/adistem2026/dodge/story-panels/charger-2026.jpg',
       quote: 'Hola,%20me%20interesa%20cotizar%20un%20Dodge%20Charger',
       price: 'Desde $1,489,900',
       specs: [
@@ -171,8 +164,8 @@
       kicker: 'Dodge Durango 2026',
       title: 'Dominio total, tres filas de espacio.',
       subtitle: 'La SUV con más carácter del mercado: tres filas para toda la familia, capacidad de remolque real y la opción de la descomunal Hellcat.',
-      heroImage: DURANGO_IMG,
-      spotlightImage: DURANGO_HEMI_IMG,
+      heroImage: '/adistem2026/dodge/story-panels/durango-2026.jpg',
+      spotlightImage: '/adistem2026/dodge/story-panels/durango-2026.jpg',
       quote: 'Hola,%20me%20interesa%20cotizar%20un%20Dodge%20Durango',
       price: 'Desde $2,179,900',
       specs: [
@@ -187,17 +180,18 @@
   }
 
   const fallbackModel: ModelDetail = {
-    name: 'Dodge 2026',
-    kicker: 'Dodge 2026',
+    name: 'Dodge Attitude',
+    kicker: 'Dodge Attitude 2026',
     title: 'Actitud que se nota desde el arranque.',
     subtitle: 'Presencia, tecnología y el carácter Dodge en cada versión de la gama.',
-    heroImage: ATTITUDE_IMG,
-    spotlightImage: ATTITUDE_COLOR_IMG,
+    heroImage: '/adistem2026/dodge/attitude-2026/hero/attitude-2026.jpg',
+    mobileHeroImage: '/adistem2026/dodge/attitude-2026/hero/attitude-2026-mob.jpg',
+    spotlightImage: '/adistem2026/dodge/attitude-2026/hero/attitude-2026.jpg',
     quote: 'Hola,%20me%20interesa%20cotizar%20un%20Dodge',
     price: 'Desde $364,900',
     specs: [
-      { value: '2026', label: 'Gama del año modelo' },
-      { value: 'Dodge', label: 'Actitud americana' },
+      { value: '168 hp', label: 'Motor 1.5L Turbo' },
+      { value: '7 DCT', label: 'Transmisión Dual-Clutch' },
       { value: 'ADAS', label: 'Sistemas de asistencia' },
       { value: 'VAPSA', label: 'Distribuidor autorizado' },
     ],
@@ -209,21 +203,59 @@
   const specs = $derived(model.specs)
 
   const story = $derived([
-    { kicker: 'Presencia', title: model.motionTitle, copy: model.motionCopy, image: model.heroImage },
-    { kicker: 'Tecnología', title: 'Control total desde el centro.', copy: 'Pantalla multimedia, conectividad inalámbrica y comandos al volante para mantenerte enfocado en el camino.', image: ATTITUDE_TECH_IMG },
-    { kicker: 'Seguridad', title: 'Confianza en cada kilómetro.', copy: 'Frenos ABS, control electrónico de estabilidad y bolsas de aire para proteger a todos los ocupantes.', image: DURANGO_CONFIANZA_IMG },
+    { kicker: 'Diseño', title: 'Actitud deportiva que se impone.', copy: 'Líneas afiladas, parrilla imponente con toques oscurecidos y silueta tipo fastback que destacan en cualquier ángulo.', image: model.storyImages?.[0] || '/adistem2026/dodge/attitude-2026/equipamiento/equipamiento-1.jpg' },
+    { kicker: 'Tecnología', title: 'Cabina digital e intuitiva.', copy: 'Doble pantalla digital HD de 10.25", conectividad inalámbrica para smartphones y cargador por inducción.', image: model.storyImages?.[1] || '/adistem2026/dodge/attitude-2026/equipamiento/equipamiento-2.jpg' },
+    { kicker: 'Seguridad', title: 'Protección inteligente 360°.', copy: 'Avanzada suite de asistencias autónomas a la conducción ADAS nivel 2 y estructura reforzada de alta resistencia.', image: model.storyImages?.[2] || '/adistem2026/dodge/attitude-2026/equipamiento/equipamiento-3.jpg' },
   ])
 
   const motionCards = $derived([
-    { title: 'Presencia que se impone', copy: 'Cada línea del diseño Dodge está pensada para transmitir carácter, dentro y fuera de la ciudad.', image: model.heroImage },
-    { title: 'Tecnología a bordo', copy: 'Pantalla multimedia y conectividad para mantenerte enfocado en el camino sin perder el control.', image: CHARGER_OCTANE_IMG },
-    { title: 'Hecho para durar', copy: 'Construcción robusta y el respaldo de más de 100 años de historia Dodge.', image: CHARGER_SANCTUM_IMG },
+    { title: 'Presencia que se impone', copy: 'Cada línea del diseño Dodge Attitude está pensada para transmitir carácter deportivo dentro y fuera de la ciudad.', image: model.motionImages?.[0] || '/adistem2026/dodge/attitude-2026/exterior/exterior-1.jpg' },
+    { title: 'Aerodinámica y estilo', copy: 'Rines bitono de hasta 18", salidas de escape funcionales y alerón deportivo integrado en la cajuela.', image: model.motionImages?.[1] || '/adistem2026/dodge/attitude-2026/exterior/exterior-2.jpg' },
+    { title: 'Iluminación Full LED', copy: 'Faros delanteros y luces traseras unidas de lado a lado con firma lumínica inconfundible de día y de noche.', image: model.motionImages?.[2] || '/adistem2026/dodge/attitude-2026/exterior/exterior-3.jpg' },
   ])
 
-  const cockpitImages = $derived([model.spotlightImage, ATTITUDE_TECH_IMG, DURANGO_CONFIANZA_IMG])
-  const capabilityImage = $derived(model.spotlightImage)
+  const cockpitImages = $derived(model.cockpitImages || [
+    '/adistem2026/dodge/attitude-2026/interior/interior-1.jpg',
+    '/adistem2026/dodge/attitude-2026/interior/interior-2.jpg',
+    '/adistem2026/dodge/attitude-2026/interior/interior-3.jpg'
+  ])
+  const capabilityImage = $derived(model.capabilityImage || '/adistem2026/dodge/attitude-2026/capacidad/capcacidad.jpg')
+  const mobileCapabilityImage = $derived(model.mobileCapabilityImage || capabilityImage)
+
+  // ── ADAS Carousel Logic ──
+  type AdasItem = {
+    id: number
+    label: string
+    video?: string
+    poster?: string
+    image?: string
+  }
+
+  const adasItems: AdasItem[] = [
+    { id: 0, label: 'SISTEMA DE BOLSAS DE AIRE', image: '/adistem2026/dodge/attitude-2026/seguridad/seguridad-1.jpg' },
+    { id: 1, label: 'FRENO DE ESTACIONAMIENTO ELECTRÓNICO (EPB)', image: '/adistem2026/dodge/attitude-2026/seguridad/seguridad-2.jpg' }
+  ]
+
+  let adasIndex = $state(0)
+  let adasAutoplay = $state(true)
+
+  $effect(() => {
+    if (!adasAutoplay) return
+    const interval = setInterval(() => {
+      adasIndex = (adasIndex + 1) % adasItems.length
+    }, 6000)
+    return () => clearInterval(interval)
+  })
 
   let cockpitIndex = $state(0)
+  let pinVideoActive = $state(false)
+  let pinMediaEl = $state<HTMLDivElement>()
+
+  const pinVideoSrc = $derived(
+    pinVideoActive
+      ? 'https://www.youtube.com/embed/iMNICZn63M0?autoplay=1&mute=1&controls=0&rel=0&modestbranding=1&playsinline=1&loop=1&playlist=iMNICZn63M0'
+      : ''
+  )
 
   onMount(() => {
     let targetProgress = 0
@@ -242,10 +274,29 @@
     animate()
     window.addEventListener('scroll', update, { passive: true })
     window.addEventListener('resize', update)
+
+    let observer: IntersectionObserver | undefined
+    if (pinMediaEl) {
+      observer = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (entry.isIntersecting && entry.intersectionRatio > 0.45) {
+              pinVideoActive = true
+            } else if (entry.intersectionRatio < 0.15) {
+              pinVideoActive = false
+            }
+          }
+        },
+        { threshold: [0, 0.15, 0.45, 0.7, 1] }
+      )
+      observer.observe(pinMediaEl)
+    }
+
     return () => {
       cancelAnimationFrame(raf)
       window.removeEventListener('scroll', update)
       window.removeEventListener('resize', update)
+      observer?.disconnect()
     }
   })
 
@@ -337,13 +388,36 @@
   <section class="pin-stage">
     <div class="pin-visual">
       <div class="pin-media-stack">
-        <button type="button" class="pin-media" aria-label={`Ampliar imagen de ${model.name}`} onclick={() => toggleZoom(model.spotlightImage)}>
-          <img class="truck-main" src={model.spotlightImage} alt={model.name} />
+        <div
+          bind:this={pinMediaEl}
+          role="button"
+          tabindex="0"
+          class="pin-media"
+          class:video-active={pinVideoActive}
+          aria-label={`Reproducir video de ${model.name}`}
+          onclick={() => pinVideoActive = !pinVideoActive}
+          onkeydown={(event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+              event.preventDefault()
+              pinVideoActive = !pinVideoActive
+            }
+          }}
+        >
+          <img class:video-active={pinVideoActive} class="truck-main" src={model.spotlightImage} alt={model.name} />
+          {#if pinVideoSrc}
+            <iframe
+              class="pin-video"
+              src={pinVideoSrc}
+              title={`Video ${model.name}`}
+              allow="autoplay; encrypted-media; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          {/if}
           <span class="pin-play-cue">
-            <GoogleIcon name="zoom_in" size={22} />
-            Ampliar
+            <GoogleIcon name="play_arrow" size={22} />
+            Ver video
           </span>
-        </button>
+        </div>
       </div>
       <div class="pin-copy">
         <p>{model.motionCopy}</p>
@@ -422,16 +496,16 @@
         </div>
       {:else}
         <div class="vs-exterior-row">
-          <button class="vs-ext-card" onclick={() => toggleZoom(ATTITUDE_SXT_BLANCO)}>
-            <img src={ATTITUDE_SXT_BLANCO} alt="Lateral" />
+          <button class="vs-ext-card" onclick={() => toggleZoom('/adistem2026/dodge/attitude-2026/galeria/vista-lateral.jpg')}>
+            <img src="/adistem2026/dodge/attitude-2026/galeria/vista-lateral.jpg" alt="Lateral" />
             <span>Vista lateral <GoogleIcon name="zoom_in" size={14} /></span>
           </button>
-          <button class="vs-ext-card" onclick={() => toggleZoom(ATTITUDE_IMG)}>
-            <img src={ATTITUDE_IMG} alt="Frontal" />
+          <button class="vs-ext-card" onclick={() => toggleZoom('/adistem2026/dodge/attitude-2026/galeria/vista-frontal.jpg')}>
+            <img src="/adistem2026/dodge/attitude-2026/galeria/vista-frontal.jpg" alt="Frontal" />
             <span>Vista frontal <GoogleIcon name="zoom_in" size={14} /></span>
           </button>
-          <button class="vs-ext-card" onclick={() => toggleZoom(ATTITUDE_SXT_GRANITO)}>
-            <img src={ATTITUDE_SXT_GRANITO} alt="Trasera" />
+          <button class="vs-ext-card" onclick={() => toggleZoom('/adistem2026/dodge/attitude-2026/galeria/vista-trasera.jpg')}>
+            <img src="/adistem2026/dodge/attitude-2026/galeria/vista-trasera.jpg" alt="Trasera" />
             <span>Vista trasera <GoogleIcon name="zoom_in" size={14} /></span>
           </button>
         </div>
@@ -507,14 +581,18 @@
   </section>
 
   <section id="capacidad" class="capability">
-    <img src={capabilityImage} alt="Dodge exterior de trabajo" />
+    <img class="cap-desktop-img" src={capabilityImage} alt="Dodge motor y desempeño" />
+    {#if mobileCapabilityImage}
+      <img class="cap-mobile-img" src={mobileCapabilityImage} alt="Dodge motor y desempeño" />
+    {/if}
     <div class="capability-card">
       <p>Capacidad y Desempeño</p>
       <h2>Siempre listo para romper la rutina.</h2>
       <div class="cap-list">
-        {#each specs as item (item.label)}
-          <span><GoogleIcon name="check_circle" size={18} /> {item.label}</span>
-        {/each}
+        <span><GoogleIcon name="speed" size={18} /> Motor 1.5L Turbo 168 hp y 184 lb-pie</span>
+        <span><GoogleIcon name="sync_alt" size={18} /> Transmisión Dual-Clutch 7 velocidades</span>
+        <span><GoogleIcon name="verified_user" size={18} /> EPB con sistema Autohold</span>
+        <span><GoogleIcon name="local_gas_station" size={18} /> Inyección directa de alta eficiencia</span>
       </div>
     </div>
   </section>
@@ -525,11 +603,44 @@
       <h2>Seguridad a donde quiera que vayas.</h2>
       <span>Sus avanzados sistemas de seguridad te ofrecen a ti y a tus acompañantes una protección integral. Frenos ABS en las 4 ruedas, control electrónico de estabilidad y bolsas de aire para mantenerte a salvo en cada rodada.</span>
 
+      <!-- ── ADAS Slider ── -->
+      <p class="safety-sub-label">Sistemas de Asistencia ADAS</p>
+      
+      <div class="adas-carousel-container" style={`--adas-idx: ${adasIndex}`}>
+        <div class="adas-track" style={`transform: translateX(calc(-${adasIndex} * (100% / ${Math.max(adasItems.length, 1)})));`}>
+          {#each adasItems as item, i}
+            <div class="safety-vid-card adas-slide" class:active={i === adasIndex}>
+              {#if item.video}
+                <video src={item.video} poster={item.poster || ''} autoplay muted loop playsinline></video>
+              {:else if item.image}
+                <img src={item.image} alt={item.label} />
+              {/if}
+              <div class="svc-label"><span>{item.label}</span></div>
+            </div>
+          {/each}
+        </div>
+
+        <div class="carousel-controls adas-controls">
+          <div class="carousel-pill" aria-label="Sistemas ADAS">
+            {#each adasItems as _, i}
+              <button 
+                class:active={i === adasIndex} 
+                onclick={() => { adasIndex = i; adasAutoplay = false; }}
+                aria-label={`Ver asistente ${i + 1}`}
+              ></button>
+            {/each}
+          </div>
+          <button class="play-btn" onclick={() => adasAutoplay = !adasAutoplay} aria-label={adasAutoplay ? 'Pausar carrusel' : 'Reproducir carrusel'}>
+            <GoogleIcon name={adasAutoplay ? 'pause' : 'play_arrow'} size={18} />
+          </button>
+        </div>
+      </div>
+
       <div class="safety-features">
         <div class="safety-feat"><GoogleIcon name="report" size={26} /><span>Frenos ABS 4 ruedas</span></div>
         <div class="safety-feat"><GoogleIcon name="verified_user" size={26} /><span>Control de estabilidad</span></div>
-        <div class="safety-feat"><GoogleIcon name="airline_seat_recline_normal" size={26} /><span>Bolsas de aire múltiples</span></div>
-        <div class="safety-feat"><GoogleIcon name="visibility" size={26} /><span>Cámara de reversa</span></div>
+        <div class="safety-feat"><GoogleIcon name="airline_seat_recline_normal" size={26} /><span>6 Bolsas de aire</span></div>
+        <div class="safety-feat"><GoogleIcon name="visibility" size={26} /><span>Cámara y sensores 360°</span></div>
       </div>
     </div>
   </section>
@@ -890,11 +1001,14 @@
     aspect-ratio: 16 / 9;
     padding: 0;
     overflow: hidden;
-    cursor: zoom-in;
+    cursor: pointer;
     border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: 30px;
     background: rgba(255, 255, 255, 0.045);
     box-shadow: 0 38px 90px rgba(0, 0, 0, 0.56), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    transition:
+      border-color 420ms var(--ease-out),
+      box-shadow 420ms var(--ease-out);
   }
 
   .pin-media:hover,
@@ -904,16 +1018,31 @@
     outline: none;
   }
 
-  .truck-main {
+  .truck-main,
+  .pin-video {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
     border: 0;
     border-radius: inherit;
+  }
+
+  .truck-main {
     object-fit: cover;
     transform: scale(1.025);
-    transition: opacity 520ms var(--ease-out), transform 900ms var(--ease-out);
+    transition: opacity 520ms var(--ease-out), transform 900ms var(--ease-out), filter 520ms var(--ease-out);
+  }
+
+  .truck-main.video-active {
+    opacity: 0;
+    transform: scale(1.055);
+    filter: blur(8px);
+  }
+
+  .pin-video {
+    z-index: 2;
+    background: #030305;
   }
 
   .pin-play-cue {
@@ -937,7 +1066,9 @@
     transition: opacity 340ms var(--ease-out), transform 340ms var(--ease-out);
   }
 
-  .pin-media:hover .pin-play-cue {
+  .pin-media:hover .pin-play-cue,
+  .pin-media:focus-visible .pin-play-cue,
+  .pin-media.video-active .pin-play-cue {
     opacity: 0;
     transform: translateY(8px);
     pointer-events: none;
@@ -1162,19 +1293,25 @@
     background: #050507;
   }
 
-  .capability > img {
+  .capability > img.cap-desktop-img {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: left center;
     filter: saturate(0.85) contrast(1.08);
-    opacity: 0.82;
+    opacity: 0.88;
     transform: scale(1.02);
     transition: transform 1400ms var(--ease-out);
+    display: block;
   }
 
-  .capability:hover > img {
+  .capability > img.cap-mobile-img {
+    display: none;
+  }
+
+  .capability:hover > img.cap-desktop-img {
     transform: scale(1.055);
   }
 
@@ -1275,6 +1412,127 @@
     font-weight: 400;
     line-height: 1.65;
     max-width: 540px;
+  }
+
+  /* ADAS Carousel Styles */
+  .safety-sub-label {
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.45);
+    margin: 32px 0 16px;
+  }
+
+  .adas-carousel-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    padding-bottom: 24px;
+  }
+
+  .adas-track {
+    display: flex;
+    gap: 16px;
+    transition: transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+    width: 100%;
+  }
+
+  .adas-slide {
+    flex: 0 0 calc((100% - 16px) / 2);
+    min-width: 0;
+  }
+
+  @media (max-width: 768px) {
+    .adas-slide {
+      flex: 0 0 100%;
+    }
+    .adas-track {
+      transform: translateX(calc(-var(--adas-idx, 0) * 100%)) !important;
+    }
+  }
+
+  .safety-vid-card {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    background: rgba(255, 255, 255, 0.03);
+  }
+
+  .safety-vid-card img,
+  .safety-vid-card video {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    display: block;
+  }
+
+  .svc-label {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 14px 18px;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.85) 0%, transparent 100%);
+    color: white;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+  }
+
+  .carousel-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 24px;
+    justify-content: center;
+  }
+
+  .carousel-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 14px 16px;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.11);
+    border-radius: 999px;
+    backdrop-filter: blur(20px);
+  }
+
+  .carousel-pill button {
+    width: 6px;
+    height: 6px;
+    padding: 0;
+    border: 0;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.25);
+    cursor: pointer;
+    transition: width 500ms cubic-bezier(0.16, 1, 0.3, 1), background 500ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .carousel-pill button.active {
+    width: 22px;
+    background: rgba(255, 255, 255, 0.95);
+  }
+
+  .play-btn {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.11);
+    color: white;
+    cursor: pointer;
+    backdrop-filter: blur(20px);
+    transition: background 300ms ease;
+  }
+
+  .play-btn:hover {
+    background: rgba(255, 255, 255, 0.14);
   }
 
   .safety-features {
@@ -1646,6 +1904,42 @@
       min-height: auto;
       padding: 70px 20px;
       grid-template-columns: 1fr;
+    }
+
+    .capability {
+      min-height: auto;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      background: #050507;
+    }
+
+    .capability > img.cap-desktop-img {
+      display: none;
+    }
+
+    .capability > img.cap-mobile-img {
+      display: block;
+      position: relative;
+      inset: auto;
+      width: 100%;
+      height: auto;
+      max-height: 48vh;
+      object-fit: cover;
+    }
+
+    .capability::after {
+      display: none;
+    }
+
+    .capability-card {
+      width: 100%;
+      margin: 0;
+      border-radius: 0;
+      border-left: none;
+      border-right: none;
+      border-bottom: none;
+      padding: 28px 20px;
     }
   }
 
