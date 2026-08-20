@@ -15,6 +15,8 @@
     metric: string
     detail: string
     price: string
+    promo?: string
+    hasPromo?: boolean
   }
 
   let { onModelSelect }: { onModelSelect?: (slug: string) => void } = $props()
@@ -40,7 +42,8 @@
       stat: 'Aventura Urbana',
       metric: '1.3L Turbo 173 HP',
       detail: 'El SUV con más actitud: eficiente, tecnológico y con espíritu 4x4.',
-      price: '$456,900'
+      price: '$456,900',
+      promo: 'Descuento de hasta $40,000 ó Mensualidad desde $5,499'
     },
     {
       slug: 'compass',
@@ -54,7 +57,8 @@
       stat: 'Diseño & Confort',
       metric: 'AWD Disponible',
       detail: 'Diseñado para conquistarte: tecnología, espacio y presencia.',
-      price: '$541,900'
+      price: '$541,900',
+      promo: 'Descuento promocional de $30,000 en pago de contado'
     },
     {
       slug: 'commander',
@@ -68,7 +72,8 @@
       stat: '7 Pasajeros',
       metric: 'Familia & Espacio',
       detail: 'Tres filas de asientos con confort y capacidad sin concesiones.',
-      price: '$766,900'
+      price: '$766,900',
+      promo: 'Plan de financiamiento con Tasa desde 13.99% sin comisión'
     },
     {
       slug: 'cherokee',
@@ -81,7 +86,9 @@
       stat: 'Icónico',
       metric: '2.0T 270 HP',
       detail: 'Un clásico reinventado con potencia turbo y carácter Jeep.',
-      price: '$899,900'
+      price: '$899,900',
+      hasPromo: false,
+      promo: 'Precio desde $899,900'
     },
     {
       slug: 'grand-cherokee',
@@ -94,7 +101,8 @@
       stat: 'Premium',
       metric: 'V6 3.6L / 4xe',
       detail: 'El SUV más premiado: lujo real con capacidad off-road legendaria.',
-      price: '$1,189,900'
+      price: '$1,189,900',
+      promo: 'Bono especial · Desde $1,189,900'
     },
     {
       slug: 'wrangler',
@@ -107,7 +115,8 @@
       stat: 'Off-Road Total',
       metric: '4x4 con reducida',
       detail: 'Icónico, irreducible y sin límites. El Jeep definitivo.',
-      price: '$1,098,900'
+      price: '$1,098,900',
+      promo: 'Descuento promocional de $176,000 en pago de contado'
     },
     {
       slug: 'jt',
@@ -120,7 +129,8 @@
       stat: 'Pickup 4x4',
       metric: 'Cama + Off-Road',
       detail: 'La única pickup todoterreno con raíces Wrangler y cama abierta.',
-      price: '$1,098,900'
+      price: '$1,098,900',
+      promo: 'Bono especial · Desde $1,098,900'
     },
     {
       slug: 'grand-wagoneer-l',
@@ -133,8 +143,9 @@
       stat: 'Ultra Premium',
       metric: 'V8 6.4L 471 HP',
       detail: 'La cúspide del lujo americano: 8 plazas, V8 y tecnología de clase mundial.',
-      price: '$2,150,900'
-    },
+      price: '$2,150,900',
+      promo: 'Bono especial · Desde $2,150,900'
+    }
   ]
 
   function selectModel(_slug: string) {
@@ -332,7 +343,9 @@
               <img src={model.promoImage || model.image} alt={model.name} />
               <div class="pc-img-gradient"></div>
               <span class="pc-badge-stat">{model.stat}</span>
-              <span class="pc-badge-promo">PROMO</span>
+              {#if model.hasPromo !== false}
+                <span class="pc-badge-promo">PROMO</span>
+              {/if}
               <div class="pc-img-footer">
                 <p>Jeep</p>
                 <h3>{model.name.replace('Jeep ', '')} <span>2026</span></h3>
@@ -342,7 +355,7 @@
               <p class="pc-metric">{model.metric}</p>
               <p class="pc-detail">
                 <GoogleIcon name="sell" size={12} style="display:inline-flex;margin-right:4px;color:#9eb821;vertical-align:-2px;" />
-                Bono especial · {model.price}
+                {model.promo || `Bono especial · ${model.price}`}
               </p>
               <button onclick={() => selectModel(model.slug)} class="pc-cta">
                 Ver promoción <GoogleIcon name="chevron_right" size={14} />

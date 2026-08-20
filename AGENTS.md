@@ -133,6 +133,7 @@ estos archivos desde cero):
   en `'2008'` — corregidos a `'pulse'` y `'5008'`.
 - `Fiat`: El modelo **Argo 2026** fue eliminado de la gama FIAT (2026-08-19) a petición del usuario. La gama activa de Fiat 2026 incluye Pulse, Pulse Abarth y Fastback.
 - **Imágenes de Promociones y Brand Hubs (2026-08-19):** Todas las tarjetas del carrusel de modelos de los Brand Hubs (`*BrandHub.svelte`), la sección `#promociones` (`PromoBentoGrid.svelte`) y el mega-menú (`GlassTopNav.svelte`) fueron actualizadas para consumir las imágenes locales en `public/promociones/` con ruta `/adistem2026/promociones/<archivo>.jpg`.
+- **Textos de Promociones en Brand Hubs (2026-08-19):** Todos los carruseles de modelos en `*BrandHub.svelte` consumen ahora el campo dinámico `promo` coincidente con las ofertas oficiales reflejadas en `PromoBentoGrid.svelte`.
 
 Logs detallados por marca (qué se hizo, por qué, qué falta): `dodge_attitude_implementation_log.md`,
 `peugeot_2008_implementation_log.md`, `ram_1500rho_implementation_log.md`.
