@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { onMount } from 'svelte'
   import { isDark } from '$lib/stores/theme'
   import { ShieldAlert, X, AlertTriangle, CheckCircle, Search, Calendar, Phone } from 'lucide-svelte'
   import { fade, scale } from 'svelte/transition'
@@ -24,6 +25,15 @@
     muted:     $isDark ? 'rgba(255,255,255,0.45)'     : 'rgba(51,78,139,0.55)',
     inputBg:   $isDark ? 'rgba(255,255,255,0.07)'     : 'rgba(51,78,139,0.05)',
     inputBorder: $isDark ? 'rgba(255,255,255,0.15)'   : 'rgba(51,78,139,0.14)',
+  })
+
+  function handleKeydown(e: KeyboardEvent) {
+    if (e.key === 'Escape') onClose()
+  }
+
+  onMount(() => {
+    window.addEventListener('keydown', handleKeydown)
+    return () => window.removeEventListener('keydown', handleKeydown)
   })
 
   function handleCheck() {
@@ -54,11 +64,23 @@
   }
 </script>
 
-<div class="fixed inset-0 z-[10000] flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm" transition:fade={{ duration: 200 }}>
+<!-- svelte-ignore a11y_click_events_have_key_events -->
+<!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
+<div 
+  class="fixed inset-0 z-[10000] flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm cursor-pointer" 
+  transition:fade={{ duration: 200 }}
+  onclick={onClose}
+  role="dialog"
+  aria-modal="true"
+  aria-label="Campaña de Reemplazo Bolsas de Aire Takata"
+>
+  <!-- svelte-ignore a11y_click_events_have_key_events -->
   <div 
-    class="w-full max-w-lg rounded-3xl overflow-hidden p-6 md:p-8 flex flex-col relative transition-all duration-300"
+    class="w-full max-w-lg rounded-3xl overflow-hidden p-6 md:p-8 flex flex-col relative transition-all duration-300 cursor-default"
     style={glassModal}
     transition:scale={{ start: 0.95, duration: 250 }}
+    onclick={(e) => e.stopPropagation()}
+    role="document"
   >
     <!-- Botón Cerrar -->
     <button 

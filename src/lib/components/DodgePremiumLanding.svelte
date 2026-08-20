@@ -40,7 +40,6 @@
   const DURANGO_IMG = 'https://www.dodge.com/content/dam/cross-regional/nafta/dodge/es_mx/2026/buzz-model/durango/hellcat/desktop/my26-dodge-hellcat-hero-dk-mx.jpg.img.2880.jpg'
   const DURANGO_HEMI_IMG = 'https://www.dodge.com/content/dam/cross-regional/nafta/dodge/es_mx/2026/buzz-model/durango/hellcat/desktop/my26-dodge-hellcat-hemi-dk-mx.jpg.img.2880.jpg'
   const DURANGO_CONFIANZA_IMG = 'https://www.dodge.com/content/dam/cross-regional/nafta/dodge/es_mx/2026/buzz-model/durango/hellcat/desktop/my26-dodge-hellcat-confianza-dk-mx.jpg.img.2880.jpg'
-  const JOURNEY_IMG = 'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2Fc8f39b8a62ba049430811aa128ea21a793615787.jpg?generation=1777350234748118&alt=media'
 
   // ── Attitude 2026: versiones/colores reales (dodge.com.mx) ──
   const ATTITUDE_SXT_JELLY = 'https://www.dodge.com/content/dam/cross-regional/nafta/dodge/es_mx/2026/attitude/desktop/my26-dodge-attitude-sxt-jellybean-mx.jpg.img.600.jpg'
@@ -139,7 +138,7 @@
       heroImage: ATTITUDE_IMG,
       spotlightImage: ATTITUDE_COLOR_IMG,
       quote: 'Hola,%20me%20interesa%20cotizar%20un%20Dodge%20Attitude',
-      price: 'Desde $379,900',
+      price: 'Desde $364,900',
       specs: [
         { value: 'SXT', label: 'Versión de entrada equipada' },
         { value: 'CVT', label: 'Transmisión automática' },
@@ -159,19 +158,19 @@
       quote: 'Hola,%20me%20interesa%20cotizar%20un%20Dodge%20Charger',
       price: 'Desde $1,489,900',
       specs: [
-        { value: 'V8/V6', label: 'Motores de alto desempeño' },
-        { value: 'RWD', label: 'Tracción trasera deportiva' },
-        { value: 'Track', label: 'Modos de manejo en pista' },
-        { value: 'Legend', label: 'Herencia Dodge desde 1966' },
+        { value: 'Scat Pack', label: 'Versión disponible' },
+        { value: 'V8', label: 'Motor HEMI de alta cilindrada' },
+        { value: '10.25"', label: 'Pantalla táctil Uconnect' },
+        { value: 'Brembo', label: 'Frenos de alto rendimiento' },
       ],
-      motionTitle: 'Movimiento que se siente antes de arrancar.',
-      motionCopy: 'El Charger no pasa desapercibido: cada línea está diseñada para transmitir potencia y cada arranque confirma por qué es una leyenda.',
+      motionTitle: 'Potencia pura. Presencia legendaria.',
+      motionCopy: 'El Dodge Charger rinde tributo a la era dorada de los muscle cars con la tecnología, seguridad y respuesta que exige la actualidad.',
     },
     'durango': {
       name: 'Dodge Durango',
       kicker: 'Dodge Durango 2026',
-      title: 'Dominio total en cualquier terreno.',
-      subtitle: 'La SUV con más carácter de Dodge: espacio para tres filas, fuerza de sobra y versiones que llegan hasta la brutal Hellcat Black Demon.',
+      title: 'Dominio total, tres filas de espacio.',
+      subtitle: 'La SUV con más carácter del mercado: tres filas para toda la familia, capacidad de remolque real y la opción de la descomunal Hellcat.',
       heroImage: DURANGO_IMG,
       spotlightImage: DURANGO_HEMI_IMG,
       quote: 'Hola,%20me%20interesa%20cotizar%20un%20Dodge%20Durango',
@@ -185,24 +184,6 @@
       motionTitle: 'Espacio familiar con actitud de muscle car.',
       motionCopy: 'El Durango combina la practicidad de una SUV de tres filas con el carácter y la potencia que solo Dodge sabe imprimir.',
     },
-    'journey': {
-      name: 'Dodge Journey',
-      kicker: 'Dodge Journey 2026',
-      title: 'Versatilidad familiar sin concesiones.',
-      subtitle: 'Espacio, confort y tecnología para acompañar cada viaje en familia, con el respaldo y la presencia de la marca Dodge.',
-      heroImage: JOURNEY_IMG,
-      spotlightImage: JOURNEY_IMG,
-      quote: 'Hola,%20me%20interesa%20cotizar%20un%20Dodge%20Journey',
-      price: 'Desde $603,900',
-      specs: [
-        { value: 'GT', label: 'Versión tope de gama' },
-        { value: '5/7', label: 'Configuración de asientos' },
-        { value: 'Cargo', label: 'Espacio de carga flexible' },
-        { value: 'Safety', label: 'Sistemas de seguridad activa' },
-      ],
-      motionTitle: 'Hecho para acompañar cada trayecto.',
-      motionCopy: 'El Journey está diseñado para que cada viaje familiar se sienta cómodo, seguro y con el espacio que necesitas.',
-    },
   }
 
   const fallbackModel: ModelDetail = {
@@ -211,9 +192,9 @@
     title: 'Actitud que se nota desde el arranque.',
     subtitle: 'Presencia, tecnología y el carácter Dodge en cada versión de la gama.',
     heroImage: ATTITUDE_IMG,
-    spotlightImage: ATTITUDE_IMG,
+    spotlightImage: ATTITUDE_COLOR_IMG,
     quote: 'Hola,%20me%20interesa%20cotizar%20un%20Dodge',
-    price: 'Desde $379,900',
+    price: 'Desde $364,900',
     specs: [
       { value: '2026', label: 'Gama del año modelo' },
       { value: 'Dodge', label: 'Actitud americana' },

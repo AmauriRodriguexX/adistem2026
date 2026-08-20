@@ -46,7 +46,7 @@
       mobileHeroImage: 'https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2026/pulse-2026/mobile/my26-fiat-pulse-inicio-hero-mx-mb.jpg',
       spotlightImage: 'https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2026/pulse-2026/desktop/my26-fiat-pulse-inicio-gallery-image-1-expanded-mx.jpg',
       quote: 'Hola,%20me%20interesa%20cotizar%20un%20Fiat%20Pulse',
-      price: 'Desde $456,900',
+      price: 'Desde $349,500',
       specs: [
         { value: '173 hp', label: 'Motor 1.3L Turbo GSE' },
         { value: '8.4"', label: 'Pantalla Táctil Uconnect' },
@@ -118,7 +118,7 @@
     heroImage: 'https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2026/pulse-2026/desktop/my26-fiat-pulse-inicio-gallery-image-2-expanded-mx.jpg',
     spotlightImage: 'https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2026/pulse-2026/desktop/my26-fiat-pulse-inicio-gallery-image-2-expanded-mx.jpg',
     quote: 'Hola,%20me%20interesa%20cotizar%20una%20Fiat',
-    price: 'Desde $456,900',
+    price: 'Desde $349,500',
     specs: [
       { value: '6.7L', label: 'Turbodiesel disponible' },
       { value: '4x4', label: 'Tracción para trabajo pesado' },

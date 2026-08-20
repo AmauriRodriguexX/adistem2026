@@ -271,3 +271,19 @@ src: url('https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign
   animation: card-wave-1 1.4s ease-out forwards, card-wave-2 1.8s ease-out forwards !important;
   transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
+
+/* ── Símbolo de marca registrada ® (más chico y alineado abajo a la línea base) ── */
+.reg-r,
+.jeep-r,
+sub.reg-r {
+  display: inline-block;
+  font-size: 0.38em;
+  line-height: 1;
+  vertical-align: baseline;
+  position: relative;
+  bottom: 0.05em;
+  margin-left: 0.05em;
+  margin-right: 0.05em;
+  font-weight: 700;
+}
+

@@ -36,7 +36,7 @@
       stat: 'SUV',
       metric: 'Actitud',
       detail: 'La SUV compacta de Peugeot, con el i-Cockpit® y el diseño que refleja lo que estás construyendo.',
-      price: '$448,900',
+      price: '$458,900',
       promo: 'Bono de $52,000 + Tasa de 7.99% sin comisión por apertura + 3 años de mantenimiento gratis'
     },
     {
@@ -50,7 +50,7 @@
       stat: 'SUV',
       metric: 'Premium',
       detail: 'Cada detalle fue pensado para una experiencia de conducción superior y sofisticada.',
-      price: '$639,900',
+      price: '$629,900',
       promo: 'Bono de hasta $25,000 + Tasa desde 7.99% + 0% de comisión por apertura + 3 años de mantenimiento gratis'
     },
     {
@@ -64,7 +64,7 @@
       stat: 'SUV 7 Plazas',
       metric: 'Familiar',
       detail: 'Espacio para 7 personas con el estilo, confort y tecnología de la marca del león.',
-      price: '$779,900',
+      price: '$754,900',
       promo: 'Bono de hasta $25,000 + Tasa desde 7.99% + 0% de comisión por apertura + 3 años de mantenimiento gratis'
     },
     {
@@ -973,10 +973,6 @@
 
   .story-panel.flip {
     background-position: 60% 28%;
-  }
-
-  .story-panel + .story-panel {
-    border-top: 1px solid rgba(255, 255, 255, 0.06);
   }
 
   .story-overlay {

@@ -79,7 +79,7 @@
       stat: 'Versátil',
       metric: 'Remolque',
       detail: 'Balance entre fuerza, confort y capacidad diaria.',
-      price: '$1,290,000',
+      price: '$1,293,700',
       promo: 'Tasa desde 14.50%'
     },
     {
@@ -93,8 +93,8 @@
       stat: 'Trabajo',
       metric: 'Carga',
       detail: 'Configuración práctica para jornadas productivas.',
-      price: '$408,400',
-      promo: 'Desde $408,400 · Bono $47,000 · Tasa 14.50%'
+      price: '$409,900',
+      promo: 'Desde $409,900 · Bono $47,000 · Tasa 14.50%'
     }
   ]
 
@@ -998,10 +998,6 @@
 
   .story-panel.flip {
     background-position: 60% 28%;
-  }
-
-  .story-panel + .story-panel {
-    border-top: 1px solid rgba(255, 255, 255, 0.06);
   }
 
   .story-overlay {

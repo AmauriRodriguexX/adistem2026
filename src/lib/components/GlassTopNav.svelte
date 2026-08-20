@@ -72,22 +72,21 @@
     id: number; brand: Exclude<BrandFilter, 'Todas'>; type: VehicleType; model: string
     year: string; version: string; fuel: string; price: string; img: string; accent: string
   }[] = [
-    { id:1,  brand:'Jeep',    type:'SUV',        model:'Wrangler',      year:'2026', version:'Willys Unlimited', fuel:'Gasolina', price:'Desde $1,098,900', img:'/adistem2026/promociones/jeep-wrangler-2026.jpg', accent:'#424D07' },
-    { id:2,  brand:'Jeep',    type:'SUV',        model:'Compass',       year:'2026', version:'Limited Premium',  fuel:'Gasolina', price:'Desde $541,900',   img:'/adistem2026/promociones/jeep-compass-2026.jpg',  accent:'#424D07' },
-    { id:3,  brand:'Jeep',    type:'SUV',        model:'Commander',     year:'2026', version:'Overland FWD',     fuel:'Gasolina', price:'Desde $766,900',   img:'/adistem2026/promociones/jeep-commander-2026.jpg', accent:'#424D07' },
-    { id:4,  brand:'Jeep',    type:'SUV',        model:'Renegade',      year:'2026', version:'Latitude',         fuel:'Gasolina', price:'Desde $456,900',   img:'/adistem2026/promociones/jeep-renegade-2026.jpg',  accent:'#424D07' },
-    { id:5,  brand:'Fiat',    type:'SUV',        model:'Pulse',         year:'2026', version:'Drive',            fuel:'Gasolina', price:'Desde $368,900',   img:'/adistem2026/promociones/fiat-pulse-2026.jpg',     accent:'#FF1530' },
+    { id:1,  brand:'Jeep',    type:'SUV',        model:'Wrangler',      year:'2026', version:'Willys Unlimited', fuel:'Gasolina', price:'Desde $1,103,900', img:'/adistem2026/promociones/jeep-wrangler-2026.jpg', accent:'#424D07' },
+    { id:2,  brand:'Jeep',    type:'SUV',        model:'Compass',       year:'2026', version:'Limited Premium',  fuel:'Gasolina', price:'Desde $546,900',   img:'/adistem2026/promociones/jeep-compass-2026.jpg',  accent:'#424D07' },
+    { id:3,  brand:'Jeep',    type:'SUV',        model:'Commander',     year:'2026', version:'Overland FWD',     fuel:'Gasolina', price:'Desde $720,900',   img:'/adistem2026/promociones/jeep-commander-2026.jpg', accent:'#424D07' },
+    { id:4,  brand:'Jeep',    type:'SUV',        model:'Renegade',      year:'2026', version:'Latitude',         fuel:'Gasolina', price:'Desde $461,900',   img:'/adistem2026/promociones/jeep-renegade-2026.jpg',  accent:'#424D07' },
+    { id:5,  brand:'Fiat',    type:'SUV',        model:'Pulse',         year:'2026', version:'Drive',            fuel:'Gasolina', price:'Desde $349,500',   img:'/adistem2026/promociones/fiat-pulse-2026.jpg',     accent:'#FF1530' },
     { id:6,  brand:'Fiat',    type:'Deportivos', model:'Pulse Abarth',  year:'2026', version:'Abarth',           fuel:'Gasolina', price:'Desde $529,900',   img:'/adistem2026/promociones/fiat-abarth-2026.jpg',    accent:'#FF1530' },
-    { id:7,  brand:'Fiat',    type:'SUV',        model:'Fastback',      year:'2026', version:'Limited',          fuel:'Gasolina', price:'Desde $482,900',   img:'/adistem2026/promociones/fiat-fastback-2026.jpg',  accent:'#FF1530' },
-    { id:9,  brand:'Dodge',   type:'SUV',        model:'Durango',       year:'2026', version:'R/T Plus',         fuel:'Gasolina', price:'Desde $2,174,900', img:'/adistem2026/promociones/dodge-durango-2026.jpg',  accent:'#D50000' },
+    { id:7,  brand:'Fiat',    type:'SUV',        model:'Fastback',      year:'2026', version:'Limited',          fuel:'Gasolina', price:'Desde $463,500',   img:'/adistem2026/promociones/fiat-fastback-2026.jpg',  accent:'#FF1530' },
+    { id:9,  brand:'Dodge',   type:'SUV',        model:'Durango',       year:'2026', version:'R/T Plus',         fuel:'Gasolina', price:'Desde $2,179,900', img:'/adistem2026/promociones/dodge-durango-2026.jpg',  accent:'#D50000' },
     { id:10, brand:'Dodge',   type:'Sedán',      model:'Attitude',      year:'2026', version:'SXT',              fuel:'Gasolina', price:'Desde $364,900',   img:'/adistem2026/promociones/dodge-attitude-2026.jpg', accent:'#D50000' },
-    { id:11, brand:'Dodge',   type:'SUV',        model:'Journey',       year:'2026', version:'GT',               fuel:'Gasolina', price:'Desde $603,900',   img:'/adistem2026/promociones/dodge-journey-2026.jpg',  accent:'#D50000' },
-    { id:12, brand:'Peugeot', type:'SUV',        model:'Nueva 2008',    year:'2026', version:'GT',               fuel:'Gasolina', price:'Desde $448,900',   img:'/adistem2026/promociones/peugeot-2008-2026.jpg',   accent:'#0074E8' },
-    { id:13, brand:'Peugeot', type:'SUV',        model:'Nueva 5008',    year:'2026', version:'GT',               fuel:'Gasolina', price:'Desde $779,900',   img:'/adistem2026/promociones/peugeot-5008-2026.jpg',   accent:'#0074E8' },
-    { id:14, brand:'Peugeot', type:'SUV',        model:'Nueva 3008',    year:'2026', version:'Allure Pack',      fuel:'Gasolina', price:'Desde $639,900',   img:'/adistem2026/promociones/peugeot-3008-2026.jpg',   accent:'#0074E8' },
+    { id:12, brand:'Peugeot', type:'SUV',        model:'Nueva 2008',    year:'2026', version:'GT',               fuel:'Gasolina', price:'Desde $458,900',   img:'/adistem2026/promociones/peugeot-2008-2026.jpg',   accent:'#0074E8' },
+    { id:13, brand:'Peugeot', type:'SUV',        model:'Nueva 5008',    year:'2026', version:'GT',               fuel:'Gasolina', price:'Desde $754,900',   img:'/adistem2026/promociones/peugeot-5008-2026.jpg',   accent:'#0074E8' },
+    { id:14, brand:'Peugeot', type:'SUV',        model:'Nueva 3008',    year:'2026', version:'Allure Pack',      fuel:'Gasolina', price:'Desde $629,900',   img:'/adistem2026/promociones/peugeot-3008-2026.jpg',   accent:'#0074E8' },
     { id:15, brand:'Peugeot', type:'Van',        model:'Nueva Partner', year:'2026', version:'Active',           fuel:'Gasolina', price:'Desde $439,900',   img:'/adistem2026/promociones/peugeot-partner-2026.jpg',accent:'#0074E8' },
-    { id:16, brand:'Ram',     type:'Pick-ups',   model:'1500',          year:'2026', version:'Laramie 4x4',      fuel:'Híbridos', price:'Desde $1,290,000', img:'/adistem2026/promociones/ram-1500-2026.jpg',     accent:'#880D00' },
-    { id:17, brand:'Ram',     type:'Pick-ups',   model:'1200',          year:'2026', version:'Limited',          fuel:'Gasolina', price:'Desde $408,400',   img:'/adistem2026/promociones/ram-1200-2026.jpg',     accent:'#880D00' },
+    { id:16, brand:'Ram',     type:'Pick-ups',   model:'1500',          year:'2026', version:'Laramie 4x4',      fuel:'Híbridos', price:'Desde $1,293,700', img:'/adistem2026/promociones/ram-1500-2026.jpg',     accent:'#880D00' },
+    { id:17, brand:'Ram',     type:'Pick-ups',   model:'1200',          year:'2026', version:'Limited',          fuel:'Gasolina', price:'Desde $409,900',   img:'/adistem2026/promociones/ram-1200-2026.jpg',     accent:'#880D00' },
   ]
 
   let megaBrand = $state<BrandFilter>('Todas')
@@ -545,7 +544,7 @@
                   onmouseenter={(e) => { if (!isBrandActive) (e.currentTarget as HTMLButtonElement).style.color = brand.hover }}
                   onmouseleave={(e) => { if (!isBrandActive) (e.currentTarget as HTMLButtonElement).style.color = $isDark ? 'rgba(255,255,255,0.46)' : 'rgba(17,24,39,0.54)' }}
                 >
-                  {brand.label}
+                  {#if brand.name === 'Jeep'}Jeep<span class="reg-r">®</span>{:else}{brand.label}{/if}
                 </button>
               {/each}
             </div>
@@ -625,7 +624,7 @@
                     </div>
                     <div class="border-t p-4" style="border-color:{$isDark ? 'rgba(255,255,255,0.08)' : 'rgba(30,60,120,0.10)'}; background:{$isDark ? 'transparent' : '#ffffff'};">
                       <div class="flex items-center justify-between gap-3">
-                        <p class="text-[11px] font-black uppercase tracking-[0.14em]" style="color:{vehicle.accent}">{vehicle.brand === 'Jeep' ? 'Jeep®' : vehicle.brand}</p>
+                        <p class="text-[11px] font-black uppercase tracking-[0.14em]" style="color:{vehicle.accent}">{#if vehicle.brand === 'Jeep'}Jeep<span class="reg-r">®</span>{:else}{vehicle.brand}{/if}</p>
                         <p class="text-[11px] font-bold" style="color:{$isDark ? 'rgba(255,255,255,0.45)' : 'rgba(17,24,39,0.46)'}">{vehicle.type}</p>
                       </div>
                       <h4 class="mt-2 text-lg font-black leading-none" style="color:{$isDark ? 'white' : '#111827'}">

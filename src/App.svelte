@@ -886,7 +886,7 @@
                 alt="VAPSA" class="h-9 w-auto" style="filter:{T.logoF}" />
             </button>
             <p class="text-xs leading-relaxed mb-3" style="color:{T.muted}">
-              Concesionaria autorizada de Jeep®, FIAT, Dodge, Ram y Peugeot en Rioverde, SLP.
+              Concesionaria autorizada de Jeep<span class="reg-r">®</span>, FIAT, Dodge, Ram y Peugeot en Rioverde, SLP.
             </p>
             <p class="text-xs" style="color:{$isDark ? 'rgba(255,255,255,0.26)' : 'rgba(20,30,80,0.30)'}">
               BLVD SAN LUIS 1158,<br />San Luis Potosí, San Luis Potosí
@@ -902,10 +902,10 @@
                       <button type="button" onclick={link.action}
                         class="text-xs transition-colors hover:text-blue-500 cursor-pointer text-left"
                         style="color:{T.muted}">
-                        {link.label}
+                        {#if link.label === 'Jeep®'}Jeep<span class="reg-r">®</span>{:else}{link.label}{/if}
                       </button>
                     {:else}
-                      <a href={link.href} class="text-xs transition-colors hover:text-blue-500" style="color:{T.muted}">{link.label}</a>
+                      <a href={link.href} class="text-xs transition-colors hover:text-blue-500" style="color:{T.muted}">{#if link.label === 'Jeep®'}Jeep<span class="reg-r">®</span>{:else}{link.label}{/if}</a>
                     {/if}
                   </li>
                 {/each}
