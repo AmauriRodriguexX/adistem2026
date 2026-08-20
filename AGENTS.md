@@ -171,3 +171,44 @@ Cuando se requiera reemplazar imágenes en el sitio por versiones locales (`.jpg
 2. **Rutas en el código:** Dado que Vite está configurado con un `base` de `/adistem2026/` (nombre del repo), la URL que escribas en el componente Svelte debe incluir esta base como ruta absoluta y omitir la palabra `public` (ej. `src="/adistem2026/jeep-toolkit/nombre-imagen.jpg"`). Esto garantiza que la imagen cargue correctamente tanto en modo local (dev) como en producción (GitHub Pages).
 3. **Múltiples breakpoints:** En el componente `BrandHub` (sección `story-reel`), recuerda reemplazar la imagen tanto en la etiqueta `<img class="story-mobile-img" src="...">` (para la vista móvil) como en el inline style `style="background-image: url(...)"` del contenedor (para escritorio).
 4. **Galerías dinámicas:** En `PremiumLanding` (ej. `motionCards`), las imágenes suelen dictarse por arrays en la etiqueta `<script>` (como `motionImages`, `storyImages`). Para actualizar una imagen de la galería, reemplaza la URL directamente en la posición correspondiente del array.
+
+### 7.1 Estructura estándar de carpetas locales por modelo (`public/<marca>/<modelo-slug>/`)
+
+Para cualquier modelo (Renegade, Attitude, Pulse, 1500 RHO, 5008, etc.), los assets locales se organizan y mapean a los componentes de la siguiente manera estandarizada:
+
+1. **`hero/`** -> Hero de Landing (`*PremiumLanding.svelte`) y Brand Hub (`*BrandHub.svelte`)
+   - `<modelo>.jpg` -> Hero Desktop (`heroImage` / `img.hero-desktop-img`)
+   - `<modelo>-mob.jpg` -> Hero Mobile (`mobileHeroImage` / `img.hero-mobile-img`)
+   - *Ruta Vite:* `/adistem2026/<marca>/<modelo-slug>/hero/<archivo>.jpg`
+
+2. **`galeria/`** -> Selector de Vistas Exteriores en la sección `vs-exterior-row` (con modal zoom)
+   - `vista-lateral.jpg` -> Botón "Vista lateral"
+   - `vista-frontal.jpg` -> Botón "Vista frontal"
+   - `vista-trasera.jpg` -> Botón "Vista trasera"
+   - *Ruta Vite:* `/adistem2026/<marca>/<modelo-slug>/galeria/<archivo>.jpg`
+
+3. **`exterior/`** -> Sección de diseño exterior (`#galeria` / `motion-gallery` / `motionImages` / `motionCards`)
+   - `exterior-1.jpg`, `exterior-2.jpg`, `exterior-3.jpg`
+   - *Ruta Vite:* `/adistem2026/<marca>/<modelo-slug>/exterior/<archivo>.jpg`
+
+4. **`equipamiento/`** -> Sección de paneles apilados (`#equipamiento-exterior` / `story-stack` / `storyImages` / `story`)
+   - `equipamiento-1.jpg`, `equipamiento-2.jpg`, `equipamiento-3.jpg`
+   - *Ruta Vite:* `/adistem2026/<marca>/<modelo-slug>/equipamiento/<archivo>.jpg`
+
+5. **`versiones/`** -> Selector interactivo de versiones y colores (`#versiones` / `vs-showcase` / `vs-color-bar`)
+   - Subcarpetas por trim/versión: ej. `versiones/<trim-nombre>/<color>.avif` o `.png`
+   - *Ruta Vite:* `/adistem2026/<marca>/<modelo-slug>/versiones/<trim>/<archivo>`
+
+6. **`interior/`** -> Carrusel de Interiores (`.cockpit-carousel` / `cockpitImages`)
+   - `interior-1.jpg`, `interior-2.jpg`, `interior-3.jpg`
+   - *Ruta Vite:* `/adistem2026/<marca>/<modelo-slug>/interior/<archivo>.jpg`
+
+7. **`capacidad/`** -> Sección de Capacidad y Desempeño (`#capacidad` / `.capability`)
+   - `capacidad.jpg` -> Desktop (motor a la izquierda, espacio libre a la derecha para la tarjeta flotante)
+   - `capacidad-mob.jpg` -> Mobile (`.cap-mobile-img` con `display: flex; flex-direction: column;` arriba de la tarjeta para evitar que la tarjeta tape la imagen)
+   - *Ruta Vite:* `/adistem2026/<marca>/<modelo-slug>/capacidad/<archivo>.jpg`
+
+8. **`seguridad/`** -> Carrusel de Sistemas de Asistencia ADAS (`#seguridad` / `adasItems`)
+   - `seguridad-1.mp4` a `seguridad-4.mp4` (o videos/posters de ADAS)
+   - *Ruta Vite:* `/adistem2026/<marca>/<modelo-slug>/seguridad/<archivo>.mp4`
+
