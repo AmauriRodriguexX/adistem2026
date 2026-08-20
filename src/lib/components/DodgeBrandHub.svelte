@@ -108,7 +108,13 @@
 
   let isPlaying = $state(true)
 
-  const heroModels: DodgeModel[] = [models[0]]
+  const heroModels: DodgeModel[] = [
+    {
+      ...models[0],
+      image: '/adistem2026/dodge/home/hero/attitude-2026.jpg',
+      mobileImage: '/adistem2026/dodge/home/hero/attitude-2026-mob.jpg'
+    }
+  ]
   let activeHeroIndex = $state(0)
   let isHeroPlaying = $state(true)
 
@@ -305,8 +311,8 @@
 
   <!-- ═══ Cinematic story panels ═══ -->
   <section class="story-reel">
-    <div class="story-panel" style={`background-image: url('https://www.dodge.com/content/dam/cross-regional/nafta/dodge/es_mx/2026/attitude/desktop/2026-dodge-attitude-mx-tecnologia-confort-dk-v2.jpg.img.2880.jpg')`}>
-      <img class="story-mobile-img" src="https://www.dodge.com/content/dam/cross-regional/nafta/dodge/es_mx/2026/attitude/desktop/2026-dodge-attitude-mx-tecnologia-confort-dk-v2.jpg.img.2880.jpg" alt="Sedán accesible" />
+    <div class="story-panel" style="background-image: url('/adistem2026/dodge/story-panels/attitude-2026.jpg')">
+      <img class="story-mobile-img" src="/adistem2026/dodge/story-panels/attitude-2026-mobile.jpg" alt="Sedán accesible" />
       <div class="story-overlay"></div>
       <div class="story-content">
         <p class="story-eyebrow">Actitud Diaria</p>
@@ -320,8 +326,8 @@
       </div>
     </div>
 
-    <div class="story-panel flip" style={`background-image: url('https://www.dodge.com/content/dam/cross-regional/nafta/dodge/es_mx/2026/charger/vlp/desktop/my26-dodge-charger-mediablock-dk-pr.jpg.img.2880.jpg')`}>
-      <img class="story-mobile-img" src="https://www.dodge.com/content/dam/cross-regional/nafta/dodge/es_mx/2026/charger/vlp/desktop/my26-dodge-charger-mediablock-dk-pr.jpg.img.2880.jpg" alt="Músculo americano" />
+    <div class="story-panel flip" style="background-image: url('/adistem2026/dodge/story-panels/charger-2026.jpg')">
+      <img class="story-mobile-img" src="/adistem2026/dodge/story-panels/charger-2026-mobile.jpg" alt="Músculo americano" />
       <div class="story-overlay flip"></div>
       <div class="story-content flip">
         <p class="story-eyebrow">Músculo Americano</p>
@@ -335,8 +341,8 @@
       </div>
     </div>
 
-    <div class="story-panel" style={`background-image: url('${models[2].image}')`}>
-      <img class="story-mobile-img" src={models[2].image} alt="Potencia y espacio" />
+    <div class="story-panel" style="background-image: url('/adistem2026/dodge/story-panels/durango-2026.jpg')">
+      <img class="story-mobile-img" src="/adistem2026/dodge/story-panels/durango-2026-mobile.jpg" alt="Potencia y espacio" />
       <div class="story-overlay"></div>
       <div class="story-content">
         <p class="story-eyebrow">Potencia &amp; Espacio</p>
@@ -486,7 +492,21 @@
 
   @media (max-width: 767px) {
     .hub-hero > img.hero-desktop-img {
+      display: none !important;
+    }
+    .hub-hero > img.hero-mobile-img {
       display: block !important;
+    }
+    .hub-hero > img.hero-mobile-img.active {
+      animation: none !important;
+      transform: none !important;
+      opacity: 1 !important;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .hub-hero > img.hero-mobile-img {
+      display: none !important;
     }
   }
 

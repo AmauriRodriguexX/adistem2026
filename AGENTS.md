@@ -137,6 +137,9 @@ estos archivos desde cero):
 - **Dodge Journey 2026:** El modelo **Journey** fue desactivado y eliminado por completo de la gama nueva de Dodge (Brand Hub, Landing, Mega-menú, Bento Grid de Promociones) el 2026-08-19 por instrucción del usuario.
 - **Precios Actualizados (2026-08-19):** Se sincronizaron los nuevos precios de lista para Wrangler ($1,103,900), Compass ($546,900), Commander ($720,900), Renegade ($461,900), Pulse ($349,500), Fastback ($463,500), Durango ($2,179,900), Attitude ($364,900), Peugeot 2008 ($458,900), Peugeot 5008 ($754,900), Peugeot 3008 ($629,900), Peugeot Partner ($439,900), RAM 1500 ($1,293,700) y RAM 1200 ($409,900).
 - **Fiat Pulse 2026 Assets Locales y ADAS (2026-08-19):** Se migraron todas las imágenes de Fiat Pulse 2026 a assets locales en `public/fiat/pulse-2026/` (`hero/`, `galeria/`, `exterior/`, `equipamiento/`, `versiones/`, `interior/`, `capacidad/`, `seguridad/`). Se actualizaron los sistemas ADAS en `FiatPremiumLanding.svelte` con 1) Alerta de Cambio de Carril (LDW+) y 2) Sistema de Monitoreo de Presión de Llantas (TPMS).
+- **Dodge Attitude 2026 y Dodge Home Assets Locales (2026-08-19):** Se migraron todos los assets de Dodge Attitude 2026 (`public/dodge/attitude-2026/`) y los Story Panels de Dodge Home (`public/dodge/story-panels/` con Attitude, Charger y Durango). Se configuró el carrusel de asistencias ADAS en `DodgePremiumLanding.svelte` con: 1) SISTEMA DE BOLSAS DE AIRE y 2) FRENO DE ESTACIONAMIENTO ELECTRÓNICO (EPB), y el renderizado responsivo de `.capability` (desktop/mobile).
+
+
 
 Logs detallados por marca (qué se hizo, por qué, qué falta): `dodge_attitude_implementation_log.md`,
 `peugeot_2008_implementation_log.md`, `ram_1500rho_implementation_log.md`.
@@ -227,10 +230,21 @@ Para mantener total claridad cuando el usuario proporcione carpetas o assets de 
    - **Assets de Promociones (`.model-carousel`):**
      - Ubicación: `public/promociones/<marca>-<modelo>-2026.jpg`
    - **Hero del Home (`hub-hero`):**
-     - Mapea al modelo insignia en `/adistem2026/<marca>/<modelo-slug>/hero/<modelo>.jpg`.
+     - Assets en: `public/<marca>/home/hero/`
+     - Desktop: `/adistem2026/<marca>/home/hero/<modelo>-2026.jpg` (`heroModels[i].image` con clase `img.hero-desktop-img`)
+     - Mobile: `/adistem2026/<marca>/home/hero/<modelo>-2026-mob.jpg` (`heroModels[i].mobileImage` con clase `img.hero-mobile-img`)
+     - **Regla CSS obligatoria en `*BrandHub.svelte`:**
+       - En `@media (max-width: 767px)`:
+         ```css
+         .hub-hero > img.hero-desktop-img { display: none !important; }
+         .hub-hero > img.hero-mobile-img { display: block !important; }
+         .hub-hero > img.hero-mobile-img.active { animation: none !important; transform: none !important; opacity: 1 !important; }
+         ```
+       - En `@media (min-width: 768px)`:
+         ```css
+         .hub-hero > img.hero-mobile-img { display: none !important; }
+         ```
 
 2. **Cuando el usuario diga "<Marca> <Modelo>" o "Landing <Modelo>"** (ej. *"fiat pulse"*, *"dodge attitude"*, *"ram 1500 rho"*, *"peugeot 5008"*, *"jeep renegade"*):
    - **Archivo objetivo:** `src/lib/components/<Marca>PremiumLanding.svelte`
    - **Mapeo estándar:** Mapea directamente a las 8 subcarpetas documentadas en la Sección 7.1 (`hero/`, `galeria/`, `exterior/`, `equipamiento/`, `versiones/`, `interior/`, `capacidad/`, `seguridad/`).
-
-

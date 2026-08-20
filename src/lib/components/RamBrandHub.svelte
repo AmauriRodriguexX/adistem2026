@@ -524,7 +524,21 @@
 
   @media (max-width: 767px) {
     .hub-hero > img.hero-desktop-img {
+      display: none !important;
+    }
+    .hub-hero > img.hero-mobile-img {
       display: block !important;
+    }
+    .hub-hero > img.hero-mobile-img.active {
+      animation: none !important;
+      transform: none !important;
+      opacity: 1 !important;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .hub-hero > img.hero-mobile-img {
+      display: none !important;
     }
   }
 
