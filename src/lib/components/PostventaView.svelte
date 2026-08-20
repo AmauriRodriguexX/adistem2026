@@ -69,7 +69,7 @@
     },
     {
       brand: 'Jeep', name: 'Wrangler', year: 2026,
-      img: '/adistem2026/jeep/wrangler-2026.jpg',
+      img: '/adistem2026/promociones/jeep-wrangler-2026.jpg',
       specs: [
         { icon: 'bolt',              label: 'Motor',       val: '2.0L Turbo 270 hp' },
         { icon: 'settings',          label: 'Transmisión', val: 'Automática 8 vel.' },

@@ -131,6 +131,8 @@ estos archivos desde cero):
 - `FiatBrandHub.svelte` tenía `selectedQuoteModel = $state('renegade')` (residuo de
   copiar Jeep, no era ni siquiera un modelo Fiat válido) y `PeugeotBrandHub.svelte` seguía
   en `'2008'` — corregidos a `'pulse'` y `'5008'`.
+- `Fiat`: El modelo **Argo 2026** fue eliminado de la gama FIAT (2026-08-19) a petición del usuario. La gama activa de Fiat 2026 incluye Pulse, Pulse Abarth y Fastback.
+- **Imágenes de Promociones y Brand Hubs (2026-08-19):** Todas las tarjetas del carrusel de modelos de los Brand Hubs (`*BrandHub.svelte`), la sección `#promociones` (`PromoBentoGrid.svelte`) y el mega-menú (`GlassTopNav.svelte`) fueron actualizadas para consumir las imágenes locales en `public/promociones/` con ruta `/adistem2026/promociones/<archivo>.jpg`.
 
 Logs detallados por marca (qué se hizo, por qué, qué falta): `dodge_attitude_implementation_log.md`,
 `peugeot_2008_implementation_log.md`, `ram_1500rho_implementation_log.md`.
@@ -157,3 +159,12 @@ npm run build   # debe compilar sin errores
 ```
 Y confirmar con `git status --short` que los archivos que dices haber tocado realmente
 cambiaron en disco. No reportes trabajo hecho sin esta verificación.
+
+## 7. Manejo de assets locales (imágenes) y Vite
+
+Cuando se requiera reemplazar imágenes en el sitio por versiones locales (`.jpg`, `.png`, etc.), sigue estrictamente este flujo:
+
+1. **Ubicación obligatoria:** Las imágenes **NUNCA** deben guardarse manualmente en la carpeta `dist/`. Vite borra y reconstruye la carpeta `dist/` en cada `npm run build`, por lo que cualquier archivo ahí se perderá. Las imágenes estáticas locales deben colocarse dentro de la carpeta `public/` (ej. `public/jeep-toolkit/nombre-imagen.jpg`).
+2. **Rutas en el código:** Dado que Vite está configurado con un `base` de `/adistem2026/` (nombre del repo), la URL que escribas en el componente Svelte debe incluir esta base como ruta absoluta y omitir la palabra `public` (ej. `src="/adistem2026/jeep-toolkit/nombre-imagen.jpg"`). Esto garantiza que la imagen cargue correctamente tanto en modo local (dev) como en producción (GitHub Pages).
+3. **Múltiples breakpoints:** En el componente `BrandHub` (sección `story-reel`), recuerda reemplazar la imagen tanto en la etiqueta `<img class="story-mobile-img" src="...">` (para la vista móvil) como en el inline style `style="background-image: url(...)"` del contenedor (para escritorio).
+4. **Galerías dinámicas:** En `PremiumLanding` (ej. `motionCards`), las imágenes suelen dictarse por arrays en la etiqueta `<script>` (como `motionImages`, `storyImages`). Para actualizar una imagen de la galería, reemplaza la URL directamente en la posición correspondiente del array.
