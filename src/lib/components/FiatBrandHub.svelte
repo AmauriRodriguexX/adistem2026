@@ -108,7 +108,13 @@
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
-  const heroModels: FiatModel[] = [models[0]]
+  const heroModels: FiatModel[] = [
+    {
+      ...models[0],
+      image: '/adistem2026/fiat/pulse-2026/hero/pulse-2026.jpg',
+      mobileImage: '/adistem2026/fiat/pulse-2026/hero/pulse-2026-mob.jpg'
+    }
+  ]
   let activeHeroIndex = $state(0)
   let isHeroPlaying = $state(true)
 
@@ -333,8 +339,8 @@
   <!-- ═══ Cinematic story panels ═══ -->
   <section class="story-reel">
 
-    <div class="story-panel" style={`background-image: url('${models[0].image}')`}>
-      <img class="story-mobile-img" src={models[0].image} alt="Aventura Urbana" />
+    <div class="story-panel" style="background-image: url('/adistem2026/fiat/story-panels/pulse-2026.jpg')">
+      <img class="story-mobile-img" src="/adistem2026/fiat/story-panels/pulse-2026-mobile.jpg" alt="Aventura Urbana" />
       <div class="story-overlay"></div>
       <div class="story-content">
         <p class="story-eyebrow">Aventura Urbana</p>
@@ -348,8 +354,8 @@
       </div>
     </div>
 
-    <div class="story-panel flip" style={`background-image: url('${models[2].image}')`}>
-      <img class="story-mobile-img" src={models[2].image} alt="Familia & Espacio" />
+    <div class="story-panel flip" style="background-image: url('/adistem2026/fiat/story-panels/fastback-2026.jpg')">
+      <img class="story-mobile-img" src="/adistem2026/fiat/story-panels/fastback-2026-mobile.jpg" alt="Familia & Espacio" />
       <div class="story-overlay flip"></div>
       <div class="story-content flip">
         <p class="story-eyebrow">Diseño Coupé</p>
@@ -363,8 +369,8 @@
       </div>
     </div>
 
-    <div class="story-panel" style={`background-image: url('${models[1].image}')`}>
-      <img class="story-mobile-img" src={models[1].image} alt="Deportividad Abarth" />
+    <div class="story-panel" style="background-image: url('/adistem2026/fiat/story-panels/abarth-2026.jpg')">
+      <img class="story-mobile-img" src="/adistem2026/fiat/story-panels/abarth-2026-mobile.jpg" alt="Deportividad Abarth" />
       <div class="story-overlay"></div>
       <div class="story-content">
         <p class="story-eyebrow">Deportividad Abarth</p>

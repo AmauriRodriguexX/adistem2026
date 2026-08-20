@@ -33,6 +33,7 @@
     storyImages?: string[]
     motionImages?: string[]
     capabilityImage?: string
+    mobileCapabilityImage?: string
     price: string
   }
 
@@ -40,37 +41,38 @@
     'pulse2026': {
       name: 'Fiat Pulse',
       kicker: 'Pulse 2026',
-      title: 'Redefine la aventura urbana.',
-      subtitle: 'Motor 1.3L Turbo GSE de 173 hp, el más potente de su categoría. Diseño icónico Fiat con tecnología de vanguardia y sistemas ADAS para la ciudad.',
-      heroImage: 'https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2026/pulse-2026/desktop/my26-fiat-pulse-inicio-hero-mx-dk.jpg',
-      mobileHeroImage: 'https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2026/pulse-2026/mobile/my26-fiat-pulse-inicio-hero-mx-mb.jpg',
-      spotlightImage: 'https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2026/pulse-2026/desktop/my26-fiat-pulse-inicio-gallery-image-1-expanded-mx.jpg',
+      title: 'El SUV que late con tu estilo.',
+      subtitle: 'Diseño italiano, tecnología avanzada y máxima seguridad en cada viaje. El SUV pensado para la ciudad con conectividad y confort diario.',
+      heroImage: '/adistem2026/fiat/pulse-2026/hero/pulse-2026.jpg',
+      mobileHeroImage: '/adistem2026/fiat/pulse-2026/hero/pulse-2026-mob.jpg',
+      spotlightImage: '/adistem2026/fiat/pulse-2026/hero/pulse-2026.jpg',
       quote: 'Hola,%20me%20interesa%20cotizar%20un%20Fiat%20Pulse',
       price: 'Desde $349,500',
       specs: [
-        { value: '173 hp', label: 'Motor 1.3L Turbo GSE' },
-        { value: '8.4"', label: 'Pantalla Táctil Uconnect' },
-        { value: '7"', label: 'Clúster digital TFT a color' },
+        { value: '1.3L', label: 'Motor Firefly eficiente' },
+        { value: '8.4"', label: 'Central multimedia inalámbrica' },
+        { value: '7"', label: 'Clúster digital TFT' },
         { value: 'ADAS', label: 'Sistemas de asistencia' },
       ],
       motionTitle: 'Diseño inconfundible. Desempeño moderno.',
-      motionCopy: 'Su parrilla de 7 ranuras rinde homenaje al legado Fiat, mientras su volante con paletas de cambio y frenos de disco en las 4 ruedas te dan el control que necesitas.',
+      motionCopy: 'Un diseño robusto con luces traseras y faros LED que resaltan la deportividad de la familia Pulse, llamando la atención en cualquier lugar.',
       cockpitImages: [
-        'https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2026/pulse-2026/02-galerias/my26-fiat-pulse-galeria-image00-alldevices-mx-v2.jpg.img.2880.jpg',
-        'https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2026/pulse-2026/02-galerias/my26-fiat-pulse-galeria-image01-alldevices-mx-v2.jpg.img.2880.jpg',
-        'https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2026/pulse-2026/02-galerias/my26-fiat-pulse-galeria-image02-alldevices-mx-v2.jpg.img.2880.jpg'
+        '/adistem2026/fiat/pulse-2026/interior/interior-1.jpg',
+        '/adistem2026/fiat/pulse-2026/interior/interior-2.jpg',
+        '/adistem2026/fiat/pulse-2026/interior/interior-3.jpg'
       ],
       storyImages: [
-        'https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2026/pulse-2026/02-galerias/my26-fiat-pulse-galeria-image03-alldevices-mx-v2.jpg.img.2880.jpg',
-        'https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2026/pulse-2026/02-galerias/my26-fiat-pulse-galeria-image04-alldevices-mx-v2.jpg.img.2880.jpg',
-        'https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2026/pulse-2026/02-galerias/my26-fiat-pulse-galeria-image05-alldevices-mx-v2.jpg.img.2880.jpg'
+        '/adistem2026/fiat/pulse-2026/equipamiento/equipamiento-1.jpg',
+        '/adistem2026/fiat/pulse-2026/equipamiento/equipamiento-2.jpg',
+        '/adistem2026/fiat/pulse-2026/equipamiento/equipamiento-3.jpg'
       ],
       motionImages: [
-        'https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2026/pulse-2026/desktop/my26-fiat-pulse-inicio-qvmediablock-estiloitaliano-dk-mx.jpg',
-        'https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2025/Pulse-2025/01-Inicio/desktop/my26-fiat-pulse-inicio-qvmediablock-tecnologiadevanguardia-dk-mx.jpg',
-        'https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2026/pulse-2026/inicio/desktop/my26-fiat-pulse-inicio-qvmediablock-motorecofriendly-dk-mx.jpg'
+        '/adistem2026/fiat/pulse-2026/exterior/exterior-1.jpg',
+        '/adistem2026/fiat/pulse-2026/exterior/exterior-2.jpg',
+        '/adistem2026/fiat/pulse-2026/exterior/exterior-3.jpg'
       ],
-      capabilityImage: 'https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2025/Pulse-2025/01-Inicio/desktop/fiat-pulse-2025-seguridad-placeholder-dk.jpg'
+      capabilityImage: '/adistem2026/fiat/pulse-2026/capacidad/capcacidad.jpg',
+      mobileCapabilityImage: '/adistem2026/fiat/pulse-2026/capacidad/capacidad-mob.jpg'
     },
     '700': {
       name: 'Fiat 700',
@@ -111,65 +113,64 @@
   }
 
   const fallbackModel: ModelDetail = {
-    name: 'Fiat 2026',
-    kicker: 'Fiat 2026',
-    title: 'Fuerza que se siente antes de arrancar.',
-    subtitle: 'Capacidad, presencia y tecnología útil para trabajo, viaje y aventura.',
-    heroImage: 'https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2026/pulse-2026/desktop/my26-fiat-pulse-inicio-gallery-image-2-expanded-mx.jpg',
-    spotlightImage: 'https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2026/pulse-2026/desktop/my26-fiat-pulse-inicio-gallery-image-2-expanded-mx.jpg',
-    quote: 'Hola,%20me%20interesa%20cotizar%20una%20Fiat',
+    name: 'Fiat Pulse',
+    kicker: 'Pulse 2026',
+    title: 'El SUV que late con tu estilo.',
+    subtitle: 'Diseño italiano, tecnología avanzada y máxima seguridad en cada viaje.',
+    heroImage: '/adistem2026/fiat/pulse-2026/hero/pulse-2026.jpg',
+    mobileHeroImage: '/adistem2026/fiat/pulse-2026/hero/pulse-2026-mob.jpg',
+    spotlightImage: '/adistem2026/fiat/pulse-2026/hero/pulse-2026.jpg',
+    quote: 'Hola,%20me%20interesa%20cotizar%20un%20Fiat%20Pulse',
     price: 'Desde $349,500',
     specs: [
-      { value: '6.7L', label: 'Turbodiesel disponible' },
-      { value: '4x4', label: 'Tracción para trabajo pesado' },
-      { value: '12"', label: 'Pantalla vertical central' },
-      { value: 'AWD', label: 'Tracción integral disponible' },
+      { value: '1.3L', label: 'Motor Firefly' },
+      { value: '8.4"', label: 'Central multimedia' },
+      { value: '7"', label: 'Clúster digital' },
+      { value: 'ADAS', label: 'Sistemas de asistencia' },
     ],
-    motionTitle: 'Más que una pickup: una herramienta premium.',
-    motionCopy: 'Diseñada para cargar, remolcar y llegar con autoridad.',
+    motionTitle: 'Diseño inconfundible. Desempeño moderno.',
+    motionCopy: 'Diseñada para desafiar la ciudad con confort y estilo.',
   }
 
   const model = $derived(modelDetails[modelSlug ?? ''] ?? fallbackModel)
   const specs = $derived(model.specs)
   const pinVideoSrc = $derived(
     pinVideoActive
-      ? 'https://www.youtube.com/embed/va4e9sjZZGg?autoplay=1&mute=1&controls=0&rel=0&modestbranding=1&playsinline=1&loop=1&playlist=va4e9sjZZGg'
+      ? 'https://www.youtube.com/embed/6o_2iAGnNpY?autoplay=1&mute=1&controls=0&rel=0&modestbranding=1&playsinline=1&loop=1&playlist=6o_2iAGnNpY'
       : ''
   )
-
-  const Fiat_CDN = 'https://www.Fiat.com.mx/content/dam/cross-regional/nafta/Fiat/es_mx/2026/Pulse'
 
   const PulseVersions = [
     {
       id: 'pulse-drive',
       name: 'Pulse Drive',
       price: 'Desde $349,500.00',
-      thumb: `${Fiat_CDN}/vlp/desktop/my26-fiat-pulse-latitude-modelizer-configurator-granito-cristal-mx-v2.png.img.600.png`,
+      thumb: '/adistem2026/fiat/pulse-2026/versiones/drive/rojo-montecarlo.jpg',
       features: [
         ['Central multimedia de 8.4” con conectividad inalámbrica', 'Aire acondicionado automático', 'Faros LED'],
         ['Cámara de reversa con sensores', 'Clúster digital de información']
       ],
       colors: [
-        { name: 'Rojo Montecarlo', hex: '#fe0000', img: 'https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2026/pulse-2026/inicio/versiones/version-1-pulse-drive/color/color-5/my26-fiat-pulse-inicio-jelly-rojo-montecarlo-alldevices-mx.png.img.2880.png' },
-        { name: 'Blanco Banchisa', hex: '#f4f4f4', img: 'https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2026/pulse-2026/inicio/versiones/version-1-pulse-drive/color/color-5/my26-fiat-pulse-inicio-jelly-blanco-banchisa-alldevices-mx.png.img.2880.png' },
-        { name: 'Gris Silverstone', hex: '#555d5f', img: 'https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2026/pulse-2026/inicio/versiones/version-1-pulse-drive/color/color-5/my26-fiat-pulse-inicio-jelly-cinza-silverstone-alldevices-mx1.png.img.2880.png' },
-        { name: 'Plata Bari', hex: '#aeaeac', img: 'https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2026/pulse-2026/inicio/versiones/version-1-pulse-drive/color/color-5/my26-fiat-pulse-inicio-jelly-plata-bari-alldevices-mx.jpg.img.2880.jpg' }
+        { name: 'Rojo Montecarlo', hex: '#fe0000', img: '/adistem2026/fiat/pulse-2026/versiones/drive/rojo-montecarlo.jpg' },
+        { name: 'Blanco Banchisa', hex: '#f4f4f4', img: '/adistem2026/fiat/pulse-2026/versiones/drive/blanco-banchisa.jpg' },
+        { name: 'Gris Silverstone', hex: '#555d5f', img: '/adistem2026/fiat/pulse-2026/versiones/drive/gris-silverstone.jpg' },
+        { name: 'Plata Bari', hex: '#aeaeac', img: '/adistem2026/fiat/pulse-2026/versiones/drive/plata-bari.jpg' }
       ]
     },
     {
       id: 'pulse-drive-plus',
       name: 'Pulse Drive Plus',
-      price: 'Desde $506,900',
-      thumb: `${Fiat_CDN}/vlp/desktop/Fiat-Pulse-limited-2026-inicio-modelizer-negro-carbon-mx.jpg.img.600.jpg`,
+      price: 'Desde $385,500',
+      thumb: '/adistem2026/fiat/pulse-2026/versiones/drive%20plus/rojo-montecarlo.jpg',
       features: [
         ['Transmisión CVT', 'Central multimedia de 8.4” con conectividad inalámbrica', 'Aire acondicionado automático'],
         ['Faros LED', 'Cámara de reversa con sensores', 'Clúster digital de información']
       ],
       colors: [
-        { name: 'Rojo Montecarlo', hex: '#fe0000', img: 'https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2026/pulse-2026/inicio/versiones/version-1-pulse-drive/color/color-5/my26-fiat-pulse-inicio-jelly-rojo-montecarlo-alldevices-mx.png.img.2880.png' },
-        { name: 'Blanco Banchisa', hex: '#f4f4f4', img: 'https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2026/pulse-2026/inicio/versiones/version-1-pulse-drive/color/color-5/my26-fiat-pulse-inicio-jelly-blanco-banchisa-alldevices-mx.png.img.2880.png' },
-        { name: 'Gris Silverstone', hex: '#555d5f', img: 'https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2026/pulse-2026/inicio/versiones/version-1-pulse-drive/color/color-5/my26-fiat-pulse-inicio-jelly-cinza-silverstone-alldevices-mx1.png.img.2880.png' },
-        { name: 'Plata Bari', hex: '#aeaeac', img: 'https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2026/pulse-2026/inicio/versiones/version-1-pulse-drive/color/color-5/my26-fiat-pulse-inicio-jelly-plata-bari-alldevices-mx.jpg.img.2880.jpg' }
+        { name: 'Rojo Montecarlo', hex: '#fe0000', img: '/adistem2026/fiat/pulse-2026/versiones/drive%20plus/rojo-montecarlo.jpg' },
+        { name: 'Blanco Banchisa', hex: '#f4f4f4', img: '/adistem2026/fiat/pulse-2026/versiones/drive%20plus/blanco-banchisa.jpg' },
+        { name: 'Gris Silverstone', hex: '#555d5f', img: '/adistem2026/fiat/pulse-2026/versiones/drive%20plus/gris-silverstone.jpg' },
+        { name: 'Plata Bari', hex: '#aeaeac', img: '/adistem2026/fiat/pulse-2026/versiones/drive%20plus/plata-bari.jpg' }
       ]
     }
   ]
@@ -186,19 +187,19 @@
       kicker: 'Diseño',
       title: 'Estilo Italiano que robará miradas.',
       copy: 'Conoce el SUV de Fiat® y enamórate de su auténtico diseño italiano, característico de Fiat®, dinámico y amigable con el que seguro robarás miradas.',
-      image: model.storyImages?.[0] || model.heroImage,
+      image: model.storyImages?.[0] || '/adistem2026/fiat/pulse-2026/equipamiento/equipamiento-1.jpg',
     },
     {
       kicker: 'Tecnología',
       title: 'Tecnología que te mantiene en control.',
       copy: 'El SUV de Fiat® cuenta con una pantalla de 8.4" full HD y clúster de 7“ que muestra los datos que necesitas saber del vehículo en todo momento.',
-      image: model.storyImages?.[1] || `${A}/interior-3.jpg`,
+      image: model.storyImages?.[1] || '/adistem2026/fiat/pulse-2026/equipamiento/equipamiento-2.jpg',
     },
     {
       kicker: 'Seguridad',
       title: 'Seguridad Inteligente.',
       copy: 'Diseñada para hacerte sentir realmente seguro. Con una gama de tecnologías inteligentes y autónomas (ADAS), que te asisten para un manejo más confiable.',
-      image: model.storyImages?.[2] || `${A}/interior-1.jpg`,
+      image: model.storyImages?.[2] || '/adistem2026/fiat/pulse-2026/equipamiento/equipamiento-3.jpg',
     },
   ])
 
@@ -206,27 +207,28 @@
     {
       title: 'La combinación perfecta',
       copy: 'Motor 1.3L más eficiente con el que siempre disfrutarás del mejor ahorro de combustible, las emisiones más bajas y un rendimiento mucho mejor.',
-      image: model.motionImages?.[0] || model.heroImage,
+      image: model.motionImages?.[0] || '/adistem2026/fiat/pulse-2026/exterior/exterior-1.jpg',
     },
     {
       title: 'Diseño inconfundible',
       copy: 'Un diseño robusto con luces traseras y faros LED que resaltan la deportividad de la familia Pulse, llamando la atención en cualquier lugar.',
-      image: model.motionImages?.[1] || 'https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2026/pulse-2026/desktop/my26-fiat-pulse-inicio-gallery-image-2-expanded-mx.jpg',
+      image: model.motionImages?.[1] || '/adistem2026/fiat/pulse-2026/exterior/exterior-2.jpg',
     },
     {
       title: 'Tu mejor aliado',
       copy: 'Haz tuyo cualquier camino, desafía la ciudad y descubre un mundo lleno de emoción con las increíbles capacidades de Fiat® Pulse.',
-      image: model.motionImages?.[2] || 'https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2026/pulse-2026/desktop/my26-fiat-pulse-inicio-gallery-image-2-expanded-mx.jpg',
+      image: model.motionImages?.[2] || '/adistem2026/fiat/pulse-2026/exterior/exterior-3.jpg',
     },
   ])
 
   const cockpitImages = $derived(model.cockpitImages || [
-    'https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2026/pulse-2026/desktop/my26-fiat-pulse-inicio-gallery-image-2-expanded-mx.jpg',
-    'https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2026/pulse-2026/desktop/my26-fiat-pulse-inicio-gallery-image-2-expanded-mx.jpg',
-    'https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2026/pulse-2026/desktop/my26-fiat-pulse-inicio-gallery-image-2-expanded-mx.jpg',
+    '/adistem2026/fiat/pulse-2026/interior/interior-1.jpg',
+    '/adistem2026/fiat/pulse-2026/interior/interior-2.jpg',
+    '/adistem2026/fiat/pulse-2026/interior/interior-3.jpg',
   ])
 
-  const capabilityImage = $derived(model.capabilityImage || 'https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2026/pulse-2026/desktop/my26-fiat-pulse-inicio-gallery-image-2-expanded-mx.jpg')
+  const capabilityImage = $derived(model.capabilityImage || '/adistem2026/fiat/pulse-2026/capacidad/capcacidad.jpg')
+  const mobileCapabilityImage = $derived(model.mobileCapabilityImage || capabilityImage)
 
   let pinMediaEl: HTMLElement | undefined = $state()
 
@@ -310,11 +312,17 @@
   }
 
   // ── ADAS Carousel Logic ──
-  const adasItems = [
-    { id: 0, label: 'Asistencia Estacionamiento', video: 'https://www.Fiat.com.mx/content/dam/cross-regional/nafta/Fiat/es_mx/2026/Pulse/safety/sistemas-de-asistencia/video/Fiat-totalmente-nueva-Pulse-2026-highlights-sistemas-de-asistencia-01.mp4', poster: 'https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2026/pulse-2026/02-galerias/my26-fiat-pulse-galeria-image00-alldevices-mx-v2.jpg.img.2880.jpg' },
-    { id: 1, label: 'Reconocimiento Señales (TSR)', video: 'https://www.Fiat.com.mx/content/dam/cross-regional/nafta/Fiat/es_mx/2026/Pulse/safety/sistemas-de-asistencia/video/Fiat-totalmente-nueva-Pulse-2026-highlights-sistemas-de-asistencia-02.mp4', poster: 'https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2026/pulse-2026/02-galerias/my26-fiat-pulse-galeria-image01-alldevices-mx-v2.jpg.img.2880.jpg' },
-    { id: 2, label: 'Alerta Colisión Frontal (FCW)', video: 'https://www.Fiat.com.mx/content/dam/cross-regional/nafta/Fiat/es_mx/2026/Pulse/safety/sistemas-de-asistencia/video/Fiat-Pulse-2026-sistemas-de-asistencia-fcw-desktop-v02.mp4', poster: 'https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2026/pulse-2026/02-galerias/my26-fiat-pulse-galeria-image02-alldevices-mx-v2.jpg.img.2880.jpg' },
-    { id: 3, label: 'Abandono de Carril (LDP)', video: 'https://www.Fiat.com.mx/content/dam/cross-regional/nafta/Fiat/es_mx/2026/Pulse/safety/sistemas-de-asistencia/video/Fiat-totalmente-nueva-Pulse-2026-highlights-sistemas-de-asistencia-04.mp4', poster: 'https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2026/pulse-2026/02-galerias/my26-fiat-pulse-galeria-image03-alldevices-mx-v2.jpg.img.2880.jpg' }
+  type AdasItem = {
+    id: number
+    label: string
+    video?: string
+    poster?: string
+    image?: string
+  }
+
+  const adasItems: AdasItem[] = [
+    { id: 0, label: 'Alerta de Cambio de Carril (LDW+)', image: '/adistem2026/fiat/pulse-2026/seguridad/seguridad-1.jpg' },
+    { id: 1, label: 'Sistema de Monitoreo de Presión de Llantas (TPMS)', image: '/adistem2026/fiat/pulse-2026/seguridad/seguridad-2.jpg' }
   ]
 
   let adasIndex = $state(0)
@@ -526,16 +534,16 @@
         </div>
       {:else}
         <div class="vs-exterior-row">
-          <button class="vs-ext-card" onclick={() => toggleZoom('https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2026/pulse-2026/02-galerias/my26-fiat-pulse-galeria-image00-alldevices-mx-v2.jpg.img.2880.jpg')}>
-            <img src="https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2026/pulse-2026/02-galerias/my26-fiat-pulse-galeria-image00-alldevices-mx-v2.jpg.img.2880.jpg" alt="Lateral" />
+          <button class="vs-ext-card" onclick={() => toggleZoom('/adistem2026/fiat/pulse-2026/galeria/vista-lateral.jpg')}>
+            <img src="/adistem2026/fiat/pulse-2026/galeria/vista-lateral.jpg" alt="Lateral" />
             <span>Vista lateral <GoogleIcon name="zoom_in" size={14} /></span>
           </button>
-          <button class="vs-ext-card" onclick={() => toggleZoom('https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2026/pulse-2026/02-galerias/my26-fiat-pulse-galeria-image01-alldevices-mx-v2.jpg.img.2880.jpg')}>
-            <img src="https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2026/pulse-2026/02-galerias/my26-fiat-pulse-galeria-image01-alldevices-mx-v2.jpg.img.2880.jpg" alt="Frontal" />
+          <button class="vs-ext-card" onclick={() => toggleZoom('/adistem2026/fiat/pulse-2026/galeria/vista-frontal.jpg')}>
+            <img src="/adistem2026/fiat/pulse-2026/galeria/vista-frontal.jpg" alt="Frontal" />
             <span>Vista frontal <GoogleIcon name="zoom_in" size={14} /></span>
           </button>
-          <button class="vs-ext-card" onclick={() => toggleZoom('https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2026/pulse-2026/02-galerias/my26-fiat-pulse-galeria-image02-alldevices-mx-v2.jpg.img.2880.jpg')}>
-            <img src="https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2026/pulse-2026/02-galerias/my26-fiat-pulse-galeria-image02-alldevices-mx-v2.jpg.img.2880.jpg" alt="Trasera" />
+          <button class="vs-ext-card" onclick={() => toggleZoom('/adistem2026/fiat/pulse-2026/galeria/vista-trasera.jpg')}>
+            <img src="/adistem2026/fiat/pulse-2026/galeria/vista-trasera.jpg" alt="Trasera" />
             <span>Vista trasera <GoogleIcon name="zoom_in" size={14} /></span>
           </button>
         </div>
@@ -626,15 +634,18 @@
   </section>
 
   <section id="capacidad" class="capability">
-    <img src={capabilityImage} alt="Fiat exterior de trabajo" />
+    <img class="cap-desktop-img" src={capabilityImage} alt="Fiat motor y desempeño" />
+    {#if mobileCapabilityImage}
+      <img class="cap-mobile-img" src={mobileCapabilityImage} alt="Fiat motor y desempeño" />
+    {/if}
     <div class="capability-card">
       <p>Capacidad y Desempeño</p>
       <h2>Siempre listo para romper la rutina.</h2>
       <div class="cap-list">
-        <span><GoogleIcon name="speed" size={18} /> 173 hp — motor más potente de su categoría</span>
-        <span><GoogleIcon name="local_gas_station" size={18} /> Motor 1.3L Turbo GSE</span>
-        <span><GoogleIcon name="sync_alt" size={18} /> Transmisión automática de 9 velocidades</span>
-        <span><GoogleIcon name="verified_user" size={18} /> Frenos de disco en las 4 ruedas</span>
+        <span><GoogleIcon name="speed" size={18} /> Motor 1.3L Firefly — eficiencia y rendimiento superior</span>
+        <span><GoogleIcon name="local_gas_station" size={18} /> Excelente ahorro de combustible y bajas emisiones</span>
+        <span><GoogleIcon name="sync_alt" size={18} /> Transmisión automática CVT / manual</span>
+        <span><GoogleIcon name="verified_user" size={18} /> Control de estabilidad y tracción TC+</span>
       </div>
     </div>
   </section>
@@ -643,16 +654,20 @@
     <div class="safety-content">
       <p>Confianza y Seguridad</p>
       <h2>Seguridad a donde quiera que vayas.</h2>
-      <span>Sus avanzados sistemas de seguridad te ofrecen a ti y a tus acompañantes una protección integral de 360°. Frenos ABS en las 4 ruedas, control electrónico de estabilidad y 7 bolsas de aire para mantenerte a salvo en cada rodada.</span>
+      <span>Sus avanzados sistemas de seguridad te ofrecen a ti y a tus acompañantes una protección integral. Frenos ABS, control electrónico de estabilidad y bolsas de aire para mantenerte a salvo en cada rodada.</span>
 
       <!-- ── ADAS Slider ── -->
       <p class="safety-sub-label">Sistemas de Asistencia ADAS</p>
       
       <div class="adas-carousel-container" style={`--adas-idx: ${adasIndex}`}>
-        <div class="adas-track" style={`transform: translateX(calc(-${adasIndex} * (100% / 3)));`}>
+        <div class="adas-track" style={`transform: translateX(calc(-${adasIndex} * (100% / ${Math.max(adasItems.length, 1)})));`}>
           {#each adasItems as item, i}
             <div class="safety-vid-card adas-slide" class:active={i === adasIndex}>
-              <video src={item.video} poster={item.poster} autoplay muted loop playsinline></video>
+              {#if item.video}
+                <video src={item.video} poster={item.poster || ''} autoplay muted loop playsinline></video>
+              {:else if item.image}
+                <img src={item.image} alt={item.label} />
+              {/if}
               <div class="svc-label"><span>{item.label}</span></div>
             </div>
           {/each}
@@ -1539,27 +1554,34 @@
     background: #030305;
   }
 
-  .capability > img {
+  .capability > img.cap-desktop-img {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: left center;
     filter: saturate(0.85) contrast(1.08);
-    opacity: 0.82;
+    opacity: 0.88;
     transform: scale(1.02);
     transition: transform 1400ms var(--ease-out);
+    display: block;
   }
 
-  .capability:hover > img {
-    transform: scale(1.055);
+  .capability > img.cap-mobile-img {
+    display: none;
+  }
+
+  .capability:hover > img.cap-desktop-img {
+    transform: scale(1.04);
   }
 
   .capability::after {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(90deg, rgba(3, 3, 5, 0.88), rgba(3, 3, 5, 0.32) 58%, rgba(3, 3, 5, 0.9));
+    background: linear-gradient(90deg, transparent 0%, rgba(3, 3, 5, 0.4) 40%, rgba(3, 3, 5, 0.92) 80%);
+    pointer-events: none;
   }
 
   .capability-card {
@@ -1802,7 +1824,8 @@
     transform: scale(1.05);
   }
 
-  .safety-vid-card video {
+  .safety-vid-card video,
+  .safety-vid-card img {
     width: 100%;
     aspect-ratio: 16 / 10;
     object-fit: cover;
@@ -2200,6 +2223,47 @@
     .versions-layout,
     .features-columns {
       grid-template-columns: 1fr;
+    }
+
+    .capability {
+      min-height: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 36px 16px 44px;
+      gap: 18px;
+      background: #030305;
+    }
+
+    .capability::after {
+      display: none;
+    }
+
+    .capability > img.cap-desktop-img {
+      display: none;
+    }
+
+    .capability > img.cap-mobile-img {
+      display: block;
+      position: relative;
+      inset: auto;
+      width: 100%;
+      max-width: 440px;
+      height: auto;
+      max-height: 280px;
+      object-fit: contain;
+      object-position: center;
+      transform: none;
+      filter: saturate(0.9) contrast(1.08);
+      margin: 0 auto;
+    }
+
+    .capability-card {
+      width: 100%;
+      margin: 0;
+      padding: 24px 18px;
+      background: rgba(12, 14, 20, 0.85);
+      backdrop-filter: blur(20px);
     }
 
     /* spec-band mantiene 2 columnas en mobile (2x2) */
