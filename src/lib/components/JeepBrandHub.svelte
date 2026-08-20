@@ -424,8 +424,8 @@
       <div class="story-overlay"></div>
       <div class="story-content">
         <p class="story-eyebrow">Off-Road Total</p>
-        <h2 class="story-title">Sin pavimento.<br>Sin límites.</h2>
-        <p class="story-sub">Wrangler y JT. Tracción 4×4 con reducida para ir donde ningún otro se atreve.</p>
+        <h2 class="story-title">El SUV más<br>legendario</h2>
+        <p class="story-sub">Con capacidades off-road inigualables siendo el ícono original de la aventura.</p>
         <div class="story-actions">
           <button class="story-btn primary" onclick={() => goToCotizacion('wrangler')}><GoogleIcon name="description" size={15} /> Cotizar</button>
           <button class="story-btn ghost" onclick={() => selectModel('wrangler')}>Explorar <GoogleIcon name="arrow_forward" size={15} /></button>
