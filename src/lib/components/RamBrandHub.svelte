@@ -136,7 +136,13 @@
   // Modelo seleccionado en el inline-form preview
   let selectedQuoteModel = $state('1500-rho')
 
-  const heroModels: RamModel[] = [models[0]]
+  const heroModels: RamModel[] = [
+    {
+      ...models[0],
+      image: '/adistem2026/ram/home/hero/rho-2026.jpg',
+      mobileImage: '/adistem2026/ram/home/hero/rho-2026-mob.jpg'
+    }
+  ]
   let activeHeroIndex = $state(0)
   let isHeroPlaying = $state(true)
 
@@ -343,8 +349,8 @@
 
   <!-- ═══ Cinematic story panels ═══ -->
   <section class="story-reel">
-    <div class="story-panel" style={`background-image: url('https://www.ram.com/content/dam/cross-regional/nafta/ramtrucks/es_mx/2026/rho/desktop/my26-rho-featurepanel-01-desktop.jpg.img.2880.jpg')`}>
-      <img class="story-mobile-img" src="https://www.ram.com/content/dam/cross-regional/nafta/ramtrucks/es_mx/2026/rho/desktop/my26-rho-featurepanel-01-desktop.jpg.img.2880.jpg" alt="Alto desempeño" />
+    <div class="story-panel" style={`background-image: url('/adistem2026/ram/story-panels/rho-2026.jpg')`}>
+      <img class="story-mobile-img" src="/adistem2026/ram/story-panels/rho-2026-mobile.jpg" alt="Alto desempeño" />
       <div class="story-overlay"></div>
       <div class="story-content">
         <p class="story-eyebrow">Alto Desempeño</p>
@@ -358,8 +364,8 @@
       </div>
     </div>
 
-    <div class="story-panel flip" style={`background-image: url('https://www.ram.com/content/dam/cross-regional/nafta/ramtrucks/es_mx/2026/ram-1500-tungsten/inicio/desktop/my26-ram-inicio-design-dk-mx.jpg.img.2880.jpg')`}>
-      <img class="story-mobile-img" src="https://www.ram.com/content/dam/cross-regional/nafta/ramtrucks/es_mx/2026/ram-1500-tungsten/inicio/desktop/my26-ram-inicio-design-dk-mx.jpg.img.2880.jpg" alt="Lujo Premium" />
+    <div class="story-panel flip" style={`background-image: url('/adistem2026/ram/story-panels/tungsten-2026.jpg')`}>
+      <img class="story-mobile-img" src="/adistem2026/ram/story-panels/tungsten-2026-mobile.jpg" alt="Lujo Premium" />
       <div class="story-overlay flip"></div>
       <div class="story-content flip">
         <p class="story-eyebrow">Lujo Premium</p>
@@ -373,8 +379,8 @@
       </div>
     </div>
 
-    <div class="story-panel" style={`background-image: url('https://www.ram.com/content/dam/cross-regional/nafta/ramtrucks/es_mx/2026/ram-1200/inicio/desktop/my26-ram-1200-inicio2-seguraeficiente-mx-dk.jpg.img.2880.jpg')`}>
-      <img class="story-mobile-img" src="https://www.ram.com/content/dam/cross-regional/nafta/ramtrucks/es_mx/2026/ram-1200/inicio/desktop/my26-ram-1200-inicio2-seguraeficiente-mx-dk.jpg.img.2880.jpg" alt="Trabajo inteligente" />
+    <div class="story-panel" style={`background-image: url('/adistem2026/ram/story-panels/1200-2026.jpg')`}>
+      <img class="story-mobile-img" src="/adistem2026/ram/story-panels/1200-2026-mobile.jpg" alt="Trabajo inteligente" />
       <div class="story-overlay"></div>
       <div class="story-content">
         <p class="story-eyebrow">Trabajo Inteligente</p>

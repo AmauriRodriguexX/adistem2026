@@ -346,6 +346,7 @@
 
   <section id="inicio" class="dodge-hero">
     <img class="hero-fallback hero-desktop-img" src={model.heroImage} alt={model.name} />
+    <img class="hero-fallback hero-mobile-img" src={model.mobileHeroImage || model.heroImage} alt={model.name} />
     <div class="hero-shade"></div>
 
     <div class="relative z-10 w-full max-w-[1650px] mx-auto px-4 sm:px-8 xl:px-12 pt-4 xl:pt-24 pb-3 xl:pb-4 flex flex-col xl:flex-row items-center xl:items-end justify-between gap-6 xl:gap-10 min-h-0 xl:min-h-screen">
@@ -716,6 +717,26 @@
     object-position: 35% center;
     opacity: 0;
     animation: hero-zoom-out 16s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  }
+
+  .hero-desktop-img {
+    display: block !important;
+  }
+  .hero-mobile-img {
+    display: none !important;
+  }
+
+  @media (max-width: 1024px) {
+    .hero-desktop-img {
+      display: none !important;
+    }
+    .hero-mobile-img {
+      display: block !important;
+      object-position: center center;
+      animation: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
   }
 
   .hero-shade {
@@ -1414,21 +1435,36 @@
     max-width: 540px;
   }
 
-  /* ADAS Carousel Styles */
-  .safety-sub-label {
-    font-size: 11px;
+  /* ── Safety sub-label ── */
+  .safety-content .safety-sub-label {
+    margin: 0 0 14px;
+    font-size: 12px;
     font-weight: 900;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.45);
-    margin: 32px 0 16px;
+    color: var(--dodge-hover);
   }
 
+  .safety-vid-card {
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(12px);
+    transition: transform 350ms var(--ease-out), border-color 350ms var(--ease-out);
+  }
+
+  .safety-vid-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--dodge-hover);
+  }
+
+  /* ADAS Carousel Styles */
   .adas-carousel-container {
     position: relative;
     width: 100%;
     overflow: hidden;
-    padding-bottom: 24px;
+    padding-bottom: 80px;
   }
 
   .adas-track {
@@ -1439,11 +1475,20 @@
   }
 
   .adas-slide {
-    flex: 0 0 calc((100% - 16px) / 2);
+    flex: 0 0 calc((100% - 32px) / 3); /* Show 3 cards */
     min-width: 0;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
+    .adas-slide {
+      flex: 0 0 calc((100% - 16px) / 2);
+    }
+    .adas-track {
+      transform: translateX(calc(-var(--adas-idx, 0) * (100% / 2))) !important;
+    }
+  }
+
+  @media (max-width: 640px) {
     .adas-slide {
       flex: 0 0 100%;
     }
@@ -1452,40 +1497,11 @@
     }
   }
 
-  .safety-vid-card {
-    position: relative;
-    border-radius: 20px;
-    overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.10);
-    background: rgba(255, 255, 255, 0.03);
-  }
-
-  .safety-vid-card img,
-  .safety-vid-card video {
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    object-fit: cover;
-    display: block;
-  }
-
-  .svc-label {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 14px 18px;
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.85) 0%, transparent 100%);
-    color: white;
-    font-size: 13px;
-    font-weight: 800;
-    letter-spacing: 0.02em;
-  }
-
   .carousel-controls {
     display: flex;
     align-items: center;
     gap: 12px;
-    margin-top: 24px;
+    margin-top: 32px;
     justify-content: center;
   }
 
@@ -1493,11 +1509,12 @@
     display: inline-flex;
     align-items: center;
     gap: 7px;
-    padding: 14px 16px;
+    padding: 18px 16px;
     background: rgba(255, 255, 255, 0.07);
     border: 1px solid rgba(255, 255, 255, 0.11);
     border-radius: 999px;
     backdrop-filter: blur(20px);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 8px 28px rgba(0, 0, 0, 0.15);
   }
 
   .carousel-pill button {
@@ -1517,22 +1534,55 @@
   }
 
   .play-btn {
-    width: 38px;
-    height: 38px;
+    width: 42px;
+    height: 42px;
     border-radius: 50%;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background: rgba(255, 255, 255, 0.07);
-    border: 1px solid rgba(255, 255, 255, 0.11);
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
     color: white;
     cursor: pointer;
-    backdrop-filter: blur(20px);
-    transition: background 300ms ease;
+    padding: 0;
+    margin: 0;
+    flex-shrink: 0;
+    overflow: hidden;
+    box-sizing: border-box;
+    transition: background 300ms ease, transform 200ms ease;
+  }
+
+  .play-btn * {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    margin: 0;
   }
 
   .play-btn:hover {
-    background: rgba(255, 255, 255, 0.14);
+    background: rgba(255, 255, 255, 0.15);
+    transform: scale(1.05);
+  }
+
+  .safety-vid-card video,
+  .safety-vid-card img {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    display: block;
+  }
+
+  .svc-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 14px;
+    font-size: 11px;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.75);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
   }
 
   .safety-features {
@@ -2076,7 +2126,11 @@
       padding-top: 0;
       margin-bottom: 16px;
     }
-    .hero-fallback {
+    .hero-fallback.hero-desktop-img {
+      display: none !important;
+    }
+    .hero-fallback.hero-mobile-img {
+      display: block !important;
       position: relative;
       width: 100%;
       height: auto;

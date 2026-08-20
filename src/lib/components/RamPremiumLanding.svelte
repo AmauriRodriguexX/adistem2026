@@ -13,14 +13,15 @@
   let zoomedImage = $state<string | null>(null)
 
   // ── RAM 1500 RHO 2026: colores y detalle reales (ram.com/mx/rho.html) ──
-  const RHO_BILLET_SILVER = 'https://www.ram.com/content/dam/cross-regional/nafta/ramtrucks/es_mx/2026/rho/colorizer/slices/02-RHO-Billet_Silver_Desktop.jpg.img.2880.jpg'
-  const RHO_BRIGHT_WHITE = 'https://www.ram.com/content/dam/cross-regional/nafta/ramtrucks/es_mx/2026/rho/colorizer/slices/03-RHO-Bright_White_Desktop.jpg.img.2880.jpg'
-  const RHO_DIAMOND_BLACK = 'https://www.ram.com/content/dam/cross-regional/nafta/ramtrucks/es_mx/2026/rho/colorizer/slices/05-RHO-Diamond_Black_Desktop.jpg.img.2880.jpg'
-  const RHO_FLAME_RED = 'https://www.ram.com/content/dam/cross-regional/nafta/ramtrucks/es_mx/2026/rho/colorizer/slices/06-RHO-Flame_Red_Desktop.jpg.img.2880.jpg'
-  const RHO_HYDRO_BLUE = 'https://www.ram.com/content/dam/cross-regional/nafta/ramtrucks/es_mx/2026/rho/colorizer/slices/09-RHO-Hydro_Blue_Desktop.jpg.img.2880.jpg'
-  const RHO_FEATUREPANEL_01 = 'https://www.ram.com/content/dam/cross-regional/nafta/ramtrucks/es_mx/2026/rho/desktop/my26-rho-featurepanel-01-desktop.jpg.img.2880.jpg'
-  const RHO_INTERIOR_TAB = 'https://www.ram.com/content/dam/cross-regional/nafta/ramtrucks/es_mx/2026/rho/desktop/my26-rho-tabcontainer-01-desktop.jpg.img.2880.jpg'
-  const RHO_DRIVE_MODE = 'https://www.ram.com/content/dam/cross-regional/nafta/ramtrucks/es_mx/2026/rho/desktop/my26-rho-featurepanel-04-radiobutton-01-desktop.jpg.img.2880.jpg'
+  // ── RAM 1500 RHO 2026: colores y detalle locales ──
+  const RHO_BILLET_SILVER = '/adistem2026/ram/1500-rho/versiones/rho/billet-silver.jpg'
+  const RHO_BRIGHT_WHITE = '/adistem2026/ram/1500-rho/versiones/rho/bright-white.jpg'
+  const RHO_DIAMOND_BLACK = '/adistem2026/ram/1500-rho/versiones/rho/diamond-black.jpg'
+  const RHO_FLAME_RED = '/adistem2026/ram/1500-rho/versiones/rho/flame-red.jpg'
+  const RHO_HYDRO_BLUE = '/adistem2026/ram/1500-rho/versiones/rho/hydro-blue.jpg'
+  const RHO_FEATUREPANEL_01 = '/adistem2026/ram/1500-rho/galeria/diseno-exterior.jpg'
+  const RHO_INTERIOR_TAB = '/adistem2026/ram/1500-rho/galeria/interior.jpg'
+  const RHO_DRIVE_MODE = '/adistem2026/ram/1500-rho/galeria/modos-de-manejo.jpg'
 
   const RhoColors = [
     { name: 'Billet Silver', hex: '#c4c4c4', img: RHO_BILLET_SILVER },
@@ -61,12 +62,18 @@
     title: string
     subtitle: string
     heroImage: string
+    mobileHeroImage?: string
     spotlightImage: string
     quote: string
     price: string
     specs: { value: string; label: string }[]
     motionTitle: string
     motionCopy: string
+    cockpitImages?: string[]
+    storyImages?: string[]
+    motionImages?: string[]
+    capabilityImage?: string
+    mobileCapabilityImage?: string
   }
 
   const modelDetails: Record<string, ModelDetail> = {
@@ -75,8 +82,9 @@
       kicker: 'RAM 1500 RHO 2026',
       title: 'Performance extremo, sin límites.',
       subtitle: 'Impulsada por un nuevo motor dual turbo, la RAM 1500 RHO 2026 redefine los límites de las pickups todoterreno, con capacidades off-road para conquistar cualquier terreno.',
-      heroImage: 'https://www.ram.com/content/dam/cross-regional/nafta/ramtrucks/es_mx/2026/rho/desktop/my26-rho-hero-desktop.jpg.img.2880.jpg',
-      spotlightImage: 'https://www.ram.com/content/dam/cross-regional/nafta/ramtrucks/es_mx/2026/rho/colorizer/slices/02-RHO-Billet_Silver_Desktop.jpg.img.2880.jpg',
+      heroImage: '/adistem2026/ram/1500-rho/hero/rho-2026.jpg',
+      mobileHeroImage: '/adistem2026/ram/1500-rho/hero/rho-2026-mob.jpg',
+      spotlightImage: '/adistem2026/ram/1500-rho/hero/rho-2026.jpg',
       quote: 'Hola,%20me%20interesa%20cotizar%20una%20RAM%201500%20RHO',
       price: 'Desde $2,333,700',
       specs: [
@@ -87,14 +95,32 @@
       ],
       motionTitle: 'Movimiento hecho para terreno abierto.',
       motionCopy: 'La 1500 RHO está pensada para que la ruta se sienta viva: más presencia, más respuesta y una lectura visual inmediata.',
+      cockpitImages: [
+        '/adistem2026/ram/1500-rho/interior/interior-1.jpg',
+        '/adistem2026/ram/1500-rho/interior/interior-2.jpg',
+        '/adistem2026/ram/1500-rho/interior/interior-3.jpg'
+      ],
+      storyImages: [
+        '/adistem2026/ram/1500-rho/equipamiento/equipamiento-1.jpg',
+        '/adistem2026/ram/1500-rho/equipamiento/equipamiento-2.jpg',
+        '/adistem2026/ram/1500-rho/equipamiento/equipamiento-3.jpg'
+      ],
+      motionImages: [
+        '/adistem2026/ram/1500-rho/exterior/exterior-1.jpg',
+        '/adistem2026/ram/1500-rho/exterior/exterior-2.jpg',
+        '/adistem2026/ram/1500-rho/exterior/exterior-3.jpg'
+      ],
+      capabilityImage: '/adistem2026/ram/1500-rho/capacidad/capcacidad.jpg',
+      mobileCapabilityImage: '/adistem2026/ram/1500-rho/capacidad/capacidad-mob.jpg'
     },
     '1500-tungsten': {
       name: 'RAM 1500 Tungsten',
       kicker: 'RAM 1500 Tungsten 2026',
       title: 'Lujo y capacidad premium, sin concesiones.',
       subtitle: 'Cabina elevada, materiales premium y la presencia de la pickup más premiada, pensada para negocio y confort ejecutivo.',
-      heroImage: 'https://www.ram.com/content/dam/cross-regional/nafta/ramtrucks/es_mx/2026/ram-1500-tungsten/inicio/desktop/my26-ram-hero2-mx-dk.jpg.img.2880.jpg',
-      spotlightImage: 'https://www.ram.com/content/dam/cross-regional/nafta/ramtrucks/es_mx/2026/ram-1500-tungsten/inicio/desktop/my26-ram-inicio-design-dk-mx.jpg.img.2880.jpg',
+      heroImage: '/adistem2026/ram/story-panels/tungsten-2026.jpg',
+      mobileHeroImage: '/adistem2026/ram/story-panels/tungsten-2026-mobile.jpg',
+      spotlightImage: '/adistem2026/ram/story-panels/tungsten-2026.jpg',
       quote: 'Hola,%20me%20interesa%20cotizar%20una%20RAM%201500%20Tungsten',
       price: 'Desde $1,290,000',
       specs: [
@@ -111,8 +137,9 @@
       kicker: 'RAM 700 2026',
       title: 'Agilidad compacta con actitud de pickup.',
       subtitle: 'Una RAM pensada para ciudad, negocio y recorridos diarios: práctica, visual y lista para moverse sin sentirse pesada.',
-      heroImage: 'https://www.ram.com/content/dam/cross-regional/nafta/ramtrucks/es_mx/2026/ram-700/inicio/desktop/my26-ram-700-cover-mx-dk.jpg.img.2880.jpg',
-      spotlightImage: 'https://www.ram.com/content/dam/cross-regional/nafta/ramtrucks/es_mx/2026/ram-700/inicio/desktop/ram-700-laramie-2026-inicio-exterior-01-dk.jpg.img.2880.jpg',
+      heroImage: '/adistem2026/promociones/ram-700-2026.jpg',
+      mobileHeroImage: '/adistem2026/promociones/ram-700-2026.jpg',
+      spotlightImage: '/adistem2026/promociones/ram-700-2026.jpg',
       quote: 'Hola,%20me%20interesa%20cotizar%20una%20RAM%20700',
       price: 'Desde $408,400',
       specs: [
@@ -129,8 +156,9 @@
       kicker: 'RAM 1500 2026',
       title: 'Potencia diaria con presencia premium.',
       subtitle: 'Una pickup para remolque, familia y aventura con equilibrio entre fuerza, confort y capacidad diaria.',
-      heroImage: 'https://www.ram.com/content/dam/cross-regional/nafta/ramtrucks/es_mx/home/cover/my26-ram-1500-inicio-hero-bhp-august-dk-mx.jpg.img.2880.jpg',
-      spotlightImage: 'https://www.ram.com/content/dam/cross-regional/nafta/ramtrucks/es_mx/home/cover/my26-ram-1500-incentives-marzo-dk-mx.jpg.img.2880.jpg',
+      heroImage: '/adistem2026/promociones/ram-1500-2026.jpg',
+      mobileHeroImage: '/adistem2026/promociones/ram-1500-2026.jpg',
+      spotlightImage: '/adistem2026/promociones/ram-1500-2026.jpg',
       quote: 'Hola,%20me%20interesa%20cotizar%20una%20RAM%201500',
       price: 'Desde $1,290,000',
       specs: [
@@ -147,8 +175,9 @@
       kicker: 'RAM 1200 2026',
       title: 'Trabajo inteligente, listo para producir.',
       subtitle: 'Una pickup práctica para flotillas, campo y carga productiva con una lectura visual fuerte y funcional.',
-      heroImage: 'https://www.ram.com/content/dam/cross-regional/nafta/ramtrucks/es_mx/2026/ram-1200/inicio/desktop/my26-ram-1200-vlp-hero-mx-dk.jpg.img.2880.jpg',
-      spotlightImage: 'https://www.ram.com/content/dam/cross-regional/nafta/ramtrucks/es_mx/2026/ram-1200/inicio/desktop/my26-ram-1200-inicio2-seguraeficiente-mx-dk.jpg.img.2880.jpg',
+      heroImage: '/adistem2026/ram/story-panels/1200-2026.jpg',
+      mobileHeroImage: '/adistem2026/ram/story-panels/1200-2026-mobile.jpg',
+      spotlightImage: '/adistem2026/ram/story-panels/1200-2026.jpg',
       quote: 'Hola,%20me%20interesa%20cotizar%20una%20RAM%201200',
       price: 'Desde $408,400',
       specs: [
@@ -167,8 +196,9 @@
     kicker: 'RAM 2026',
     title: 'Fuerza que se siente antes de arrancar.',
     subtitle: 'Capacidad, presencia y tecnología útil para trabajo, viaje y aventura.',
-    heroImage: 'https://www.ram.com/content/dam/cross-regional/nafta/ramtrucks/es_mx/2026/rho/desktop/my26-rho-hero-desktop.jpg.img.2880.jpg',
-    spotlightImage: 'https://www.ram.com/content/dam/cross-regional/nafta/ramtrucks/es_mx/2026/rho/desktop/my26-rho-featurepanel-01-desktop.jpg.img.2880.jpg',
+    heroImage: '/adistem2026/ram/1500-rho/hero/rho-2026.jpg',
+    mobileHeroImage: '/adistem2026/ram/1500-rho/hero/rho-2026-mob.jpg',
+    spotlightImage: '/adistem2026/ram/1500-rho/versiones/rho/billet-silver.jpg',
     quote: 'Hola,%20me%20interesa%20cotizar%20una%20RAM',
     price: 'Desde $408,400',
     specs: [
@@ -185,25 +215,59 @@
   const specs = $derived(model.specs)
 
   const story = $derived([
-    { kicker: 'Presencia', title: model.motionTitle, copy: model.motionCopy, image: model.heroImage },
-    { kicker: 'Tecnología', title: 'Control total desde el centro.', copy: 'Pantalla vertical, navegación, cámaras y comandos clave en una cabina pensada para decidir rápido y manejar mejor.', image: 'https://www.ram.com/content/dam/cross-regional/nafta/ramtrucks/es_mx/2026/ram-700/inicio/desktop/2026_ram_700_home_interior_dk.jpg.img.2880.jpg' },
-    { kicker: 'Utilidad', title: 'Espacio inteligente para lo que sigue.', copy: 'Soluciones de carga, organización y acceso que convierten la caja en una extensión real de tu trabajo.', image: 'https://www.ram.com/content/dam/cross-regional/nafta/ramtrucks/es_mx/2026/ram-700/inicio/desktop/ram-700-laramie-2026-inicio-equipamiento-01-dk.jpg.img.2880.jpg' },
+    { kicker: 'Desempeño', title: 'Poder descomunal en cada terreno.', copy: 'Motor Hurricane I-6 Twin Turbo de 3.0L con 540 hp y amortiguadores Bilstein Black Hawk e2 para dominar cualquier ruta.', image: model.storyImages?.[0] || '/adistem2026/ram/1500-rho/equipamiento/equipamiento-1.jpg' },
+    { kicker: 'Tecnología', title: 'Centro de mando digital avanzado.', copy: 'Más de 50 pulgadas de pantallas digitales combinadas, incluyendo pantalla para el pasajero y Head-Up Display.', image: model.storyImages?.[1] || '/adistem2026/ram/1500-rho/equipamiento/equipamiento-2.jpg' },
+    { kicker: 'Seguridad', title: 'Protección inteligente de vanguardia.', copy: 'Más de 100 asistencias y características de seguridad para máxima confianza y control en cualquier condición.', image: model.storyImages?.[2] || '/adistem2026/ram/1500-rho/equipamiento/equipamiento-3.jpg' },
   ])
 
   const motionCards = $derived([
-    { title: model.name, copy: model.motionCopy, image: model.heroImage },
-    { title: 'Cabina clara', copy: 'Controles visibles, sensación ordenada y una experiencia pensada para el uso real.', image: 'https://www.ram.com/content/dam/cross-regional/nafta/ramtrucks/es_mx/2026/ram-1500-tungsten/inicio/desktop/my26-ram-1500-dt-image-description-the-future-is-now-d.jpg.img.2000.jpg' },
-    { title: 'Trabajo diario', copy: 'Espacio útil y soluciones prácticas para moverse con intención todos los días.', image: 'https://www.ram.com/content/dam/cross-regional/nafta/ramtrucks/es_mx/2026/ram-700/inicio/desktop/ram-700-laramie-2026-inicio-capacidad-y-desempeno-01-dk.jpg.img.2880.jpg' },
+    { title: 'Presencia dominante', copy: 'Líneas imponentes, carrocería ensanchada y rines beadlock con neumáticos todoterreno de 35".', image: model.motionImages?.[0] || '/adistem2026/ram/1500-rho/exterior/exterior-1.jpg' },
+    { title: 'Iluminación y estilo', copy: 'Firma lumínica LED completa con emblema RAM iluminado y tomas de aire funcionales.', image: model.motionImages?.[1] || '/adistem2026/ram/1500-rho/exterior/exterior-2.jpg' },
+    { title: 'Escape deportivo activo', copy: 'Sistema de escape dual de alto flujo con válvulas activas y salidas deportivas en negro satinado.', image: model.motionImages?.[2] || '/adistem2026/ram/1500-rho/exterior/exterior-3.jpg' },
   ])
 
-  const cockpitImages = $derived([
-    'https://www.ram.com/content/dam/cross-regional/nafta/ramtrucks/es_mx/2026/ram-700/inicio/desktop/2026_ram_700_home_interior_dk.jpg.img.2880.jpg',
-    model.spotlightImage,
-    'https://www.ram.com/content/dam/cross-regional/nafta/ramtrucks/es_mx/home/hecho-en-mexico/my26-ram-calidad-nacional-hero-dk-mx.jpg.img.2880.jpg',
+  const cockpitImages = $derived(model.cockpitImages || [
+    '/adistem2026/ram/1500-rho/interior/interior-1.jpg',
+    '/adistem2026/ram/1500-rho/interior/interior-2.jpg',
+    '/adistem2026/ram/1500-rho/interior/interior-3.jpg'
   ])
-  const capabilityImage = $derived(model.spotlightImage)
+  const capabilityImage = $derived(model.capabilityImage || '/adistem2026/ram/1500-rho/capacidad/capcacidad.jpg')
+  const mobileCapabilityImage = $derived(model.mobileCapabilityImage || capabilityImage)
+
+  // ── ADAS Carousel Logic ──
+  type AdasItem = {
+    id: number
+    label: string
+    video?: string
+    poster?: string
+    image?: string
+  }
+
+  const adasItems: AdasItem[] = [
+    { id: 0, label: 'ASISTENCIA DE DIRECCIÓN EVASIVA', image: '/adistem2026/ram/1500-rho/seguridad/seguridad-1.jpg' },
+    { id: 1, label: 'SISTEMA DE ASISTENCIA EN CASO DE COLISIÓN EN INTERSECCIONES', image: '/adistem2026/ram/1500-rho/seguridad/seguridad-2.jpg' }
+  ]
+
+  let adasIndex = $state(0)
+  let adasAutoplay = $state(true)
+
+  $effect(() => {
+    if (!adasAutoplay) return
+    const interval = setInterval(() => {
+      adasIndex = (adasIndex + 1) % adasItems.length
+    }, 6000)
+    return () => clearInterval(interval)
+  })
 
   let cockpitIndex = $state(0)
+  let pinVideoActive = $state(false)
+  let pinMediaEl = $state<HTMLDivElement>()
+
+  const pinVideoSrc = $derived(
+    pinVideoActive
+      ? 'https://www.youtube.com/embed/HIY72GdJrcc?autoplay=1&mute=1&controls=0&rel=0&modestbranding=1&playsinline=1&loop=1&playlist=HIY72GdJrcc'
+      : ''
+  )
 
   onMount(() => {
     let targetProgress = 0
@@ -222,10 +286,29 @@
     animate()
     window.addEventListener('scroll', update, { passive: true })
     window.addEventListener('resize', update)
+
+    let observer: IntersectionObserver | undefined
+    if (pinMediaEl) {
+      observer = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (entry.isIntersecting && entry.intersectionRatio > 0.45) {
+              pinVideoActive = true
+            } else if (entry.intersectionRatio < 0.15) {
+              pinVideoActive = false
+            }
+          }
+        },
+        { threshold: [0, 0.15, 0.45, 0.7, 1] }
+      )
+      observer.observe(pinMediaEl)
+    }
+
     return () => {
       cancelAnimationFrame(raf)
       window.removeEventListener('scroll', update)
       window.removeEventListener('resize', update)
+      observer?.disconnect()
     }
   })
 
@@ -275,6 +358,7 @@
 
   <section id="inicio" class="ram-hero">
     <img class="hero-fallback hero-desktop-img" src={model.heroImage} alt={model.name} />
+    <img class="hero-fallback hero-mobile-img" src={model.mobileHeroImage || model.heroImage} alt={model.name} />
     <div class="hero-shade"></div>
 
     <div class="relative z-10 w-full max-w-[1650px] mx-auto px-4 sm:px-8 xl:px-12 pt-4 xl:pt-24 pb-3 xl:pb-4 flex flex-col xl:flex-row items-center xl:items-end justify-between gap-6 xl:gap-10 min-h-0 xl:min-h-screen">
@@ -319,13 +403,36 @@
   <section class="pin-stage">
     <div class="pin-visual">
       <div class="pin-media-stack">
-        <button type="button" class="pin-media" aria-label={`Ampliar imagen de ${model.name}`} onclick={() => toggleZoom(model.spotlightImage)}>
-          <img class="truck-main" src={model.spotlightImage} alt={model.name} />
+        <div
+          bind:this={pinMediaEl}
+          role="button"
+          tabindex="0"
+          class="pin-media"
+          class:video-active={pinVideoActive}
+          aria-label={`Reproducir video de ${model.name}`}
+          onclick={() => pinVideoActive = !pinVideoActive}
+          onkeydown={(event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+              event.preventDefault()
+              pinVideoActive = !pinVideoActive
+            }
+          }}
+        >
+          <img class:video-active={pinVideoActive} class="truck-main" src={model.spotlightImage} alt={model.name} />
+          {#if pinVideoSrc}
+            <iframe
+              class="pin-video"
+              src={pinVideoSrc}
+              title={`Video ${model.name}`}
+              allow="autoplay; encrypted-media; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          {/if}
           <span class="pin-play-cue">
-            <GoogleIcon name="zoom_in" size={22} />
-            Ampliar
+            <GoogleIcon name="play_arrow" size={22} />
+            Ver video
           </span>
-        </button>
+        </div>
       </div>
       <div class="pin-copy">
         <p>{model.motionCopy}</p>
@@ -483,7 +590,8 @@
   </section>
 
   <section id="capacidad" class="capability">
-    <img src={capabilityImage} alt="RAM exterior de trabajo" />
+    <img class="cap-desktop-img" src={capabilityImage} alt="RAM exterior de trabajo" />
+    <img class="cap-mobile-img" src={mobileCapabilityImage} alt="RAM exterior de trabajo" />
     <div class="capability-card">
       <p>Capacidad y Desempeño</p>
       <h2>Siempre lista para romper la rutina.</h2>
@@ -499,13 +607,46 @@
     <div class="safety-content">
       <p>Confianza y Seguridad</p>
       <h2>Seguridad a donde quiera que vayas.</h2>
-      <span>Sus avanzados sistemas de seguridad te ofrecen a ti y a tus acompañantes una protección integral. Frenos ABS en las 4 ruedas, control electrónico de estabilidad y bolsas de aire para mantenerte a salvo en cada rodada.</span>
+      <span>Sus avanzados sistemas de seguridad te ofrecen a ti y a tus acompañantes una protección integral. Frenos de alto desempeño, control electrónico de estabilidad y asistencias activas para mantenerte a salvo en cada rodada.</span>
+
+      <!-- ── ADAS Slider ── -->
+      <p class="safety-sub-label">Sistemas de Asistencia ADAS</p>
+      
+      <div class="adas-carousel-container" style={`--adas-idx: ${adasIndex}`}>
+        <div class="adas-track" style={`transform: translateX(calc(-${adasIndex} * (100% / ${Math.max(adasItems.length, 1)})));`}>
+          {#each adasItems as item, i}
+            <div class="safety-vid-card adas-slide" class:active={i === adasIndex}>
+              {#if item.video}
+                <video src={item.video} poster={item.poster || ''} autoplay muted loop playsinline></video>
+              {:else if item.image}
+                <img src={item.image} alt={item.label} />
+              {/if}
+              <div class="svc-label"><span>{item.label}</span></div>
+            </div>
+          {/each}
+        </div>
+
+        <div class="carousel-controls adas-controls">
+          <div class="carousel-pill" aria-label="Sistemas ADAS">
+            {#each adasItems as _, i}
+              <button 
+                class:active={i === adasIndex} 
+                onclick={() => { adasIndex = i; adasAutoplay = false; }}
+                aria-label={`Ver asistente ${i + 1}`}
+              ></button>
+            {/each}
+          </div>
+          <button class="play-btn" onclick={() => adasAutoplay = !adasAutoplay} aria-label={adasAutoplay ? 'Pausar carrusel' : 'Reproducir carrusel'}>
+            <GoogleIcon name={adasAutoplay ? 'pause' : 'play_arrow'} size={18} />
+          </button>
+        </div>
+      </div>
 
       <div class="safety-features">
         <div class="safety-feat"><GoogleIcon name="report" size={26} /><span>Frenos ABS 4 ruedas</span></div>
         <div class="safety-feat"><GoogleIcon name="verified_user" size={26} /><span>Control de estabilidad</span></div>
         <div class="safety-feat"><GoogleIcon name="airline_seat_recline_normal" size={26} /><span>Bolsas de aire múltiples</span></div>
-        <div class="safety-feat"><GoogleIcon name="visibility" size={26} /><span>Cámara de 360°</span></div>
+        <div class="safety-feat"><GoogleIcon name="visibility" size={26} /><span>Cámara 360° y sensores</span></div>
       </div>
     </div>
   </section>
@@ -581,6 +722,26 @@
     object-position: 35% center;
     opacity: 0;
     animation: hero-zoom-out 16s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  }
+
+  .hero-desktop-img {
+    display: block !important;
+  }
+  .hero-mobile-img {
+    display: none !important;
+  }
+
+  @media (max-width: 1024px) {
+    .hero-desktop-img {
+      display: none !important;
+    }
+    .hero-mobile-img {
+      display: block !important;
+      object-position: center center;
+      animation: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
   }
 
   .hero-shade {
@@ -866,7 +1027,7 @@
     aspect-ratio: 16 / 9;
     padding: 0;
     overflow: hidden;
-    cursor: zoom-in;
+    cursor: pointer;
     border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: 30px;
     background: rgba(255, 255, 255, 0.045);
@@ -880,16 +1041,31 @@
     outline: none;
   }
 
-  .truck-main {
+  .truck-main,
+  .pin-video {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
     border: 0;
     border-radius: inherit;
+  }
+
+  .truck-main {
     object-fit: cover;
     transform: scale(1.025);
-    transition: opacity 520ms var(--ease-out), transform 900ms var(--ease-out);
+    transition: opacity 520ms var(--ease-out), transform 900ms var(--ease-out), filter 520ms var(--ease-out);
+  }
+
+  .truck-main.video-active {
+    opacity: 0;
+    transform: scale(1.055);
+    filter: blur(8px);
+  }
+
+  .pin-video {
+    z-index: 2;
+    background: #030305;
   }
 
   .pin-play-cue {
@@ -913,7 +1089,9 @@
     transition: opacity 340ms var(--ease-out), transform 340ms var(--ease-out);
   }
 
-  .pin-media:hover .pin-play-cue {
+  .pin-media:hover .pin-play-cue,
+  .pin-media:focus-visible .pin-play-cue,
+  .pin-media.video-active .pin-play-cue {
     opacity: 0;
     transform: translateY(8px);
     pointer-events: none;
@@ -1138,19 +1316,25 @@
     background: #050507;
   }
 
-  .capability > img {
+  .capability > img.cap-desktop-img {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: left center;
     filter: saturate(0.85) contrast(1.08);
-    opacity: 0.82;
+    opacity: 0.88;
     transform: scale(1.02);
     transition: transform 1400ms var(--ease-out);
+    display: block;
   }
 
-  .capability:hover > img {
+  .capability > img.cap-mobile-img {
+    display: none;
+  }
+
+  .capability:hover > img.cap-desktop-img {
     transform: scale(1.055);
   }
 
@@ -1251,6 +1435,156 @@
     font-weight: 400;
     line-height: 1.65;
     max-width: 540px;
+  }
+
+  /* ── Safety sub-label ── */
+  .safety-content .safety-sub-label {
+    margin: 0 0 14px;
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ram-hover);
+  }
+
+  .safety-vid-card {
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(12px);
+    transition: transform 350ms var(--ease-out), border-color 350ms var(--ease-out);
+  }
+
+  .safety-vid-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--ram-hover);
+  }
+
+  /* ADAS Carousel Styles */
+  .adas-carousel-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    padding-bottom: 80px;
+  }
+
+  .adas-track {
+    display: flex;
+    gap: 16px;
+    transition: transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+    width: 100%;
+  }
+
+  .adas-slide {
+    flex: 0 0 calc((100% - 32px) / 3); /* Show 3 cards */
+    min-width: 0;
+  }
+
+  @media (max-width: 1024px) {
+    .adas-slide {
+      flex: 0 0 calc((100% - 16px) / 2);
+    }
+    .adas-track {
+      transform: translateX(calc(-var(--adas-idx, 0) * (100% / 2))) !important;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .adas-slide {
+      flex: 0 0 100%;
+    }
+    .adas-track {
+      transform: translateX(calc(-var(--adas-idx, 0) * 100%)) !important;
+    }
+  }
+
+  .carousel-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 32px;
+    justify-content: center;
+  }
+
+  .carousel-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 18px 16px;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.11);
+    border-radius: 999px;
+    backdrop-filter: blur(20px);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 8px 28px rgba(0, 0, 0, 0.15);
+  }
+
+  .carousel-pill button {
+    width: 6px;
+    height: 6px;
+    padding: 0;
+    border: 0;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.25);
+    cursor: pointer;
+    transition: width 500ms cubic-bezier(0.16, 1, 0.3, 1), background 500ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .carousel-pill button.active {
+    width: 22px;
+    background: rgba(255, 255, 255, 0.95);
+  }
+
+  .play-btn {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: white;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    flex-shrink: 0;
+    overflow: hidden;
+    box-sizing: border-box;
+    transition: background 300ms ease, transform 200ms ease;
+  }
+
+  .play-btn * {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    margin: 0;
+  }
+
+  .play-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: scale(1.05);
+  }
+
+  .safety-vid-card video,
+  .safety-vid-card img {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    display: block;
+  }
+
+  .svc-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 14px;
+    font-size: 11px;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.75);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
   }
 
   .safety-features {
@@ -1668,6 +2002,42 @@
       padding: 70px 20px;
       grid-template-columns: 1fr;
     }
+
+    .capability {
+      min-height: auto;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      background: #050507;
+    }
+
+    .capability > img.cap-desktop-img {
+      display: none;
+    }
+
+    .capability > img.cap-mobile-img {
+      display: block;
+      position: relative;
+      inset: auto;
+      width: 100%;
+      height: auto;
+      max-height: 48vh;
+      object-fit: cover;
+    }
+
+    .capability::after {
+      display: none;
+    }
+
+    .capability-card {
+      width: 100%;
+      margin: 0;
+      border-radius: 0;
+      border-left: none;
+      border-right: none;
+      border-bottom: none;
+      padding: 28px 20px;
+    }
   }
 
   @media (max-width: 560px) {
@@ -1724,7 +2094,11 @@
       padding-top: 0;
       margin-bottom: 16px;
     }
-    .hero-fallback {
+    .hero-fallback.hero-desktop-img {
+      display: none !important;
+    }
+    .hero-fallback.hero-mobile-img {
+      display: block !important;
       position: relative;
       width: 100%;
       height: auto;

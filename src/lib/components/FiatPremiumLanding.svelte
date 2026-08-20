@@ -2758,7 +2758,11 @@
       padding-top: 0;
       margin-bottom: 16px;
     }
-    .hero-fallback {
+    .hero-fallback.hero-desktop-img {
+      display: none !important;
+    }
+    .hero-fallback.hero-mobile-img {
+      display: block !important;
       position: relative;
       width: 100%;
       height: auto;
