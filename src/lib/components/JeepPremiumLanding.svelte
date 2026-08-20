@@ -33,6 +33,7 @@
     storyImages?: string[]
     motionImages?: string[]
     capabilityImage?: string
+    mobileCapabilityImage?: string
     price: string
   }
 
@@ -42,8 +43,8 @@
       kicker: 'RENEGADE 2026',
       title: 'Redefine la aventura urbana.',
       subtitle: 'Motor 1.3L Turbo GSE de 173 hp, el más potente de su categoría. Diseño icónico Jeep® con tecnología de vanguardia y sistemas ADAS para la ciudad.',
-      heroImage: '/adistem2026/jeep/renegade-2026-hero.jpg',
-      mobileHeroImage: '/adistem2026/jeep/renegade-2026-mob.jpg',
+      heroImage: '/adistem2026/jeep/renegade-2026/hero/renegade-2026.jpg',
+      mobileHeroImage: '/adistem2026/jeep/renegade-2026/hero/renegade-2026-mob.jpg',
       spotlightImage: 'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/vlp/desktop/jeep-renegade-2026-inicio-equipamiento-exterior-dk.jpg.img.2880.jpg',
       quote: 'Hola,%20me%20interesa%20cotizar%20un%20Jeep%20Renegade',
       price: 'Desde $461,900',
@@ -56,21 +57,22 @@
       motionTitle: 'Diseño inconfundible. Desempeño moderno.',
       motionCopy: 'Su parrilla de 7 ranuras rinde homenaje al legado Jeep®, mientras su volante con paletas de cambio y frenos de disco en las 4 ruedas te dan el control que necesitas.',
       cockpitImages: [
-        'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/interior/full/jeep-renegade-2026-equipamiento-interior-highlights-08-full.jpg',
-        'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/gallery/full/jeep-renegade-2026-galeria-10-interior-full.jpg.img.2880.jpg',
-        'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/exterior/desktop/jeep-renegade-2026-exterior-highlights-08-full.jpg'
+        '/adistem2026/jeep/renegade-2026/interior/interior-1.jpg',
+        '/adistem2026/jeep/renegade-2026/interior/interior-2.jpg',
+        '/adistem2026/jeep/renegade-2026/interior/interior-3.jpg'
       ],
       storyImages: [
-        'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/exterior/desktop/jeep-renegade-2026-exterior-highlights-08-full.jpg',
-        'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/exterior/desktop/jeep-renegade-2026-exterior-highlights-02-dk.jpg.image.2880.jpg',
-        'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/exterior/desktop/jeep-renegade-2026-exterior-highlights-10-dk.jpg'
+        '/adistem2026/jeep/renegade-2026/equipamiento/equipamiento-1.jpg',
+        '/adistem2026/jeep/renegade-2026/equipamiento/equipamiento-2.jpg',
+        '/adistem2026/jeep/renegade-2026/equipamiento/equipamiento-3.jpg'
       ],
       motionImages: [
-        '/adistem2026/jeep-toolkit/my26-jeep-renegade-galeriaexterior-03-dk-mx.jpg.img.jpg',
-        '/adistem2026/jeep-toolkit/my26-jeep-renegade-galeriaexterior-02-allbreakingpoints-mx-v2.jpg.img.jpg',
-        '/adistem2026/jeep-toolkit/jeep-renegade-2026-galeria-10-interior-full.jpg.img.jpg'
+        '/adistem2026/jeep/renegade-2026/exterior/exterior-1.jpg',
+        '/adistem2026/jeep/renegade-2026/exterior/exterior-2.jpg',
+        '/adistem2026/jeep/renegade-2026/exterior/exterior-3.jpg'
       ],
-      capabilityImage: 'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/capacidad/desktop/jeep-renegade-2026-capacidad-desempeno-motor-01-dk.jpg.img.2880.jpg'
+      capabilityImage: '/adistem2026/jeep/renegade-2026/capacidad/capacidad.jpg',
+      mobileCapabilityImage: '/adistem2026/jeep/renegade-2026/capacidad/capacidad-mob.jpg'
     },
     '700': {
       name: 'JEEP 700',
@@ -150,9 +152,9 @@
         ['Sistema de anclaje ISOFIX para sillas infantiles', 'Controles de audio y teléfono al volante', 'Desempañador trasero', 'Luces proyectoras LED bifuncionales', 'Frenos de disco en las 4 ruedas', 'Sistemas de asistencia ADAS']
       ],
       colors: [
-        { name: 'Granito Cristal', hex: '#a8a8a8', img: 'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/modelizer/latitude/jelly-my26-jeep-renegade-sport-modelizer-configurator-granito-cristal-mx-v2.jpg.img.2880.jpg' },
-        { name: 'Negro Carbón',   hex: '#1a1a1a', img: 'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/modelizer/latitude/jeep-color-renegade-latitud-2026-inicio-modelizer-negro-carbon.jpg.img.2880.jpg' },
-        { name: 'Gris Mantarraya', hex: '#5a5a5a', img: 'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/modelizer/latitude/jeep-color-renegade-latitud-2026-inicio-modelizer-gris-mantarraya-Gris-Mantarraya-Roof-V1.png.img.2880.png' }
+        { name: 'Granito Cristal', hex: '#a8a8a8', img: '/adistem2026/jeep/renegade-2026/versiones/latitude/jelly-my26-jeep-renegade-sport-modelizer-configurator-granito-cristal-mx-v2.jpg.img.2880.avif' },
+        { name: 'Negro Carbón',   hex: '#1a1a1a', img: '/adistem2026/jeep/renegade-2026/versiones/latitude/jeep-color-renegade-latitud-2026-inicio-modelizer-negro-carbon.jpg.img.2880.avif' },
+        { name: 'Gris Mantarraya', hex: '#5a5a5a', img: '/adistem2026/jeep/renegade-2026/versiones/latitude/jeep-color-renegade-latitud-2026-inicio-modelizer-gris-mantarraya-Gris-Mantarraya-Roof-V1.png.img.2880.avif' }
       ]
     },
     {
@@ -165,9 +167,9 @@
         ['Alerta de cambio involuntario de carril plus', 'Sistema de detección de fatiga del conductor', 'Espejo retrovisor electrocrómico', 'Parabrisas con sensor de lluvia', 'Volante rediseñado con paletas de cambio', 'Pantalla Uconnect táctil de 8.4"']
       ],
       colors: [
-        { name: 'Gris Mantarraya', hex: '#5a5a5a', img: 'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/modelizer/limited/jeep-renegade-limited-2026-inicio-modelizer-gris-mantarraya.jpg.img.2880.jpg' },
-        { name: 'Granito Cristal', hex: '#a8a8a8', img: 'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/modelizer/limited/jelly-my26-jeep-renegade-sport-modelizer-configurator-granito-cristal-mx-v2.jpg.img.2880.jpg' },
-        { name: 'Blanco Polar',    hex: '#f5f5f0', img: 'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/modelizer/limited/jeep-renegade-limited-2026-inicio-modelizer-blanco-polar.jpg.img.2880.jpg' }
+        { name: 'Gris Mantarraya', hex: '#5a5a5a', img: '/adistem2026/jeep/renegade-2026/versiones/limited%20s/jeep-renegade-limited-2026-inicio-modelizer-gris-mantarraya.jpg.img.2880.avif' },
+        { name: 'Granito Cristal', hex: '#a8a8a8', img: '/adistem2026/jeep/renegade-2026/versiones/limited%20s/jelly-my26-jeep-renegade-sport-modelizer-configurator-granito-cristal-mx-v2.jpg.img.2880.avif' },
+        { name: 'Blanco Polar',    hex: '#f5f5f0', img: '/adistem2026/jeep/renegade-2026/versiones/limited%20s/jeep-renegade-limited-2026-inicio-modelizer-blanco-polar.jpg.img.2880.avif' }
       ]
     }
   ]
@@ -219,12 +221,13 @@
   ])
 
   const cockpitImages = $derived(model.cockpitImages || [
-    'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/inicio/galeria/full/my26-jeep-renegade-galeriainterior-01-allbreakingpoints-mx.jpg.img.2880.jpg',
-    'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/inicio/galeria/full/my26-jeep-renegade-galeriainterior-02-allbreakingpoints-mx.jpg.img.2880.jpg',
-    'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/inicio/galeria/full/my26-jeep-renegade-galeriainterior-01-allbreakingpoints-mx.jpg.img.2880.jpg',
+    '/adistem2026/jeep/renegade-2026/interior/interior-1.jpg',
+    '/adistem2026/jeep/renegade-2026/interior/interior-2.jpg',
+    '/adistem2026/jeep/renegade-2026/interior/interior-3.jpg',
   ])
 
-  const capabilityImage = $derived(model.capabilityImage || 'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/inicio/galeria/full/my26-jeep-renegade-galeriacapacidad-01-allbreakingpoints-mx.jpg.img.2880.jpg')
+  const capabilityImage = $derived(model.capabilityImage || '/adistem2026/jeep/renegade-2026/capacidad/capacidad.jpg')
+  const mobileCapabilityImage = $derived(model.mobileCapabilityImage || capabilityImage)
 
   let pinMediaEl: HTMLElement | undefined = $state()
 
@@ -309,10 +312,10 @@
 
   // ── ADAS Carousel Logic ──
   const adasItems = [
-    { id: 0, label: 'Asistencia Estacionamiento', video: 'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/safety/sistemas-de-asistencia/video/jeep-totalmente-nueva-renegade-2026-highlights-sistemas-de-asistencia-01.mp4', poster: 'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/safety/sistemas-de-asistencia/jeep-totalmente-nueva-renegade-2026-highlights-sistemas-de-asistencia-01.jpg' },
-    { id: 1, label: 'Reconocimiento Señales (TSR)', video: 'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/safety/sistemas-de-asistencia/video/jeep-totalmente-nueva-renegade-2026-highlights-sistemas-de-asistencia-02.mp4', poster: 'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/safety/sistemas-de-asistencia/jeep-totalmente-nueva-renegade-2026-highlights-sistemas-de-asistencia-02.jpg' },
-    { id: 2, label: 'Alerta Colisión Frontal (FCW)', video: 'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/safety/sistemas-de-asistencia/video/jeep-renegade-2026-sistemas-de-asistencia-fcw-desktop-v02.mp4', poster: 'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/safety/sistemas-de-asistencia/jeep-renegade-2026-sistemas-de-asistencia-fcw-desktop-v02.jpeg' },
-    { id: 3, label: 'Abandono de Carril (LDP)', video: 'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/safety/sistemas-de-asistencia/video/jeep-totalmente-nueva-renegade-2026-highlights-sistemas-de-asistencia-04.mp4', poster: '' }
+    { id: 0, label: 'Asistencia Estacionamiento', video: '/adistem2026/jeep/renegade-2026/seguridad/seguridad-1.mp4', poster: '' },
+    { id: 1, label: 'Reconocimiento Señales (TSR)', video: '/adistem2026/jeep/renegade-2026/seguridad/seguridad-2.mp4', poster: '' },
+    { id: 2, label: 'Alerta Colisión Frontal (FCW)', video: '/adistem2026/jeep/renegade-2026/seguridad/seguridad-3.mp4', poster: '' },
+    { id: 3, label: 'Abandono de Carril (LDP)', video: '/adistem2026/jeep/renegade-2026/seguridad/seguridad-4.mp4', poster: '' }
   ]
 
   let adasIndex = $state(0)
@@ -524,16 +527,16 @@
         </div>
       {:else}
         <div class="vs-exterior-row">
-          <button class="vs-ext-card" onclick={() => toggleZoom('https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/gallery/full/my26-jeep-renegade-galeriaexterior-05-allbreakingpoints-mx.jpg.img.2880.jpg')}>
-            <img src="https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/gallery/full/my26-jeep-renegade-galeriaexterior-05-allbreakingpoints-mx.jpg.img.2880.jpg" alt="Lateral" />
+          <button class="vs-ext-card" onclick={() => toggleZoom('/adistem2026/jeep/renegade-2026/galeria/vista-lateral.jpg')}>
+            <img src="/adistem2026/jeep/renegade-2026/galeria/vista-lateral.jpg" alt="Lateral" />
             <span>Vista lateral <GoogleIcon name="zoom_in" size={14} /></span>
           </button>
-          <button class="vs-ext-card" onclick={() => toggleZoom('https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/exterior/desktop/jeep-renegade-2026-exterior-highlights-07-full.jpg')}>
-            <img src="https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/exterior/desktop/jeep-renegade-2026-exterior-highlights-07-full.jpg" alt="Frontal" />
+          <button class="vs-ext-card" onclick={() => toggleZoom('/adistem2026/jeep/renegade-2026/galeria/vista-frontal.jpg')}>
+            <img src="/adistem2026/jeep/renegade-2026/galeria/vista-frontal.jpg" alt="Frontal" />
             <span>Vista frontal <GoogleIcon name="zoom_in" size={14} /></span>
           </button>
-          <button class="vs-ext-card" onclick={() => toggleZoom('https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/gallery/full/my26-jeep-renegade-galeriaexterior-02-allbreakingpoints-mx-v2.jpg.img.2880.jpg')}>
-            <img src="https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/gallery/full/my26-jeep-renegade-galeriaexterior-02-allbreakingpoints-mx-v2.jpg.img.2880.jpg" alt="Trasera" />
+          <button class="vs-ext-card" onclick={() => toggleZoom('/adistem2026/jeep/renegade-2026/galeria/vista-trasera.jpg')}>
+            <img src="/adistem2026/jeep/renegade-2026/galeria/vista-trasera.jpg" alt="Trasera" />
             <span>Vista trasera <GoogleIcon name="zoom_in" size={14} /></span>
           </button>
         </div>
@@ -624,7 +627,8 @@
   </section>
 
   <section id="capacidad" class="capability">
-    <img src={capabilityImage} alt="JEEP exterior de trabajo" />
+    <img class="cap-desktop-img" src={capabilityImage} alt="JEEP motor y capacidad" />
+    <img class="cap-mobile-img" src={mobileCapabilityImage} alt="JEEP motor y capacidad" />
     <div class="capability-card">
       <p>Capacidad y Desempeño</p>
       <h2>Siempre listo para romper la rutina.</h2>
@@ -1537,27 +1541,34 @@
     background: #030305;
   }
 
-  .capability > img {
+  .capability > img.cap-desktop-img {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: left center;
     filter: saturate(0.85) contrast(1.08);
-    opacity: 0.82;
+    opacity: 0.88;
     transform: scale(1.02);
     transition: transform 1400ms var(--ease-out);
+    display: block;
   }
 
-  .capability:hover > img {
-    transform: scale(1.055);
+  .capability > img.cap-mobile-img {
+    display: none;
+  }
+
+  .capability:hover > img.cap-desktop-img {
+    transform: scale(1.04);
   }
 
   .capability::after {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(90deg, rgba(3, 3, 5, 0.88), rgba(3, 3, 5, 0.32) 58%, rgba(3, 3, 5, 0.9));
+    background: linear-gradient(90deg, transparent 0%, rgba(3, 3, 5, 0.4) 40%, rgba(3, 3, 5, 0.92) 80%);
+    pointer-events: none;
   }
 
   .capability-card {
@@ -2198,6 +2209,47 @@
     .versions-layout,
     .features-columns {
       grid-template-columns: 1fr;
+    }
+
+    .capability {
+      min-height: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 36px 16px 44px;
+      gap: 18px;
+      background: #030305;
+    }
+
+    .capability::after {
+      display: none;
+    }
+
+    .capability > img.cap-desktop-img {
+      display: none;
+    }
+
+    .capability > img.cap-mobile-img {
+      display: block;
+      position: relative;
+      inset: auto;
+      width: 100%;
+      max-width: 440px;
+      height: auto;
+      max-height: 280px;
+      object-fit: contain;
+      object-position: center;
+      transform: none;
+      filter: saturate(0.9) contrast(1.08);
+      margin: 0 auto;
+    }
+
+    .capability-card {
+      width: 100%;
+      margin: 0;
+      padding: 24px 18px;
+      background: rgba(12, 14, 20, 0.85);
+      backdrop-filter: blur(20px);
     }
 
     /* spec-band mantiene 2 columnas en mobile (2x2) */
