@@ -151,7 +151,22 @@
   function onCarouselEnter() { isPlaying = false }
   function onCarouselLeave() { isPlaying = true }
 
-  const heroModels: PeugeotModel[] = [models.find(m => m.slug === '5008') || models[2]]
+  const heroModels: PeugeotModel[] = [
+    {
+      slug: '5008',
+      name: 'Peugeot 5008',
+      role: 'Más espacio para vivir sin dejar atrás quien eres',
+      image: '/adistem2026/peugeot/home/hero/5008-2026.jpg',
+      mobileImage: '/adistem2026/peugeot/home/hero/5008-2026-mob.jpg',
+      accent: PEUGEOT_HOVER,
+      use: 'Para familias que valoran espacio, estilo y confort.',
+      stat: 'SUV 7 Plazas',
+      metric: 'Familiar',
+      detail: 'Espacio para 7 personas con el estilo, confort y tecnología de la marca del león.',
+      price: '$754,900',
+      promo: 'Bono de hasta $25,000 + Tasa desde 7.99% + 0% de comisión por apertura + 3 años de mantenimiento gratis'
+    }
+  ]
   let activeHeroIndex = $state(0)
   let isHeroPlaying = $state(true)
 
@@ -318,8 +333,8 @@
 
   <!-- ═══ Cinematic story panels ═══ -->
   <section class="story-reel">
-    <div class="story-panel" style={`background-image: url('https://www.peugeot.com.mx/content/dam/peugeot/mexico/b2c/our-range/showroom/new-2008/desktop/2023-peugeot-suv2008-interior-mx-dk.jpg?imwidth=1920')`}>
-      <img class="story-mobile-img" src="https://www.peugeot.com.mx/content/dam/peugeot/mexico/b2c/our-range/showroom/new-2008/desktop/2023-peugeot-suv2008-interior-mx-dk.jpg?imwidth=1920" alt="Actitud urbana" />
+    <div class="story-panel" style={`background-image: url('/adistem2026/peugeot/story-panels/2008-2026.jpg')`}>
+      <img class="story-mobile-img" src="/adistem2026/peugeot/story-panels/2008-2026-mobile.jpg" alt="Actitud urbana" />
       <div class="story-overlay"></div>
       <div class="story-content">
         <p class="story-eyebrow">Actitud Urbana</p>
@@ -333,8 +348,8 @@
       </div>
     </div>
 
-    <div class="story-panel flip" style={`background-image: url('https://www.peugeot.com.mx/content/dam/peugeot/mexico/b2c/our-range/nuevo-3008/desktop/ventajas1.png?imwidth=1920')`}>
-      <img class="story-mobile-img" src="https://www.peugeot.com.mx/content/dam/peugeot/mexico/b2c/our-range/nuevo-3008/desktop/ventajas1.png?imwidth=1920" alt="Sofisticación" />
+    <div class="story-panel flip" style={`background-image: url('/adistem2026/peugeot/story-panels/3008-2026.jpg')`}>
+      <img class="story-mobile-img" src="/adistem2026/peugeot/story-panels/3008-2026-mobile.jpg" alt="Sofisticación" />
       <div class="story-overlay flip"></div>
       <div class="story-content flip">
         <p class="story-eyebrow">Sofisticación</p>
@@ -348,8 +363,8 @@
       </div>
     </div>
 
-    <div class="story-panel" style={`background-image: url('https://www.peugeot.com.mx/content/dam/peugeot/mexico/b2c/our-range/nuevo-5008/desktop/emocion1-dk.png?imwidth=1920')`}>
-      <img class="story-mobile-img" src="https://www.peugeot.com.mx/content/dam/peugeot/mexico/b2c/our-range/nuevo-5008/desktop/emocion1-dk.png?imwidth=1920" alt="Espacio familiar" />
+    <div class="story-panel" style={`background-image: url('/adistem2026/peugeot/story-panels/5008-2026.jpg')`}>
+      <img class="story-mobile-img" src="/adistem2026/peugeot/story-panels/5008-2026-mobile.jpg" alt="Espacio familiar" />
       <div class="story-overlay"></div>
       <div class="story-content">
         <p class="story-eyebrow">Espacio Familiar</p>

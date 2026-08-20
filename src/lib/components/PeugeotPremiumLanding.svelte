@@ -24,26 +24,58 @@
     specs: { value: string; label: string }[]
     motionTitle: string
     motionCopy: string
+    cockpitImages?: string[]
+    storyImages?: string[]
+    motionImages?: string[]
+    capabilityImage?: string
+    mobileCapabilityImage?: string
   }
 
-  const IMG_2008 = 'https://www.peugeot.com.mx/content/dam/peugeot/mexico/b2c/index/nuevo-home/banner/2008-desk.jpg?imwidth=1920'
-  const IMG_2008_JELLY = 'https://www.peugeot.com.mx/content/dam/peugeot/mexico/b2c/our-range/showroom/new-2008/desktop/2023-peugeot-2008-allure-pack-jellybeans-mx-dk.jpg?imwidth=1920'
-  const IMG_2008_INTERIOR = 'https://www.peugeot.com.mx/content/dam/peugeot/mexico/b2c/our-range/showroom/new-2008/desktop/2023-peugeot-suv2008-interior-mx-dk.jpg?imwidth=1920'
-  const IMG_2008_SISTEMA = 'https://www.peugeot.com.mx/content/dam/peugeot/mexico/b2c/our-range/showroom/new-2008/desktop/2023-peugeot-suv2008-sistema-mx-dk.jpg?imwidth=1920'
-  const IMG_3008 = 'https://www.peugeot.com.mx/content/dam/peugeot/mexico/b2c/our-range/nuevo-3008/desktop/3008-dk.jpg?imwidth=1920'
-  const IMG_3008_VENTAJAS = 'https://www.peugeot.com.mx/content/dam/peugeot/mexico/b2c/our-range/nuevo-3008/desktop/ventajas1.png?imwidth=1920'
-  const IMG_5008 = 'https://www.peugeot.com.mx/content/dam/peugeot/mexico/b2c/our-range/nuevo-5008/desktop/5008-dk.jpg?imwidth=1920'
-  const IMG_5008_EMOCION = 'https://www.peugeot.com.mx/content/dam/peugeot/mexico/b2c/our-range/nuevo-5008/desktop/emocion1-dk.png?imwidth=1920'
-  const IMG_PARTNER = 'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2Fb1d61b52adc2aa72f9170a07361f38035b5794a8.jpg?generation=1777350234922828&alt=media'
-
   const modelDetails: Record<string, ModelDetail> = {
+    '5008': {
+      name: 'Peugeot 5008',
+      kicker: 'Peugeot 5008 2026',
+      title: 'Más espacio para vivir sin dejar atrás quien eres.',
+      subtitle: 'La SUV de 7 plazas de Peugeot: espacio para toda la familia, motor turbo, i-Cockpit® Panorámico de 21" y elegancia francesa en cada detalle.',
+      heroImage: '/adistem2026/peugeot/5008-2026/hero/5008-2026.jpg',
+      mobileHeroImage: '/adistem2026/peugeot/5008-2026/hero/5008-2026-mob.jpg',
+      spotlightImage: '/adistem2026/peugeot/5008-2026/hero/5008-2026.jpg',
+      quote: 'Hola,%20me%20interesa%20cotizar%20un%20Peugeot%205008',
+      price: 'Desde $754,900',
+      specs: [
+        { value: '7', label: 'Plazas en 3 filas de asientos' },
+        { value: '180 hp', label: 'Motor 1.6L Turbo eficiente' },
+        { value: '21"', label: 'Pantalla curva i-Cockpit® HD' },
+        { value: 'ADAS', label: '10 asistencias de seguridad activa' },
+      ],
+      motionTitle: 'Espacio familiar sin renunciar al estilo.',
+      motionCopy: 'El Peugeot 5008 combina la practicidad de 7 plazas modulables con la elegancia, confort y tecnología de última generación.',
+      cockpitImages: [
+        '/adistem2026/peugeot/5008-2026/interior/interior-1.jpg',
+        '/adistem2026/peugeot/5008-2026/interior/interior-2.jpg',
+        '/adistem2026/peugeot/5008-2026/interior/interior-3.jpg'
+      ],
+      storyImages: [
+        '/adistem2026/peugeot/5008-2026/equipamiento/equipamiento-1.jpg',
+        '/adistem2026/peugeot/5008-2026/equipamiento/equipamiento-2.jpg',
+        '/adistem2026/peugeot/5008-2026/equipamiento/equipamiento-3.jpg'
+      ],
+      motionImages: [
+        '/adistem2026/peugeot/5008-2026/exterior/exterior-1.jpg',
+        '/adistem2026/peugeot/5008-2026/exterior/exterior-2.jpg',
+        '/adistem2026/peugeot/5008-2026/exterior/exterior-3.jpg'
+      ],
+      capabilityImage: '/adistem2026/peugeot/5008-2026/capacidad/capacidad.jpg',
+      mobileCapabilityImage: '/adistem2026/peugeot/5008-2026/capacidad/capacidad-mob.jpg'
+    },
     '2008': {
       name: 'Peugeot 2008',
       kicker: 'Peugeot 2008 2026',
       title: 'No llegaste para pasar desapercibido.',
       subtitle: 'Una SUV con la actitud, tecnología y presencia que acompañan todo lo que estás construyendo. Con el i-Cockpit® de última generación.',
-      heroImage: IMG_2008,
-      spotlightImage: IMG_2008_JELLY,
+      heroImage: '/adistem2026/peugeot/story-panels/2008-2026.jpg',
+      mobileHeroImage: '/adistem2026/peugeot/story-panels/2008-2026-mobile.jpg',
+      spotlightImage: '/adistem2026/peugeot/story-panels/2008-2026.jpg',
       quote: 'Hola,%20me%20interesa%20cotizar%20un%20Peugeot%202008',
       price: 'Desde $458,900',
       specs: [
@@ -60,8 +92,9 @@
       kicker: 'Peugeot 3008 2026',
       title: 'La sofisticación no necesita presumir.',
       subtitle: 'La SUV donde cada detalle fue pensado para quienes entienden que el verdadero lujo está en cómo se vive.',
-      heroImage: IMG_3008,
-      spotlightImage: IMG_3008_VENTAJAS,
+      heroImage: '/adistem2026/peugeot/story-panels/3008-2026.jpg',
+      mobileHeroImage: '/adistem2026/peugeot/story-panels/3008-2026-mobile.jpg',
+      spotlightImage: '/adistem2026/peugeot/story-panels/3008-2026.jpg',
       quote: 'Hola,%20me%20interesa%20cotizar%20un%20Peugeot%203008',
       price: 'Desde $629,900',
       specs: [
@@ -73,31 +106,14 @@
       motionTitle: 'Cada detalle pensado para vivir mejor.',
       motionCopy: 'El 3008 combina diseño, tecnología y materiales premium para una experiencia de manejo superior, sin necesidad de presumir.',
     },
-    '5008': {
-      name: 'Peugeot 5008',
-      kicker: 'Peugeot 5008 2026',
-      title: 'Más espacio para vivir sin dejar atrás quien eres.',
-      subtitle: 'La SUV con espacio para 7 personas, con el estilo, confort y tecnología que hacen que cada trayecto sea diferente.',
-      heroImage: IMG_5008,
-      spotlightImage: IMG_5008_EMOCION,
-      quote: 'Hola,%20me%20interesa%20cotizar%20un%20Peugeot%205008',
-      price: 'Desde $754,900',
-      specs: [
-        { value: '7', label: 'Plazas para toda la familia' },
-        { value: 'GT', label: 'Versión tope de gama' },
-        { value: '7.99%', label: 'Tasa desde, sin comisión por apertura' },
-        { value: '3 años', label: 'Mantenimiento gratis incluido' },
-      ],
-      motionTitle: 'Espacio familiar sin renunciar al estilo.',
-      motionCopy: 'El 5008 ofrece la configuración de 7 plazas más versátil de la marca, sin sacrificar el diseño y la tecnología Peugeot.',
-    },
     'partner': {
       name: 'Peugeot Partner',
       kicker: 'Peugeot Partner 2026',
       title: 'Versatilidad para tu negocio.',
       subtitle: 'Espacio, practicidad y la confiabilidad Peugeot para acompañar tu negocio y tu movilidad diaria.',
-      heroImage: IMG_PARTNER,
-      spotlightImage: IMG_PARTNER,
+      heroImage: '/adistem2026/promociones/peugeot-partner-2026.jpg',
+      mobileHeroImage: '/adistem2026/promociones/peugeot-partner-2026.jpg',
+      spotlightImage: '/adistem2026/promociones/peugeot-partner-2026.jpg',
       quote: 'Hola,%20me%20interesa%20cotizar%20una%20Peugeot%20Partner',
       price: 'Desde $439,900',
       specs: [
@@ -112,21 +128,22 @@
   }
 
   const fallbackModel: ModelDetail = {
-    name: 'Peugeot 2026',
-    kicker: 'Peugeot 2026',
-    title: 'Allure y excelencia en cada trayecto.',
-    subtitle: 'Diseño, tecnología e innovación francesa en cada versión de la gama.',
-    heroImage: IMG_2008,
-    spotlightImage: IMG_2008,
-    quote: 'Hola,%20me%20interesa%20cotizar%20un%20Peugeot',
+    name: 'Peugeot 5008',
+    kicker: 'Peugeot 5008 2026',
+    title: 'Más espacio para vivir sin dejar atrás quien eres.',
+    subtitle: 'La SUV de 7 plazas de Peugeot: espacio para toda la familia, motor turbo y elegancia francesa en cada detalle.',
+    heroImage: '/adistem2026/peugeot/5008-2026/hero/5008-2026.jpg',
+    mobileHeroImage: '/adistem2026/peugeot/5008-2026/hero/5008-2026-mob.jpg',
+    spotlightImage: '/adistem2026/peugeot/5008-2026/hero/5008-2026.jpg',
+    quote: 'Hola,%20me%20interesa%20cotizar%20un%20Peugeot 5008',
     price: 'Desde $754,900',
     specs: [
-      { value: '2026', label: 'Gama del año modelo' },
-      { value: 'Allure', label: 'Diseño francés' },
+      { value: '7', label: 'Plazas en 3 filas de asientos' },
+      { value: '180 hp', label: 'Motor 1.6L Turbo' },
+      { value: '21"', label: 'i-Cockpit® Panorámico' },
       { value: 'ADAS', label: 'Sistemas de asistencia' },
-      { value: 'VAPSA', label: 'Distribuidor autorizado' },
     ],
-    motionTitle: 'Excelencia en cada detalle.',
+    motionTitle: 'Espacio familiar sin renunciar al estilo.',
     motionCopy: 'Diseñado para destacar, con la tecnología y el estilo que identifican a cada Peugeot.',
   }
 
@@ -134,54 +151,62 @@
   const specs = $derived(model.specs)
 
   const story = $derived([
-    { kicker: 'Diseño', title: model.motionTitle, copy: model.motionCopy, image: model.heroImage },
-    { kicker: 'Tecnología', title: 'i-Cockpit®, la conducción instintiva.', copy: 'Volante compacto, clúster digital y comandos integrados para que te concentres solo en lo esencial del camino.', image: IMG_2008_SISTEMA },
-    { kicker: 'Confianza', title: 'Calidad sin concesiones.', copy: 'Una larga tradición en el automovilismo y un compromiso inquebrantable con la excelencia en cada modelo.', image: IMG_5008_EMOCION },
+    { kicker: 'Diseño', title: 'Allure francés que se impone.', copy: 'Silueta aerodinámica, firma lumínica con garras LED de 3 líneas y parrilla sin marco con el nuevo emblema Peugeot.', image: model.storyImages?.[0] || '/adistem2026/peugeot/5008-2026/equipamiento/equipamiento-1.jpg' },
+    { kicker: 'Tecnología', title: 'i-Cockpit® Panorámico de 21".', copy: 'Pantalla curva panorámica flotante de 21 pulgadas en alta definición que fusiona clúster y pantalla táctil central.', image: model.storyImages?.[1] || '/adistem2026/peugeot/5008-2026/equipamiento/equipamiento-2.jpg' },
+    { kicker: 'Confort', title: '3 filas para 7 personas.', copy: 'Espacio modular amplio y flexible con asientos de piel sintética y alcántara, climatización tri-zona y techo panorámico.', image: model.storyImages?.[2] || '/adistem2026/peugeot/5008-2026/equipamiento/equipamiento-3.jpg' },
   ])
 
   const motionCards = $derived([
-    { title: 'Diseño con actitud', copy: 'Líneas dinámicas y una presencia que refleja ambición en cada trayecto.', image: model.heroImage },
-    { title: 'i-Cockpit® de última generación', copy: 'Ergonomía y tecnología de calidad para concentrarte solo en lo esencial.', image: IMG_2008_INTERIOR },
-    { title: 'Calidad sin concesiones', copy: 'Una larga tradición en el automovilismo, presente en cada detalle.', image: IMG_3008_VENTAJAS },
+    { title: 'Presencia distinguida', copy: 'Líneas fluidas y proporciones equilibradas que transmiten refinamiento en cualquier entorno.', image: model.motionImages?.[0] || '/adistem2026/peugeot/5008-2026/exterior/exterior-1.jpg' },
+    { title: 'Iluminación Pixel LED', copy: 'Faros delanteros adaptativos Pixel LED con tecnología antideslumbramiento y diseño felino inconfundible.', image: model.motionImages?.[1] || '/adistem2026/peugeot/5008-2026/exterior/exterior-2.jpg' },
+    { title: 'Rines bitono diamantados', copy: 'Rines de aluminio de 19 pulgadas con diseño geométrico y acabado diamantado en contraste negro.', image: model.motionImages?.[2] || '/adistem2026/peugeot/5008-2026/exterior/exterior-3.jpg' },
   ])
 
-  const cockpitImages = $derived([IMG_2008_INTERIOR, IMG_2008_SISTEMA, model.spotlightImage])
-  const capabilityImage = $derived(model.spotlightImage)
+  const cockpitImages = $derived(model.cockpitImages || [
+    '/adistem2026/peugeot/5008-2026/interior/interior-1.jpg',
+    '/adistem2026/peugeot/5008-2026/interior/interior-2.jpg',
+    '/adistem2026/peugeot/5008-2026/interior/interior-3.jpg'
+  ])
 
-  // Datos reales verificados en peugeot.com.mx/gama/nuevo-5008.html y lista-de-precios.html (agosto 2026)
+  const capabilityImage = $derived(model.capabilityImage || '/adistem2026/peugeot/5008-2026/capacidad/capacidad.jpg')
+  const mobileCapabilityImage = $derived(model.mobileCapabilityImage || capabilityImage)
+
+  // Datos reales verificados Peugeot 5008 2026
   const PEUGEOT_5008_COLORS = [
-    { name: 'AZUL INGARO', hex: '#5b7fa6', front: 'https://www.peugeot.com.mx/content/dam/peugeot/mexico/b2c/our-range/nuevo-5008/desktop/5008-azul-ingaro-frente.jpg', back: 'https://www.peugeot.com.mx/content/dam/peugeot/mexico/b2c/our-range/nuevo-5008/desktop/5008-azul-ingaro-atras.jpg' },
-    { name: 'GRIS TITANE', hex: '#5b5d5e', front: 'https://www.peugeot.com.mx/content/dam/peugeot/mexico/b2c/our-range/nuevo-5008/desktop/5008-gris-titanium-frente.jpg', back: 'https://www.peugeot.com.mx/content/dam/peugeot/mexico/b2c/our-range/nuevo-5008/desktop/5008-gris-titanium-atras.jpg' },
-    { name: 'GRIS ARTENSE', hex: '#999cad', front: 'https://www.peugeot.com.mx/content/dam/peugeot/mexico/b2c/our-range/nuevo-5008/desktop/5008-gris-artense-frente.jpg', back: 'https://www.peugeot.com.mx/content/dam/peugeot/mexico/b2c/our-range/nuevo-5008/desktop/5008-gris-artense-atras.jpg' },
-    { name: 'BLANCO OKENITE', hex: '#eef2f5', front: 'https://www.peugeot.com.mx/content/dam/peugeot/mexico/b2c/our-range/nuevo-5008/desktop/5008-blanco-okenite-frente.jpg', back: 'https://www.peugeot.com.mx/content/dam/peugeot/mexico/b2c/our-range/nuevo-5008/desktop/5008-blanco-okenite-atras.jpg' }
+    { name: 'AZUL INGARO', hex: '#5b7fa6', img: '/adistem2026/peugeot/5008-2026/versiones/gt/azul-ingaro.jpg' },
+    { name: 'BLANCO OKENITE', hex: '#eef2f5', img: '/adistem2026/peugeot/5008-2026/versiones/gt/blanco-okenite.jpg' },
+    { name: 'GRIS ARTENSE', hex: '#999cad', img: '/adistem2026/peugeot/5008-2026/versiones/gt/gris-artense.jpg' },
+    { name: 'GRIS TITANIUM', hex: '#5b5d5e', img: '/adistem2026/peugeot/5008-2026/versiones/gt/gris-titanium.jpg' }
   ]
-  const PEUGEOT_5008_LATERAL = 'https://www.peugeot.com.mx/content/dam/peugeot/mexico/b2c/our-range/nuevo-5008/desktop/5008-dk.jpg'
+  const PEUGEOT_5008_LATERAL = '/adistem2026/peugeot/5008-2026/galeria/vista-lateral.jpg'
+  const PEUGEOT_5008_FRONTAL = '/adistem2026/peugeot/5008-2026/galeria/vista-frontal.jpg'
+  const PEUGEOT_5008_TRASERA = '/adistem2026/peugeot/5008-2026/galeria/vista-trasera.jpg'
 
   const PeugeotVersions = [
     {
       id: '5008-gt',
       name: '5008 GT',
       price: 'Desde $754,900',
-      colors: PEUGEOT_5008_COLORS.map(c => ({ name: c.name, hex: c.hex, url: c.front })),
+      colors: PEUGEOT_5008_COLORS,
       features: [
         [
-          'Motor 1.6L Turbo de 180 hp',
+          'Motor 1.6L Turbo de 180 hp con 250 Nm de torque',
           'Transmisión automática de 6 velocidades',
-          'Capacidad para 7 pasajeros',
+          'Capacidad para 7 pasajeros en 3 filas de asientos modulables',
           'Nuevo i-Cockpit® Panorámico: pantalla curva HD de 21"',
-          'Asientos Dynamic con ajuste eléctrico, calefacción y masaje'
+          'Asientos Dynamic con ajuste eléctrico, calefacción y función de masaje'
         ],
         [
-          'Aire acondicionado automático Tri-zona con salidas traseras',
-          'Cabin Clean: sensor y filtrado de partículas',
-          'Cajuela eléctrica con función "Manos Libres"',
-          'Cargador inalámbrico para smartphone',
-          'Faros Pixel LED',
-          'Rines de aluminio de 19" bi-tono',
+          'Aire acondicionado automático Tri-zona con salidas en 2.ª y 3.ª fila',
+          'Cabin Clean: sensor y filtrado activo de partículas',
+          'Cajuela eléctrica con sensor de pie "Manos Libres"',
+          'Cargador inalámbrico por inducción para smartphone',
+          'Faros adaptativos Pixel LED con encendido automático',
+          'Rines de aluminio bitono diamantados de 19"',
           'Techo panorámico eléctrico "Black Diamond"',
-          '10 asistencias ADAS: frenado de emergencia, crucero adaptativo Stop&Go, mantenimiento de carril y más',
-          'Cámara de reversa 360° con sensores delanteros y traseros',
-          '6 bolsas de aire (frontales, laterales y de cortina)'
+          '10 asistencias ADAS: frenado autónomo de emergencia, control crucero adaptativo Stop&Go y mantenimiento de carril',
+          'Cámara de visión 360° con sensores delanteros y traseros',
+          '6 bolsas de aire (frontales, laterales y de cortina para las 3 filas)'
         ]
       ]
     },
@@ -189,11 +214,11 @@
       id: '5008-gt-black',
       name: '5008 GT Black Edition',
       price: 'Desde $795,900',
-      colors: PEUGEOT_5008_COLORS.map(c => ({ name: c.name, hex: c.hex, url: c.front })),
+      colors: PEUGEOT_5008_COLORS,
       features: [
         [
           'Mismo equipamiento que 5008 GT, más:',
-          'Paquete estético Black Edition (acabados en negro brillante)',
+          'Paquete estético Black Edition (parrilla, molduras y emblemas en negro brillante)',
           'Motor 1.6L Turbo de 180 hp',
           'Transmisión automática de 6 velocidades',
           'Capacidad para 7 pasajeros'
@@ -201,10 +226,10 @@
         [
           'Nuevo i-Cockpit® Panorámico: pantalla curva HD de 21"',
           'Asientos Dynamic con ajuste eléctrico, calefacción y masaje',
-          'Rines de aluminio de 19" bi-tono en acabado oscuro',
+          'Rines de aluminio de 19" en acabado negro brillante satinado',
           'Techo panorámico eléctrico "Black Diamond"',
           '10 asistencias ADAS y cámara de reversa 360°',
-          '6 bolsas de aire (frontales, laterales y de cortina)'
+          '6 bolsas de aire para protección integral de las 3 filas'
         ]
       ]
     }
@@ -217,14 +242,46 @@
 
   const activeVersion = $derived(PeugeotVersions.find(v => v.id === activeVersionId)!)
   const activeColor = $derived(activeVersion.colors[activeColorIndex] || activeVersion.colors[0])
-  const activeColorBack = $derived(PEUGEOT_5008_COLORS.find(c => c.name === activeColor.name)?.back ?? activeColor.url)
 
   $effect(() => {
     activeVersionId
     showAllFeatures = false
   })
 
+  // ── ADAS Carousel Logic ──
+  type AdasItem = {
+    id: number
+    label: string
+    video?: string
+    poster?: string
+    image?: string
+  }
+
+  const adasItems: AdasItem[] = [
+    { id: 0, label: 'CONTROL ELECTRÓNICO DE ESTABILIDAD (ESP)', image: '/adistem2026/peugeot/5008-2026/seguridad/seguridad-1.jpg' },
+    { id: 1, label: 'SISTEMA DE FRENADO DE EMERGENCIA', image: '/adistem2026/peugeot/5008-2026/seguridad/seguridad-2.jpg' }
+  ]
+
+  let adasIndex = $state(0)
+  let adasAutoplay = $state(true)
+
+  $effect(() => {
+    if (!adasAutoplay) return
+    const interval = setInterval(() => {
+      adasIndex = (adasIndex + 1) % adasItems.length
+    }, 6000)
+    return () => clearInterval(interval)
+  })
+
   let cockpitIndex = $state(0)
+  let pinVideoActive = $state(false)
+  let pinMediaEl = $state<HTMLDivElement>()
+
+  const pinVideoSrc = $derived(
+    pinVideoActive
+      ? 'https://www.youtube.com/embed/2kY99v9l6I4?autoplay=1&mute=1&controls=0&rel=0&modestbranding=1&playsinline=1&loop=1&playlist=2kY99v9l6I4'
+      : ''
+  )
 
   onMount(() => {
     let targetProgress = 0
@@ -243,10 +300,29 @@
     animate()
     window.addEventListener('scroll', update, { passive: true })
     window.addEventListener('resize', update)
+
+    let observer: IntersectionObserver | undefined
+    if (pinMediaEl) {
+      observer = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (entry.isIntersecting && entry.intersectionRatio > 0.45) {
+              pinVideoActive = true
+            } else if (entry.intersectionRatio < 0.15) {
+              pinVideoActive = false
+            }
+          }
+        },
+        { threshold: [0, 0.15, 0.45, 0.7, 1] }
+      )
+      observer.observe(pinMediaEl)
+    }
+
     return () => {
       cancelAnimationFrame(raf)
       window.removeEventListener('scroll', update)
       window.removeEventListener('resize', update)
+      observer?.disconnect()
     }
   })
 
@@ -341,13 +417,36 @@
   <section class="pin-stage">
     <div class="pin-visual">
       <div class="pin-media-stack">
-        <button type="button" class="pin-media" aria-label={`Ampliar imagen de ${model.name}`} onclick={() => toggleZoom(model.spotlightImage)}>
-          <img class="truck-main" src={model.spotlightImage} alt={model.name} />
+        <div
+          bind:this={pinMediaEl}
+          role="button"
+          tabindex="0"
+          class="pin-media"
+          class:video-active={pinVideoActive}
+          aria-label={`Reproducir video de ${model.name}`}
+          onclick={() => pinVideoActive = !pinVideoActive}
+          onkeydown={(event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+              event.preventDefault()
+              pinVideoActive = !pinVideoActive
+            }
+          }}
+        >
+          <img class:video-active={pinVideoActive} class="truck-main" src={model.spotlightImage} alt={model.name} />
+          {#if pinVideoSrc}
+            <iframe
+              class="pin-video"
+              src={pinVideoSrc}
+              title={`Video ${model.name}`}
+              allow="autoplay; encrypted-media; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          {/if}
           <span class="pin-play-cue">
-            <GoogleIcon name="zoom_in" size={22} />
-            Ampliar
+            <GoogleIcon name="play_arrow" size={22} />
+            Ver video
           </span>
-        </button>
+        </div>
       </div>
       <div class="pin-copy">
         <p>{model.motionCopy}</p>
@@ -376,8 +475,8 @@
 
         <div class="vs-showcase">
           <div class="vs-glow"></div>
-          {#key activeColor.url}
-            <img src={activeColor.url} alt={`Peugeot ${activeColor.name}`} class="vs-hero-car" />
+          {#key activeColor.img}
+            <img src={activeColor.img} alt={`Peugeot ${activeColor.name}`} class="vs-hero-car" />
           {/key}
         </div>
 
@@ -430,12 +529,12 @@
             <img src={PEUGEOT_5008_LATERAL} alt="Lateral" />
             <span>Vista lateral <GoogleIcon name="zoom_in" size={14} /></span>
           </button>
-          <button class="vs-ext-card" onclick={() => toggleZoom(activeColor.url)}>
-            <img src={activeColor.url} alt="Frontal" />
+          <button class="vs-ext-card" onclick={() => toggleZoom(PEUGEOT_5008_FRONTAL)}>
+            <img src={PEUGEOT_5008_FRONTAL} alt="Frontal" />
             <span>Vista frontal <GoogleIcon name="zoom_in" size={14} /></span>
           </button>
-          <button class="vs-ext-card" onclick={() => toggleZoom(activeColorBack)}>
-            <img src={activeColorBack} alt="Trasera" />
+          <button class="vs-ext-card" onclick={() => toggleZoom(PEUGEOT_5008_TRASERA)}>
+            <img src={PEUGEOT_5008_TRASERA} alt="Trasera" />
             <span>Vista trasera <GoogleIcon name="zoom_in" size={14} /></span>
           </button>
         </div>
@@ -511,14 +610,18 @@
   </section>
 
   <section id="capacidad" class="capability">
-    <img src={capabilityImage} alt="Peugeot exterior" />
+    <img class="cap-desktop-img" src={capabilityImage} alt="Peugeot capacidad y desempeño" />
+    {#if mobileCapabilityImage}
+      <img class="cap-mobile-img" src={mobileCapabilityImage} alt="Peugeot capacidad y desempeño" />
+    {/if}
     <div class="capability-card">
-      <p>Capacidad y Tecnología</p>
-      <h2>Siempre listo para acompañarte.</h2>
+      <p>Capacidad y Desempeño</p>
+      <h2>Espacio, confort y potencia para 7 pasajeros.</h2>
       <div class="cap-list">
-        {#each specs as item (item.label)}
-          <span><GoogleIcon name="check_circle" size={18} /> {item.label}</span>
-        {/each}
+        <span><GoogleIcon name="speed" size={18} /> Motor 1.6L Turbo 180 hp y 250 Nm</span>
+        <span><GoogleIcon name="sync_alt" size={18} /> Transmisión automática 6 velocidades</span>
+        <span><GoogleIcon name="group" size={18} /> 3 filas de asientos para 7 pasajeros</span>
+        <span><GoogleIcon name="verified_user" size={18} /> i-Cockpit® Panorámico HD de 21"</span>
       </div>
     </div>
   </section>
@@ -527,13 +630,46 @@
     <div class="safety-content">
       <p>Confianza y Seguridad</p>
       <h2>Seguridad a donde quiera que vayas.</h2>
-      <span>Sus avanzados sistemas de seguridad (ADAS) te ofrecen a ti y a tus acompañantes una protección integral. Frenos ABS, control electrónico de estabilidad y bolsas de aire para mantenerte a salvo en cada rodada.</span>
+      <span>Sus avanzados sistemas de seguridad te ofrecen a ti y a tus acompañantes una protección integral. Frenos ABS, control electrónico de estabilidad y bolsas de aire para mantenerte a salvo en cada rodada.</span>
+
+      <!-- ── ADAS Slider ── -->
+      <p class="safety-sub-label">Sistemas de Asistencia ADAS</p>
+      
+      <div class="adas-carousel-container" style={`--adas-idx: ${adasIndex}`}>
+        <div class="adas-track" style={`transform: translateX(calc(-${adasIndex} * (100% / ${Math.max(adasItems.length, 1)})));`}>
+          {#each adasItems as item, i}
+            <div class="safety-vid-card adas-slide" class:active={i === adasIndex}>
+              {#if item.video}
+                <video src={item.video} poster={item.poster || ''} autoplay muted loop playsinline></video>
+              {:else if item.image}
+                <img src={item.image} alt={item.label} />
+              {/if}
+              <div class="svc-label"><span>{item.label}</span></div>
+            </div>
+          {/each}
+        </div>
+
+        <div class="carousel-controls adas-controls">
+          <div class="carousel-pill" aria-label="Sistemas ADAS">
+            {#each adasItems as _, i}
+              <button 
+                class:active={i === adasIndex} 
+                onclick={() => { adasIndex = i; adasAutoplay = false; }}
+                aria-label={`Ver asistente ${i + 1}`}
+              ></button>
+            {/each}
+          </div>
+          <button class="play-btn" onclick={() => adasAutoplay = !adasAutoplay} aria-label={adasAutoplay ? 'Pausar carrusel' : 'Reproducir carrusel'}>
+            <GoogleIcon name={adasAutoplay ? 'pause' : 'play_arrow'} size={18} />
+          </button>
+        </div>
+      </div>
 
       <div class="safety-features">
         <div class="safety-feat"><GoogleIcon name="report" size={26} /><span>Frenos ABS</span></div>
         <div class="safety-feat"><GoogleIcon name="verified_user" size={26} /><span>Control de estabilidad</span></div>
-        <div class="safety-feat"><GoogleIcon name="airline_seat_recline_normal" size={26} /><span>Bolsas de aire múltiples</span></div>
-        <div class="safety-feat"><GoogleIcon name="visibility" size={26} /><span>Cámara de reversa</span></div>
+        <div class="safety-feat"><GoogleIcon name="airline_seat_recline_normal" size={26} /><span>6 Bolsas de aire</span></div>
+        <div class="safety-feat"><GoogleIcon name="visibility" size={26} /><span>Cámara y sensores 360°</span></div>
       </div>
     </div>
   </section>
@@ -914,7 +1050,7 @@
     aspect-ratio: 16 / 9;
     padding: 0;
     overflow: hidden;
-    cursor: zoom-in;
+    cursor: pointer;
     border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: 30px;
     background: rgba(255, 255, 255, 0.045);
@@ -928,16 +1064,31 @@
     outline: none;
   }
 
-  .truck-main {
+  .truck-main,
+  .pin-video {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
     border: 0;
     border-radius: inherit;
+  }
+
+  .truck-main {
     object-fit: cover;
     transform: scale(1.025);
-    transition: opacity 520ms var(--ease-out), transform 900ms var(--ease-out);
+    transition: opacity 520ms var(--ease-out), transform 900ms var(--ease-out), filter 520ms var(--ease-out);
+  }
+
+  .truck-main.video-active {
+    opacity: 0;
+    transform: scale(1.055);
+    filter: blur(8px);
+  }
+
+  .pin-video {
+    z-index: 2;
+    background: #03050a;
   }
 
   .pin-play-cue {
@@ -961,7 +1112,9 @@
     transition: opacity 340ms var(--ease-out), transform 340ms var(--ease-out);
   }
 
-  .pin-media:hover .pin-play-cue {
+  .pin-media:hover .pin-play-cue,
+  .pin-media:focus-visible .pin-play-cue,
+  .pin-media.video-active .pin-play-cue {
     opacity: 0;
     transform: translateY(8px);
     pointer-events: none;
@@ -1265,19 +1418,25 @@
     background: #03050a;
   }
 
-  .capability > img {
+  .cap-desktop-img {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: left center;
     filter: saturate(0.85) contrast(1.08);
     opacity: 0.82;
     transform: scale(1.02);
     transition: transform 1400ms var(--ease-out);
+    display: block !important;
   }
 
-  .capability:hover > img {
+  .cap-mobile-img {
+    display: none !important;
+  }
+
+  .capability:hover .cap-desktop-img {
     transform: scale(1.055);
   }
 
@@ -1297,6 +1456,40 @@
     border: 1px solid rgba(255, 255, 255, 0.12);
     background: rgba(5, 8, 14, 0.64);
     backdrop-filter: blur(24px);
+  }
+
+  @media (max-width: 900px) {
+    .capability {
+      display: flex;
+      flex-direction: column;
+      padding: 0;
+      min-height: auto;
+      background: #050507;
+    }
+    .capability::after {
+      display: none;
+    }
+    .cap-desktop-img {
+      display: none !important;
+    }
+    .cap-mobile-img {
+      display: block !important;
+      position: relative;
+      width: 100%;
+      height: auto;
+      max-height: 48vh;
+      object-fit: cover;
+      object-position: center;
+      opacity: 0.9;
+    }
+    .capability-card {
+      width: 100%;
+      margin: 0;
+      border-radius: 0;
+      border-left: none;
+      border-right: none;
+      padding: 24px 20px;
+    }
   }
 
   .cap-list {
@@ -1378,6 +1571,156 @@
     font-weight: 400;
     line-height: 1.65;
     max-width: 540px;
+  }
+
+  /* ── Safety sub-label ── */
+  .safety-content .safety-sub-label {
+    margin: 0 0 14px;
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--peugeot-hover);
+  }
+
+  .safety-vid-card {
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(12px);
+    transition: transform 350ms var(--ease-out), border-color 350ms var(--ease-out);
+  }
+
+  .safety-vid-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--peugeot-hover);
+  }
+
+  /* ADAS Carousel Styles */
+  .adas-carousel-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    padding-bottom: 20px;
+  }
+
+  .adas-track {
+    display: flex;
+    gap: 16px;
+    transition: transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+    width: 100%;
+  }
+
+  .adas-slide {
+    flex: 0 0 calc((100% - 32px) / 3); /* Show 3 cards */
+    min-width: 0;
+  }
+
+  @media (max-width: 1024px) {
+    .adas-slide {
+      flex: 0 0 calc((100% - 16px) / 2);
+    }
+    .adas-track {
+      transform: translateX(calc(-var(--adas-idx, 0) * (100% / 2))) !important;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .adas-slide {
+      flex: 0 0 100%;
+    }
+    .adas-track {
+      transform: translateX(calc(-var(--adas-idx, 0) * 100%)) !important;
+    }
+  }
+
+  .carousel-controls.adas-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 24px;
+    justify-content: center;
+  }
+
+  .carousel-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 18px 16px;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.11);
+    border-radius: 999px;
+    backdrop-filter: blur(20px);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 8px 28px rgba(0, 0, 0, 0.15);
+  }
+
+  .carousel-pill button {
+    width: 6px;
+    height: 6px;
+    padding: 0;
+    border: 0;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.25);
+    cursor: pointer;
+    transition: width 500ms cubic-bezier(0.16, 1, 0.3, 1), background 500ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .carousel-pill button.active {
+    width: 22px;
+    background: rgba(255, 255, 255, 0.95);
+  }
+
+  .play-btn {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: white;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    flex-shrink: 0;
+    overflow: hidden;
+    box-sizing: border-box;
+    transition: background 300ms ease, transform 200ms ease;
+  }
+
+  .play-btn * {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    margin: 0;
+  }
+
+  .play-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: scale(1.05);
+  }
+
+  .safety-vid-card video,
+  .safety-vid-card img {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    display: block;
+  }
+
+  .svc-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 14px;
+    font-size: 11px;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.75);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
   }
 
   .safety-features {
