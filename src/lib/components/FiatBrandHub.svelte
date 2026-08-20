@@ -31,8 +31,8 @@
       slug: 'pulse',
       name: 'Fiat Pulse',
       role: 'El SUV que late con tu estilo',
-      image: 'https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2026/pulse-2026/desktop/my26-fiat-pulse-inicio-hero-mx-dk.jpg',
-      mobileImage: 'https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2026/pulse-2026/mobile/my26-fiat-pulse-inicio-hero-mx-mb.jpg',
+      image: '/adistem2026/promociones/fiat-pulse-2026.jpg',
+      mobileImage: '/adistem2026/promociones/fiat-pulse-2026.jpg',
       accent: FIAT_HOVER,
       use: 'Para la ciudad, conectividad y confort diario.',
       stat: 'SUV Urbano',
@@ -44,8 +44,8 @@
       slug: 'pulse-abarth',
       name: 'Pulse Abarth',
       role: 'Deportividad con el sello del escorpión',
-      image: 'https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/Home/Menu-modelos/my26-fiat-pulseabarth-inicio-global-nav-alldevices-mx.jpg.img.600.jpg',
-      mobileImage: 'https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/Home/Menu-modelos/my26-fiat-pulseabarth-inicio-global-nav-alldevices-mx.jpg.img.600.jpg',
+      image: '/adistem2026/promociones/fiat-abarth-2026.jpg',
+      mobileImage: '/adistem2026/promociones/fiat-abarth-2026.jpg',
       accent: FIAT_DEFAULT,
       use: 'Para los que buscan adrenalina y un manejo deportivo.',
       stat: 'Performance',
@@ -57,27 +57,14 @@
       slug: 'fastback',
       name: 'Fiat Fastback',
       role: 'El SUV Coupé que redefine el estilo',
-      image: 'https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2026/pulse-2026/menu/my26-fiat-fastback-inicio-global-nav-alldevices-mx.jpg.img.600.jpg',
-      mobileImage: 'https://www.fiat.com.mx/content/dam/cross-regional/nafta/fiat/es_mx/2026/pulse-2026/menu/my26-fiat-fastback-inicio-global-nav-alldevices-mx.jpg.img.600.jpg',
+      image: '/adistem2026/promociones/fiat-fastback-2026.jpg',
+      mobileImage: '/adistem2026/promociones/fiat-fastback-2026.jpg',
       accent: FIAT_HOVER,
       use: 'Para quienes buscan diseño audaz y amplio espacio.',
       stat: 'Diseño Coupé',
       metric: 'Gran Cajuela',
       detail: 'El SUV con diseño de coupé y el espacio interior más amplio de su categoría.',
       price: '$482,900'
-    },
-    {
-      slug: 'argo',
-      name: 'Fiat Argo',
-      role: 'El hatchback italiano por excelencia',
-      image: 'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F35bd343876d4e41f21a86499747f1af99d5fe2b2.jpg?generation=1777350234727796&alt=media',
-      mobileImage: 'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F35bd343876d4e41f21a86499747f1af99d5fe2b2.jpg?generation=1777350234727796&alt=media',
-      accent: FIAT_DEFAULT,
-      use: 'Para el día a día ágil y con el mejor estilo.',
-      stat: 'Hatchback',
-      metric: 'Eficiencia',
-      detail: 'Diseño envolvente y confort superior en cada trayecto.',
-      price: '$289,900'
     }
   ]
 
@@ -86,10 +73,10 @@
     onModelSelect?.('pulse2026')
   }
 
-  const VISIBLE_SLUGS = ['pulse', 'pulse-abarth', 'fastback', 'argo']
+  const VISIBLE_SLUGS = ['pulse', 'pulse-abarth', 'fastback']
 
   function goToModel(index: number) {
-    activeModelIndex = (index + 3) % 3
+    activeModelIndex = (index + models.length) % models.length
   }
 
   function scrollToForm() {
@@ -128,7 +115,7 @@
   $effect(() => {
     if (!isPlaying) return
     const id = setInterval(() => {
-      activeModelIndex = (activeModelIndex + 1) % 3
+      activeModelIndex = (activeModelIndex + 1) % models.length
     }, 7000)
     return () => clearInterval(id)
   })
@@ -350,17 +337,17 @@
       </div>
     </div>
 
-    <div class="story-panel" style={`background-image: url('${models[3].image}')`}>
-      <img class="story-mobile-img" src={models[3].image} alt="Hatchback Total" />
+    <div class="story-panel" style={`background-image: url('${models[1].image}')`}>
+      <img class="story-mobile-img" src={models[1].image} alt="Deportividad Abarth" />
       <div class="story-overlay"></div>
       <div class="story-content">
-        <p class="story-eyebrow">Hatchback Eficiente</p>
-        <h2 class="story-title">Para el día a día.<br>Sin complicaciones.</h2>
-        <p class="story-sub">Fiat Argo. Agilidad y eficiencia para moverte por la ciudad.</p>
+        <p class="story-eyebrow">Deportividad Abarth</p>
+        <h2 class="story-title">Adrenalina con<br>sello del escorpión.</h2>
+        <p class="story-sub">Pulse Abarth: el primer SUV de Abarth en el mundo. Motor Turbo 270 con 173 hp y calibración deportiva.</p>
         <div class="story-actions">
-          <button class="story-btn primary" onclick={() => goToCotizacion('argo')}><GoogleIcon name="description" size={15} /> Cotizar</button>
-          <button class="story-btn ghost" onclick={() => selectModel('argo')}>Explorar <GoogleIcon name="arrow_forward" size={15} /></button>
-          <button class="story-btn link" onclick={() => goToPrueba('argo')}><GoogleIcon name="speed" size={14} /> Prueba de manejo</button>
+          <button class="story-btn primary" onclick={() => goToCotizacion('pulse-abarth')}><GoogleIcon name="description" size={15} /> Cotizar</button>
+          <button class="story-btn ghost" onclick={() => selectModel('pulse-abarth')}>Explorar <GoogleIcon name="arrow_forward" size={15} /></button>
+          <button class="story-btn link" onclick={() => goToPrueba('pulse-abarth')}><GoogleIcon name="speed" size={14} /> Prueba de manejo</button>
         </div>
       </div>
     </div>

@@ -57,7 +57,7 @@
 
   const VEHICLE_MODELS: Record<string, string[]> = {
     Jeep:    ['Renegade 2026', 'Compass 2026', 'Commander 2026', 'Grand Cherokee 2026', 'Wrangler 2026', 'JT 2026'],
-    Fiat:    ['Pulse 2026', 'Fastback 2026', 'Mobi 2026', 'Argo 2026', 'Ducato 2026'],
+    Fiat:    ['Pulse 2026', 'Fastback 2026', 'Mobi 2026', 'Ducato 2026'],
     Dodge:   ['Attitude 2026', 'Durango 2026'],
     Ram:     ['700 2026', 'Rampage 2026', '1500 2026', '2500 2026', '4000 2026'],
     Peugeot: ['2008 2026', '3008 2026', '5008 2026', 'Partner 2026', 'Manager 2026'],
@@ -76,7 +76,6 @@
       'Pulse 2026':     ['Drive', 'Audace', 'Impetus'],
       'Fastback 2026':  ['Audace', 'Impetus'],
       'Mobi 2026':      ['Like', 'Trekking'],
-      'Argo 2026':      ['Drive', 'Trekking'],
       'Ducato 2026':    ['Cargo', 'Pasajeros'],
     },
     Dodge: {

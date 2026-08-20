@@ -8,6 +8,7 @@
     role: string
     image: string
     mobileImage?: string
+    promoImage?: string
     accent: string
     use: string
     stat: string
@@ -31,8 +32,9 @@
       slug: 'renegade',
       name: 'Jeep Renegade',
       role: 'SUV compacto con espíritu aventurero',
-      image: 'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F03eb70622ac5b618a05ca4b50608ada9e5f36dff.jpg?generation=1777350234483821&alt=media',
-      mobileImage: 'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F03eb70622ac5b618a05ca4b50608ada9e5f36dff.jpg?generation=1777350234483821&alt=media',
+      image: '/adistem2026/jeep/hero/renegade-2026.jpg',
+      mobileImage: '/adistem2026/jeep/hero/renegade-2026-mob.jpg',
+      promoImage: '/adistem2026/promociones/jeep-renegade-2026.jpg',
       accent: JEEP_HOVER,
       use: 'Para la ciudad, carretera y escapadas de fin de semana.',
       stat: 'Aventura Urbana',
@@ -44,8 +46,9 @@
       slug: 'compass',
       name: 'Jeep Compass',
       role: 'Estilo y tecnología en cada ruta',
-      image: 'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F0d3d7a1dc7e07f0e64c4fb84601cc8fa871c5acc.jpg?generation=1777350234540448&alt=media',
-      mobileImage: 'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F0d3d7a1dc7e07f0e64c4fb84601cc8fa871c5acc.jpg?generation=1777350234540448&alt=media',
+      image: '/adistem2026/jeep/hero/compass-2026.jpg',
+      mobileImage: '/adistem2026/jeep/hero/compass-2026-mob.jpg',
+      promoImage: '/adistem2026/promociones/jeep-compass-2026.jpg',
       accent: JEEP_DEFAULT,
       use: 'Para familias jóvenes, ciudad y carretera con confort.',
       stat: 'Diseño & Confort',
@@ -57,8 +60,9 @@
       slug: 'commander',
       name: 'Jeep Commander',
       role: '7 plazas para todo lo que importa',
-      image: 'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F0c31e45701627ca72a88b646087445172fc4a302.jpg?generation=1777350234492066&alt=media',
-      mobileImage: 'https://storage.googleapis.com/download/storage/v1/b/prd-storytodesign.appspot.com/o/h2d-ext-asset%2F0c31e45701627ca72a88b646087445172fc4a302.jpg?generation=1777350234492066&alt=media',
+      image: '/adistem2026/jeep/hero/commander-2026-v1.jpg',
+      mobileImage: '/adistem2026/jeep/hero/commander-2026-mob.jpg',
+      promoImage: '/adistem2026/promociones/jeep-commander-2026.jpg',
       accent: JEEP_HOVER,
       use: 'Para familia completa, viajes largos y versatilidad total.',
       stat: '7 Pasajeros',
@@ -70,7 +74,8 @@
       slug: 'cherokee',
       name: 'Jeep Cherokee',
       role: 'El SUV icónico reinventado',
-      image: `/adistem2026/jeep/cherokee-2026.jpg`,
+      image: '/adistem2026/promociones/jeep-cherokee-2026.jpg',
+      promoImage: '/adistem2026/promociones/jeep-cherokee-2026.jpg',
       accent: JEEP_DEFAULT,
       use: 'Para la ciudad cómoda, carretera diaria y fines de semana.',
       stat: 'Icónico',
@@ -82,7 +87,8 @@
       slug: 'grand-cherokee',
       name: 'Grand Cherokee',
       role: 'Poder, lujo y presencia premium',
-      image: `/adistem2026/jeep/grand-cherokee-2026.jpg`,
+      image: '/adistem2026/jeep/grand-cherokee-2026.jpg',
+      promoImage: '/adistem2026/jeep/grand-cherokee-2026.jpg',
       accent: '#7A5C3A',
       use: 'Para ejecutivos, familia premium y carretera de lujo.',
       stat: 'Premium',
@@ -94,7 +100,8 @@
       slug: 'wrangler',
       name: 'Jeep Wrangler',
       role: 'El todoterreno original y eterno',
-      image: `/adistem2026/jeep/wrangler-2026.jpg`,
+      image: '/adistem2026/promociones/jeep-wrangler-2026.jpg',
+      promoImage: '/adistem2026/promociones/jeep-wrangler-2026.jpg',
       accent: JEEP_HOVER,
       use: 'Para aventura extrema, off-road y espíritu libre.',
       stat: 'Off-Road Total',
@@ -106,7 +113,8 @@
       slug: 'jt',
       name: 'Jeep JT',
       role: 'La única pickup Jeep todoterreno',
-      image: `/adistem2026/jeep/jt-2026.jpg`,
+      image: '/adistem2026/promociones/jeep-jt-2026.jpg',
+      promoImage: '/adistem2026/promociones/jeep-jt-2026.jpg',
       accent: '#8C6420',
       use: 'Para trabajo, aventura extrema y carga con tracción total.',
       stat: 'Pickup 4x4',
@@ -118,7 +126,8 @@
       slug: 'grand-wagoneer-l',
       name: 'Grand Wagoneer L',
       role: 'El SUV de lujo más imponente',
-      image: `/adistem2026/jeep/grandwagoneer-2026.jpg`,
+      image: '/adistem2026/promociones/jeep-grand-wagoneer-l-2026.jpg',
+      promoImage: '/adistem2026/promociones/jeep-grand-wagoneer-l-2026.jpg',
       accent: '#2C2C2C',
       use: 'Para ejecutivos, familia grande y viajes de primer nivel.',
       stat: 'Ultra Premium',
@@ -320,7 +329,7 @@
             <div class="pc-glass-shine"></div>
             <div class="pc-glass-border"></div>
             <div class="pc-img-wrap">
-              <img src={model.image} alt={model.name} />
+              <img src={model.promoImage || model.image} alt={model.name} />
               <div class="pc-img-gradient"></div>
               <span class="pc-badge-stat">{model.stat}</span>
               <span class="pc-badge-promo">PROMO</span>
