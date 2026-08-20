@@ -38,10 +38,10 @@
 
   const modelDetails: Record<string, ModelDetail> = {
     'renegade': {
-      name: 'Jeep Renegade',
+      name: 'Jeep® Renegade',
       kicker: 'RENEGADE 2026',
       title: 'Redefine la aventura urbana.',
-      subtitle: 'Motor 1.3L Turbo GSE de 173 hp, el más potente de su categoría. Diseño icónico Jeep con tecnología de vanguardia y sistemas ADAS para la ciudad.',
+      subtitle: 'Motor 1.3L Turbo GSE de 173 hp, el más potente de su categoría. Diseño icónico Jeep® con tecnología de vanguardia y sistemas ADAS para la ciudad.',
       heroImage: '/adistem2026/jeep/renegade-2026-hero.jpg',
       mobileHeroImage: '/adistem2026/jeep/renegade-2026-mob.jpg',
       spotlightImage: 'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/vlp/desktop/jeep-renegade-2026-inicio-equipamiento-exterior-dk.jpg.img.2880.jpg',
@@ -54,7 +54,7 @@
         { value: 'ADAS', label: 'Sistemas de asistencia' },
       ],
       motionTitle: 'Diseño inconfundible. Desempeño moderno.',
-      motionCopy: 'Su parrilla de 7 ranuras rinde homenaje al legado Jeep, mientras su volante con paletas de cambio y frenos de disco en las 4 ruedas te dan el control que necesitas.',
+      motionCopy: 'Su parrilla de 7 ranuras rinde homenaje al legado Jeep®, mientras su volante con paletas de cambio y frenos de disco en las 4 ruedas te dan el control que necesitas.',
       cockpitImages: [
         'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/interior/full/jeep-renegade-2026-equipamiento-interior-highlights-08-full.jpg',
         'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/gallery/full/jeep-renegade-2026-galeria-10-interior-full.jpg.img.2880.jpg',
@@ -208,7 +208,7 @@
     },
     {
       title: 'Luces Full LED',
-      copy: 'Parrilla de 7 ranuras que rinde homenaje al legado Jeep, con luces Full LED que iluminan cada aventura con estilo y precisión.',
+      copy: 'Parrilla de 7 ranuras que rinde homenaje al legado Jeep®, con luces Full LED que iluminan cada aventura con estilo y precisión.',
       image: model.motionImages?.[1] || 'https://www.jeep.com.mx/content/dam/cross-regional/nafta/jeep/es_mx/2026/renegade/inicio/galeria/full/my26-jeep-renegade-galeriainterior-01-allbreakingpoints-mx.jpg.img.2880.jpg',
     },
     {
@@ -391,7 +391,7 @@
     <ContactFormCard accent="#424D07" initialBrand="Jeep" initialModel="Renegade 2026" hideBrandSelect={true} />
   </div>
 
-  <nav class="product-nav hidden md:flex s-mteEPoerD6_z" aria-label="Navegación de producto JEEP">
+  <nav class="product-nav hidden md:flex s-mteEPoerD6_z" aria-label="Navegación de producto JEEP®">
     <strong class="s-mteEPoerD6_z">{model.name} <span class="nav-year">2026</span></strong>
     <a href="#inicio" class="s-mteEPoerD6_z">Inicio</a>
     <a href="#versiones" class="s-mteEPoerD6_z">Versiones</a>
@@ -729,7 +729,7 @@
   </section>
 
   <section id="jeep-quote" class="quote-section">
-    <p>VAPSA JEEP</p>
+    <p>VAPSA JEEP®</p>
     <h2>Agenda una prueba de manejo o recibe una cotización.</h2>
     <p class="quote-sub">Elige la opción que mejor se ajuste a lo que necesitas. Nuestro equipo está listo para atenderte.</p>
 

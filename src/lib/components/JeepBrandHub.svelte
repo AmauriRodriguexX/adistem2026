@@ -32,7 +32,7 @@
   const models: JeepModel[] = [
     {
       slug: 'renegade',
-      name: 'Jeep Renegade',
+      name: 'Jeep® Renegade',
       role: 'SUV compacto con espíritu aventurero',
       image: '/adistem2026/jeep/hero/renegade-2026.jpg',
       mobileImage: '/adistem2026/jeep/hero/renegade-2026-mob.jpg',
@@ -47,7 +47,7 @@
     },
     {
       slug: 'compass',
-      name: 'Jeep Compass',
+      name: 'Jeep® Compass',
       role: 'Estilo y tecnología en cada ruta',
       image: '/adistem2026/jeep/hero/compass-2026.jpg',
       mobileImage: '/adistem2026/jeep/hero/compass-2026-mob.jpg',
@@ -62,7 +62,7 @@
     },
     {
       slug: 'commander',
-      name: 'Jeep Commander',
+      name: 'Jeep® Commander',
       role: '7 plazas para todo lo que importa',
       image: '/adistem2026/jeep/hero/commander-2026-v1.jpg',
       mobileImage: '/adistem2026/jeep/hero/commander-2026-mob.jpg',
@@ -77,7 +77,7 @@
     },
     {
       slug: 'cherokee',
-      name: 'Jeep Cherokee',
+      name: 'Jeep® Cherokee',
       role: 'El SUV icónico reinventado',
       image: '/adistem2026/promociones/jeep-cherokee-2026.jpg',
       promoImage: '/adistem2026/promociones/jeep-cherokee-2026.jpg',
@@ -85,7 +85,7 @@
       use: 'Para la ciudad cómoda, carretera diaria y fines de semana.',
       stat: 'Icónico',
       metric: '2.0T 270 HP',
-      detail: 'Un clásico reinventado con potencia turbo y carácter Jeep.',
+      detail: 'Un clásico reinventado con potencia turbo y carácter Jeep®.',
       price: '$899,900',
       hasPromo: false,
       promo: 'Precio desde $899,900'
@@ -106,7 +106,7 @@
     },
     {
       slug: 'wrangler',
-      name: 'Jeep Wrangler',
+      name: 'Jeep® Wrangler',
       role: 'El todoterreno original y eterno',
       image: '/adistem2026/promociones/jeep-wrangler-2026.jpg',
       promoImage: '/adistem2026/promociones/jeep-wrangler-2026.jpg',
@@ -114,14 +114,14 @@
       use: 'Para aventura extrema, off-road y espíritu libre.',
       stat: 'Off-Road Total',
       metric: '4x4 con reducida',
-      detail: 'Icónico, irreducible y sin límites. El Jeep definitivo.',
+      detail: 'Icónico, irreducible y sin límites. El Jeep® definitivo.',
       price: '$1,098,900',
       promo: 'Descuento promocional de $176,000 en pago de contado'
     },
     {
       slug: 'jt',
-      name: 'Jeep JT',
-      role: 'La única pickup Jeep todoterreno',
+      name: 'Jeep® JT',
+      role: 'La única pickup Jeep® todoterreno',
       image: '/adistem2026/promociones/jeep-jt-2026.jpg',
       promoImage: '/adistem2026/promociones/jeep-jt-2026.jpg',
       accent: '#8C6420',
@@ -223,7 +223,7 @@
 </script>
 
 <svelte:head>
-  <title>JEEP | Gama 2026 en VAPSA</title>
+  <title>JEEP® | Gama 2026 en VAPSA</title>
 </svelte:head>
 
 <main class="jeep-hub">
@@ -256,7 +256,7 @@
 
       <!-- Formulario de Cotización Desktop en Brand Hub -->
       <div id="brandhub-desktop-form" class="hidden xl:block flex-shrink-0 w-full max-w-[380px] xl:max-w-[410px] z-10 self-center mb-12">
-        <ContactFormCard accent="#424D07" initialBrand="Jeep" initialModel={models[activeModelIndex].name.replace('Jeep ', '') + ' 2026'} />
+        <ContactFormCard accent="#424D07" initialBrand="Jeep" initialModel={models[activeModelIndex].name.replace(/Jeep®?\s*/g, '') + ' 2026'} />
       </div>
     </div>
     
@@ -313,19 +313,19 @@
     <ContactFormCard
       accent="#424D07"
       initialBrand="Jeep"
-      initialModel={models[activeModelIndex].name.replace('Jeep ', '') + ' 2026'}
+      initialModel={models[activeModelIndex].name.replace(/Jeep®?\s*/g, '') + ' 2026'}
     />
   </div>
 
   <section
     class="model-carousel"
-    aria-label="Modelos JEEP"
+    aria-label="Modelos JEEP®"
     onmouseenter={onCarouselEnter}
     onmouseleave={onCarouselLeave}>
     <div class="carousel-head">
       <div>
         <p>Promociones exclusivas</p>
-        <h2>Estrena tu Jeep con ofertas únicas.</h2>
+        <h2>Estrena tu Jeep® con ofertas únicas.</h2>
       </div>
     </div>
 
@@ -347,8 +347,8 @@
                 <span class="pc-badge-promo">PROMO</span>
               {/if}
               <div class="pc-img-footer">
-                <p>Jeep</p>
-                <h3>{model.name.replace('Jeep ', '')} <span>2026</span></h3>
+                <p>Jeep®</p>
+                <h3>{model.name.replace(/Jeep®?\s*/g, '')} <span>2026</span></h3>
               </div>
             </div>
             <div class="pc-body">
@@ -445,7 +445,7 @@
     <div class="stat-sep"></div>
     <div class="stat-item">
       <strong>5,000+</strong>
-      <span>familias con su Jeep</span>
+      <span>familias con su Jeep®</span>
     </div>
     <div class="stat-sep"></div>
     <div class="stat-item">
@@ -459,11 +459,11 @@
     </div>
   </section>
 
-  <section id="cotizar" class="cotizar-band" aria-label="Cotización Jeep">
+  <section id="cotizar" class="cotizar-band" aria-label="Cotización Jeep®">
     <div class="cotizar-inner">
       <div class="cotizar-copy">
-        <p>Cotización Jeep</p>
-        <h2>Tu próximo Jeep, sin complicaciones.</h2>
+        <p>Cotización Jeep®</p>
+        <h2>Tu próximo Jeep®, sin complicaciones.</h2>
         <span>Esquemas de financiamiento a tu medida, pre-aprobación en menos de 24 horas y asesoría personalizada con expertos VAPSA.</span>
         <ul class="cotizar-perks">
           <li><GoogleIcon name="payments" size={16} /> Enganche desde 10%</li>

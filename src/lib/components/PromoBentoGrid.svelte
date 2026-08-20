@@ -207,7 +207,7 @@
               activeBrand === 'Peugeot' ? ($isDark ? '#0074E8' : '#0074E8') : 
               activeBrand === 'Fiat'    ? ($isDark ? '#FF1530' : '#FF1530') : 
               'inherit'}
-            Línea <span style="color: {bColor};">{activeBrand.toUpperCase()}</span> <span class="font-light opacity-50">2026</span>
+            Línea <span style="color: {bColor};">{activeBrand === 'Jeep' ? 'JEEP®' : activeBrand.toUpperCase()}</span> <span class="font-light opacity-50">2026</span>
           {/if}
         </h2>
       </div>
@@ -234,7 +234,7 @@
         {#each BRANDS as brand (brand)}
           <button onclick={() => activeBrand = brand}
             class="flex-shrink-0 px-3 py-1 rounded-full text-xs font-medium transition-all duration-200"
-            style={chipStyle(activeBrand === brand)}>{brand}</button>
+            style={chipStyle(activeBrand === brand)}>{brand === 'Jeep' ? 'Jeep®' : brand}</button>
         {/each}
       </div>
       <div style="{divStyle}margin:8px 0;" ></div>
@@ -251,7 +251,7 @@
       {#if isFiltered}
         <div class="flex items-center justify-between pt-2">
           <p class="text-xs" style="color:{$isDark ? 'rgba(255,255,255,0.40)' : 'rgba(20,30,80,0.42)'}">
-            {activeBrand !== 'Todas' ? activeBrand + ' ' : ''}{activeType !== 'Todos' ? '· ' + activeType + ' ' : ''}— {vehicles.length} resultado{vehicles.length !== 1 ? 's' : ''}
+            {activeBrand !== 'Todas' ? (activeBrand === 'Jeep' ? 'Jeep® ' : activeBrand + ' ') : ''}{activeType !== 'Todos' ? '· ' + activeType + ' ' : ''}— {vehicles.length} resultado{vehicles.length !== 1 ? 's' : ''}
           </p>
           <button onclick={() => { activeBrand='Todas'; activeType='Todos' }}
             class="text-xs underline" style="color:{$isDark ? 'rgba(100,150,255,0.8)' : '#334E8B'}">Limpiar</button>
@@ -264,7 +264,7 @@
       <div class="hidden md:flex items-center justify-between mb-6 px-2">
         <p class="text-sm font-medium" style="color:{textPrimary}">
           Mostrando resultados para: 
-          <span style="color:{$isDark ? '#334E8B' : '#334E8B'}">{activeBrand !== 'Todas' ? activeBrand : ''} {activeType !== 'Todos' ? activeType : ''}</span> 
+          <span style="color:{$isDark ? '#334E8B' : '#334E8B'}">{activeBrand !== 'Todas' ? (activeBrand === 'Jeep' ? 'Jeep®' : activeBrand) : ''} {activeType !== 'Todos' ? activeType : ''}</span> 
           <span style="color:{textMuted}; font-weight:normal; margin-left:8px;">({vehicles.length} vehículo{vehicles.length !== 1 ? 's' : ''})</span>
         </p>
         <button onclick={() => { activeBrand='Todas'; activeType='Todos' }}
@@ -288,7 +288,7 @@
             {#each activeBrands as brand (brand)}
               {@const brandVehicles = ALL_VEHICLES.filter(v => v.brand === brand)}
               <tr>
-                <td class="px-4 py-3 rounded-xl text-xs font-semibold whitespace-nowrap" style="background:{headerBg};border:1px solid {headerBorder};color:{textPrimary}">{brand}</td>
+                <td class="px-4 py-3 rounded-xl text-xs font-semibold whitespace-nowrap" style="background:{headerBg};border:1px solid {headerBorder};color:{textPrimary}">{brand === 'Jeep' ? 'Jeep®' : brand}</td>
                 {#each activeTypes as type (type)}
                   {@const match = brandVehicles.filter(v => v.type === type)}
                   <td class="rounded-xl align-top p-2" style="background:{cellBg};border:1px solid {cellBorder};min-width:160px;">
@@ -440,7 +440,7 @@
             </div>
           {/if}
           <div class="absolute bottom-0 left-0 right-0 px-4 pb-4 pt-6" style="background:linear-gradient(to top,rgba(5,8,20,0.85) 0%,transparent 100%)">
-            <p class="text-white/60 text-xs uppercase tracking-widest mb-0.5 font-medium">{vehicle.brand}</p>
+            <p class="text-white/60 text-xs uppercase tracking-widest mb-0.5 font-medium">{vehicle.brand === 'Jeep' ? 'Jeep®' : vehicle.brand}</p>
             <h3 class="text-white font-bold leading-tight" style="font-size:1.1rem;text-shadow:0 2px 8px rgba(0,0,0,0.40);">
               {vehicle.model} <span class="font-light opacity-70">{vehicle.year}</span>
             </h3>
@@ -481,7 +481,7 @@
     </div>
     <div class="relative z-10 flex flex-col h-full px-6 pt-6 pb-4">
       <div class="flex-1 flex flex-col justify-center items-start">
-        <p class="text-white/70 text-[10px] font-bold tracking-[0.2em] uppercase mb-1">{promo.brandLabel || promo.brand}</p>
+        <p class="text-white/70 text-[10px] font-bold tracking-[0.2em] uppercase mb-1">{promo.brandLabel || (promo.brand === 'Jeep' ? 'Jeep®' : promo.brand)}</p>
         <h4 class="text-white font-bold mt-3 tracking-wide" style="font-size:clamp(2.2rem,2.2vw,1.45rem);line-height:1.08;text-shadow:0 3px 14px rgba(0,0,0,0.34);">{promo.title}</h4>
         <p class="text-white/90 mt-2 leading-relaxed max-w-[250px]" style="font-size:clamp(0.84rem,1.15vw,0.98rem);">{promo.desc}</p>
       </div>
