@@ -14,6 +14,8 @@
     metric: string
     detail: string
     price: string
+    promo?: string
+    hasPromo?: boolean
   }
 
   let { onModelSelect }: { onModelSelect?: (slug: string) => void } = $props()
@@ -35,7 +37,8 @@
       stat: 'Performance',
       metric: 'Off-Road',
       detail: 'Suspensión y respuesta de alto desempeño para terrenos abiertos.',
-      price: '$1,290,000'
+      price: '$1,290,000',
+      promo: 'Tasa desde 14.50%'
     },
     {
       slug: '1500-tungsten',
@@ -48,7 +51,8 @@
       stat: 'Premium',
       metric: 'Lujo Total',
       detail: 'Cabina elevada, materiales premium y gran presencia en cualquier camino.',
-      price: '$1,290,000'
+      price: '$1,290,000',
+      promo: 'Tasa desde 14.50%'
     },
     {
       slug: '700',
@@ -61,7 +65,8 @@
       stat: 'Ciudad',
       metric: 'Ágil',
       detail: 'Formato compacto para moverse y cargar todos los días.',
-      price: '$408,400'
+      price: '$408,400',
+      promo: 'Bono de hasta $30,000 + 0% de comisión por apertura'
     },
     {
       slug: '1500',
@@ -74,7 +79,8 @@
       stat: 'Versátil',
       metric: 'Remolque',
       detail: 'Balance entre fuerza, confort y capacidad diaria.',
-      price: '$1,290,000'
+      price: '$1,290,000',
+      promo: 'Tasa desde 14.50%'
     },
     {
       slug: '1200',
@@ -87,8 +93,9 @@
       stat: 'Trabajo',
       metric: 'Carga',
       detail: 'Configuración práctica para jornadas productivas.',
-      price: '$408,400'
-    },
+      price: '$408,400',
+      promo: 'Desde $408,400 · Bono $47,000 · Tasa 14.50%'
+    }
   ]
 
   function selectModel(_slug: string) {
@@ -272,7 +279,9 @@
               <img src={model.image} alt={model.name} />
               <div class="pc-img-gradient"></div>
               <span class="pc-badge-stat">{model.stat}</span>
-              <span class="pc-badge-promo">PROMO</span>
+              {#if model.hasPromo !== false}
+                <span class="pc-badge-promo">PROMO</span>
+              {/if}
               <div class="pc-img-footer">
                 <p>Ram</p>
                 <h3>{model.name.replace('RAM ', '')} <span>2026</span></h3>
@@ -282,7 +291,7 @@
               <p class="pc-metric">{model.metric}</p>
               <p class="pc-detail">
                 <GoogleIcon name="sell" size={12} style="display:inline-flex;margin-right:4px;color:#D50000;vertical-align:-2px;" />
-                Bono especial · Desde {model.price}
+                {model.promo || `Bono especial · Desde ${model.price}`}
               </p>
               <button onclick={() => selectModel(model.slug)} class="pc-cta">
                 Ver promoción <GoogleIcon name="chevron_right" size={14} />

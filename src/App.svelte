@@ -62,14 +62,14 @@
       video: 'FzFoLRs7ZIs',
       accent: '#334E8B',
       title: 'Tu próximo vehículo ideal te espera.',
-      subtitle: 'Jeep, FIAT, Dodge, Ram y Peugeot. Financiamiento desde 7.99% y bonos de hasta $200,000.'
+      subtitle: 'Jeep®, FIAT, Dodge, Ram y Peugeot. Financiamiento desde 7.99% y bonos de hasta $200,000.'
     },
     'Jeep': {
       video: 'm0A2E2v0wF8', 
       image: '/adistem2026/jeep-banner.png',
       accent: '#424D07',
-      title: 'Aventura sin límites. Línea Jeep 2026.',
-      subtitle: 'Descubre la libertad de ir a cualquier lugar con la tecnología y confort de Jeep.',
+      title: 'Aventura sin límites. Línea Jeep® 2026.',
+      subtitle: 'Descubre la libertad de ir a cualquier lugar con la tecnología y confort de Jeep®.',
       hideForm: true
     },
     'Ram': {
@@ -488,7 +488,7 @@
   )
   const footLinks = [
     { title: 'Marcas', links: [
-      { label:'Jeep',    href:'#' },
+      { label:'Jeep®',   href:'#' },
       { label:'Fiat',    href:'#' },
       { label:'Dodge',   href:'#' },
       { label:'Ram',     href:'#' },
@@ -886,7 +886,7 @@
                 alt="VAPSA" class="h-9 w-auto" style="filter:{T.logoF}" />
             </button>
             <p class="text-xs leading-relaxed mb-3" style="color:{T.muted}">
-              Concesionaria autorizada de Jeep, FIAT, Dodge, Ram y Peugeot en Rioverde, SLP.
+              Concesionaria autorizada de Jeep®, FIAT, Dodge, Ram y Peugeot en Rioverde, SLP.
             </p>
             <p class="text-xs" style="color:{$isDark ? 'rgba(255,255,255,0.26)' : 'rgba(20,30,80,0.30)'}">
               BLVD SAN LUIS 1158,<br />San Luis Potosí, San Luis Potosí

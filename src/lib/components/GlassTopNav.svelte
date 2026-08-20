@@ -64,7 +64,7 @@
     { name: 'Ram',     label: 'RAM',               accent: '#880D00', hover: '#BA0000' },
     { name: 'Peugeot', label: 'Peugeot',           accent: '#0074E8', hover: '#0057AD' },
     { name: 'Fiat',    label: 'Fiat',              accent: '#FF1530', hover: '#c70606' },
-    { name: 'Jeep',    label: 'Jeep',              accent: '#424D07', hover: '#303804' },
+    { name: 'Jeep',    label: 'Jeep®',             accent: '#424D07', hover: '#303804' },
     { name: 'Dodge',   label: 'Dodge',             accent: '#D50000', hover: '#BA0000' },
   ]
 
@@ -80,7 +80,7 @@
     { id:6,  brand:'Fiat',    type:'Deportivos', model:'Pulse Abarth',  year:'2026', version:'Abarth',           fuel:'Gasolina', price:'Desde $529,900',   img:'/adistem2026/promociones/fiat-abarth-2026.jpg',    accent:'#FF1530' },
     { id:7,  brand:'Fiat',    type:'SUV',        model:'Fastback',      year:'2026', version:'Limited',          fuel:'Gasolina', price:'Desde $482,900',   img:'/adistem2026/promociones/fiat-fastback-2026.jpg',  accent:'#FF1530' },
     { id:9,  brand:'Dodge',   type:'SUV',        model:'Durango',       year:'2026', version:'R/T Plus',         fuel:'Gasolina', price:'Desde $2,174,900', img:'/adistem2026/promociones/dodge-durango-2026.jpg',  accent:'#D50000' },
-    { id:10, brand:'Dodge',   type:'Sedán',      model:'Attitude',      year:'2026', version:'SXT',              fuel:'Gasolina', price:'Desde $379,900',   img:'/adistem2026/promociones/dodge-attitude-2026.jpg', accent:'#D50000' },
+    { id:10, brand:'Dodge',   type:'Sedán',      model:'Attitude',      year:'2026', version:'SXT',              fuel:'Gasolina', price:'Desde $364,900',   img:'/adistem2026/promociones/dodge-attitude-2026.jpg', accent:'#D50000' },
     { id:11, brand:'Dodge',   type:'SUV',        model:'Journey',       year:'2026', version:'GT',               fuel:'Gasolina', price:'Desde $603,900',   img:'/adistem2026/promociones/dodge-journey-2026.jpg',  accent:'#D50000' },
     { id:12, brand:'Peugeot', type:'SUV',        model:'Nueva 2008',    year:'2026', version:'GT',               fuel:'Gasolina', price:'Desde $448,900',   img:'/adistem2026/promociones/peugeot-2008-2026.jpg',   accent:'#0074E8' },
     { id:13, brand:'Peugeot', type:'SUV',        model:'Nueva 5008',    year:'2026', version:'GT',               fuel:'Gasolina', price:'Desde $779,900',   img:'/adistem2026/promociones/peugeot-5008-2026.jpg',   accent:'#0074E8' },
@@ -625,7 +625,7 @@
                     </div>
                     <div class="border-t p-4" style="border-color:{$isDark ? 'rgba(255,255,255,0.08)' : 'rgba(30,60,120,0.10)'}; background:{$isDark ? 'transparent' : '#ffffff'};">
                       <div class="flex items-center justify-between gap-3">
-                        <p class="text-[11px] font-black uppercase tracking-[0.14em]" style="color:{vehicle.accent}">{vehicle.brand}</p>
+                        <p class="text-[11px] font-black uppercase tracking-[0.14em]" style="color:{vehicle.accent}">{vehicle.brand === 'Jeep' ? 'Jeep®' : vehicle.brand}</p>
                         <p class="text-[11px] font-bold" style="color:{$isDark ? 'rgba(255,255,255,0.45)' : 'rgba(17,24,39,0.46)'}">{vehicle.type}</p>
                       </div>
                       <h4 class="mt-2 text-lg font-black leading-none" style="color:{$isDark ? 'white' : '#111827'}">

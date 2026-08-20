@@ -14,6 +14,8 @@
     metric: string
     detail: string
     price: string
+    promo?: string
+    hasPromo?: boolean
   }
 
   let { onModelSelect }: { onModelSelect?: (slug: string) => void } = $props()
@@ -34,7 +36,8 @@
       stat: 'SUV',
       metric: 'Actitud',
       detail: 'La SUV compacta de Peugeot, con el i-Cockpit® y el diseño que refleja lo que estás construyendo.',
-      price: '$448,900'
+      price: '$448,900',
+      promo: 'Bono de $52,000 + Tasa de 7.99% sin comisión por apertura + 3 años de mantenimiento gratis'
     },
     {
       slug: '3008',
@@ -47,7 +50,8 @@
       stat: 'SUV',
       metric: 'Premium',
       detail: 'Cada detalle fue pensado para una experiencia de conducción superior y sofisticada.',
-      price: '$639,900'
+      price: '$639,900',
+      promo: 'Bono de hasta $25,000 + Tasa desde 7.99% + 0% de comisión por apertura + 3 años de mantenimiento gratis'
     },
     {
       slug: '5008',
@@ -60,7 +64,8 @@
       stat: 'SUV 7 Plazas',
       metric: 'Familiar',
       detail: 'Espacio para 7 personas con el estilo, confort y tecnología de la marca del león.',
-      price: '$779,900'
+      price: '$779,900',
+      promo: 'Bono de hasta $25,000 + Tasa desde 7.99% + 0% de comisión por apertura + 3 años de mantenimiento gratis'
     },
     {
       slug: 'partner',
@@ -73,7 +78,8 @@
       stat: 'Van',
       metric: 'Carga',
       detail: 'Espacio y practicidad para acompañar tu negocio todos los días.',
-      price: '$439,900'
+      price: '$439,900',
+      promo: 'Bono de hasta $25,000 + Tasa desde 11.99% + 0% de comisión por apertura + 2 años de mantenimiento gratis'
     },
   ]
 
@@ -248,7 +254,9 @@
               <img src={model.image} alt={model.name} />
               <div class="pc-img-gradient"></div>
               <span class="pc-badge-stat">{model.stat}</span>
-              <span class="pc-badge-promo">PROMO</span>
+              {#if model.hasPromo !== false}
+                <span class="pc-badge-promo">PROMO</span>
+              {/if}
               <div class="pc-img-footer">
                 <p>Peugeot</p>
                 <h3>{model.name.replace('Peugeot ', '')} <span>2026</span></h3>
@@ -258,7 +266,7 @@
               <p class="pc-metric">{model.metric}</p>
               <p class="pc-detail">
                 <GoogleIcon name="sell" size={12} style="display:inline-flex;margin-right:4px;color:#0074E8;vertical-align:-2px;" />
-                Bono especial · Desde {model.price}
+                {model.promo || `Bono especial · Desde ${model.price}`}
               </p>
               <button onclick={() => selectModel(model.slug)} class="pc-cta">
                 Ver promoción <GoogleIcon name="chevron_right" size={14} />

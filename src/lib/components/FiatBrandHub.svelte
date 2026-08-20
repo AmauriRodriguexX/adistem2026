@@ -14,6 +14,8 @@
     metric: string
     detail: string
     price: string
+    promo?: string
+    hasPromo?: boolean
   }
 
   let { onModelSelect }: { onModelSelect?: (slug: string) => void } = $props()
@@ -38,7 +40,8 @@
       stat: 'SUV Urbano',
       metric: 'Conectividad Total',
       detail: 'Diseño italiano, tecnología avanzada y máxima seguridad en cada viaje.',
-      price: '$368,900'
+      price: '$368,900',
+      promo: 'Bono de hasta $45,000 + 0% de comisión por apertura'
     },
     {
       slug: 'pulse-abarth',
@@ -51,7 +54,8 @@
       stat: 'Performance',
       metric: 'Motor Turbo 270',
       detail: 'El primer SUV Abarth en el mundo. Deportividad envenenada.',
-      price: '$529,900'
+      price: '$529,900',
+      promo: 'Bono de hasta $45,000 + 0% de comisión por apertura'
     },
     {
       slug: 'fastback',
@@ -64,7 +68,8 @@
       stat: 'Diseño Coupé',
       metric: 'Gran Cajuela',
       detail: 'El SUV con diseño de coupé y el espacio interior más amplio de su categoría.',
-      price: '$482,900'
+      price: '$482,900',
+      promo: 'Bono de hasta $45,000 + 0% de comisión por apertura'
     }
   ]
 
@@ -263,7 +268,9 @@
               <img src={model.image} alt={model.name} />
               <div class="pc-img-gradient"></div>
               <span class="pc-badge-stat">{model.stat}</span>
-              <span class="pc-badge-promo">PROMO</span>
+              {#if model.hasPromo !== false}
+                <span class="pc-badge-promo">PROMO</span>
+              {/if}
               <div class="pc-img-footer">
                 <p>Fiat</p>
                 <h3>{model.name.replace('Fiat ', '')} <span>2026</span></h3>
@@ -273,7 +280,7 @@
               <p class="pc-metric">{model.metric}</p>
               <p class="pc-detail">
                 <GoogleIcon name="sell" size={12} style="display:inline-flex;margin-right:4px;color:#FF1530;vertical-align:-2px;" />
-                Bono especial · {model.price}
+                {model.promo || `Bono especial · ${model.price}`}
               </p>
               <button onclick={() => selectModel(model.slug)} class="pc-cta">
                 Ver promoción <GoogleIcon name="chevron_right" size={14} />

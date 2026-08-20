@@ -136,7 +136,7 @@
         </LiquidGlass>
         <span class="absolute left-[86px] top-1/2 -translate-y-1/2 px-2.5 py-1.5 rounded-lg text-white text-xs whitespace-nowrap pointer-events-none transition-all duration-200 z-50"
           style="background:color-mix(in srgb, {tone} 88%, rgba(0,0,0,0.28));border:1px solid rgba(255,255,255,0.22);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 4px 18px color-mix(in srgb, {tone} 42%, transparent);opacity:{isHovered ? 1 : 0};transform:translateY(-50%) translateX({isHovered ? 0 : -8}px);">
-          {brand.name}
+          {brand.name === 'Jeep' ? 'Jeep®' : brand.name}
         </span>
       </div>
     {/each}

@@ -14,6 +14,8 @@
     metric: string
     detail: string
     price: string
+    promo?: string
+    hasPromo?: boolean
   }
 
   let { onModelSelect }: { onModelSelect?: (slug: string) => void } = $props()
@@ -34,7 +36,8 @@
       stat: 'Sedán',
       metric: 'Accesible',
       detail: 'El sedán compacto de Dodge, pensado para moverte con estilo y sin complicaciones.',
-      price: '$379,900'
+      price: '$364,900',
+      promo: 'Precio desde $364,900 | Mensualidad desde $3,999'
     },
     {
       slug: 'charger',
@@ -47,7 +50,9 @@
       stat: 'Performance',
       metric: 'Legendario',
       detail: 'Más de 100 años de historia condensados en el auto más icónico de Dodge.',
-      price: '$1,489,900'
+      price: '$1,489,900',
+      hasPromo: false,
+      promo: 'Precio desde $1,489,900'
     },
     {
       slug: 'durango',
@@ -60,7 +65,8 @@
       stat: 'SUV',
       metric: '3 Filas',
       detail: 'La SUV con más músculo de la marca, con versiones hasta la brutal Hellcat.',
-      price: '$2,179,900'
+      price: '$2,179,900',
+      promo: 'Plan de financiamiento con Tasa desde 14.50%'
     },
     {
       slug: 'journey',
@@ -73,7 +79,8 @@
       stat: 'SUV',
       metric: 'Espacio',
       detail: 'Una SUV pensada para acompañarte en cada trayecto, con capacidad y confort.',
-      price: '$603,900'
+      price: '$603,900',
+      promo: 'Plan de financiamiento con Tasa desde 14.50% sin comisión'
     },
   ]
 
@@ -248,7 +255,9 @@
               <img src={model.image} alt={model.name} />
               <div class="pc-img-gradient"></div>
               <span class="pc-badge-stat">{model.stat}</span>
-              <span class="pc-badge-promo">PROMO</span>
+              {#if model.hasPromo !== false}
+                <span class="pc-badge-promo">PROMO</span>
+              {/if}
               <div class="pc-img-footer">
                 <p>Dodge</p>
                 <h3>{model.name.replace('Dodge ', '')} <span>2026</span></h3>
@@ -258,7 +267,7 @@
               <p class="pc-metric">{model.metric}</p>
               <p class="pc-detail">
                 <GoogleIcon name="sell" size={12} style="display:inline-flex;margin-right:4px;color:#D50000;vertical-align:-2px;" />
-                Bono especial · Desde {model.price}
+                {model.promo || `Bono especial · Desde ${model.price}`}
               </p>
               <button onclick={() => selectModel(model.slug)} class="pc-cta">
                 Ver promoción <GoogleIcon name="chevron_right" size={14} />

@@ -34,7 +34,7 @@
     },
     {
       question: '¿Qué financiamientos y promociones tienen vigentes?',
-      answer: 'Contamos con planes de financiamiento con tasas preferenciales y bonos especiales según la marca y modelo (Jeep, RAM, Fiat, Dodge o Peugeot). Elige el departamento de "Ventas" en el formulario para enviarte una cotización detallada.',
+      answer: 'Contamos con planes de financiamiento con tasas preferenciales y bonos especiales según la marca y modelo (Jeep®, RAM, Fiat, Dodge o Peugeot). Elige el departamento de "Ventas" en el formulario para enviarte una cotización detallada.',
       open: false
     },
     {

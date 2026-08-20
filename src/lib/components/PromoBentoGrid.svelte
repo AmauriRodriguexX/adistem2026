@@ -14,23 +14,23 @@
   let { initialBrand = 'Todas', initialType = 'Todos', onRecallClick }: Props = $props()
 
   const ALL_VEHICLES = [
-    { id:1,  brand:'Jeep',    type:'SUV',        model:'Wrangler',       year:'2026', version:'Willys Unlimited',     img:'/adistem2026/promociones/jeep-wrangler-2026.jpg',         deal:'Bono de hasta $176,000 ó 24 meses sin intereses sin comisión por apertura', badge:'ESTRELLA',    link:'#', accent:'#424D07' },
+    { id:1,  brand:'Jeep',    type:'SUV',        model:'Wrangler',       year:'2026', version:'Willys Unlimited',     img:'/adistem2026/promociones/jeep-wrangler-2026.jpg',         deal:'Descuento promocional de $176,000 en pago de contado', badge:'ESTRELLA',    link:'#', accent:'#424D07' },
     { id:2,  brand:'Jeep',    type:'SUV',        model:'Compass',        year:'2026', version:'Limited Premium',       img:'/adistem2026/promociones/jeep-compass-2026.jpg',          deal:'Descuento promocional de $30,000 en pago de contado',       badge:'HOT',         link:'#', accent:'#424D07' },
-    { id:3,  brand:'Jeep',    type:'SUV',        model:'Commander',      year:'2026', version:'Overland FWD',          img:'/adistem2026/promociones/jeep-commander-2026.jpg',        deal:'Tasa desde 9.99% + Comisión por apertura gratis',          badge:null,             link:'#', accent:'#424D07' },
-    { id:4,  brand:'Jeep',    type:'SUV',        model:'Renegade',       year:'2026', version:'Latitude',              img:'/adistem2026/promociones/jeep-renegade-2026.jpg',         deal:'Desde $456,900 · Mensualidad desde $5,499',                 badge:null,             link:'#', accent:'#424D07' },
-    { id:5,  brand:'Fiat',    type:'SUV',        model:'Pulse',          year:'2026', version:'Drive',                 img:'/adistem2026/promociones/fiat-pulse-2026.jpg',            deal:'Bono de hasta $20,000 ó Tasa desde 7.99% + 0% de comisión por apertura', badge:'NUEVO',       link:'#', accent:'#D50000' },
-    { id:6,  brand:'Fiat',    type:'Deportivos', model:'Pulse Abarth',   year:'2026', version:'Abarth',                img:'/adistem2026/promociones/fiat-abarth-2026.jpg',           deal:'Bono $20,000 · Enganche desde $52,000',                     badge:'SPORT',          link:'#', accent:'#D50000' },
-    { id:7,  brand:'Fiat',    type:'SUV',        model:'Fastback',       year:'2026', version:'Limited',               img:'/adistem2026/promociones/fiat-fastback-2026.jpg',         deal:'Desde $482,900 · Enganche $55,000 · Tasa 7.99%',           badge:null,             link:'#', accent:'#D50000' },
+    { id:3,  brand:'Jeep',    type:'SUV',        model:'Commander',      year:'2026', version:'Overland FWD',          img:'/adistem2026/promociones/jeep-commander-2026.jpg',        deal:'Plan de financiamiento con Tasa desde 13.99% sin comisión', badge:null,             link:'#', accent:'#424D07' },
+    { id:4,  brand:'Jeep',    type:'SUV',        model:'Renegade',       year:'2026', version:'Latitude',              img:'/adistem2026/promociones/jeep-renegade-2026.jpg',         deal:'Descuento de hasta $40,000 ó Mensualidad desde $5,499',    badge:null,             link:'#', accent:'#424D07' },
+    { id:5,  brand:'Fiat',    type:'SUV',        model:'Pulse',          year:'2026', version:'Drive',                 img:'/adistem2026/promociones/fiat-pulse-2026.jpg',            deal:'Bono de hasta $45,000 + 0% de comisión por apertura',      badge:'NUEVO',       link:'#', accent:'#D50000' },
+    { id:6,  brand:'Fiat',    type:'Deportivos', model:'Pulse Abarth',   year:'2026', version:'Abarth',                img:'/adistem2026/promociones/fiat-abarth-2026.jpg',           deal:'Bono de hasta $45,000 + 0% de comisión por apertura',      badge:'SPORT',          link:'#', accent:'#D50000' },
+    { id:7,  brand:'Fiat',    type:'SUV',        model:'Fastback',       year:'2026', version:'Limited',               img:'/adistem2026/promociones/fiat-fastback-2026.jpg',         deal:'Bono de hasta $45,000 + 0% de comisión por apertura',      badge:null,             link:'#', accent:'#D50000' },
     { id:9,  brand:'Dodge',   type:'SUV',        model:'Durango',        year:'2026', version:'Hellcat SRT',           img:'/adistem2026/promociones/dodge-durango-2026.jpg',         deal:'Plan de financiamiento con Tasa desde 14.50%',             badge:'POTENCIA',    link:'#', accent:'#D50000' },
-    { id:10, brand:'Dodge',   type:'Sedán',      model:'Attitude',       year:'2026', version:'SXT',                   img:'/adistem2026/promociones/dodge-attitude-2026.jpg',        deal:'Desde $379,900 · Mensualidad desde $4,299',                 badge:null,             link:'#', accent:'#D50000' },
+    { id:10, brand:'Dodge',   type:'Sedán',      model:'Attitude',       year:'2026', version:'SXT',                   img:'/adistem2026/promociones/dodge-attitude-2026.jpg',        deal:'Precio desde $364,900 | Mensualidad desde $3,999',         badge:null,             link:'#', accent:'#D50000' },
     { id:11, brand:'Dodge',   type:'SUV',        model:'Journey',        year:'2026', version:'GT PLUS',               img:'/adistem2026/promociones/dodge-journey-2026.jpg',         deal:'Plan de financiamiento con Tasa desde 14.50% sin comisión', badge:null,             link:'#', accent:'#D50000' },
-    { id:12, brand:'Peugeot', type:'SUV',        model:'Nueva 2008',     year:'2026', version:'GT',                    img:'/adistem2026/promociones/peugeot-2008-2026.jpg',          deal:'Bono de $62,000 + Tasa de 9.99% sin comisión por apertura + 3 años de mantenimiento gratis', badge:'MEJOR PRECIO', link:'#', accent:'#0074E8' },
-    { id:13, brand:'Peugeot', type:'SUV',        model:'Nueva 5008',     year:'2026', version:'GT',                    img:'/adistem2026/promociones/peugeot-5008-2026.jpg',          deal:'Tasa desde 9.99% + 0% de comisión por apertura + 3 años de mantenimiento gratis', badge:null,             link:'#', accent:'#0074E8' },
-    { id:14, brand:'Peugeot', type:'SUV',        model:'Nueva 3008',     year:'2026', version:'Allure Pack',           img:'/adistem2026/promociones/peugeot-3008-2026.jpg',          deal:'Bono $15,000 · Tasa 9.99% · 3 años mantenimiento',          badge:null,             link:'#', accent:'#0074E8' },
-    { id:15, brand:'Peugeot', type:'Van',        model:'Nueva Partner',  year:'2026', version:'Active',                img:'/adistem2026/promociones/peugeot-partner-2026.jpg',       deal:'Desde $439,900 · Tasa 11.99% · 2 años mantenimiento',       badge:null,             link:'#', accent:'#0074E8' },
-    { id:16, brand:'Ram',     type:'Pick-ups',   model:'1500',           year:'2026', version:'Laramie',               img:'/adistem2026/promociones/ram-1500-2026.jpg',              deal:'Plan de financiamiento con Tasa desde 14.50%',             badge:'TOP',          link:'#', accent:'#880D00' },
+    { id:12, brand:'Peugeot', type:'SUV',        model:'Nueva 2008',     year:'2026', version:'GT',                    img:'/adistem2026/promociones/peugeot-2008-2026.jpg',          deal:'Bono de $52,000 + Tasa de 7.99% sin comisión por apertura + 3 años de mantenimiento gratis', badge:'MEJOR PRECIO', link:'#', accent:'#0074E8' },
+    { id:13, brand:'Peugeot', type:'SUV',        model:'Nueva 5008',     year:'2026', version:'GT',                    img:'/adistem2026/promociones/peugeot-5008-2026.jpg',          deal:'Bono de hasta $25,000 + Tasa desde 7.99% + 0% de comisión por apertura + 3 años de mantenimiento gratis', badge:null, link:'#', accent:'#0074E8' },
+    { id:14, brand:'Peugeot', type:'SUV',        model:'Nueva 3008',     year:'2026', version:'Allure Pack',           img:'/adistem2026/promociones/peugeot-3008-2026.jpg',          deal:'Bono de hasta $25,000 + Tasa desde 7.99% + 0% de comisión por apertura + 3 años de mantenimiento gratis', badge:null, link:'#', accent:'#0074E8' },
+    { id:15, brand:'Peugeot', type:'Van',        model:'Nueva Partner',  year:'2026', version:'Active',                img:'/adistem2026/promociones/peugeot-partner-2026.jpg',       deal:'Bono de hasta $25,000 + Tasa desde 11.99% + 0% de comisión por apertura + 2 años de mantenimiento gratis', badge:null, link:'#', accent:'#0074E8' },
+    { id:16, brand:'Ram',     type:'Pick-ups',   model:'1500',           year:'2026', version:'Laramie',               img:'/adistem2026/promociones/ram-1500-2026.jpg',              deal:'Tasa desde 14.50%',                                        badge:'TOP',          link:'#', accent:'#880D00' },
     { id:17, brand:'Ram',     type:'Pick-ups',   model:'1200',           year:'2026', version:'Limited',               img:'/adistem2026/promociones/ram-1200-2026.jpg',              deal:'Desde $408,400 · Bono $47,000 · Tasa 14.50%',              badge:null,             link:'#', accent:'#880D00' },
-    { id:18, brand:'Ram',     type:'Pick-ups',   model:'700',            year:'2026', version:'Rebel',                 img:'/adistem2026/promociones/ram-700-2026.jpg',               deal:'Precio desde $344,900 · 0% comisión por apertura',          badge:null,             link:'#', accent:'#880D00' },
+    { id:18, brand:'Ram',     type:'Pick-ups',   model:'700',            year:'2026', version:'Rebel',                 img:'/adistem2026/promociones/ram-700-2026.jpg',               deal:'Bono de hasta $30,000 + 0% de comisión por apertura',      badge:null,             link:'#', accent:'#880D00' },
   ]
 
   const TODAS_IDS: number[] = [1, 2, 9, 12, 16, 5, 3, 11, 13]
@@ -41,10 +41,10 @@
 
   const SPECIAL_PROMOS = [
     { id:901, brand:'Jeep', brandLabel:'Seguridad',    hugeText:'ALERTA',  hugeSub:'SEGURIDAD',              title:'Llamado a revisión',     desc:'Pensamos en tu seguridad, consulta si tu vehículo cuenta con alguna campaña de servicio pendiente.', img:'/adistem2026/recall-bg.jpg',    models:[], accent:'#b91c1c', ctaText:'Buscar VIN' },
-    { id:902, brand:'Fiat',    hugeText:'7.99%',  hugeSub:'TASA ANUAL',             title:'PULSE 2026',        desc:'Bono de hasta $20,000 ó Tasa desde 7.99% + 0% de comisión por apertura.', img:'/adistem2026/promociones/fiat-pulse-2026.jpg',        models:['Pulse 2026','Fastback 2026'],        accent:'#b91c1c' },
+    { id:902, brand:'Fiat',    hugeText:'$45,000', hugeSub:'BONO DE HASTA',          title:'PULSE 2026',        desc:'Bono de hasta $45,000 + 0% de comisión por apertura.', img:'/adistem2026/promociones/fiat-pulse-2026.jpg',        models:['Pulse 2026','Fastback 2026','Pulse Abarth 2026'], accent:'#b91c1c' },
     { id:903, brand:'Dodge',   hugeText:'14.5%',  hugeSub:'TASA PREFERENCIAL',      title:'DURANGO 2026',     desc:'Plan de financiamiento con Tasa desde 14.50%.',    img:'/adistem2026/promociones/dodge-durango-2026.jpg',  models:['Durango 2026','Journey 2026','Attitude 2026'],            accent:'#7c2d12' },
-    { id:904, brand:'Peugeot', hugeText:'3 AÑOS', hugeSub:'MANTENIMIENTO GRATIS',   title:'NUEVA 2008 2026',  desc:'Bono de $62,000 + Tasa de 9.99% sin comisión por apertura + 3 años de mantenimiento gratis.', img:'/adistem2026/promociones/peugeot-2008-2026.jpg',    models:['Nueva 2008 2026','Nueva 5008 2026','Nueva 3008 2026'],  accent:'#0074E8' },
-    { id:905, brand:'Ram',     hugeText:'14.5%',  hugeSub:'TASA PREFERENCIAL',      title:'RAM 1500 2026',    desc:'Plan de financiamiento con Tasa desde 14.50%.',                  img:'/adistem2026/promociones/ram-1500-2026.jpg',   models:['RAM 1500 2026','RAM 1200 2026'],                            accent:'#880D00' },
+    { id:904, brand:'Peugeot', hugeText:'3 AÑOS', hugeSub:'MANTENIMIENTO GRATIS',   title:'NUEVA 2008 2026',  desc:'Bono de $52,000 + Tasa de 7.99% sin comisión por apertura + 3 años de mantenimiento gratis.', img:'/adistem2026/promociones/peugeot-2008-2026.jpg',    models:['Nueva 2008 2026','Nueva 5008 2026','Nueva 3008 2026','Nueva Partner 2026'], accent:'#0074E8' },
+    { id:905, brand:'Ram',     hugeText:'14.5%',  hugeSub:'TASA PREFERENCIAL',      title:'RAM 1500 2026',    desc:'Tasa desde 14.50%.',                  img:'/adistem2026/promociones/ram-1500-2026.jpg',   models:['RAM 1500 2026','RAM 1500 RHO 2026','RAM 1500 Tungsten 2026','RAM 1200 2026'], accent:'#880D00' },
   ]
 
   let activeBrand    = $state<BrandFilter>(initialBrand)
@@ -207,7 +207,7 @@
               activeBrand === 'Peugeot' ? ($isDark ? '#0074E8' : '#0074E8') : 
               activeBrand === 'Fiat'    ? ($isDark ? '#FF1530' : '#FF1530') : 
               'inherit'}
-            Línea <span style="color: {bColor};">{activeBrand.toUpperCase()}</span> <span class="font-light opacity-50">2026</span>
+            Línea <span style="color: {bColor};">{activeBrand === 'Jeep' ? 'JEEP®' : activeBrand.toUpperCase()}</span> <span class="font-light opacity-50">2026</span>
           {/if}
         </h2>
       </div>
@@ -234,7 +234,7 @@
         {#each BRANDS as brand (brand)}
           <button onclick={() => activeBrand = brand}
             class="flex-shrink-0 px-3 py-1 rounded-full text-xs font-medium transition-all duration-200"
-            style={chipStyle(activeBrand === brand)}>{brand}</button>
+            style={chipStyle(activeBrand === brand)}>{brand === 'Jeep' ? 'Jeep®' : brand}</button>
         {/each}
       </div>
       <div style="{divStyle}margin:8px 0;" ></div>
@@ -251,7 +251,7 @@
       {#if isFiltered}
         <div class="flex items-center justify-between pt-2">
           <p class="text-xs" style="color:{$isDark ? 'rgba(255,255,255,0.40)' : 'rgba(20,30,80,0.42)'}">
-            {activeBrand !== 'Todas' ? activeBrand + ' ' : ''}{activeType !== 'Todos' ? '· ' + activeType + ' ' : ''}— {vehicles.length} resultado{vehicles.length !== 1 ? 's' : ''}
+            {activeBrand !== 'Todas' ? (activeBrand === 'Jeep' ? 'Jeep® ' : activeBrand + ' ') : ''}{activeType !== 'Todos' ? '· ' + activeType + ' ' : ''}— {vehicles.length} resultado{vehicles.length !== 1 ? 's' : ''}
           </p>
           <button onclick={() => { activeBrand='Todas'; activeType='Todos' }}
             class="text-xs underline" style="color:{$isDark ? 'rgba(100,150,255,0.8)' : '#334E8B'}">Limpiar</button>
@@ -264,7 +264,7 @@
       <div class="hidden md:flex items-center justify-between mb-6 px-2">
         <p class="text-sm font-medium" style="color:{textPrimary}">
           Mostrando resultados para: 
-          <span style="color:{$isDark ? '#334E8B' : '#334E8B'}">{activeBrand !== 'Todas' ? activeBrand : ''} {activeType !== 'Todos' ? activeType : ''}</span> 
+          <span style="color:{$isDark ? '#334E8B' : '#334E8B'}">{activeBrand !== 'Todas' ? (activeBrand === 'Jeep' ? 'Jeep®' : activeBrand) : ''} {activeType !== 'Todos' ? activeType : ''}</span> 
           <span style="color:{textMuted}; font-weight:normal; margin-left:8px;">({vehicles.length} vehículo{vehicles.length !== 1 ? 's' : ''})</span>
         </p>
         <button onclick={() => { activeBrand='Todas'; activeType='Todos' }}
@@ -288,7 +288,7 @@
             {#each activeBrands as brand (brand)}
               {@const brandVehicles = ALL_VEHICLES.filter(v => v.brand === brand)}
               <tr>
-                <td class="px-4 py-3 rounded-xl text-xs font-semibold whitespace-nowrap" style="background:{headerBg};border:1px solid {headerBorder};color:{textPrimary}">{brand}</td>
+                <td class="px-4 py-3 rounded-xl text-xs font-semibold whitespace-nowrap" style="background:{headerBg};border:1px solid {headerBorder};color:{textPrimary}">{brand === 'Jeep' ? 'Jeep®' : brand}</td>
                 {#each activeTypes as type (type)}
                   {@const match = brandVehicles.filter(v => v.type === type)}
                   <td class="rounded-xl align-top p-2" style="background:{cellBg};border:1px solid {cellBorder};min-width:160px;">
@@ -440,7 +440,7 @@
             </div>
           {/if}
           <div class="absolute bottom-0 left-0 right-0 px-4 pb-4 pt-6" style="background:linear-gradient(to top,rgba(5,8,20,0.85) 0%,transparent 100%)">
-            <p class="text-white/60 text-xs uppercase tracking-widest mb-0.5 font-medium">{vehicle.brand}</p>
+            <p class="text-white/60 text-xs uppercase tracking-widest mb-0.5 font-medium">{vehicle.brand === 'Jeep' ? 'Jeep®' : vehicle.brand}</p>
             <h3 class="text-white font-bold leading-tight" style="font-size:1.1rem;text-shadow:0 2px 8px rgba(0,0,0,0.40);">
               {vehicle.model} <span class="font-light opacity-70">{vehicle.year}</span>
             </h3>
@@ -481,7 +481,7 @@
     </div>
     <div class="relative z-10 flex flex-col h-full px-6 pt-6 pb-4">
       <div class="flex-1 flex flex-col justify-center items-start">
-        <p class="text-white/70 text-[10px] font-bold tracking-[0.2em] uppercase mb-1">{promo.brandLabel || promo.brand}</p>
+        <p class="text-white/70 text-[10px] font-bold tracking-[0.2em] uppercase mb-1">{promo.brandLabel || (promo.brand === 'Jeep' ? 'Jeep®' : promo.brand)}</p>
         <h4 class="text-white font-bold mt-3 tracking-wide" style="font-size:clamp(2.2rem,2.2vw,1.45rem);line-height:1.08;text-shadow:0 3px 14px rgba(0,0,0,0.34);">{promo.title}</h4>
         <p class="text-white/90 mt-2 leading-relaxed max-w-[250px]" style="font-size:clamp(0.84rem,1.15vw,0.98rem);">{promo.desc}</p>
       </div>

@@ -14,7 +14,7 @@
     'Jeep': [
       { icon: 'verified_user', title: 'Seguridad 5 Estrellas', desc: 'Sistemas avanzados de asistencia al conductor y robustez legendaria en cada terreno.' },
       { icon: 'bolt',          title: 'Capacidad 4x4',         desc: 'La tecnología Trail Rated® que te permite superar cualquier obstáculo con confianza.' },
-      { icon: 'build',         title: 'Servicio Mopar®',       desc: 'Mantenimiento especializado con refacciones originales para mantener tu Jeep como nuevo.' }
+      { icon: 'build',         title: 'Servicio Mopar®',       desc: 'Mantenimiento especializado con refacciones originales para mantener tu Jeep® como nuevo.' }
     ],
     'Ram': [
       { icon: 'local_shipping', title: 'Capacidad de Carga', desc: 'Diseñadas para los trabajos más pesados con la mayor durabilidad del mercado.' },
