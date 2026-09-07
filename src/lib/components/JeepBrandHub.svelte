@@ -58,7 +58,7 @@
       metric: 'AWD Disponible',
       detail: 'Diseñado para conquistarte: tecnología, espacio y presencia.',
       price: '$546,900',
-      promo: 'Descuento promocional de $30,000 en pago de contado'
+      promo: 'Descuento de hasta $70,000 o mensualidades desde $6,499'
     },
     {
       slug: 'commander',
@@ -86,9 +86,9 @@
       stat: 'Icónico',
       metric: '2.0T 270 HP',
       detail: 'Un clásico reinventado con potencia turbo y carácter Jeep®.',
-      price: '$899,900',
-      hasPromo: false,
-      promo: 'Precio desde $899,900'
+      price: '$858,900',
+      hasPromo: true,
+      promo: 'Precio desde $858,900'
     },
     {
       slug: 'grand-cherokee',
@@ -116,7 +116,7 @@
       metric: '4x4 con reducida',
       detail: 'Icónico, irreducible y sin límites. El Jeep® definitivo.',
       price: '$1,103,900',
-      promo: 'Descuento promocional de $176,000 en pago de contado'
+      promo: 'Precio desde $1,103,900 o 24 meses sin intereses, sin comisión por apertura'
     },
     {
       slug: 'jt',

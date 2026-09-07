@@ -41,7 +41,7 @@
       metric: 'Conectividad Total',
       detail: 'Diseño italiano, tecnología avanzada y máxima seguridad en cada viaje.',
       price: '$349,500',
-      promo: 'Bono de hasta $45,000 + 0% de comisión por apertura'
+      promo: 'Bono de hasta $45,000 + comisión por apertura de crédito gratis'
     },
     {
       slug: 'pulse-abarth',
@@ -55,7 +55,7 @@
       metric: 'Motor Turbo 270',
       detail: 'El primer SUV Abarth en el mundo. Deportividad envenenada.',
       price: '$529,900',
-      promo: 'Bono de hasta $45,000 + 0% de comisión por apertura'
+      promo: 'Bono de hasta $45,000 + comisión por apertura de crédito gratis'
     },
     {
       slug: 'fastback',
@@ -69,7 +69,7 @@
       metric: 'Gran Cajuela',
       detail: 'El SUV con diseño de coupé y el espacio interior más amplio de su categoría.',
       price: '$463,500',
-      promo: 'Bono de hasta $45,000 + 0% de comisión por apertura'
+      promo: 'Bono de hasta $45,000 + comisión por apertura de crédito gratis'
     }
   ]
 
