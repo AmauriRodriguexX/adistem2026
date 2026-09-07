@@ -76,6 +76,7 @@
     { id:2,  brand:'Jeep',    type:'SUV',        model:'Compass',       year:'2026', version:'Limited Premium',  fuel:'Gasolina', price:'Desde $546,900',   img:'/adistem2026/promociones/jeep-compass-2026.jpg',  accent:'#424D07' },
     { id:3,  brand:'Jeep',    type:'SUV',        model:'Commander',     year:'2026', version:'Overland FWD',     fuel:'Gasolina', price:'Desde $720,900',   img:'/adistem2026/promociones/jeep-commander-2026.jpg', accent:'#424D07' },
     { id:4,  brand:'Jeep',    type:'SUV',        model:'Renegade',      year:'2026', version:'Latitude',         fuel:'Gasolina', price:'Desde $461,900',   img:'/adistem2026/promociones/jeep-renegade-2026.jpg',  accent:'#424D07' },
+    { id:19, brand:'Jeep',    type:'SUV',        model:'Cherokee',      year:'2026', version:'Altitude Lux',     fuel:'Gasolina', price:'Desde $858,900',   img:'/adistem2026/promociones/jeep-cherokee-2026.jpg',  accent:'#424D07' },
     { id:5,  brand:'Fiat',    type:'SUV',        model:'Pulse',         year:'2026', version:'Drive',            fuel:'Gasolina', price:'Desde $349,500',   img:'/adistem2026/promociones/fiat-pulse-2026.jpg',     accent:'#FF1530' },
     { id:6,  brand:'Fiat',    type:'Deportivos', model:'Pulse Abarth',  year:'2026', version:'Abarth',           fuel:'Gasolina', price:'Desde $529,900',   img:'/adistem2026/promociones/fiat-abarth-2026.jpg',    accent:'#FF1530' },
     { id:7,  brand:'Fiat',    type:'SUV',        model:'Fastback',      year:'2026', version:'Limited',          fuel:'Gasolina', price:'Desde $463,500',   img:'/adistem2026/promociones/fiat-fastback-2026.jpg',  accent:'#FF1530' },
@@ -87,6 +88,7 @@
     { id:15, brand:'Peugeot', type:'Van',        model:'Nueva Partner', year:'2026', version:'Active',           fuel:'Gasolina', price:'Desde $439,900',   img:'/adistem2026/promociones/peugeot-partner-2026.jpg',accent:'#0074E8' },
     { id:16, brand:'Ram',     type:'Pick-ups',   model:'1500',          year:'2026', version:'Laramie 4x4',      fuel:'Híbridos', price:'Desde $1,293,700', img:'/adistem2026/promociones/ram-1500-2026.jpg',     accent:'#880D00' },
     { id:17, brand:'Ram',     type:'Pick-ups',   model:'1200',          year:'2026', version:'Limited',          fuel:'Gasolina', price:'Desde $409,900',   img:'/adistem2026/promociones/ram-1200-2026.jpg',     accent:'#880D00' },
+    { id:18, brand:'Ram',     type:'Pick-ups',   model:'700',           year:'2026', version:'Rebel',            fuel:'Gasolina', price:'Desde $408,400',   img:'/adistem2026/promociones/ram-700-2026.jpg',      accent:'#880D00' },
   ]
 
   let megaBrand = $state<BrandFilter>('Todas')

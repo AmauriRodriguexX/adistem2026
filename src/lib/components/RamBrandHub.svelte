@@ -66,7 +66,7 @@
       metric: 'Ágil',
       detail: 'Formato compacto para moverse y cargar todos los días.',
       price: '$408,400',
-      promo: 'Bono de hasta $30,000 + 0% de comisión por apertura'
+      promo: 'Mensualidades desde $5,999 + comisión por apertura de regalo'
     },
     {
       slug: '1500',

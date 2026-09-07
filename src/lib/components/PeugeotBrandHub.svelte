@@ -37,7 +37,7 @@
       metric: 'Actitud',
       detail: 'La SUV compacta de Peugeot, con el i-Cockpit® y el diseño que refleja lo que estás construyendo.',
       price: '$458,900',
-      promo: 'Bono de $52,000 + Tasa de 7.99% sin comisión por apertura + 3 años de mantenimiento gratis'
+      promo: 'Precio desde $458,900 + tasa del 7.99% + 3 mantenimientos gratis o 30 meses sin intereses'
     },
     {
       slug: '3008',
@@ -51,7 +51,7 @@
       metric: 'Premium',
       detail: 'Cada detalle fue pensado para una experiencia de conducción superior y sofisticada.',
       price: '$629,900',
-      promo: 'Bono de hasta $25,000 + Tasa desde 7.99% + 0% de comisión por apertura + 3 años de mantenimiento gratis'
+      promo: 'Precio desde $629,900 + tasa desde el 7.99% + 3 mantenimientos gratis o 24 meses sin intereses'
     },
     {
       slug: '5008',
@@ -65,7 +65,7 @@
       metric: 'Familiar',
       detail: 'Espacio para 7 personas con el estilo, confort y tecnología de la marca del león.',
       price: '$754,900',
-      promo: 'Bono de hasta $25,000 + Tasa desde 7.99% + 0% de comisión por apertura + 3 años de mantenimiento gratis'
+      promo: 'Precio desde $754,900 + tasa desde el 7.99% + 3 mantenimientos gratis o 24 meses sin intereses'
     },
     {
       slug: 'partner',
@@ -165,7 +165,7 @@
       metric: 'Familiar',
       detail: 'Espacio para 7 personas con el estilo, confort y tecnología de la marca del león.',
       price: '$754,900',
-      promo: 'Bono de hasta $25,000 + Tasa desde 7.99% + 0% de comisión por apertura + 3 años de mantenimiento gratis'
+      promo: 'Precio desde $754,900 + tasa desde el 7.99% + 3 mantenimientos gratis o 24 meses sin intereses'
     }
   ]
   let activeHeroIndex = $state(0)

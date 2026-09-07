@@ -142,6 +142,16 @@ estos archivos desde cero):
 - **Peugeot 5008 2026 y Peugeot Home Assets Locales (2026-08-19):** Se migraron todos los assets de Peugeot 5008 (`public/peugeot/5008-2026/`: `hero/`, `galeria/`, `exterior/`, `equipamiento/`, `versiones/gt/`, `interior/`, `capacidad/`, `seguridad/`) y los Story Panels / Hero de Peugeot Home (`public/peugeot/story-panels/` con 2008, 3008 y 5008; `public/peugeot/home/hero/`). Se configuró el carrusel de asistencias ADAS en `PeugeotPremiumLanding.svelte` con: 1) CONTROL ELECTRÓNICO DE ESTABILIDAD (ESP) y 2) SISTEMA DE FRENADO DE EMERGENCIA, junto con el selector de vistas exteriores, soporte de video en pin-stage y renderizado responsivo de `.capability`.
 - **Dodge Attitude R/T Nomenclatura (2026-09-06):** Por instrucción del usuario, se actualizó la mención del nombre del modelo a **Attitude R/T** en toda la marca Dodge (`DodgeBrandHub.svelte`, `DodgePremiumLanding.svelte`, `GlassTopNav.svelte`, `PromoBentoGrid.svelte`, `ContactFormCard.svelte`).
 - **Navegación Selectiva a Landings (2026-09-07):** Por instrucción del usuario, las tarjetas y botones de los modelos que NO tienen landing propia ya no abren la landing del modelo insignia. Solo los cards/botones correspondientes al auto con landing real navegan a su ficha (Jeep Renegade, Fiat Pulse, Ram 1500 RHO, Dodge Attitude R/T y Peugeot 5008). Los demás modelos no abren fichas ajenas para evitar confusiones en el cliente durante la demo.
+- **Eliminación de Gradientes Oscuros en Tarjetas (2026-09-07):** Por instrucción del usuario, se removieron los gradientes oscuros superpuestos (`.pc-img-gradient` y `background: linear-gradient(to top, rgba(5,8,20,0.85)...)` en `.pc-img-footer`) en todas las tarjetas de modelos de los Brand Hubs (Jeep, Fiat, Ram, Dodge, Peugeot) y en `PromoBentoGrid.svelte`. Las fotos de los autos ahora se ven 100% nítidas, limpias y sin capas de sombra, utilizando sombras directas (`text-shadow`) en los títulos y marcas para conservar total legibilidad.
+- **Actualización de Promociones Oficiales (2026-09-07):** Se sincronizaron las ofertas oficiales en `PromoBentoGrid.svelte`, Brand Hubs (`*BrandHub.svelte`) y `GlassTopNav.svelte`:
+  - **Jeep Wrangler Willys:** Precio desde $1,103,900 o 24 MSI, sin comisión por apertura.
+  - **Jeep Compass Limited Premium:** Descuento de hasta $70,000 o mensualidades desde $6,499.
+  - **Jeep Cherokee:** Precio desde $858,900.
+  - **Peugeot 2008 GT:** Precio desde $458,900 + tasa del 7.99% + 3 mantenimientos gratis o 30 MSI.
+  - **Peugeot 5008:** Precio desde $754,900 + tasa desde 7.99% + 3 mantenimientos gratis o 24 MSI.
+  - **Peugeot 3008:** Precio desde $629,900 + tasa desde 7.99% + 3 mantenimientos gratis o 24 MSI.
+  - **RAM 700:** Mensualidades desde $5,999 + comisión por apertura de regalo.
+  - **FIAT Pulse Drive / Pulse Abarth / Fastback:** Bono de hasta $45,000 + comisión por apertura de crédito gratis.
 
 
 
