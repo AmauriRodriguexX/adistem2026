@@ -430,7 +430,6 @@
         <div class="relative overflow-hidden w-full flex-shrink-0" style="{isWide ? 'height:260px' : 'aspect-ratio:3/2'};">
           <img src={vehicle.img} alt="{vehicle.brand} {vehicle.model} {vehicle.year}"
             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-          <div class="absolute inset-0" style="background:linear-gradient(to bottom,rgba(0,0,0,0.02) 0%,rgba(5,8,20,0.75) 70%,rgba(5,8,20,0.95) 100%)"></div>
           <div class="absolute top-3 right-3 rounded-full text-xs" style={typeBadge}>{vehicle.type}</div>
           {#if vehicle.badge}
             <div class="absolute top-3 left-3 px-2.5 py-1 rounded-lg text-xs font-semibold text-white"
@@ -438,9 +437,9 @@
               {vehicle.badge}
             </div>
           {/if}
-          <div class="absolute bottom-0 left-0 right-0 px-4 pb-4 pt-6" style="background:linear-gradient(to top,rgba(5,8,20,0.85) 0%,transparent 100%)">
-            <p class="text-white/60 text-xs uppercase tracking-widest mb-0.5 font-medium">{#if vehicle.brand === 'Jeep'}Jeep<span class="reg-r">®</span>{:else}{vehicle.brand}{/if}</p>
-            <h3 class="text-white font-bold leading-tight" style="font-size:1.1rem;text-shadow:0 2px 8px rgba(0,0,0,0.40);">
+          <div class="absolute bottom-0 left-0 right-0 px-4 pb-4 pt-6">
+            <p class="text-white/90 text-xs uppercase tracking-widest mb-0.5 font-semibold" style="text-shadow:0 1px 4px rgba(0,0,0,0.85);">{#if vehicle.brand === 'Jeep'}Jeep<span class="reg-r">®</span>{:else}{vehicle.brand}{/if}</p>
+            <h3 class="text-white font-bold leading-tight" style="font-size:1.1rem;text-shadow:0 2px 8px rgba(0,0,0,0.9), 0 1px 3px rgba(0,0,0,0.85);">
               {vehicle.model} <span class="font-light opacity-70">{vehicle.year}</span>
             </h3>
           </div>
