@@ -591,25 +591,27 @@
                 {#each megaVehicles as vehicle, i (vehicle.id)}
                   <button
                     onclick={() => {
-                      if (vehicle.brand === 'Jeep') {
+                      if (vehicle.brand === 'Jeep' && vehicle.model.toLowerCase().includes('renegade')) {
                         onModelSelect?.('Jeep', 'renegade')
                         closeMega()
-                      } else if (vehicle.brand === 'Fiat') {
+                      } else if (vehicle.brand === 'Fiat' && vehicle.model.toLowerCase() === 'pulse') {
                         onModelSelect?.('Fiat', 'pulse2026')
                         closeMega()
-                      } else if (vehicle.brand === 'Ram') {
+                      } else if (vehicle.brand === 'Ram' && vehicle.model.toLowerCase().includes('1500')) {
                         onModelSelect?.('Ram', '1500-rho')
                         closeMega()
-                      } else if (vehicle.brand === 'Dodge') {
+                      } else if (vehicle.brand === 'Dodge' && vehicle.model.toLowerCase().includes('attitude')) {
                         onModelSelect?.('Dodge', 'attitude')
                         closeMega()
-                      } else if (vehicle.brand === 'Peugeot') {
+                      } else if (vehicle.brand === 'Peugeot' && vehicle.model.toLowerCase().includes('5008')) {
                         onModelSelect?.('Peugeot', '5008')
                         closeMega()
                       } else {
+                        // El resto de modelos no tienen landing propia todavía; no abrir landings erróneas
                         selectMegaBrand(vehicle.brand);
                         selectMegaType(vehicle.type);
                         applyMegaSelection()
+                        closeMega()
                       }
                     }}
                     class="group/card cursor-pointer overflow-hidden rounded-2xl text-left transition-all duration-500 hover:-translate-y-1"

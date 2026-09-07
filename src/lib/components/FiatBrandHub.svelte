@@ -73,9 +73,10 @@
     }
   ]
 
-  function selectModel(_slug: string) {
-    // All model explore CTAs route to Pulse (only fully-built landing)
-    onModelSelect?.('pulse2026')
+  function selectModel(slug: string) {
+    if (slug === 'pulse' || slug === 'pulse2026') {
+      onModelSelect?.('pulse2026')
+    }
   }
 
   const VISIBLE_SLUGS = ['pulse', 'pulse-abarth', 'fastback']
@@ -843,18 +844,24 @@
     display: flex !important;
     flex-direction: column !important;
     padding: 0 !important;
-    overflow: hidden;
+    overflow: hidden !important;
     position: relative;
     isolation: isolate;
+    border-radius: 34px !important;
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+    mask-image: radial-gradient(white, black);
   }
 
   .pc-glass-bg {
     position: absolute; inset: 0;
+    border-radius: inherit;
     backdrop-filter: blur(40px) saturate(175%);
+    -webkit-backdrop-filter: blur(40px) saturate(175%);
     z-index: 0;
   }
   .pc-glass-shine {
     position: absolute; inset: 0;
+    border-radius: inherit;
     background: linear-gradient(175deg, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0.07) 16%, transparent 40%);
     pointer-events: none; z-index: 3;
   }
@@ -870,6 +877,7 @@
     aspect-ratio: 3 / 2;
     flex-shrink: 0;
     overflow: hidden;
+    border-radius: 33px 33px 0 0;
     z-index: 6;
   }
 
@@ -885,8 +893,7 @@
   }
 
   .pc-img-gradient {
-    position: absolute; inset: 0;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.02) 0%, rgba(5,8,20,0.75) 70%, rgba(5,8,20,0.95) 100%);
+    display: none;
   }
 
   .pc-badge-stat {
@@ -918,16 +925,17 @@
   .pc-img-footer {
     position: absolute; bottom: 0; left: 0; right: 0;
     padding: 20px 16px 14px;
-    background: linear-gradient(to top, rgba(5,8,20,0.85) 0%, transparent 100%);
+    background: transparent;
   }
 
   .pc-img-footer p {
     margin: 0 0 2px;
-    color: rgba(255,255,255,0.55);
+    color: rgba(255,255,255,0.9);
     font-size: 10px;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.18em;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.85);
   }
 
   .pc-img-footer h3 {
@@ -935,7 +943,8 @@
     font-size: clamp(18px, 1.8vw, 22px);
     font-weight: 800;
     line-height: 1.1;
-    text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    color: #fff;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.9), 0 1px 3px rgba(0,0,0,0.85);
   }
 
   .pc-img-footer h3 span {
