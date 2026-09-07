@@ -106,14 +106,14 @@
 
   const modelDetails: Record<string, ModelDetail> = {
     'attitude': {
-      name: 'Dodge Attitude',
-      kicker: 'Dodge Attitude 2026',
+      name: 'Dodge Attitude R/T',
+      kicker: 'Dodge Attitude R/T 2026',
       title: 'Actitud que se nota desde el arranque.',
       subtitle: 'El sedán deportivo de Dodge: ágil en la ciudad, con 168 hp, transmisión de 7 velocidades Dual-Clutch y el carácter indiscutible de la marca.',
       heroImage: '/adistem2026/dodge/attitude-2026/hero/attitude-2026.jpg',
       mobileHeroImage: '/adistem2026/dodge/attitude-2026/hero/attitude-2026-mob.jpg',
       spotlightImage: '/adistem2026/dodge/attitude-2026/hero/attitude-2026.jpg',
-      quote: 'Hola,%20me%20interesa%20cotizar%20un%20Dodge%20Attitude',
+      quote: 'Hola,%20me%20interesa%20cotizar%20un%20Dodge%20Attitude%20R/T',
       price: 'Desde $364,900',
       specs: [
         { value: '168 hp', label: 'Motor 1.5L Turbo inyección directa' },
@@ -122,7 +122,7 @@
         { value: 'ADAS', label: '9 asistencias autónomas Nivel 2' },
       ],
       motionTitle: 'Se mueve ágil, se ve decidido.',
-      motionCopy: 'El Dodge Attitude está pensado para tu día a día: entra fácil a cualquier calle, se estaciona sin drama y mantiene la actitud Dodge en cada trayecto.',
+      motionCopy: 'El Dodge Attitude R/T está pensado para tu día a día: entra fácil a cualquier calle, se estaciona sin drama y mantiene la actitud Dodge en cada trayecto.',
       cockpitImages: [
         '/adistem2026/dodge/attitude-2026/interior/interior-1.jpg',
         '/adistem2026/dodge/attitude-2026/interior/interior-2.jpg',
@@ -180,8 +180,8 @@
   }
 
   const fallbackModel: ModelDetail = {
-    name: 'Dodge Attitude',
-    kicker: 'Dodge Attitude 2026',
+    name: 'Dodge Attitude R/T',
+    kicker: 'Dodge Attitude R/T 2026',
     title: 'Actitud que se nota desde el arranque.',
     subtitle: 'Presencia, tecnología y el carácter Dodge en cada versión de la gama.',
     heroImage: '/adistem2026/dodge/attitude-2026/hero/attitude-2026.jpg',
@@ -209,7 +209,7 @@
   ])
 
   const motionCards = $derived([
-    { title: 'Presencia que se impone', copy: 'Cada línea del diseño Dodge Attitude está pensada para transmitir carácter deportivo dentro y fuera de la ciudad.', image: model.motionImages?.[0] || '/adistem2026/dodge/attitude-2026/exterior/exterior-1.jpg' },
+    { title: 'Presencia que se impone', copy: 'Cada línea del diseño Dodge Attitude R/T está pensada para transmitir carácter deportivo dentro y fuera de la ciudad.', image: model.motionImages?.[0] || '/adistem2026/dodge/attitude-2026/exterior/exterior-1.jpg' },
     { title: 'Aerodinámica y estilo', copy: 'Rines bitono de hasta 18", salidas de escape funcionales y alerón deportivo integrado en la cajuela.', image: model.motionImages?.[1] || '/adistem2026/dodge/attitude-2026/exterior/exterior-2.jpg' },
     { title: 'Iluminación Full LED', copy: 'Faros delanteros y luces traseras unidas de lado a lado con firma lumínica inconfundible de día y de noche.', image: model.motionImages?.[2] || '/adistem2026/dodge/attitude-2026/exterior/exterior-3.jpg' },
   ])
@@ -448,7 +448,7 @@
         <div class="vs-showcase">
           <div class="vs-glow"></div>
           {#key activeColor.img}
-            <img src={activeColor.img} alt={`Attitude ${activeColor.name}`} class="vs-hero-car" />
+            <img src={activeColor.img} alt={`Attitude R/T ${activeColor.name}`} class="vs-hero-car" />
           {/key}
         </div>
 

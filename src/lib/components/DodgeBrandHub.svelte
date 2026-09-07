@@ -27,7 +27,7 @@
   const models: DodgeModel[] = [
     {
       slug: 'attitude',
-      name: 'Dodge Attitude',
+      name: 'Dodge Attitude R/T',
       role: 'Actitud que se nota desde el arranque',
       image: '/adistem2026/promociones/dodge-attitude-2026.jpg',
       mobileImage: '/adistem2026/promociones/dodge-attitude-2026.jpg',
@@ -317,7 +317,7 @@
       <div class="story-content">
         <p class="story-eyebrow">Actitud Diaria</p>
         <h2 class="story-title">Se nota<br>desde el arranque.</h2>
-        <p class="story-sub">Dodge Attitude. Ágil en la ciudad, con el carácter de la marca y el equipamiento que necesitas cada día.</p>
+        <p class="story-sub">Dodge Attitude R/T. Ágil en la ciudad, con el carácter de la marca y el equipamiento que necesitas cada día.</p>
         <div class="story-actions">
           <button class="story-btn primary" onclick={() => goToCotizacion('attitude')}><GoogleIcon name="description" size={15} /> Cotizar</button>
           <button class="story-btn ghost" onclick={() => selectModel('attitude')}>Explorar <GoogleIcon name="arrow_forward" size={15} /></button>
@@ -479,7 +479,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: 60% center;
+    object-position: 18% center;
     opacity: 0;
     transition: opacity 1s var(--ease);
   }

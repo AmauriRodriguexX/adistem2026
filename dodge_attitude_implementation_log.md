@@ -38,3 +38,12 @@ Datos reales usados (todos con imágenes reales bajo `https://www.dodge.com/cont
 - **GT** — Desde $364,900 — colores Blanco, Granito, Negro Brillante, Plata Estelar — equipamiento adicional: detección de punto ciego, interior deportivo negro/rojo, rines 18" negro satinado, alerón trasero deportivo.
 
 Se agregó también el link `Versiones` al nav sticky del producto (solo para el slug `attitude`). Verificado con `npm run check` (0 errores) y `npm run build` (compila sin errores). **Pendiente:** el mismo tratamiento (sección de versiones reales) no se aplicó a Charger/Durango ni a Ram/Peugeot — solo se hizo para Attitude porque es el único dato real que el usuario proporcionó; se puede replicar el mismo patrón para las demás si se consigue la data de sus configuradores oficiales.
+
+## Actualización de Nomenclatura a "Attitude R/T" (2026-09-06)
+Por instrucción explícita del usuario, se actualizó la mención del modelo Attitude a **Attitude R/T** en toda la marca Dodge y componentes asociados:
+- `DodgeBrandHub.svelte`: Nombre en carrusel de modelos (`Dodge Attitude R/T`), story panels (`Dodge Attitude R/T`).
+- `DodgePremiumLanding.svelte`: `modelDetails['attitude']` (`name: 'Dodge Attitude R/T'`, `kicker: 'Dodge Attitude R/T 2026'`, `quote`, `motionCopy`), `fallbackModel`, `motionCards`, `alt` de versiones.
+- `GlassTopNav.svelte`: Lista `MENU_VEHICLES` (`model: 'Attitude R/T'`).
+- `PromoBentoGrid.svelte`: Línea de promociones (`model: 'Attitude R/T'`) y `SPECIAL_PROMOS` (`Attitude R/T 2026`).
+- `ContactFormCard.svelte`: Opciones de modelo para Dodge (`'Attitude R/T 2026'`) con trims sincronizados `['SXT', 'SPORT', 'GT']`.
+
