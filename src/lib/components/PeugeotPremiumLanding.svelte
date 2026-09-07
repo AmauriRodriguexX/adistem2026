@@ -279,7 +279,7 @@
 
   const pinVideoSrc = $derived(
     pinVideoActive
-      ? 'https://www.youtube.com/embed/2kY99v9l6I4?autoplay=1&mute=1&controls=0&rel=0&modestbranding=1&playsinline=1&loop=1&playlist=2kY99v9l6I4'
+      ? '' /* No hay video oficial disponible para Peugeot 5008 — se usa imagen fija */
       : ''
   )
 
@@ -422,29 +422,19 @@
           role="button"
           tabindex="0"
           class="pin-media"
-          class:video-active={pinVideoActive}
-          aria-label={`Reproducir video de ${model.name}`}
-          onclick={() => pinVideoActive = !pinVideoActive}
+          aria-label={`Ampliar imagen de ${model.name}`}
+          onclick={() => toggleZoom(model.spotlightImage)}
           onkeydown={(event) => {
             if (event.key === 'Enter' || event.key === ' ') {
               event.preventDefault()
-              pinVideoActive = !pinVideoActive
+              toggleZoom(model.spotlightImage)
             }
           }}
         >
-          <img class:video-active={pinVideoActive} class="truck-main" src={model.spotlightImage} alt={model.name} />
-          {#if pinVideoSrc}
-            <iframe
-              class="pin-video"
-              src={pinVideoSrc}
-              title={`Video ${model.name}`}
-              allow="autoplay; encrypted-media; picture-in-picture"
-              allowfullscreen
-            ></iframe>
-          {/if}
+          <img class="truck-main" src={model.spotlightImage} alt={model.name} />
           <span class="pin-play-cue">
-            <GoogleIcon name="play_arrow" size={22} />
-            Ver video
+            <GoogleIcon name="zoom_in" size={22} />
+            Ampliar
           </span>
         </div>
       </div>
